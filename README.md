@@ -138,6 +138,7 @@ The scripts have been tested with the Italian language. Support for other langua
 
 ## TODO
 
+- Add pre-made translations for other languages
 - Polishing
 
 ## Notes
