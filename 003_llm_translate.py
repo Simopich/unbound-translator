@@ -33,6 +33,28 @@ LANGUAGE_NAMES = {
     "pt-br": "Brazilian Portuguese",
 }
 
+CATEGORY_PRIORITY = {
+    "menu_options": 20_000,
+    "menu_pc": 20_000,
+    "menu_pcoptions": 20_000,
+    "menu_pokemon": 20_000,
+    "menu_pokemon_options": 20_000,
+    "menu_item_storage": 20_000,
+    "menu_pause": 20_000,
+    "trade_messages": 8_500,
+    "map_names": 8_000,
+    "type_names": 7_500,
+    "nature_names": 7_000,
+    "trainer_classes": 6_500,
+    "item_names": 6_000,
+    "ability_names": 6_000,
+    "move_names": 6_000,
+    "move_descriptions": 4_000,
+    "ability_descriptions": 4_000,
+    "scripts": 1_000,
+    "pokemon_names": 100,
+}
+
 
 class TranslationError(RuntimeError):
     pass
@@ -126,6 +148,150 @@ def apply_existing_translations(data, existing_data):
             entry["translated"] = existing[key]
             applied += 1
     return applied
+
+
+def parse_value_set(value):
+    if not value:
+        return set()
+    return {item.strip() for item in value.replace(";", ",").split(",") if item.strip()}
+
+
+def parse_category_set(value):
+    return parse_value_set(value)
+
+
+def split_entry_id(entry_id):
+    match = None
+    for index in range(len(entry_id) - 1, -1, -1):
+        if not entry_id[index].isdigit():
+            match = index + 1
+            break
+    if match is None or match >= len(entry_id):
+        return None
+    return entry_id[:match], int(entry_id[match:]), len(entry_id) - match
+
+
+def parse_id_ranges(value):
+    ranges = []
+    for item in parse_value_set(value):
+        separator = ":" if ":" in item else "-"
+        if separator not in item:
+            raise SystemExit(f"error: invalid --include-id-ranges item: {item}")
+        start_id, end_id = [part.strip() for part in item.split(separator, 1)]
+        start = split_entry_id(start_id)
+        end = split_entry_id(end_id)
+        if start is None or end is None or start[0] != end[0]:
+            raise SystemExit(f"error: invalid --include-id-ranges item: {item}")
+        prefix, start_number, width = start
+        _end_prefix, end_number, end_width = end
+        if width != end_width or start_number > end_number:
+            raise SystemExit(f"error: invalid --include-id-ranges item: {item}")
+        ranges.append((prefix, start_number, end_number, width))
+    return ranges
+
+
+def id_in_ranges(entry_id, ranges):
+    split = split_entry_id(entry_id)
+    if split is None:
+        return False
+    prefix, number, width = split
+    return any(
+        prefix == range_prefix
+        and width == range_width
+        and start <= number <= end
+        for range_prefix, start, end, range_width in ranges
+    )
+
+
+def include_filters_active(include_ids, include_ranges, include_categories, include_prefixes):
+    return bool(include_ids or include_ranges or include_categories or include_prefixes)
+
+
+def entry_matches_include(entry, include_ids, include_ranges, include_categories, include_prefixes):
+    entry_id = entry.get("id", "")
+    category = entry.get("category", "")
+    return (
+        entry_id in include_ids
+        or id_in_ranges(entry_id, include_ranges)
+        or category in include_categories
+        or any(category.startswith(prefix) for prefix in include_prefixes)
+    )
+
+
+def filter_entries_by_include(entries, include_ids, include_ranges, include_categories, include_prefixes):
+    return [
+        entry
+        for entry in entries
+        if entry_matches_include(
+            entry,
+            include_ids,
+            include_ranges,
+            include_categories,
+            include_prefixes,
+        )
+    ]
+
+
+def keep_included_entries(data, include_ids, include_ranges, include_categories, include_prefixes):
+    if not include_filters_active(include_ids, include_ranges, include_categories, include_prefixes):
+        return 0
+    removed = 0
+    for table in data.get("tables", []):
+        entries = table.get("entries")
+        if not isinstance(entries, list):
+            continue
+        filtered = filter_entries_by_include(
+            entries,
+            include_ids,
+            include_ranges,
+            include_categories,
+            include_prefixes,
+        )
+        removed += len(entries) - len(filtered)
+        table["entries"] = filtered
+    for key in ("free_texts", "entries"):
+        entries = data.get(key)
+        if not isinstance(entries, list):
+            continue
+        filtered = filter_entries_by_include(
+            entries,
+            include_ids,
+            include_ranges,
+            include_categories,
+            include_prefixes,
+        )
+        removed += len(entries) - len(filtered)
+        data[key] = filtered
+    return removed
+
+
+def filter_entries_by_category(entries, excluded_categories):
+    return [
+        entry
+        for entry in entries
+        if entry.get("category", "") not in excluded_categories
+    ]
+
+
+def remove_excluded_categories(data, excluded_categories):
+    if not excluded_categories:
+        return 0
+    removed = 0
+    for table in data.get("tables", []):
+        entries = table.get("entries")
+        if not isinstance(entries, list):
+            continue
+        filtered = filter_entries_by_category(entries, excluded_categories)
+        removed += len(entries) - len(filtered)
+        table["entries"] = filtered
+    for key in ("free_texts", "entries"):
+        entries = data.get(key)
+        if not isinstance(entries, list):
+            continue
+        filtered = filter_entries_by_category(entries, excluded_categories)
+        removed += len(entries) - len(filtered)
+        data[key] = filtered
+    return removed
 
 
 def load_json(path):
@@ -816,6 +982,71 @@ def build_work_items(data):
     return work, already_translated, skipped_empty
 
 
+def short_text_bonus(length):
+    if length <= 8:
+        return 100
+    if length <= 16:
+        return 75
+    if length <= 32:
+        return 50
+    if length <= 64:
+        return 25
+    return 0
+
+
+def huge_text_penalty(length):
+    if length >= 1024:
+        return 150
+    if length >= 512:
+        return 75
+    if length >= 256:
+        return 25
+    return 0
+
+
+def pointer_source_count(entry):
+    sources = entry.get("pointer_sources") or entry.get("pointer_addresses") or []
+    return len(sources) if isinstance(sources, list) else 0
+
+
+def translation_priority(item, duplicate_originals, duplicate_sources):
+    entry = item["entry"]
+    category = item["category"]
+    length = len(item["text"])
+    duplicate_original_count = min(duplicate_originals.get(strip_hma_quotes(entry.get("original", "")), 1), 10)
+    duplicate_source_count = min(duplicate_sources.get(item["text"], 1), 10)
+    return (
+        CATEGORY_PRIORITY.get(category, 0)
+        + pointer_source_count(entry) * 50
+        + duplicate_original_count * 25
+        + duplicate_source_count * 25
+        + short_text_bonus(length)
+        - huge_text_penalty(length)
+    )
+
+
+def sort_work_by_priority(work):
+    duplicate_originals = {}
+    duplicate_sources = {}
+    for item in work:
+        original = strip_hma_quotes(item["entry"].get("original", ""))
+        duplicate_originals[original] = duplicate_originals.get(original, 0) + 1
+        duplicate_sources[item["text"]] = duplicate_sources.get(item["text"], 0) + 1
+
+    for item in work:
+        item["priority"] = translation_priority(item, duplicate_originals, duplicate_sources)
+
+    work.sort(
+        key=lambda item: (
+            item["priority"],
+            -len(item["text"]),
+            item["id"],
+        ),
+        reverse=True,
+    )
+    return work
+
+
 def chunked(items, size):
     for start in range(0, len(items), size):
         yield items[start : start + size]
@@ -945,6 +1176,48 @@ def parse_args():
         help="Maximum API calls per minute across all workers. Use 0 to disable. Default: 0.",
     )
     parser.add_argument(
+        "--exclude-categories",
+        default="",
+        help=(
+            "Comma-separated categories to omit from the output JSON before translation. "
+            "Useful for debugging smaller builds."
+        ),
+    )
+    parser.add_argument(
+        "--include-ids",
+        default="",
+        help="Comma- or semicolon-separated entry ids to keep in the output JSON.",
+    )
+    parser.add_argument(
+        "--include-id-ranges",
+        default="",
+        help=(
+            "Comma- or semicolon-separated id ranges to keep, such as "
+            "scr_09023-scr_09114."
+        ),
+    )
+    parser.add_argument(
+        "--include-categories",
+        default="",
+        help="Comma- or semicolon-separated exact categories to keep.",
+    )
+    parser.add_argument(
+        "--include-category-prefixes",
+        default="",
+        help="Comma- or semicolon-separated category prefixes to keep, such as menu_.",
+    )
+    parser.add_argument(
+        "--priority-order",
+        action="store_true",
+        help="Translate missing entries in priority order instead of JSON order.",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=0,
+        help="Translate at most this many missing entries after filtering/sorting. Use 0 for all.",
+    )
+    parser.add_argument(
         "--resume",
         action="store_true",
         help="Resume from an existing output JSON and translate only missing entries.",
@@ -980,6 +1253,8 @@ def validate_args(args, output_path):
         raise SystemExit("error: --timeout must be > 0")
     if args.rate_limit < 0:
         raise SystemExit("error: --rate-limit must be >= 0")
+    if args.limit < 0:
+        raise SystemExit("error: --limit must be >= 0")
     if output_path.exists() and not args.resume and not args.overwrite:
         raise SystemExit(
             f"error: {output_path} already exists; use --resume to continue or --overwrite to replace it"
@@ -997,13 +1272,50 @@ def main():
     validate_args(args, output_path)
 
     data = load_json(input_path)
+    include_ids = parse_value_set(args.include_ids)
+    include_ranges = parse_id_ranges(args.include_id_ranges)
+    include_categories = parse_category_set(args.include_categories)
+    include_prefixes = parse_value_set(args.include_category_prefixes)
+    removed_not_included = keep_included_entries(
+        data,
+        include_ids,
+        include_ranges,
+        include_categories,
+        include_prefixes,
+    )
+    if removed_not_included:
+        print(f"include filters: removed {removed_not_included} non-whitelisted entries")
+
+    excluded_categories = parse_category_set(args.exclude_categories)
+    removed_excluded = remove_excluded_categories(data, excluded_categories)
+    if removed_excluded:
+        print(
+            "excluded categories: "
+            f"removed {removed_excluded} entries ({', '.join(sorted(excluded_categories))})"
+        )
+
     if args.resume and output_path.exists():
-        applied = apply_existing_translations(data, load_json(output_path))
+        existing_data = load_json(output_path)
+        keep_included_entries(
+            existing_data,
+            include_ids,
+            include_ranges,
+            include_categories,
+            include_prefixes,
+        )
+        remove_excluded_categories(existing_data, excluded_categories)
+        applied = apply_existing_translations(data, existing_data)
         print(f"resume: restored {applied} completed translations from {output_path}")
     elif args.resume:
         print(f"resume: {output_path} does not exist yet; starting from input JSON")
 
     work, already_translated, skipped_empty = build_work_items(data)
+    total_missing_before_limit = len(work)
+    if args.priority_order:
+        sort_work_by_priority(work)
+    if args.limit:
+        work = work[: args.limit]
+
     total_entries = sum(1 for _index, _entry in iter_entry_refs(data))
     total_translatable = already_translated + len(work)
 
@@ -1011,6 +1323,10 @@ def main():
     print(f"translatable entries: {total_translatable}")
     print(f"already translated: {already_translated}")
     print(f"missing translations: {len(work)}")
+    if args.limit:
+        print(f"missing before limit: {total_missing_before_limit}")
+        print(f"translation limit: {args.limit}")
+    print(f"priority order: {'enabled' if args.priority_order else 'disabled'}")
     print(f"skipped empty translation sources: {skipped_empty}")
     print(f"auth backend: {args.auth}")
 

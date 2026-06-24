@@ -51,6 +51,9 @@ When resuming LLM translation, use the same input and output paths with `--resum
 - Semantic/control tokens are protected game-engine tokens that must survive translation exactly and in the same count. Examples include `[player]`, `[buffer1]`, `[red]`, `\CC12`, `\btn01`, `\pk`, `\mn`, `\qo`, `\qc`, and `{B4}`.
 - `003_llm_translate.py` uses `translation_source` when present. After each model response it checks semantic/control token counts and retries if a token is missing, duplicated, or invented, or if the model adds layout markers.
 - `003_llm_translate.py` prints a warning when it falls back to a single-entry prompt because that path has less context and can reduce translation accuracy.
+- `003_llm_translate.py --exclude-categories` removes matching entries from the output JSON entirely. It does not copy them as English translations.
+- `003_llm_translate.py --include-ids`, `--include-id-ranges`, `--include-categories`, and `--include-category-prefixes` keep only matching entries in the output JSON. This is preferred for small debug ROMs.
+- `003_llm_translate.py --priority-order --limit N` is intended for debug builds: it translates only the first `N` missing entries after priority sorting, favoring menu/UI/common/short text.
 - The LLM prompt asks for established official Pokemon terminology and may ask models with web/retrieval access to consult reputable references such as Bulbapedia or Pokemon Database. Plain OpenAI-compatible chat APIs usually do not browse by themselves.
 - To use a ChatGPT subscription login instead of an API key, run `codex login` first or provide `CODEX_ACCESS_TOKEN`, then run `003_llm_translate.py` with `--auth chatgpt`. This delegates batches to `codex exec`; `--model` is optional in this mode and overrides the Codex default model when provided.
 - For OpenCode, use `--api-base https://opencode.ai/zen/go/v1`; `003_llm_translate.py` appends `/chat/completions` automatically. `API HTTP 403: error code: 1010` means the upstream gateway rejected the HTTP request before the model handled it. The script sends a browser-like `User-Agent` by default and exposes `--user-agent` for overrides.
@@ -60,6 +63,18 @@ When resuming LLM translation, use the same input and output paths with `--resum
 - Use `--rate-limit N` to cap total API calls per minute across all workers and retry attempts. Use `0` to disable the limiter.
 - `004_controlfix_translations.py` wraps translated text by default for `scripts`, `move_descriptions`, `ability_descriptions`, and `trade_messages`. Scripts are wrapped into dialogue pages with `\n`, `\l`, and paragraph breaks; descriptions are wrapped with regular line breaks. Tune with `--wrap-width`, `--description-wrap-width`, and `--wrap-categories`, or disable with `--no-wrap`.
 - Always run `004_controlfix_translations.py` after LLM translation before injecting.
+
+## Debug Workflow
+
+Use this to test a small manually whitelisted ROM build:
+
+```bash
+./001_extract_unbound_text.py rom/unbound.gba -o out/debug-unbound-texts.json
+./002_prepare_translation_text.py out/debug-unbound-texts.json -o out/debug-unbound-texts-prepared.json
+./003_llm_translate.py out/debug-unbound-texts-prepared.json --target it --api-base https://opencode.ai/zen/go/v1 --api-key YOUR_API_KEY --model your-model-name --workers 4 --batch-size 20 --include-ids scr_07448,scr_05226,scr_05227,scr_07449 --include-id-ranges scr_09023-scr_09114 --include-category-prefixes menu_ -o out/debug-unbound-texts-it.json --overwrite
+./004_controlfix_translations.py out/debug-unbound-texts-it.json -o out/debug-unbound-texts-it-controlfix.json --source out/debug-unbound-texts-prepared.json --report out/debug-controlfix-report.json
+./005_hybrid_injector.py rom/unbound.gba out/debug-unbound-texts-it-controlfix.json -o out/debug-unbound-translated.gba --map-output out/debug-hybrid-map.json
+```
 
 ## Ready Translations
 

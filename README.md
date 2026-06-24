@@ -90,6 +90,8 @@ The translator uses `translation_source` when present. After each model response
 
 If the script has to fall back to a single-entry prompt, it prints a warning with the affected entry id. These cases use less context than the normal batch prompt and may produce less accurate translations, so they are worth reviewing and keeping as rare as possible.
 
+For debugging, `--exclude-categories` removes whole categories from the translated output JSON before translation. Excluded categories are not copied as English entries. `--include-ids`, `--include-id-ranges`, `--include-categories`, and `--include-category-prefixes` keep only a manual whitelist. `--priority-order` sorts missing entries so common UI/menu/short/high-value text is translated first, and `--limit N` translates only the first `N` missing entries after filtering and sorting.
+
 To use a ChatGPT subscription login instead of an API key, install and log in with the Codex CLI first (`codex login`), or provide `CODEX_ACCESS_TOKEN`. Then run the translator with `--auth chatgpt`; this delegates model calls to `codex exec` and reuses Codex's saved ChatGPT credentials:
 
 ```bash
@@ -124,6 +126,36 @@ For slow or free-tier APIs, use `--rate-limit` to cap total API calls per minute
 For OpenCode, use `--api-base https://opencode.ai/zen/go/v1`; the script appends `/chat/completions` automatically. If the provider returns `API HTTP 403: error code: 1010`, the request is being rejected by the upstream gateway before reaching the model. The script sends a browser-like `User-Agent` by default, and it can be overridden with `--user-agent`.
 
 For now, only Latin-script target languages are supported by the translation script because non-Latin languages will likely require a font patch. The prompt asks the model to use established official Pokémon terminology for moves, items, abilities, descriptions, and common franchise text. If the selected API/model has web or retrieval access, it is instructed to consult reputable Pokémon references such as Bulbapedia or Pokémon Database; plain OpenAI-compatible chat APIs usually do not browse the web by themselves.
+
+### Debug Build
+
+This launches the full workflow on a manually whitelisted translation set. It is useful for quickly testing specific dialogue ranges and all extracted menu text without spending time translating the whole ROM.
+
+```bash
+./001_extract_unbound_text.py rom/unbound.gba -o out/debug-unbound-texts.json
+./002_prepare_translation_text.py out/debug-unbound-texts.json -o out/debug-unbound-texts-prepared.json
+./003_llm_translate.py out/debug-unbound-texts-prepared.json \
+  --target it \
+  --api-base https://opencode.ai/zen/go/v1 \
+  --api-key YOUR_API_KEY \
+  --model your-model-name \
+  --workers 4 \
+  --batch-size 20 \
+  --include-ids scr_07448,scr_05226,scr_05227,scr_07449 \
+  --include-id-ranges scr_09019-scr_09114 \
+  --include-category-prefixes menu_ \
+  -o out/debug-unbound-texts-it.json \
+  --overwrite
+./004_controlfix_translations.py out/debug-unbound-texts-it.json \
+  -o out/debug-unbound-texts-it-controlfix.json \
+  --source out/debug-unbound-texts-prepared.json \
+  --report out/debug-controlfix-report.json
+./005_hybrid_injector.py rom/unbound.gba out/debug-unbound-texts-it-controlfix.json \
+  -o out/debug-unbound-translated.gba \
+  --map-output out/debug-hybrid-map.json
+```
+
+All entries outside the whitelist are omitted from `out/debug-unbound-texts-it.json`, which keeps the debug JSON smaller and easier to inspect.
 
 ### 4. Repair Control Codes And Layout
 
