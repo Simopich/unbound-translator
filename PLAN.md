@@ -2,121 +2,7 @@
 
 This file tracks concrete improvements needed to make `unbound-translator` more complete and more space-efficient.
 
-## 1. Priority-Based Injection
-
-The injector currently processes JSON entries in file order. When free relocation space runs out, late entries are skipped even if they are common UI text or frequently visible dialogue choices.
-
-Implement a priority sort before the relocation/injection loop in `005_hybrid_injector.py`.
-
-Priority should favor:
-
-- Menu/UI text very strongly.
-- Short text strongly, because it is cheap and commonly reusable.
-- Text with many `pointer_sources`, because one relocated string may affect many call sites.
-- Duplicate original or duplicate translated text, because repeated strings are likely common.
-- Common game/system text such as `Yes`, `No`, `SAVING`, prompts, choices, map names, item/menu labels, PC text, pause menu text, Pokémon menu text, storage text, and battle facility UI.
-
-Suggested category priority:
-
-```text
-menu_options: very high
-menu_pc: very high
-menu_pcoptions: very high
-menu_pokemon: very high
-menu_pokemon_options: very high
-menu_item_storage: very high
-menu_pause: very high
-trade_messages: high
-map_names: high
-type_names: high
-nature_names: high
-trainer_classes: medium-high
-item_names: medium-high
-ability_names: medium-high
-move_names: medium-high
-move_descriptions: medium
-ability_descriptions: medium
-scripts: variable, based on usage/length/duplicates
-pokemon_names: low or unchanged, because most species names stay the same in Italian
-```
-
-Suggested scoring model:
-
-```text
-priority =
-  category_weight
-  + pointer_source_count * 50
-  + duplicate_original_count * 25
-  + duplicate_translated_count * 25
-  + short_text_bonus
-  - huge_text_penalty
-```
-
-Suggested short text bonus:
-
-```text
-encoded length <= 8:   +100
-encoded length <= 16:  +75
-encoded length <= 32:  +50
-encoded length <= 64:  +25
-```
-
-Suggested huge text penalty:
-
-```text
-encoded length >= 256: -25
-encoded length >= 512: -75
-encoded length >= 1024: -150
-```
-
-Requirements:
-
-- Add `--priority-order` flag, default enabled.
-- Add `--no-priority-order` flag for debugging old behavior.
-- Keep fixed in-place entries safe: if an entry fits in its original fixed slot, it does not consume relocation space and should still be patched.
-- For relocated pointer text, allocate free space in priority order.
-- Include priority score and reason fields in `hybrid-map.json`.
-
-## 2. Better Injection Reports
-
-The current injector prints aggregate stats, but it is hard to tell which important strings were skipped and why.
-
-Add a detailed skipped report to `hybrid-map.json`.
-
-Each skipped translated entry should include:
-
-- `id`
-- `category`
-- `original`
-- `translated`
-- `address`
-- `byte_length`
-- encoded translated length
-- priority score
-- skip reason:
-  - `no_space`
-  - `fixed_truncated`
-  - `pointer_mismatch`
-  - `encode_error`
-  - `unsafe_address`
-  - `out_of_rom`
-  - `duplicate_fixed`
-- pointer source count
-- duplicate original count
-- duplicate translated count
-
-Add summary sections:
-
-- skipped by category
-- skipped by reason
-- top skipped by priority
-- largest skipped strings
-- shortest skipped strings
-- skipped menu/UI strings
-
-This will make it clear when text such as `SAVING.\nDON’T TURN OFF THE POWER.` was translated correctly but skipped because there was no remaining relocation space.
-
-## 3. Pointer String Interning
+## 1. Pointer String Interning
 
 Many recurring standalone strings can share one relocated memory location.
 
@@ -149,7 +35,7 @@ Limitations:
 - This only helps standalone strings.
 - It cannot deduplicate substrings inside longer text. For example, `Welcome to Frozen Heights!` cannot share only the `Frozen Heights` substring unless the game script supports string concatenation.
 
-## 4. Glossary And Consistency Pass
+## 2. Glossary And Consistency Pass
 
 The same game term can appear in different categories and scripts. The LLM may translate one occurrence and leave another in English.
 
@@ -186,7 +72,7 @@ Requirements:
 
 This should help with cases where `Frozen Heights` is correctly translated as a map name but remains English in script text.
 
-## 5. Menu Extraction Audit
+## 3. Menu Extraction Audit
 
 Some menu text may still be untranslated because it is not extracted, not because it is skipped during injection.
 
@@ -228,7 +114,7 @@ Important distinction:
 - Not extracted means extractor coverage issue.
 - Not found as PCS text may mean graphical text, compressed data, or custom UI encoding.
 
-## 6. Menu Priority And Fixed-Size Handling
+## 4. Menu Priority And Fixed-Size Handling
 
 Menu text should be treated as high-value because it appears throughout the whole game.
 
@@ -245,7 +131,7 @@ Future compression may target these first:
 - reduce punctuation/spacing
 - prefer compact UI phrases over literal translations
 
-## 7. Translation Memory For Repeated English Text
+## 5. Translation Memory For Repeated English Text
 
 Before calling the LLM, detect duplicate English `translation_source` values.
 
@@ -263,7 +149,7 @@ Benefits:
 - More consistent translations.
 - More identical translated strings, which improves pointer-string interning.
 
-## 8. Space Optimization Roadmap
+## 6. Space Optimization Roadmap
 
 After priority injection and reports are implemented, use reports to guide compression.
 
@@ -289,7 +175,7 @@ Useful metrics to track over time:
 - fixed-size truncations
 - encode errors
 
-## 9. Suggested Workflow After These Changes
+## 7. Suggested Workflow After These Changes
 
 ```bash
 ./001_extract_unbound_text.py rom/unbound.gba -o out/unbound-texts.json

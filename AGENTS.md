@@ -42,6 +42,8 @@ When resuming LLM translation, use the same input and output paths with `--resum
 - `Pointer text rejected` in extractor output means candidate pointers were checked and discarded because they did not decode as plausible text. It does not mean translations failed.
 - Do not blindly accept all rejected pointer candidates. If text is missing, add or refine the pointer-source pattern for the specific game system that owns that text.
 - Known strings such as `Choose a character.` and `Choose a skin tone.` are extracted through the script/menu `0x67` pointer pattern.
+- Manual menu entries can include pointer sources when exact GBA pointers to those strings are present. This lets important menus such as Cube V3, save, and game settings relocate instead of being fixed-size only.
+- Use `001_extract_unbound_text.py rom/unbound.gba -o out/unbound-texts.json --audit-menu-text` when auditing menu coverage during extraction. `found_but_not_extracted` means extractor coverage needs a new table/address; `not_found_as_pcs_text` likely means graphical/tile text, compressed data, or custom UI encoding.
 - Extraction should remain as-is/lossless. Use `002_prepare_translation_text.py` for translation cleanup instead of changing extracted `original` strings.
 
 ## Translation Notes
