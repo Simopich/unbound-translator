@@ -31,6 +31,7 @@ LANGUAGE_NAMES = {
     "it": "Italian",
     "pt": "Portuguese",
     "pt-br": "Brazilian Portuguese",
+    "id": "Indonesian",
 }
 
 CATEGORY_PRIORITY = {

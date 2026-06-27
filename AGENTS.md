@@ -48,7 +48,7 @@ When resuming LLM translation, use the same input and output paths with `--resum
 
 ## Translation Notes
 
-- `003_llm_translate.py` currently supports Latin-script target languages only: `de`, `en`, `es`, `fr`, `it`, `pt`, and `pt-br`.
+- `003_llm_translate.py` currently supports Latin-script target languages only: `de`, `en`, `es`, `fr`, `id`, `it`, `pt`, and `pt-br`.
 - Non-Latin target languages are out of scope for now because they likely require a font patch.
 - `002_prepare_translation_text.py` adds `translation_source`; it removes layout markers such as actual line breaks, `\n`, `\l`, `\p`, and `\pn`, while preserving semantic/control tokens.
 - Semantic/control tokens are protected game-engine tokens that must survive translation exactly and in the same count. Examples include `[player]`, `[buffer1]`, `[red]`, `\CC12`, `\btn01`, `\pk`, `\mn`, `\qo`, `\qc`, and `{B4}`.

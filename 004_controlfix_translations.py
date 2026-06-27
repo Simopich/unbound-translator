@@ -5,13 +5,15 @@ import json
 import re
 from pathlib import Path
 
-from lib.pcs_text import Charmap
+from lib.pcs_text import CC_TOKEN_PATTERN, Charmap
 from lib.translation_tokens import remove_layout_tokens, visible_width
 
 
+CC_NO_PREFIX_PATTERN = CC_TOKEN_PATTERN.replace(r"\\CC", "CC")
+
 TOKEN_RE = re.compile(
-    r"\\CC(?:[0-9A-Fa-f]{2})+"
-    r"|\\btn[0-9A-Fa-f]{2}"
+    CC_TOKEN_PATTERN
+    + r"|\\btn[0-9A-Fa-f]{2}"
     r"|\\![0-9A-Fa-f\s]+"
     r"|\\\\[0-9A-Fa-f]{2}"
     r"|\\\?[0-9A-Fa-f]{2}"
@@ -177,7 +179,7 @@ def normalize_braced_controls(text):
     # PCS/HMA control codes that LLMs often wrap in braces.
     text = re.sub(r"\{(\[[A-Za-z0-9_]+\])\}", r"\1", text)
     text = re.sub(
-        r"\{(\\(?:CC[0-9A-Fa-f]+|btn[0-9A-Fa-f]{2}|\?[0-9A-Fa-f]{2}|9[0-9A-Fa-f]{2}|F[0-9A-Fa-f]|[pnlr.]|qo|qc))\}",
+        rf"\{{(\\(?:{CC_NO_PREFIX_PATTERN}|btn[0-9A-Fa-f]{{2}}|\?[0-9A-Fa-f]{{2}}|9[0-9A-Fa-f]{{2}}|F[0-9A-Fa-f]|[pnlr.]|qo|qc))\}}",
         r"\1",
         text,
     )
@@ -204,12 +206,12 @@ def repair_split_controls(text):
     # LLMs sometimes turn quote/control markers into layout + marker, e.g.
     # \nqo, \pqc, \nCC0818. These are not line breaks; they are broken controls.
     text = re.sub(r"\\[np](qo|qc)", lambda m: "\\" + m.group(1), text)
-    text = re.sub(r"\\[np](CC[0-9A-Fa-f]{2,})", lambda m: "\\" + m.group(1), text)
+    text = re.sub(rf"\\[np]({CC_NO_PREFIX_PATTERN})", lambda m: "\\" + m.group(1), text)
     text = re.sub(r"\\[np](btn[0-9A-Fa-f]{2})", lambda m: "\\" + m.group(1), text)
     text = re.sub(r"\\[np](\?[0-9A-Fa-f]{2})", lambda m: "\\" + m.group(1), text)
     text = re.sub(r"\\[np](![0-9A-Fa-f]{2})", lambda m: "\\" + m.group(1), text)
     text = re.sub(r"\\\\(qo|qc)", lambda m: "\\" + m.group(1), text)
-    text = re.sub(r"\\\\(CC[0-9A-Fa-f]{2,})", lambda m: "\\" + m.group(1), text)
+    text = re.sub(rf"\\\\({CC_NO_PREFIX_PATTERN})", lambda m: "\\" + m.group(1), text)
     text = re.sub(r"\\\\(btn[0-9A-Fa-f]{2})", lambda m: "\\" + m.group(1), text)
     return text
 
