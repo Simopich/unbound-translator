@@ -45,6 +45,28 @@ COLOR_TOKENS = {
 
 DEFAULT_WRAP_CATEGORIES = "scripts,plain_scripts,move_descriptions,ability_descriptions,trade_messages"
 DESCRIPTION_CATEGORIES = {"move_descriptions", "ability_descriptions"}
+MENU_LINE_BREAK_CATEGORIES = {
+    "menu_common",
+    "menu_battle",
+    "menu_cube",
+    "menu_cube_system",
+    "menu_game_settings",
+    "menu_item_storage",
+    "menu_link_controls",
+    "menu_list_labels",
+    "menu_mining",
+    "menu_multiplayer",
+    "menu_options",
+    "menu_pause",
+    "menu_pc",
+    "menu_pcoptions",
+    "menu_pokemon",
+    "menu_pokemon_options",
+    "menu_save",
+    "menu_saving_messages",
+    "menu_standalone_labels",
+    "menu_trainer_card",
+}
 
 
 def iter_entries(data):
@@ -306,6 +328,36 @@ def normalize_actual_layout_breaks(text):
     return text.replace("\n", "\\n")
 
 
+def restore_compact_menu_line_breaks(text, original, entry):
+    if entry.get("category") not in MENU_LINE_BREAK_CATEGORIES:
+        return text, False
+    if "\n" in text or any(token in text for token in LAYOUT_TOKENS):
+        return text, False
+
+    original_text = strip_hma_quotes(original)
+    if "\\n" in original_text:
+        original_lines = original_text.split("\\n")
+    elif "\n" in original_text:
+        original_lines = original_text.split("\n")
+    else:
+        return text, False
+
+    original_lines = [line.strip() for line in original_lines if line.strip()]
+    if len(original_lines) < 2 or len(original_lines) > 4:
+        return text, False
+    if any(visible_width(remove_layout_tokens(line)[0]) > 16 for line in original_lines):
+        return text, False
+
+    translated_parts = text.split()
+    if len(translated_parts) != len(original_lines):
+        return text, False
+    if any(visible_width(part) > 16 for part in translated_parts):
+        return text, False
+
+    fixed = "\n".join(translated_parts)
+    return fixed, fixed != text
+
+
 def technical_token_count(text):
     tokens = [
         token
@@ -481,6 +533,7 @@ def main():
         "deduped_controls": 0,
         "cc_hex_escapes": 0,
         "apostrophe_repairs": 0,
+        "menu_line_break_repairs": 0,
         "actual_newline_repairs": 0,
         "wrapped": 0,
         "wrap_long_words": 0,
@@ -529,6 +582,10 @@ def main():
 
         next_text = fix_apostrophes(text)
         stats["apostrophe_repairs"] += int(next_text != text)
+        text = next_text
+
+        next_text, menu_breaks_restored = restore_compact_menu_line_breaks(text, original, entry)
+        stats["menu_line_break_repairs"] += int(menu_breaks_restored)
         text = next_text
 
         next_text, wrapped, long_words, skipped_wrap = wrap_translation(

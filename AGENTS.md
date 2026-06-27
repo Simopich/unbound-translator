@@ -36,13 +36,13 @@ When resuming LLM translation, use the same input and output paths with `--resum
 
 ## Extraction Notes
 
-- A healthy baseline extraction currently reports about `13,695` entries, with about `8,883` `scripts` entries and `14` `plain_scripts` entries.
+- A healthy baseline extraction currently reports about `14,253` entries, with about `8,881` `scripts` entries and `14` `plain_scripts` entries.
 - Ability names have 293 entries, but `data.abilities.descriptions` only has 255 valid text pointers. Do not expand `ability_descriptions` to match the ability-name count; entries after index 254 decode non-text data as garbage.
 - Opening narration and other full-screen script text is categorized as `plain_scripts` by the extractor. These entries still use `scr_` ids, but controlfix must wrap them with plain line breaks instead of dialogue `\l` controls.
 - `Pointer text rejected` in extractor output means candidate pointers were checked and discarded because they did not decode as plausible text. It does not mean translations failed.
 - Do not blindly accept all rejected pointer candidates. If text is missing, add or refine the pointer-source pattern for the specific game system that owns that text.
 - Known strings such as `Choose a character.` and `Choose a skin tone.` are extracted through the script/menu `0x67` pointer pattern.
-- Manual menu extraction uses explicit addresses plus narrow vetted PCS ranges for contiguous menu blocks. Entries can include pointer sources when exact GBA pointers to those strings are present, which lets important menus such as Cube V3, save, and game settings relocate instead of being fixed-size only.
+- Manual menu extraction uses explicit addresses plus narrow vetted PCS ranges for contiguous menu blocks. This includes the newer Trainer Card profile labels and month names at `0x1F81E44-0x1F81EE5`. Entries can include pointer sources when exact GBA pointers to those strings are present, which lets important menus such as Cube V3, save, Trainer Card, and game settings relocate instead of being fixed-size only.
 - Use `001_extract_unbound_text.py rom/unbound.gba -o out/unbound-texts.json --audit-menu-text` when auditing menu coverage during extraction. `found_but_not_extracted` means extractor coverage needs a new table/address; `not_found_as_pcs_text` likely means graphical/tile text, compressed data, or custom UI encoding.
 - Extraction should remain as-is/lossless. Use `002_prepare_translation_text.py` for translation cleanup instead of changing extracted `original` strings.
 
@@ -64,7 +64,7 @@ When resuming LLM translation, use the same input and output paths with `--resum
 - `003_llm_translate.py` retries transient API failures up to 3 total attempts. It does not retry unauthorized, forbidden, rate-limit, other 4xx client errors, or partial/mismatched translation batches.
 - If a batch reaches the API output token limit, `003_llm_translate.py` falls back to translating entries individually. If a single-entry request still reaches the limit, it uses a compact single-item JSON prompt and then a plain-text prompt with the same model. If the entry still cannot be translated because of the output token limit, it prints a warning with the entry id, leaves the entry untranslated, and continues.
 - Use `--rate-limit N` to cap total API calls per minute across all workers and retry attempts. Use `0` to disable the limiter.
-- `004_controlfix_translations.py` wraps translated text by default for `scripts`, `plain_scripts`, `move_descriptions`, `ability_descriptions`, and `trade_messages`. Normal `scripts` entries are wrapped into dialogue pages with `\n`, `\l`, and paragraph breaks. `plain_scripts` entries are full-screen script text and must use plain line breaks. Descriptions are wrapped with regular line breaks. Tune with `--wrap-width`, `--description-wrap-width`, and `--wrap-categories`, or disable with `--no-wrap`.
+- `004_controlfix_translations.py` wraps translated text by default for `scripts`, `plain_scripts`, `move_descriptions`, `ability_descriptions`, and `trade_messages`. Normal `scripts` entries are wrapped into dialogue pages with `\n`, `\l`, and paragraph breaks. `plain_scripts` entries are full-screen script text and must use plain line breaks. Descriptions are wrapped with regular line breaks. Compact multi-row menu labels keep their original row breaks so choices such as `Yes\nNo` remain selectable on separate rows. Tune with `--wrap-width`, `--description-wrap-width`, and `--wrap-categories`, or disable with `--no-wrap`.
 - Always run `004_controlfix_translations.py` after LLM translation before injecting.
 - During injection, `plain_scripts` blank lines are encoded as repeated newline bytes (`0xFE 0xFE`) instead of the paragraph/prompt byte (`0xFB`), because the full-screen renderer shows the bottom arrow and can overflow when it receives `0xFB`.
 

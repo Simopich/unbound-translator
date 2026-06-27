@@ -485,6 +485,10 @@ MANUAL_TEXT_RANGES = [
     ManualTextRange("credits_text", "data.text.credits", 0x41D3BE, 0x41D45A),
 ]
 
+POST_POINTER_MANUAL_TEXT_RANGES = [
+    ManualTextRange("menu_trainer_card", "data.menus.text.trainerCard.profile", 0x1F81E44, 0x1F81EE5),
+]
+
 
 def find_pointer_sources(rom: bytes, target: int) -> list[int]:
     pointer = (GBA_POINTER_BASE + target).to_bytes(4, "little")
@@ -759,30 +763,36 @@ def extract_manual_tables(
     next_table_id: int,
     known_targets: set[int],
     known_pointer_sources: set[int],
+    manual_ranges: list[ManualTextRange] | None = None,
+    include_tables: bool = True,
 ) -> tuple[list[dict], int]:
     entries = []
-    for category, (table_name, addresses) in MANUAL_TEXT_TABLES.items():
-        for index, address in enumerate(addresses):
-            result = decode_pcs(rom, address, DEFAULT_MAX_TEXT_LENGTH)
-            known_targets.add(address)
-            pointer_sources = find_pointer_sources(rom, address)
-            known_pointer_sources.update(pointer_sources)
-            entries.append(
-                make_entry(
-                    f"tbl_{category}_{next_table_id:05d}",
-                    category,
-                    address,
-                    result,
-                    result.byte_length,
-                    bool(pointer_sources),
-                    pointer_sources,
-                    table_name,
-                    index,
-                )
-            )
-            next_table_id += 1
+    if manual_ranges is None:
+        manual_ranges = MANUAL_TEXT_RANGES
 
-    for manual_range in MANUAL_TEXT_RANGES:
+    if include_tables:
+        for category, (table_name, addresses) in MANUAL_TEXT_TABLES.items():
+            for index, address in enumerate(addresses):
+                result = decode_pcs(rom, address, DEFAULT_MAX_TEXT_LENGTH)
+                known_targets.add(address)
+                pointer_sources = find_pointer_sources(rom, address)
+                known_pointer_sources.update(pointer_sources)
+                entries.append(
+                    make_entry(
+                        f"tbl_{category}_{next_table_id:05d}",
+                        category,
+                        address,
+                        result,
+                        result.byte_length,
+                        bool(pointer_sources),
+                        pointer_sources,
+                        table_name,
+                        index,
+                    )
+                )
+                next_table_id += 1
+
+    for manual_range in manual_ranges:
         cursor = manual_range.start
         index = 0
         while cursor < manual_range.end:
@@ -1184,6 +1194,17 @@ def main() -> None:
         args.all_pointers,
     )
     entries.extend(script_entries)
+    next_table_id += len(script_entries)
+
+    table_entries, next_table_id = extract_manual_tables(
+        rom,
+        next_table_id,
+        known_targets,
+        known_pointer_sources,
+        POST_POINTER_MANUAL_TEXT_RANGES,
+        include_tables=False,
+    )
+    entries.extend(table_entries)
 
     orphan_stats = Counter()
     if args.include_orphans:
