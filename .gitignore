@@ -3,3 +3,7 @@
 rom/*.gba
 out/*.json
 out/*.gba
+__pycache__/
+*.pyc
+.DS_Store
+.ds_store
