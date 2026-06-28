@@ -15,8 +15,8 @@ This repository is `unbound-translator`, a Python toolchain for translating Poke
 ## Main Scripts
 
 - `001_extract_unbound_text.py`: extracts text from the ROM into JSON. The expected output shape is a JSON object containing an `entries` array, though some utilities also tolerate older `tables` and `free_texts` shapes.
-- `002_prepare_translation_text.py`: adds layout-free `translation_source` fields to extracted JSON while preserving each entry's original ROM text. It removes layout markers only; semantic/control tokens stay in the translation source.
-- `003_llm_translate.py`: translates prepared JSON through an OpenAI-compatible chat completions API or a Codex CLI ChatGPT login. It preserves the JSON shape, fills `translated` fields, supports `--resume`, validates returned batches, and retries model output that drops/adds semantic/control tokens.
+- `002_prepare_translation_text.py`: adds layout-free `translation_source` fields to extracted JSON while preserving each entry's original ROM text. It removes layout markers and replaces semantic/control tokens in `translation_source` with readable placeholders recorded in `semantic_token_placeholders`.
+- `003_llm_translate.py`: translates prepared JSON through an OpenAI-compatible chat completions API or a Codex CLI ChatGPT login. It preserves the JSON shape, fills `translated` fields, supports `--resume`, restores semantic/control placeholders to real tokens, validates returned batches, and retries model output that drops/adds protected placeholders or tokens.
 - `004_controlfix_translations.py`: repairs translated control codes, quote tokens, apostrophes, and other formatting damage caused by translation. It also recomputes post-translation text wrapping/layout for dialogue and description-like text.
 - `005_hybrid_injector.py`: injects translated text into the ROM using in-place writes and pointer relocation into free `0xFF` space.
 - `lib/pcs_text.py`: local PCS charmap and codec. Do not reintroduce Meowth charmap dependencies.
@@ -52,9 +52,9 @@ When resuming LLM translation, use the same input and output paths with `--resum
 
 - `003_llm_translate.py` currently supports Latin-script target languages only: `de`, `en`, `es`, `fr`, `it`, `pt`, and `pt-br`.
 - Non-Latin target languages are out of scope for now because they likely require a font patch.
-- `002_prepare_translation_text.py` adds `translation_source`; it removes layout markers such as actual line breaks, `\n`, `\l`, `\p`, and `\pn`, while preserving semantic/control tokens.
+- `002_prepare_translation_text.py` adds `translation_source`; it removes layout markers such as actual line breaks, `\n`, `\l`, `\p`, and `\pn`. It keeps real semantic/control tokens in `original`, but replaces them in `translation_source` with readable placeholders such as `[player-name-1]`, `[buffer1-2]`, `[color-red-3]`, `[button-icon-4]`, and `[control-code-5]`.
 - Semantic/control tokens are protected game-engine tokens that must survive translation exactly and in the same count. Examples include `[player]`, `[buffer1]`, `[red]`, `\CC12`, `\btn01`, `\pk`, `\mn`, `\qo`, `\qc`, and `{B4}`.
-- `003_llm_translate.py` uses `translation_source` when present. After each model response it checks semantic/control token counts and retries if a token is missing, duplicated, or invented, or if the model adds layout markers.
+- `003_llm_translate.py` uses `translation_source` when present. After each model response it checks placeholder counts, restores placeholders through `semantic_token_placeholders`, then checks semantic/control token counts and retries if a placeholder or token is missing, duplicated, or invented, or if the model adds layout markers.
 - `003_llm_translate.py` prints a warning when it falls back to a single-entry prompt because that path has less context and can reduce translation accuracy.
 - `003_llm_translate.py --exclude-categories` removes matching entries from the output JSON entirely. It does not copy them as English translations.
 - `003_llm_translate.py --include-ids`, `--include-id-ranges`, `--include-categories`, and `--include-category-prefixes` keep only matching entries in the output JSON. This is preferred for small debug ROMs.

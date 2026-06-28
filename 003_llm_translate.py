@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+from collections import Counter
 import json
 import os
 import subprocess
@@ -330,18 +331,18 @@ def make_system_prompt(target):
         "Rules:\n"
         "- Return one translation for every input item.\n"
         "- Keep the same ids. Do not invent, omit, merge, or reorder ids.\n"
-        "- Preserve every semantic/control token exactly and in the same count.\n"
-        "- Semantic/control tokens are protected game-engine tokens, not text to "
-        "translate. They include variables/placeholders, color tags, button icons, "
-        "byte/control escapes, quote markers, and raw byte placeholders.\n"
-        "- Examples of protected tokens include \\CC12, \\btn01, \\pk, \\mn, "
-        "\\qo, \\qc, [player], [buffer1], [red], [blue], and {B4}.\n"
-        "- The semantic_tokens field lists the exact protected tokens found in "
-        "each source item. Keep only those tokens, with the same counts.\n"
-        "- The semantic_token_counts field maps each exact protected token name "
-        "to the number of times it MUST appear in your translation. Your output "
-        "must contain exactly those token names with exactly those counts: no "
-        "more, no fewer, none added, none renamed.\n"
+        "- Preserve every placeholder listed in semantic_placeholders exactly and "
+        "in the same count. These placeholders stand for protected Pokemon "
+        "Unbound engine tokens.\n"
+        "- Placeholder labels describe their role, such as [player-name-1], "
+        "[buffer1-2], [color-red-3], [button-icon-4], [quote-open-5], or "
+        "[control-code-6]. Move them only when grammar requires it.\n"
+        "- Do not output the real protected token values from semantic_tokens "
+        "unless the source text already contains real tokens instead of "
+        "placeholders. Prefer the bracketed placeholders in the source text.\n"
+        "- semantic_placeholder_counts maps each placeholder to the number of "
+        "times it MUST appear in your translation: no more, no fewer, none added, "
+        "none renamed.\n"
         "- Layout markers such as line breaks, \\n, \\l, \\p, and \\pn are not "
         "semantic tokens. They were removed before translation and will be "
         "recomputed later, so do not add them.\n"
@@ -361,6 +362,10 @@ def make_user_prompt(batch, target):
             "id": item["id"],
             "category": item["category"],
             "text": item["text"],
+            "semantic_placeholders": item["semantic_placeholders"],
+            "semantic_placeholder_counts": token_counts_to_dict(
+                item["semantic_placeholder_counts"]
+            ),
             "semantic_tokens": item["semantic_tokens"],
             "semantic_token_counts": token_counts_to_dict(item["semantic_token_counts"]),
         }
@@ -379,13 +384,11 @@ def make_single_system_prompt(target):
     return (
         f"Translate one Pokemon Unbound text into {target}.\n"
         "Use established official Pokemon terminology when it exists.\n"
-        "Preserve every semantic/control token exactly and in the same count. "
-        "These are protected game-engine placeholders, color tags, button icons, "
-        "byte/control escapes, quote markers, and raw byte placeholders listed "
-        "in semantic_tokens. The semantic_token_counts field maps each exact "
-        "token name to the number of times it MUST appear in your translation; "
-        "match those names and counts exactly. Do not add layout markers such as "
-        "\\n, \\l, \\p, or \\pn.\n"
+        "Preserve every placeholder listed in semantic_placeholders exactly and "
+        "in the same count. These placeholders stand for protected game-engine "
+        "tokens and have meaningful labels such as [player-name-1] or "
+        "[control-code-2]. Do not add layout markers such as \\n, \\l, \\p, or "
+        "\\pn.\n"
         "Return only valid JSON in this exact shape:\n"
         '{"translated":"translated text"}\n'
     )
@@ -398,6 +401,10 @@ def make_single_user_prompt(item, target):
             "id": item["id"],
             "category": item["category"],
             "text": item["text"],
+            "semantic_placeholders": item["semantic_placeholders"],
+            "semantic_placeholder_counts": token_counts_to_dict(
+                item["semantic_placeholder_counts"]
+            ),
             "semantic_tokens": item["semantic_tokens"],
             "semantic_token_counts": token_counts_to_dict(item["semantic_token_counts"]),
         },
@@ -409,10 +416,9 @@ def make_plain_single_system_prompt(target):
     return (
         f"Translate one Pokemon Unbound text into {target}.\n"
         "Use established official Pokemon terminology when it exists.\n"
-        "Preserve every semantic/control token exactly and in the same count. "
-        "The semantic_token_counts field maps each exact token name to the number "
-        "of times it MUST appear in your translation; match those names and counts "
-        "exactly. Do not add layout markers such as \\n, \\l, \\p, or \\pn.\n"
+        "Preserve every placeholder listed in semantic_placeholders exactly and "
+        "in the same count. Do not add layout markers such as \\n, \\l, \\p, or "
+        "\\pn.\n"
         "Return only the translated text. Do not return JSON. Do not explain.\n"
     )
 
@@ -569,6 +575,65 @@ def token_count_mismatches(expected, actual):
     return mismatches
 
 
+def placeholder_counts(text):
+    return Counter(translation_tokens.SEMANTIC_PLACEHOLDER_RE.findall(text))
+
+
+def validate_placeholders(item, translated):
+    expected = item["semantic_placeholder_counts"]
+    if not expected:
+        return []
+    actual = placeholder_counts(translated)
+    return token_count_mismatches(expected, actual)
+
+
+def validate_and_restore_semantic_tokens(batch, translations):
+    restored_translations = []
+    for item, translated in zip(batch, translations):
+        placeholder_mismatches = validate_placeholders(item, translated)
+        if placeholder_mismatches:
+            fallback_actual = translation_tokens.semantic_token_counts(translated)
+            fallback_mismatches = token_count_mismatches(
+                item["semantic_token_counts"],
+                fallback_actual,
+            )
+            if fallback_mismatches:
+                detail = "; ".join(placeholder_mismatches[:8])
+                if len(placeholder_mismatches) > 8:
+                    detail += f"; +{len(placeholder_mismatches) - 8} more"
+                print(
+                    f"warning: semantic placeholder mismatch for {item['id']}: "
+                    f"{detail}; retrying",
+                    file=sys.stderr,
+                )
+                raise RetryableTranslationError(
+                    "semantic/control placeholder mismatch in model output."
+                )
+            restored = translated
+        else:
+            restored = translation_tokens.restore_semantic_token_placeholders(
+                translated,
+                item["semantic_token_placeholders"],
+            )
+        leftover_placeholders = placeholder_counts(restored)
+        if leftover_placeholders:
+            detail = "; ".join(
+                f"{token!r}: unresolved placeholder {count} time(s)"
+                for token, count in sorted(leftover_placeholders.items())[:8]
+            )
+            print(
+                f"warning: unresolved semantic placeholder for {item['id']}: "
+                f"{detail}; retrying",
+                file=sys.stderr,
+            )
+            raise RetryableTranslationError(
+                "unresolved semantic/control placeholder in model output."
+            )
+        restored_translations.append(restored)
+
+    return validate_semantic_tokens(batch, restored_translations)
+
+
 def validate_semantic_tokens(batch, translations):
     for item, translated in zip(batch, translations):
         expected = item["semantic_token_counts"]
@@ -702,7 +767,7 @@ class OpenAICompatibleClient:
         )
         parsed = parse_model_json(content)
         translations = validate_translations(parsed, batch)
-        return validate_semantic_tokens(batch, translations)
+        return validate_and_restore_semantic_tokens(batch, translations)
 
     def translate_single_item(self, item, target):
         try:
@@ -736,7 +801,7 @@ class OpenAICompatibleClient:
         )
         parsed = parse_model_json(content)
         translated = validate_single_translation(parsed)
-        return validate_semantic_tokens([item], [translated])[0]
+        return validate_and_restore_semantic_tokens([item], [translated])[0]
 
     def translate_single_item_plain(self, item, target):
         warn_single_prompt(item, "plain single-item")
@@ -751,7 +816,7 @@ class OpenAICompatibleClient:
                     self.single_item_max_tokens(),
                 )
                 translated = clean_plain_translation(content)
-                return validate_semantic_tokens([item], [translated])[0]
+                return validate_and_restore_semantic_tokens([item], [translated])[0]
             except OutputTokenLimitError:
                 raise
             except RetryableTranslationError as exc:
@@ -870,7 +935,7 @@ class CodexExecClient:
             BATCH_OUTPUT_SCHEMA,
         )
         translations = validate_translations(parsed, batch)
-        return validate_semantic_tokens(batch, translations)
+        return validate_and_restore_semantic_tokens(batch, translations)
 
     def translate_single_item(self, item, target):
         warn_single_prompt(item)
@@ -882,7 +947,7 @@ class CodexExecClient:
                     SINGLE_OUTPUT_SCHEMA,
                 )
                 translated = validate_single_translation(parsed)
-                return validate_semantic_tokens([item], [translated])[0]
+                return validate_and_restore_semantic_tokens([item], [translated])[0]
             except RetryableTranslationError as exc:
                 last_error = exc
                 if attempt == MAX_API_ATTEMPTS:
@@ -983,14 +1048,41 @@ def build_work_items(data):
             skipped_empty += 1
             continue
 
-        protected_tokens = translation_tokens.semantic_tokens(text)
+        semantic_token_placeholders = entry.get("semantic_token_placeholders")
+        if not isinstance(semantic_token_placeholders, list):
+            semantic_token_placeholders = []
+
+        if semantic_token_placeholders:
+            protected_tokens = [
+                item["token"]
+                for item in semantic_token_placeholders
+                if isinstance(item, dict) and isinstance(item.get("token"), str)
+            ]
+            protected_token_counts = Counter(protected_tokens)
+            semantic_placeholders = [
+                item["placeholder"]
+                for item in semantic_token_placeholders
+                if isinstance(item, dict) and isinstance(item.get("placeholder"), str)
+            ]
+            semantic_placeholder_counts = translation_tokens.semantic_placeholder_counts(
+                semantic_token_placeholders
+            )
+        else:
+            protected_tokens = translation_tokens.semantic_tokens(text)
+            protected_token_counts = translation_tokens.semantic_token_counts(text)
+            semantic_placeholders = []
+            semantic_placeholder_counts = Counter()
+
         work.append(
             {
                 "id": entry_key(index, entry),
                 "category": entry.get("category", ""),
                 "text": text,
+                "semantic_placeholders": semantic_placeholders,
+                "semantic_placeholder_counts": semantic_placeholder_counts,
+                "semantic_token_placeholders": semantic_token_placeholders,
                 "semantic_tokens": protected_tokens,
-                "semantic_token_counts": translation_tokens.semantic_token_counts(text),
+                "semantic_token_counts": protected_token_counts,
                 "entry": entry,
             }
         )

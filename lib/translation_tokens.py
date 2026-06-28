@@ -6,6 +6,8 @@ from collections import Counter
 import re
 
 
+SEMANTIC_PLACEHOLDER_RE = re.compile(r"\[[a-z][a-z0-9-]*-[0-9]+\]")
+
 TOKEN_RE = re.compile(
     r"\\CC(?:[0-9A-Fa-f]{2})+"
     r"|\\btn[0-9A-Fa-f]{2}"
@@ -47,6 +49,97 @@ def semantic_tokens(text: str) -> list[str]:
 
 def semantic_token_counts(text: str) -> Counter[str]:
     return Counter(semantic_tokens(text))
+
+
+def _semantic_placeholder_label(token: str) -> str:
+    if token == "[player]":
+        return "player-name"
+    if token.startswith("[buffer") and token.endswith("]"):
+        suffix = token[1:-1].replace("_", "-").lower()
+        return suffix
+    if token.startswith("[") and token.endswith("]"):
+        name = token[1:-1].replace("_", "-").lower()
+        if name in {
+            "white",
+            "white2",
+            "black",
+            "grey",
+            "gray",
+            "red",
+            "orange",
+            "green",
+            "lightgreen",
+            "blue",
+            "lightblue",
+            "white3",
+            "lightblue2",
+            "cyan",
+            "lightblue3",
+            "navyblue",
+            "darknavyblue",
+        }:
+            return f"color-{name}"
+        return f"text-token-{name}"
+    if token.startswith("\\btn"):
+        return "button-icon"
+    if token in {"\\pk", "\\mn", "\\Po", "\\Ke"}:
+        return "pokemon-glyph"
+    if token == "\\qo":
+        return "quote-open"
+    if token == "\\qc":
+        return "quote-close"
+    if token.startswith("\\CC") or token.startswith("\\!"):
+        return "control-code"
+    if token.startswith("\\?") or token.startswith("\\9") or token.startswith("\\F"):
+        return "control-code"
+    if token.startswith("\\\\"):
+        return "raw-escape"
+    if token.startswith("{") and token.endswith("}"):
+        return "raw-byte"
+    return "game-token"
+
+
+def replace_semantic_tokens_with_placeholders(text: str) -> tuple[str, list[dict[str, str]]]:
+    pieces = []
+    placeholders = []
+    index = 0
+    semantic_index = 1
+
+    for start, end, token in token_spans(text):
+        if token in LAYOUT_TOKENS:
+            continue
+        pieces.append(text[index:start])
+        placeholder = f"[{_semantic_placeholder_label(token)}-{semantic_index}]"
+        pieces.append(placeholder)
+        placeholders.append({"placeholder": placeholder, "token": token})
+        semantic_index += 1
+        index = end
+
+    pieces.append(text[index:])
+    return "".join(pieces), placeholders
+
+
+def semantic_placeholder_counts(placeholders: list[dict[str, str]]) -> Counter[str]:
+    return Counter(
+        item["placeholder"]
+        for item in placeholders
+        if isinstance(item, dict) and isinstance(item.get("placeholder"), str)
+    )
+
+
+def restore_semantic_token_placeholders(
+    text: str,
+    placeholders: list[dict[str, str]],
+) -> str:
+    restored = text
+    for item in placeholders:
+        if not isinstance(item, dict):
+            continue
+        placeholder = item.get("placeholder")
+        token = item.get("token")
+        if isinstance(placeholder, str) and isinstance(token, str):
+            restored = restored.replace(placeholder, token)
+    return restored
 
 
 def _newline_layout_tokens(count: int) -> list[str]:

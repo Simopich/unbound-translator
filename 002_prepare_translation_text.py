@@ -6,7 +6,7 @@ from pathlib import Path
 
 from lib.translation_tokens import (
     remove_layout_tokens,
-    semantic_tokens,
+    replace_semantic_tokens_with_placeholders,
     strip_hma_quotes,
 )
 
@@ -63,12 +63,19 @@ def main():
         stats["entries"] += 1
         original = strip_hma_quotes(entry.get("original", ""))
         translation_source, removed_layout = remove_layout_tokens(original)
+        translation_source, placeholders = replace_semantic_tokens_with_placeholders(
+            translation_source
+        )
         entry["translation_source"] = translation_source
+        if placeholders:
+            entry["semantic_token_placeholders"] = placeholders
+        else:
+            entry.pop("semantic_token_placeholders", None)
 
         stats["translation_sources"] += int(bool(translation_source))
         stats["entries_with_layout_removed"] += int(bool(removed_layout))
         stats["layout_tokens_removed"] += len(removed_layout)
-        stats["semantic_tokens"] += len(semantic_tokens(translation_source))
+        stats["semantic_tokens"] += len(placeholders)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(
