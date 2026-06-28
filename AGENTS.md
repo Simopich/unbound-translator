@@ -38,13 +38,13 @@ When resuming LLM translation, use the same input and output paths with `--resum
 
 ## Extraction Notes
 
-- A healthy baseline extraction currently reports about `14,253` entries, with about `8,881` `scripts` entries and `14` `plain_scripts` entries.
+- A healthy baseline extraction currently reports about `15,040` entries, with about `8,881` `scripts` entries and `14` `plain_scripts` entries.
 - Ability names have 293 entries, but `data.abilities.descriptions` only has 255 valid text pointers. Do not expand `ability_descriptions` to match the ability-name count; entries after index 254 decode non-text data as garbage.
 - Opening narration and other full-screen script text is categorized as `plain_scripts` by the extractor. These entries still use `scr_` ids, but controlfix must wrap them with plain line breaks instead of dialogue `\l` controls.
 - `Pointer text rejected` in extractor output means candidate pointers were checked and discarded because they did not decode as plausible text. It does not mean translations failed.
 - Do not blindly accept all rejected pointer candidates. If text is missing, add or refine the pointer-source pattern for the specific game system that owns that text.
 - Known strings such as `Choose a character.` and `Choose a skin tone.` are extracted through the script/menu `0x67` pointer pattern.
-- Manual menu extraction uses explicit addresses plus narrow vetted PCS ranges for contiguous menu blocks. This includes the newer Trainer Card profile labels and month names at `0x1F81E44-0x1F81EE5`. Entries can include pointer sources when exact GBA pointers to those strings are present, which lets important menus such as Cube V3, save, Trainer Card, and game settings relocate instead of being fixed-size only.
+- Manual extraction uses explicit addresses plus narrow vetted PCS ranges for contiguous menu/UI blocks and fixed text banks. This includes item descriptions, battle messages, Pokemon summary text, mission log notifications/descriptions, and the newer Trainer Card profile labels and month names at `0x1F81E44-0x1F81EE5`. Entries can include pointer sources when exact GBA pointers to those strings are present, which lets important menus such as Cube V3, save, Trainer Card, and game settings relocate instead of being fixed-size only.
 - Use `001_extract_unbound_text.py rom/unbound.gba -o out/unbound-texts.json --audit-menu-text` when auditing menu coverage during extraction. `found_but_not_extracted` means extractor coverage needs a new table/address; `not_found_as_pcs_text` likely means graphical/tile text, compressed data, or custom UI encoding.
 - Extraction should remain as-is/lossless. Use `002_prepare_translation_text.py` for translation cleanup instead of changing extracted `original` strings.
 
