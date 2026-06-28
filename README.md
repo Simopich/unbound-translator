@@ -19,6 +19,7 @@ The current injector uses a hybrid strategy:
 
 This avoids expanding the ROM while still allowing longer translations where the original text was pointer-based.
 By default, the injector only relocates pointer-based text when the encoded translation no longer fits its original slot. Use `--pointer-policy changed` only for experiments that intentionally relocate every changed pointer string.
+Some common engine routine strings are marked with `no_relocation: true` during extraction. These entries must stay in their original slots because redirecting their pointers can freeze receive-item, Cube, PC, or field routines. Keep their translations short enough to fit their original `byte_length`; the injector will never relocate them and reports `No-reloc truncated` if any are too long.
 
 ## Free Space
 
@@ -224,7 +225,7 @@ The scripts have been tested with the Italian language. Support for other langua
 
 - The injector does not expand the ROM.
 - Pointer-based text may be relocated into existing `0xFF` free space.
-- Fixed-size text that cannot be relocated may still need shorter translations.
+- Fixed-size text and `no_relocation` pointer text may still need shorter translations.
 - `hybrid-map.json` records relocation decisions and injection stats.
 - Issues and pull requests are welcome.
 - Yes, this repo is vibecoded, I'm sorry but I don't have time to manually work on this...

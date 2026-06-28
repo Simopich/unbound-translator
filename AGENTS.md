@@ -9,6 +9,7 @@ This repository is `unbound-translator`, a Python toolchain for translating Poke
 - Text relocation works because the ROM has `1,102,003` bytes of detected free space. The injector finds this space by scanning contiguous `0xFF` blocks.
 - The injection strategy is hybrid: short translated text is written in place, and longer pointer-based text is relocated into detected free space with script pointers updated to the new addresses.
 - `005_hybrid_injector.py` defaults to `--pointer-policy oversized`; use `--pointer-policy changed` only for experiments that intentionally relocate every changed pointer string.
+- Some extracted entries have `no_relocation: true` for fragile engine/common routine text, including receive-item, Cube, PC, and field routine pointers. Keep these translations short enough for their original `byte_length`; the injector forces them in place and reports `No-reloc truncated` if they do not fit.
 - The source ROM used by this project has MD5 `9cad8e771940e7f7094d13911552cef0`.
 
 ## Main Scripts

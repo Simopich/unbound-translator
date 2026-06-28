@@ -41,6 +41,18 @@ PLAIN_SCRIPT_TEXT_ADDRESSES = {
     0x1F0F79C,
 }
 
+# Some engine/common-routine text pointers are not safe to redirect even when
+# the text is pointer-based. Keep these strings in their original slots.
+NO_RELOCATION_POINTER_SOURCE_RANGES = (
+    (0x1A6500, 0x1A6D00),  # common item/PC/field routine messages
+    (0x1A8C00, 0x1A9300),  # common field/heal/item routine messages
+    (0x9A4800, 0x9A4930),  # receive-item variants
+    (0x879000, 0x879064),  # key-item structs, including Braille Converter
+    (0x3E0718, 0x3E0724),  # Cube sector labels
+    (0x452CF0, 0x452D08),  # Cube pocket labels
+    (0xA6D180, 0xA6D1A8),  # Cube V3 menu labels
+)
+
 
 @dataclass(frozen=True)
 class FixedTable:
@@ -622,7 +634,17 @@ def make_entry(
         entry["table_name"] = table_name
     if table_index is not None:
         entry["table_index"] = table_index
+    if no_relocation_pointer_sources(pointer_sources or []):
+        entry["no_relocation"] = True
     return entry
+
+
+def no_relocation_pointer_sources(pointer_sources: list[int]) -> bool:
+    for source in pointer_sources:
+        for start, end in NO_RELOCATION_POINTER_SOURCE_RANGES:
+            if start <= source < end:
+                return True
+    return False
 
 
 def pointer_text_category(target: int) -> str:

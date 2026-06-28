@@ -303,6 +303,8 @@ def is_duplicate_slot(entry, seen_slots):
 
 
 def should_relocate_pointer_entry(entry, encoded, policy):
+    if entry.get("no_relocation"):
+        return False
     if not pointer_sources(entry):
         return False
     if policy == "changed":
@@ -400,6 +402,8 @@ def main():
         "skipped_bounds": 0,
         "encode_errors": 0,
         "fixed_truncated": 0,
+        "no_relocation_in_place": 0,
+        "no_relocation_truncated": 0,
     }
 
     relocation_map = []
@@ -495,15 +499,20 @@ def main():
 
         if len(encoded) > max_size:
             stats["fixed_truncated"] += 1
+            if entry.get("no_relocation"):
+                stats["no_relocation_truncated"] += 1
             if len(truncation_samples) < 20:
+                prefix = "no_relocation " if entry.get("no_relocation") else ""
                 truncation_samples.append(
-                    f"{entry.get('id', '?')}: {len(encoded)} -> {max_size}"
+                    f"{prefix}{entry.get('id', '?')}: {len(encoded)} -> {max_size}"
                 )
 
         fitted = fit_to_slot(encoded, max_size, pad_byte)
         if not args.dry_run:
             rom[address : address + max_size] = fitted
         stats["in_place"] += 1
+        if entry.get("no_relocation"):
+            stats["no_relocation_in_place"] += 1
 
     used_free_bytes = sum(block.cursor - block.start for block in free_blocks)
     remaining_free_bytes = sum(block.end - block.cursor for block in free_blocks)
@@ -544,6 +553,8 @@ def main():
     print(f"Skipped out-of-ROM     : {stats['skipped_bounds']}")
     print(f"Encode errors          : {stats['encode_errors']}")
     print(f"Fixed truncated        : {stats['fixed_truncated']}")
+    print(f"No-reloc in-place      : {stats['no_relocation_in_place']}")
+    print(f"No-reloc truncated     : {stats['no_relocation_truncated']}")
     if truncation_samples:
         print("Fixed truncation sample:")
         for sample in truncation_samples:
