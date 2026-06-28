@@ -43,8 +43,21 @@ COLOR_TOKENS = {
     "[darknavyblue]",
 }
 
-DEFAULT_WRAP_CATEGORIES = "scripts,plain_scripts,move_descriptions,ability_descriptions,trade_messages"
-DESCRIPTION_CATEGORIES = {"move_descriptions", "ability_descriptions"}
+DEFAULT_WRAP_CATEGORIES = (
+    "scripts,plain_scripts,move_descriptions,ability_descriptions,item_descriptions,"
+    "mission_descriptions,mission_objectives,menu_pokemon_summary,battle_messages,trade_messages"
+)
+DESCRIPTION_CATEGORIES = {
+    "move_descriptions",
+    "ability_descriptions",
+    "item_descriptions",
+    "mission_descriptions",
+    "mission_objectives",
+}
+PLAIN_LINE_WRAP_CATEGORIES = DESCRIPTION_CATEGORIES | {
+    "battle_messages",
+    "menu_pokemon_summary",
+}
 MENU_LINE_BREAK_CATEGORIES = {
     "menu_common",
     "menu_battle",
@@ -381,6 +394,8 @@ def should_skip_wrap(text):
 
 
 def wrap_width_for_entry(entry, args):
+    if entry.get("category") == "item_descriptions":
+        return args.item_description_wrap_width
     if entry.get("category") in DESCRIPTION_CATEGORIES:
         return args.description_wrap_width
     return args.wrap_width
@@ -409,6 +424,60 @@ def wrap_words(text, width):
 
     if current:
         lines.append(" ".join(current))
+    return lines, long_words
+
+
+def pack_words_into_max_lines(text, max_lines):
+    words = text.split()
+    if not words or max_lines <= 0:
+        return []
+    if len(words) <= max_lines:
+        return words
+
+    total_width = sum(visible_width(word) for word in words) + len(words) - 1
+    target_width = max(1, (total_width + max_lines - 1) // max_lines)
+    lines = []
+    current = []
+    current_width = 0
+    remaining_lines = max_lines
+
+    for index, word in enumerate(words):
+        word_width = visible_width(word)
+        remaining_words = len(words) - index
+        must_break_later = remaining_words > remaining_lines
+        added_width = word_width if not current else current_width + 1 + word_width
+        if (
+            current
+            and added_width > target_width
+            and len(lines) + 1 < max_lines
+            and must_break_later
+        ):
+            lines.append(" ".join(current))
+            remaining_lines -= 1
+            current = [word]
+            current_width = word_width
+        else:
+            current.append(word)
+            current_width = added_width
+
+    if current:
+        lines.append(" ".join(current))
+    while len(lines) > max_lines:
+        tail = lines.pop()
+        lines[-1] = lines[-1] + " " + tail
+    return lines
+
+
+def wrap_words_for_entry(text, entry, args):
+    width = wrap_width_for_entry(entry, args)
+    lines, long_words = wrap_words(text, width)
+    if (
+        entry.get("category") == "item_descriptions"
+        and args.item_description_max_lines > 0
+        and len(lines) > args.item_description_max_lines
+    ):
+        lines = pack_words_into_max_lines(text, args.item_description_max_lines)
+        long_words = sum(1 for line in lines if visible_width(line) > width)
     return lines, long_words
 
 
@@ -444,7 +513,7 @@ def join_plain_script_lines(lines, original):
 
 
 def join_wrapped_lines(lines, entry, original):
-    if entry.get("category") in DESCRIPTION_CATEGORIES:
+    if entry.get("category") in PLAIN_LINE_WRAP_CATEGORIES:
         return "\n".join(lines)
     if entry.get("category") == "plain_scripts":
         return join_plain_script_lines(lines, original)
@@ -461,7 +530,7 @@ def wrap_translation(text, entry, original, args, wrap_categories):
     if not plain_text:
         return text, False, 0, False
 
-    lines, long_words = wrap_words(plain_text, wrap_width_for_entry(entry, args))
+    lines, long_words = wrap_words_for_entry(plain_text, entry, args)
     wrapped = join_wrapped_lines(lines, entry, original)
     return wrapped, wrapped != text, long_words, False
 
@@ -507,6 +576,18 @@ def main():
         type=int,
         default=24,
         help="Visible character width for move/ability descriptions. Default: 24.",
+    )
+    parser.add_argument(
+        "--item-description-wrap-width",
+        type=int,
+        default=34,
+        help="Visible character width for item descriptions. Default: 34.",
+    )
+    parser.add_argument(
+        "--item-description-max-lines",
+        type=int,
+        default=3,
+        help="Maximum wrapped lines for item descriptions. Default: 3.",
     )
     parser.add_argument(
         "--wrap-categories",

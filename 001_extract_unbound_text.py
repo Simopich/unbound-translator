@@ -500,14 +500,21 @@ MANUAL_TEXT_RANGES = [
 POST_POINTER_MANUAL_TEXT_RANGES = [
     ManualTextRange("menu_trainer_card", "data.menus.text.trainerCard.profile", 0x1F81E44, 0x1F81EE5),
     ManualTextRange("item_descriptions", "data.items.descriptions", 0x3D4F00, 0x3DB020),
+    ManualTextRange("item_descriptions", "data.items.descriptions.extraBalls", 0x7B3EB0, 0x7B4468),
     ManualTextRange("item_descriptions", "data.items.descriptions.unboundKeyItems", 0xEB1F16, 0xEB20E8),
+    ManualTextRange("item_descriptions", "data.items.descriptions.unboundMedicine", 0xEB2308, 0xEB27D8),
+    ManualTextRange("item_descriptions", "data.items.descriptions.unboundBerries", 0xEB2CCB, 0xEB31BE),
     ManualTextRange("battle_messages", "data.battle.text.messages", 0x3FB500, 0x3FE780),
+    ManualTextRange("battle_messages", "data.battle.text.frostbite", 0xA4B23C, 0xA4B4DC),
     ManualTextRange("battle_messages", "data.battle.text.wildEncounter", 0x8BD140, 0x8BD155),
+    ManualTextRange("battle_messages", "data.battle.text.wildEncounter.fragments", 0x8BD155, 0x8BD15F),
     ManualTextRange("battle_messages", "data.battle.text.wildEncounter.unbound", 0xA4C515, 0xA4C5DD),
+    ManualTextRange("battle_messages", "data.battle.text.unboundResult", 0xA4C636, 0xA4C925),
     ManualTextRange("battle_messages", "data.battle.text.safariEncounter", 0x1F68219, 0x1F6826A),
     ManualTextRange("menu_battle", "data.menus.text.battle.partyOptions", 0x41697E, 0x4169D8),
     ManualTextRange("menu_pokemon_summary", "data.menus.text.pokemonSummary", 0x419782, 0x419C51),
     ManualTextRange("mission_log", "data.menus.text.missionLog.notifications", 0x1FB003F, 0x1FB00A8),
+    ManualTextRange("mission_objectives", "data.missions.objectives.mainStory", 0x1F56117, 0x1F56B77),
     ManualTextRange("mission_descriptions", "data.missions.descriptions.amIBlind", 0x1F1F8AB, 0x1F1F8F0),
 ]
 

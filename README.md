@@ -51,7 +51,7 @@ The extractor intentionally reads 255 ability descriptions even though the ROM h
 
 Opening narration and other full-screen script text is extracted into the `plain_scripts` category. These entries still use `scr_` ids, but they are kept separate from normal dialogue scripts so later layout repair can use plain full-screen line breaks instead of dialogue continuation controls.
 
-Manual entries are extracted for common UI, Cube V3, save, game settings, PC, party, item storage, link control, battle, trainer-card, multiplayer, standalone label, options, item descriptions, battle messages, Pokemon summary text, and mission log text. The extractor uses explicit addresses plus narrow vetted PCS ranges for contiguous text blocks, including the newer Trainer Card profile labels and month names at `0x1F81E44-0x1F81EE5`. When the ROM contains exact GBA pointers to those manual strings, it records those pointer sources so the hybrid injector can relocate longer translations.
+Manual entries are extracted for common UI, Cube V3, save, game settings, PC, party, item storage, link control, battle, trainer-card, multiplayer, standalone label, options, item descriptions, battle messages, Pokemon summary text, and mission log/objective text. The extractor uses explicit addresses plus narrow vetted PCS ranges for contiguous text blocks, including the newer Trainer Card profile labels and month names at `0x1F81E44-0x1F81EE5`. When the ROM contains exact GBA pointers to those manual strings, it records those pointer sources so the hybrid injector can relocate longer translations.
 
 To audit menu coverage during extraction, search the ROM for PCS-encoded UI strings and compare the hits against the extracted entries:
 
@@ -186,7 +186,7 @@ Run the control-fix script after translation:
   --report out/controlfix-report.json
 ```
 
-This step is still needed. It repairs common translation damage such as broken control codes, misplaced braces, outer quotes, and apostrophes. It also recomputes layout after translation: dialogue-like text is wrapped into pages using line breaks and `\l`, while `plain_scripts`, move descriptions, and ability descriptions are wrapped with regular line breaks. Compact multi-row menu labels keep their original row breaks, which is required for selectable choices such as `Yes\nNo`.
+This step is still needed. It repairs common translation damage such as broken control codes, misplaced braces, outer quotes, and apostrophes. It also recomputes layout after translation: dialogue-like text is wrapped into pages using line breaks and `\l`, while `plain_scripts`, descriptions, mission objectives, Pokémon summary text, and battle messages are wrapped with regular line breaks. Item descriptions use a wider 3-line layout by default. Compact multi-row menu labels keep their original row breaks, which is required for selectable choices such as `Yes\nNo`.
 
 ### 5. Inject Translation
 
