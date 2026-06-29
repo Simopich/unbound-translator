@@ -265761,7 +265761,7 @@
       "table_name": "data.battle.text.messages",
       "table_index": 225,
       "translation_source": "rose!",
-      "translated": "è aumentata!"
+      "translated": "aumenta!"
     },
     {
       "id": "tbl_battle_messages_14841",
@@ -265791,7 +265791,7 @@
       "table_name": "data.battle.text.messages",
       "table_index": 227,
       "translation_source": "fell!",
-      "translated": "svenuto!"
+      "translated": "!"
     },
     {
       "id": "tbl_battle_messages_14843",
@@ -265820,7 +265820,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "\\\\0F di \\\\00 [player]"
+      "translated": "\\\\00 di \\\\0F [player]"
     },
     {
       "id": "tbl_battle_messages_14844",
@@ -265851,7 +265851,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "\\\\10 di \\\\00 [player]"
+      "translated": "\\\\00 di \\\\10 [player]"
     },
     {
       "id": "tbl_battle_messages_14845",
@@ -265913,7 +265913,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "\\\\0F di \\\\00 [player]"
+      "translated": "\\\\00 di \\\\0F [player] cala"
     },
     {
       "id": "tbl_battle_messages_14847",
@@ -265942,7 +265942,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "\\\\10 di \\\\00 [player]"
+      "translated": "\\\\00 di \\\\10 [player] cala"
     },
     {
       "id": "tbl_battle_messages_14848",
@@ -268235,7 +268235,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "\\\\0F ha usato [player]"
+      "translated": "\\\\0F\nha usato [player]"
     },
     {
       "id": "tbl_battle_messages_14959",
@@ -268267,7 +268267,7 @@
       "table_name": "data.battle.text.messages",
       "table_index": 345,
       "translation_source": "Attack",
-      "translated": "Attacco"
+      "translated": "L{B4}Attacco"
     },
     {
       "id": "tbl_battle_messages_14961",
@@ -268283,7 +268283,7 @@
       "table_name": "data.battle.text.messages",
       "table_index": 346,
       "translation_source": "Defense",
-      "translated": "Difesa"
+      "translated": "La Difesa"
     },
     {
       "id": "tbl_battle_messages_14962",
@@ -268300,7 +268300,7 @@
       "table_name": "data.battle.text.messages",
       "table_index": 347,
       "translation_source": "Speed",
-      "translated": "Velocità"
+      "translated": "La Velocità"
     },
     {
       "id": "tbl_battle_messages_14963",
@@ -268316,7 +268316,7 @@
       "table_name": "data.battle.text.messages",
       "table_index": 348,
       "translation_source": "Sp. Atk",
-      "translated": "Att. Sp."
+      "translated": "L{B4}Att. Sp."
     },
     {
       "id": "tbl_battle_messages_14964",
@@ -268332,7 +268332,7 @@
       "table_name": "data.battle.text.messages",
       "table_index": 349,
       "translation_source": "Sp. Def",
-      "translated": "Dif. Sp."
+      "translated": "La Dif. Sp."
     },
     {
       "id": "tbl_battle_messages_14965",
@@ -268347,7 +268347,7 @@
       "table_name": "data.battle.text.messages",
       "table_index": 350,
       "translation_source": "accuracy",
-      "translated": "precisione"
+      "translated": "La precisione"
     },
     {
       "id": "tbl_battle_messages_14966",
@@ -268362,7 +268362,7 @@
       "table_name": "data.battle.text.messages",
       "table_index": 351,
       "translation_source": "evasiveness",
-      "translated": "evasione"
+      "translated": "L{B4}evasione"
     },
     {
       "id": "tbl_battle_messages_14967",
@@ -270246,7 +270246,7 @@
       "table_name": "data.battle.text.wildEncounter.fragments",
       "table_index": 0,
       "translation_source": "The wild",
-      "translated": "Il Pokémon selvatico"
+      "translated": "Il Pokémon selvatico "
     },
     {
       "id": "tbl_battle_messages_15057",
@@ -270443,7 +270443,7 @@
       "table_name": "data.battle.text.unboundResult",
       "table_index": 0,
       "translation_source": "The wild",
-      "translated": "Il Pokémon selvatico"
+      "translated": "Il Pokémon selvatico "
     },
     {
       "id": "tbl_battle_messages_15066",

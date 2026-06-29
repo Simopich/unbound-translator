@@ -41,6 +41,16 @@ PLAIN_SCRIPT_TEXT_ADDRESSES = {
     0x1F0F79C,
 }
 
+# Extra high-bank data/script tables use direct text pointers without the usual
+# script loadpointer opcode. This captures many mission names/descriptions and
+# late-game NPC lines that would otherwise be invisible to pointer scanning.
+ADDITIONAL_TEXT_POINTER_SOURCE_RANGES = (
+    (0x1E70000, 0x1EB6000),
+)
+ADDITIONAL_TEXT_POINTER_TARGET_RANGES = (
+    (0x1F00000, 0x1FB0000),
+)
+
 # Some engine/common-routine text pointers are not safe to redirect even when
 # the text is pointer-based. Keep these strings in their original slots.
 NO_RELOCATION_POINTER_SOURCE_RANGES = (
@@ -516,6 +526,10 @@ POST_POINTER_MANUAL_TEXT_RANGES = [
     ManualTextRange("mission_log", "data.menus.text.missionLog.notifications", 0x1FB003F, 0x1FB00A8),
     ManualTextRange("mission_objectives", "data.missions.objectives.mainStory", 0x1F56117, 0x1F56B77),
     ManualTextRange("mission_descriptions", "data.missions.descriptions.amIBlind", 0x1F1F8AB, 0x1F1F8F0),
+    ManualTextRange("menu_game_settings", "data.menus.text.gameSettings.extraPrompts", 0x1F4E274, 0x1F4E515),
+    ManualTextRange("menu_cube_system", "data.menus.text.cube.components", 0xA4E4A2, 0xA4E4E4),
+    ManualTextRange("menu_battle", "data.menus.text.battle.settings", 0x1F94185, 0x1F94480),
+    ManualTextRange("mission_log", "data.menus.text.missionLog.menu", 0x1F56040, 0x1F56117),
 ]
 
 
@@ -880,10 +894,10 @@ def scan_pointer_texts(
     for source in range(0, len(rom) - 3):
         if source in known_pointer_sources:
             continue
-        if not all_pointers and not is_script_text_pointer_source(rom, source):
-            continue
         target = pointer_at(rom, source)
         if target is None:
+            continue
+        if not all_pointers and not is_text_pointer_source(rom, source, target):
             continue
         stats["raw_pointers"] += 1
         if target < min_target or target in known_targets:
@@ -914,6 +928,10 @@ def scan_pointer_texts(
     return entries, stats
 
 
+def is_text_pointer_source(rom: bytes, source: int, target: int) -> bool:
+    return is_script_text_pointer_source(rom, source) or is_additional_text_pointer_source(source, target)
+
+
 def is_script_text_pointer_source(rom: bytes, source: int) -> bool:
     if source >= 2 and rom[source - 2] == 0x0F and rom[source - 1] <= 0x03:
         return True
@@ -922,6 +940,12 @@ def is_script_text_pointer_source(rom: bytes, source: int) -> bool:
     # Restrict this broader pattern to the high script bank to avoid random
     # code/data pointers that happen to be preceded by 0x67.
     return source >= 1 and rom[source - 1] == 0x67 and (source >> 20) == 0x1E
+
+
+def is_additional_text_pointer_source(source: int, target: int) -> bool:
+    return any(start <= source < end for start, end in ADDITIONAL_TEXT_POINTER_SOURCE_RANGES) and any(
+        start <= target < end for start, end in ADDITIONAL_TEXT_POINTER_TARGET_RANGES
+    )
 
 
 def scan_orphan_texts(
