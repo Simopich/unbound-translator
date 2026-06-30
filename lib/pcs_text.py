@@ -94,6 +94,34 @@ def fc_arg_count(command: int) -> int:
     return 0 if command > 0x14 else 1
 
 
+def build_cc_token_pattern() -> str:
+    by_digits: dict[int, list[str]] = {}
+    for cmd in range(256):
+        argc = fc_arg_count(cmd)
+        hex_digits = 2 + 2 * argc
+        cmd_hex = f"{cmd:02X}"
+        by_digits.setdefault(hex_digits, []).append(cmd_hex)
+
+    parts = []
+    for hex_digits in sorted(by_digits.keys(), reverse=True):
+        cmds = by_digits[hex_digits]
+        args_digits = hex_digits - 2
+        cmd_patterns = []
+        for c in cmds:
+            pattern_c = "".join(f"[{ch.upper()}{ch.lower()}]" if ch.isalpha() else ch for ch in c)
+            cmd_patterns.append(pattern_c)
+        cmd_group = "(?:" + "|".join(cmd_patterns) + ")"
+        if args_digits > 0:
+            parts.append(f"\\\\CC{cmd_group}[0-9A-Fa-f]{{{args_digits}}}")
+        else:
+            parts.append(f"\\\\CC{cmd_group}")
+    return "(?:" + "|".join(parts) + ")"
+
+
+CC_TOKEN_PATTERN = build_cc_token_pattern()
+
+
+
 FD_MACROS: dict[int, str] = {
     0x01: "[player]",
     0x02: "[buffer1]",
@@ -474,17 +502,21 @@ class Charmap:
                 if matched:
                     continue
 
-                if text.startswith("\\CC", index):
-                    cursor = index + 3
-                    args = []
-                    while cursor + 1 < len(text) and _is_hex_pair(text[cursor : cursor + 2]):
-                        args.append(int(text[cursor : cursor + 2], 16))
-                        cursor += 2
-                    if args:
-                        result.append(CONTROL_CODE_PREFIX)
-                        result.extend(args)
-                        index = cursor
-                        continue
+                if text.startswith("\\CC", index) and index + 5 <= len(text):
+                    cmd_hex = text[index + 3 : index + 5]
+                    if _is_hex_pair(cmd_hex):
+                        cmd = int(cmd_hex, 16)
+                        req_args = 1 + fc_arg_count(cmd)
+                        cursor = index + 3
+                        args = []
+                        while len(args) < req_args and cursor + 1 < len(text) and _is_hex_pair(text[cursor : cursor + 2]):
+                            args.append(int(text[cursor : cursor + 2], 16))
+                            cursor += 2
+                        if len(args) == req_args:
+                            result.append(CONTROL_CODE_PREFIX)
+                            result.extend(args)
+                            index = cursor
+                            continue
 
                 if text.startswith("\\btn", index) and _is_hex_pair(text[index + 4 : index + 6]):
                     result.extend((BUTTON_PREFIX, int(text[index + 4 : index + 6], 16)))
@@ -538,8 +570,8 @@ class Charmap:
 
 
 CONTROL_TOKEN_RE = re.compile(
-    r"\\CC(?:[0-9A-Fa-f]{2})+"
-    r"|\\btn[0-9A-Fa-f]{2}"
+    CC_TOKEN_PATTERN
+    + r"|\\btn[0-9A-Fa-f]{2}"
     r"|\\![0-9A-Fa-f\s]+"
     r"|\\\\[0-9A-Fa-f]{2}"
     r"|\\\?[0-9A-Fa-f]{2}"
