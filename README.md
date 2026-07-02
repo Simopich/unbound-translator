@@ -1,5 +1,7 @@
 # unbound-translator
 
+[![](https://dcbadge.limes.pink/api/server/https://discord.gg/ctFaR77WrR)](https://discord.gg/ctFaR77WrR)
+
 `unbound-translator` is a project aimed at translating the game Pokémon Unbound into other languages.
 
 ## Preview
