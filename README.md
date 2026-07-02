@@ -51,7 +51,7 @@ The extractor intentionally reads 255 ability descriptions even though the ROM h
 
 Opening narration and other full-screen script text is extracted into the `plain_scripts` category. These entries still use `scr_` ids, but they are kept separate from normal dialogue scripts so later layout repair can use plain full-screen line breaks instead of dialogue continuation controls.
 
-Manual entries are extracted for common UI, Cube V3, save, game settings, PC, party, item storage, link control, battle, trainer-card, multiplayer, standalone label, options, item descriptions, battle messages, Pokemon summary text, and mission log/objective text. The extractor uses explicit addresses plus narrow vetted PCS ranges for contiguous text blocks, including mission-log menu filters/status labels at `0x1F56040-0x1F56117`, battle-setting labels at `0x1F94185-0x1F94480`, and the newer Trainer Card profile labels and month names at `0x1F81E44-0x1F81EE5`. It also accepts direct high-bank text pointers from `0x1E70000-0x1EB6000` to targets in `0x1F00000-0x1FB0000`, covering many mission names, descriptions, objectives, and late NPC lines that do not use normal script loadpointer opcodes. When the ROM contains exact GBA pointers to those manual strings, it records those pointer sources so the hybrid injector can relocate longer translations.
+Manual entries are extracted for common UI, Cube V3, save, game settings, PC, party, item storage, link control, battle, trainer-card, multiplayer, standalone label, options, item descriptions, battle messages, Pokemon summary text, and mission log/objective text. The extractor uses explicit addresses plus narrow vetted PCS ranges for contiguous text blocks, including Super Cube/Start labels in `start_menu_labels`, game setting labels in `setting_names`, mission-log menu filters/status labels at `0x1F56040-0x1F56117`, battle-setting labels at `0x1F94185-0x1F94480`, and the newer Trainer Card profile labels and month names at `0x1F81E44-0x1F81EE5`. It also accepts direct high-bank text pointers from `0x1E70000-0x1EB6000` to targets in `0x1F00000-0x1FB0000`, covering many mission names, descriptions, objectives, and late NPC lines that do not use normal script loadpointer opcodes. Mission-title pointers are categorized as `mission_names`; controlfix caps their translated visible width to the longest extracted English mission name by default to avoid Mission Log title overflow. When the ROM contains exact GBA pointers to those manual strings, it records those pointer sources so the hybrid injector can relocate longer translations.
 
 To audit menu coverage during extraction, search the ROM for PCS-encoded UI strings and compare the hits against the extracted entries:
 
@@ -186,7 +186,16 @@ Run the control-fix script after translation:
   --report out/controlfix-report.json
 ```
 
-This step is still needed. It repairs common translation damage such as broken control codes, misplaced braces, outer quotes, and apostrophes. It also recomputes layout after translation: dialogue-like text is wrapped into pages using line breaks and `\l`, while `plain_scripts`, descriptions, mission objectives, Pokémon summary text, and battle messages are wrapped with regular line breaks. Item descriptions use a wider 3-line layout by default. Compact multi-row menu labels keep their original row breaks, which is required for selectable choices such as `Yes\nNo`.
+This step is still needed. It repairs common translation damage such as broken control codes, misplaced braces, outer quotes, and apostrophes. It also recomputes layout after translation: dialogue-like text is wrapped into pages using line breaks and `\l`, while `plain_scripts`, descriptions, mission objectives, Pokémon summary text, and battle messages are wrapped with regular line breaks. Mission names are capped to the longest extracted English mission-title width, `start_menu_labels` are capped so labels such as Mission Log and Game Settings do not clip, and `setting_names` are capped for the game settings list. Item descriptions use a wider 3-line layout by default. Compact multi-row menu labels keep their original row breaks, which is required for selectable choices such as `Yes\nNo`.
+
+If you need to manually edit translations after this step, remove the controlfix layout first:
+
+```bash
+./006_decontrolfix_translations.py out/unbound-texts-it-controlfix.json \
+  -o out/unbound-texts-it-editable.json
+```
+
+This writes clean editable `translated` strings and keeps the previous wrapped value in `translated_controlfixed` by default. It is not a perfect inverse: controlfix trims and repairs cannot be reconstructed. After editing, run `004_controlfix_translations.py` again before injection.
 
 ### 5. Inject Translation
 

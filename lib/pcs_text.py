@@ -474,16 +474,16 @@ class Charmap:
                 if matched:
                     continue
 
-                if text.startswith("\\CC", index):
-                    cursor = index + 3
-                    args = []
-                    while cursor + 1 < len(text) and _is_hex_pair(text[cursor : cursor + 2]):
-                        args.append(int(text[cursor : cursor + 2], 16))
-                        cursor += 2
-                    if args:
+                if text.startswith("\\CC", index) and _is_hex_pair(text[index + 3 : index + 5]):
+                    command = int(text[index + 3 : index + 5], 16)
+                    argc = fc_arg_count(command)
+                    end = index + 5 + argc * 2
+                    if all(_is_hex_pair(text[pos : pos + 2]) for pos in range(index + 5, end, 2)):
                         result.append(CONTROL_CODE_PREFIX)
-                        result.extend(args)
-                        index = cursor
+                        result.append(command)
+                        for pos in range(index + 5, end, 2):
+                            result.append(int(text[pos : pos + 2], 16))
+                        index = end
                         continue
 
                 if text.startswith("\\btn", index) and _is_hex_pair(text[index + 4 : index + 6]):
@@ -537,9 +537,11 @@ class Charmap:
         return bytes(result)
 
 
+CC_TOKEN_PATTERN = r"\\CC(?:04[0-9A-Fa-f]{6}|(?:10|0B)[0-9A-Fa-f]{4}|[0-9A-Fa-f]{4})"
+
 CONTROL_TOKEN_RE = re.compile(
-    r"\\CC(?:[0-9A-Fa-f]{2})+"
-    r"|\\btn[0-9A-Fa-f]{2}"
+    CC_TOKEN_PATTERN
+    + r"|\\btn[0-9A-Fa-f]{2}"
     r"|\\![0-9A-Fa-f\s]+"
     r"|\\\\[0-9A-Fa-f]{2}"
     r"|\\\?[0-9A-Fa-f]{2}"

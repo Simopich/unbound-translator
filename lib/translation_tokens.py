@@ -8,9 +8,11 @@ import re
 
 SEMANTIC_PLACEHOLDER_RE = re.compile(r"\[[a-z][a-z0-9-]*-[0-9]+\]")
 
+CC_TOKEN_PATTERN = r"\\CC(?:04[0-9A-Fa-f]{6}|(?:10|0B)[0-9A-Fa-f]{4}|[0-9A-Fa-f]{4})"
+
 TOKEN_RE = re.compile(
-    r"\\CC(?:[0-9A-Fa-f]{2})+"
-    r"|\\btn[0-9A-Fa-f]{2}"
+    CC_TOKEN_PATTERN
+    + r"|\\btn[0-9A-Fa-f]{2}"
     r"|\\![0-9A-Fa-f]{2}"
     r"|\\\\[0-9A-Fa-f]{2}"
     r"|\\\?[0-9A-Fa-f]{2}"

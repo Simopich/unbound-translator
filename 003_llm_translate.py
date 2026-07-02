@@ -128,26 +128,55 @@ def entry_key(index, entry):
     return f"@entry_{index}"
 
 
+def stable_entry_key(entry):
+    category = entry.get("category")
+    address = entry.get("address")
+    original = entry.get("original")
+    if isinstance(category, str) and isinstance(address, str) and isinstance(original, str):
+        return category, address, original, entry.get("translation_source")
+    return None
+
+
+def same_resume_source(entry, existing_entry):
+    fields = ("category", "address", "original", "translation_source")
+    return all(
+        entry.get(field) == existing_entry.get(field)
+        for field in fields
+        if field in entry or field in existing_entry
+    )
+
+
 def has_translation(entry):
     translated = entry.get("translated")
     return isinstance(translated, str) and translated.strip() != ""
 
 
 def collect_existing_translations(data):
-    translations = {}
+    translations_by_id = {}
+    translations_by_stable_key = {}
     for index, entry in iter_entry_refs(data):
-        if has_translation(entry):
-            translations[entry_key(index, entry)] = entry["translated"]
-    return translations
+        if not has_translation(entry):
+            continue
+        translations_by_id[entry_key(index, entry)] = entry
+        stable_key = stable_entry_key(entry)
+        if stable_key is not None:
+            translations_by_stable_key[stable_key] = entry
+    return translations_by_id, translations_by_stable_key
 
 
 def apply_existing_translations(data, existing_data):
-    existing = collect_existing_translations(existing_data)
+    existing_by_id, existing_by_stable_key = collect_existing_translations(existing_data)
     applied = 0
     for index, entry in iter_entry_refs(data):
-        key = entry_key(index, entry)
-        if key in existing and not has_translation(entry):
-            entry["translated"] = existing[key]
+        if has_translation(entry):
+            continue
+        existing_entry = existing_by_stable_key.get(stable_entry_key(entry))
+        if existing_entry is None:
+            existing_entry = existing_by_id.get(entry_key(index, entry))
+            if existing_entry is not None and not same_resume_source(entry, existing_entry):
+                existing_entry = None
+        if existing_entry is not None:
+            entry["translated"] = existing_entry["translated"]
             applied += 1
     return applied
 
