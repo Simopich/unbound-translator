@@ -95,6 +95,7 @@ class PointerTable:
     table_name: str
     start: int
     count: int
+    stride: int = 4
 
 
 @dataclass(frozen=True)
@@ -111,6 +112,8 @@ FIXED_TABLES = [
     FixedTable("item_names", "data.items.stats", 0x876200, 729, 13, 44, pointer_name=True),
     FixedTable("move_names", "data.pokemon.moves.names", 0xA40A10, 923, 13),
     FixedTable("ability_names", "data.abilities.names", 0xA36398, 293, 17),
+    FixedTable("day_names", "data.text.dayNames.short", 0xA4E554, 7, 4),
+    FixedTable("pokedex_species", "data.pokedex.entries.species", 0x1A35814, 904, 12, 0x24),
     FixedTable(
         "trainer_classes",
         "data.trainers.classes.names",
@@ -133,6 +136,7 @@ POINTER_TABLES = [
     PointerTable("ability_descriptions", "data.abilities.descriptions", 0x96DE04, 255),
     PointerTable("move_descriptions", "data.pokemon.moves.descriptions", 0x99F194, 922),
     PointerTable("map_names", "data.maps.names", 0x3F1CAC, 109),
+    PointerTable("pokedex_descriptions", "data.pokedex.entries.descriptions", 0x1A35800, 905, 0x24),
 ]
 
 DEFAULT_MENU_AUDIT_STRINGS = [
@@ -322,6 +326,7 @@ MANUAL_TEXT_TABLES = {
         [
             0x3FE725,
             0x3FE747,
+            0x3FE791,
             0xA4C7B7,
             0xA4C7DA,
             0xA4C807,
@@ -503,6 +508,18 @@ MANUAL_TEXT_TABLES = {
     "trade_messages": (
         "data.text.trade.messages",
         [0x41718C, 0x4171CC, 0x4170BC, 0x4170BC, 0x4170FC, 0x4170E0, 0x417130, 0x417164, 0x417164],
+    ),
+    "menu_shop": (
+        "data.menus.text.shop",
+        [0x416738, 0x41673C, 0x416741, 0x416749, 0x41689E],
+    ),
+    "move_learning": (
+        "data.text.moveLearning",
+        [0x416DB3, 0x416DC2, 0x416DF7, 0x416E6B, 0x416E84, 0x417431, 0x417436, 0x41743F, 0x417445],
+    ),
+    "menu_save_prompts": (
+        "data.menus.text.save.prompts",
+        [0x1C55C9],
     ),
 }
 
@@ -845,7 +862,7 @@ def extract_pointer_table(
 ) -> tuple[list[dict], int]:
     entries = []
     for index in range(table.count):
-        source = table.start + index * 4
+        source = table.start + index * table.stride
         target = pointer_at(rom, source)
         known_pointer_sources.add(source)
         if target is None:
