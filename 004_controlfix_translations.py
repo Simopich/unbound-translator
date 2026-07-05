@@ -170,13 +170,25 @@ def remove_leading_color_tokens(text):
     return text
 
 
+def starts_with_tokens(text, tokens):
+    index = 0
+    for token in tokens:
+        while index < len(text) and text[index].isspace():
+            index += 1
+        if not text.startswith(token, index):
+            return False
+        index += len(token)
+    return True
+
+
 def ensure_original_prefix(text, original):
     prefix = leading_critical_tokens(original)
     if not prefix:
         return text, False
 
     prefix_text = "".join(prefix)
-    if text.lstrip().startswith(prefix_text):
+    stripped = text.lstrip()
+    if stripped.startswith(prefix_text) or starts_with_tokens(stripped, prefix):
         return text, False
 
     # Fullscreen/system text often depends on a leading color token. Replace a
@@ -229,6 +241,13 @@ def repair_split_controls(text):
     return text
 
 
+def allows_critical_token_reorder(original):
+    return bool(
+        re.match(r"^\\\\(?:0F|10)’s \\\\00(?:\n|\\n)\[player\]$", original)
+        or re.match(r"^Using \\\\16, the \\\\00 of(?:\n|\\n)\\\\13 \[player\]$", original)
+    )
+
+
 def repair_control_sequences(text, original):
     changed = False
 
@@ -237,6 +256,9 @@ def repair_control_sequences(text, original):
 
     text, did_change = replace_token_family(text, original, lambda token: token in COLOR_TOKENS)
     changed = changed or did_change
+
+    if allows_critical_token_reorder(original):
+        return text, changed
 
     original_critical = [token for _s, _e, token in token_spans(original, critical_token)]
     translated_critical = [token for _s, _e, token in token_spans(text, critical_token)]
@@ -317,6 +339,16 @@ def control_sequence(text):
     return [token for _s, _e, token in token_spans(text, critical_token)]
 
 
+def controls_match(text, original):
+    translated_controls = control_sequence(text)
+    original_controls = control_sequence(original)
+    if translated_controls == original_controls:
+        return True
+    if allows_critical_token_reorder(original):
+        return sorted(translated_controls) == sorted(original_controls)
+    return False
+
+
 def normalize_actual_layout_breaks(text):
     text = text.replace("\r\n", "\n").replace("\r", "\n")
 
@@ -328,21 +360,24 @@ def normalize_actual_layout_breaks(text):
     return text.replace("\n", "\\n")
 
 
+def original_layout_lines(original):
+    original_text = strip_hma_quotes(original)
+    if "\\n" in original_text:
+        lines = original_text.split("\\n")
+    elif "\n" in original_text:
+        lines = original_text.split("\n")
+    else:
+        return []
+    return [line.strip() for line in lines if line.strip()]
+
+
 def restore_compact_menu_line_breaks(text, original, entry):
     if entry.get("category") not in MENU_LINE_BREAK_CATEGORIES:
         return text, False
     if "\n" in text or any(token in text for token in LAYOUT_TOKENS):
         return text, False
 
-    original_text = strip_hma_quotes(original)
-    if "\\n" in original_text:
-        original_lines = original_text.split("\\n")
-    elif "\n" in original_text:
-        original_lines = original_text.split("\n")
-    else:
-        return text, False
-
-    original_lines = [line.strip() for line in original_lines if line.strip()]
+    original_lines = original_layout_lines(original)
     if len(original_lines) < 2 or len(original_lines) > 4:
         return text, False
     if any(visible_width(remove_layout_tokens(line)[0]) > 16 for line in original_lines):
@@ -355,6 +390,25 @@ def restore_compact_menu_line_breaks(text, original, entry):
         return text, False
 
     fixed = "\n".join(translated_parts)
+    return fixed, fixed != text
+
+
+def restore_menu_description_line_breaks(text, original, entry):
+    if entry.get("category") not in MENU_LINE_BREAK_CATEGORIES:
+        return text, False
+    if "\n" in text or any(token in text for token in LAYOUT_TOKENS):
+        return text, False
+
+    original_lines = original_layout_lines(original)
+    if len(original_lines) < 2:
+        return text, False
+
+    width = max(visible_width(remove_layout_tokens(line)[0]) for line in original_lines)
+    if width <= 16:
+        return text, False
+
+    lines, _long_words = wrap_words(text, width)
+    fixed = "\n".join(lines)
     return fixed, fixed != text
 
 
@@ -661,6 +715,7 @@ def main():
         "cc_hex_escapes": 0,
         "apostrophe_repairs": 0,
         "menu_line_break_repairs": 0,
+        "menu_description_line_break_repairs": 0,
         "mission_name_trims": 0,
         "mission_name_max_width": mission_max_width,
         "start_menu_label_trims": 0,
@@ -721,6 +776,12 @@ def main():
         stats["menu_line_break_repairs"] += int(menu_breaks_restored)
         text = next_text
 
+        next_text, menu_description_breaks_restored = restore_menu_description_line_breaks(
+            text, original, entry
+        )
+        stats["menu_description_line_break_repairs"] += int(menu_description_breaks_restored)
+        text = next_text
+
         if entry.get("category") == "mission_names":
             next_text, trimmed = trim_mission_name(text, mission_max_width)
             stats["mission_name_trims"] += int(trimmed)
@@ -749,7 +810,7 @@ def main():
             entry["translated"] = text
             stats["changed"] += 1
 
-        if control_sequence(text) != control_sequence(original):
+        if not controls_match(text, original):
             stats["remaining_control_mismatches"] += 1
             if len(remaining) < 200:
                 remaining.append(

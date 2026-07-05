@@ -183,6 +183,15 @@ DEFAULT_MENU_AUDIT_STRINGS = [
     "Sound",
     "Button Mode",
     "Frame",
+    "New Game",
+    "Continue",
+    "A critical hit!",
+    "fainted!",
+    "Exp. Points!",
+    "had no effect on",
+    "is exerting its pressure!",
+    "exerting",
+    "can no longer",
 ]
 
 MANUAL_TEXT_TABLES = {
@@ -472,6 +481,8 @@ MANUAL_TEXT_TABLES = {
             0x41627D,
             0x416285,
             0x415A66,
+            0x415A6E,
+            0x415A77,
             0x800FC0,
             0x41628E,
             0x416291,
@@ -562,6 +573,16 @@ POST_POINTER_MANUAL_TEXT_RANGES = [
     ManualTextRange("start_menu_labels", "data.menus.text.cube.components", 0xA4E4A2, 0xA4E4E4),
     ManualTextRange("menu_battle", "data.menus.text.battle.settings", 0x1F94185, 0x1F94480),
     ManualTextRange("mission_log", "data.menus.text.missionLog.menu", 0x1F56040, 0x1F56117),
+    ManualTextRange("battle_messages", "data.battle.text.messages.expAndFaint", 0x3FB248, 0x3FB4F7),
+    ManualTextRange("battle_messages", "data.battle.text.messages.effectiveness.legacy", 0x800880, 0x800896),
+    ManualTextRange("battle_messages", "data.battle.text.messages.escape.legacy", 0x9066D0, 0x9066EA),
+    ManualTextRange("battle_messages", "data.battle.text.messages.pressure", 0x906D20, 0x906D3D),
+    ManualTextRange("battle_messages", "data.battle.text.messages.abilityEffects", 0x965BE8, 0x965CB9),
+    ManualTextRange("battle_messages", "data.battle.text.messages.fainted.unbound", 0x9678E8, 0x9678FD),
+    ManualTextRange("battle_messages", "data.battle.text.messages.abilityStart", 0xA37710, 0xA37765),
+    ManualTextRange("battle_messages", "data.battle.text.messages.effectiveness.unbound", 0xA4A922, 0xA4A9C4),
+    ManualTextRange("battle_messages", "data.battle.text.messages.escape.unbound", 0xA4AEE1, 0xA4AF18),
+    ManualTextRange("battle_messages", "data.battle.text.messages.effectiveness.legacyExact", 0x800880, 0x800898),
 ]
 
 
