@@ -192,14 +192,11 @@ def parse_category_set(value):
 
 
 def split_entry_id(entry_id):
-    match = None
-    for index in range(len(entry_id) - 1, -1, -1):
-        if not entry_id[index].isdigit():
-            match = index + 1
-            break
-    if match is None or match >= len(entry_id):
+    match = re.search(r"([0-9A-Fa-f]+)$", entry_id)
+    if match is None:
         return None
-    return entry_id[:match], int(entry_id[match:]), len(entry_id) - match
+    suffix = match.group(1)
+    return entry_id[: match.start(1)], int(suffix, 16), len(suffix)
 
 
 def parse_id_ranges(value):
@@ -1330,7 +1327,7 @@ def parse_args():
         default="",
         help=(
             "Comma- or semicolon-separated id ranges to keep, such as "
-            "scr_09023-scr_09114."
+            "scr_1F00000-scr_1F000FF."
         ),
     )
     parser.add_argument(

@@ -695,6 +695,20 @@ def best_substring_slot(rom: bytes, offset: int, size: int) -> tuple[int, Decode
     return offset + best_delta, best_result
 
 
+def stable_entry_id(
+    entry_id: str,
+    category: str,
+    address: int,
+    table_index: int | None = None,
+) -> str:
+    address_text = f"{address:06X}"
+    if entry_id.startswith("scr_"):
+        return f"scr_{address_text}"
+    if table_index is not None:
+        return f"tbl_{category}_{table_index:05d}_{address_text}"
+    return f"tbl_{category}_{address_text}"
+
+
 def make_entry(
     entry_id: str,
     category: str,
@@ -707,7 +721,7 @@ def make_entry(
     table_index: int | None = None,
 ) -> dict:
     entry = {
-        "id": entry_id,
+        "id": stable_entry_id(entry_id, category, address, table_index),
         "category": category,
         "address": format_offset(address),
         "pointer_sources": [format_offset(source) for source in pointer_sources or []],

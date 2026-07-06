@@ -25,6 +25,10 @@ TOKEN_RE = re.compile(
 
 LAYOUT_TOKENS = {"\\n", "\\p", "\\l", "\\pn"}
 QUOTE_TOKENS = {"\\qo", "\\qc"}
+BATTLE_PROMPT_NAME_SECOND_LINE_IDS = {
+    "tbl_battle_messages_00412_3FE6D5",
+}
+
 COLOR_TOKENS = {
     "[white]",
     "[white2]",
@@ -561,11 +565,36 @@ def join_wrapped_lines(lines, entry, original):
     return join_script_lines(lines)
 
 
+
+def restore_battle_prompt_layout(text, _original, entry):
+    if entry.get("id") not in BATTLE_PROMPT_NAME_SECOND_LINE_IDS:
+        return text, False
+
+    match = re.search(r"\\\\12\??", text)
+    if not match:
+        return text, False
+
+    prompt = text[: match.start()].strip()
+    pokemon = match.group(0)
+    trailing = text[match.end() :].strip()
+    if trailing and set(trailing) <= set("?!."):
+        pokemon += trailing
+    if not prompt:
+        return text, False
+
+    fixed = f"{prompt}\n{pokemon}"
+    return fixed, fixed != text
+
+
 def wrap_translation(text, entry, original, args, wrap_categories):
     if args.no_wrap or entry.get("category") not in wrap_categories:
         return text, False, 0, False
     if should_skip_wrap(text):
         return text, False, 0, True
+    if entry.get("category") == "battle_messages" and (
+        "\n" in text or any(token in text for token in LAYOUT_TOKENS)
+    ):
+        return text, False, 0, False
 
     plain_text, _removed_layout = remove_layout_tokens(text)
     if not plain_text:
@@ -716,6 +745,7 @@ def main():
         "apostrophe_repairs": 0,
         "menu_line_break_repairs": 0,
         "menu_description_line_break_repairs": 0,
+        "battle_prompt_layout_repairs": 0,
         "mission_name_trims": 0,
         "mission_name_max_width": mission_max_width,
         "start_menu_label_trims": 0,
@@ -804,6 +834,12 @@ def main():
         stats["wrapped"] += int(wrapped)
         stats["wrap_long_words"] += long_words
         stats["wrap_skipped_technical"] += int(skipped_wrap)
+        text = next_text
+
+        next_text, battle_prompt_layout_restored = restore_battle_prompt_layout(
+            text, original, entry
+        )
+        stats["battle_prompt_layout_repairs"] += int(battle_prompt_layout_restored)
         text = next_text
 
         if text != before:
