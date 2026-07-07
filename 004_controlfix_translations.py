@@ -5,11 +5,11 @@ import json
 import re
 from pathlib import Path
 
-from lib.pcs_text import CC_TOKEN_PATTERN, Charmap
+from lib.pcs_text import Charmap
 from lib.translation_tokens import remove_layout_tokens, visible_width
 
 
-CC_NO_PREFIX_PATTERN = CC_TOKEN_PATTERN.replace(r"\\CC", "CC")
+CC_TOKEN_PATTERN = r"\\CC(?:04[0-9A-Fa-f]{6}|(?:10|0B)[0-9A-Fa-f]{4}|[0-9A-Fa-f]{4})"
 
 TOKEN_RE = re.compile(
     CC_TOKEN_PATTERN
@@ -25,6 +25,10 @@ TOKEN_RE = re.compile(
 
 LAYOUT_TOKENS = {"\\n", "\\p", "\\l", "\\pn"}
 QUOTE_TOKENS = {"\\qo", "\\qc"}
+BATTLE_PROMPT_NAME_SECOND_LINE_IDS = {
+    "tbl_battle_messages_00412_3FE6D5",
+}
+
 COLOR_TOKENS = {
     "[white]",
     "[white2]",
@@ -170,13 +174,25 @@ def remove_leading_color_tokens(text):
     return text
 
 
+def starts_with_tokens(text, tokens):
+    index = 0
+    for token in tokens:
+        while index < len(text) and text[index].isspace():
+            index += 1
+        if not text.startswith(token, index):
+            return False
+        index += len(token)
+    return True
+
+
 def ensure_original_prefix(text, original):
     prefix = leading_critical_tokens(original)
     if not prefix:
         return text, False
 
     prefix_text = "".join(prefix)
-    if text.lstrip().startswith(prefix_text):
+    stripped = text.lstrip()
+    if stripped.startswith(prefix_text) or starts_with_tokens(stripped, prefix):
         return text, False
 
     # Fullscreen/system text often depends on a leading color token. Replace a
@@ -192,7 +208,7 @@ def normalize_braced_controls(text):
     # PCS/HMA control codes that LLMs often wrap in braces.
     text = re.sub(r"\{(\[[A-Za-z0-9_]+\])\}", r"\1", text)
     text = re.sub(
-        rf"\{{(\\(?:{CC_NO_PREFIX_PATTERN}|btn[0-9A-Fa-f]{{2}}|\?[0-9A-Fa-f]{{2}}|9[0-9A-Fa-f]{{2}}|F[0-9A-Fa-f]|[pnlr.]|qo|qc))\}}",
+        r"\{(\\(?:CC[0-9A-Fa-f]+|btn[0-9A-Fa-f]{2}|\?[0-9A-Fa-f]{2}|9[0-9A-Fa-f]{2}|F[0-9A-Fa-f]|[pnlr.]|qo|qc))\}",
         r"\1",
         text,
     )
@@ -219,14 +235,21 @@ def repair_split_controls(text):
     # LLMs sometimes turn quote/control markers into layout + marker, e.g.
     # \nqo, \pqc, \nCC0818. These are not line breaks; they are broken controls.
     text = re.sub(r"\\[np](qo|qc)", lambda m: "\\" + m.group(1), text)
-    text = re.sub(rf"\\[np]({CC_NO_PREFIX_PATTERN})", lambda m: "\\" + m.group(1), text)
+    text = re.sub(r"\\[np](CC[0-9A-Fa-f]{2,})", lambda m: "\\" + m.group(1), text)
     text = re.sub(r"\\[np](btn[0-9A-Fa-f]{2})", lambda m: "\\" + m.group(1), text)
     text = re.sub(r"\\[np](\?[0-9A-Fa-f]{2})", lambda m: "\\" + m.group(1), text)
     text = re.sub(r"\\[np](![0-9A-Fa-f]{2})", lambda m: "\\" + m.group(1), text)
     text = re.sub(r"\\\\(qo|qc)", lambda m: "\\" + m.group(1), text)
-    text = re.sub(rf"\\\\({CC_NO_PREFIX_PATTERN})", lambda m: "\\" + m.group(1), text)
+    text = re.sub(r"\\\\(CC[0-9A-Fa-f]{2,})", lambda m: "\\" + m.group(1), text)
     text = re.sub(r"\\\\(btn[0-9A-Fa-f]{2})", lambda m: "\\" + m.group(1), text)
     return text
+
+
+def allows_critical_token_reorder(original):
+    return bool(
+        re.match(r"^\\\\(?:0F|10)’s \\\\00(?:\n|\\n)\[player\]$", original)
+        or re.match(r"^Using \\\\16, the \\\\00 of(?:\n|\\n)\\\\13 \[player\]$", original)
+    )
 
 
 def repair_control_sequences(text, original):
@@ -237,6 +260,9 @@ def repair_control_sequences(text, original):
 
     text, did_change = replace_token_family(text, original, lambda token: token in COLOR_TOKENS)
     changed = changed or did_change
+
+    if allows_critical_token_reorder(original):
+        return text, changed
 
     original_critical = [token for _s, _e, token in token_spans(original, critical_token)]
     translated_critical = [token for _s, _e, token in token_spans(text, critical_token)]
@@ -285,22 +311,7 @@ def raw_placeholder(cmap, ch):
 
 
 def escape_hex_text_after_cc(text, original, cmap):
-    changed = False
-    original_cc_tokens = {
-        token for _start, _end, token in token_spans(original) if token.startswith("\\CC")
-    }
-
-    for token in sorted(original_cc_tokens, key=len, reverse=True):
-        pattern = re.compile(rf"({re.escape(token)})([0-9A-Fa-f])")
-
-        def repl(match):
-            nonlocal changed
-            changed = True
-            return match.group(1) + raw_placeholder(cmap, match.group(2))
-
-        text = pattern.sub(repl, text)
-
-    return text, changed
+    return text, False
 
 
 def protect_raw_placeholders(text):
@@ -332,6 +343,16 @@ def control_sequence(text):
     return [token for _s, _e, token in token_spans(text, critical_token)]
 
 
+def controls_match(text, original):
+    translated_controls = control_sequence(text)
+    original_controls = control_sequence(original)
+    if translated_controls == original_controls:
+        return True
+    if allows_critical_token_reorder(original):
+        return sorted(translated_controls) == sorted(original_controls)
+    return False
+
+
 def normalize_actual_layout_breaks(text):
     text = text.replace("\r\n", "\n").replace("\r", "\n")
 
@@ -343,21 +364,24 @@ def normalize_actual_layout_breaks(text):
     return text.replace("\n", "\\n")
 
 
+def original_layout_lines(original):
+    original_text = strip_hma_quotes(original)
+    if "\\n" in original_text:
+        lines = original_text.split("\\n")
+    elif "\n" in original_text:
+        lines = original_text.split("\n")
+    else:
+        return []
+    return [line.strip() for line in lines if line.strip()]
+
+
 def restore_compact_menu_line_breaks(text, original, entry):
     if entry.get("category") not in MENU_LINE_BREAK_CATEGORIES:
         return text, False
     if "\n" in text or any(token in text for token in LAYOUT_TOKENS):
         return text, False
 
-    original_text = strip_hma_quotes(original)
-    if "\\n" in original_text:
-        original_lines = original_text.split("\\n")
-    elif "\n" in original_text:
-        original_lines = original_text.split("\n")
-    else:
-        return text, False
-
-    original_lines = [line.strip() for line in original_lines if line.strip()]
+    original_lines = original_layout_lines(original)
     if len(original_lines) < 2 or len(original_lines) > 4:
         return text, False
     if any(visible_width(remove_layout_tokens(line)[0]) > 16 for line in original_lines):
@@ -370,6 +394,25 @@ def restore_compact_menu_line_breaks(text, original, entry):
         return text, False
 
     fixed = "\n".join(translated_parts)
+    return fixed, fixed != text
+
+
+def restore_menu_description_line_breaks(text, original, entry):
+    if entry.get("category") not in MENU_LINE_BREAK_CATEGORIES:
+        return text, False
+    if "\n" in text or any(token in text for token in LAYOUT_TOKENS):
+        return text, False
+
+    original_lines = original_layout_lines(original)
+    if len(original_lines) < 2:
+        return text, False
+
+    width = max(visible_width(remove_layout_tokens(line)[0]) for line in original_lines)
+    if width <= 16:
+        return text, False
+
+    lines, _long_words = wrap_words(text, width)
+    fixed = "\n".join(lines)
     return fixed, fixed != text
 
 
@@ -522,11 +565,36 @@ def join_wrapped_lines(lines, entry, original):
     return join_script_lines(lines)
 
 
+
+def restore_battle_prompt_layout(text, _original, entry):
+    if entry.get("id") not in BATTLE_PROMPT_NAME_SECOND_LINE_IDS:
+        return text, False
+
+    match = re.search(r"\\\\12\??", text)
+    if not match:
+        return text, False
+
+    prompt = text[: match.start()].strip()
+    pokemon = match.group(0)
+    trailing = text[match.end() :].strip()
+    if trailing and set(trailing) <= set("?!."):
+        pokemon += trailing
+    if not prompt:
+        return text, False
+
+    fixed = f"{prompt}\n{pokemon}"
+    return fixed, fixed != text
+
+
 def wrap_translation(text, entry, original, args, wrap_categories):
     if args.no_wrap or entry.get("category") not in wrap_categories:
         return text, False, 0, False
     if should_skip_wrap(text):
         return text, False, 0, True
+    if entry.get("category") == "battle_messages" and (
+        "\n" in text or any(token in text for token in LAYOUT_TOKENS)
+    ):
+        return text, False, 0, False
 
     plain_text, _removed_layout = remove_layout_tokens(text)
     if not plain_text:
@@ -535,6 +603,45 @@ def wrap_translation(text, entry, original, args, wrap_categories):
     lines, long_words = wrap_words_for_entry(plain_text, entry, args)
     wrapped = join_wrapped_lines(lines, entry, original)
     return wrapped, wrapped != text, long_words, False
+
+
+def mission_name_reference_width(entries):
+    widths = []
+    for entry in entries:
+        if entry.get("category") != "mission_names":
+            continue
+        text = strip_hma_quotes(entry.get("original", ""))
+        plain_text, _removed_layout = remove_layout_tokens(text)
+        if plain_text:
+            widths.append(visible_width(plain_text))
+    return max(widths or [0])
+
+
+def trim_to_width(text, max_width):
+    if max_width <= 0 or visible_width(remove_layout_tokens(text)[0]) <= max_width:
+        return text, False
+    plain_text, _removed_layout = remove_layout_tokens(text)
+    words = plain_text.split()
+    if not words:
+        return text, False
+    kept = []
+    for word in words:
+        candidate = " ".join(kept + [word])
+        if visible_width(candidate) > max_width:
+            break
+        kept.append(word)
+    trimmed = " ".join(kept) if kept else plain_text[:max_width]
+    return trimmed, trimmed != text
+
+
+def trim_mission_name(text, max_width):
+    return trim_to_width(text, max_width)
+
+
+def compact_start_menu_label(text, entry, _original, max_width):
+    if entry.get("category") != "start_menu_labels":
+        return text, False
+    return trim_to_width(text, max_width)
 
 
 def main():
@@ -599,12 +706,32 @@ def main():
             f"Default: {DEFAULT_WRAP_CATEGORIES}."
         ),
     )
+    parser.add_argument(
+        "--mission-name-max-width",
+        type=int,
+        default=0,
+        help="Maximum visible width for mission names. Use 0 to auto-use the longest English mission name.",
+    )
+    parser.add_argument(
+        "--start-menu-label-max-width",
+        type=int,
+        default=13,
+        help="Maximum visible width for Super Cube/Start menu labels. Default: 13.",
+    )
+    parser.add_argument(
+        "--setting-name-max-width",
+        type=int,
+        default=15,
+        help="Maximum visible width for game setting names. Default: 15.",
+    )
     args = parser.parse_args()
 
     data = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    entries = list(iter_entries(data))
     originals = source_originals(args.source)
     cmap = Charmap(target_lang="it")
     wrap_categories = {category.strip() for category in args.wrap_categories.split(",") if category.strip()}
+    mission_max_width = args.mission_name_max_width or mission_name_reference_width(entries)
 
     stats = {
         "entries": 0,
@@ -617,6 +744,14 @@ def main():
         "cc_hex_escapes": 0,
         "apostrophe_repairs": 0,
         "menu_line_break_repairs": 0,
+        "menu_description_line_break_repairs": 0,
+        "battle_prompt_layout_repairs": 0,
+        "mission_name_trims": 0,
+        "mission_name_max_width": mission_max_width,
+        "start_menu_label_trims": 0,
+        "start_menu_label_max_width": args.start_menu_label_max_width,
+        "setting_name_trims": 0,
+        "setting_name_max_width": args.setting_name_max_width,
         "actual_newline_repairs": 0,
         "wrapped": 0,
         "wrap_long_words": 0,
@@ -625,7 +760,7 @@ def main():
     }
     remaining = []
 
-    for entry in iter_entries(data):
+    for entry in entries:
         stats["entries"] += 1
         translated = entry.get("translated")
         if not translated:
@@ -671,6 +806,28 @@ def main():
         stats["menu_line_break_repairs"] += int(menu_breaks_restored)
         text = next_text
 
+        next_text, menu_description_breaks_restored = restore_menu_description_line_breaks(
+            text, original, entry
+        )
+        stats["menu_description_line_break_repairs"] += int(menu_description_breaks_restored)
+        text = next_text
+
+        if entry.get("category") == "mission_names":
+            next_text, trimmed = trim_mission_name(text, mission_max_width)
+            stats["mission_name_trims"] += int(trimmed)
+            text = next_text
+
+        next_text, start_menu_trimmed = compact_start_menu_label(
+            text, entry, original, args.start_menu_label_max_width
+        )
+        stats["start_menu_label_trims"] += int(start_menu_trimmed)
+        text = next_text
+
+        if entry.get("category") == "setting_names":
+            next_text, setting_trimmed = trim_to_width(text, args.setting_name_max_width)
+            stats["setting_name_trims"] += int(setting_trimmed)
+            text = next_text
+
         next_text, wrapped, long_words, skipped_wrap = wrap_translation(
             text, entry, original, args, wrap_categories
         )
@@ -679,11 +836,17 @@ def main():
         stats["wrap_skipped_technical"] += int(skipped_wrap)
         text = next_text
 
+        next_text, battle_prompt_layout_restored = restore_battle_prompt_layout(
+            text, original, entry
+        )
+        stats["battle_prompt_layout_repairs"] += int(battle_prompt_layout_restored)
+        text = next_text
+
         if text != before:
             entry["translated"] = text
             stats["changed"] += 1
 
-        if control_sequence(text) != control_sequence(original):
+        if not controls_match(text, original):
             stats["remaining_control_mismatches"] += 1
             if len(remaining) < 200:
                 remaining.append(

@@ -50,6 +50,11 @@ ADDITIONAL_TEXT_POINTER_SOURCE_RANGES = (
 ADDITIONAL_TEXT_POINTER_TARGET_RANGES = (
     (0x1F00000, 0x1FB0000),
 )
+MISSION_NAME_POINTER_SOURCES = {
+    0x1EC02E8,  # A Hero/Heroine's Journey Mission Log title variants
+    0x1EC02F0,
+    0x1FB40D8,
+}
 
 # Some engine/common-routine text pointers are not safe to redirect even when
 # the text is pointer-based. Keep these strings in their original slots.
@@ -90,6 +95,7 @@ class PointerTable:
     table_name: str
     start: int
     count: int
+    stride: int = 4
 
 
 @dataclass(frozen=True)
@@ -106,6 +112,8 @@ FIXED_TABLES = [
     FixedTable("item_names", "data.items.stats", 0x876200, 729, 13, 44, pointer_name=True),
     FixedTable("move_names", "data.pokemon.moves.names", 0xA40A10, 923, 13),
     FixedTable("ability_names", "data.abilities.names", 0xA36398, 293, 17),
+    FixedTable("day_names", "data.text.dayNames.short", 0xA4E554, 7, 4),
+    FixedTable("pokedex_species", "data.pokedex.entries.species", 0x1A35814, 904, 12, 0x24),
     FixedTable(
         "trainer_classes",
         "data.trainers.classes.names",
@@ -128,6 +136,7 @@ POINTER_TABLES = [
     PointerTable("ability_descriptions", "data.abilities.descriptions", 0x96DE04, 255),
     PointerTable("move_descriptions", "data.pokemon.moves.descriptions", 0x99F194, 922),
     PointerTable("map_names", "data.maps.names", 0x3F1CAC, 109),
+    PointerTable("pokedex_descriptions", "data.pokedex.entries.descriptions", 0x1A35800, 905, 0x24),
 ]
 
 DEFAULT_MENU_AUDIT_STRINGS = [
@@ -174,6 +183,15 @@ DEFAULT_MENU_AUDIT_STRINGS = [
     "Sound",
     "Button Mode",
     "Frame",
+    "New Game",
+    "Continue",
+    "A critical hit!",
+    "fainted!",
+    "Exp. Points!",
+    "had no effect on",
+    "is exerting its pressure!",
+    "exerting",
+    "can no longer",
 ]
 
 MANUAL_TEXT_TABLES = {
@@ -214,6 +232,11 @@ MANUAL_TEXT_TABLES = {
             0x4162DE,
             0x4162E8,
             0x4162F5,
+        ],
+    ),
+    "start_menu_labels": (
+        "data.menus.text.cube",
+        [
             0xA4E4D7,
             0xA4E4E4,
             0xA4E4EC,
@@ -222,8 +245,8 @@ MANUAL_TEXT_TABLES = {
             0xA4E50D,
         ],
     ),
-    "menu_game_settings": (
-        "data.menus.text.gameSettings",
+    "setting_names": (
+        "data.menus.text.gameSettings.names",
         [
             0x1F4DB51,
             0x1F4DB5F,
@@ -231,8 +254,6 @@ MANUAL_TEXT_TABLES = {
             0x1F4DB7A,
             0x1F4DB88,
             0x1F4DB9D,
-            0x1F4DBA5,
-            0x1F4DBAB,
             0x1F4DBB0,
             0x1F4DBB9,
             0x1F4DBC4,
@@ -243,6 +264,13 @@ MANUAL_TEXT_TABLES = {
             0x1F4DBFE,
             0x1F4DC09,
             0x1F4DC1B,
+        ],
+    ),
+    "menu_game_settings": (
+        "data.menus.text.gameSettings",
+        [
+            0x1F4DBA5,
+            0x1F4DBAB,
             0x1F4DC2A,
             0x1F4DC32,
             0x1F4DC3A,
@@ -307,6 +335,7 @@ MANUAL_TEXT_TABLES = {
         [
             0x3FE725,
             0x3FE747,
+            0x3FE791,
             0xA4C7B7,
             0xA4C7DA,
             0xA4C807,
@@ -392,7 +421,6 @@ MANUAL_TEXT_TABLES = {
             0x418319,
             0x41832C,
             0x418346,
-            0x41835A,
             0x418379,
             0x418392,
             0x4183A0,
@@ -438,7 +466,6 @@ MANUAL_TEXT_TABLES = {
             0x4173CC,
             0x417337,
             0x41734D,
-            0x41735B,
             0x41736B,
             0x417242,
             0x4172AE,
@@ -454,6 +481,8 @@ MANUAL_TEXT_TABLES = {
             0x41627D,
             0x416285,
             0x415A66,
+            0x415A6E,
+            0x415A77,
             0x800FC0,
             0x41628E,
             0x416291,
@@ -491,11 +520,25 @@ MANUAL_TEXT_TABLES = {
         "data.text.trade.messages",
         [0x41718C, 0x4171CC, 0x4170BC, 0x4170BC, 0x4170FC, 0x4170E0, 0x417130, 0x417164, 0x417164],
     ),
+    "menu_shop": (
+        "data.menus.text.shop",
+        [0x416738, 0x41673C, 0x416741, 0x416749, 0x41689E],
+    ),
+    "move_learning": (
+        "data.text.moveLearning",
+        [0x416DB3, 0x416DC2, 0x416DF7, 0x416E6B, 0x416E84, 0x417431, 0x417436, 0x41743F, 0x417445],
+    ),
+    "menu_save_prompts": (
+        "data.menus.text.save.prompts",
+        [0x1C55C9],
+    ),
 }
 
 
 MANUAL_TEXT_RANGES = [
-    ManualTextRange("menu_game_settings", "data.menus.text.gameSettings.range", 0x1F4DA6C, 0x1F4E26F),
+    ManualTextRange("menu_game_settings", "data.menus.text.gameSettings.range", 0x1F4DA6C, 0x1F4DA71),
+    ManualTextRange("setting_names", "data.menus.text.gameSettings.range.names", 0x1F4DA71, 0x1F4DB51),
+    ManualTextRange("menu_game_settings", "data.menus.text.gameSettings.range", 0x1F4DB51, 0x1F4E26F),
     ManualTextRange("menu_item_storage", "data.text.menu.itemStorage.range", 0x417706, 0x4178C0),
     ManualTextRange("menu_list_labels", "data.menus.text.lists", 0x4178D0, 0x4181E4),
     ManualTextRange("menu_pc", "data.menus.text.pc.range", 0x418468, 0x418740),
@@ -527,9 +570,19 @@ POST_POINTER_MANUAL_TEXT_RANGES = [
     ManualTextRange("mission_objectives", "data.missions.objectives.mainStory", 0x1F56117, 0x1F56B77),
     ManualTextRange("mission_descriptions", "data.missions.descriptions.amIBlind", 0x1F1F8AB, 0x1F1F8F0),
     ManualTextRange("menu_game_settings", "data.menus.text.gameSettings.extraPrompts", 0x1F4E274, 0x1F4E515),
-    ManualTextRange("menu_cube_system", "data.menus.text.cube.components", 0xA4E4A2, 0xA4E4E4),
+    ManualTextRange("start_menu_labels", "data.menus.text.cube.components", 0xA4E4A2, 0xA4E4E4),
     ManualTextRange("menu_battle", "data.menus.text.battle.settings", 0x1F94185, 0x1F94480),
     ManualTextRange("mission_log", "data.menus.text.missionLog.menu", 0x1F56040, 0x1F56117),
+    ManualTextRange("battle_messages", "data.battle.text.messages.expAndFaint", 0x3FB248, 0x3FB4F7),
+    ManualTextRange("battle_messages", "data.battle.text.messages.effectiveness.legacy", 0x800880, 0x800896),
+    ManualTextRange("battle_messages", "data.battle.text.messages.escape.legacy", 0x9066D0, 0x9066EA),
+    ManualTextRange("battle_messages", "data.battle.text.messages.pressure", 0x906D20, 0x906D3D),
+    ManualTextRange("battle_messages", "data.battle.text.messages.abilityEffects", 0x965BE8, 0x965CB9),
+    ManualTextRange("battle_messages", "data.battle.text.messages.fainted.unbound", 0x9678E8, 0x9678FD),
+    ManualTextRange("battle_messages", "data.battle.text.messages.abilityStart", 0xA37710, 0xA37765),
+    ManualTextRange("battle_messages", "data.battle.text.messages.effectiveness.unbound", 0xA4A922, 0xA4A9C4),
+    ManualTextRange("battle_messages", "data.battle.text.messages.escape.unbound", 0xA4AEE1, 0xA4AF18),
+    ManualTextRange("battle_messages", "data.battle.text.messages.effectiveness.legacyExact", 0x800880, 0x800898),
 ]
 
 
@@ -541,7 +594,8 @@ def find_pointer_sources(rom: bytes, target: int) -> list[int]:
         source = rom.find(pointer, cursor)
         if source == -1:
             return sources
-        sources.append(source)
+        if is_pointer_reference_source(rom, source, target):
+            sources.append(source)
         cursor = source + 1
 
 
@@ -641,6 +695,20 @@ def best_substring_slot(rom: bytes, offset: int, size: int) -> tuple[int, Decode
     return offset + best_delta, best_result
 
 
+def stable_entry_id(
+    entry_id: str,
+    category: str,
+    address: int,
+    table_index: int | None = None,
+) -> str:
+    address_text = f"{address:06X}"
+    if entry_id.startswith("scr_"):
+        return f"scr_{address_text}"
+    if table_index is not None:
+        return f"tbl_{category}_{table_index:05d}_{address_text}"
+    return f"tbl_{category}_{address_text}"
+
+
 def make_entry(
     entry_id: str,
     category: str,
@@ -653,7 +721,7 @@ def make_entry(
     table_index: int | None = None,
 ) -> dict:
     entry = {
-        "id": entry_id,
+        "id": stable_entry_id(entry_id, category, address, table_index),
         "category": category,
         "address": format_offset(address),
         "pointer_sources": [format_offset(source) for source in pointer_sources or []],
@@ -678,13 +746,60 @@ def no_relocation_pointer_sources(pointer_sources: list[int]) -> bool:
     return False
 
 
-def pointer_text_category(target: int) -> str:
+def pointer_text_category(rom: bytes, target: int, pointer_sources: list[int]) -> str:
+    if looks_like_mission_name_text(rom, target, pointer_sources):
+        return "mission_names"
     if target in PLAIN_SCRIPT_TEXT_ADDRESSES:
         return "plain_scripts"
     for start, end in PLAIN_SCRIPT_TEXT_RANGES:
         if start <= target < end:
             return "plain_scripts"
     return "scripts"
+
+
+def looks_like_mission_name_text(rom: bytes, target: int, pointer_sources: list[int]) -> bool:
+    if not any(start <= target < end for start, end in ADDITIONAL_TEXT_POINTER_TARGET_RANGES):
+        return False
+    result = decode_pcs(rom, target, DEFAULT_MAX_TEXT_LENGTH)
+    clean = visible_text(result.text)
+    if "\n" in result.text or "\\." in result.text or result.control_count or not clean or len(clean) > 32:
+        return False
+    if clean.startswith("[") or clean[-1:] in ".!?":
+        return False
+    return any(is_mission_name_pointer_source(rom, source) for source in pointer_sources)
+
+
+def is_mission_name_pointer_source(rom: bytes, source: int) -> bool:
+    if source in MISSION_NAME_POINTER_SOURCES:
+        return True
+    if source % 4 != 0 or not any(start <= source < end for start, end in ADDITIONAL_TEXT_POINTER_SOURCE_RANGES):
+        return False
+    if points_to_mission_description(rom, source + 0x0C):
+        return True
+    if points_to_mission_description(rom, source + 0x14) and not points_to_text(rom, source + 0x10):
+        return True
+    return False
+
+
+def points_to_mission_description(rom: bytes, source: int) -> bool:
+    target = pointer_at(rom, source)
+    if target is None:
+        return False
+    return looks_like_mission_description_candidate(decode_pcs(rom, target, DEFAULT_MAX_TEXT_LENGTH))
+
+
+def points_to_text(rom: bytes, source: int) -> bool:
+    target = pointer_at(rom, source)
+    if target is None:
+        return False
+    return looks_like_pointer_text(decode_pcs(rom, target, DEFAULT_MAX_TEXT_LENGTH))
+
+
+def looks_like_mission_description_candidate(result: DecodeResult) -> bool:
+    if not looks_like_pointer_text(result):
+        return False
+    clean = visible_text(result.text)
+    return "\n" in result.text and len(clean) >= 40
 
 
 def extract_fixed_table(
@@ -782,7 +897,7 @@ def extract_pointer_table(
 ) -> tuple[list[dict], int]:
     entries = []
     for index in range(table.count):
-        source = table.start + index * 4
+        source = table.start + index * table.stride
         target = pointer_at(rom, source)
         known_pointer_sources.add(source)
         if target is None:
@@ -845,6 +960,12 @@ def extract_manual_tables(
                 )
                 next_table_id += 1
 
+    occupied_ranges = []
+    for target in known_targets:
+        result = decode_pcs(rom, target, DEFAULT_MAX_TEXT_LENGTH)
+        if result.byte_length:
+            occupied_ranges.append((target, target + result.byte_length))
+
     for manual_range in manual_ranges:
         cursor = manual_range.start
         index = 0
@@ -852,6 +973,9 @@ def extract_manual_tables(
             if cursor in known_targets:
                 result = decode_pcs(rom, cursor, DEFAULT_MAX_TEXT_LENGTH)
                 cursor += max(result.byte_length, 1)
+                continue
+            if offset_in_ranges(cursor, occupied_ranges):
+                cursor += 1
                 continue
             result = decode_pcs(rom, cursor, manual_range.end - cursor)
             if not looks_like_manual_range_text(result):
@@ -874,6 +998,7 @@ def extract_manual_tables(
                 )
             )
             cursor += max(result.byte_length, 1)
+            occupied_ranges.append((cursor - result.byte_length, cursor))
             next_table_id += 1
             index += 1
     return entries, next_table_id
@@ -887,6 +1012,7 @@ def scan_pointer_texts(
     max_length: int,
     start_index: int,
     all_pointers: bool = False,
+    occupied_ranges: list[tuple[int, int]] | None = None,
 ) -> tuple[list[dict], Counter]:
     sources_by_target: dict[int, list[int]] = defaultdict(list)
     stats = Counter()
@@ -906,7 +1032,11 @@ def scan_pointer_texts(
 
     entries = []
     script_index = 0
+    occupied = sorted(occupied_ranges or [])
     for target in sorted(sources_by_target):
+        if offset_in_ranges(target, occupied):
+            stats["overlap_targets"] += 1
+            continue
         result = decode_pcs(rom, target, max_length)
         if not looks_like_pointer_text(result):
             stats["rejected_targets"] += 1
@@ -914,7 +1044,7 @@ def scan_pointer_texts(
         entries.append(
             make_entry(
                 f"scr_{start_index + script_index:05d}",
-                pointer_text_category(target),
+                pointer_text_category(rom, target, sources_by_target[target]),
                 target,
                 result,
                 result.byte_length,
@@ -922,14 +1052,24 @@ def scan_pointer_texts(
                 sources_by_target[target],
             )
         )
+        occupied.append((target, target + result.byte_length))
+        occupied.sort()
         script_index += 1
     stats["accepted_targets"] = len(entries)
     stats["accepted_pointer_sources"] = sum(len(entry["pointer_sources"]) for entry in entries)
     return entries, stats
 
 
+def offset_in_ranges(offset: int, ranges: list[tuple[int, int]]) -> bool:
+    return any(start < offset < end for start, end in ranges)
+
+
 def is_text_pointer_source(rom: bytes, source: int, target: int) -> bool:
-    return is_script_text_pointer_source(rom, source) or is_additional_text_pointer_source(source, target)
+    return (
+        is_script_text_pointer_source(rom, source)
+        or is_additional_text_pointer_source(source, target)
+        or is_mission_name_pointer_source(rom, source)
+    )
 
 
 def is_script_text_pointer_source(rom: bytes, source: int) -> bool:
@@ -942,9 +1082,15 @@ def is_script_text_pointer_source(rom: bytes, source: int) -> bool:
     return source >= 1 and rom[source - 1] == 0x67 and (source >> 20) == 0x1E
 
 
+def is_pointer_reference_source(rom: bytes, source: int, _target: int) -> bool:
+    return source % 4 == 0 or is_script_text_pointer_source(rom, source)
+
+
 def is_additional_text_pointer_source(source: int, target: int) -> bool:
-    return any(start <= source < end for start, end in ADDITIONAL_TEXT_POINTER_SOURCE_RANGES) and any(
-        start <= target < end for start, end in ADDITIONAL_TEXT_POINTER_TARGET_RANGES
+    return (
+        source % 4 == 0
+        and any(start <= source < end for start, end in ADDITIONAL_TEXT_POINTER_SOURCE_RANGES)
+        and any(start <= target < end for start, end in ADDITIONAL_TEXT_POINTER_TARGET_RANGES)
     )
 
 
@@ -1247,6 +1393,11 @@ def main() -> None:
     )
     entries.extend(table_entries)
 
+    occupied_ranges = [
+        (int(entry["address"], 16), int(entry["address"], 16) + int(entry["byte_length"]))
+        for entry in entries
+        if entry.get("byte_length")
+    ]
     script_entries, pointer_stats = scan_pointer_texts(
         rom,
         known_targets,
@@ -1255,6 +1406,7 @@ def main() -> None:
         args.max_text_length,
         next_table_id,
         args.all_pointers,
+        occupied_ranges,
     )
     entries.extend(script_entries)
     next_table_id += len(script_entries)
@@ -1297,6 +1449,8 @@ def main() -> None:
     print(f"Pointer candidates: {pointer_stats['raw_pointers']}")
     print(f"Pointer text accepted: {pointer_stats['accepted_targets']}")
     print(f"Pointer text rejected: {pointer_stats['rejected_targets']}")
+    if pointer_stats["overlap_targets"]:
+        print(f"Pointer text overlapped existing text: {pointer_stats['overlap_targets']}")
     if args.include_orphans:
         print(f"Orphan text accepted: {orphan_stats['accepted_orphans']}")
     if args.audit_menu_text:

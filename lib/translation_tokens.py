@@ -4,10 +4,11 @@ from __future__ import annotations
 
 from collections import Counter
 import re
-from lib.pcs_text import CC_TOKEN_PATTERN
 
 
 SEMANTIC_PLACEHOLDER_RE = re.compile(r"\[[a-z][a-z0-9-]*-[0-9]+\]")
+
+CC_TOKEN_PATTERN = r"\\CC(?:04[0-9A-Fa-f]{6}|(?:10|0B)[0-9A-Fa-f]{4}|[0-9A-Fa-f]{4})"
 
 TOKEN_RE = re.compile(
     CC_TOKEN_PATTERN
