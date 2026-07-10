@@ -1,0 +1,19 @@
+{
+  "entries": [
+    {
+      "id": "scr_token_layout",
+      "category": "scripts",
+      "original": "[black]Hello [player]!"
+    },
+    {
+      "id": "tbl_menu_yes_no",
+      "category": "menu_common",
+      "original": "Yes\nNo"
+    },
+    {
+      "id": "tbl_battle_messages_00412_3FE6D5",
+      "category": "battle_messages",
+      "original": "What will \\\\12 do?"
+    }
+  ]
+}

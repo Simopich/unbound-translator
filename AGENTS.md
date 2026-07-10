@@ -121,3 +121,5 @@ Use this to test a small manually whitelisted ROM build:
 - Do not add new Meowth runtime dependencies.
 - Preserve existing user changes in the working tree. Do not revert unrelated edits.
 - Prefer small, focused changes and verify Python scripts with `python3 -m py_compile` when editing them.
+- When fixing a layout, wrapping, or protected-token bug, add a small regression fixture/test under `tests/fixtures/`
+  and `tests/` so the case stays covered without requiring a ROM.

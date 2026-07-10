@@ -214,6 +214,18 @@ out/unbound-translated.gba
 
 For `plain_scripts`, the injector preserves full-screen blank lines as repeated newline bytes (`0xFE 0xFE`) instead of the paragraph/prompt byte (`0xFB`). This avoids the bottom-arrow prompt behavior used by normal dialogue boxes.
 
+## Tests
+
+Install development test dependencies and run the regression suite with:
+
+```bash
+python3 -m pip install -r requirements-dev.txt
+python3 -m pytest
+```
+
+Normal tests use small fixtures and do not require a ROM. When fixing a layout, wrapping, or protected-token bug, add a
+regression fixture/test so the case stays covered.
+
 ## Ready Translations
 
 In the `ready-translations` folder you can find pre-translated text in both JSON and BPS patch format. For now, only Italian is included.

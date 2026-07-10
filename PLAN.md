@@ -1,189 +1,230 @@
 # PLAN.md
 
-This file tracks concrete improvements needed to make `unbound-translator` more complete and more space-efficient.
+This file tracks the staged plan for improving translation quality, automated validation, and future community-backed
+translation workflows.
 
-## 1. Pointer String Interning
+## 1. Translation QA Report
 
-Many recurring standalone strings can share one relocated memory location.
-
-Implement interning for pointer-based entries whose final encoded translated bytes are identical.
-
-Example:
+Add a QA report script, for example:
 
 ```text
-Alture Ghiacciate
+007_translation_qa.py
 ```
-
-If several pointer-based entries translate to exactly the same encoded bytes, write the bytes once into free space and patch all pointer sources to that same address.
-
-Requirements:
-
-- Only intern pointer-based entries.
-- Only intern after encoding and control-fix.
-- Key by exact encoded bytes, not by Unicode string, because the ROM stores bytes.
-- Preserve all pointer sources for all interned entries.
-- Add `--intern-pointer-strings`, default enabled.
-- Add `--no-intern-pointer-strings` for debugging.
-- Add intern stats:
-  - intern groups
-  - pointer entries deduplicated
-  - bytes saved
-- Record intern groups in `hybrid-map.json`.
-
-Limitations:
-
-- This only helps standalone strings.
-- It cannot deduplicate substrings inside longer text. For example, `Welcome to Frozen Heights!` cannot share only the `Frozen Heights` substring unless the game script supports string concatenation.
-
-## 2. Glossary And Consistency Pass
-
-The same game term can appear in different categories and scripts. The LLM may translate one occurrence and leave another in English.
-
-Implement a glossary consistency script or pass before controlfix.
 
 Inputs:
 
 - translated JSON
-- source JSON
-- glossary file, probably `glossary/it.json`
+- source/prepared JSON
 
-Glossary format example:
+Checks:
 
-```json
-{
-  "Frozen Heights": "Alture Ghiacciate",
-  "Bellin Town": "Borgo Bellin",
-  "Pokémon Center": "Centro Pokémon"
-}
+- missing translations
+- likely English leftovers
+- repeated source strings translated inconsistently
+- required semantic/control token mismatches
+- malformed control codes
+- translated strings too long for fixed-size or `no_relocation` entries
+- menu label overflow risks
+- suspicious untranslated Pokémon/game terms
+
+Output:
+
+- machine-readable JSON report
+- concise terminal summary
+- non-zero exit option for CI failures
+
+Prioritize warnings by category:
+
+1. menus/UI
+2. battle messages
+3. item/move/ability descriptions
+4. mission names/objectives
+5. common NPC dialogue
+6. long story dialogue
+
+## 2. GitHub Actions CI
+
+Add GitHub Actions for normal PR validation without requiring or uploading a ROM.
+
+Create workflow:
+
+```text
+.github/workflows/ci.yml
 ```
 
-Requirements:
+CI should run on:
 
-- Replace known terms in `translated` text.
-- Prefer longest match first.
-- Preserve semantic/control tokens.
-- Do not replace inside protected tokens such as `[player]`, `[buffer1]`, `\CC...`, `{B4}`.
-- Report every replacement:
-  - entry id
-  - category
-  - source term
-  - replacement
-- Add a dry-run mode.
+- pull requests
+- pushes to `main`
 
-This should help with cases where `Frozen Heights` is correctly translated as a map name but remains English in script text.
+Baseline jobs:
 
-## 3. Menu Extraction Audit
+```bash
+python3 -m py_compile \
+  001_extract_unbound_text.py \
+  002_prepare_translation_text.py \
+  003_llm_translate.py \
+  004_controlfix_translations.py \
+  005_hybrid_injector.py \
+  006_decontrolfix_translations.py
 
-Some menu text may still be untranslated because it is not extracted, not because it is skipped during injection.
+python3 -m pytest
+```
 
-Run a targeted audit for common always-visible UI strings:
+Use `requirements-dev.txt` for test dependencies.
 
-- `SAVING.`
-- `DON'T TURN OFF THE POWER`
-- `YES`
-- `NO`
-- `BAG`
-- `POKéMON`
-- `SAVE`
-- `OPTION`
-- `PLAYER`
-- `TIME`
-- `MONEY`
-- `BADGES`
-- `A Button`
-- `B Button`
-- PC menu labels
-- Pokémon party menu labels
-- item storage labels
-- battle menu labels
-- options menu labels
+CI must not:
 
-Implementation ideas:
+- commit or download ROMs
+- upload generated `.gba` files
+- require private ROM data for normal PRs
 
-- Add an audit script that searches the ROM for encoded PCS forms of known English strings.
-- Compare found offsets against extracted entries.
-- Output:
-  - found and extracted
-  - found but not extracted
-  - not found as PCS text
-  - likely graphical/tile text
+Later CI additions:
 
-Important distinction:
+- run `007_translation_qa.py` against committed ready translations if fixtures/source files are available
+- validate JSON shape for `ready-translations/*.json`
+- reject malformed translation entries
+- verify generated reports are deterministic
 
-- Extracted and translated but skipped means injector/space issue.
-- Not extracted means extractor coverage issue.
-- Not found as PCS text may mean graphical text, compressed data, or custom UI encoding.
+## 3. Optional Self-Hosted Release Workflow For BPS
 
-## 4. Menu Priority And Fixed-Size Handling
+GitHub-hosted runners cannot build BPS patches without access to the base ROM. Do not upload or commit ROM files.
 
-Menu text should be treated as high-value because it appears throughout the whole game.
+For automated BPS builds, add an optional self-hosted runner workflow only.
 
-For menu categories:
+Create later:
 
-- Try in-place first if it fits.
-- If pointer-based and too long, relocate with very high priority.
-- If fixed-size and too long, report clearly as `fixed_truncated` or `fixed_unfit`.
+```text
+.github/workflows/release-bps.yml
+```
 
-Future compression may target these first:
+Constraints:
 
-- abbreviate menu labels
-- use shorter official terminology
-- reduce punctuation/spacing
-- prefer compact UI phrases over literal translations
+- `runs-on: self-hosted`
+- base ROM exists only on maintainer machine
+- workflow verifies ROM MD5 before use
+- generated translated ROM is deleted after patch creation
+- only `.bps` and non-ROM reports are uploaded
 
-## 5. Translation Memory For Repeated English Text
+Required checks:
 
-Before calling the LLM, detect duplicate English `translation_source` values.
+```bash
+md5 -q rom/unbound.gba
+# expected: 9cad8e771940e7f7094d13911552cef0
+```
 
-Requirements:
+Example release steps:
 
-- Translate each unique source text once.
-- Copy the translated result to all duplicate entries.
-- Preserve each entry id and JSON structure.
-- Validate semantic/control token counts for every copied translation.
-- Report duplicate groups and API calls saved.
+1. checkout repo
+2. verify base ROM hash
+3. run controlfix if needed
+4. inject translated JSON into local ROM
+5. create `.bps`
+6. remove generated `.gba`
+7. upload `.bps` release artifact
 
-Benefits:
+Do not add GitHub-hosted ROM decryption or base64-ROM secrets unless explicitly re-evaluated; self-hosted runner is the
+preferred non-upload path.
 
-- Lower API cost.
-- More consistent translations.
-- More identical translated strings, which improves pointer-string interning.
+## 4. Category-Specific Review Passes
 
-## 6. Space Optimization Roadmap
+Use QA reports to review high-impact categories first.
 
-After priority injection and reports are implemented, use reports to guide compression.
+Review order:
 
-Recommended order:
+1. menus/UI
+2. battle messages
+3. item descriptions
+4. move descriptions
+5. ability descriptions
+6. mission names
+7. mission objectives/descriptions
+8. common NPC dialogue
+9. long story dialogue
 
-1. Prioritize and intern pointer strings.
-2. Generate skipped report.
-3. Fix glossary consistency.
-4. Compress skipped high-priority menu/UI strings manually or with a dedicated shortening pass.
-5. Re-run injection and compare skipped counts.
-6. Only then consider more advanced compression or font/text engine patches.
+Goals:
 
-Useful metrics to track over time:
+- improve user-visible text before rare dialogue
+- keep narrow UI labels compact
+- align battle text with official Italian style
+- reduce overflow/controlfix problems before injection
+- identify categories that need custom wrapping or shorter phrasing
 
-- total translated entries
-- injected translated entries
-- skipped translated entries
-- skipped high-priority entries
-- free bytes used
-- free bytes remaining
-- bytes saved by interning
-- bytes saved by manual compression
-- fixed-size truncations
-- encode errors
+## 5. Curated Contribution Path Before Weblate
 
-## 7. Suggested Workflow After These Changes
+Before adding Weblate, support lightweight community proofreading through GitHub issues.
+
+Suggested issue template:
+
+```text
+Original:
+Current translation:
+Suggested translation:
+Language:
+Where seen / screenshot:
+Notes:
+```
+
+Maintainer manually applies accepted corrections to translation JSON or future PO files.
+
+Use this phase to learn common contributor mistakes before building automated community tooling.
+
+## 6. Future Weblate/PO Proofreading Layer
+
+Add Weblate only after translation QA and pipeline checks are reliable.
+
+Weblate should be positioned as:
+
+> Suggest translation improvements.
+
+Not as:
+
+> Translate the ROM collaboratively from zero.
+
+Prerequisites:
+
+- extraction coverage mostly stable
+- token validator solid
+- controlfix reliable
+- ready JSON generation deterministic
+- CI can block bad PRs
+- maintainer has review time
+
+Proposed future architecture:
+
+```text
+source/prepared JSON = canonical source catalog
+weblate/*.po = community-editable translations
+ready-translations/<lang>.json = generated release artifact
+```
+
+Community PR rules:
+
+- allow edits only to PO translation strings
+- validate protected token counts
+- validate PO syntax
+- run generated JSON check if release JSON is committed
+- never accept community edits directly into ROM-ready JSON without CI/controlfix/injection checks
+
+Expose categories gradually if possible:
+
+1. menus
+2. battle messages
+3. mission names/objectives
+4. item descriptions
+5. dialogue/scripts
+
+## 7. Release Workflow With QA
+
+Target workflow once QA script exists:
 
 ```bash
 ./001_extract_unbound_text.py rom/unbound.gba -o out/unbound-texts.json
 ./002_prepare_translation_text.py out/unbound-texts.json -o out/unbound-texts-prepared.json
 ./003_llm_translate.py out/unbound-texts-prepared.json --target it ... -o out/unbound-texts-it.json
-./glossary_consistency.py out/unbound-texts-it.json --glossary glossary/it.json -o out/unbound-texts-it-glossary.json
-./004_controlfix_translations.py out/unbound-texts-it-glossary.json -o out/unbound-texts-it-controlfix.json --source out/unbound-texts-prepared.json --report out/controlfix-report.json
+./007_translation_qa.py out/unbound-texts-it.json --source out/unbound-texts-prepared.json --report out/translation-qa.json
+./004_controlfix_translations.py out/unbound-texts-it.json -o out/unbound-texts-it-controlfix.json --source out/unbound-texts-prepared.json --report out/controlfix-report.json
 ./005_hybrid_injector.py rom/unbound.gba out/unbound-texts-it-controlfix.json -o out/unbound-translated.gba --map-output out/hybrid-map.json
 ```
 
-`glossary_consistency.py` does not exist yet. It is listed here as a planned script.
+Community-backed translation remains a later phase, after these checks can reliably reject unsafe edits.
