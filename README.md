@@ -125,6 +125,23 @@ If the translation is interrupted, resume from the existing output JSON:
 
 The script defaults to an OpenAI-compatible chat completions API. It validates every returned batch. If a batch reaches the API output token limit, the script falls back to translating each entry individually; if a single-entry request still reaches the limit, it retries that entry with a compact single-item prompt and then a plain-text prompt using the same model. If the entry still cannot be translated because of the output token limit, the script prints a warning with the entry id, leaves that entry untranslated, and continues.
 
+Before creating LLM batches, the script queries [PokeAPI v2](https://pokeapi.co/docs/v2) for official localized text. It
+covers Pokémon names, Pokédex species labels and descriptions, move names and descriptions, item names and descriptions,
+ability names and descriptions, types, natures, and habitat names. Category-specific IDs and English slugs handle ROM
+placeholder rows and non-numeric tables. When a numeric name-table record fails validation, a cached PokeAPI
+resource-list lookup resolves the canonical English slug and validation runs again. Pokédex genera accept the ROM's
+shorter label without its trailing `Pokémon`; flavor text must match the English text and version/version-group before
+its paired target-language text is used. This keeps Unbound-exclusive content and changed records out of false matches.
+Existing/manual/resumed translations always win, protected-token entries are skipped, and every API miss or network
+failure remains in the normal LLM fallback queue.
+
+Responses are cached under `.cache/pokeapi` so subsequent and resumed runs avoid repeat requests; `.cache/` is ignored
+by Git and should not be committed. PokeAPI calls run with 8 parallel workers by default, deduplicating simultaneous
+lookups for the same resource. A live progress bar reports processed entries and successful localizations before LLM
+batching. Use `--pokeapi-workers N` to tune concurrency, `--pokeapi-cache PATH` to move the cache,
+`--pokeapi-timeout SECONDS` to change its timeout, `--pokeapi-base URL` for a compatible mirror/test server, or
+`--no-pokeapi` to disable this prefill pass.
+
 The translator uses `translation_source` when present. It asks the model to preserve the readable placeholders, replaces those placeholders with the original semantic/control tokens after each response, then checks that every protected token from the English source is present with the same count and that no extra protected tokens or layout markers were added. If the check fails, it prints a warning and retries the translation.
 
 If the script has to fall back to a single-entry prompt, it prints a warning with the affected entry id. These cases use less context than the normal batch prompt and may produce less accurate translations, so they are worth reviewing and keeping as rare as possible.

@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import argparse
-from collections import Counter
 import json
 import os
 import subprocess
@@ -11,11 +10,16 @@ import threading
 import time
 import urllib.error
 import urllib.request
+from collections import Counter
 from pathlib import Path
 from queue import Empty, Queue
 
 from lib import translation_tokens
-
+from lib.pokeapi_localizer import (
+    CATEGORY_SPECS,
+    PokeAPILocalizer,
+    apply_pokeapi_translations,
+)
 
 DEFAULT_USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
@@ -46,12 +50,16 @@ CATEGORY_PRIORITY = {
     "map_names": 8_000,
     "type_names": 7_500,
     "nature_names": 7_000,
+    "habitat_names": 6_800,
+    "pokedex_species": 6_700,
     "trainer_classes": 6_500,
     "item_names": 6_000,
+    "item_descriptions": 4_000,
     "ability_names": 6_000,
     "move_names": 6_000,
     "move_descriptions": 4_000,
     "ability_descriptions": 4_000,
+    "pokedex_descriptions": 4_000,
     "plain_scripts": 1_500,
     "scripts": 1_000,
     "pokemon_names": 100,
@@ -1205,6 +1213,12 @@ def render_progress(completed, total, status=None):
     sys.stdout.flush()
 
 
+def render_pokeapi_progress(completed, total, translated):
+    status = f"localized {translated}"
+    sys.stdout.write("\rPokeAPI " + progress_bar(completed, total) + f" | {status}\x1b[K")
+    sys.stdout.flush()
+
+
 def parse_args():
     parser = argparse.ArgumentParser(
         description=(
@@ -1310,6 +1324,33 @@ def parse_args():
         help="Maximum API calls per minute across all workers. Use 0 to disable. Default: 0.",
     )
     parser.add_argument(
+        "--no-pokeapi",
+        action="store_true",
+        help="Disable PokeAPI localization and send all missing entries to the LLM.",
+    )
+    parser.add_argument(
+        "--pokeapi-base",
+        default="https://pokeapi.co/api/v2",
+        help="PokeAPI v2 base URL. Default: https://pokeapi.co/api/v2.",
+    )
+    parser.add_argument(
+        "--pokeapi-cache",
+        default=".cache/pokeapi",
+        help="Persistent PokeAPI JSON cache directory. Default: .cache/pokeapi.",
+    )
+    parser.add_argument(
+        "--pokeapi-timeout",
+        type=float,
+        default=30.0,
+        help="PokeAPI request timeout in seconds. Default: 30.",
+    )
+    parser.add_argument(
+        "--pokeapi-workers",
+        type=int,
+        default=8,
+        help="Parallel PokeAPI lookup workers. Default: 8.",
+    )
+    parser.add_argument(
         "--exclude-categories",
         default="",
         help=(
@@ -1385,6 +1426,10 @@ def validate_args(args, output_path):
         raise SystemExit("error: --max-tokens must be >= 1")
     if args.timeout <= 0:
         raise SystemExit("error: --timeout must be > 0")
+    if args.pokeapi_timeout <= 0:
+        raise SystemExit("error: --pokeapi-timeout must be > 0")
+    if args.pokeapi_workers < 1:
+        raise SystemExit("error: --pokeapi-workers must be >= 1")
     if args.rate_limit < 0:
         raise SystemExit("error: --rate-limit must be >= 0")
     if args.limit < 0:
@@ -1449,6 +1494,37 @@ def main():
         sort_work_by_priority(work)
     if args.limit:
         work = work[: args.limit]
+
+    pokeapi_translated = 0
+    pokeapi_candidates = 0
+    if not args.no_pokeapi:
+        localizer = PokeAPILocalizer(
+            args.target,
+            args.pokeapi_cache,
+            base_url=args.pokeapi_base,
+            timeout=args.pokeapi_timeout,
+            user_agent=args.user_agent,
+        )
+        render_pokeapi_progress(0, sum(
+            1
+            for item in work
+            if item["entry"].get("category") in CATEGORY_SPECS
+        ), 0)
+        pokeapi_translated, pokeapi_candidates = apply_pokeapi_translations(
+            (item["entry"] for item in work),
+            localizer,
+            render_pokeapi_progress,
+            workers=args.pokeapi_workers,
+        )
+        print()
+        if pokeapi_translated:
+            save_json(output_path, data)
+            work = [item for item in work if not has_translation(item["entry"])]
+            already_translated += pokeapi_translated
+        print(
+            f"PokeAPI: translated {pokeapi_translated}/{pokeapi_candidates} eligible entries; "
+            "unmatched entries use LLM fallback"
+        )
 
     total_entries = sum(1 for _index, _entry in iter_entry_refs(data))
     total_translatable = already_translated + len(work)

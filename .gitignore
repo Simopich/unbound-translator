@@ -1,5 +1,6 @@
 .idea
 .junie
+/.cache/
 rom/*.gba
 out/*.json
 out/*.gba

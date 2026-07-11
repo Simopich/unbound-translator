@@ -19,7 +19,10 @@ This repository is `unbound-translator`, a Python toolchain for translating Poke
 
 - `001_extract_unbound_text.py`: extracts text from the ROM into JSON. The expected output shape is a JSON object containing an `entries` array, though some utilities also tolerate older `tables` and `free_texts` shapes.
 - `002_prepare_translation_text.py`: adds layout-free `translation_source` fields to extracted JSON while preserving each entry's original ROM text. It removes layout markers and replaces semantic/control tokens in `translation_source` with readable placeholders recorded in `semantic_token_placeholders`.
-- `003_llm_translate.py`: translates prepared JSON through an OpenAI-compatible chat completions API or a Codex CLI ChatGPT login. It preserves the JSON shape, fills `translated` fields, supports `--resume`, restores semantic/control placeholders to real tokens, validates returned batches, and retries model output that drops/adds protected placeholders or tokens.
+- `003_llm_translate.py`: prefills official localized names/flavor text from cached PokeAPI v2 responses, then
+  translates unmatched prepared JSON through an OpenAI-compatible chat completions API or a Codex CLI ChatGPT login. It
+  preserves the JSON shape, fills `translated` fields, supports `--resume`, restores semantic/control placeholders to
+  real tokens, validates returned batches, and retries model output that drops/adds protected placeholders or tokens.
 - `004_controlfix_translations.py`: repairs translated control codes, quote tokens, apostrophes, and other formatting damage caused by translation. It also recomputes post-translation text wrapping/layout for dialogue and description-like text.
 - `005_hybrid_injector.py`: injects translated text into the ROM using in-place writes and pointer relocation into free
   `0xFF` space. It also discovers and applies every `patches/<target-lang>/*.py` runtime patch in filename order.
@@ -68,6 +71,16 @@ When resuming LLM translation, use the same input and output paths with `--resum
 ## Translation Notes
 
 - `003_llm_translate.py` currently supports Latin-script target languages only: `de`, `en`, `es`, `fr`, `it`, `pt`, and `pt-br`.
+- Before LLM batching, `003_llm_translate.py` uses PokeAPI v2 for `pokemon_names`, `pokedex_species`,
+  `pokedex_descriptions`, `move_names`, `move_descriptions`, `item_names`, `item_descriptions`, `ability_names`,
+  `ability_descriptions`, `type_names`, `nature_names`, and `habitat_names`. Existing translations take precedence.
+  Category-specific numeric IDs/slugs handle ROM placeholder rows and reordered tables; failed numeric name lookups fall
+  back through cached PokeAPI resource lists, names require a normalized English-source match, genera accept the omitted
+  `Pokémon` suffix, and flavor text requires matching English text plus version/version-group. Protected-token entries,
+  ROM-exclusive records, missing localizations, and API/network failures fall back to the LLM. It uses 8 parallel
+  workers by default, deduplicates concurrent lookups, and shows a live progress bar before LLM batching. Responses
+  persist in `.cache/pokeapi`, which Git ignores; tune with `--pokeapi-workers`, `--pokeapi-cache`, `--pokeapi-timeout`,
+  and `--pokeapi-base`, or disable with `--no-pokeapi`.
 - Non-Latin target languages are out of scope for now because they likely require a font patch.
 - `002_prepare_translation_text.py` adds `translation_source`; it removes layout markers such as actual line breaks, `\n`, `\l`, `\p`, and `\pn`. It keeps real semantic/control tokens in `original`, but replaces them in `translation_source` with readable placeholders such as `[player-name-1]`, `[buffer1-2]`, `[color-red-3]`, `[button-icon-4]`, and `[control-code-5]`.
 - Semantic/control tokens are protected game-engine tokens that must survive translation exactly and in the same count. Examples include `[player]`, `[buffer1]`, `[red]`, `\CC12`, `\btn01`, `\pk`, `\mn`, `\qo`, `\qc`, and `{B4}`.
