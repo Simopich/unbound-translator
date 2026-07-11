@@ -8,7 +8,6 @@ from pathlib import Path
 from lib.pcs_text import Charmap
 from lib.translation_tokens import remove_layout_tokens, visible_width
 
-
 CC_TOKEN_PATTERN = r"\\CC(?:04[0-9A-Fa-f]{6}|(?:10|0B)[0-9A-Fa-f]{4}|[0-9A-Fa-f]{4})"
 
 TOKEN_RE = re.compile(
@@ -28,7 +27,6 @@ QUOTE_TOKENS = {"\\qo", "\\qc"}
 BATTLE_PROMPT_NAME_SECOND_LINE_IDS = {
     "tbl_battle_messages_00412_3FE6D5",
 }
-
 COLOR_TOKENS = {
     "[white]",
     "[white2]",

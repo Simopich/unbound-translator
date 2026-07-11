@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
 import argparse
+import importlib.util
 import json
 import re
 from dataclasses import dataclass
 from pathlib import Path
 
 from lib.pcs_text import Charmap, fc_arg_count
-
 
 GBA_POINTER_BASE = 0x08000000
 DEFAULT_MIN_ADDRESS = 0x100
@@ -280,6 +280,96 @@ def allocate(blocks, size, alignment):
     return best_aligned
 
 
+def allocate_near(blocks, size, alignment, origin, max_distance=0x3FFFFE):
+    candidates = []
+    for index, block in enumerate(blocks):
+        aligned = align_up(block.cursor, alignment)
+        if aligned + size > block.end:
+            continue
+        if abs(aligned - origin) > max_distance:
+            continue
+        candidates.append((block.end - (aligned + size), index, aligned))
+
+    if not candidates:
+        return None
+
+    _, index, aligned = min(candidates)
+    blocks[index].cursor = aligned + size
+    return aligned
+
+
+def encode_thumb_bl(source, target):
+    delta = target - (source + 4)
+    if delta % 2 or not -0x400000 <= delta <= 0x3FFFFE:
+        raise ValueError(
+            f"Thumb BL target 0x{target:X} is out of range from 0x{source:X}"
+        )
+    upper = 0xF000 | ((delta >> 12) & 0x7FF)
+    lower = 0xF800 | ((delta >> 1) & 0x7FF)
+    return upper.to_bytes(2, "little") + lower.to_bytes(2, "little")
+
+
+@dataclass
+class RuntimePatchContext:
+    rom: bytearray
+    cmap: Charmap
+    free_blocks: list
+    alignment: int
+    dry_run: bool
+
+    def encode_text(self, text):
+        return encode_text(self.cmap, text)
+
+    def allocate_near(self, size, origin, *, alignment=4, max_distance=0x3FFFFE):
+        return allocate_near(
+            self.free_blocks,
+            size,
+            max(alignment, self.alignment),
+            origin,
+            max_distance,
+        )
+
+    @staticmethod
+    def encode_thumb_bl(source, target):
+        return encode_thumb_bl(source, target)
+
+
+def apply_language_patches(patches_root, target_lang, context):
+    if not re.fullmatch(r"[a-z0-9-]+", target_lang):
+        raise ValueError("--target-lang must contain only lowercase letters, digits, and hyphens")
+
+    language_dir = patches_root / target_lang
+    if not language_dir.is_dir():
+        return []
+
+    reports = []
+    for index, patch_path in enumerate(sorted(language_dir.glob("*.py"))):
+        if patch_path.name.startswith("_"):
+            continue
+        module_name = f"_unbound_runtime_patch_{target_lang.replace('-', '_')}_{index}"
+        spec = importlib.util.spec_from_file_location(module_name, patch_path)
+        if spec is None or spec.loader is None:
+            raise ValueError(f"Cannot load runtime patch: {patch_path}")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        apply_patch = getattr(module, "apply", None)
+        if not callable(apply_patch):
+            raise ValueError(f"Runtime patch has no apply(context) function: {patch_path}")
+
+        result = apply_patch(context)
+        if result is None:
+            continue
+        patch_reports = result if isinstance(result, list) else [result]
+        for report in patch_reports:
+            if not isinstance(report, dict):
+                raise ValueError(f"Runtime patch returned an invalid report: {patch_path}")
+            reports.append(
+                {"file": str(patch_path.relative_to(patches_root.parent)), **report}
+            )
+
+    return reports
+
+
 def pointer_sources(entry):
     return entry.get("pointer_sources") or entry.get("pointer_addresses") or []
 
@@ -312,6 +402,39 @@ def should_relocate_pointer_entry(entry, encoded, policy):
     if policy == "oversized":
         return len(encoded) > int(entry.get("byte_length", 0))
     raise ValueError(f"Unknown relocation policy: {policy}")
+
+
+def injection_priority(entry):
+    """Reserve limited relocation space for structured player-facing text."""
+    category = entry.get("category", "")
+    if category == "menu_trainer_card":
+        return 0
+    if category.startswith("menu_") or category in {
+        "start_menu_labels",
+        "setting_names",
+        "mission_log",
+        "mission_names",
+        "map_names",
+        "battle_messages",
+        "trade_messages",
+    }:
+        return 1
+    if category in {"scripts", "plain_scripts"}:
+        return 3
+    if category == "pointer_texts":
+        return 4
+    if category == "orphan_texts":
+        return 5
+    return 2
+
+
+def prioritize_entries(entries):
+    return [
+        entry
+        for _, entry in sorted(
+            enumerate(entries), key=lambda item: (injection_priority(item[1]), item[0])
+        )
+    ]
 
 
 def main():
@@ -381,9 +504,20 @@ def main():
 
     rom = bytearray(rom_path.read_bytes())
     data = json.loads(json_path.read_text(encoding="utf-8"))
-    entries = list(iter_entries(data))
+    entries = prioritize_entries(list(iter_entries(data)))
     cmap = Charmap(target_lang=args.target_lang)
     free_blocks = build_free_blocks(rom, entries, min_free_run, min_address)
+    runtime_patches = apply_language_patches(
+        Path(__file__).resolve().parent / "patches",
+        args.target_lang.lower(),
+        RuntimePatchContext(
+            rom=rom,
+            cmap=cmap,
+            free_blocks=free_blocks,
+            alignment=args.alignment,
+            dry_run=args.dry_run,
+        ),
+    )
 
     stats = {
         "input_entries": len(entries),
@@ -399,11 +533,13 @@ def main():
         "skipped_duplicate_fixed": 0,
         "skipped_pointer_mismatch": 0,
         "skipped_no_space": 0,
+        "no_space_by_category": {},
         "skipped_bounds": 0,
         "encode_errors": 0,
         "fixed_truncated": 0,
         "no_relocation_in_place": 0,
         "no_relocation_truncated": 0,
+        "runtime_patches": len(runtime_patches),
     }
 
     relocation_map = []
@@ -455,6 +591,10 @@ def main():
             relocated_offset = allocate(free_blocks, len(encoded), args.alignment)
             if relocated_offset is None:
                 stats["skipped_no_space"] += 1
+                category = entry.get("category", "unknown")
+                stats["no_space_by_category"][category] = (
+                        stats["no_space_by_category"].get(category, 0) + 1
+                )
                 if len(no_space_samples) < 20:
                     no_space_samples.append(
                         f"{entry.get('id', '?')}: needs {len(encoded)} bytes"
@@ -527,6 +667,7 @@ def main():
             "used_free_bytes": used_free_bytes,
             "remaining_free_bytes": remaining_free_bytes,
             "relocations": relocation_map,
+            "runtime_patches": runtime_patches,
         }
         report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
 
@@ -550,11 +691,18 @@ def main():
     print(f"Skipped duplicate fixed: {stats['skipped_duplicate_fixed']}")
     print(f"Pointer mismatches     : {stats['skipped_pointer_mismatch']}")
     print(f"Skipped no space       : {stats['skipped_no_space']}")
+    if stats["no_space_by_category"]:
+        print("No-space categories   :")
+        for category, count in sorted(
+                stats["no_space_by_category"].items(), key=lambda item: (-item[1], item[0])
+        ):
+            print(f"  {category}: {count}")
     print(f"Skipped out-of-ROM     : {stats['skipped_bounds']}")
     print(f"Encode errors          : {stats['encode_errors']}")
     print(f"Fixed truncated        : {stats['fixed_truncated']}")
     print(f"No-reloc in-place      : {stats['no_relocation_in_place']}")
     print(f"No-reloc truncated     : {stats['no_relocation_truncated']}")
+    print(f"Runtime patches        : {stats['runtime_patches']}")
     if truncation_samples:
         print("Fixed truncation sample:")
         for sample in truncation_samples:

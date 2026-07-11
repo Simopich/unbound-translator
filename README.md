@@ -21,6 +21,9 @@ The current injector uses a hybrid strategy:
 
 This avoids expanding the ROM while still allowing longer translations where the original text was pointer-based.
 By default, the injector only relocates pointer-based text when the encoded translation no longer fits its original slot. Use `--pointer-policy changed` only for experiments that intentionally relocate every changed pointer string.
+When free space is limited, structured player-facing UI is allocated first: Trainer Card labels, then other menu/UI
+text, then scripts and broad pointer discoveries. The map report groups no-space skips by category, so low-priority
+coverage cannot silently consume space needed by core screens.
 Some common engine routine strings are marked with `no_relocation: true` during extraction. These entries must stay in their original slots because redirecting their pointers can freeze receive-item, Cube, PC, or field routines. Keep their translations short enough to fit their original `byte_length`; the injector will never relocate them and reports `No-reloc truncated` if any are too long.
 
 ## Free Space
@@ -236,6 +239,10 @@ out/unbound-translated.gba
 ```
 
 For `plain_scripts`, the injector preserves full-screen blank lines as repeated newline bytes (`0xFE 0xFE`) instead of the paragraph/prompt byte (`0xFB`). This avoids the bottom-arrow prompt behavior used by normal dialogue boxes.
+
+During injection, `005_hybrid_injector.py` applies every Python patch in `patches/<target-lang>/` in filename order
+before allocating relocated text. Each behavior lives in one patch file; languages without a patch directory receive
+none. Applied files and their ROM offsets are recorded in map output.
 
 ## Tests
 

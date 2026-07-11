@@ -216641,7 +216641,7 @@
       "byte_length": 14,
       "is_pointer_based": true,
       "translation_source": "The opposing",
-      "translated": "Avversario"
+      "translated": "{FF}"
     },
     {
       "id": "scr_A4C628",
@@ -216654,7 +216654,7 @@
       "byte_length": 14,
       "is_pointer_based": true,
       "translation_source": "the opposing",
-      "translated": "avversario"
+      "translated": "{FF}"
     },
     {
       "id": "tbl_battle_messages_00000_A4C636",
@@ -216711,7 +216711,7 @@
       "table_name": "data.battle.text.unboundResult",
       "table_index": 2,
       "translation_source": "The opposing",
-      "translated": "Il Pokémon avversario"
+      "translated": "{FF}"
     },
     {
       "id": "tbl_battle_messages_00003_A4C659",
@@ -216726,7 +216726,7 @@
       "table_name": "data.battle.text.unboundResult",
       "table_index": 3,
       "translation_source": "the opposing",
-      "translated": "il Pokémon avversario"
+      "translated": "{FF}"
     },
     {
       "id": "tbl_battle_messages_00005_A4C66B",
@@ -392386,7 +392386,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "\\\\0F usa [player]"
+      "translated": "\\\\0F usa [player]!"
     },
     {
       "id": "tbl_battle_messages_00344_3FD590",
