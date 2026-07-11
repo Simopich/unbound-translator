@@ -39,13 +39,25 @@ When resuming LLM translation, use the same input and output paths with `--resum
 
 ## Extraction Notes
 
-- A healthy baseline extraction currently reports about `16,724` entries, with about `10,303` `scripts` entries, about `36` `mission_names` entries, and `14` `plain_scripts` entries.
-- Ability names have 293 entries, but `data.abilities.descriptions` only has 255 valid text pointers. Do not expand `ability_descriptions` to match the ability-name count; entries after index 254 decode non-text data as garbage.
+- A healthy expanded baseline currently reports `23,274` unique-address entries, including `10,939` `scripts`, `3,522`
+  strict aligned `pointer_texts`, `54` `mission_names`, and `14` `plain_scripts`. The extractor merges duplicate
+  addresses, preferring specific table/category ownership and preserving all pointer sources.
+- Ability names have 293 entries, but `data.abilities.descriptions` only has 255 valid text pointers resolving to 252
+  unique strings. Do not expand `ability_descriptions` to match the ability-name count; entries after index 254 decode
+  non-text data as garbage.
 - Opening narration and other full-screen script text is categorized as `plain_scripts` by the extractor. These entries still use `scr_` ids, but controlfix must wrap them with plain line breaks instead of dialogue `\l` controls.
 - `Pointer text rejected` in extractor output means candidate pointers were checked and discarded because they did not decode as plausible text. It does not mean translations failed.
 - Do not blindly accept all rejected pointer candidates. If text is missing, add or refine the pointer-source pattern for the specific game system that owns that text.
 - Known strings such as `Choose a character.` and `Choose a skin tone.` are extracted through the script/menu `0x67` pointer pattern.
-- Manual extraction uses explicit addresses plus narrow vetted PCS ranges for contiguous menu/UI blocks and fixed text banks. Extracted ids are address-stable: script ids use `scr_<ROMADDR>`, and table/manual ids use `tbl_<category>_<table_index>_<ROMADDR>`. This includes item descriptions, expanded battle messages for Exp/fainting/effectiveness/ability activation text, Pokemon summary text, title choices such as `New Game` and `Continue`, Super Cube/Start labels in `start_menu_labels`, game setting labels in `setting_names`, mission log notifications/menu filters/objectives/descriptions, battle-setting labels at `0x1F94185-0x1F94480`, and the newer Trainer Card profile labels and month names at `0x1F81E44-0x1F81EE5`. The extractor also accepts direct high-bank text pointers from `0x1E70000-0x1EB6000` to targets in `0x1F00000-0x1FB0000`, which covers many mission names, descriptions, objectives, and late NPC lines that are not preceded by normal script loadpointer opcodes. Mission title pointers are categorized as `mission_names`; controlfix caps translated mission-title visible width to the longest extracted English mission name by default to avoid Mission Log title overflow. Entries can include pointer sources when exact GBA pointers to those strings are present, which lets important menus such as Cube V3, save, Trainer Card, and game settings relocate instead of being fixed-size only.
+- Manual extraction uses explicit addresses plus narrow vetted PCS ranges for contiguous menu/UI blocks and fixed text
+  banks. Structured pointer tables now include legacy move descriptions, all item-record description pointers,
+  extra-form Pokédex descriptions, and Pokédex form names. Extracted ids are address-stable: script ids use
+  `scr_<ROMADDR>`, and table/manual ids use `tbl_<category>_<table_index>_<ROMADDR>`. The extractor also accepts
+  structured high-bank sources in `0x1E00000-0x1F00000` and `0x1FB0000-0x1FC0000` targeting `0x1EE0000-0x1FB0000`, plus
+  unaligned trainer/link-record pointer fields. By default it additionally checks every aligned GBA pointer with a
+  strict language/data-noise filter and categorizes newly discovered strings as `pointer_texts`; use
+  `--no-aligned-pointer-text` only to reproduce the narrower legacy scan. Mission title pointers remain `mission_names`;
+  controlfix caps their visible width. Exact pointer sources allow relocation where safe.
 - Use `001_extract_unbound_text.py rom/unbound.gba -o out/unbound-texts.json --audit-menu-text` when auditing menu coverage during extraction. `found_but_not_extracted` means extractor coverage needs a new table/address; `not_found_as_pcs_text` likely means graphical/tile text, compressed data, or custom UI encoding.
 - Extraction should remain as-is/lossless. Use `002_prepare_translation_text.py` for translation cleanup instead of changing extracted `original` strings.
 
@@ -90,7 +102,9 @@ Use this to test a small manually whitelisted ROM build:
 
 - Project Codex config lives in `.codex/config.toml`. It uses low verbosity, medium reasoning, workspace-write sandboxing, on-request approvals, disabled default web search, and subagent limits of 6 threads, depth 1, and 1800 seconds per job.
 - Custom project subagents live in `.codex/agents/`. They are intentionally narrow and terse; use them when explicitly asked to delegate or run parallel agent work.
-- Repo skills live in `.agents/skills/`. Use them for repeated workflows: `unbound-menu-extraction`, `unbound-debug-build`, `unbound-translation-run`, `unbound-layout-controlfix`, `unbound-injection-qa`, and `unbound-docs-sync`.
+- Repo skills live in `.agents/skills/`. Use them for repeated workflows: `unbound-text-extraction`,
+  `unbound-debug-build`, `unbound-translation-run`, `unbound-layout-controlfix`, `unbound-injection-qa`, and
+  `unbound-docs-sync`.
 - Available subagents:
   - `extractor-scout`: missing ROM text/menu extraction coverage, PCS hits, pointer sources, and vetted range proposals.
   - `pcs-codec-guardian`: PCS charmap, terminators, control bytes, raw escapes, and encode/decode round trips.

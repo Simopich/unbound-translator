@@ -49,19 +49,39 @@ The ROM used for this project has MD5:
 
 This step extracts text as-is from the ROM. It should stay lossless and should not try to reshape dialogue layout.
 
-The extractor intentionally reads 255 ability descriptions even though the ROM has 293 ability names. The words after ability-description index 254 are not text pointers and decode as garbage, so they are skipped.
+The extractor intentionally reads 255 ability-description pointers even though the ROM has 293 ability names. Those
+pointers resolve to 252 unique strings; words after pointer index 254 are not text pointers and decode as garbage, so
+they are skipped.
 
 Opening narration and other full-screen script text is extracted into the `plain_scripts` category. These entries still use `scr_` ids, but they are kept separate from normal dialogue scripts so later layout repair can use plain full-screen line breaks instead of dialogue continuation controls.
 
-Manual entries are extracted for common UI, Cube V3, title/start menu choices, save, game settings, PC, party, item storage, link control, battle, trainer-card, multiplayer, standalone label, options, item descriptions, expanded battle messages, Pokemon summary text, and mission log/objective text. Extracted ids are address-stable: script ids use `scr_<ROMADDR>`, and table/manual ids use `tbl_<category>_<table_index>_<ROMADDR>`. The extractor uses explicit addresses plus narrow vetted PCS ranges for contiguous text blocks, including title choices such as `New Game` and `Continue`, Super Cube/Start labels in `start_menu_labels`, game setting labels in `setting_names`, mission-log menu filters/status labels at `0x1F56040-0x1F56117`, battle-setting labels at `0x1F94185-0x1F94480`, and the newer Trainer Card profile labels and month names at `0x1F81E44-0x1F81EE5`. It also accepts direct high-bank text pointers from `0x1E70000-0x1EB6000` to targets in `0x1F00000-0x1FB0000`, covering many mission names, descriptions, objectives, and late NPC lines that do not use normal script loadpointer opcodes. Mission-title pointers are categorized as `mission_names`; controlfix caps their translated visible width to the longest extracted English mission name by default to avoid Mission Log title overflow. When the ROM contains exact GBA pointers to those manual strings, it records those pointer sources so the hybrid injector can relocate longer translations.
+Manual entries are extracted for common UI, Cube V3, title/start menu choices, save, game settings, PC, party, item
+storage, link control, battle, trainer-card, multiplayer, standalone label, options, descriptions, Pokémon summary text,
+and mission text. Structured pointer tables cover legacy move descriptions, item-record descriptions, extra-form Pokédex
+descriptions, and Pokédex form names. Extracted ids are address-stable: script ids use `scr_<ROMADDR>`, and table/manual
+ids use `tbl_<category>_<table_index>_<ROMADDR>`. High-bank pointer scanning covers sources in `0x1E00000-0x1F00000` and
+`0x1FB0000-0x1FC0000` targeting `0x1EE0000-0x1FB0000`; trainer and link structs also have vetted unaligned pointer-field
+patterns. A default strict pass checks every aligned GBA pointer and emits additional language-like strings as
+`pointer_texts`, rejecting control-only, repetitive, fragmentary, and data-like candidates. Use
+`--no-aligned-pointer-text` only to reproduce the narrower legacy scan. Duplicate ROM addresses are merged into one
+entry, preferring specific table/category ownership while retaining every pointer source. The current source ROM
+extracts `23,274` unique-address entries, including `3,522` newly covered `pointer_texts`.
 
-To audit menu coverage during extraction, search the ROM for PCS-encoded UI strings and compare the hits against the extracted entries:
+To audit text coverage during extraction, search the ROM for PCS-encoded UI strings and compare the hits against the
+extracted entries:
 
 ```bash
 ./001_extract_unbound_text.py rom/unbound.gba -o out/unbound-texts.json --audit-menu-text
 ```
 
-This is an optional extraction check, not a separate workflow stage. It reports `found_and_extracted`, `found_but_not_extracted`, and `not_found_as_pcs_text`. A not-found result may be graphical/tile text, compressed data, or a custom UI encoding. Use `--audit-output out/menu-audit.json` when a machine-readable report is useful.
+This is an optional extraction check, not a separate workflow stage. Add arbitrary strings with repeated
+`--audit-string` options or one UTF-8 string per line via `--audit-strings-file`; default auditing also checks
+upper/title-case variants, unless `--audit-no-case-variants` is set. It reports `found_and_extracted`,
+`found_but_not_extracted`, and `not_found_as_pcs_text`. A not-found result may be graphical/tile text, compressed data,
+or a custom UI encoding. Use `--audit-output out/text-audit.json` when a machine-readable report is useful. Use
+`--include-orphans` and `--all-pointers` only as noisy discovery aids: confirm the real table/pointer owner, then add a
+narrow fixed table, pointer table, explicit address list, vetted PCS range, or constrained pointer-source pattern
+instead of relying on broad scans.
 
 ### 2. Prepare Translation Text
 
@@ -174,7 +194,10 @@ All entries outside the whitelist are omitted from `out/debug-unbound-texts-it.j
 
 ### Codex Project Agents
 
-Project-scoped Codex settings live in `.codex/config.toml`, custom subagents live in `.codex/agents/`, and reusable repo skills live in `.agents/skills/`. They cover extraction coverage, debug builds, translation runs, controlfix/layout repair, injector QA, docs sync, and bounded parallel review.
+Project-scoped Codex settings live in `.codex/config.toml`, custom subagents live in `.codex/agents/`, and reusable repo
+skills live in `.agents/skills/`. `unbound-text-extraction` is the extraction playbook for all ROM text sources, audits,
+and safe coverage extensions; the other skills cover debug builds, translation runs, controlfix/layout repair, injector
+QA, docs sync, and bounded parallel review.
 
 ### 4. Repair Control Codes And Layout
 

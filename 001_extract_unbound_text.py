@@ -5,10 +5,10 @@
 from __future__ import annotations
 
 import argparse
-from collections import Counter, defaultdict
-from dataclasses import dataclass
 import json
 import re
+from collections import Counter, defaultdict
+from dataclasses import dataclass
 from pathlib import Path
 
 from lib.pcs_text import (
@@ -18,7 +18,6 @@ from lib.pcs_text import (
     hma_quote,
     strip_control_tokens,
 )
-
 
 GBA_POINTER_BASE = 0x08000000
 DEFAULT_MIN_POINTER_TARGET = 0x100
@@ -45,10 +44,17 @@ PLAIN_SCRIPT_TEXT_ADDRESSES = {
 # script loadpointer opcode. This captures many mission names/descriptions and
 # late-game NPC lines that would otherwise be invisible to pointer scanning.
 ADDITIONAL_TEXT_POINTER_SOURCE_RANGES = (
-    (0x1E70000, 0x1EB6000),
+    (0x1E00000, 0x1F00000),
+    (0x1FB0000, 0x1FC0000),
 )
 ADDITIONAL_TEXT_POINTER_TARGET_RANGES = (
-    (0x1F00000, 0x1FB0000),
+    (0x1EE0000, 0x1FB0000),
+)
+STRUCTURED_TEXT_POINTER_RANGES = (
+    # Trainer/rematch records store three unaligned dialogue pointers per row.
+    (0x1A9000, 0x1AD000, 0x170000, 0x1D0000),
+    # Link-room and profile records also use unaligned struct pointer fields.
+    (0x1BB000, 0x1BD000, 0x1B0000, 0x1D0000),
 )
 MISSION_NAME_POINTER_SOURCES = {
     0x1EC02E8,  # A Hero/Heroine's Journey Mission Log title variants
@@ -96,6 +102,7 @@ class PointerTable:
     start: int
     count: int
     stride: int = 4
+    merge_duplicates: bool = False
 
 
 @dataclass(frozen=True)
@@ -135,8 +142,39 @@ POINTER_TABLES = [
     # point into non-text data and decode as control-heavy garbage.
     PointerTable("ability_descriptions", "data.abilities.descriptions", 0x96DE04, 255),
     PointerTable("move_descriptions", "data.pokemon.moves.descriptions", 0x99F194, 922),
+    PointerTable(
+        "move_descriptions",
+        "data.pokemon.moves.descriptions.legacy",
+        0x904000,
+        539,
+        merge_duplicates=True,
+    ),
     PointerTable("map_names", "data.maps.names", 0x3F1CAC, 109),
     PointerTable("pokedex_descriptions", "data.pokedex.entries.descriptions", 0x1A35800, 905, 0x24),
+    PointerTable(
+        "pokedex_descriptions",
+        "data.pokedex.entries.formDescriptions",
+        0x1A35508,
+        88,
+        8,
+        merge_duplicates=True,
+    ),
+    PointerTable(
+        "pokedex_form_names",
+        "data.pokedex.entries.formNames",
+        0x1A35450,
+        22,
+        8,
+        merge_duplicates=True,
+    ),
+    PointerTable(
+        "item_descriptions",
+        "data.items.stats.description",
+        0x876214,
+        729,
+        44,
+        merge_duplicates=True,
+    ),
 ]
 
 DEFAULT_MENU_AUDIT_STRINGS = [
@@ -659,6 +697,64 @@ def looks_like_pointer_text(result: DecodeResult) -> bool:
     return True
 
 
+def looks_like_aligned_pointer_text(result: DecodeResult) -> bool:
+    """Apply a stricter filter to text found only through aligned pointers."""
+    if not looks_like_pointer_text(result):
+        return False
+
+    clean = visible_text(result.text)
+    clean = re.sub(r"\\CC[0-9A-F]+", " ", clean)
+    clean = re.sub(r"\\[A-Za-z?.+>]+[0-9A-F]*", " ", clean).strip()
+    clean = re.sub(r"\\[0-9A-F]{2}", " ", clean).strip()
+    ascii_letters = [char for char in clean if char.isascii() and char.isalpha()]
+    if len(clean) < 4 or len(ascii_letters) < 3:
+        return False
+    if len(clean) >= 8 and len(ascii_letters) / len(clean) < 0.45:
+        return False
+
+    vowels = sum(char.lower() in "aeiouy" for char in ascii_letters)
+    if len(ascii_letters) >= 6 and vowels / len(ascii_letters) < 0.12:
+        return False
+    words = re.findall(r"[A-Za-z]+", clean)
+    if len(words) == 1 and len(words[0]) >= 4 and len(set(words[0].lower())) == 1:
+        return False
+    for word in words:
+        if len(word) >= 8 and len(set(word.lower())) / len(word) < 0.34:
+            return False
+    if len(clean) >= 20 and " " not in clean:
+        return False
+
+    first_ascii_letter = next(
+        (char for char in clean if char.isascii() and char.isalpha()), ""
+    )
+    allowed_lowercase_prefixes = (
+        "a ",
+        "an ",
+        "and ",
+        "for ",
+        "from ",
+        "is ",
+        "of ",
+        "or ",
+        "the ",
+        "to ",
+        "was ",
+        "with ",
+    )
+    if first_ascii_letter.islower() and not clean.startswith(allowed_lowercase_prefixes):
+        return False
+
+    accepted_non_ascii = "éÉ’‘♀♂"
+    unusual = sum(
+        not char.isascii() and char not in accepted_non_ascii for char in clean
+    )
+    if unusual > max(1, len(clean) // 12):
+        return False
+    if len(clean) >= 20 and sum(char.isspace() for char in clean) / len(clean) > 0.38:
+        return False
+    return True
+
+
 def _mostly_padding_or_symbols(text: str) -> bool:
     meaningful = sum(1 for char in text if char.isalnum())
     return meaningful / max(1, len(text)) < 0.35
@@ -896,6 +992,7 @@ def extract_pointer_table(
     known_pointer_sources: set[int],
 ) -> tuple[list[dict], int]:
     entries = []
+    entries_by_target: dict[int, dict] = {}
     for index in range(table.count):
         source = table.start + index * table.stride
         target = pointer_at(rom, source)
@@ -907,10 +1004,15 @@ def extract_pointer_table(
         else:
             result = decode_pcs(rom, target, DEFAULT_MAX_TEXT_LENGTH)
             byte_length = result.byte_length
+            if table.merge_duplicates and target in entries_by_target:
+                entry = entries_by_target[target]
+                entry["pointer_sources"].append(format_offset(source))
+                if no_relocation_pointer_sources([source]):
+                    entry["no_relocation"] = True
+                continue
             known_targets.add(target)
 
-        entries.append(
-            make_entry(
+        entry = make_entry(
                 f"tbl_{table.category}_{next_table_id:05d}",
                 table.category,
                 target,
@@ -921,7 +1023,9 @@ def extract_pointer_table(
                 table.table_name,
                 index,
             )
-        )
+        entries.append(entry)
+        if target:
+            entries_by_target[target] = entry
         next_table_id += 1
     return entries, next_table_id
 
@@ -1012,9 +1116,11 @@ def scan_pointer_texts(
     max_length: int,
     start_index: int,
     all_pointers: bool = False,
+        include_aligned_pointer_text: bool = True,
     occupied_ranges: list[tuple[int, int]] | None = None,
 ) -> tuple[list[dict], Counter]:
     sources_by_target: dict[int, list[int]] = defaultdict(list)
+    normal_targets: set[int] = set()
     stats = Counter()
 
     for source in range(0, len(rom) - 3):
@@ -1023,12 +1129,19 @@ def scan_pointer_texts(
         target = pointer_at(rom, source)
         if target is None:
             continue
-        if not all_pointers and not is_text_pointer_source(rom, source, target):
+        normal_source = all_pointers or is_text_pointer_source(rom, source, target)
+        aligned_source = include_aligned_pointer_text and source % 4 == 0
+        if not normal_source and not aligned_source:
             continue
-        stats["raw_pointers"] += 1
+        if normal_source:
+            stats["raw_pointers"] += 1
+        else:
+            stats["aligned_pointer_candidates"] += 1
         if target < min_target or target in known_targets:
             continue
         sources_by_target[target].append(source)
+        if normal_source:
+            normal_targets.add(target)
 
     entries = []
     script_index = 0
@@ -1038,13 +1151,20 @@ def scan_pointer_texts(
             stats["overlap_targets"] += 1
             continue
         result = decode_pcs(rom, target, max_length)
-        if not looks_like_pointer_text(result):
+        is_aligned_only = target not in normal_targets
+        validator = looks_like_aligned_pointer_text if is_aligned_only else looks_like_pointer_text
+        if not validator(result):
             stats["rejected_targets"] += 1
             continue
+        category = (
+            "pointer_texts"
+            if is_aligned_only
+            else pointer_text_category(rom, target, sources_by_target[target])
+        )
         entries.append(
             make_entry(
                 f"scr_{start_index + script_index:05d}",
-                pointer_text_category(rom, target, sources_by_target[target]),
+                category,
                 target,
                 result,
                 result.byte_length,
@@ -1055,6 +1175,8 @@ def scan_pointer_texts(
         occupied.append((target, target + result.byte_length))
         occupied.sort()
         script_index += 1
+        if is_aligned_only:
+            stats["aligned_pointer_text_accepted"] += 1
     stats["accepted_targets"] = len(entries)
     stats["accepted_pointer_sources"] = sum(len(entry["pointer_sources"]) for entry in entries)
     return entries, stats
@@ -1068,6 +1190,7 @@ def is_text_pointer_source(rom: bytes, source: int, target: int) -> bool:
     return (
         is_script_text_pointer_source(rom, source)
         or is_additional_text_pointer_source(source, target)
+        or is_structured_text_pointer_source(source, target)
         or is_mission_name_pointer_source(rom, source)
     )
 
@@ -1091,6 +1214,13 @@ def is_additional_text_pointer_source(source: int, target: int) -> bool:
         source % 4 == 0
         and any(start <= source < end for start, end in ADDITIONAL_TEXT_POINTER_SOURCE_RANGES)
         and any(start <= target < end for start, end in ADDITIONAL_TEXT_POINTER_TARGET_RANGES)
+    )
+
+
+def is_structured_text_pointer_source(source: int, target: int) -> bool:
+    return any(
+        source_start <= source < source_end and target_start <= target < target_end
+        for source_start, source_end, target_start, target_end in STRUCTURED_TEXT_POINTER_RANGES
     )
 
 
@@ -1144,6 +1274,42 @@ def entry_ranges(entries: list[dict]) -> tuple[dict[int, dict], list[tuple[int, 
         if length > 0:
             ranges.append((start, start + length, entry))
     return by_start, ranges
+
+
+def merge_entries_by_address(entries: list[dict]) -> list[dict]:
+    """Keep one translation owner per ROM string and union all pointer sources."""
+    merged: list[dict] = []
+    index_by_address: dict[str, int] = {}
+
+    def specificity(entry: dict) -> tuple[int, int]:
+        return (
+            int(bool(entry.get("table_name"))),
+            int(entry.get("category") not in {"scripts", "pointer_texts"}),
+        )
+
+    for entry in entries:
+        address = entry.get("address")
+        if not address or not entry.get("byte_length") or address not in index_by_address:
+            if address and entry.get("byte_length"):
+                index_by_address[address] = len(merged)
+            merged.append(entry)
+            continue
+
+        index = index_by_address[address]
+        current = merged[index]
+        preferred = (
+            entry if specificity(entry) > specificity(current) else current
+        )
+        sources = list(
+            dict.fromkeys(current.get("pointer_sources", []) + entry.get("pointer_sources", []))
+        )
+        preferred["pointer_sources"] = sources
+        preferred["is_pointer_based"] = bool(sources)
+        if current.get("no_relocation") or entry.get("no_relocation"):
+            preferred["no_relocation"] = True
+        merged[index] = preferred
+
+    return merged
 
 
 def menu_audit_case_variants(text: str) -> list[str]:
@@ -1314,7 +1480,12 @@ def main() -> None:
     parser.add_argument(
         "--all-pointers",
         action="store_true",
-        help="Scan every GBA pointer instead of only script loadpointer sources. This is very noisy.",
+        help="Scan every byte-offset GBA pointer, including unaligned candidates. This is very noisy.",
+    )
+    parser.add_argument(
+        "--no-aligned-pointer-text",
+        action="store_true",
+        help="Disable the default strict scan of aligned pointer-owned text.",
     )
     parser.add_argument(
         "--indent",
@@ -1406,6 +1577,7 @@ def main() -> None:
         args.max_text_length,
         next_table_id,
         args.all_pointers,
+        not args.no_aligned_pointer_text,
         occupied_ranges,
     )
     entries.extend(script_entries)
@@ -1433,6 +1605,7 @@ def main() -> None:
         )
         entries.extend(orphan_entries)
 
+    entries = merge_entries_by_address(entries)
     output = {"entries": entries}
     if args.indent == 0:
         text = json.dumps(output, ensure_ascii=False, separators=(",", ":")) + "\n"
@@ -1449,6 +1622,8 @@ def main() -> None:
     print(f"Pointer candidates: {pointer_stats['raw_pointers']}")
     print(f"Pointer text accepted: {pointer_stats['accepted_targets']}")
     print(f"Pointer text rejected: {pointer_stats['rejected_targets']}")
+    print(f"Aligned pointer candidates: {pointer_stats['aligned_pointer_candidates']}")
+    print(f"Aligned pointer text accepted: {pointer_stats['aligned_pointer_text_accepted']}")
     if pointer_stats["overlap_targets"]:
         print(f"Pointer text overlapped existing text: {pointer_stats['overlap_targets']}")
     if args.include_orphans:

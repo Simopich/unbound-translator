@@ -1,4 +1,0 @@
-interface:
-  display_name: "Unbound Menu Extraction"
-  short_description: "Audit and extend ROM menu text extraction coverage."
-  default_prompt: "Use $unbound-menu-extraction to audit missing Pokemon Unbound menu text."

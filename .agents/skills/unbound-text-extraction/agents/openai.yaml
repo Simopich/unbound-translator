@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unbound Text Extraction"
+  short_description: "Audit and extend all ROM text extraction coverage."
+  default_prompt: "Use $unbound-text-extraction to find, classify, and extract missing Pokemon Unbound text."
