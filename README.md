@@ -262,6 +262,11 @@ before allocating relocated text. Each behavior lives in one patch file; languag
 none.
 Applied files and their ROM offsets are recorded in map output.
 
+Italian `pokedex_category_order.py` swaps the Pokédex render operands and changes the fixed suffix to `Pokémon `, so
+species categories use official Italian order (`Pokémon Ratto`, not `Ratto Pokémon`). The patch owns `scr_415F8F` so
+generic text injection cannot overwrite its required trailing space. Controlfix strips redundant leading/trailing
+`Pokémon` from category fields because the renderer supplies that prefix.
+
 Relocation excludes `0x230000-0x500000` (battle graphics) and `0x1000000-0x1FE0000` (CFRU/Unbound reserved data), even
 when those regions contain long `0xFF` runs. The allocator also leaves an eight-byte margin at both ends of each run.
 Like the validated advanced translator, it scans eligible runs in ROM-address order and uses first-fit allocation with
@@ -274,6 +279,11 @@ French ROM. Over-budget text is compacted at token-safe word boundaries; longer 
 
 Controlfix removes excess `[player]`/`[rival]` tokens invented by translation while preserving source counts. This
 prevents dynamic PC labels, residence signs, and possessive messages from rendering names twice.
+
+Pokédex descriptions follow limits measured from the working French ROM: at most 3 lines, 43 visible characters per
+line, and 124 visible characters total. Over-budget translations preserve their beginning and ending with a middle
+ellipsis. Tune with `--pokedex-description-wrap-width`, `--pokedex-description-max-lines`, and
+`--pokedex-description-max-total`.
 
 ## Tests
 

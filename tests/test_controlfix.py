@@ -16,6 +16,9 @@ def _args(**overrides):
         "no_wrap": False,
         "wrap_width": 12,
         "description_wrap_width": 12,
+        "pokedex_description_wrap_width": 43,
+        "pokedex_description_max_lines": 3,
+        "pokedex_description_max_total": 124,
         "item_description_wrap_width": 14,
         "item_description_max_lines": 3,
     }
@@ -51,6 +54,12 @@ def test_remove_excess_dynamic_name_keeps_possessive_position():
     assert changed and rival_changed
     assert fixed == "PC di [player]"
     assert rival_fixed == "Casa di [rival]"
+
+
+def test_pokedex_category_keeps_only_category_text():
+    assert controlfix.normalize_pokedex_category("Pokémon Ratto") == ("Ratto", True)
+    assert controlfix.normalize_pokedex_category("Ratto Pokémon") == ("Ratto", True)
+    assert controlfix.normalize_pokedex_category("Ratto") == ("Ratto", False)
 
 
 def test_wrap_translation_uses_dialogue_layout_for_scripts():
@@ -94,6 +103,28 @@ def test_wrap_translation_uses_plain_line_breaks_for_plain_scripts_and_descripti
     assert not skipped
     assert "\\l" not in item_wrapped
     assert item_wrapped == "cura ogni\nproblema di\nstato del\npokemon"
+
+
+def test_pokedex_description_uses_french_observed_three_line_budget():
+    text = (
+        "La composizione delle sue cellule è simile a quella delle molecole "
+        "d{B4}acqua. Di conseguenza, quando si scioglie nell{B4}acqua, non può essere visto."
+    )
+    wrapped, changed, _long_words, skipped = controlfix.wrap_translation(
+        text,
+        {"category": "pokedex_descriptions", "table_index": 133},
+        "Source description",
+        _args(),
+        {"pokedex_descriptions"},
+    )
+
+    lines = wrapped.splitlines()
+    assert changed
+    assert not skipped
+    assert len(lines) <= 3
+    assert max(map(controlfix.visible_width, lines)) <= 43
+    assert controlfix.visible_width(wrapped.replace("\n", " ")) <= 124
+    assert "..." in wrapped
 
 
 def test_menu_and_battle_layout_repairs():

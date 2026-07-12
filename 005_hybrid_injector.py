@@ -4,7 +4,7 @@ import argparse
 import importlib.util
 import json
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 from lib.pcs_text import Charmap, fc_arg_count
@@ -345,6 +345,8 @@ class RuntimePatchContext:
     free_blocks: list
     alignment: int
     dry_run: bool
+    handled_entry_ids: set[str] = field(default_factory=set)
+
     def encode_text(self, text):
         return encode_text(self.cmap, text)
 
@@ -555,10 +557,13 @@ def main():
     entries = prioritize_entries(list(iter_entries(data)))
     cmap = Charmap(target_lang=args.target_lang)
     free_blocks = build_free_blocks(rom, entries, min_free_run, min_address)
+    patch_context = RuntimePatchContext(
+        rom, cmap, free_blocks, args.alignment, args.dry_run
+    )
     runtime_patches = apply_language_patches(
         Path(__file__).resolve().parent / "patches",
         args.target_lang.lower(),
-        RuntimePatchContext(rom, cmap, free_blocks, args.alignment, args.dry_run),
+        patch_context,
     )
 
     stats = {
@@ -571,6 +576,7 @@ def main():
         "in_place": 0,
         "unchanged": 0,
         "skipped_empty": 0,
+        "skipped_runtime_patch": 0,
         "skipped_unsafe": 0,
         "skipped_duplicate_fixed": 0,
         "skipped_pointer_mismatch": 0,
@@ -593,6 +599,10 @@ def main():
     seen_fixed_slots = set()
 
     for entry in entries:
+        if entry.get("id") in patch_context.handled_entry_ids:
+            stats["skipped_runtime_patch"] += 1
+            continue
+
         translated = strip_hma_quotes(entry.get("translated", ""))
         if not translated:
             stats["skipped_empty"] += 1
@@ -752,6 +762,7 @@ def main():
     print(f"In-place patched       : {stats['in_place']}")
     print(f"Unchanged              : {stats['unchanged']}")
     print(f"Skipped empty          : {stats['skipped_empty']}")
+    print(f"Handled by patch       : {stats['skipped_runtime_patch']}")
     print(f"Skipped unsafe         : {stats['skipped_unsafe']}")
     print(f"Skipped duplicate fixed: {stats['skipped_duplicate_fixed']}")
     print(f"Pointer mismatches     : {stats['skipped_pointer_mismatch']}")

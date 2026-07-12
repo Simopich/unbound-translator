@@ -110,9 +110,16 @@ When resuming LLM translation, use the same input and output paths with `--resum
   rendering.
 - Controlfix removes excess `[player]`/`[rival]` tokens invented by translation while preserving source counts, avoiding
   duplicate names in PC labels, residence signs, and possessive messages.
+- Pokédex descriptions use working-French-ROM limits of 3 lines, 43 visible characters per line, and 124 visible
+  characters total. Over-budget text keeps its beginning and ending with a middle ellipsis; tune with the dedicated
+  `--pokedex-description-wrap-width`, `--pokedex-description-max-lines`, and `--pokedex-description-max-total` options.
 - Keep language-specific ROM behavior in one file per patch under `patches/<language>/`, not in shared scripts or
   translation JSON. The injector applies every patch file for the selected `--target-lang` in filename order and records
   them in map output.
+- Italian `pokedex_category_order.py` swaps the category/suffix render operands and writes trailing-space `Pokémon `,
+  producing `Pokémon Ratto`; it owns `scr_415F8F` so generic injection cannot overwrite the suffix slot. Controlfix
+  strips
+  redundant leading/trailing `Pokémon` from `pokedex_species` values because the renderer supplies the prefix.
 - Always run `004_controlfix_translations.py` after LLM translation before injecting.
 - `006_decontrolfix_translations.py` is an editable cleanup pass for already-controlfixed JSON, not a perfect inverse: wrapping/layout tokens can be removed, but prior trims and repairs cannot be reconstructed.
 - During injection, `plain_scripts` blank lines are encoded as repeated newline bytes (`0xFE 0xFE`) instead of the paragraph/prompt byte (`0xFB`), because the full-screen renderer shows the bottom arrow and can overflow when it receives `0xFB`.

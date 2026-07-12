@@ -48,7 +48,7 @@ COLOR_TOKENS = {
 }
 
 DEFAULT_WRAP_CATEGORIES = (
-    "scripts,plain_scripts,move_descriptions,ability_descriptions,item_descriptions,"
+    "scripts,plain_scripts,pokedex_descriptions,move_descriptions,ability_descriptions,item_descriptions,"
     "mission_descriptions,mission_objectives,menu_pokemon_summary,battle_messages,trade_messages"
 )
 DESCRIPTION_CATEGORIES = {
@@ -59,6 +59,7 @@ DESCRIPTION_CATEGORIES = {
     "mission_objectives",
 }
 PLAIN_LINE_WRAP_CATEGORIES = DESCRIPTION_CATEGORIES | {
+    "pokedex_descriptions",
     "battle_messages",
     "menu_pokemon_summary",
 }
@@ -362,6 +363,12 @@ def remove_excess_name_tokens(text, original):
     return text, changed
 
 
+def normalize_pokedex_category(text):
+    fixed = re.sub(r"^Pokémon\s+", "", text, flags=re.IGNORECASE)
+    fixed = re.sub(r"\s+Pokémon$", "", fixed, flags=re.IGNORECASE)
+    return fixed, fixed != text
+
+
 def normalize_actual_layout_breaks(text):
     text = text.replace("\r\n", "\n").replace("\r", "\n")
 
@@ -448,6 +455,8 @@ def should_skip_wrap(text):
 
 
 def wrap_width_for_entry(entry, args):
+    if entry.get("category") == "pokedex_descriptions":
+        return args.pokedex_description_wrap_width
     if entry.get("category") == "item_descriptions":
         return args.item_description_wrap_width
     if entry.get("category") in DESCRIPTION_CATEGORIES:
@@ -522,7 +531,52 @@ def pack_words_into_max_lines(text, max_lines):
     return lines
 
 
+def compact_words_in_middle(text, max_total):
+    words = text.split()
+    if not words or visible_width(" ".join(words)) <= max_total:
+        return " ".join(words)
+
+    marker = "..."
+    candidates = []
+    for prefix_count in range(1, len(words)):
+        for suffix_count in range(1, len(words) - prefix_count):
+            candidate = " ".join(
+                words[:prefix_count] + [marker] + words[len(words) - suffix_count:]
+            )
+            width = visible_width(candidate)
+            if width <= max_total:
+                kept = prefix_count + suffix_count
+                balance = abs(prefix_count - suffix_count)
+                candidates.append((-kept, balance, -width, candidate))
+    if not candidates:
+        return marker
+    return min(candidates)[-1]
+
+
+def fit_pokedex_description_lines(text, width, max_lines, max_total):
+    original = " ".join(text.split())
+    for total_budget in range(max_total, 0, -1):
+        compacted = compact_words_in_middle(original, total_budget)
+        lines, long_words = wrap_words(compacted, width)
+        if max_lines > 0 and len(lines) > max_lines:
+            lines = pack_words_into_max_lines(compacted, max_lines)
+            long_words = sum(1 for line in lines if visible_width(line) > width)
+        if (
+                (max_lines <= 0 or len(lines) <= max_lines)
+                and max((visible_width(line) for line in lines), default=0) <= width
+        ):
+            return lines, long_words
+    return ["..."], 0
+
+
 def wrap_words_for_entry(text, entry, args):
+    if entry.get("category") == "pokedex_descriptions":
+        return fit_pokedex_description_lines(
+            text,
+            args.pokedex_description_wrap_width,
+            args.pokedex_description_max_lines,
+            args.pokedex_description_max_total,
+        )
     width = wrap_width_for_entry(entry, args)
     lines, long_words = wrap_words(text, width)
     if (
@@ -696,6 +750,24 @@ def main():
         help="Visible character width for move/ability descriptions. Default: 24.",
     )
     parser.add_argument(
+        "--pokedex-description-wrap-width",
+        type=int,
+        default=43,
+        help="Visible character width for Pokédex descriptions. Default: 43.",
+    )
+    parser.add_argument(
+        "--pokedex-description-max-lines",
+        type=int,
+        default=3,
+        help="Maximum wrapped lines for Pokédex descriptions. Default: 3.",
+    )
+    parser.add_argument(
+        "--pokedex-description-max-total",
+        type=int,
+        default=124,
+        help="Maximum total visible Pokédex description length. Default: 124.",
+    )
+    parser.add_argument(
         "--item-description-wrap-width",
         type=int,
         default=34,
@@ -750,6 +822,7 @@ def main():
         "split_controls": 0,
         "sequence_repairs": 0,
         "excess_name_token_repairs": 0,
+        "pokedex_category_repairs": 0,
         "deduped_controls": 0,
         "cc_hex_escapes": 0,
         "apostrophe_repairs": 0,
@@ -803,6 +876,11 @@ def main():
         next_text, excess_names_repaired = remove_excess_name_tokens(text, original)
         stats["excess_name_token_repairs"] += int(excess_names_repaired)
         text = next_text
+
+        if entry.get("category") == "pokedex_species":
+            next_text, category_repaired = normalize_pokedex_category(text)
+            stats["pokedex_category_repairs"] += int(category_repaired)
+            text = next_text
 
         next_text, deduped = collapse_duplicate_state_controls(text)
         stats["deduped_controls"] += int(deduped)
