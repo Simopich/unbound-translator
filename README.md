@@ -280,6 +280,11 @@ French ROM. Over-budget text is compacted at token-safe word boundaries; longer 
 Controlfix removes excess `[player]`/`[rival]` tokens invented by translation while preserving source counts. This
 prevents dynamic PC labels, residence signs, and possessive messages from rendering names twice.
 
+For Italian stat changes, the conjugated verb lives in the battle template before the engine-built intensity buffer.
+This renders `aumenta di molto!` / `diminuisce di molto!`; the modifier carries a leading space and the `!` buffer has
+none. The move-use template does not add punctuation already supplied by its move buffer, and `Cosa deve fare` keeps the
+Pokémon name alone on line 2.
+
 Pokédex descriptions follow limits measured from the working French ROM: at most 3 lines, 43 visible characters per
 line, and 124 visible characters total. Over-budget translations preserve their beginning and ending with a middle
 ellipsis. Tune with `--pokedex-description-wrap-width`, `--pokedex-description-max-lines`, and

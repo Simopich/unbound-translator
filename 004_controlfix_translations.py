@@ -27,6 +27,10 @@ QUOTE_TOKENS = {"\\qo", "\\qc"}
 BATTLE_PROMPT_NAME_SECOND_LINE_IDS = {
     "tbl_battle_messages_00412_3FE6D5",
 }
+INVERTED_STAT_MODIFIER_IDS = {
+    "tbl_battle_messages_00224_3FCB41",
+    "tbl_battle_messages_00226_3FCB50",
+}
 COLOR_TOKENS = {
     "[white]",
     "[white2]",
@@ -369,6 +373,24 @@ def normalize_pokedex_category(text):
     return fixed, fixed != text
 
 
+def restore_short_battle_fragment_spacing(text, original, entry):
+    if entry.get("category") != "battle_messages":
+        return text, False
+    source = strip_hma_quotes(original)
+    if entry.get("id") in INVERTED_STAT_MODIFIER_IDS:
+        fixed = " " + text.strip()
+        return fixed, fixed != text
+    if visible_width(source.strip()) > 20:
+        return text, False
+
+    fixed = text
+    if source.startswith(" ") and not fixed.startswith(" "):
+        fixed = " " + fixed
+    if source.endswith(" ") and not fixed.endswith(" "):
+        fixed += " "
+    return fixed, fixed != text
+
+
 def normalize_actual_layout_breaks(text):
     text = text.replace("\r\n", "\n").replace("\r", "\n")
 
@@ -638,6 +660,11 @@ def restore_battle_prompt_layout(text, _original, entry):
         return text, False
 
     prompt = text[: match.start()].strip()
+    while prompt.endswith(("\\n", "\\l", "\n")):
+        if prompt.endswith(("\\n", "\\l")):
+            prompt = prompt[:-2].rstrip()
+        else:
+            prompt = prompt[:-1].rstrip()
     pokemon = match.group(0)
     trailing = text[match.end() :].strip()
     if trailing and set(trailing) <= set("?!."):
@@ -823,6 +850,7 @@ def main():
         "sequence_repairs": 0,
         "excess_name_token_repairs": 0,
         "pokedex_category_repairs": 0,
+        "battle_fragment_spacing_repairs": 0,
         "deduped_controls": 0,
         "cc_hex_escapes": 0,
         "apostrophe_repairs": 0,
@@ -932,6 +960,12 @@ def main():
             text, original, entry
         )
         stats["battle_prompt_layout_repairs"] += int(battle_prompt_layout_restored)
+        text = next_text
+
+        next_text, fragment_spacing_repaired = restore_short_battle_fragment_spacing(
+            text, original, entry
+        )
+        stats["battle_fragment_spacing_repairs"] += int(fragment_spacing_repaired)
         text = next_text
 
         if text != before:

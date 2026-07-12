@@ -62,6 +62,27 @@ def test_pokedex_category_keeps_only_category_text():
     assert controlfix.normalize_pokedex_category("Ratto") == ("Ratto", False)
 
 
+def test_short_battle_fragments_preserve_assembly_spaces():
+    sharp, sharp_changed = controlfix.restore_short_battle_fragment_spacing(
+        "di molto", "sharply ", {"category": "battle_messages"}
+    )
+    little, little_changed = controlfix.restore_short_battle_fragment_spacing(
+        "poco!", " little!", {"category": "battle_messages"}
+    )
+
+    assert sharp_changed and little_changed
+    assert sharp + "aumenta!" == "di molto aumenta!"
+    assert little == " poco!"
+
+    modifier, modifier_changed = controlfix.restore_short_battle_fragment_spacing(
+        "di molto ",
+        "sharply ",
+        {"id": "tbl_battle_messages_00224_3FCB41", "category": "battle_messages"},
+    )
+    assert modifier_changed
+    assert "aumenta" + modifier + "!" == "aumenta di molto!"
+
+
 def test_wrap_translation_uses_dialogue_layout_for_scripts():
     wrapped, changed, long_words, skipped = controlfix.wrap_translation(
         "uno due tre quattro cinque sei",
@@ -143,6 +164,14 @@ def test_menu_and_battle_layout_repairs():
     )
     assert battle_changed
     assert battle_text == "Cosa farà\n\\\\12?"
+
+    repaired, changed = controlfix.restore_battle_prompt_layout(
+        "Cosa deve fare\\n\n\\\\12?",
+        "What will\n\\\\12 do?",
+        {"id": "tbl_battle_messages_00412_3FE6D5"},
+    )
+    assert changed
+    assert repaired == "Cosa deve fare\n\\\\12?"
 
 
 def test_mission_and_start_menu_labels_are_trimmed_to_width():

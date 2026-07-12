@@ -391170,7 +391170,7 @@
       "table_name": "data.battle.text.messages",
       "table_index": 224,
       "translation_source": "sharply",
-      "translated": "di molto"
+      "translated": " di molto"
     },
     {
       "id": "tbl_battle_messages_00225_3FCB4A",
@@ -391186,7 +391186,7 @@
       "table_name": "data.battle.text.messages",
       "table_index": 225,
       "translation_source": "rose!",
-      "translated": "aumenta!"
+      "translated": "!"
     },
     {
       "id": "tbl_battle_messages_00226_3FCB50",
@@ -391201,7 +391201,7 @@
       "table_name": "data.battle.text.messages",
       "table_index": 226,
       "translation_source": "harshly",
-      "translated": "gravemente"
+      "translated": " di molto"
     },
     {
       "id": "tbl_battle_messages_00227_3FCB59",
@@ -391245,7 +391245,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "\\\\00 di \\\\0F [player]"
+      "translated": "\\\\00 di \\\\0F\naumenta[player]"
     },
     {
       "id": "tbl_battle_messages_00229_3FCB6A",
@@ -391276,7 +391276,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "\\\\00 di \\\\10 [player]"
+      "translated": "\\\\00 di \\\\10\naumenta[player]"
     },
     {
       "id": "tbl_battle_messages_00231_3FCB8F",
@@ -391305,7 +391305,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "\\\\00 di \\\\0F cala[player]"
+      "translated": "\\\\00 di \\\\0F\ndiminuisce[player]"
     },
     {
       "id": "tbl_battle_messages_00232_3FCB9A",
@@ -391334,7 +391334,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "\\\\00 di \\\\10 cala[player]"
+      "translated": "\\\\00 di \\\\10\ndiminuisce[player]"
     },
     {
       "id": "tbl_battle_messages_00233_3FCBA5",
@@ -392386,7 +392386,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "\\\\0F usa [player]!"
+      "translated": "\\\\0F usa [player]"
     },
     {
       "id": "tbl_battle_messages_00344_3FD590",

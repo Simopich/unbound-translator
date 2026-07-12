@@ -110,6 +110,10 @@ When resuming LLM translation, use the same input and output paths with `--resum
   rendering.
 - Controlfix removes excess `[player]`/`[rival]` tokens invented by translation while preserving source counts, avoiding
   duplicate names in PC labels, residence signs, and possessive messages.
+- Controlfix restores source boundary spaces on short `battle_messages` fragments. Italian stat templates carry
+  `aumenta`/`diminuisce` before a leading-space intensity buffer, producing `aumenta di molto!` / `diminuisce di molto!`
+  without a space before `!`. The move-use template must not duplicate buffer punctuation, and the battle action prompt
+  keeps the Pokémon token alone on line 2.
 - Pokédex descriptions use working-French-ROM limits of 3 lines, 43 visible characters per line, and 124 visible
   characters total. Over-budget text keeps its beginning and ending with a middle ellipsis; tune with the dedicated
   `--pokedex-description-wrap-width`, `--pokedex-description-max-lines`, and `--pokedex-description-max-total` options.
