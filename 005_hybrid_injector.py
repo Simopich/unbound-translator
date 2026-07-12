@@ -11,8 +11,15 @@ from lib.pcs_text import Charmap, fc_arg_count
 
 GBA_POINTER_BASE = 0x08000000
 DEFAULT_MIN_ADDRESS = 0x100
-DEFAULT_MIN_FREE_RUN = 0x1000
+DEFAULT_MIN_FREE_RUN = 0x400
+DEFAULT_FREE_RUN_MARGIN = 8
+# These FF runs contain engine-owned graphics or CFRU/Unbound reserved data.
+FREE_SPACE_EXCLUDE_RANGES = (
+    (0x230000, 0x500000),
+    (0x1000000, 0x1FE0000),
+)
 TERMINATOR = 0xFF
+ABILITY_DESCRIPTION_MAX_BYTES = 46
 
 
 def parse_address(value):
@@ -151,6 +158,36 @@ def fit_to_slot(encoded, max_size, pad_byte):
     return encoded.ljust(max_size, bytes((pad_byte,)))
 
 
+def compact_ability_description(encoded, period_encoded, max_size=ABILITY_DESCRIPTION_MAX_BYTES):
+    """Fit Summary ability text to its validated copied-text buffer budget."""
+    if len(encoded) <= max_size:
+        return encoded
+
+    body = encoded[:-1] if encoded.endswith(bytes((TERMINATOR,))) else encoded
+    period = period_encoded[:-1] if period_encoded.endswith(bytes((TERMINATOR,))) else period_encoded
+    marker = b"\x00" + period * 3 + b"\x00"
+    content_budget = max_size - len(marker) - 1
+    boundaries = [index for index, byte in enumerate(body) if byte in (0x00, 0xFE)]
+    candidates = []
+    for left in boundaries:
+        for right_separator in boundaries:
+            right = right_separator + 1
+            if right <= left:
+                continue
+            used = left + len(body) - right
+            if used > content_budget:
+                continue
+            balance = abs(left - (len(body) - right))
+            candidates.append((-used, balance, left, right))
+
+    if candidates:
+        _neg_used, _balance, left, right = min(candidates)
+        compacted = body[:left] + marker + body[right:]
+        return compacted.rstrip(b"\x00\xFE") + bytes((TERMINATOR,))
+
+    return truncate_encoded(encoded, max_size)
+
+
 def iter_entries(data):
     for table in data.get("tables", []):
         for entry in table.get("entries", []):
@@ -250,34 +287,26 @@ def protected_entry_ranges(entries, rom_size, min_address):
 
 def build_free_blocks(rom, entries, min_run, min_address):
     runs = find_byte_runs(rom, 0xFF, min_run, min_address)
+    runs = subtract_ranges(runs, FREE_SPACE_EXCLUDE_RANGES)
     protected = protected_entry_ranges(entries, len(rom), min_address)
     runs = subtract_ranges(runs, protected)
-    runs = [(start, end) for start, end in runs if end - start >= min_run]
-    runs.sort(key=lambda item: item[1] - item[0], reverse=True)
+    runs = [
+        (start + DEFAULT_FREE_RUN_MARGIN, end - DEFAULT_FREE_RUN_MARGIN)
+        for start, end in runs
+        if end - start >= min_run
+           and end - start > 2 * DEFAULT_FREE_RUN_MARGIN
+    ]
+    runs.sort()
     return [FreeBlock(start, end, start) for start, end in runs]
 
 
 def allocate(blocks, size, alignment):
-    best_index = None
-    best_waste = None
-    best_aligned = None
-
-    for index, block in enumerate(blocks):
+    for block in blocks:
         aligned = align_up(block.cursor, alignment)
-        if aligned + size > block.end:
-            continue
-        waste = block.end - (aligned + size)
-        if best_waste is None or waste < best_waste:
-            best_index = index
-            best_waste = waste
-            best_aligned = aligned
-
-    if best_index is None:
-        return None
-
-    block = blocks[best_index]
-    block.cursor = best_aligned + size
-    return best_aligned
+        if aligned + size <= block.end:
+            block.cursor = aligned + size
+            return aligned
+    return None
 
 
 def allocate_near(blocks, size, alignment, origin, max_distance=0x3FFFFE):
@@ -316,7 +345,6 @@ class RuntimePatchContext:
     free_blocks: list
     alignment: int
     dry_run: bool
-
     def encode_text(self, text):
         return encode_text(self.cmap, text)
 
@@ -379,6 +407,26 @@ def current_pointer_matches(rom, pointer_offset, expected_pointer):
         return False
     current = int.from_bytes(rom[pointer_offset : pointer_offset + 4], "little")
     return current == expected_pointer
+
+
+def is_ewram_word(rom, offset):
+    if offset < 0 or offset + 4 > len(rom):
+        return False
+    value = int.from_bytes(rom[offset: offset + 4], "little")
+    return 0x02000000 <= value < 0x02040000
+
+
+def plausible_pointer_source(rom, source):
+    """Reject raw pointer-scan matches that would overwrite code or live data."""
+    return (
+            source % 4 == 0
+            or (source >= 2 and rom[source - 2] == 0x0F and rom[source - 1] == 0x00)
+            or (source >= 2 and rom[source - 2] == 0x85 and rom[source - 1] <= 0x0F)
+            or (source >= 1 and rom[source - 1] == 0x67)
+            or (source >= 6 and rom[source - 6] == 0x5C)
+            or (source >= 10 and rom[source - 10] == 0x5C)
+            or is_ewram_word(rom, source - 4)
+    )
 
 
 def is_duplicate_slot(entry, seen_slots):
@@ -448,7 +496,7 @@ def main():
     parser.add_argument(
         "--min-free-run",
         default=hex(DEFAULT_MIN_FREE_RUN),
-        help="Minimum FF run used for relocated text. Default: 0x1000",
+        help="Minimum FF run used for relocated text. Default: 0x400",
     )
     parser.add_argument(
         "--min-address",
@@ -510,13 +558,7 @@ def main():
     runtime_patches = apply_language_patches(
         Path(__file__).resolve().parent / "patches",
         args.target_lang.lower(),
-        RuntimePatchContext(
-            rom=rom,
-            cmap=cmap,
-            free_blocks=free_blocks,
-            alignment=args.alignment,
-            dry_run=args.dry_run,
-        ),
+        RuntimePatchContext(rom, cmap, free_blocks, args.alignment, args.dry_run),
     )
 
     stats = {
@@ -532,6 +574,7 @@ def main():
         "skipped_unsafe": 0,
         "skipped_duplicate_fixed": 0,
         "skipped_pointer_mismatch": 0,
+        "skipped_implausible_pointer": 0,
         "skipped_no_space": 0,
         "no_space_by_category": {},
         "skipped_bounds": 0,
@@ -539,6 +582,7 @@ def main():
         "fixed_truncated": 0,
         "no_relocation_in_place": 0,
         "no_relocation_truncated": 0,
+        "ability_descriptions_compacted": 0,
         "runtime_patches": len(runtime_patches),
     }
 
@@ -567,6 +611,14 @@ def main():
                 translated,
                 plain_script=entry.get("category") == "plain_scripts",
             )
+            if entry.get("category") == "ability_descriptions":
+                compacted = compact_ability_description(
+                    encoded,
+                    encode_text(cmap, "."),
+                )
+                if compacted != encoded:
+                    stats["ability_descriptions_compacted"] += 1
+                    encoded = compacted
         except Exception as exc:
             stats["encode_errors"] += 1
             if args.verbose:
@@ -580,13 +632,26 @@ def main():
         sources = [parse_address(source) for source in pointer_sources(entry)]
         if should_relocate_pointer_entry(entry, encoded, args.pointer_policy):
             expected_pointer = GBA_POINTER_BASE + address
-            if not sources or not all(
-                current_pointer_matches(rom, source, expected_pointer) for source in sources
-            ):
+            matching_sources = [
+                source
+                for source in sources
+                if current_pointer_matches(rom, source, expected_pointer)
+            ]
+            plausible_sources = [
+                source
+                for source in matching_sources
+                if plausible_pointer_source(rom, source)
+            ]
+            if matching_sources and not plausible_sources:
+                stats["skipped_implausible_pointer"] += 1
+                continue
+            if not sources or len(matching_sources) != len(sources):
                 stats["skipped_pointer_mismatch"] += 1
                 if len(mismatch_samples) < 20:
                     mismatch_samples.append(entry.get("id", "?"))
                 continue
+
+            sources = plausible_sources
 
             relocated_offset = allocate(free_blocks, len(encoded), args.alignment)
             if relocated_offset is None:
@@ -690,6 +755,7 @@ def main():
     print(f"Skipped unsafe         : {stats['skipped_unsafe']}")
     print(f"Skipped duplicate fixed: {stats['skipped_duplicate_fixed']}")
     print(f"Pointer mismatches     : {stats['skipped_pointer_mismatch']}")
+    print(f"Implausible pointers   : {stats['skipped_implausible_pointer']}")
     print(f"Skipped no space       : {stats['skipped_no_space']}")
     if stats["no_space_by_category"]:
         print("No-space categories   :")
@@ -702,6 +768,7 @@ def main():
     print(f"Fixed truncated        : {stats['fixed_truncated']}")
     print(f"No-reloc in-place      : {stats['no_relocation_in_place']}")
     print(f"No-reloc truncated     : {stats['no_relocation_truncated']}")
+    print(f"Ability desc compacted : {stats['ability_descriptions_compacted']}")
     print(f"Runtime patches        : {stats['runtime_patches']}")
     if truncation_samples:
         print("Fixed truncation sample:")

@@ -25,7 +25,12 @@ This repository is `unbound-translator`, a Python toolchain for translating Poke
   real tokens, validates returned batches, and retries model output that drops/adds protected placeholders or tokens.
 - `004_controlfix_translations.py`: repairs translated control codes, quote tokens, apostrophes, and other formatting damage caused by translation. It also recomputes post-translation text wrapping/layout for dialogue and description-like text.
 - `005_hybrid_injector.py`: injects translated text into the ROM using in-place writes and pointer relocation into free
-  `0xFF` space. It also discovers and applies every `patches/<target-lang>/*.py` runtime patch in filename order.
+  `0xFF` space. It excludes battle graphics (`0x230000-0x500000`) and CFRU/Unbound reserved upper-ROM data
+  (`0x1000000-0x1FE0000`), keeps eight-byte free-run margins, and only repoints aligned or verified script pointer
+  operands so raw-scan false positives cannot overwrite code/live data. Eligible runs use a 1 KB minimum and
+  address-ordered first-fit allocation, matching the advanced translator's validated strategy. It also discovers and
+  applies every
+  `patches/<target-lang>/*.py` runtime patch in filename order.
 - `006_decontrolfix_translations.py`: removes controlfix layout from translated JSON for manual re-editing, preserving the controlfixed value in `translated_controlfixed` by default.
 - `lib/pcs_text.py`: local PCS charmap and codec. Do not reintroduce Meowth charmap dependencies.
 - `lib/translation_tokens.py`: shared layout and semantic/control token helpers used by prepare, translation, and layout repair code.
@@ -99,6 +104,10 @@ When resuming LLM translation, use the same input and output paths with `--resum
 - If a batch reaches the API output token limit, `003_llm_translate.py` falls back to translating entries individually. If a single-entry request still reaches the limit, it uses a compact single-item JSON prompt and then a plain-text prompt with the same model. If the entry still cannot be translated because of the output token limit, it prints a warning with the entry id, leaves the entry untranslated, and continues.
 - Use `--rate-limit N` to cap total API calls per minute across all workers and retry attempts. Use `0` to disable the limiter.
 - `004_controlfix_translations.py` wraps translated text by default for `scripts`, `plain_scripts`, move/ability/item/mission descriptions, mission objectives, Pokémon summary text, battle messages, and `trade_messages`. It allows known battle stat-change templates to reorder protected stat/name tokens for natural grammar and keeps the `What will [pokemon] do?` battle prompt to two lines with the Pokémon name alone on line 2. Normal `scripts` entries are wrapped into dialogue pages with `\n`, `\l`, and paragraph breaks. `plain_scripts`, descriptions, summary text, and battle messages use plain line breaks. Mission names are not wrapped; they are capped to the longest extracted English mission-name visible width by default, tunable with `--mission-name-max-width`. `start_menu_labels` are capped to `--start-menu-label-max-width` (default 13), and `setting_names` are capped to `--setting-name-max-width` (default 15), so narrow menu/list labels do not clip. Item descriptions default to a wider 34-character, 3-line layout; tune with `--item-description-wrap-width` and `--item-description-max-lines`. Compact multi-row menu labels keep their original row breaks so choices such as `Yes\nNo` remain selectable on separate rows. Tune with `--wrap-width`, `--description-wrap-width`, and `--wrap-categories`, or disable with `--no-wrap`.
+- The injector caps every encoded ability description to a conservative 46-byte ceiling observed in the working French
+  ROM.
+  Over-budget descriptions are compacted at a token-safe word boundary because longer payloads corrupt Summary
+  rendering.
 - Keep language-specific ROM behavior in one file per patch under `patches/<language>/`, not in shared scripts or
   translation JSON. The injector applies every patch file for the selected `--target-lang` in filename order and records
   them in map output.

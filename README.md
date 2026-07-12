@@ -259,7 +259,18 @@ For `plain_scripts`, the injector preserves full-screen blank lines as repeated 
 
 During injection, `005_hybrid_injector.py` applies every Python patch in `patches/<target-lang>/` in filename order
 before allocating relocated text. Each behavior lives in one patch file; languages without a patch directory receive
-none. Applied files and their ROM offsets are recorded in map output.
+none.
+Applied files and their ROM offsets are recorded in map output.
+
+Relocation excludes `0x230000-0x500000` (battle graphics) and `0x1000000-0x1FE0000` (CFRU/Unbound reserved data), even
+when those regions contain long `0xFF` runs. The allocator also leaves an eight-byte margin at both ends of each run.
+Like the validated advanced translator, it scans eligible runs in ROM-address order and uses first-fit allocation with
+a 1 KB minimum run; it does not best-fit into scattered high-risk gaps.
+Pointer updates are limited to aligned pointer sites and verified Unbound script operand forms; unaligned raw-scan
+matches are rejected so translated addresses cannot overwrite executable code or unrelated live data.
+
+The injector globally caps encoded ability descriptions to a conservative 46-byte ceiling observed in the working
+French ROM. Over-budget text is compacted at token-safe word boundaries; longer Italian payloads corrupt Summary.
 
 ## Tests
 
