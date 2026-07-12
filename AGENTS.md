@@ -108,6 +108,8 @@ When resuming LLM translation, use the same input and output paths with `--resum
   ROM.
   Over-budget descriptions are compacted at a token-safe word boundary because longer payloads corrupt Summary
   rendering.
+- Controlfix removes excess `[player]`/`[rival]` tokens invented by translation while preserving source counts, avoiding
+  duplicate names in PC labels, residence signs, and possessive messages.
 - Keep language-specific ROM behavior in one file per patch under `patches/<language>/`, not in shared scripts or
   translation JSON. The injector applies every patch file for the selected `--target-lang` in filename order and records
   them in map output.

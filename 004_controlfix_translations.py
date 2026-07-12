@@ -351,6 +351,17 @@ def controls_match(text, original):
     return False
 
 
+def remove_excess_name_tokens(text, original):
+    """Remove model-invented duplicate dynamic names, keeping possessive placement."""
+    changed = False
+    for token in ("[player]", "[rival]"):
+        excess = text.count(token) - original.count(token)
+        for _ in range(max(0, excess)):
+            text = text.replace(token, "", 1)
+            changed = True
+    return text, changed
+
+
 def normalize_actual_layout_breaks(text):
     text = text.replace("\r\n", "\n").replace("\r", "\n")
 
@@ -738,6 +749,7 @@ def main():
         "braced_controls": 0,
         "split_controls": 0,
         "sequence_repairs": 0,
+        "excess_name_token_repairs": 0,
         "deduped_controls": 0,
         "cc_hex_escapes": 0,
         "apostrophe_repairs": 0,
@@ -786,6 +798,10 @@ def main():
 
         next_text, sequence_changed = repair_control_sequences(text, original)
         stats["sequence_repairs"] += int(sequence_changed)
+        text = next_text
+
+        next_text, excess_names_repaired = remove_excess_name_tokens(text, original)
+        stats["excess_name_token_repairs"] += int(excess_names_repaired)
         text = next_text
 
         next_text, deduped = collapse_duplicate_state_controls(text)

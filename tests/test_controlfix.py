@@ -40,6 +40,19 @@ def test_normalize_and_repair_common_control_damage():
     assert controlfix.fix_apostrophes("l'amico d{B4}oro") == "l{B4}amico d{B4}oro"
 
 
+def test_remove_excess_dynamic_name_keeps_possessive_position():
+    fixed, changed = controlfix.remove_excess_name_tokens(
+        "[player]PC di [player]", "[player]’s PC"
+    )
+    rival_fixed, rival_changed = controlfix.remove_excess_name_tokens(
+        "[rival]Casa di [rival]", "[rival]’s house"
+    )
+
+    assert changed and rival_changed
+    assert fixed == "PC di [player]"
+    assert rival_fixed == "Casa di [rival]"
+
+
 def test_wrap_translation_uses_dialogue_layout_for_scripts():
     wrapped, changed, long_words, skipped = controlfix.wrap_translation(
         "uno due tre quattro cinque sei",

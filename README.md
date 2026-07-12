@@ -272,6 +272,9 @@ matches are rejected so translated addresses cannot overwrite executable code or
 The injector globally caps encoded ability descriptions to a conservative 46-byte ceiling observed in the working
 French ROM. Over-budget text is compacted at token-safe word boundaries; longer Italian payloads corrupt Summary.
 
+Controlfix removes excess `[player]`/`[rival]` tokens invented by translation while preserving source counts. This
+prevents dynamic PC labels, residence signs, and possessive messages from rendering names twice.
+
 ## Tests
 
 Install development test dependencies and run the regression suite with:
