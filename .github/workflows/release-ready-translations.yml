@@ -1,0 +1,93 @@
+name: Release Ready Translation Patches
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Optional release tag; defaults to ready-<commit-sha>
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      UNBOUND_ENGLISH_ROM_URL: ${{ secrets.UNBOUND_ENGLISH_ROM_URL }}
+      EXPECTED_ROM_MD5: 9cad8e771940e7f7094d13911552cef0
+      RELEASE_TAG: ${{ inputs.tag || format('ready-{0}', github.sha) }}
+      EVENT_BEFORE: ${{ github.event.before }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download and verify English ROM
+        shell: bash
+        run: |
+          test -n "$UNBOUND_ENGLISH_ROM_URL"
+          mkdir -p rom dist out
+          curl --fail --location --retry 3 "$UNBOUND_ENGLISH_ROM_URL" -o rom/unbound.gba
+          echo "$EXPECTED_ROM_MD5  rom/unbound.gba" | md5sum --check --status
+
+      - name: Build BPS patches
+        shell: bash
+        run: |
+          shopt -s nullglob
+          translations=(ready-translations/*.json)
+          test "${#translations[@]}" -gt 0
+          for translation in "${translations[@]}"; do
+            language="$(basename "$translation" .json)"
+            translated_rom="out/unbound-translated-${language}.gba"
+            ./005_hybrid_injector.py rom/unbound.gba "$translation" -o "$translated_rom" --target-lang "$language"
+            ./scripts/create_bps.py rom/unbound.gba "$translated_rom" -o "dist/unbound-translated-${language}.bps"
+            rm -f "$translated_rom"
+          done
+
+      - name: Create release description
+        shell: bash
+        run: |
+          base_version="$(git describe --tags --abbrev=0 2>/dev/null || echo 0.0.0)"
+          if [[ "$GITHUB_EVENT_NAME" == "push" && "$EVENT_BEFORE" =~ ^[0-9a-f]{40}$ ]] && git cat-file -e "$EVENT_BEFORE^{commit}" 2>/dev/null; then
+            commit_range="$EVENT_BEFORE..$GITHUB_SHA"
+          elif previous_tag="$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null)"; then
+            commit_range="$previous_tag..HEAD"
+          else
+            commit_range="HEAD"
+          fi
+
+          {
+            echo "## Built patches"
+            for patch in dist/unbound-translated-*.bps; do
+              filename="${patch##*/}"
+              language="${filename#unbound-translated-}"
+              language="${language%.bps}"
+              case "$language" in
+                it) flag="🇮🇹"; label="IT" ;;
+                de) flag="🇩🇪"; label="DE" ;;
+                en) flag="🇬🇧"; label="EN" ;;
+                es) flag="🇪🇸"; label="ES" ;;
+                fr) flag="🇫🇷"; label="FR" ;;
+                pt) flag="🇵🇹"; label="PT" ;;
+                pt-br) flag="🇧🇷"; label="PT-BR" ;;
+                *) flag="🌐"; label="$(printf '%s' "$language" | tr '[:lower:]' '[:upper:]')" ;;
+              esac
+              echo "- ${flag} \`${patch##*/}\` - ${label} ${base_version}"
+            done
+            echo
+            echo "## Commits"
+            git log --format='- [`%h`](https://github.com/${GITHUB_REPOSITORY}/commit/%H) %s' "$commit_range"
+          } > release-body.md
+
+      - name: Publish BPS-only release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          body_path: release-body.md
+          prerelease: true
+          files: dist/unbound-translated-*.bps

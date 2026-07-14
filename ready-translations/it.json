@@ -178854,7 +178854,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Cosa? Non sai cos{B4}è una MN? Hooo\nwee! Beh, una [green]MN[blue], o Macchina\\lNascosta, è un tipo speciale di\n\nmossa che un Pokémon può imparare\nper superare gli ostacoli. Quando\\lun Pokémon impara una MN, finché fa\n\nun [green]singolo passo[blue] conoscendo quella\nmossa, può continuare a usare\\lquella mossa sul campo, anche se on\n\npuò in battaglia! In altre parole,\n[green]i tuoi Pokémon non hanno bisogno di\\lconoscere la MN per usarla[blue]. Comodo,\n\nno? Comunque, usa quella MN per\n[green]Taglio[blue] per sbarazzarti di quel\\lfastidioso albero che blocca la\n\n[green]Grotta della Valle[blue]. Poi dirigiti\nverso [green]Città Bufera[blue] per ottenere\\l[green]Spaccaroccia[blue] dal mio amico. Buona\n\nfortuna per la tua missione!"
+      "translated": "Cosa? Non sai cos{B4}è una MN? Hooo\nwee! Beh, una [green]MN[blue], o Macchina\\lNascosta, è un tipo speciale di\n\nmossa che un Pokémon può imparare\nper superare gli ostacoli. Quando\\lun Pokémon impara una MN, finché fa\n\nun [green]singolo passo[blue] conoscendo quella\nmossa, può continuare a usare\\lquella mossa sul campo, anche se on\n\npuò in battaglia! In altre parole,\n[green]i tuoi Pokémon non hanno bisogno di\\lconoscere la MN per usarla[blue]. Comodo,\n\no? Comunque, usa quella MN per\n[green]Taglio[blue] per sbarazzarti di quel\\lfastidioso albero che blocca la\n\n[green]Grotta della Valle[blue]. Poi dirigiti\nverso [green]Città Bufera[blue] per ottenere\\l[green]Spaccaroccia[blue] dal mio amico. Buona\n\nfortuna per la tua missione!"
     },
     {
       "id": "scr_7C86C5",
@@ -282311,7 +282311,7 @@
       "byte_length": 216,
       "is_pointer_based": true,
       "translation_source": "Stop! Have I not told you countless times to stay out of my Cube Space unless you have express permission? I am aware you cannot travel through your rings anymore, but that does not give you the right to disobey me!",
-      "translated": "Fermo! Non ti ho forse detto\ninnumerevoli volte di stare fuori\\ldal mio Spazio Cubo a meno che tu\n\non abbia il mio permesso esplicito?\nSo che non puoi più viaggiare\\lattraverso i tuoi anelli, ma questo\n\nnon ti dà il diritto di\ndisobbedirmi!"
+      "translated": "Fermo! Non ti ho forse detto\ninnumerevoli volte di stare fuori\\ldal mio Spazio Cubo a meno che tu\n\non abbia il mio permesso esplicito?\nSo che non puoi più viaggiare\\lattraverso i tuoi anelli, ma questo\n\non ti dà il diritto di\ndisobbedirmi!"
     },
     {
       "id": "scr_1F2CD70",
@@ -314297,7 +314297,7 @@
       "byte_length": 169,
       "is_pointer_based": true,
       "translation_source": "Huh, so that’s why I haven’t seen it around here. Charcoal is made out of black wood, not red wood! Okay, thank you! You’ve made my day! Now, let me show you something!",
-      "translated": "Ah, quindi è per questo che non\nl{B4}ho visto in giro da queste parti.\\lLa Carbonella è fatta di legno ero,\n\nnon di legno rosso! Va bene,\ngrazie! Mi hai reso la giornata!\\lOra, lasciami mostrarti una cosa!"
+      "translated": "Ah, quindi è per questo che non\nl{B4}ho visto in giro da queste parti.\\lLa Carbonella è fatta di legno ero,\n\non di legno rosso! Va bene, grazie!\nMi hai reso la giornata! Ora,\\llasciami mostrarti una cosa!"
     },
     {
       "id": "scr_1F5A720",
@@ -375289,7 +375289,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Ho nascosto le Foglie di Oddish tra\nalcune casse sul lato [green]ovest[blue] del\\lporto. Usa una di quelle\n\n[green]Ricercaoggetti[blue] sofisticate o\nqualcosa del genere per trovarle.\\lAh, e il posto in cui le ho ascoste\n\nnon verrà mai bloccato da una\nbarriera, quindi non perdere tempo\\la cercare da qualche parte che\n\npossa essere bloccata. Capito?"
+      "translated": "Ho nascosto le Foglie di Oddish tra\nalcune casse sul lato [green]ovest[blue] del\\lporto. Usa una di quelle\n\n[green]Ricercaoggetti[blue] sofisticate o\nqualcosa del genere per trovarle.\\lAh, e il posto in cui le ho ascoste\n\non verrà mai bloccato da una\nbarriera, quindi non perdere tempo\\la cercare da qualche parte che\n\npossa essere bloccata. Capito?"
     },
     {
       "id": "scr_1FA0107",
