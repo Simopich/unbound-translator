@@ -179,9 +179,10 @@ Use this to test a small manually whitelisted ROM build:
 - `ready-translations/` contains one complete controlfixed translation JSON per language. GitHub Actions workflow
   `Release Ready Translation Patches` downloads the English ROM from the `UNBOUND_ENGLISH_ROM_URL` secret, validates
   its known MD5, injects every `ready-translations/*.json` directly, and releases only
-  `unbound-translated-<language>.bps` assets. It runs on every push to `main` using `ready-<commit-sha>` as its
-  release tag, with an optional manual tag override. Release descriptions list the flag-marked assets, latest version
-  tag, and linked commit hashes/messages. All generated releases are pre-releases and it must never upload a ROM.
+  `unbound-translated-<language>.bps` assets. It runs on every push to `main`, cancels obsolete builds, and uses
+  `ready-<UTC-build-time>-<commit-sha>` as its release tag, with an optional manual tag override. Release descriptions
+  list the flag-marked assets, latest version tag, and linked commit hashes/messages. All generated releases are
+  pre-releases and it must never upload a ROM.
 - Only Italian is included for now.
 - The included ready translations were made using DeepSeek V4 Flash.
 

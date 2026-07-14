@@ -2,23 +2,23 @@
 name: caveman-commit
 description: >
   Ultra-compressed commit message generator. Cuts noise from commit messages while preserving
-  intent and reasoning. Conventional Commits format. Subject ≤50 chars, body only when "why"
+  intent and reasoning. Branch-prefixed commit format. Subject ≤72 chars, body only when "why"
   isn't obvious. Use when user says "write a commit", "commit message", "generate commit",
   "/commit", or invokes /caveman-commit. Auto-triggers when staging changes.
 ---
 
-Write commit messages terse and exact. Conventional Commits format. No fluff. Why over what.
+Write commit messages terse and exact. Branch-prefixed format. No fluff. Why over what.
 
 ## Rules
 
 **Subject line:**
 
-- `<type>(<scope>): <imperative summary>` — `<scope>` optional
+- `<branch> - <type>: <summary>`
+- Use the actual branch name without brackets. Obtain it with `git branch --show-current`.
 - Types: `feat`, `fix`, `refactor`, `perf`, `docs`, `test`, `chore`, `build`, `ci`, `style`, `revert`
-- Imperative mood: "add", "fix", "remove" — not "added", "adds", "adding"
-- ≤50 chars when possible, hard cap 72
+- Summary may use concise title case when it names a user-visible area.
 - No trailing period
-- Match project convention for capitalization after the colon
+- Example: `main - fix: GitHub actions commit section URL`
 
 **Body (only if needed):**
 
@@ -44,7 +44,7 @@ Diff: new endpoint for user profile with body explaining the why
 - ❌ "feat: add a new endpoint to get user profile information from the database"
 - ✅
   ```
-  feat(api): add GET /users/:id/profile
+  main - feat: Add GET /users/:id/profile
 
   Mobile client needs profile data without the full user payload
   to reduce LTE bandwidth on cold-launch screens.
@@ -56,7 +56,7 @@ Diff: breaking API change
 
 - ✅
   ```
-  feat(api)!: rename /v1/orders to /v1/checkout
+  main - feat: Rename /v1/orders to /v1/checkout
 
   BREAKING CHANGE: clients on /v1/orders must migrate to /v1/checkout
   before 2026-06-01. Old route returns 410 after that date.

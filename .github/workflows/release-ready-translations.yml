@@ -7,12 +7,16 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: Optional release tag; defaults to ready-<commit-sha>
+        description: Optional release tag; defaults to ready-<UTC-build-time>-<commit-sha>
         required: false
         type: string
 
 permissions:
   contents: write
+
+concurrency:
+  group: ready-translation-release-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   release:
@@ -20,12 +24,22 @@ jobs:
     env:
       UNBOUND_ENGLISH_ROM_URL: ${{ secrets.UNBOUND_ENGLISH_ROM_URL }}
       EXPECTED_ROM_MD5: 9cad8e771940e7f7094d13911552cef0
-      RELEASE_TAG: ${{ inputs.tag || format('ready-{0}', github.sha) }}
+      MANUAL_TAG: ${{ inputs.tag }}
       EVENT_BEFORE: ${{ github.event.before }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Set release tag
+        shell: bash
+        run: |
+          if [[ -n "$MANUAL_TAG" ]]; then
+            release_tag="$MANUAL_TAG"
+          else
+            release_tag="ready-$(date -u +'%Y%m%d-%H%M%S')-${GITHUB_SHA:0:7}"
+          fi
+          printf 'RELEASE_TAG=%s\n' "$release_tag" >> "$GITHUB_ENV"
 
       - name: Download and verify English ROM
         shell: bash

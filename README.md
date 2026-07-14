@@ -321,9 +321,10 @@ regression fixture/test so the case stays covered.
 `Release Ready Translation Patches` turns every `*.json` in that folder into a release asset named
 `unbound-translated-<language>.bps`; it injects the ready JSON directly and never uploads a ROM. Configure the
 repository secret `UNBOUND_ENGLISH_ROM_URL` with the private English-ROM download URL. The workflow runs on every push
-to `main` and uses the release tag `ready-<commit-sha>`; a manual run can provide a replacement tag. The downloaded ROM
-must match MD5 `9cad8e771940e7f7094d13911552cef0`. Its release description lists flag-marked BPS assets with the latest
-repository version tag and linked commit hashes/messages. All generated releases are marked as pre-releases.
+to `main`, cancels obsolete running builds, and uses the release tag `ready-<UTC-build-time>-<commit-sha>`; a manual
+run can provide a replacement tag. The downloaded ROM must match MD5 `9cad8e771940e7f7094d13911552cef0`. Its release
+description lists flag-marked BPS assets with the latest repository version tag and linked commit hashes/messages. All
+generated releases are marked as pre-releases.
 
 The ready translations currently included in the repo were made using DeepSeek V4 Flash.
 
