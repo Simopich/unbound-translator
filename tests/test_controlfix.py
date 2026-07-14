@@ -19,6 +19,9 @@ def _args(**overrides):
         "pokedex_description_wrap_width": 43,
         "pokedex_description_max_lines": 3,
         "pokedex_description_max_total": 124,
+        "mission_objective_wrap_width": 35,
+        "mission_objective_max_lines": 2,
+        "mission_objective_max_total": 65,
         "item_description_wrap_width": 14,
         "item_description_max_lines": 3,
     }
@@ -146,6 +149,40 @@ def test_pokedex_description_uses_french_observed_three_line_budget():
     assert max(map(controlfix.visible_width, lines)) <= 43
     assert controlfix.visible_width(wrapped.replace("\n", " ")) <= 124
     assert "..." in wrapped
+
+
+def test_mission_objective_uses_french_observed_shared_budget():
+    wrapped, changed, _long_words, skipped = controlfix.wrap_translation(
+        "Guardati intorno nel Magazzino Vivill e trova un modo per entrare nel Centro di Comando!",
+        {"category": "mission_objectives", "table_index": 37},
+        "Look around Vivill Warehouse and find a way into the Command Centre!",
+        _args(),
+        {"mission_objectives"},
+    )
+
+    lines = wrapped.splitlines()
+    assert changed
+    assert not skipped
+    assert len(lines) <= 2
+    assert max(map(controlfix.visible_width, lines)) <= 35
+    assert controlfix.visible_width(" ".join(lines)) <= 65
+
+
+def test_mission_log_description_never_emits_a_third_line():
+    wrapped, changed, _long_words, skipped = controlfix.wrap_translation(
+        "Scopri i segreti dietro le misteriose tavolette di pietra!",
+        {"category": "mission_descriptions", "table_index": 1},
+        "Uncover the secrets behind the mysterious stone tablets!",
+        _args(),
+        {"mission_descriptions"},
+    )
+
+    lines = wrapped.splitlines()
+    assert changed
+    assert not skipped
+    assert len(lines) <= 2
+    assert max(map(controlfix.visible_width, lines)) <= 35
+    assert controlfix.visible_width(" ".join(lines)) <= 65
 
 
 def test_menu_and_battle_layout_repairs():

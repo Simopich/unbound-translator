@@ -479,6 +479,8 @@ def should_skip_wrap(text):
 def wrap_width_for_entry(entry, args):
     if entry.get("category") == "pokedex_descriptions":
         return args.pokedex_description_wrap_width
+    if entry.get("category") in {"mission_descriptions", "mission_objectives"}:
+        return args.mission_objective_wrap_width
     if entry.get("category") == "item_descriptions":
         return args.item_description_wrap_width
     if entry.get("category") in DESCRIPTION_CATEGORIES:
@@ -598,6 +600,13 @@ def wrap_words_for_entry(text, entry, args):
             args.pokedex_description_wrap_width,
             args.pokedex_description_max_lines,
             args.pokedex_description_max_total,
+        )
+    if entry.get("category") in {"mission_descriptions", "mission_objectives"}:
+        return fit_pokedex_description_lines(
+            text,
+            args.mission_objective_wrap_width,
+            args.mission_objective_max_lines,
+            args.mission_objective_max_total,
         )
     width = wrap_width_for_entry(entry, args)
     lines, long_words = wrap_words(text, width)
@@ -775,6 +784,24 @@ def main():
         type=int,
         default=24,
         help="Visible character width for move/ability descriptions. Default: 24.",
+    )
+    parser.add_argument(
+        "--mission-objective-wrap-width",
+        type=int,
+        default=35,
+        help="Visible character width for shared mission objectives. Default: 35.",
+    )
+    parser.add_argument(
+        "--mission-objective-max-lines",
+        type=int,
+        default=2,
+        help="Maximum explicit lines for pause-menu mission objectives. Default: 2.",
+    )
+    parser.add_argument(
+        "--mission-objective-max-total",
+        type=int,
+        default=65,
+        help="Maximum total visible mission-objective length. Default: 65.",
     )
     parser.add_argument(
         "--pokedex-description-wrap-width",

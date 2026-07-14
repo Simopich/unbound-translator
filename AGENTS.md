@@ -103,7 +103,20 @@ When resuming LLM translation, use the same input and output paths with `--resum
 - `003_llm_translate.py` retries transient API failures up to 3 total attempts. It does not retry unauthorized, forbidden, rate-limit, other 4xx client errors, or partial/mismatched translation batches.
 - If a batch reaches the API output token limit, `003_llm_translate.py` falls back to translating entries individually. If a single-entry request still reaches the limit, it uses a compact single-item JSON prompt and then a plain-text prompt with the same model. If the entry still cannot be translated because of the output token limit, it prints a warning with the entry id, leaves the entry untranslated, and continues.
 - Use `--rate-limit N` to cap total API calls per minute across all workers and retry attempts. Use `0` to disable the limiter.
-- `004_controlfix_translations.py` wraps translated text by default for `scripts`, `plain_scripts`, move/ability/item/mission descriptions, mission objectives, Pokémon summary text, battle messages, and `trade_messages`. It allows known battle stat-change templates to reorder protected stat/name tokens for natural grammar and keeps the `What will [pokemon] do?` battle prompt to two lines with the Pokémon name alone on line 2. Normal `scripts` entries are wrapped into dialogue pages with `\n`, `\l`, and paragraph breaks. `plain_scripts`, descriptions, summary text, and battle messages use plain line breaks. Mission names are not wrapped; they are capped to the longest extracted English mission-name visible width by default, tunable with `--mission-name-max-width`. `start_menu_labels` are capped to `--start-menu-label-max-width` (default 13), and `setting_names` are capped to `--setting-name-max-width` (default 15), so narrow menu/list labels do not clip. Item descriptions default to a wider 34-character, 3-line layout; tune with `--item-description-wrap-width` and `--item-description-max-lines`. Compact multi-row menu labels keep their original row breaks so choices such as `Yes\nNo` remain selectable on separate rows. Tune with `--wrap-width`, `--description-wrap-width`, and `--wrap-categories`, or disable with `--no-wrap`.
+- `004_controlfix_translations.py` wraps translated text by default for `scripts`, `plain_scripts`,
+  move/ability/item/mission descriptions, mission objectives, Pokémon summary text, battle messages, and
+  `trade_messages`. It allows known battle stat-change templates to reorder protected stat/name tokens for natural
+  grammar and keeps the `What will [pokemon] do?` battle prompt to two lines with the Pokémon name alone on line 2.
+  Normal `scripts` entries are wrapped into dialogue pages with `\n`, `\l`, and paragraph breaks. `plain_scripts`,
+  descriptions, summary text, and battle messages use plain line breaks. Mission descriptions and objectives use the
+  shared two-line, 35-character, 65-character-total budget so the mission-log renderer cannot produce a dialogue prompt.
+  Mission names are not wrapped; they are capped to the longest extracted English mission-name visible width by default,
+  tunable with `--mission-name-max-width`. `start_menu_labels` are capped to `--start-menu-label-max-width` (default
+  13), and `setting_names` are capped to `--setting-name-max-width` (default 15), so narrow menu/list labels do not
+  clip. Item descriptions default to a wider 34-character, 3-line layout; tune with `--item-description-wrap-width` and
+  `--item-description-max-lines`. Compact multi-row menu labels keep their original row breaks so choices such as
+  `Yes\nNo` remain selectable on separate rows. Tune with `--wrap-width`, `--description-wrap-width`, and
+  `--wrap-categories`, or disable with `--no-wrap`.
 - The injector caps every encoded ability description to a conservative 46-byte ceiling observed in the working French
   ROM.
   Over-budget descriptions are compacted at a token-safe word boundary because longer payloads corrupt Summary
@@ -117,6 +130,10 @@ When resuming LLM translation, use the same input and output paths with `--resum
 - Pokédex descriptions use working-French-ROM limits of 3 lines, 43 visible characters per line, and 124 visible
   characters total. Over-budget text keeps its beginning and ending with a middle ellipsis; tune with the dedicated
   `--pokedex-description-wrap-width`, `--pokedex-description-max-lines`, and `--pokedex-description-max-total` options.
+- Shared `mission_objectives` use working-French-ROM limits of 2 explicit lines, 35 visible characters per line, and 65
+  total for the wide pause box; the narrower Mission Log renderer wraps the same text to at most 3 lines. Tune with the
+  dedicated `--mission-objective-wrap-width`, `--mission-objective-max-lines`, and `--mission-objective-max-total`
+  options.
 - Keep language-specific ROM behavior in one file per patch under `patches/<language>/`, not in shared scripts or
   translation JSON. The injector applies every patch file for the selected `--target-lang` in filename order and records
   them in map output.

@@ -230,7 +230,16 @@ Run the control-fix script after translation:
   --report out/controlfix-report.json
 ```
 
-This step is still needed. It repairs common translation damage such as broken control codes, misplaced braces, outer quotes, and apostrophes. It also permits known battle stat-change templates to reorder protected stat/name tokens for natural target-language grammar and keeps the `What will [pokemon] do?` battle prompt to two lines with the Pokémon name alone on line 2. It also recomputes layout after translation: dialogue-like text is wrapped into pages using line breaks and `\l`, while `plain_scripts`, descriptions, mission objectives, Pokémon summary text, and battle messages are wrapped with regular line breaks. Mission names are capped to the longest extracted English mission-title width, `start_menu_labels` are capped so labels such as Mission Log and Game Settings do not clip, and `setting_names` are capped for the game settings list. Item descriptions use a wider 3-line layout by default. Compact multi-row menu labels keep their original row breaks, which is required for selectable choices such as `Yes\nNo`.
+This step is still needed. It repairs common translation damage such as broken control codes, misplaced braces, outer
+quotes, and apostrophes. It also permits known battle stat-change templates to reorder protected stat/name tokens for
+natural target-language grammar and keeps the `What will [pokemon] do?` battle prompt to two lines with the Pokémon name
+alone on line 2. It also recomputes layout after translation: dialogue-like text is wrapped into pages using line breaks
+and `\l`, while `plain_scripts`, descriptions, mission text, Pokémon summary text, and battle messages are wrapped with
+regular line breaks. Mission descriptions and objectives are limited to two lines, preventing the mission-log renderer
+from treating an overflow as dialogue. Mission names are capped to the longest extracted English mission-title width,
+`start_menu_labels` are capped so labels such as Mission Log and Game Settings do not clip, and `setting_names` are
+capped for the game settings list. Item descriptions use a wider 3-line layout by default. Compact multi-row menu labels
+keep their original row breaks, which is required for selectable choices such as `Yes\nNo`.
 
 If you need to manually edit translations after this step, remove the controlfix layout first:
 
@@ -289,6 +298,10 @@ Pokédex descriptions follow limits measured from the working French ROM: at mos
 line, and 124 visible characters total. Over-budget translations preserve their beginning and ending with a middle
 ellipsis. Tune with `--pokedex-description-wrap-width`, `--pokedex-description-max-lines`, and
 `--pokedex-description-max-total`.
+
+Shared mission objectives follow the working French ROM’s pause-menu layout: at most 2 explicit lines, 35 visible
+characters per line, and 65 total. The narrower Mission Log renderer can then wrap the same text to three lines. Tune
+with `--mission-objective-wrap-width`, `--mission-objective-max-lines`, and `--mission-objective-max-total`.
 
 ## Tests
 
