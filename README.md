@@ -299,9 +299,9 @@ line, and 124 visible characters total. Over-budget translations preserve their 
 ellipsis. Tune with `--pokedex-description-wrap-width`, `--pokedex-description-max-lines`, and
 `--pokedex-description-max-total`.
 
-Shared mission objectives follow the working French ROM’s pause-menu layout: at most 2 explicit lines, 35 visible
-characters per line, and 65 total. The narrower Mission Log renderer can then wrap the same text to three lines. Tune
-with `--mission-objective-wrap-width`, `--mission-objective-max-lines`, and `--mission-objective-max-total`.
+Mission descriptions and objectives use at most 2 explicit lines, 35 visible characters per line, and 65 total. This
+prevents the Mission Log renderer from treating an overflow as dialogue. Tune with
+`--mission-objective-wrap-width`, `--mission-objective-max-lines`, and `--mission-objective-max-total`.
 
 ## Tests
 
@@ -317,7 +317,13 @@ regression fixture/test so the case stays covered.
 
 ## Ready Translations
 
-In the `ready-translations` folder you can find pre-translated text in both JSON and BPS patch format. For now, only Italian is included.
+`ready-translations/` contains one complete controlfixed translation JSON per language. The GitHub Actions workflow
+`Release Ready Translation Patches` turns every `*.json` in that folder into a release asset named
+`unbound-translated-<language>.bps`; it injects the ready JSON directly and never uploads a ROM. Configure the
+repository secret `UNBOUND_ENGLISH_ROM_URL` with the private English-ROM download URL. The workflow runs on every push
+to `main` and uses the release tag `ready-<commit-sha>`; a manual run can provide a replacement tag. The downloaded ROM
+must match MD5 `9cad8e771940e7f7094d13911552cef0`. Its release description lists flag-marked BPS assets with the latest
+repository version tag and linked commit hashes/messages. All generated releases are marked as pre-releases.
 
 The ready translations currently included in the repo were made using DeepSeek V4 Flash.
 

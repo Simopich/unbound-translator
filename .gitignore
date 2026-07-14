@@ -4,3 +4,4 @@
 rom/*.gba
 out/*.json
 out/*.gba
+out/*.bps
