@@ -81,7 +81,7 @@ jobs:
             done
             echo
             echo "## Commits"
-            git log --format='- [`%h`](https://github.com/${GITHUB_REPOSITORY}/commit/%H) %s' "$commit_range"
+            git log --format="- [\`%h\`](https://github.com/${GITHUB_REPOSITORY}/commit/%H) %s" "$commit_range"
           } > release-body.md
 
       - name: Publish BPS-only release assets
