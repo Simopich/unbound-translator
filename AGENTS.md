@@ -94,8 +94,14 @@ When resuming LLM translation, use the same input and output paths with `--resum
 - `003_llm_translate.py --exclude-categories` removes matching entries from the output JSON entirely. It does not copy them as English translations.
 - `003_llm_translate.py --include-ids`, `--include-id-ranges`, `--include-categories`, and `--include-category-prefixes` keep only matching entries in the output JSON. This is preferred for small debug ROMs.
 - `003_llm_translate.py --priority-order --limit N` is intended for debug builds: it translates only the first `N` missing entries after priority sorting, favoring menu/UI/common/short text.
-- The LLM prompt asks for established official Pokemon terminology and may ask models with web/retrieval access to consult reputable references such as Bulbapedia or Pokemon Database. Plain OpenAI-compatible chat APIs usually do not browse by themselves.
-- When manually translating entries, use established official terminology where available. For Italian battle text, prefer official-style terms such as `Brutto colpo!`, `è esausto!`, `Punti Esperienza`, ability names like `Pressione`, and natural stat-change phrasing such as `La precisione di [name] cala!`.
+- For every target-language translation addition, edit, or fix, research wording in this order: PokeAPI localized data,
+  then Bulbapedia/Pokémon Database, then the official FireRed ROM in the target language for exact in-game phrasing and
+  control layout. Use a known local ROM path (Italian: `out/red_ita.gba`); otherwise ask the user for that ROM path
+  before relying on it. Plain OpenAI-compatible chat APIs usually do not browse the web by themselves.
+- When manually translating entries, use established official terminology where available. For Italian battle text,
+  prefer
+  official-style terms such as `Brutto colpo!`, `è esausto!`, `Punti Esperienza`, ability names like `Pressione`, and
+  natural stat-change phrasing such as `La precisione di [name] cala!`.
 - Keep scripts language-agnostic unless explicitly asked otherwise. Do not add single-language translation hacks to scripts, such as `if` branches that replace text with an Italian phrase. Put language-specific wording in translation JSON; scripts should only contain reusable layout, token, extraction, validation, and injection logic.
 - To use a ChatGPT subscription login instead of an API key, run `codex login` first or provide `CODEX_ACCESS_TOKEN`, then run `003_llm_translate.py` with `--auth chatgpt`. This delegates batches to `codex exec`; `--model` is optional in this mode and overrides the Codex default model when provided.
 - For OpenCode, use `--api-base https://opencode.ai/zen/go/v1`; `003_llm_translate.py` appends `/chat/completions` automatically. `API HTTP 403: error code: 1010` means the upstream gateway rejected the HTTP request before the model handled it. The script sends a browser-like `User-Agent` by default and exposes `--user-agent` for overrides.
@@ -105,8 +111,10 @@ When resuming LLM translation, use the same input and output paths with `--resum
 - Use `--rate-limit N` to cap total API calls per minute across all workers and retry attempts. Use `0` to disable the limiter.
 - `004_controlfix_translations.py` wraps translated text by default for `scripts`, `plain_scripts`,
   move/ability/item/mission descriptions, mission objectives, Pokémon summary text, battle messages, and
-  `trade_messages`. It allows known battle stat-change templates to reorder protected stat/name tokens for natural
-  grammar and keeps the `What will [pokemon] do?` battle prompt to two lines with the Pokémon name alone on line 2.
+  `trade_messages`. It allows known battle stat-change and trainer-switch prompts to reorder protected tokens for
+  natural
+  or official target-language grammar, and keeps the `What will [pokemon] do?` battle prompt to two
+  lines with the Pokémon name alone on line 2.
   Normal `scripts` entries are wrapped into dialogue pages with `\n`, `\l`, and paragraph breaks. `plain_scripts`,
   descriptions, summary text, and battle messages use plain line breaks. Mission descriptions and objectives use the
   shared two-line, 35-character, 65-character-total budget so the mission-log renderer cannot produce a dialogue prompt.

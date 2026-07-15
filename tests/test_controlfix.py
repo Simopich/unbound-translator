@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 from types import SimpleNamespace
@@ -57,6 +58,58 @@ def test_remove_excess_dynamic_name_keeps_possessive_position():
     assert changed and rival_changed
     assert fixed == "PC di [player]"
     assert rival_fixed == "Casa di [rival]"
+
+
+def test_ready_trainer_change_prompt_uses_official_italian_wording():
+    fixture_path = Path(__file__).parent / "fixtures" / "trainer_change_prompt.json"
+    fixture = json.loads(fixture_path.read_text(encoding="utf-8"))
+    ready_path = Path(__file__).resolve().parents[1] / "ready-translations" / "it.json"
+    ready_entries = json.loads(ready_path.read_text(encoding="utf-8"))["entries"]
+    ready_entry = next(entry for entry in ready_entries if entry["id"] == fixture["id"])
+
+    assert ready_entry["translated"] == fixture["translated"]
+    assert controlfix.controls_match(fixture["translated"], fixture["original"])
+
+
+def test_ready_save_overwrite_prompts_use_official_italian_layout():
+    fixture_path = Path(__file__).parent / "fixtures" / "save_overwrite_prompt.json"
+    fixture = json.loads(fixture_path.read_text(encoding="utf-8"))
+    ready_path = Path(__file__).resolve().parents[1] / "ready-translations" / "it.json"
+    ready_entries = json.loads(ready_path.read_text(encoding="utf-8"))["entries"]
+    ready_by_id = {entry["id"]: entry for entry in ready_entries}
+
+    for entry_id in fixture["ids"]:
+        assert ready_by_id[entry_id]["translated"] == fixture["translated"]
+
+
+def test_ready_battle_send_out_messages_fit_fragile_original_slots():
+    fixture_path = Path(__file__).parent / "fixtures" / "battle_send_out_messages.json"
+    fixtures = json.loads(fixture_path.read_text(encoding="utf-8"))
+    ready_path = Path(__file__).resolve().parents[1] / "ready-translations" / "it.json"
+    ready_entries = json.loads(ready_path.read_text(encoding="utf-8"))["entries"]
+    ready_by_id = {entry["id"]: entry for entry in ready_entries}
+    charmap = controlfix.Charmap()
+
+    for fixture in fixtures:
+        entry = ready_by_id[fixture["id"]]
+        assert entry["translated"] == fixture["translated"]
+        assert len(charmap.encode(entry["translated"])) <= entry["byte_length"]
+        assert controlfix.controls_match(entry["translated"], entry["original"])
+
+
+def test_ready_choice_scarf_uses_official_name_and_fits_slots():
+    fixture_path = Path(__file__).parent / "fixtures" / "choice_scarf_item.json"
+    fixtures = json.loads(fixture_path.read_text(encoding="utf-8"))
+    ready_path = Path(__file__).resolve().parents[1] / "ready-translations" / "it.json"
+    ready_entries = json.loads(ready_path.read_text(encoding="utf-8"))["entries"]
+    ready_by_id = {entry["id"]: entry for entry in ready_entries}
+    charmap = controlfix.Charmap()
+
+    for fixture in fixtures:
+        entry = ready_by_id[fixture["id"]]
+        assert entry["translated"] == fixture["translated"]
+        assert len(charmap.encode(entry["translated"])) <= entry["byte_length"]
+        assert controlfix.controls_match(entry["translated"], entry["original"])
 
 
 def test_pokedex_category_keeps_only_category_text():

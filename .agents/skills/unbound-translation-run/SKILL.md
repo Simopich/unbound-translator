@@ -23,6 +23,17 @@ Translation starts from prepared JSON. Do not translate raw extraction output un
 
 Use `--resume` with the same input/output paths. Use `--rate-limit N` for strict API quotas. Use `--auth chatgpt` only after `codex login` or `CODEX_ACCESS_TOKEN`.
 
+## Reference Priority
+
+For every target-language translation addition, edit, or fix, research wording in this order:
+
+1. PokeAPI localized data, then Bulbapedia and Pokémon Database.
+2. The official FireRed ROM in the target language for exact in-game wording and control/layout conventions.
+
+Use an already-known local ROM path when available (Italian: `out/red_ita.gba`). If no target-language FireRed ROM path
+is known, ask the user for it before relying on FireRed as a reference. Preserve all semantic and control tokens from
+the source entry.
+
 ## Checks
 
 Confirm output JSON shape is preserved and `translated` fields are filled. If semantic/control tokens drift, inspect `lib/translation_tokens.py` behavior and retry with smaller batches or targeted includes.

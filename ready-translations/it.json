@@ -19470,7 +19470,7 @@
       "table_name": "data.items.stats",
       "table_index": 178,
       "translation_source": "Choice Scarf",
-      "translated": "Sciarpa Scelta"
+      "translated": "Stolascelta"
     },
     {
       "id": "tbl_item_names_00179_EB90EA",
@@ -122049,7 +122049,7 @@
       "byte_length": 59,
       "is_pointer_based": true,
       "translation_source": "There is already a saved file. Is it okay to overwrite it?",
-      "translated": "Esiste già un file di salvataggio. Va bene sovrascriverlo?"
+      "translated": "Sono presenti dati di gioco salvati.\nVuoi sovrascriverli?"
     },
     {
       "id": "scr_1C5625",
@@ -138582,7 +138582,7 @@
           "token": "\\\\23"
         }
       ],
-      "translated": "\\\\1C\\\\1D\\\\1C \\\\1D sta per usare [player]. \\\\23\\ncambiare Pokémon?"
+      "translated": "La prossima scelta di \\\\1D,\\\\n\\\\1C, sarà [player].\\\\n\\\\n\\\\23, vuoi cambiare\\\\nPokémon?"
     },
     {
       "id": "tbl_battle_messages_00294_3FD1C7",
@@ -146519,7 +146519,7 @@
       "byte_length": 59,
       "is_pointer_based": true,
       "translation_source": "There is already a saved file. Is it okay to overwrite it?",
-      "translated": "Esiste già un file di salvataggio. Va bene sovrascriverlo?"
+      "translated": "Sono presenti dati di gioco salvati.\nVuoi sovrascriverli?"
     },
     {
       "id": "scr_41B4A4",
@@ -367510,7 +367510,7 @@
           "token": "\\CC0600"
         }
       ],
-      "translated": "Sciarpa Scelta\\CC135E \\CC060048 BP"
+      "translated": "Stolascelta\\CC135E \\CC060048 BP"
     },
     {
       "id": "scr_1F9A174",
@@ -391860,7 +391860,7 @@
           "token": "\\CC083C"
         }
       ],
-      "translated": "\\\\1C\\\\1D\\\\1C \\\\1D ha mandato in campo [rival]!\\CC083C"
+      "translated": "\\\\1C \\\\1D manda\\n[rival]!\\CC083C"
     },
     {
       "id": "tbl_battle_messages_00314_3FD3C7",
@@ -391897,7 +391897,7 @@
           "token": "\\CC083C"
         }
       ],
-      "translated": "\\\\1C\\\\1D\\\\1C \\\\1D ha mandato in campo [rival]\\ne \\\\08!\\CC083C"
+      "translated": "\\\\1C \\\\1D manda\\n[rival] e \\\\08!\\CC083C"
     },
     {
       "id": "tbl_battle_messages_00315_3FD3E4",
@@ -391927,7 +391927,7 @@
           "token": "\\\\00"
         }
       ],
-      "translated": "\\\\1C\\\\1D\\\\1C \\\\1D ha mandato in campo \\\\00!"
+      "translated": "\\\\1C \\\\1D manda\\n\\\\00!"
     },
     {
       "id": "tbl_battle_messages_00316_3FD3F7",
@@ -391953,7 +391953,7 @@
           "token": "[rival]"
         }
       ],
-      "translated": "\\\\20 manda in campo [rival]!"
+      "translated": "\\\\20 manda\\n[rival]!"
     },
     {
       "id": "tbl_battle_messages_00317_3FD407",
@@ -391983,7 +391983,7 @@
           "token": "\\\\08"
         }
       ],
-      "translated": "\\\\20 ha mandato in campo [rival] e \\\\08!"
+      "translated": "\\\\20 manda\\n[rival] e \\\\08!"
     },
     {
       "id": "tbl_battle_messages_00318_3FD41E",
@@ -392017,7 +392017,7 @@
           "token": "\\\\0C"
         }
       ],
-      "translated": "\\\\20 ha mandato in campo \\\\0A! \\\\21 ha\\nmandato in campo \\\\0C!"
+      "translated": "\\\\20 manda \\\\0A!\\n\\\\21 manda \\\\0C!"
     },
     {
       "id": "tbl_battle_messages_00319_3FD43E",
@@ -392043,7 +392043,7 @@
           "token": "\\\\00"
         }
       ],
-      "translated": "\\\\20 manda in campo \\\\00!"
+      "translated": "\\\\20 manda\\n\\\\00!"
     },
     {
       "id": "tbl_battle_messages_00320_3FD44E",
@@ -392069,7 +392069,7 @@
           "token": "\\\\00"
         }
       ],
-      "translated": "\\\\22 manda in campo \\\\00!"
+      "translated": "\\\\22 manda\\n\\\\00!"
     },
     {
       "id": "tbl_battle_messages_00321_3FD45E",
@@ -392143,7 +392143,7 @@
           "token": "\\\\09"
         }
       ],
-      "translated": "\\\\1F ha mandato in campo \\\\0B! Vai! \\\\09!"
+      "translated": "\\\\1F manda \\\\0B!\\nVai, \\\\09!"
     },
     {
       "id": "tbl_battle_messages_00328_3FD4CD",

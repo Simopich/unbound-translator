@@ -181,7 +181,13 @@ For slow or free-tier APIs, use `--rate-limit` to cap total API calls per minute
 
 For OpenCode, use `--api-base https://opencode.ai/zen/go/v1`; the script appends `/chat/completions` automatically. If the provider returns `API HTTP 403: error code: 1010`, the request is being rejected by the upstream gateway before reaching the model. The script sends a browser-like `User-Agent` by default, and it can be overridden with `--user-agent`.
 
-For now, only Latin-script target languages are supported by the translation script because non-Latin languages will likely require a font patch. The prompt asks the model to use established official Pokémon terminology for moves, items, abilities, descriptions, and common franchise text. If the selected API/model has web or retrieval access, it is instructed to consult reputable Pokémon references such as Bulbapedia or Pokémon Database; plain OpenAI-compatible chat APIs usually do not browse the web by themselves. Manual translations should follow the same rule; for Italian battle text, prefer official-style wording such as `Brutto colpo!`, `è esausto!`, `Punti Esperienza`, and official ability names like `Pressione`.
+For now, only Latin-script target languages are supported by the translation script because non-Latin languages will
+likely require a font patch. For every target-language translation addition, edit, or fix, use PokeAPI localized data
+first, then Bulbapedia/Pokémon Database, then the official FireRed ROM in the target language for exact in-game wording
+and control/layout conventions. Use a known local FireRed ROM path when available (Italian: `out/red_ita.gba`);
+otherwise ask for the path before relying on it. Plain OpenAI-compatible chat APIs usually do not browse the web by
+themselves. For Italian battle text, prefer official-style wording such as `Brutto colpo!`, `è esausto!`,
+`Punti Esperienza`, and official ability names like `Pressione`.
 
 ### Debug Build
 
@@ -231,9 +237,10 @@ Run the control-fix script after translation:
 ```
 
 This step is still needed. It repairs common translation damage such as broken control codes, misplaced braces, outer
-quotes, and apostrophes. It also permits known battle stat-change templates to reorder protected stat/name tokens for
-natural target-language grammar and keeps the `What will [pokemon] do?` battle prompt to two lines with the Pokémon name
-alone on line 2. It also recomputes layout after translation: dialogue-like text is wrapped into pages using line breaks
+quotes, and apostrophes. It also permits known battle stat-change and trainer-switch prompts to reorder protected tokens
+for natural or official target-language grammar and keeps the `What will [pokemon] do?` battle prompt to
+two lines with the Pokémon name alone on line 2. It also recomputes layout after translation: dialogue-like text is
+wrapped into pages using line breaks
 and `\l`, while `plain_scripts`, descriptions, mission text, Pokémon summary text, and battle messages are wrapped with
 regular line breaks. Mission descriptions and objectives are limited to two lines, preventing the mission-log renderer
 from treating an overflow as dialogue. Mission names are capped to the longest extracted English mission-title width,

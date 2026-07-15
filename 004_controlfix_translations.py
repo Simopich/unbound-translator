@@ -249,9 +249,15 @@ def repair_split_controls(text):
 
 
 def allows_critical_token_reorder(original):
+    original = strip_hma_quotes(original)
     return bool(
         re.match(r"^\\\\(?:0F|10)’s \\\\00(?:\n|\\n)\[player\]$", original)
         or re.match(r"^Using \\\\16, the \\\\00 of(?:\n|\\n)\\\\13 \[player\]$", original)
+        or re.fullmatch(
+            r"\\\\1C \\\\1D is(?:\n|\\n)about to use \[player\]\."
+            r"(?:\n|\\n){2}Will \\\\23 change(?:\n|\\n)Pokémon\?",
+            original,
+        )
     )
 
 
