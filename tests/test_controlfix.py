@@ -68,6 +68,7 @@ def test_ready_trainer_change_prompt_uses_official_italian_wording():
     ready_entry = next(entry for entry in ready_entries if entry["id"] == fixture["id"])
 
     assert ready_entry["translated"] == fixture["translated"]
+    assert "\\p" in ready_entry["translated"]
     assert controlfix.controls_match(fixture["translated"], fixture["original"])
 
 

@@ -138582,7 +138582,7 @@
           "token": "\\\\23"
         }
       ],
-      "translated": "La prossima scelta di \\\\1D,\\\\n\\\\1C, sarà [player].\\\\n\\\\n\\\\23, vuoi cambiare\\\\nPokémon?"
+      "translated": "La prossima scelta di \\\\1D,\\n\\\\1C, sarà [player].\\p\\\\23, vuoi cambiare\\nPokémon?"
     },
     {
       "id": "tbl_battle_messages_00294_3FD1C7",
