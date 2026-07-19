@@ -190,7 +190,9 @@ Use this to test a small manually whitelisted ROM build:
   `unbound-translated-<language>.bps` assets. It runs on every push to `main`, cancels obsolete builds, and uses
   `ready-<UTC-build-time>-<commit-sha>` as its release tag, with an optional manual tag override. Release descriptions
   list the flag-marked assets, latest version tag, and linked commit hashes/messages. All generated releases are
-  pre-releases and it must never upload a ROM.
+  pre-releases and it must never upload a ROM. Optional `DISCORD_WEBHOOK_URL` notifications announce successful
+  prereleases with their BPS assets; failed or cancelled builds stay silent, and notification failures do not fail the
+  release.
 - Only Italian is included for now.
 - The included ready translations were made using DeepSeek V4 Flash.
 

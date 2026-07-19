@@ -23,6 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       UNBOUND_ENGLISH_ROM_URL: ${{ secrets.UNBOUND_ENGLISH_ROM_URL }}
+      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
       EXPECTED_ROM_MD5: 9cad8e771940e7f7094d13911552cef0
       MANUAL_TAG: ${{ inputs.tag }}
       EVENT_BEFORE: ${{ github.event.before }}
@@ -99,9 +100,53 @@ jobs:
           } > release-body.md
 
       - name: Publish BPS-only release assets
+        id: publish_release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ env.RELEASE_TAG }}
           body_path: release-body.md
           prerelease: true
           files: dist/unbound-translated-*.bps
+
+      - name: Notify Discord
+        if: ${{ success() && steps.publish_release.outcome == 'success' && env.DISCORD_WEBHOOK_URL != '' }}
+        continue-on-error: true
+        shell: bash
+        run: |
+          run_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          commit_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}"
+          commit_subject="$(git log -1 --format=%s "$GITHUB_SHA" 2>/dev/null || echo 'Unknown commit')"
+          timestamp="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          title="Translation release published"
+          color=5763719
+          release_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/releases/tag/${RELEASE_TAG}"
+          assets=""
+          shopt -s nullglob
+          for patch in dist/unbound-translated-*.bps; do
+            assets+="- \`${patch##*/}\`"$'\n'
+          done
+          description="[Open prerelease](${release_url})"$'\n\n'"**BPS patches**"$'\n'"${assets}"$'\n'"[\`${GITHUB_SHA:0:7}\`](${commit_url}) ${commit_subject}"$'\n'"[View workflow run](${run_url})"
+
+          payload="$(jq -n \
+            --arg title "$title" \
+            --arg description "$description" \
+            --arg timestamp "$timestamp" \
+            --arg repository "$GITHUB_REPOSITORY" \
+            --argjson color "$color" \
+            '{
+              username: "Unbound Translator",
+              allowed_mentions: {parse: []},
+              embeds: [{
+                title: $title,
+                description: $description,
+                color: $color,
+                timestamp: $timestamp,
+                footer: {text: $repository}
+              }]
+            }')"
+
+          curl --fail --silent --show-error --retry 2 \
+            --max-time 15 \
+            --header 'Content-Type: application/json' \
+            --data "$payload" \
+            "$DISCORD_WEBHOOK_URL"

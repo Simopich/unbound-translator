@@ -331,7 +331,10 @@ repository secret `UNBOUND_ENGLISH_ROM_URL` with the private English-ROM downloa
 to `main`, cancels obsolete running builds, and uses the release tag `ready-<UTC-build-time>-<commit-sha>`; a manual
 run can provide a replacement tag. The downloaded ROM must match MD5 `9cad8e771940e7f7094d13911552cef0`. Its release
 description lists flag-marked BPS assets with the latest repository version tag and linked commit hashes/messages. All
-generated releases are marked as pre-releases.
+generated releases are marked as pre-releases. To receive Discord notifications, create an incoming webhook for the
+target channel and store its URL in the optional repository secret `DISCORD_WEBHOOK_URL`. Successful notifications
+link the prerelease and list its BPS assets. Failed and cancelled builds do not notify the channel, and notification
+delivery is non-blocking.
 
 The ready translations currently included in the repo were made using DeepSeek V4 Flash.
 
