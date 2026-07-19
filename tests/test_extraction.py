@@ -64,6 +64,45 @@ class AlignedPointerTextTests(unittest.TestCase):
         self.assertEqual(merged[0]["category"], "menu")
         self.assertEqual(merged[0]["pointer_sources"], ["0x100", "0x200"])
 
+    def test_bounty_descriptions_use_non_scrolling_category(self):
+        self.assertEqual(len(EXTRACTOR.MISSION_DESCRIPTION_TEXT_ADDRESSES), 82)
+        for address in EXTRACTOR.MISSION_DESCRIPTION_TEXT_ADDRESSES:
+            self.assertEqual(
+                EXTRACTOR.pointer_text_category(b"", address, []),
+                "mission_descriptions",
+            )
+
+    def test_mission_registration_title_source(self):
+        rom = bytearray(32)
+        source = 4
+        rom[source - 2: source] = b"\x0F\x00"
+        rom[source: source + 4] = (0x08123456).to_bytes(4, "little")
+        rom[source + 4] = 0x04
+        rom[source + 5: source + 9] = (
+                0x08000000 + EXTRACTOR.MISSION_HANDLER_ROM_OFFSET
+        ).to_bytes(4, "little")
+        self.assertTrue(
+            EXTRACTOR.is_mission_registration_title_pointer_source(rom, source)
+        )
+        rom[source + 4] = 0x05
+        self.assertFalse(
+            EXTRACTOR.is_mission_registration_title_pointer_source(rom, source)
+        )
+
+    def test_mission_registration_title_addresses_are_unique(self):
+        rom = bytearray(64)
+        source = 4
+        title = 40
+        rom[source - 2: source] = b"\x0F\x00"
+        rom[source: source + 4] = (0x08000000 + title).to_bytes(4, "little")
+        rom[source + 4] = 0x04
+        rom[source + 5: source + 9] = (
+                0x08000000 + EXTRACTOR.MISSION_HANDLER_ROM_OFFSET
+        ).to_bytes(4, "little")
+        self.assertEqual(
+            EXTRACTOR.mission_registration_title_addresses(rom), {title}
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

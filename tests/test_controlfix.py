@@ -23,6 +23,8 @@ def _args(**overrides):
         "mission_objective_wrap_width": 35,
         "mission_objective_max_lines": 2,
         "mission_objective_max_total": 65,
+        "mission_description_max_pixels": 172,
+        "mission_description_max_lines": 3,
         "item_description_wrap_width": 14,
         "item_description_max_lines": 3,
     }
@@ -222,7 +224,7 @@ def test_mission_objective_uses_french_observed_shared_budget():
     assert controlfix.visible_width(" ".join(lines)) <= 65
 
 
-def test_mission_log_description_never_emits_a_third_line():
+def test_mission_log_description_uses_up_to_three_pixel_bounded_lines():
     wrapped, changed, _long_words, skipped = controlfix.wrap_translation(
         "Scopri i segreti dietro le misteriose tavolette di pietra!",
         {"category": "mission_descriptions", "table_index": 1},
@@ -234,9 +236,25 @@ def test_mission_log_description_never_emits_a_third_line():
     lines = wrapped.splitlines()
     assert changed
     assert not skipped
-    assert len(lines) <= 2
-    assert max(map(controlfix.visible_width, lines)) <= 35
-    assert controlfix.visible_width(" ".join(lines)) <= 65
+    assert len(lines) <= 3
+    assert max(map(controlfix.text_pixel_width, lines)) <= 172
+    assert "..." not in wrapped
+
+
+def test_mission_log_description_never_emits_scroll_or_page_controls():
+    wrapped, _changed, _long_words, skipped = controlfix.wrap_translation(
+        "Aiuta uno scienziato a conoscere i Pokémon che vivono nella Palude Cootes! Usa il DexNav per aiutarlo a catturarli tutti.",
+        {"category": "mission_descriptions", "table_index": 4},
+        "Help a scientist learn about the Pokémon living in Cootes Bog!",
+        _args(),
+        {"mission_descriptions"},
+    )
+
+    assert not skipped
+    assert len(wrapped.splitlines()) <= 3
+    assert "\\l" not in wrapped
+    assert "\\p" not in wrapped
+    assert max(map(controlfix.text_pixel_width, wrapped.splitlines())) <= 172
 
 
 def test_menu_and_battle_layout_repairs():

@@ -227660,7 +227660,7 @@
     },
     {
       "id": "scr_1EE55DE",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1EE55DE",
       "pointer_sources": [
         "0x1E559A0"
@@ -227669,7 +227669,7 @@
       "byte_length": 94,
       "is_pointer_based": true,
       "translation_source": "Be victorious by defeating all eight of Borrius’ Gym Leaders in the Classic Leaders Gauntlet!",
-      "translated": "Sii vittorioso sconfiggendo tutti e\notto i Capipalestra di Borrius nel\\lClassic Leaders Gauntlet!"
+      "translated": "Sconfiggi gli otto Capipalestra\ndi Borrius nel Classic Leaders\nGauntlet!"
     },
     {
       "id": "scr_1EE563C",
@@ -228875,7 +228875,7 @@
     },
     {
       "id": "scr_1EE71A0",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1EE71A0",
       "pointer_sources": [
         "0x1E56668"
@@ -228884,7 +228884,7 @@
       "byte_length": 85,
       "is_pointer_based": true,
       "translation_source": "Are people meant to fly? Steal 20 Pretty Wings from Wingull or Pelipper to find out!",
-      "translated": "Gli esseri umani sono fatti per\nvolare? Ruba 20 Piume Belle da\\lWingull o Pelipper per scoprirlo!"
+      "translated": "Si può volare? Ruba 20 Piume\nBelle a Wingull o Pelipper per\nscoprirlo!"
     },
     {
       "id": "scr_1EE71F5",
@@ -230675,7 +230675,7 @@
     },
     {
       "id": "scr_1EEA010",
-      "category": "mission_names",
+      "category": "scripts",
       "address": "0x1EEA010",
       "pointer_sources": [
         "0x1FB1EDC"
@@ -230701,7 +230701,7 @@
     },
     {
       "id": "scr_1EEA028",
-      "category": "mission_names",
+      "category": "scripts",
       "address": "0x1EEA028",
       "pointer_sources": [
         "0x1FB1EE4"
@@ -231051,7 +231051,7 @@
     },
     {
       "id": "scr_1EEA8A9",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1EEA8A9",
       "pointer_sources": [
         "0x1E572EC"
@@ -231060,11 +231060,11 @@
       "byte_length": 96,
       "is_pointer_based": true,
       "translation_source": "Bring 1 Pecha Berry, 1 Qualot Berry, and 1 Fresh Water to help out with a birthday celebration.",
-      "translated": "Porta 1 Pecha Berry, 1 Qualot Berry\ne 1 Acqua Fresca per aiutare a\\lfesteggiare un compleanno."
+      "translated": "Porta 1 Baccapesca, 1\nBaccaloquat e 1 Acqua Fresca\nper una festa!"
     },
     {
       "id": "scr_1EEA909",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1EEA909",
       "pointer_sources": [
         "0x1E572FC"
@@ -231073,7 +231073,7 @@
       "byte_length": 97,
       "is_pointer_based": true,
       "translation_source": "Bring 3 Rawst Berries, 5 Belue Berries, 5 Watmel Berries, and 5 Moomoo Milks for an anniversary.",
-      "translated": "Porta 3 Rawst Berries, 5 Belue\nBerries, 5 Watmel Berries e 5 Latte\\lMumu per un anniversario."
+      "translated": "Porta 3 Rawst Berries, 5 Belue\nBerries, 5 Watmel Berries e 5\nLatte Mumu per un anniversario."
     },
     {
       "id": "scr_1EEA96A",
@@ -232579,7 +232579,7 @@
     },
     {
       "id": "scr_1EEC79B",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1EEC79B",
       "pointer_sources": [
         "0x1E5A744"
@@ -232588,7 +232588,7 @@
       "byte_length": 102,
       "is_pointer_based": true,
       "translation_source": "Help a scientist learn about the Pokémon living in Cootes Bog! Use the DexNav to help catch them all.",
-      "translated": "Aiuta uno scienziato a conoscere i\nPokémon che vivono nella Palude\\lCootes! Usa il DexNav per aiutarlo\n\na catturarli tutti."
+      "translated": "Aiuta uno scienziato a studiare\ni Pokémon della Palude Cootes\nusando il DexNav!"
     },
     {
       "id": "scr_1EEC801",
@@ -233410,7 +233410,7 @@
     },
     {
       "id": "scr_1EEDA96",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1EEDA96",
       "pointer_sources": [
         "0x1E5AD80",
@@ -233425,7 +233425,7 @@
     },
     {
       "id": "scr_1EEDAA2",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1EEDAA2",
       "pointer_sources": [
         "0x1E5AD98"
@@ -233440,7 +233440,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Usa l{B4}ADM per scavare attraverso\ngli ingressi crollati nel KBT\\lExpressway e catturare [buffer1]\n\nCarbink."
+      "translated": "Usa l{B4}ADM nel KBT Expressway e\ncattura [buffer1] Carbink tra\ngli ingressi crollati."
     },
     {
       "id": "scr_1EEDB03",
@@ -236529,7 +236529,7 @@
     },
     {
       "id": "scr_1EF1137",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1EF1137",
       "pointer_sources": [
         "0x1E5D060"
@@ -236538,7 +236538,7 @@
       "byte_length": 105,
       "is_pointer_based": true,
       "translation_source": "A little girl has been snatched up by a Drifloon! Find her, and return her safely to her worried mother.",
-      "translated": "Una bambina è stata rapita da un\nDrifloon! Trovala e riportala sana\\le salva da sua madre preoccupata."
+      "translated": "Un Drifloon ha rapito una\nbimba! Trovala e riportala\nsana e salva da sua madre."
     },
     {
       "id": "scr_1EF11A0",
@@ -236797,7 +236797,7 @@
     },
     {
       "id": "scr_1EF154A",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1EF154A",
       "pointer_sources": [
         "0x1E5BB40",
@@ -236812,7 +236812,7 @@
     },
     {
       "id": "scr_1EF155B",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1EF155B",
       "pointer_sources": [
         "0x1E5BB50"
@@ -236821,7 +236821,7 @@
       "byte_length": 62,
       "is_pointer_based": true,
       "translation_source": "Search far and wide for hot emeralds hidden beneath crystals.",
-      "translated": "Cerca in lungo e in largo gli\nsmeraldi ardenti nascosti sotto i\\lcristalli."
+      "translated": "Cerca in lungo e in largo gli\nsmeraldi ardenti nascosti sotto\ni cristalli."
     },
     {
       "id": "scr_1EF1599",
@@ -240201,7 +240201,7 @@
     },
     {
       "id": "scr_1EF5BD2",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1EF5BD2",
       "pointer_sources": [
         "0x1E61268",
@@ -240212,11 +240212,11 @@
       "byte_length": 24,
       "is_pointer_based": true,
       "translation_source": "And Den There Were None",
-      "translated": "E allora non ne rimase nessuno"
+      "translated": "Nessuna Tana rimasta"
     },
     {
       "id": "scr_1EF5BEA",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1EF5BEA",
       "pointer_sources": [
         "0x1E613AC"
@@ -240225,7 +240225,7 @@
       "byte_length": 68,
       "is_pointer_based": true,
       "translation_source": "Conquer all the Raid Dens scattered around Borrius in a single day!",
-      "translated": "Sconfiggi tutte le Tane Raid sparse\nper Borrius in un solo giorno!"
+      "translated": "Sconfiggi tutte le Tane Raid\nsparse per Borrius in un solo\ngiorno!"
     },
     {
       "id": "scr_1EF5C2E",
@@ -240379,7 +240379,7 @@
     },
     {
       "id": "scr_1EF6184",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1EF6184",
       "pointer_sources": [
         "0x1E615C0",
@@ -240394,7 +240394,7 @@
     },
     {
       "id": "scr_1EF6194",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1EF6194",
       "pointer_sources": [
         "0x1E616EC"
@@ -240403,7 +240403,7 @@
       "byte_length": 67,
       "is_pointer_based": true,
       "translation_source": "Find specific people in Borrius who observe the same daily habits!",
-      "translated": "Trova persone specifiche a Borrius\nche seguono le stesse abitudini\\lquotidiane!"
+      "translated": "Trova persone specifiche a\nBorrius che seguono le stesse\nabitudini quotidiane!"
     },
     {
       "id": "scr_1EF61D7",
@@ -242142,7 +242142,7 @@
     },
     {
       "id": "scr_1EF7E3F",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1EF7E3F",
       "pointer_sources": [
         "0x1E61B68",
@@ -242159,7 +242159,7 @@
     },
     {
       "id": "scr_1EF7E52",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1EF7E52",
       "pointer_sources": [
         "0x1E61B78"
@@ -242168,7 +242168,7 @@
       "byte_length": 71,
       "is_pointer_based": true,
       "translation_source": "Sweet smelling aromas! Show different Pokémon bred with Incense items.",
-      "translated": "Aromi dal profumo dolce! Mostra\ndiversi Pokémon allevati con gli\\loggetti Incenso."
+      "translated": "Aromi dal profumo dolce!\nMostra diversi Pokémon allevati\ncon gli oggetti Incenso."
     },
     {
       "id": "scr_1EF7E99",
@@ -244152,7 +244152,7 @@
     },
     {
       "id": "scr_1EFA8A1",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1EFA8A1",
       "pointer_sources": [
         "0x1E63274",
@@ -244167,7 +244167,7 @@
     },
     {
       "id": "scr_1EFA8B3",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1EFA8B3",
       "pointer_sources": [
         "0x1E6328C"
@@ -244176,7 +244176,7 @@
       "byte_length": 104,
       "is_pointer_based": true,
       "translation_source": "Pyukumuku have been washing ashore and are scaring away the tourists! Throw them all back in the ocean.",
-      "translated": "I Pyukumuku stanno arrivando a riva\ne stanno spaventando i turisti!\\lRimandali tutti nell{B4}oceano."
+      "translated": "I Pyukumuku sulla spiaggia\nspaventano i turisti! Ributtali\ntutti in mare."
     },
     {
       "id": "scr_1EFA91B",
@@ -245835,7 +245835,7 @@
     },
     {
       "id": "scr_1EFD366",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1EFD366",
       "pointer_sources": [
         "0x1E63EF4",
@@ -245997,7 +245997,7 @@
     },
     {
       "id": "scr_1EFD457",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1EFD457",
       "pointer_sources": [
         "0x1E6400C"
@@ -246006,7 +246006,7 @@
       "byte_length": 63,
       "is_pointer_based": true,
       "translation_source": "Defeat all of the Unbound devs in Dehara City in a single day!",
-      "translated": "Sconfiggi tutti gli sviluppatori di\nUnbound a Città di Dehara in un\\lsolo giorno!"
+      "translated": "Sconfiggi tutti gli sviluppatori\ndi Unbound a Città di Dehara in\nun solo giorno!"
     },
     {
       "id": "scr_1EFD496",
@@ -247346,7 +247346,7 @@
     },
     {
       "id": "scr_1EFF260",
-      "category": "mission_names",
+      "category": "scripts",
       "address": "0x1EFF260",
       "pointer_sources": [
         "0x1FB3CEC"
@@ -247372,7 +247372,7 @@
     },
     {
       "id": "scr_1EFF27C",
-      "category": "mission_names",
+      "category": "scripts",
       "address": "0x1EFF27C",
       "pointer_sources": [
         "0x1FB3F9C"
@@ -247547,7 +247547,7 @@
     },
     {
       "id": "scr_1EFF75B",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1EFF75B",
       "pointer_sources": [
         "0x1E67C44",
@@ -247562,7 +247562,7 @@
     },
     {
       "id": "scr_1EFF76A",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1EFF76A",
       "pointer_sources": [
         "0x1E93998"
@@ -247571,7 +247571,7 @@
       "byte_length": 66,
       "is_pointer_based": true,
       "translation_source": "Practice basic literacy by reading all of the Trainer Tips signs.",
-      "translated": "Migliora la tua alfabetizzazione di\nbase leggendo tutti i cartelli dei\\lSuggerimenti per Allenatori."
+      "translated": "Fai pratica di lettura: leggi\ntutti i cartelli dei\nSuggerimenti per Allenatori."
     },
     {
       "id": "scr_1EFF7AC",
@@ -248768,7 +248768,7 @@
     },
     {
       "id": "scr_1F016E4",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F016E4",
       "pointer_sources": [
         "0x1E68738",
@@ -248783,7 +248783,7 @@
     },
     {
       "id": "scr_1F016FD",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F016FD",
       "pointer_sources": [
         "0x1E68750"
@@ -248798,7 +248798,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Fai pratica a salvare vite salvando\nla partita almeno [buffer1] volte."
+      "translated": "Fai pratica a salvare vite\nsalvando la partita almeno\n[buffer1] volte."
     },
     {
       "id": "scr_1F01739",
@@ -253667,7 +253667,7 @@
     },
     {
       "id": "scr_1F06B10",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F06B10",
       "pointer_sources": [
         "0x1E6AFB4",
@@ -253682,7 +253682,7 @@
     },
     {
       "id": "scr_1F06B1D",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F06B1D",
       "pointer_sources": [
         "0x1E6AFCC"
@@ -253691,7 +253691,7 @@
       "byte_length": 72,
       "is_pointer_based": true,
       "translation_source": "Leave no survivors. Use the Trainer Catalogue and battle every Trainer!",
-      "translated": "Non lasciare sopravvissuti. Usa il\nCatalogo Allenatori e sfida ogni\\lAllenatore!"
+      "translated": "Non lasciare sopravvissuti. Usa\nil Catalogo Allenatori e sfida\nogni Allenatore!"
     },
     {
       "id": "scr_1F06B65",
@@ -254049,7 +254049,7 @@
     },
     {
       "id": "scr_1F073AB",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F073AB",
       "pointer_sources": [
         "0x1E6B0A8",
@@ -254065,7 +254065,7 @@
     },
     {
       "id": "scr_1F073B6",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F073B6",
       "pointer_sources": [
         "0x1E6B0B8"
@@ -254074,7 +254074,7 @@
       "byte_length": 80,
       "is_pointer_based": true,
       "translation_source": "Wonderful, wonderful wings! Show the beautiful wings of different bird Pokémon.",
-      "translated": "Ali meravigliose, meravigliose!\nMostra le belle ali di diversi\\lPokémon uccello."
+      "translated": "Ali meravigliose, meravigliose!\nMostra le belle ali di diversi\nPokémon uccello."
     },
     {
       "id": "scr_1F07406",
@@ -254373,7 +254373,7 @@
     },
     {
       "id": "scr_1F07861",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F07861",
       "pointer_sources": [
         "0x1E6B268"
@@ -254382,7 +254382,7 @@
       "byte_length": 102,
       "is_pointer_based": true,
       "translation_source": "The sweet sorrow of goodbyes! Form a deep bond with a Butterfree by training it to at least Level 70.",
-      "translated": "La dolce tristezza degli addii!\nCrea un legame profondo con un\\lButterfree allenandolo almeno fino\n\nal livello 70."
+      "translated": "Allena un Butterfree almeno\nfino al livello 70 e crea con\nlui un legame profondo!"
     },
     {
       "id": "scr_1F078C7",
@@ -254728,7 +254728,7 @@
     },
     {
       "id": "scr_1F07E65",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F07E65",
       "pointer_sources": [
         "0x1E6B3D0",
@@ -254743,7 +254743,7 @@
     },
     {
       "id": "scr_1F07E7E",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F07E7E",
       "pointer_sources": [
         "0x1E6B3E8"
@@ -254758,7 +254758,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Sorgi in nome del comunismo! Cura i\ntuoi Pokémon nei Centri Pokémon\\l[buffer1] volte."
+      "translated": "Sorgi in nome del comunismo!\nCura i tuoi Pokémon nei Centri\nPokémon [buffer1] volte."
     },
     {
       "id": "scr_1F07EC2",
@@ -254900,7 +254900,7 @@
     },
     {
       "id": "scr_1F08287",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F08287",
       "pointer_sources": [
         "0x1E6B4E4",
@@ -254915,7 +254915,7 @@
     },
     {
       "id": "scr_1F082A1",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F082A1",
       "pointer_sources": [
         "0x1E6B4FC"
@@ -254930,7 +254930,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Sorgi in nome del capitalismo! Fai\n[buffer1] acquisti nei negozi."
+      "translated": "Sorgi in nome del capitalismo!\nFai [buffer1] acquisti nei\nnegozi."
     },
     {
       "id": "scr_1F082E2",
@@ -255056,7 +255056,7 @@
     },
     {
       "id": "scr_1F08646",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F08646",
       "pointer_sources": [
         "0x1E6B5F8",
@@ -255067,11 +255067,11 @@
       "byte_length": 19,
       "is_pointer_based": true,
       "translation_source": "Population Control",
-      "translated": "Controllo della popolazione"
+      "translated": "Controllo demografico"
     },
     {
       "id": "scr_1F08659",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F08659",
       "pointer_sources": [
         "0x1E6B610"
@@ -255086,7 +255086,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Cattura [buffer1] Pokémon in un\ngiorno per ridurre il\\lsovraffollamento."
+      "translated": "Cattura [buffer1] Pokémon in\nun giorno per ridurre il\nsovraffollamento."
     },
     {
       "id": "scr_1F08691",
@@ -255231,7 +255231,7 @@
     },
     {
       "id": "scr_1F08A72",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F08A72",
       "pointer_sources": [
         "0x1E6B718",
@@ -255246,7 +255246,7 @@
     },
     {
       "id": "scr_1F08A80",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F08A80",
       "pointer_sources": [
         "0x1E6B730"
@@ -255261,7 +255261,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Diventa parte dei rifiuti! Cerca\nnei bidoni della spazzatura\\lredditizi [buffer1] oggetti."
+      "translated": "Unisciti ai rifiuti! Cerca\n[buffer1] oggetti nei bidoni\npiù redditizi."
     },
     {
       "id": "scr_1F08AC4",
@@ -255404,7 +255404,7 @@
     },
     {
       "id": "scr_1F08DE6",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F08DE6",
       "pointer_sources": [
         "0x1E6B8B4",
@@ -255419,7 +255419,7 @@
     },
     {
       "id": "scr_1F08DF7",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F08DF7",
       "pointer_sources": [
         "0x1E6B8CC"
@@ -255434,7 +255434,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "La teoria dell{B4}evoluzione è un\nteorema! Fai evolvere in totale\\l[buffer1] Pokémon."
+      "translated": "La teoria dell{B4}evoluzione è un\nteorema! Fai evolvere in\ntotale [buffer1] Pokémon."
     },
     {
       "id": "scr_1F08E36",
@@ -255581,7 +255581,7 @@
     },
     {
       "id": "scr_1F0920D",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F0920D",
       "pointer_sources": [
         "0x1E6BA48",
@@ -255596,7 +255596,7 @@
     },
     {
       "id": "scr_1F0921E",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F0921E",
       "pointer_sources": [
         "0x1E6BA60"
@@ -255611,7 +255611,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "L{B4}Exp. è come l{B4}oro. Guadagna\n[buffer1] in un giorno per diventare\\ldavvero ricco."
+      "translated": "L{B4}Exp. è come l{B4}oro. Guadagna\n[buffer1] in un giorno per\ndiventare davvero ricco."
     },
     {
       "id": "scr_1F0925A",
@@ -256155,7 +256155,7 @@
     },
     {
       "id": "scr_1F09C78",
-      "category": "mission_names",
+      "category": "scripts",
       "address": "0x1F09C78",
       "pointer_sources": [
         "0x1EAF964",
@@ -256276,7 +256276,7 @@
     },
     {
       "id": "scr_1F0A086",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F0A086",
       "pointer_sources": [
         "0x1E6BD04"
@@ -256285,7 +256285,7 @@
       "byte_length": 96,
       "is_pointer_based": true,
       "translation_source": "A big feast is coming up soon! Battle Pokémon in Flower Paradise and collect 3 Honey from them.",
-      "translated": "Un grande banchetto arriverà\npresto! Sfida i Pokémon nel\\lParadiso dei Fiori e raccogli 3\n\nMiele da loro."
+      "translated": "Presto ci sarà un banchetto!\nLotta al Paradiso dei Fiori e\nraccogli 3 Miele dai Pokémon."
     },
     {
       "id": "scr_1F0A0E6",
@@ -258109,7 +258109,7 @@
     },
     {
       "id": "scr_1F0CA95",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F0CA95",
       "pointer_sources": [
         "0x1E6E878"
@@ -258118,7 +258118,7 @@
       "byte_length": 96,
       "is_pointer_based": true,
       "translation_source": "Your neighbour needs your help! Bring him an Antidote from the Poké Mart to restore his health.",
-      "translated": "Il tuo vicino ha bisogno del tuo\naiuto! Portagli una Antidoto dal\\lPoké Mart per ripristinare la sua\n\nsalute."
+      "translated": "Il vicino sta male! Portagli un\nAntidoto dal Pokémon-Market\nper farlo guarire."
     },
     {
       "id": "scr_1F0CAF5",
@@ -259989,7 +259989,7 @@
     },
     {
       "id": "scr_1F0E72F",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F0E72F",
       "pointer_sources": [
         "0x1E6F6F8",
@@ -260004,7 +260004,7 @@
     },
     {
       "id": "scr_1F0E744",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F0E744",
       "pointer_sources": [
         "0x1E6F710"
@@ -260019,7 +260019,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Scatenati! Gioca a Cloud Burst e\nraccogli 3000 Monete in un solo\\lgiorno. Rimanenti: [buffer1]"
+      "translated": "Gioca a Cloud Burst e raccogli\n3000 Monete in un giorno.\nRimanenti: [buffer1]"
     },
     {
       "id": "scr_1F0E798",
@@ -262468,7 +262468,7 @@
     },
     {
       "id": "scr_1F12064",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F12064",
       "pointer_sources": [
         "0x1E710C0",
@@ -262483,7 +262483,7 @@
     },
     {
       "id": "scr_1F1206E",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F1206E",
       "pointer_sources": [
         "0x1E710D8"
@@ -262498,7 +262498,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Diventa uno degli Lucario\nImmortali! Affronta [buffer1]\\lbattaglie per essere iniziato."
+      "translated": "Diventa uno degli Lucario\nImmortali! Affronta [buffer1]\nbattaglie per essere iniziato."
     },
     {
       "id": "scr_1F120B3",
@@ -263269,7 +263269,7 @@
     },
     {
       "id": "scr_1F13071",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F13071",
       "pointer_sources": [
         "0x1E71AD0"
@@ -263278,7 +263278,7 @@
       "byte_length": 107,
       "is_pointer_based": true,
       "translation_source": "Help a rich businessman build his dream pancake restaurant by cutting down all of the grass in Grim Woods.",
-      "translated": "Aiuta un ricco uomo d{B4}affari a\ncostruire il ristorante di pancake\\ldei suoi sogni tagliando tutta\n\nl{B4}erba di Grim Woods."
+      "translated": "Taglia l{B4}erba di Grim Woods per\naiutare un ricco uomo d{B4}affari\nad aprire il suo ristorante."
     },
     {
       "id": "scr_1F130DC",
@@ -263924,7 +263924,7 @@
     },
     {
       "id": "scr_1F1425C",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F1425C",
       "pointer_sources": [
         "0x1E72100"
@@ -263933,7 +263933,7 @@
       "byte_length": 98,
       "is_pointer_based": true,
       "translation_source": "There ain’t nothin’ in this world harder than a Hard Stone! Collect 20 of them for an enthusiast.",
-      "translated": "Non c{B4}è niente in questo mondo più\nduro di una Pietradura! Raccogline\\l20 per un appassionato."
+      "translated": "Raccogli 20 Pietradure per un\nappassionato: nulla al mondo è\npiù duro!"
     },
     {
       "id": "scr_1F142BE",
@@ -264778,7 +264778,7 @@
     },
     {
       "id": "scr_1F14CD2",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F14CD2",
       "pointer_sources": [
         "0x1E72314",
@@ -264793,7 +264793,7 @@
     },
     {
       "id": "scr_1F14CE2",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F14CE2",
       "pointer_sources": [
         "0x1E72324"
@@ -264802,7 +264802,7 @@
       "byte_length": 65,
       "is_pointer_based": true,
       "translation_source": "Return to the Tomb of Borrius, and find all of the Hidden Items!",
-      "translated": "Torna alla Tomba di Borrius e trova\ntutti gli oggetti nascosti!"
+      "translated": "Torna alla Tomba di Borrius e\ntrova tutti gli oggetti\nnascosti!"
     },
     {
       "id": "scr_1F14D23",
@@ -265331,7 +265331,7 @@
     },
     {
       "id": "scr_1F15C64",
-      "category": "mission_names",
+      "category": "scripts",
       "address": "0x1F15C64",
       "pointer_sources": [
         "0x1E53233",
@@ -265814,7 +265814,7 @@
     },
     {
       "id": "scr_1F164B9",
-      "category": "mission_names",
+      "category": "scripts",
       "address": "0x1F164B9",
       "pointer_sources": [
         "0x1E534F6",
@@ -267301,7 +267301,7 @@
     },
     {
       "id": "scr_1F18D80",
-      "category": "mission_names",
+      "category": "scripts",
       "address": "0x1F18D80",
       "pointer_sources": [
         "0x1FB3F94"
@@ -270751,8 +270751,8 @@
       "translated": "Una grotta colma fino all{B4}orlo di\nghiaccioli. Molti Pokémon di tipo\\lGhiaccio la chiamano casa."
     },
     {
-      "id": "tbl_mission_descriptions_00000_1F1F8AB",
-      "category": "mission_descriptions",
+      "id": "scr_1F1F8AB",
+      "category": "mission_names",
       "address": "0x1F1F8AB",
       "pointer_sources": [
         "0x1E76CB0",
@@ -270762,13 +270762,11 @@
       "original": "\"Am I Blind?\"",
       "byte_length": 12,
       "is_pointer_based": true,
-      "table_name": "data.missions.descriptions.amIBlind",
-      "table_index": 0,
       "translation_source": "Am I Blind?",
       "translated": "Sono cieco?"
     },
     {
-      "id": "tbl_mission_descriptions_00001_1F1F8B7",
+      "id": "scr_1F1F8B7",
       "category": "mission_descriptions",
       "address": "0x1F1F8B7",
       "pointer_sources": [
@@ -270777,8 +270775,6 @@
       "original": "\"Uncover the secrets behind the\nmysterious stone tablets!\"",
       "byte_length": 57,
       "is_pointer_based": true,
-      "table_name": "data.missions.descriptions.amIBlind",
-      "table_index": 1,
       "translation_source": "Uncover the secrets behind the mysterious stone tablets!",
       "translated": "Scopri i segreti dietro le\nmisteriose tavolette di pietra!"
     },
@@ -272049,7 +272045,7 @@
     },
     {
       "id": "scr_1F21ADC",
-      "category": "mission_names",
+      "category": "scripts",
       "address": "0x1F21ADC",
       "pointer_sources": [
         "0x1EBA27C"
@@ -273698,7 +273694,7 @@
     },
     {
       "id": "scr_1F2319E",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F2319E",
       "pointer_sources": [
         "0x1E79B78"
@@ -273707,11 +273703,11 @@
       "byte_length": 84,
       "is_pointer_based": true,
       "translation_source": "It’s a daunting task! See all Pokémon in West Borrius and report back to Prof. Log.",
-      "translated": "È un compito arduo! Vedi tutti i\nPokémon di Borrius occidentale e\\lriferisci a Prof. Log."
+      "translated": "Vedi tutti i Pokémon di Borrius\nOvest e riferisci al Prof. Log!"
     },
     {
       "id": "scr_1F231F2",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F231F2",
       "pointer_sources": [
         "0x1E79B88"
@@ -273720,7 +273716,7 @@
       "byte_length": 96,
       "is_pointer_based": true,
       "translation_source": "As they used to say, you gotta catch ’em all! Travel around, and capture every Pokémon you can!",
-      "translated": "Come si diceva una volta, devi\nprenderli tutti! Viaggia in giro e\\lcattura tutti i Pokémon che puoi!"
+      "translated": "Devi prenderli tutti! Viaggia\nper il mondo e osserva quanti\npiù Pokémon puoi."
     },
     {
       "id": "scr_1F23252",
@@ -275547,7 +275543,7 @@
     },
     {
       "id": "scr_1F26096",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F26096",
       "pointer_sources": [
         "0x1E7A9BC",
@@ -275562,7 +275558,7 @@
     },
     {
       "id": "scr_1F260AE",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F260AE",
       "pointer_sources": [
         "0x1E7A9D4"
@@ -275571,7 +275567,7 @@
       "byte_length": 98,
       "is_pointer_based": true,
       "translation_source": "Pokémon are the most dangerous of beasts. Tame them by setting a record of 25 in the Safari Zone.",
-      "translated": "I Pokémon sono le bestie più\npericolose. Addomesticali\\lstabilendo un record di 25 nella\n\nSafari Zone."
+      "translated": "Fissa un record di 25 nella\nZona Safari e domina le bestie\npiù pericolose: i Pokémon!"
     },
     {
       "id": "scr_1F26110",
@@ -275937,7 +275933,7 @@
     },
     {
       "id": "scr_1F26B52",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F26B52",
       "pointer_sources": [
         "0x1E7ADFC",
@@ -275952,7 +275948,7 @@
     },
     {
       "id": "scr_1F26B63",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F26B63",
       "pointer_sources": [
         "0x1E7AE0C"
@@ -275961,7 +275957,7 @@
       "byte_length": 68,
       "is_pointer_based": true,
       "translation_source": "Scour both West and East Borrius to find the Vivillon hidden about.",
-      "translated": "Esplora sia il Borrius occidentale\nsia quello orientale per trovare il\\lVivillon nascosto da qualche parte."
+      "translated": "Esplora Borrius Est e Ovest\nper trovare i Vivillon nascosti."
     },
     {
       "id": "scr_1F26BA7",
@@ -277243,7 +277239,7 @@
     },
     {
       "id": "scr_1F2817A",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F2817A",
       "pointer_sources": [
         "0x1E7B504"
@@ -277252,7 +277248,7 @@
       "byte_length": 93,
       "is_pointer_based": true,
       "translation_source": "A patron of the Magnolia Cafe has lost his handkerchief! Return it to him on Friday morning.",
-      "translated": "Un cliente del Magnolia Cafe ha\nperso il suo fazzoletto!\\lRestituisciglielo venerdì mattina."
+      "translated": "Un cliente del Magnolia Café\nha perso il fazzoletto.\nRiportaglielo venerdì mattina!"
     },
     {
       "id": "scr_1F281D7",
@@ -281523,7 +281519,7 @@
     },
     {
       "id": "scr_1F2CB04",
-      "category": "mission_names",
+      "category": "scripts",
       "address": "0x1F2CB04",
       "pointer_sources": [
         "0x1E5157F",
@@ -281760,7 +281756,7 @@
     },
     {
       "id": "scr_1F2CB11",
-      "category": "mission_names",
+      "category": "scripts",
       "address": "0x1F2CB11",
       "pointer_sources": [
         "0x1E58AE0",
@@ -281984,7 +281980,7 @@
     },
     {
       "id": "scr_1F2CB1D",
-      "category": "mission_names",
+      "category": "scripts",
       "address": "0x1F2CB1D",
       "pointer_sources": [
         "0x1E61895",
@@ -284405,7 +284401,7 @@
     },
     {
       "id": "scr_1F2FCAE",
-      "category": "mission_names",
+      "category": "scripts",
       "address": "0x1F2FCAE",
       "pointer_sources": [
         "0x1E5FBD8",
@@ -306423,7 +306419,7 @@
     },
     {
       "id": "scr_1F4F9BA",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F4F9BA",
       "pointer_sources": [
         "0x1E7E164"
@@ -306432,7 +306428,7 @@
       "byte_length": 97,
       "is_pointer_based": true,
       "translation_source": "Bonds are powerful! Can you clear the Pokémon League with only one Pokémon, and prove your bond?",
-      "translated": "I legami sono potenti! Riesci a\nsuperare la Lega Pokémon con un\\lsolo Pokémon e a dimostrare il tuo\n\nlegame?"
+      "translated": "I legami sono potenti! Vinci la\nLega con un solo Pokémon e\ndimostra il vostro legame."
     },
     {
       "id": "scr_1F4FA1B",
@@ -308126,7 +308122,7 @@
     },
     {
       "id": "scr_1F53440",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F53440",
       "pointer_sources": [
         "0x1E7FF04",
@@ -308141,7 +308137,7 @@
     },
     {
       "id": "scr_1F5344F",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F5344F",
       "pointer_sources": [
         "0x1E7FF20",
@@ -308156,7 +308152,7 @@
     },
     {
       "id": "scr_1F5345E",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F5345E",
       "pointer_sources": [
         "0x1E7FF3C",
@@ -308171,7 +308167,7 @@
     },
     {
       "id": "scr_1F5346C",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F5346C",
       "pointer_sources": [
         "0x1E7FF1C"
@@ -308186,11 +308182,11 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "È ora di tirare fuori la tua Canna\nda pesca e andare a pescare! Tira\\lsu [buffer1] Pokémon."
+      "translated": "Prendi la Canna e pesca!\nCattura [buffer1] Pokémon."
     },
     {
       "id": "scr_1F534AD",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F534AD",
       "pointer_sources": [
         "0x1E7FF38"
@@ -308205,11 +308201,11 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "È ora di tirare fuori l{B4}esca e\nattirare qualche pesce! Aggancia\\l[buffer1] Pokémon."
+      "translated": "È ora di tirare fuori l{B4}esca e\nattirare qualche pesce!\nAggancia [buffer1] Pokémon."
     },
     {
       "id": "scr_1F534F4",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F534F4",
       "pointer_sources": [
         "0x1E7FF54"
@@ -308224,7 +308220,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "È ora di mettere radici salde e\nguardare avanti. Cattura [buffer1]\\lPokémon."
+      "translated": "È ora di mettere radici salde\ne guardare avanti. Cattura\n[buffer1] Pokémon."
     },
     {
       "id": "scr_1F53537",
@@ -308674,7 +308670,7 @@
     },
     {
       "id": "scr_1F54276",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F54276",
       "pointer_sources": [
         "0x1E801E4",
@@ -308689,7 +308685,7 @@
     },
     {
       "id": "scr_1F5428A",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F5428A",
       "pointer_sources": [
         "0x1E802FC"
@@ -308698,7 +308694,7 @@
       "byte_length": 51,
       "is_pointer_based": true,
       "translation_source": "There are 120 TMs in total. Can you find them all?",
-      "translated": "Ci sono in totale 120 MT. Riuscirai\na trovarle tutte?"
+      "translated": "Ci sono in totale 120 MT.\nRiuscirai a trovarle tutte?"
     },
     {
       "id": "scr_1F542BD",
@@ -310531,7 +310527,7 @@
       "table_name": "data.menus.text.missionLog.menu",
       "table_index": 3,
       "translation_source": "Active",
-      "translated": "Attivo"
+      "translated": "Missioni Attive"
     },
     {
       "id": "tbl_mission_log_00004_1F56063",
@@ -310546,7 +310542,7 @@
       "table_name": "data.menus.text.missionLog.menu",
       "table_index": 4,
       "translation_source": "Inactive",
-      "translated": "Inattiva"
+      "translated": "Missioni Inattive"
     },
     {
       "id": "tbl_mission_log_00005_1F5606C",
@@ -310669,7 +310665,7 @@
       "table_name": "data.menus.text.missionLog.menu",
       "table_index": 12,
       "translation_source": "All",
-      "translated": "Tutti"
+      "translated": "Tutte le Missioni"
     },
     {
       "id": "tbl_mission_log_00013_1F560A3",
@@ -310684,7 +310680,7 @@
       "table_name": "data.menus.text.missionLog.menu",
       "table_index": 13,
       "translation_source": "Completed",
-      "translated": "Completato"
+      "translated": "Missioni Completate"
     },
     {
       "id": "tbl_mission_log_00014_1F560B1",
@@ -312579,7 +312575,7 @@
     },
     {
       "id": "scr_1F581D8",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F581D8",
       "pointer_sources": [
         "0x1E812CC",
@@ -312594,7 +312590,7 @@
     },
     {
       "id": "scr_1F581E2",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F581E2",
       "pointer_sources": [
         "0x1E812E4"
@@ -312609,7 +312605,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Sei tonto? Sbatti le teste dei\nPokémon contro gli alberi [buffer1]\\lvolte!"
+      "translated": "Sei tonto? Sbatti le teste dei\nPokémon contro gli alberi\n[buffer1] volte!"
     },
     {
       "id": "scr_1F5821D",
@@ -313381,7 +313377,7 @@
     },
     {
       "id": "scr_1F5949B",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F5949B",
       "pointer_sources": [
         "0x1E82050"
@@ -313390,7 +313386,7 @@
       "byte_length": 90,
       "is_pointer_based": true,
       "translation_source": "They’re the most useless Pokémon! Magikarp! Can you place 30 of them in your current Box?",
-      "translated": "Sono i Pokémon più inutili!\nMagikarp! Puoi metterne 30 nella\\ltua Casella attuale?"
+      "translated": "Sono i Pokémon più inutili!\nMagikarp! Puoi metterne 30\nnella tua Casella attuale?"
     },
     {
       "id": "scr_1F594F5",
@@ -319459,7 +319455,7 @@
     },
     {
       "id": "scr_1F60F28",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F60F28",
       "pointer_sources": [
         "0x1E867EC",
@@ -319474,7 +319470,7 @@
     },
     {
       "id": "scr_1F60F39",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F60F39",
       "pointer_sources": [
         "0x1E867FC"
@@ -319483,7 +319479,7 @@
       "byte_length": 69,
       "is_pointer_based": true,
       "translation_source": "Become a grand Champion! Enter the Hall of Fame with monotype teams.",
-      "translated": "Diventa un grande Campione! Entra\nnella Hall of Fame con squadre\\lmonotipo."
+      "translated": "Diventa un grande Campione!\nEntra nella Hall of Fame con\nsquadre monotipo."
     },
     {
       "id": "scr_1F60F7E",
@@ -319864,7 +319860,7 @@
     },
     {
       "id": "scr_1F61ABC",
-      "category": "mission_names",
+      "category": "scripts",
       "address": "0x1F61ABC",
       "pointer_sources": [
         "0x1E939FC",
@@ -321520,7 +321516,7 @@
     },
     {
       "id": "scr_1F63D86",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F63D86",
       "pointer_sources": [
         "0x1E87EAC",
@@ -321535,7 +321531,7 @@
     },
     {
       "id": "scr_1F63D8E",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F63D8E",
       "pointer_sources": [
         "0x1E87EC4"
@@ -321550,7 +321546,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "È il giorno delle gambe! Cammina\nper [buffer1] passi per allenare\\lquei polpacci."
+      "translated": "È il giorno delle gambe!\nCammina per [buffer1] passi\nper allenare quei polpacci."
     },
     {
       "id": "scr_1F63DC4",
@@ -322906,7 +322902,7 @@
     },
     {
       "id": "scr_1F65E88",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F65E88",
       "pointer_sources": [
         "0x1E88D20",
@@ -322921,7 +322917,7 @@
     },
     {
       "id": "scr_1F65E97",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F65E97",
       "pointer_sources": [
         "0x1E88D38"
@@ -322936,7 +322932,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Pratica la segreta arte marziale\ndel salto sicuro [buffer1] volte."
+      "translated": "Pratica la segreta arte\nmarziale del salto sicuro\n[buffer1] volte."
     },
     {
       "id": "scr_1F65ED3",
@@ -326225,7 +326221,7 @@
     },
     {
       "id": "scr_1F6A015",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F6A015",
       "pointer_sources": [
         "0x1E6C849",
@@ -326241,7 +326237,7 @@
     },
     {
       "id": "scr_1F6A020",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F6A020",
       "pointer_sources": [
         "0x1E8E134"
@@ -326256,7 +326252,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Gli Sharpedo sul fondale oceanico\ndel Percorso 17 si sono agitati!\\lCalma [buffer1] di loro."
+      "translated": "Gli Sharpedo sui fondali del\nPercorso 17 sono agitati!\nCalmane [buffer1]."
     },
     {
       "id": "scr_1F6A078",
@@ -326794,7 +326790,7 @@
     },
     {
       "id": "scr_1F6AEF7",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F6AEF7",
       "pointer_sources": [
         "0x1E8E4F4",
@@ -326810,7 +326806,7 @@
     },
     {
       "id": "scr_1F6AF07",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F6AF07",
       "pointer_sources": [
         "0x1E8E504"
@@ -326819,7 +326815,7 @@
       "byte_length": 84,
       "is_pointer_based": true,
       "translation_source": "A sad woman hasn’t been hungry lately. Bring her different Pokémon to cheer her up!",
-      "translated": "Una donna triste non ha avuto molta\nfame ultimamente. Portale dei\\ldiversi Pokémon per tirarle su il\n\nmorale!"
+      "translated": "Una donna non ha appetito.\nPortale Pokémon diversi per\nrisollevarle il morale!"
     },
     {
       "id": "scr_1F6AF5B",
@@ -328175,7 +328171,7 @@
     },
     {
       "id": "scr_1F6C9BF",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F6C9BF",
       "pointer_sources": [
         "0x1E8EE84",
@@ -328190,7 +328186,7 @@
     },
     {
       "id": "scr_1F6C9CC",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F6C9CC",
       "pointer_sources": [
         "0x1E8EEA0",
@@ -328205,7 +328201,7 @@
     },
     {
       "id": "scr_1F6C9DB",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F6C9DB",
       "pointer_sources": [
         "0x1E8EEBC",
@@ -328220,7 +328216,7 @@
     },
     {
       "id": "scr_1F6C9EC",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F6C9EC",
       "pointer_sources": [
         "0x1E8EE9C"
@@ -328235,11 +328231,11 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Mettiamoci al lavoro! È ora di\nschiudere in totale [buffer1] Uova!"
+      "translated": "Mettiamoci al lavoro! È ora di\nschiudere in totale [buffer1]\nUova!"
     },
     {
       "id": "scr_1F6CA22",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F6CA22",
       "pointer_sources": [
         "0x1E8EEB8"
@@ -328254,11 +328250,11 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Le cose si stanno scaldando!\nSchiudi in totale [buffer1] uova!"
+      "translated": "Le cose si stanno scaldando!\nSchiudi in totale [buffer1]\nuova!"
     },
     {
       "id": "scr_1F6CA57",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F6CA57",
       "pointer_sources": [
         "0x1E8EED4"
@@ -328273,7 +328269,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Puoi dimostrare di essere il\nmaestro delle schiuse? Schiudi\\l[buffer1] Uova in totale!"
+      "translated": "Puoi dimostrare di essere il\nmaestro delle schiuse? Schiudi\n[buffer1] Uova in totale!"
     },
     {
       "id": "scr_1F6CA99",
@@ -340126,7 +340122,7 @@
     },
     {
       "id": "scr_1F7BE70",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F7BE70",
       "pointer_sources": [
         "0x1E95554"
@@ -340135,7 +340131,7 @@
       "byte_length": 99,
       "is_pointer_based": true,
       "translation_source": "A man needs inspiration for his final statue! Bring him the Pokémon that sleeps under Bellin Town.",
-      "translated": "Un uomo ha bisogno d{B4}ispirazione\nper la sua statua finale! Portagli\\lil Pokémon che dorme sotto Bellin\n\nTown."
+      "translated": "Ispira la statua finale di un\nuomo: portagli il Pokémon che\ndorme sotto Bellin Town!"
     },
     {
       "id": "scr_1F7BED3",
@@ -340860,7 +340856,7 @@
     },
     {
       "id": "scr_1F7D054",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F7D054",
       "pointer_sources": [
         "0x1E959C4",
@@ -340877,7 +340873,7 @@
     },
     {
       "id": "scr_1F7D066",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F7D066",
       "pointer_sources": [
         "0x1E959D4"
@@ -340886,7 +340882,7 @@
       "byte_length": 95,
       "is_pointer_based": true,
       "translation_source": "Help a researcher study seasonal form changes around Borrius by bringing him various Sawsbuck.",
-      "translated": "Aiuta un ricercatore a studiare i\ncambi di forma stagionali in giro\\lper Borrius portandogli vari\n\nSawsbuck."
+      "translated": "Aiuta un ricercatore: portagli\nvari Sawsbuck per studiarne le\nforme stagionali."
     },
     {
       "id": "scr_1F7D0C5",
@@ -341878,7 +341874,7 @@
     },
     {
       "id": "scr_1F7E1EC",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F7E1EC",
       "pointer_sources": [
         "0x1E9705C"
@@ -341887,7 +341883,7 @@
       "byte_length": 97,
       "is_pointer_based": true,
       "translation_source": "A little boy has lost his way in Thundercap Mt. 4F! Team up with him, and guide him to the exit.",
-      "translated": "Un ragazzino si è perso nel\nThundercap Mt. 4F! Fai squadra con\\llui e guidalo fino all{B4}uscita."
+      "translated": "Un bimbo si è perso al 4F di\nThundercap Mt.! Guidalo fino\nall{B4}uscita."
     },
     {
       "id": "scr_1F7E24D",
@@ -343728,7 +343724,7 @@
     },
     {
       "id": "scr_1F80CB2",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F80CB2",
       "pointer_sources": [
         "0x1E97FB8"
@@ -343737,7 +343733,7 @@
       "byte_length": 84,
       "is_pointer_based": true,
       "translation_source": "A hole has opened up into the depths of a tomb! Explore it and solve its mysteries.",
-      "translated": "Si è aperto un varco nelle\nprofondità di una tomba! Esploralo\\le svela i suoi misteri."
+      "translated": "Un varco conduce nelle\nprofondità di una tomba!\nEsplorala e svelane i misteri."
     },
     {
       "id": "scr_1F80D06",
@@ -345530,7 +345526,7 @@
     },
     {
       "id": "scr_1F8283D",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F8283D",
       "pointer_sources": [
         "0x1E98BC4",
@@ -345545,7 +345541,7 @@
     },
     {
       "id": "scr_1F8284C",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F8284C",
       "pointer_sources": [
         "0x1E98BDC"
@@ -345560,7 +345556,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Esplora la regione e trova almeno\n[buffer1] oggetti nascosti."
+      "translated": "Esplora la regione e trova\nalmeno [buffer1] oggetti\nnascosti."
     },
     {
       "id": "scr_1F82883",
@@ -347672,7 +347668,7 @@
     },
     {
       "id": "scr_1F855F0",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F855F0",
       "pointer_sources": [
         "0x1E9B944",
@@ -347687,7 +347683,7 @@
     },
     {
       "id": "scr_1F855FF",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F855FF",
       "pointer_sources": [
         "0x1E9B954"
@@ -347696,7 +347692,7 @@
       "byte_length": 68,
       "is_pointer_based": true,
       "translation_source": "Are Pokémon just property? Trade Pokémon with Borrians to find out!",
-      "translated": "I Pokémon sono solo proprietà?\nScambia Pokémon con i Borrians per\\lscoprirlo!"
+      "translated": "I Pokémon sono solo proprietà?\nScambia Pokémon con i Borrians\nper scoprirlo!"
     },
     {
       "id": "scr_1F85643",
@@ -349615,7 +349611,7 @@
     },
     {
       "id": "scr_1F87B58",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F87B58",
       "pointer_sources": [
         "0x1EAF8B0",
@@ -349626,11 +349622,11 @@
       "byte_length": 27,
       "is_pointer_based": true,
       "translation_source": "The Powerhouse of the Cell",
-      "translated": "La centrale energetica della\ncellula"
+      "translated": "La centrale della cellula"
     },
     {
       "id": "scr_1F87B73",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F87B73",
       "pointer_sources": [
         "0x1EAF8C0"
@@ -349639,7 +349635,7 @@
       "byte_length": 70,
       "is_pointer_based": true,
       "translation_source": "Collect the mysterious green cells that are appearing around Borrius!",
-      "translated": "Raccogli le misteriose cellule\nverdi che stanno comparendo in giro\\lper Borrius!"
+      "translated": "Raccogli le misteriose cellule\nverdi che stanno comparendo in\ngiro per Borrius!"
     },
     {
       "id": "scr_1F87BB9",
@@ -357364,7 +357360,7 @@
     },
     {
       "id": "scr_1F93C9F",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F93C9F",
       "pointer_sources": [
         "0x1E6BFBC",
@@ -357379,7 +357375,7 @@
     },
     {
       "id": "scr_1F93CB0",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F93CB0",
       "pointer_sources": [
         "0x1E6BFD4"
@@ -357394,7 +357390,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Respira l{B4}etica della lotta! Vinci\nnelle strutture di lotta [buffer1]\\lvolte."
+      "translated": "Respira l{B4}etica della lotta!\nVinci nelle strutture di lotta\n[buffer1] volte."
     },
     {
       "id": "scr_1F93CF0",
@@ -371966,7 +371962,7 @@
     },
     {
       "id": "scr_1F9B320",
-      "category": "mission_names",
+      "category": "scripts",
       "address": "0x1F9B320",
       "pointer_sources": [
         "0x1FB2ECC"
@@ -372784,7 +372780,7 @@
     },
     {
       "id": "scr_1F9C853",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F9C853",
       "pointer_sources": [
         "0x1EA5EA4"
@@ -372793,7 +372789,7 @@
       "byte_length": 93,
       "is_pointer_based": true,
       "translation_source": "A little Tuber girl is missing! Track her down, and return her safely to her worried mother.",
-      "translated": "Una piccola Tuber è scomparsa!\nRintracciala e riportala sana e\\lsalva da sua madre in pena."
+      "translated": "Una piccola Tuber è scomparsa!\nRintracciala e riportala sana e\nsalva da sua madre in pena."
     },
     {
       "id": "scr_1F9C8B0",
@@ -373233,7 +373229,7 @@
     },
     {
       "id": "scr_1F9CE03",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F9CE03",
       "pointer_sources": [
         "0x1EA6358"
@@ -373242,7 +373238,7 @@
       "byte_length": 105,
       "is_pointer_based": true,
       "translation_source": "A young boy in a Pikachu costume has run away from home to Route 8! Find him, and bring him home safely.",
-      "translated": "Un ragazzino in costume da Pikachu\nè scappato di casa e si è diretto\\lal Percorso 8! Trovalo e riportalo\n\na casa sano e salvo."
+      "translated": "Un bimbo vestito da Pikachu è\nfuggito sul Percorso 8.\nTrovalo e riportalo a casa!"
     },
     {
       "id": "scr_1F9CE6C",
@@ -373577,7 +373573,7 @@
     },
     {
       "id": "scr_1F9D369",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F9D369",
       "pointer_sources": [
         "0x1EA663C"
@@ -373596,7 +373592,7 @@
           "token": "\\qc"
         }
       ],
-      "translated": "Salva il fratello di un uomo dalle\ngrinfie del \\qoBlack Emboar\\qc nella\\lKBT Expressway."
+      "translated": "Salva il fratello di un uomo\ndalle grinfie del \\qoBlack\nEmboar\\qc nella KBT Expressway."
     },
     {
       "id": "scr_1F9D3BF",
@@ -374373,7 +374369,7 @@
     },
     {
       "id": "scr_1F9EAF1",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F9EAF1",
       "pointer_sources": [
         "0x1EA6E38"
@@ -374388,7 +374384,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "Qualcuno ha problemi di toilette!\nAiuta il tuo compagno Black\\l[player] recuperando i suoi calzini\n\ndalla fogna."
+      "translated": "Aiuta il Black [player]:\nrecupera i suoi calzini dalla\nfogna!"
     },
     {
       "id": "scr_1F9EB55",
@@ -374584,7 +374580,7 @@
     },
     {
       "id": "scr_1F9F08F",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F9F08F",
       "pointer_sources": [
         "0x1EA6F30"
@@ -374599,7 +374595,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "I Black Ferrothorn sono una\nminaccia! Fai fuori un po{B4} dei loro\\lscagnozzi per espandere il\n\nterritorio del Black [player]."
+      "translated": "Batti gli scagnozzi dei Black\nFerrothorn ed espandi la zona\ndel Black [player]!"
     },
     {
       "id": "scr_1F9F0F2",
@@ -375068,7 +375064,7 @@
     },
     {
       "id": "scr_1F9FBBF",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1F9FBBF",
       "pointer_sources": [
         "0x1EA7384",
@@ -375084,7 +375080,7 @@
     },
     {
       "id": "scr_1F9FBCD",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1F9FBCD",
       "pointer_sources": [
         "0x1EA7394",
@@ -375100,7 +375096,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "Conviene sembrare innocenti. Aiuta\nun altro Black [player] a far\\luscire di nascosto della merce dal\n\nporto dopo le 20."
+      "translated": "Aiuta il Black [player]:\nporta merce fuori dal porto di\nnascosto dopo le 20."
     },
     {
       "id": "scr_1F9FC2A",
@@ -375942,7 +375938,7 @@
     },
     {
       "id": "scr_1FA0D55",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1FA0D55",
       "pointer_sources": [
         "0x1EA7A74"
@@ -375951,7 +375947,7 @@
       "byte_length": 99,
       "is_pointer_based": true,
       "translation_source": "Hit the Black Ferrothorn where it hurts by cutting off the supplies they receive from a scientist.",
-      "translated": "Colpisci il Black Ferrothorn nel\npunto dolente tagliando loro i\\lrifornimenti che ricevono da uno\n\nscienziato."
+      "translated": "Taglia i rifornimenti che uno\nscienziato dà ai Black\nFerrothorn!"
     },
     {
       "id": "scr_1FA0DB8",
@@ -376597,7 +376593,7 @@
     },
     {
       "id": "scr_1FA1F37",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1FA1F37",
       "pointer_sources": [
         "0x1EA8058"
@@ -376606,7 +376602,7 @@
       "byte_length": 107,
       "is_pointer_based": true,
       "translation_source": "It’s time to bring the fight to the Black Ferrothorn! Hit ’em where it hurts by attackin’ their home turf!",
-      "translated": "È ora di portare la battaglia al\nBlack Ferrothorn! Colpiscili dove\\lfa più male attaccando il loro\n\nterritorio!"
+      "translated": "Attacca i Black Ferrothorn nel\nloro territorio e colpiscili\ndove fa più male!"
     },
     {
       "id": "scr_1FA1FA2",
@@ -377560,24 +377556,26 @@
       "translated": "[black]C{B4}è un biglietto allegato!\n[blue]\\qo[player], hai fatto bene,\\lragazzino. Hai combattuto con\n\ncoraggio, ma sembra che il resto di\nnoi non sia stato abbastanza tosto\\lda sconfiggere quegli idioti.\n\nAdesso sei tutto ciò che resta del\nBlack [player]. Sii forte, e tieni\\lvivo il tuo spirito combattivo!\n\n-James\\qc"
     },
     {
-      "id": "scr_1FA3C47",
-      "category": "scripts",
-      "address": "0x1FA3C47",
+      "id": "scr_1FA3C48",
+      "category": "mission_names",
+      "address": "0x1FA3C48",
       "pointer_sources": [
-        "0x1EA97BC",
-        "0x1EA97C0",
-        "0x1EA97C6",
-        "0x1EA97DD"
+        "0x1E6C83B",
+        "0x1EA97E4",
+        "0x1EA9A02",
+        "0x1EA9A5C",
+        "0x1EA9AD1",
+        "0x1EA9DEC"
       ],
-      "original": "\" The Endless Nightmare\"",
-      "byte_length": 23,
+      "original": "\"The Endless Nightmare\"",
+      "byte_length": 22,
       "is_pointer_based": true,
       "translation_source": "The Endless Nightmare",
       "translated": "L{B4}incubo senza fine"
     },
     {
       "id": "scr_1FA3C5E",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1FA3C5E",
       "pointer_sources": [
         "0x1EA97F8",
@@ -377587,7 +377585,7 @@
       "byte_length": 62,
       "is_pointer_based": true,
       "translation_source": "A small boy is having a nightmare! Find a way to wake him up.",
-      "translated": "Un bambino piccolo sta avendo un\nincubo! Trova un modo per\\lsvegliarlo."
+      "translated": "Un bambino piccolo sta avendo\nun incubo! Trova un modo per\nsvegliarlo."
     },
     {
       "id": "scr_1FA3C9C",
@@ -378508,7 +378506,7 @@
     },
     {
       "id": "scr_1FA4E1F",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1FA4E1F",
       "pointer_sources": [
         "0x1EAA36C"
@@ -378517,7 +378515,7 @@
       "byte_length": 91,
       "is_pointer_based": true,
       "translation_source": "A mysterious icy Pokémon has been stealing food! Hunt it down and recover what was stolen.",
-      "translated": "Un misterioso Pokémon di ghiaccio\nsta rubando il cibo! Rintraccialo e\\lrecupera ciò che è stato rubato."
+      "translated": "Un Pokémon di ghiaccio ruba\ncibo! Rintraccialo e recupera\nla refurtiva."
     },
     {
       "id": "scr_1FA4E7A",
@@ -379019,7 +379017,7 @@
     },
     {
       "id": "scr_1FA58E6",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1FA58E6",
       "pointer_sources": [
         "0x1EAAC08"
@@ -379028,7 +379026,7 @@
       "byte_length": 61,
       "is_pointer_based": true,
       "translation_source": "Help a scientist uncover the mysteries of the Cave of Being!",
-      "translated": "Aiuta uno scienziato a svelare i\nmisteri della Grotta dell{B4}Essere!"
+      "translated": "Aiuta uno scienziato a svelare\ni misteri della Grotta\ndell{B4}Essere!"
     },
     {
       "id": "scr_1FA5923",
@@ -379571,7 +379569,7 @@
     },
     {
       "id": "scr_1FA64DC",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1FA64DC",
       "pointer_sources": [
         "0x1EAB270",
@@ -379586,7 +379584,7 @@
     },
     {
       "id": "scr_1FA64EE",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1FA64EE",
       "pointer_sources": [
         "0x1EAB280"
@@ -380240,7 +380238,7 @@
     },
     {
       "id": "scr_1FA7688",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1FA7688",
       "pointer_sources": [
         "0x1EABB28",
@@ -380307,7 +380305,7 @@
     },
     {
       "id": "scr_1FA76B4",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1FA76B4",
       "pointer_sources": [
         "0x1EABB40",
@@ -380317,7 +380315,7 @@
       "byte_length": 88,
       "is_pointer_based": true,
       "translation_source": "A poor old man needs a new home! Search Borrius for any and all indoor homes available.",
-      "translated": "Un povero vecchio ha bisogno di una\nnuova casa! Cerca in tutto Borrius\\ltutte le case disponibili al\n\nchiuso."
+      "translated": "Un povero anziano cerca casa!\nTrova in tutta Borrius degli\nspazi interni disponibili."
     },
     {
       "id": "scr_1FA770C",
@@ -381429,7 +381427,7 @@
     },
     {
       "id": "scr_1FA92F7",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1FA92F7",
       "pointer_sources": [
         "0x1EAC5A8"
@@ -381438,7 +381436,7 @@
       "byte_length": 92,
       "is_pointer_based": true,
       "translation_source": "A Hiker needs your help getting off an island! Bring a Pokémon with Dig to help him escape.",
-      "translated": "Un Escursionista ha bisogno del tuo\naiuto per andarsene da un{B4}isola!\\lPorta un Pokémon con Fossa per\n\naiutarlo a scappare."
+      "translated": "Aiuta un Escursionista a\nlasciare l{B4}isola: portagli un\nPokémon con Fossa!"
     },
     {
       "id": "scr_1FA9353",
@@ -381971,7 +381969,7 @@
     },
     {
       "id": "scr_1FA9BCF",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1FA9BCF",
       "pointer_sources": [
         "0x1EACAA4"
@@ -381980,7 +381978,7 @@
       "byte_length": 99,
       "is_pointer_based": true,
       "translation_source": "An idol can’t perform without her precious Pokémon! Track down the burglar that stole her Pokémon.",
-      "translated": "Una diva non può esibirsi senza i\nsuoi preziosi Pokémon! Scova il\\lladro che le ha rubato i Pokémon."
+      "translated": "Una diva non può esibirsi senza\ni suoi Pokémon! Trova il ladro\nche li ha rubati."
     },
     {
       "id": "scr_1FA9C32",
@@ -382472,7 +382470,7 @@
     },
     {
       "id": "scr_1FAA33C",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1FAA33C",
       "pointer_sources": [
         "0x1E6D710",
@@ -382487,7 +382485,7 @@
     },
     {
       "id": "scr_1FAA349",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1FAA349",
       "pointer_sources": [
         "0x1EACEC0"
@@ -382496,7 +382494,7 @@
       "byte_length": 68,
       "is_pointer_based": true,
       "translation_source": "Capture Pokémon in the mysterious portals appearing around Borrius!",
-      "translated": "Cattura Pokémon nei misteriosi\nportali che appaiono in giro per\\lBorrius!"
+      "translated": "Cattura Pokémon nei misteriosi\nportali che appaiono in giro\nper Borrius!"
     },
     {
       "id": "scr_1FAA38D",
@@ -382935,7 +382933,7 @@
     },
     {
       "id": "scr_1FAAD67",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1FAAD67",
       "pointer_sources": [
         "0x1EAD1BC"
@@ -382944,7 +382942,7 @@
       "byte_length": 101,
       "is_pointer_based": true,
       "translation_source": "The Terror Granbull are causin’ a ruckus! Team up with Tessy to find her Swampert and restore order.",
-      "translated": "I Terror Granbull stanno facendo un\ngran casino! Fai squadra con Tessy\\lper trovare il suo Swampert e\n\nristabilire l{B4}ordine."
+      "translated": "I Terror Granbull creano caos!\nAiuta Tessy a trovare Swampert\ne a ristabilire l{B4}ordine."
     },
     {
       "id": "scr_1FAADCC",
@@ -383568,7 +383566,7 @@
     },
     {
       "id": "scr_1FAC104",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1FAC104",
       "pointer_sources": [
         "0x1EAD938"
@@ -383577,7 +383575,7 @@
       "byte_length": 98,
       "is_pointer_based": true,
       "translation_source": "A little girl has gone missing in Rift Cave! Find her, and bring her home to her worried parents.",
-      "translated": "Una bambina è scomparsa nella\nGrotta Rift! Trovala e riportala a\\lcasa dai suoi genitori preoccupati."
+      "translated": "Una bambina è scomparsa nella\nGrotta Rift! Trovala e\nriportala ai genitori."
     },
     {
       "id": "scr_1FAC166",
@@ -384059,7 +384057,7 @@
     },
     {
       "id": "scr_1FACB78",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1FACB78",
       "pointer_sources": [
         "0x1E6C811",
@@ -384112,7 +384110,7 @@
     },
     {
       "id": "scr_1FACBA2",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1FACBA2",
       "pointer_sources": [
         "0x1EADE7C"
@@ -384121,7 +384119,7 @@
       "byte_length": 77,
       "is_pointer_based": true,
       "translation_source": "A nerd’s Electivire has gone rogue! Track it down and return it to the nerd.",
-      "translated": "L{B4}Electivire di un nerd è andato\nfuori controllo! Rintraccialo e\\lriportalo dal nerd."
+      "translated": "L{B4}Electivire di un nerd è fuori\ncontrollo! Rintraccialo e\nriportalo al proprietario."
     },
     {
       "id": "scr_1FACBEF",
@@ -385118,7 +385116,7 @@
     },
     {
       "id": "scr_1FADF4A",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1FADF4A",
       "pointer_sources": [
         "0x1EAE984"
@@ -385127,7 +385125,7 @@
       "byte_length": 93,
       "is_pointer_based": true,
       "translation_source": "The Swords of Justice have made their way over from Unova! Track them down and capture them.",
-      "translated": "Le Spade della Giustizia sono\narrivate da Unima! Rintracciale e\\lcatturale."
+      "translated": "Le Spade della Giustizia sono\narrivate da Unima! Rintracciale\ne catturale."
     },
     {
       "id": "scr_1FADFA7",
@@ -385399,7 +385397,7 @@
     },
     {
       "id": "scr_1FAE718",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1FAE718",
       "pointer_sources": [
         "0x1EAEC34",
@@ -385409,7 +385407,7 @@
       "byte_length": 101,
       "is_pointer_based": true,
       "translation_source": "The Terror Granbull are causing havoc on Route 10! Assist the local authorities in rounding them up.",
-      "translated": "I Granbull del Terrore stanno\nseminando il caos sul Percorso 10!\\lAiuta le autorità locali a\n\ncatturarli."
+      "translated": "I Terror Granbull devastano il\nPercorso 10! Aiuta le autorità\na catturarli."
     },
     {
       "id": "scr_1FAE77D",
@@ -385503,7 +385501,7 @@
     },
     {
       "id": "scr_1FAE983",
-      "category": "mission_names",
+      "category": "scripts",
       "address": "0x1FAE983",
       "pointer_sources": [
         "0x1E7299F",
@@ -385536,7 +385534,7 @@
     },
     {
       "id": "scr_1FAE98A",
-      "category": "mission_names",
+      "category": "scripts",
       "address": "0x1FAE98A",
       "pointer_sources": [
         "0x1E729DC",
@@ -386182,7 +386180,7 @@
     },
     {
       "id": "scr_1FAFC94",
-      "category": "scripts",
+      "category": "mission_names",
       "address": "0x1FAFC94",
       "pointer_sources": [
         "0x1EAF4E8",
@@ -386198,7 +386196,7 @@
     },
     {
       "id": "scr_1FAFCA0",
-      "category": "scripts",
+      "category": "mission_descriptions",
       "address": "0x1FAFCA0",
       "pointer_sources": [
         "0x1EAF500"
@@ -386207,7 +386205,7 @@
       "byte_length": 102,
       "is_pointer_based": true,
       "translation_source": "Watching too much TV is bad for your brain! Help cure children who have had their brains fried by TV.",
-      "translated": "Guardare troppa TV fa male al\ncervello! Aiuta a curare i bambini\\la cui la TV ha fritto il cervello."
+      "translated": "Troppa TV fa male al\ncervello! Cura i bambini a cui\nla TV ha fritto il cervello."
     },
     {
       "id": "scr_1FAFD06",

@@ -5,6 +5,7 @@ import json
 import re
 from pathlib import Path
 
+from lib.gen3_font import text_pixel_width
 from lib.pcs_text import Charmap
 from lib.translation_tokens import remove_layout_tokens, visible_width
 
@@ -485,7 +486,7 @@ def should_skip_wrap(text):
 def wrap_width_for_entry(entry, args):
     if entry.get("category") == "pokedex_descriptions":
         return args.pokedex_description_wrap_width
-    if entry.get("category") in {"mission_descriptions", "mission_objectives"}:
+    if entry.get("category") == "mission_objectives":
         return args.mission_objective_wrap_width
     if entry.get("category") == "item_descriptions":
         return args.item_description_wrap_width
@@ -518,6 +519,56 @@ def wrap_words(text, width):
     if current:
         lines.append(" ".join(current))
     return lines, long_words
+
+
+def wrap_words_by_pixels(text, max_pixels):
+    words = text.split()
+    lines = []
+    current = []
+    for word in words:
+        candidate = " ".join(current + [word])
+        if current and text_pixel_width(candidate) > max_pixels:
+            lines.append(" ".join(current))
+            current = [word]
+        else:
+            current.append(word)
+    if current:
+        lines.append(" ".join(current))
+    return lines
+
+
+def non_layout_tokens(text):
+    return [
+        token
+        for token in TOKEN_RE.findall(text)
+        if token not in LAYOUT_TOKENS
+    ]
+
+
+def fit_mission_description_lines(text, max_pixels, max_lines):
+    """Fit a non-scrolling mission description without losing runtime tokens."""
+    original = " ".join(text.split())
+    lines = wrap_words_by_pixels(original, max_pixels)
+    if len(lines) <= max_lines:
+        return lines, 0
+
+    words = original.split()
+    required_tokens = non_layout_tokens(original)
+    candidates = []
+    for prefix_count in range(1, len(words)):
+        for suffix_count in range(1, len(words) - prefix_count):
+            candidate = " ".join(
+                words[:prefix_count] + ["..."] + words[len(words) - suffix_count:]
+            )
+            if non_layout_tokens(candidate) != required_tokens:
+                continue
+            candidate_lines = wrap_words_by_pixels(candidate, max_pixels)
+            if len(candidate_lines) <= max_lines:
+                kept = prefix_count + suffix_count
+                candidates.append((-kept, -len(candidate), candidate_lines))
+    if not candidates:
+        return ["..."], 0
+    return min(candidates)[-1], 0
 
 
 def pack_words_into_max_lines(text, max_lines):
@@ -607,7 +658,13 @@ def wrap_words_for_entry(text, entry, args):
             args.pokedex_description_max_lines,
             args.pokedex_description_max_total,
         )
-    if entry.get("category") in {"mission_descriptions", "mission_objectives"}:
+    if entry.get("category") == "mission_descriptions":
+        return fit_mission_description_lines(
+            text,
+            args.mission_description_max_pixels,
+            args.mission_description_max_lines,
+        )
+    if entry.get("category") == "mission_objectives":
         return fit_pokedex_description_lines(
             text,
             args.mission_objective_wrap_width,
@@ -792,10 +849,22 @@ def main():
         help="Visible character width for move/ability descriptions. Default: 24.",
     )
     parser.add_argument(
+        "--mission-description-max-pixels",
+        type=int,
+        default=172,
+        help="Pixel width for non-scrolling Mission Log descriptions. Default: 172.",
+    )
+    parser.add_argument(
+        "--mission-description-max-lines",
+        type=int,
+        default=3,
+        help="Maximum lines for Mission Log descriptions. Default: 3.",
+    )
+    parser.add_argument(
         "--mission-objective-wrap-width",
         type=int,
         default=35,
-        help="Visible character width for shared mission objectives. Default: 35.",
+        help="Visible character width for pause-menu mission objectives. Default: 35.",
     )
     parser.add_argument(
         "--mission-objective-max-lines",

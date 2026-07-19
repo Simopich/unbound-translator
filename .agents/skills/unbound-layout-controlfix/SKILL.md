@@ -7,6 +7,12 @@ description: Repair Pokemon Unbound translated control codes and layout. Use whe
 
 Use `004_controlfix_translations.py` after every translation run and before injection.
 
+Develop layout fixes from this repository's renderer evidence and requirements first. When useful, optionally
+double-check Unbound behavior or gather inspiration from the separate, more advanced
+`https://github.com/AntonyKervazoCanut/gba_translator` project and local `out/working_fr.gba`; do not copy its approach
+by default. Use `out/red_ita.gba` for official Italian FireRed wording/control conventions. Reference ROMs are
+local/ignored and must not be committed or released.
+
 ## Workflow
 
 ```bash

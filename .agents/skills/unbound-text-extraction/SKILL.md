@@ -16,9 +16,12 @@ belong to `002_prepare_translation_text.py` and `004_controlfix_translations.py`
 
 - Default ROM: `rom/unbound.gba`.
 - Expected source MD5: `9cad8e771940e7f7094d13911552cef0`.
-- A healthy expanded baseline has `23,274` unique-address entries: `10,939`
-  `scripts`, `3,522` strict aligned `pointer_texts`, `54` `mission_names`, and
-  `14` `plain_scripts`. Treat these as regression signals when coverage grows.
+- A healthy expanded baseline has `23,274` unique-address entries: `10,828`
+  `scripts`, `3,522` strict aligned `pointer_texts`, `82` `mission_descriptions`,
+  `85` `mission_names`, and `14` `plain_scripts`. This covers all 84 missions:
+  Hero/Heroine use separate main-story title strings, while two side-mission
+  registrations reuse text records. Treat these as regression
+  signals when coverage grows.
 - The ROM is 32 MB. ROM offsets are written as `0x...`; a GBA pointer is
   little-endian `0x08000000 + ROM offset`.
 - Decode and encode only through `lib/pcs_text.py`. Do not add Meowth/HMA
@@ -57,8 +60,9 @@ Known special cases:
 - Direct high-bank sources in `0x1E00000-0x1F00000` and
   `0x1FB0000-0x1FC0000` targeting `0x1EE0000-0x1FB0000` cover credits,
   missions, menus, descriptions, and late NPC text without normal opcodes.
-- Mission titles are detected separately as `mission_names`; do not casually
-  broaden this classifier because their layout limit differs later.
+- Mission titles are detected from the exact `loadpointer 0, title; call
+  mission_handler` signature plus explicit Hero/Heroine main-story pointers.
+  Keep this classifier exact because their layout limit differs later.
 - `NO_RELOCATION_POINTER_SOURCE_RANGES` marks fragile routine text. Such
   entries get `no_relocation: true`, must remain inside `byte_length`, and may
   not be made relocatable merely to fit a longer translation.

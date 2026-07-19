@@ -7,6 +7,13 @@ description: Verify Pokemon Unbound hybrid injection safety. Use when asked to i
 
 Run injection only on controlfixed JSON.
 
+Diagnose and design within this repository first. For difficult Unbound-specific pointer, protected-region, allocator,
+or corruption cases, optionally double-check findings against the separate, more advanced
+`https://github.com/AntonyKervazoCanut/gba_translator` project and local known-working `out/working_fr.gba`. Use them
+for
+behavioral comparison, debugging leads, or inspiration; do not copy its architecture or patches by default, add it as
+a dependency, or copy its ROM. `/tmp` clones are ephemeral.
+
 ## Workflow
 
 ```bash

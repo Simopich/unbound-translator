@@ -15,6 +15,22 @@ This repository is `unbound-translator`, a Python toolchain for translating Poke
 - Some extracted entries have `no_relocation: true` for fragile engine/common routine text, including receive-item, Cube, PC, and field routine pointers. Keep these translations short enough for their original `byte_length`; the injector forces them in place and reports `No-reloc truncated` if they do not fit.
 - The source ROM used by this project has MD5 `9cad8e771940e7f7094d13911552cef0`.
 
+## External Double-Checks
+
+- This is an independent project with its own architecture and ideas. Investigate problems locally and design fixes
+  around this repository's code first. Do not copy another translator's approaches, architecture, patches, or workflow
+  by default.
+- [AntonyKervazoCanut/gba_translator](https://github.com/AntonyKervazoCanut/gba_translator) is a more advanced separate
+  project that can be consulted as an optional second opinion. Use it to double-check assumptions, compare proven game
+  behavior, find debugging leads, or inspire a solution when useful. Evaluate every idea against this project's needs
+  and implement it independently.
+- Known local comparison ROMs are `out/working_fr.gba` (working French Unbound build from that translator) and
+  `out/red_ita.gba` (official Italian FireRed). ROM files are local/ignored assets and must never be committed or
+  released. A clone under `/tmp` is ephemeral; use the GitHub URL in a new task.
+- For translation wording, retain the separate priority in Translation Notes: official PokeAPI/localized references,
+  then Bulbapedia/Pokémon Database, then target-language FireRed. The French translator/build is only an optional
+  behavioral comparison, not a translation authority.
+
 ## Main Scripts
 
 - `001_extract_unbound_text.py`: extracts text from the ROM into JSON. The expected output shape is a JSON object containing an `entries` array, though some utilities also tolerate older `tables` and `free_texts` shapes.
@@ -51,8 +67,9 @@ When resuming LLM translation, use the same input and output paths with `--resum
 
 ## Extraction Notes
 
-- A healthy expanded baseline currently reports `23,274` unique-address entries, including `10,939` `scripts`, `3,522`
-  strict aligned `pointer_texts`, `54` `mission_names`, and `14` `plain_scripts`. The extractor merges duplicate
+- A healthy expanded baseline currently reports `23,274` unique-address entries, including `10,828` `scripts`, `3,522`
+  strict aligned `pointer_texts`, `82` `mission_descriptions`, `85` `mission_names`, and `14` `plain_scripts`. The
+  extractor merges duplicate
   addresses, preferring specific table/category ownership and preserving all pointer sources.
 - Ability names have 293 entries, but `data.abilities.descriptions` only has 255 valid text pointers resolving to 252
   unique strings. Do not expand `ability_descriptions` to match the ability-name count; entries after index 254 decode
@@ -116,8 +133,8 @@ When resuming LLM translation, use the same input and output paths with `--resum
   or official target-language grammar, and keeps the `What will [pokemon] do?` battle prompt to two
   lines with the Pokémon name alone on line 2.
   Normal `scripts` entries are wrapped into dialogue pages with `\n`, `\l`, and paragraph breaks. `plain_scripts`,
-  descriptions, summary text, and battle messages use plain line breaks. Mission descriptions and objectives use the
-  shared two-line, 35-character, 65-character-total budget so the mission-log renderer cannot produce a dialogue prompt.
+  descriptions, summary text, and battle messages use plain line breaks. Mission Log descriptions use a narrower
+  three-line budget, while pause-menu mission objectives retain their wider two-line budget.
   Mission names are not wrapped; they are capped to the longest extracted English mission-name visible width by default,
   tunable with `--mission-name-max-width`. `start_menu_labels` are capped to `--start-menu-label-max-width` (default
   13), and `setting_names` are capped to `--setting-name-max-width` (default 15), so narrow menu/list labels do not
@@ -138,10 +155,12 @@ When resuming LLM translation, use the same input and output paths with `--resum
 - Pokédex descriptions use working-French-ROM limits of 3 lines, 43 visible characters per line, and 124 visible
   characters total. Over-budget text keeps its beginning and ending with a middle ellipsis; tune with the dedicated
   `--pokedex-description-wrap-width`, `--pokedex-description-max-lines`, and `--pokedex-description-max-total` options.
-- Shared `mission_objectives` use working-French-ROM limits of 2 explicit lines, 35 visible characters per line, and 65
-  total for the wide pause box; the narrower Mission Log renderer wraps the same text to at most 3 lines. Tune with the
-  dedicated `--mission-objective-wrap-width`, `--mission-objective-max-lines`, and `--mission-objective-max-total`
-  options.
+- The extractor follows the exact shared mission-handler call signature and covers all 84 missions as `85`
+  `mission_names` (separate Hero/Heroine main-story variants) and `82` unique `mission_descriptions` (two side-mission
+  registrations reuse text records). Descriptions use FireRed font
+  metrics and the working French pipeline's non-scrolling limit of 3 plain lines at 172 pixels per line; `0xFA` scroll
+  and `0xFB` page controls are invalid there. `mission_objectives` retain the wide pause box's 2-line, 35-character,
+  65-total budget. Tune them independently with the dedicated mission description/objective options.
 - Keep language-specific ROM behavior in one file per patch under `patches/<language>/`, not in shared scripts or
   translation JSON. The injector applies every patch file for the selected `--target-lang` in filename order and records
   them in map output.
@@ -149,6 +168,9 @@ When resuming LLM translation, use the same input and output paths with `--resum
   producing `Pokémon Ratto`; it owns `scr_415F8F` so generic injection cannot overwrite the suffix slot. Controlfix
   strips
   redundant leading/trailing `Pokémon` from `pokedex_species` values because the renderer supplies the prefix.
+- Italian `mission_log_tab_titles.py` blanks the shared runtime ` Missions` suffix through its live pointer at
+  `0x1EBE988` and owns `tbl_mission_log_00000_1F56040`. Italian filter entries therefore contain complete labels such
+  as `Tutte le Missioni` and `Missioni Completate` without producing concatenated text.
 - Always run `004_controlfix_translations.py` after LLM translation before injecting.
 - `006_decontrolfix_translations.py` is an editable cleanup pass for already-controlfixed JSON, not a perfect inverse: wrapping/layout tokens can be removed, but prior trims and repairs cannot be reconstructed.
 - During injection, `plain_scripts` blank lines are encoded as repeated newline bytes (`0xFE 0xFE`) instead of the paragraph/prompt byte (`0xFB`), because the full-screen renderer shows the bottom arrow and can overflow when it receives `0xFB`.

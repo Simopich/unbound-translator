@@ -588,6 +588,29 @@ MANUAL_TEXT_RANGES = [
     ManualTextRange("credits_text", "data.text.credits", 0x41D3BE, 0x41D45A),
 ]
 
+# Mission descriptions are ordinary pointer strings in the ROM, but their
+# narrow three-line window must never receive dialogue scroll/page controls.
+# Walking every call to the shared mission handler finds 84 registrations,
+# backed by 83 unique titles and 82 unique descriptions (two registrations
+# deliberately reuse existing text records).
+MISSION_HANDLER_ROM_OFFSET = 0x1EAF584
+MISSION_DESCRIPTION_TEXT_ADDRESSES = {
+    0x1EE55DE, 0x1EE71A0, 0x1EEA8A9, 0x1EEA909, 0x1EEC79B, 0x1EEDAA2,
+    0x1EF1137, 0x1EF155B, 0x1EF5BEA, 0x1EF6194, 0x1EF7E52, 0x1EFA8B3,
+    0x1EFD457, 0x1EFF76A, 0x1F016FD, 0x1F06B1D, 0x1F073B6, 0x1F07861,
+    0x1F07E7E, 0x1F082A1, 0x1F08659, 0x1F08A80, 0x1F08DF7, 0x1F0921E,
+    0x1F0A086, 0x1F0CA95, 0x1F0E744, 0x1F1206E, 0x1F13071, 0x1F1425C,
+    0x1F14CE2, 0x1F1F8B7, 0x1F2319E, 0x1F231F2, 0x1F260AE, 0x1F26B63,
+    0x1F2817A, 0x1F4F9BA, 0x1F5346C, 0x1F534AD, 0x1F534F4, 0x1F5428A,
+    0x1F581E2, 0x1F5949B, 0x1F60F39, 0x1F63D8E, 0x1F65E97, 0x1F6A020,
+    0x1F6AF07, 0x1F6C9EC, 0x1F6CA22, 0x1F6CA57, 0x1F7BE70, 0x1F7D066,
+    0x1F7E1EC, 0x1F80CB2, 0x1F8284C, 0x1F855FF, 0x1F87B73, 0x1F93CB0,
+    0x1F9C853, 0x1F9CE03, 0x1F9D369, 0x1F9EAF1, 0x1F9F08F, 0x1F9FBCD,
+    0x1FA0D55, 0x1FA1F37, 0x1FA3C5E, 0x1FA4E1F, 0x1FA58E6, 0x1FA64EE,
+    0x1FA76B4, 0x1FA92F7, 0x1FA9BCF, 0x1FAA349, 0x1FAAD67, 0x1FAC104,
+    0x1FACBA2, 0x1FADF4A, 0x1FAE718, 0x1FAFCA0,
+}
+
 POST_POINTER_MANUAL_TEXT_RANGES = [
     ManualTextRange("menu_trainer_card", "data.menus.text.trainerCard.profile", 0x1F81E44, 0x1F81EE5),
     ManualTextRange("item_descriptions", "data.items.descriptions", 0x3D4F00, 0x3DB020),
@@ -606,7 +629,6 @@ POST_POINTER_MANUAL_TEXT_RANGES = [
     ManualTextRange("menu_pokemon_summary", "data.menus.text.pokemonSummary", 0x419782, 0x419C51),
     ManualTextRange("mission_log", "data.menus.text.missionLog.notifications", 0x1FB003F, 0x1FB00A8),
     ManualTextRange("mission_objectives", "data.missions.objectives.mainStory", 0x1F56117, 0x1F56B77),
-    ManualTextRange("mission_descriptions", "data.missions.descriptions.amIBlind", 0x1F1F8AB, 0x1F1F8F0),
     ManualTextRange("menu_game_settings", "data.menus.text.gameSettings.extraPrompts", 0x1F4E274, 0x1F4E515),
     ManualTextRange("start_menu_labels", "data.menus.text.cube.components", 0xA4E4A2, 0xA4E4E4),
     ManualTextRange("menu_battle", "data.menus.text.battle.settings", 0x1F94185, 0x1F94480),
@@ -843,6 +865,8 @@ def no_relocation_pointer_sources(pointer_sources: list[int]) -> bool:
 
 
 def pointer_text_category(rom: bytes, target: int, pointer_sources: list[int]) -> str:
+    if target in MISSION_DESCRIPTION_TEXT_ADDRESSES:
+        return "mission_descriptions"
     if looks_like_mission_name_text(rom, target, pointer_sources):
         return "mission_names"
     if target in PLAIN_SCRIPT_TEXT_ADDRESSES:
@@ -856,6 +880,11 @@ def pointer_text_category(rom: bytes, target: int, pointer_sources: list[int]) -
 def looks_like_mission_name_text(rom: bytes, target: int, pointer_sources: list[int]) -> bool:
     if not any(start <= target < end for start, end in ADDITIONAL_TEXT_POINTER_TARGET_RANGES):
         return False
+    if any(
+            is_mission_registration_title_pointer_source(rom, source)
+            for source in pointer_sources
+    ):
+        return True
     result = decode_pcs(rom, target, DEFAULT_MAX_TEXT_LENGTH)
     clean = visible_text(result.text)
     if "\n" in result.text or "\\." in result.text or result.control_count or not clean or len(clean) > 32:
@@ -866,15 +895,50 @@ def looks_like_mission_name_text(rom: bytes, target: int, pointer_sources: list[
 
 
 def is_mission_name_pointer_source(rom: bytes, source: int) -> bool:
-    if source in MISSION_NAME_POINTER_SOURCES:
-        return True
-    if source % 4 != 0 or not any(start <= source < end for start, end in ADDITIONAL_TEXT_POINTER_SOURCE_RANGES):
+    return source in MISSION_NAME_POINTER_SOURCES or is_mission_registration_title_pointer_source(
+        rom, source
+    )
+
+
+def is_legacy_mission_record_pointer_source(rom: bytes, source: int) -> bool:
+    """Retain text coverage from older mission-record structure detection."""
+    if source % 4 != 0 or not any(
+            start <= source < end for start, end in ADDITIONAL_TEXT_POINTER_SOURCE_RANGES
+    ):
         return False
     if points_to_mission_description(rom, source + 0x0C):
         return True
-    if points_to_mission_description(rom, source + 0x14) and not points_to_text(rom, source + 0x10):
-        return True
-    return False
+    return points_to_mission_description(rom, source + 0x14) and not points_to_text(
+        rom, source + 0x10
+    )
+
+
+def is_mission_registration_title_pointer_source(rom: bytes, source: int) -> bool:
+    """Match ``loadpointer 0, title; call mission_handler`` exactly."""
+    return (
+            source >= 2
+            and source + 9 <= len(rom)
+            and rom[source - 2: source] == b"\x0F\x00"
+            and rom[source + 4] == 0x04
+            and int.from_bytes(rom[source + 5: source + 9], "little")
+            == GBA_POINTER_BASE + MISSION_HANDLER_ROM_OFFSET
+    )
+
+
+def mission_registration_title_addresses(rom: bytes) -> set[int]:
+    addresses = set()
+    handler = (GBA_POINTER_BASE + MISSION_HANDLER_ROM_OFFSET).to_bytes(4, "little")
+    cursor = 0
+    while True:
+        call_target = rom.find(handler, cursor)
+        if call_target < 0:
+            return addresses
+        source = call_target - 5
+        if is_mission_registration_title_pointer_source(rom, source):
+            target = pointer_at(rom, source)
+            if target is not None:
+                addresses.add(target)
+        cursor = call_target + 1
 
 
 def points_to_mission_description(rom: bytes, source: int) -> bool:
@@ -1146,11 +1210,18 @@ def scan_pointer_texts(
     entries = []
     script_index = 0
     occupied = sorted(occupied_ranges or [])
+    mission_title_targets = mission_registration_title_addresses(rom)
     for target in sorted(sources_by_target):
         if offset_in_ranges(target, occupied):
             stats["overlap_targets"] += 1
             continue
         result = decode_pcs(rom, target, max_length)
+        if target not in mission_title_targets and any(
+                target < title < target + result.byte_length
+                for title in mission_title_targets
+        ):
+            stats["overlap_targets"] += 1
+            continue
         is_aligned_only = target not in normal_targets
         validator = looks_like_aligned_pointer_text if is_aligned_only else looks_like_pointer_text
         if not validator(result):
@@ -1192,6 +1263,7 @@ def is_text_pointer_source(rom: bytes, source: int, target: int) -> bool:
         or is_additional_text_pointer_source(source, target)
         or is_structured_text_pointer_source(source, target)
         or is_mission_name_pointer_source(rom, source)
+        or is_legacy_mission_record_pointer_source(rom, source)
     )
 
 

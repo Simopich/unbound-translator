@@ -26,6 +26,15 @@ text, then scripts and broad pointer discoveries. The map report groups no-space
 coverage cannot silently consume space needed by core screens.
 Some common engine routine strings are marked with `no_relocation: true` during extraction. These entries must stay in their original slots because redirecting their pointers can freeze receive-item, Cube, PC, or field routines. Keep their translations short enough to fit their original `byte_length`; the injector will never relocate them and reports `No-reloc truncated` if any are too long.
 
+This project keeps its own architecture and solutions. When useful,
+[AntonyKervazoCanut/gba_translator](https://github.com/AntonyKervazoCanut/gba_translator) can serve as an optional
+double-check against a separate project at a more advanced stage: it may provide debugging leads, behavioral evidence,
+or inspiration, but its architecture, patches, and workflows should not be copied by default. Problems are investigated
+and solved within this repository first.
+Local comparison ROMs may be placed at `out/working_fr.gba` (working French Unbound build) and `out/red_ita.gba`
+(official Italian FireRed); ROMs are ignored local assets and are never committed or released. The external translator
+is neither a runtime dependency nor the source of Italian wording.
+
 ## Free Space
 
 This relocation approach was possible because Pokémon Unbound still has `1,102,003` bytes of free space available in the ROM. Those regions are detected by scanning for contiguous `0xFF` blocks and are used as targets for translated strings that no longer fit in their original locations.
@@ -68,7 +77,10 @@ patterns. A default strict pass checks every aligned GBA pointer and emits addit
 `pointer_texts`, rejecting control-only, repetitive, fragmentary, and data-like candidates. Use
 `--no-aligned-pointer-text` only to reproduce the narrower legacy scan. Duplicate ROM addresses are merged into one
 entry, preferring specific table/category ownership while retaining every pointer source. The current source ROM
-extracts `23,274` unique-address entries, including `3,522` newly covered `pointer_texts`.
+extracts `23,274` unique-address entries, including `3,522` newly covered `pointer_texts`, `85` mission-title strings,
+and `82` mission-description strings. These cover all 84 missions: the main mission has separate Hero/Heroine title
+variants, while two side-mission registrations reuse existing text records. Mission registration titles are identified
+from the exact `loadpointer 0, title; call mission_handler` script signature.
 
 To audit text coverage during extraction, search the ROM for PCS-encoded UI strings and compare the hits against the
 extracted entries:
@@ -242,8 +254,8 @@ for natural or official target-language grammar and keeps the `What will [pokemo
 two lines with the Pokémon name alone on line 2. It also recomputes layout after translation: dialogue-like text is
 wrapped into pages using line breaks
 and `\l`, while `plain_scripts`, descriptions, mission text, Pokémon summary text, and battle messages are wrapped with
-regular line breaks. Mission descriptions and objectives are limited to two lines, preventing the mission-log renderer
-from treating an overflow as dialogue. Mission names are capped to the longest extracted English mission-title width,
+regular line breaks. Mission Log descriptions use three narrower lines, while pause-menu mission objectives remain
+limited to two wider lines. Mission names are capped to the longest extracted English mission-title width,
 `start_menu_labels` are capped so labels such as Mission Log and Game Settings do not clip, and `setting_names` are
 capped for the game settings list. Item descriptions use a wider 3-line layout by default. Compact multi-row menu labels
 keep their original row breaks, which is required for selectable choices such as `Yes\nNo`.
@@ -306,9 +318,14 @@ line, and 124 visible characters total. Over-budget translations preserve their 
 ellipsis. Tune with `--pokedex-description-wrap-width`, `--pokedex-description-max-lines`, and
 `--pokedex-description-max-total`.
 
-Mission descriptions and objectives use at most 2 explicit lines, 35 visible characters per line, and 65 total. This
-prevents the Mission Log renderer from treating an overflow as dialogue. Tune with
-`--mission-objective-wrap-width`, `--mission-objective-max-lines`, and `--mission-objective-max-total`.
+Mission Log descriptions use the working French pipeline's non-scrolling budget of 3 plain lines at 172 pixels per
+line; tune with `--mission-description-max-pixels` and `--mission-description-max-lines`. Pause-menu mission objectives
+remain limited to 2 lines, 35 visible characters per line, and 65 total; tune with the corresponding
+`--mission-objective-*` options.
+
+Italian Mission Log filter tabs use complete labels (`Tutte le Missioni`, `Missioni Attive`, `Missioni Inattive`, and
+`Missioni Completate`). The Italian runtime patch follows pointer `0x1EBE988` and blanks the shared English ` Missions`
+suffix, preventing the menu from concatenating it after each translated label.
 
 ## Tests
 
