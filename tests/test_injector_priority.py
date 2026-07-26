@@ -16,6 +16,8 @@ class InjectionPriorityTests(unittest.TestCase):
         rom = bytearray(b"\x00" * 0x1FE2000)
         rom[0x220000:0x240000] = b"\xFF" * 0x20000
         rom[0xFFF000:0x1002000] = b"\xFF" * 0x3000
+        rom[0x165000:0x167000] = b"\xFF" * 0x2000
+        rom[0x19A000:0x19C000] = b"\xFF" * 0x2000
         rom[0x1FDF000:0x1FE2000] = b"\xFF" * 0x3000
 
         blocks = INJECTOR.build_free_blocks(rom, [], 0x1000, 0x100)
@@ -23,6 +25,12 @@ class InjectionPriorityTests(unittest.TestCase):
 
         self.assertIn((0x220008, 0x22FFF8), ranges)
         self.assertIn((0x1FE0008, 0x1FE1FF8), ranges)
+        self.assertTrue(
+            all(end <= 0x16586A or start >= 0x166C9A for start, end in ranges)
+        )
+        self.assertTrue(
+            all(end <= 0x19A837 or start >= 0x19B86A for start, end in ranges)
+        )
         self.assertTrue(all(not (0x230000 <= start < 0x500000) for start, _ in ranges))
         self.assertTrue(all(not (0x1000000 <= start < 0x1FE0000) for start, _ in ranges))
 
@@ -46,6 +54,23 @@ class InjectionPriorityTests(unittest.TestCase):
 
         self.assertEqual(INJECTOR.allocate(blocks, 0x20, 4), 0x1000)
         self.assertEqual(INJECTOR.allocate(blocks, 0xF0, 4), 0x2000)
+
+    def test_free_blocks_can_be_clipped_to_vetted_ranges(self):
+        rom = bytearray(b"\x00" * 0x4000)
+        rom[0x1000:0x3000] = b"\xFF" * 0x2000
+
+        blocks = INJECTOR.build_free_blocks(
+            rom,
+            [],
+            0x400,
+            0x100,
+            ((0x1800, 0x2000), (0x2800, 0x2900)),
+        )
+
+        self.assertEqual(
+            [(block.start, block.end) for block in blocks],
+            [(0x1800, 0x2000), (0x2800, 0x2900)],
+        )
 
     def test_ability_description_compaction_is_bounded_at_word_boundary(self):
         encoded = b"Aumenta\x00Attacco\x00se\x00colpito\x00da\x00una\x00mossa\x00Erba\xFF"

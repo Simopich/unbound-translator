@@ -6,7 +6,8 @@ This repository is `unbound-translator`, a Python toolchain for translating Poke
 
 - Pokemon Unbound is already a 32 MB GBA ROM, so the old Meowth-GBA-Translator approach of expanding the ROM to 32 MB and writing all text into one dedicated area is not suitable here.
 - The project now uses custom scripts and a local PCS text codec in `lib/pcs_text.py`.
-- Text relocation works because the ROM has `1,102,003` bytes of detected free space. The injector finds this space by scanning contiguous `0xFF` blocks.
+- Text relocation uses vetted writable spans inside the ROM's contiguous `0xFF` blocks. The spans were validated against
+  a known-working build so engine-owned bytes at apparent free-run edges are not overwritten.
 - The injection strategy is hybrid: short translated text is written in place, and longer pointer-based text is relocated into detected free space with script pointers updated to the new addresses.
 - `005_hybrid_injector.py` defaults to `--pointer-policy oversized`; use `--pointer-policy changed` only for experiments that intentionally relocate every changed pointer string.
 - Relocation space is limited. The injector prioritizes `menu_trainer_card`, then other structured menu/UI text, before
@@ -41,9 +42,10 @@ This repository is `unbound-translator`, a Python toolchain for translating Poke
   real tokens, validates returned batches, and retries model output that drops/adds protected placeholders or tokens.
 - `004_controlfix_translations.py`: repairs translated control codes, quote tokens, apostrophes, and other formatting damage caused by translation. It also recomputes post-translation text wrapping/layout for dialogue and description-like text.
 - `005_hybrid_injector.py`: injects translated text into the ROM using in-place writes and pointer relocation into free
-  `0xFF` space. It excludes battle graphics (`0x230000-0x500000`) and CFRU/Unbound reserved upper-ROM data
-  (`0x1000000-0x1FE0000`), keeps eight-byte free-run margins, and only repoints aligned or verified script pointer
-  operands so raw-scan false positives cannot overwrite code/live data. Eligible runs use a 1 KB minimum and
+  `0xFF` space. It excludes engine-owned FF storage (`0x16586A-0x166C9A` and `0x19A837-0x19B86A`), battle graphics (`0x230000-0x500000`), and CFRU/Unbound reserved upper-ROM data
+  (`0x1000000-0x1FE0000`), keeps eight-byte free-run margins, intersects detected runs with
+  `lib/unbound_free_space.py`, and only repoints aligned or verified script pointer operands so raw-scan false positives
+  cannot overwrite code/live data. Eligible runs use a 1 KB minimum and
   address-ordered first-fit allocation, matching the advanced translator's validated strategy. It also discovers and
   applies every
   `patches/<target-lang>/*.py` runtime patch in filename order.

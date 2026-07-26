@@ -8,6 +8,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from lib.pcs_text import Charmap, fc_arg_count
+from lib.unbound_free_space import VETTED_FREE_SPACE_RANGES
 
 GBA_POINTER_BASE = 0x08000000
 DEFAULT_MIN_ADDRESS = 0x100
@@ -15,6 +16,13 @@ DEFAULT_MIN_FREE_RUN = 0x400
 DEFAULT_FREE_RUN_MARGIN = 8
 # These FF runs contain engine-owned graphics or CFRU/Unbound reserved data.
 FREE_SPACE_EXCLUDE_RANGES = (
+    # Referenced engine-owned FF storage. The known-working French build also
+    # leaves this run untouched; treating it as text space breaks scripted
+    # party-selection battle handoff.
+    (0x16586A, 0x166C9A),
+    # Its tail has a live ROM pointer into it. Reserve the whole small run
+    # instead of relying on a partially safe prefix.
+    (0x19A837, 0x19B86A),
     (0x230000, 0x500000),
     (0x1000000, 0x1FE0000),
 )
@@ -285,7 +293,18 @@ def protected_entry_ranges(entries, rom_size, min_address):
     return merge_ranges(ranges)
 
 
-def build_free_blocks(rom, entries, min_run, min_address):
+def intersect_ranges(ranges, allowed_ranges):
+    intersections = []
+    for start, end in ranges:
+        for allowed_start, allowed_end in allowed_ranges:
+            clipped_start = max(start, allowed_start)
+            clipped_end = min(end, allowed_end)
+            if clipped_start < clipped_end:
+                intersections.append((clipped_start, clipped_end))
+    return merge_ranges(intersections)
+
+
+def build_free_blocks(rom, entries, min_run, min_address, allowed_ranges=None):
     runs = find_byte_runs(rom, 0xFF, min_run, min_address)
     runs = subtract_ranges(runs, FREE_SPACE_EXCLUDE_RANGES)
     protected = protected_entry_ranges(entries, len(rom), min_address)
@@ -296,6 +315,8 @@ def build_free_blocks(rom, entries, min_run, min_address):
         if end - start >= min_run
            and end - start > 2 * DEFAULT_FREE_RUN_MARGIN
     ]
+    if allowed_ranges is not None:
+        runs = intersect_ranges(runs, allowed_ranges)
     runs.sort()
     return [FreeBlock(start, end, start) for start, end in runs]
 
@@ -556,7 +577,13 @@ def main():
     data = json.loads(json_path.read_text(encoding="utf-8"))
     entries = prioritize_entries(list(iter_entries(data)))
     cmap = Charmap(target_lang=args.target_lang)
-    free_blocks = build_free_blocks(rom, entries, min_free_run, min_address)
+    free_blocks = build_free_blocks(
+        rom,
+        entries,
+        min_free_run,
+        min_address,
+        VETTED_FREE_SPACE_RANGES,
+    )
     patch_context = RuntimePatchContext(
         rom, cmap, free_blocks, args.alignment, args.dry_run
     )

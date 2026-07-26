@@ -301,8 +301,11 @@ species categories use official Italian order (`Pokémon Ratto`, not `Ratto Pok�
 generic text injection cannot overwrite its required trailing space. Controlfix strips redundant leading/trailing
 `Pokémon` from category fields because the renderer supplies that prefix.
 
-Relocation excludes `0x230000-0x500000` (battle graphics) and `0x1000000-0x1FE0000` (CFRU/Unbound reserved data), even
-when those regions contain long `0xFF` runs. The allocator also leaves an eight-byte margin at both ends of each run.
+Relocation excludes `0x16586A-0x166C9A` and `0x19A837-0x19B86A` (engine-owned FF storage), `0x230000-0x500000` (battle graphics), and
+`0x1000000-0x1FE0000` (CFRU/Unbound reserved data), even
+when those regions contain long `0xFF` runs. Detected runs are additionally clipped to the proven writable spans in
+`lib/unbound_free_space.py`; this prevents apparent free-run edge bytes used by the engine from being overwritten.
+The allocator also leaves an eight-byte margin at both ends of each run.
 Like the validated advanced translator, it scans eligible runs in ROM-address order and uses first-fit allocation with
 a 1 KB minimum run; it does not best-fit into scattered high-risk gaps.
 Pointer updates are limited to aligned pointer sites and verified Unbound script operand forms; unaligned raw-scan
