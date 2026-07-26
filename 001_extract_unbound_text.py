@@ -56,6 +56,12 @@ STRUCTURED_TEXT_POINTER_RANGES = (
     # Link-room and profile records also use unaligned struct pointer fields.
     (0x1BB000, 0x1BD000, 0x1B0000, 0x1D0000),
 )
+# The generic aligned-pointer pass can otherwise decode inline trainer fields
+# and adjacent binary lookup data as plausible PCS. These are not standalone
+# text owners and must never become injectable pointer_texts entries.
+ALIGNED_POINTER_TEXT_EXCLUDED_TARGET_RANGES = (
+    (0x23EAC8, 0x246E00),
+)
 MISSION_NAME_POINTER_SOURCES = {
     0x1EC02E8,  # A Hero/Heroine's Journey Mission Log title variants
     0x1EC02F0,
@@ -777,6 +783,13 @@ def looks_like_aligned_pointer_text(result: DecodeResult) -> bool:
     return True
 
 
+def is_aligned_pointer_target_excluded(target: int) -> bool:
+    return any(
+        start <= target < end
+        for start, end in ALIGNED_POINTER_TEXT_EXCLUDED_TARGET_RANGES
+    )
+
+
 def _mostly_padding_or_symbols(text: str) -> bool:
     meaningful = sum(1 for char in text if char.isalnum())
     return meaningful / max(1, len(text)) < 0.35
@@ -1215,6 +1228,10 @@ def scan_pointer_texts(
         if offset_in_ranges(target, occupied):
             stats["overlap_targets"] += 1
             continue
+        is_aligned_only = target not in normal_targets
+        if is_aligned_only and is_aligned_pointer_target_excluded(target):
+            stats["excluded_aligned_targets"] += 1
+            continue
         result = decode_pcs(rom, target, max_length)
         if target not in mission_title_targets and any(
                 target < title < target + result.byte_length
@@ -1222,7 +1239,6 @@ def scan_pointer_texts(
         ):
             stats["overlap_targets"] += 1
             continue
-        is_aligned_only = target not in normal_targets
         validator = looks_like_aligned_pointer_text if is_aligned_only else looks_like_pointer_text
         if not validator(result):
             stats["rejected_targets"] += 1

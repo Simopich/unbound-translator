@@ -74,10 +74,11 @@ descriptions, and Pokédex form names. Extracted ids are address-stable: script 
 ids use `tbl_<category>_<table_index>_<ROMADDR>`. High-bank pointer scanning covers sources in `0x1E00000-0x1F00000` and
 `0x1FB0000-0x1FC0000` targeting `0x1EE0000-0x1FB0000`; trainer and link structs also have vetted unaligned pointer-field
 patterns. A default strict pass checks every aligned GBA pointer and emits additional language-like strings as
-`pointer_texts`, rejecting control-only, repetitive, fragmentary, and data-like candidates. Use
+`pointer_texts`, rejecting control-only, repetitive, fragmentary, and data-like candidates plus trainer structs and
+adjacent binary data at `0x23EAC8-0x246E00`. Use
 `--no-aligned-pointer-text` only to reproduce the narrower legacy scan. Duplicate ROM addresses are merged into one
 entry, preferring specific table/category ownership while retaining every pointer source. The current source ROM
-extracts `23,274` unique-address entries, including `3,522` newly covered `pointer_texts`, `85` mission-title strings,
+extracts `23,268` unique-address entries, including `3,516` newly covered `pointer_texts`, `85` mission-title strings,
 and `82` mission-description strings. These cover all 84 missions: the main mission has separate Hero/Heroine title
 variants, while two side-mission registrations reuse existing text records. Mission registration titles are identified
 from the exact `loadpointer 0, title; call mission_handler` script signature.
@@ -230,6 +231,10 @@ This launches the full workflow on a manually whitelisted translation set. It is
 
 All entries outside the whitelist are omitted from `out/debug-unbound-texts-it.json`, which keeps the debug JSON smaller and easier to inspect.
 
+When working with Codex, every bugfix or translation/layout/control/injection fix builds a test ROM automatically when
+its source ROM and translation input are available. It uses a focused debug ROM only when that covers the issue;
+otherwise it builds the applicable full translation ROM and reports its ROM and map-output paths.
+
 ### Codex Project Agents
 
 Project-scoped Codex settings live in `.codex/config.toml`, custom subagents live in `.codex/agents/`, and reusable repo
@@ -288,7 +293,8 @@ For `plain_scripts`, the injector preserves full-screen blank lines as repeated 
 During injection, `005_hybrid_injector.py` applies every Python patch in `patches/<target-lang>/` in filename order
 before allocating relocated text. Each behavior lives in one patch file; languages without a patch directory receive
 none.
-Applied files and their ROM offsets are recorded in map output.
+Applied files and their ROM offsets are recorded in map output. Patch file paths always use POSIX `/` separators, making
+maps stable on Windows and Unix.
 
 Italian `pokedex_category_order.py` swaps the Pokédex render operands and changes the fixed suffix to `Pokémon `, so
 species categories use official Italian order (`Pokémon Ratto`, not `Ratto Pokémon`). The patch owns `scr_415F8F` so

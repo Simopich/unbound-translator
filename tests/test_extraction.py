@@ -41,6 +41,11 @@ class AlignedPointerTextTests(unittest.TestCase):
             )
         )
 
+    def test_rejects_trainer_struct_and_adjacent_binary_targets(self):
+        self.assertTrue(EXTRACTOR.is_aligned_pointer_target_excluded(0x24019A))
+        self.assertTrue(EXTRACTOR.is_aligned_pointer_target_excluded(0x246AE0))
+        self.assertFalse(EXTRACTOR.is_aligned_pointer_target_excluded(0x24F1A7))
+
     def test_address_merge_prefers_specific_entry_and_unions_sources(self):
         script = {
             "id": "scr_123456",

@@ -2,8 +2,22 @@ import json
 from pathlib import Path
 
 from lib.gen3_font import text_pixel_width
+from lib.pcs_text import Charmap
 
 READY_ITALIAN = Path(__file__).resolve().parents[1] / "ready-translations" / "it.json"
+
+
+def test_route_8_trainer_messages_remain_in_place():
+    entries = json.loads(READY_ITALIAN.read_text(encoding="utf-8"))["entries"]
+    route_8_ids = {"scr_1F66411", "scr_1F66449"}
+    route_8_entries = [entry for entry in entries if entry["id"] in route_8_ids]
+
+    assert {entry["id"] for entry in route_8_entries} == route_8_ids
+    charmap = Charmap(target_lang="it")
+    assert all(
+        len(charmap.encode(entry["translated"])) <= entry["byte_length"]
+        for entry in route_8_entries
+    )
 
 
 def test_ready_italian_covers_all_missions_without_overflow():

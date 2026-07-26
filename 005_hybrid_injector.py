@@ -394,7 +394,7 @@ def apply_language_patches(patches_root, target_lang, context):
             if not isinstance(report, dict):
                 raise ValueError(f"Runtime patch returned an invalid report: {patch_path}")
             reports.append(
-                {"file": str(patch_path.relative_to(patches_root.parent)), **report}
+                {"file": patch_path.relative_to(patches_root.parent).as_posix(), **report}
             )
 
     return reports

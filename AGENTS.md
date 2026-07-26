@@ -47,6 +47,7 @@ This repository is `unbound-translator`, a Python toolchain for translating Poke
   address-ordered first-fit allocation, matching the advanced translator's validated strategy. It also discovers and
   applies every
   `patches/<target-lang>/*.py` runtime patch in filename order.
+  Runtime-patch file paths in map output always use POSIX `/` separators so reports are stable on Windows and Unix.
 - `006_decontrolfix_translations.py`: removes controlfix layout from translated JSON for manual re-editing, preserving the controlfixed value in `translated_controlfixed` by default.
 - `lib/pcs_text.py`: local PCS charmap and codec. Do not reintroduce Meowth charmap dependencies.
 - `lib/translation_tokens.py`: shared layout and semantic/control token helpers used by prepare, translation, and layout repair code.
@@ -67,7 +68,7 @@ When resuming LLM translation, use the same input and output paths with `--resum
 
 ## Extraction Notes
 
-- A healthy expanded baseline currently reports `23,274` unique-address entries, including `10,828` `scripts`, `3,522`
+- A healthy expanded baseline currently reports `23,268` unique-address entries, including `10,828` `scripts`, `3,516`
   strict aligned `pointer_texts`, `82` `mission_descriptions`, `85` `mission_names`, and `14` `plain_scripts`. The
   extractor merges duplicate
   addresses, preferring specific table/category ownership and preserving all pointer sources.
@@ -84,7 +85,8 @@ When resuming LLM translation, use the same input and output paths with `--resum
   `scr_<ROMADDR>`, and table/manual ids use `tbl_<category>_<table_index>_<ROMADDR>`. The extractor also accepts
   structured high-bank sources in `0x1E00000-0x1F00000` and `0x1FB0000-0x1FC0000` targeting `0x1EE0000-0x1FB0000`, plus
   unaligned trainer/link-record pointer fields. By default it additionally checks every aligned GBA pointer with a
-  strict language/data-noise filter and categorizes newly discovered strings as `pointer_texts`; use
+  strict language/data-noise filter, excludes trainer structs and adjacent binary data at `0x23EAC8-0x246E00`, and
+  categorizes newly discovered strings as `pointer_texts`; use
   `--no-aligned-pointer-text` only to reproduce the narrower legacy scan. Mission title pointers remain `mission_names`;
   controlfix caps their visible width. Exact pointer sources allow relocation where safe.
 - Use `001_extract_unbound_text.py rom/unbound.gba -o out/unbound-texts.json --audit-menu-text` when auditing menu coverage during extraction. `found_but_not_extracted` means extractor coverage needs a new table/address; `not_found_as_pcs_text` likely means graphical/tile text, compressed data, or custom UI encoding.
@@ -232,5 +234,8 @@ Use this to test a small manually whitelisted ROM build:
 - Do not add new Meowth runtime dependencies.
 - Preserve existing user changes in the working tree. Do not revert unrelated edits.
 - Prefer small, focused changes and verify Python scripts with `python3 -m py_compile` when editing them.
+- After every bugfix or translation/layout/control/injection fix, automatically build a test ROM before handoff when the
+  required source ROM and translation input are available. Use a focused debug ROM only when it covers the reported
+  issue; otherwise build the applicable full translation ROM. Report the ROM and map-output paths for testing.
 - When fixing a layout, wrapping, or protected-token bug, add a small regression fixture/test under `tests/fixtures/`
   and `tests/` so the case stays covered without requiring a ROM.
