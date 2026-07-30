@@ -8,6 +8,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from lib.pcs_text import Charmap, fc_arg_count
+from lib.translation_tokens import semantic_token_counts
 from lib.unbound_free_space import VETTED_FREE_SPACE_RANGES
 
 GBA_POINTER_BASE = 0x08000000
@@ -47,6 +48,20 @@ def strip_hma_quotes(text):
     if isinstance(text, str) and len(text) >= 2 and text[0] == '"' and text[-1] == '"':
         return text[1:-1]
     return text or ""
+
+
+def translation_for_injection(entry):
+    fixed = entry.get("translated_fixed")
+    if isinstance(fixed, str) and fixed:
+        fixed = strip_hma_quotes(fixed)
+        full = strip_hma_quotes(entry.get("translated", ""))
+        if semantic_token_counts(fixed) != semantic_token_counts(full):
+            raise ValueError(
+                "translated_fixed changes protected tokens for "
+                f"{entry.get('id', '?')}"
+            )
+        return fixed
+    return strip_hma_quotes(entry.get("translated", ""))
 
 
 def byte_placeholders(values):
@@ -211,6 +226,7 @@ class FreeBlock:
     start: int
     end: int
     cursor: int
+    kind: str = "vetted_ff"
 
     @property
     def remaining(self):
@@ -321,13 +337,28 @@ def build_free_blocks(rom, entries, min_run, min_address, allowed_ranges=None):
     return [FreeBlock(start, end, start) for start, end in runs]
 
 
-def allocate(blocks, size, alignment):
+def allocate_with_block(blocks, size, alignment):
     for block in blocks:
         aligned = align_up(block.cursor, alignment)
         if aligned + size <= block.end:
             block.cursor = aligned + size
-            return aligned
-    return None
+            return aligned, block
+    return None, None
+
+
+def allocate(blocks, size, alignment):
+    offset, _block = allocate_with_block(blocks, size, alignment)
+    return offset
+
+
+@dataclass
+class RelocationCandidate:
+    entry: dict
+    address: int
+    max_size: int
+    encoded: bytes
+    sources: tuple[int, ...]
+    reclaimable: bool = False
 
 
 def allocate_near(blocks, size, alignment, origin, max_distance=0x3FFFFE):
@@ -443,6 +474,7 @@ def plausible_pointer_source(rom, source):
     """Reject raw pointer-scan matches that would overwrite code or live data."""
     return (
             source % 4 == 0
+            or (source >= 1 and rom[source - 1] == 0x9B)
             or (source >= 2 and rom[source - 2] == 0x0F and rom[source - 1] == 0x00)
             or (source >= 2 and rom[source - 2] == 0x85 and rom[source - 1] <= 0x0F)
             or (source >= 1 and rom[source - 1] == 0x67)
@@ -474,6 +506,149 @@ def should_relocate_pointer_entry(entry, encoded, policy):
         return len(encoded) > int(entry.get("byte_length", 0))
     raise ValueError(f"Unknown relocation policy: {policy}")
 
+
+def collect_relocation_candidates(
+        rom,
+        entries,
+        cmap,
+        pointer_policy,
+        handled_entry_ids,
+        min_address,
+        allow_lossy_fit=False,
+):
+    candidates = []
+    skipped = {}
+
+    for entry in entries:
+        entry_id = entry.get("id")
+        if entry_id in handled_entry_ids:
+            continue
+
+        translated = translation_for_injection(entry)
+        full_translation = strip_hma_quotes(entry.get("translated", ""))
+        original = strip_hma_quotes(entry.get("original", ""))
+        if not translated or full_translation == original:
+            continue
+
+        try:
+            address = parse_address(entry["address"])
+            max_size = int(entry["byte_length"])
+            encoded = encode_text(
+                cmap,
+                translated,
+                plain_script=entry.get("category") == "plain_scripts",
+            )
+        except Exception:
+            continue
+
+        if entry.get("category") == "ability_descriptions":
+            compacted = compact_ability_description(
+                encoded,
+                encode_text(cmap, "."),
+            )
+            if compacted != encoded and not allow_lossy_fit:
+                raise RuntimeError(
+                    "Lossy ability-description compaction refused for "
+                    f"{entry_id or '?'}: {len(encoded)} -> {len(compacted)} bytes. "
+                    "Add a compact translated_fixed value or use --allow-lossy-fit."
+                )
+            encoded = compacted
+
+        if address < min_address or max_size <= 0:
+            continue
+        if not should_relocate_pointer_entry(entry, encoded, pointer_policy):
+            continue
+
+        sources = tuple(parse_address(source) for source in pointer_sources(entry))
+        expected_pointer = GBA_POINTER_BASE + address
+        matching_sources = tuple(
+            source
+            for source in sources
+            if current_pointer_matches(rom, source, expected_pointer)
+        )
+        plausible_sources = tuple(
+            source
+            for source in matching_sources
+            if plausible_pointer_source(rom, source)
+        )
+
+        if matching_sources and len(plausible_sources) != len(matching_sources):
+            skipped[entry_id] = "implausible"
+            continue
+        if not sources or len(matching_sources) != len(sources):
+            skipped[entry_id] = "mismatch"
+            continue
+
+        candidates.append(
+            RelocationCandidate(
+                entry=entry,
+                address=address,
+                max_size=max_size,
+                encoded=encoded,
+                sources=plausible_sources,
+            )
+        )
+
+    return candidates, skipped
+
+
+def discover_pointer_sources(rom, expected_pointers):
+    """Index every raw occurrence of a candidate pointer before any ROM writes."""
+    expected_pointers = set(expected_pointers)
+    discovered = {pointer: set() for pointer in expected_pointers}
+    if not expected_pointers:
+        return discovered
+
+    for source in range(0, len(rom) - 3):
+        pointer = int.from_bytes(rom[source: source + 4], "little")
+        if pointer in expected_pointers:
+            discovered[pointer].add(source)
+    return discovered
+
+
+def build_reclaimed_text_blocks(rom, candidates, entries):
+    """Return old text slots safe to reuse after transactional repointing."""
+    expected_pointers = {
+        GBA_POINTER_BASE + candidate.address for candidate in candidates
+    }
+    discovered = discover_pointer_sources(rom, expected_pointers)
+
+    reclaim_ranges = []
+    for candidate in candidates:
+        expected_pointer = GBA_POINTER_BASE + candidate.address
+        candidate.reclaimable = discovered[expected_pointer] == set(candidate.sources)
+        if candidate.reclaimable:
+            reclaim_ranges.append(
+                (candidate.address, candidate.address + candidate.max_size)
+            )
+
+    pointer_operands = merge_ranges(
+        (
+            parse_address(source),
+            parse_address(source) + 4,
+        )
+        for entry in entries
+        for source in pointer_sources(entry)
+    )
+    reclaim_ranges = subtract_ranges(merge_ranges(reclaim_ranges), pointer_operands)
+    return [
+        FreeBlock(start, end, start, "reclaimed_text")
+        for start, end in reclaim_ranges
+    ]
+
+
+def plan_relocations(vetted_blocks, reclaimed_blocks, candidates, alignment):
+    """Allocate every candidate before generic text or pointer writes begin."""
+    blocks = [*vetted_blocks, *reclaimed_blocks]
+    plan = {}
+    missing = []
+    for candidate in candidates:
+        offset, block = allocate_with_block(blocks, len(candidate.encoded), alignment)
+        if offset is None:
+            missing.append(candidate)
+            continue
+        plan[candidate.entry.get("id")] = (offset, block.kind)
+    return blocks, plan, missing
 
 def injection_priority(entry):
     """Reserve limited relocation space for structured player-facing text."""
@@ -553,6 +728,14 @@ def main():
         help="Do all allocation, encoding, and pointer checks without writing the ROM.",
     )
     parser.add_argument(
+        "--allow-lossy-fit",
+        action="store_true",
+        help=(
+            "Allow legacy fixed-slot truncation and ability-description compaction. "
+            "By default the injector aborts instead of silently removing translated text."
+        ),
+    )
+    parser.add_argument(
         "-v",
         "--verbose",
         action="store_true",
@@ -593,10 +776,48 @@ def main():
         patch_context,
     )
 
+    candidates, relocation_skips = collect_relocation_candidates(
+        rom,
+        entries,
+        cmap,
+        args.pointer_policy,
+        patch_context.handled_entry_ids,
+        min_address,
+        args.allow_lossy_fit,
+    )
+    reclaimed_blocks = build_reclaimed_text_blocks(rom, candidates, entries)
+    allocation_blocks, relocation_plan, missing_candidates = plan_relocations(
+        free_blocks,
+        reclaimed_blocks,
+        candidates,
+        args.alignment,
+    )
+    if missing_candidates:
+        missing_bytes = sum(len(candidate.encoded) for candidate in missing_candidates)
+        raise RuntimeError(
+            "Transactional relocation preflight failed: "
+            f"{len(missing_candidates)} entries / {missing_bytes} bytes do not fit"
+        )
+    candidates_by_id = {
+        candidate.entry.get("id"): candidate for candidate in candidates
+    }
+
     stats = {
         "input_entries": len(entries),
-        "free_blocks": len(free_blocks),
-        "free_bytes": sum(block.end - block.start for block in free_blocks),
+        "free_blocks": len(allocation_blocks),
+        "free_bytes": sum(block.end - block.start for block in allocation_blocks),
+        "vetted_free_blocks": len(free_blocks),
+        "vetted_free_bytes": sum(block.end - block.start for block in free_blocks),
+        "reclaimed_text_blocks": len(reclaimed_blocks),
+        "reclaimed_text_bytes": sum(
+            block.end - block.start for block in reclaimed_blocks
+        ),
+        "reclaimable_candidates": sum(
+            candidate.reclaimable for candidate in candidates
+        ),
+        "retained_old_slot_candidates": sum(
+            not candidate.reclaimable for candidate in candidates
+        ),
         "relocated": 0,
         "relocated_bytes": 0,
         "pointer_writes": 0,
@@ -609,19 +830,28 @@ def main():
         "skipped_pointer_mismatch": 0,
         "skipped_implausible_pointer": 0,
         "skipped_no_space": 0,
+        "skipped_no_space_bytes": 0,
         "no_space_by_category": {},
+        "no_space_bytes_by_category": {},
         "skipped_bounds": 0,
         "encode_errors": 0,
+        "fixed_overrides_used": 0,
         "fixed_truncated": 0,
+        "fixed_truncated_bytes": 0,
+        "fixed_truncated_by_category": {},
+        "fixed_truncated_bytes_by_category": {},
         "no_relocation_in_place": 0,
         "no_relocation_truncated": 0,
+        "no_relocation_truncated_by_category": {},
         "ability_descriptions_compacted": 0,
+        "ability_description_bytes_removed": 0,
         "runtime_patches": len(runtime_patches),
     }
 
     relocation_map = []
     truncation_samples = []
     mismatch_samples = []
+    implausible_samples = []
     no_space_samples = []
     seen_fixed_slots = set()
 
@@ -630,15 +860,18 @@ def main():
             stats["skipped_runtime_patch"] += 1
             continue
 
-        translated = strip_hma_quotes(entry.get("translated", ""))
+        translated = translation_for_injection(entry)
+        full_translation = strip_hma_quotes(entry.get("translated", ""))
         if not translated:
             stats["skipped_empty"] += 1
             continue
 
         original = strip_hma_quotes(entry.get("original", ""))
-        if translated == original:
+        if full_translation == original:
             stats["unchanged"] += 1
             continue
+        if entry.get("translated_fixed"):
+            stats["fixed_overrides_used"] += 1
 
         try:
             address = parse_address(entry["address"])
@@ -649,13 +882,27 @@ def main():
                 plain_script=entry.get("category") == "plain_scripts",
             )
             if entry.get("category") == "ability_descriptions":
+                encoded_size = len(encoded)
                 compacted = compact_ability_description(
                     encoded,
                     encode_text(cmap, "."),
                 )
                 if compacted != encoded:
+                    if not args.allow_lossy_fit:
+                        raise RuntimeError(
+                            "Lossy ability-description compaction refused for "
+                            f"{entry.get('id', '?')}: "
+                            f"{len(encoded)} -> {len(compacted)} bytes. "
+                            "Add a compact translated_fixed value or use "
+                            "--allow-lossy-fit."
+                        )
                     stats["ability_descriptions_compacted"] += 1
+                    stats["ability_description_bytes_removed"] += (
+                        encoded_size - len(compacted)
+                    )
                     encoded = compacted
+        except RuntimeError:
+            raise
         except Exception as exc:
             stats["encode_errors"] += 1
             if args.verbose:
@@ -668,41 +915,27 @@ def main():
 
         sources = [parse_address(source) for source in pointer_sources(entry)]
         if should_relocate_pointer_entry(entry, encoded, args.pointer_policy):
-            expected_pointer = GBA_POINTER_BASE + address
-            matching_sources = [
-                source
-                for source in sources
-                if current_pointer_matches(rom, source, expected_pointer)
-            ]
-            plausible_sources = [
-                source
-                for source in matching_sources
-                if plausible_pointer_source(rom, source)
-            ]
-            if matching_sources and not plausible_sources:
+            entry_id = entry.get("id")
+            skip_reason = relocation_skips.get(entry_id)
+            if skip_reason == "implausible":
                 stats["skipped_implausible_pointer"] += 1
+                if len(implausible_samples) < 20:
+                    implausible_samples.append(entry_id or "?")
                 continue
-            if not sources or len(matching_sources) != len(sources):
+            if skip_reason == "mismatch":
                 stats["skipped_pointer_mismatch"] += 1
                 if len(mismatch_samples) < 20:
-                    mismatch_samples.append(entry.get("id", "?"))
+                    mismatch_samples.append(entry_id or "?")
                 continue
 
-            sources = plausible_sources
-
-            relocated_offset = allocate(free_blocks, len(encoded), args.alignment)
-            if relocated_offset is None:
-                stats["skipped_no_space"] += 1
-                category = entry.get("category", "unknown")
-                stats["no_space_by_category"][category] = (
-                        stats["no_space_by_category"].get(category, 0) + 1
+            candidate = candidates_by_id.get(entry_id)
+            if candidate is None or entry_id not in relocation_plan:
+                raise RuntimeError(
+                    f"Missing transactional relocation plan for {entry_id or '?'}"
                 )
-                if len(no_space_samples) < 20:
-                    no_space_samples.append(
-                        f"{entry.get('id', '?')}: needs {len(encoded)} bytes"
-                    )
-                continue
 
+            relocated_offset, storage_kind = relocation_plan[entry_id]
+            sources = list(candidate.sources)
             new_pointer = GBA_POINTER_BASE + relocated_offset
             if not args.dry_run:
                 rom[relocated_offset : relocated_offset + len(encoded)] = encoded
@@ -714,13 +947,15 @@ def main():
             stats["pointer_writes"] += len(sources)
             relocation_map.append(
                 {
-                    "id": entry.get("id"),
+                    "id": entry_id,
                     "category": entry.get("category"),
                     "old_offset": f"0x{address:X}",
                     "new_offset": f"0x{relocated_offset:X}",
                     "new_pointer": f"0x{new_pointer:X}",
                     "byte_length": len(encoded),
                     "pointer_sources": [f"0x{source:X}" for source in sources],
+                    "storage": storage_kind,
+                    "old_slot_reclaimed": candidate.reclaimable,
                 }
             )
             continue
@@ -740,9 +975,29 @@ def main():
             continue
 
         if len(encoded) > max_size:
+            if not args.allow_lossy_fit:
+                raise RuntimeError(
+                    "Lossy fixed-slot truncation refused for "
+                    f"{entry.get('id', '?')}: {len(encoded)} -> {max_size} bytes. "
+                    "Add a compact translated_fixed value or use --allow-lossy-fit."
+                )
             stats["fixed_truncated"] += 1
+            overflow = len(encoded) - max_size
+            category = entry.get("category", "unknown")
+            stats["fixed_truncated_bytes"] += overflow
+            stats["fixed_truncated_by_category"][category] = (
+                stats["fixed_truncated_by_category"].get(category, 0) + 1
+            )
+            stats["fixed_truncated_bytes_by_category"][category] = (
+                stats["fixed_truncated_bytes_by_category"].get(category, 0)
+                + overflow
+            )
             if entry.get("no_relocation"):
                 stats["no_relocation_truncated"] += 1
+                stats["no_relocation_truncated_by_category"][category] = (
+                    stats["no_relocation_truncated_by_category"].get(category, 0)
+                    + 1
+                )
             if len(truncation_samples) < 20:
                 prefix = "no_relocation " if entry.get("no_relocation") else ""
                 truncation_samples.append(
@@ -756,8 +1011,15 @@ def main():
         if entry.get("no_relocation"):
             stats["no_relocation_in_place"] += 1
 
-    used_free_bytes = sum(block.cursor - block.start for block in free_blocks)
-    remaining_free_bytes = sum(block.end - block.cursor for block in free_blocks)
+    used_free_bytes = sum(
+        block.cursor - block.start for block in allocation_blocks
+    )
+    remaining_free_bytes = sum(
+        block.end - block.cursor for block in allocation_blocks
+    )
+    used_reclaimed_text_bytes = sum(
+        block.cursor - block.start for block in reclaimed_blocks
+    )
 
     if args.map_output:
         report_path = Path(args.map_output)
@@ -768,6 +1030,7 @@ def main():
             "stats": stats,
             "used_free_bytes": used_free_bytes,
             "remaining_free_bytes": remaining_free_bytes,
+            "used_reclaimed_text_bytes": used_reclaimed_text_bytes,
             "relocations": relocation_map,
             "runtime_patches": runtime_patches,
         }
@@ -781,8 +1044,13 @@ def main():
     print(f"Input entries          : {stats['input_entries']}")
     print(f"Free blocks            : {stats['free_blocks']}")
     print(f"Free bytes             : {stats['free_bytes']}")
+    print(f"Vetted FF bytes        : {stats['vetted_free_bytes']}")
+    print(f"Reclaimed text bytes   : {stats['reclaimed_text_bytes']}")
     print(f"Used free bytes        : {used_free_bytes}")
+    print(f"Used reclaimed bytes   : {used_reclaimed_text_bytes}")
     print(f"Remaining free bytes   : {remaining_free_bytes}")
+    print(f"Reclaimable candidates : {stats['reclaimable_candidates']}")
+    print(f"Retained old slots     : {stats['retained_old_slot_candidates']}")
     print(f"Relocated              : {stats['relocated']}")
     print(f"Relocated bytes        : {stats['relocated_bytes']}")
     print(f"Pointer writes         : {stats['pointer_writes']}")
@@ -795,18 +1063,31 @@ def main():
     print(f"Pointer mismatches     : {stats['skipped_pointer_mismatch']}")
     print(f"Implausible pointers   : {stats['skipped_implausible_pointer']}")
     print(f"Skipped no space       : {stats['skipped_no_space']}")
+    print(f"No-space bytes         : {stats['skipped_no_space_bytes']}")
     if stats["no_space_by_category"]:
         print("No-space categories   :")
         for category, count in sorted(
                 stats["no_space_by_category"].items(), key=lambda item: (-item[1], item[0])
         ):
-            print(f"  {category}: {count}")
+            byte_count = stats["no_space_bytes_by_category"][category]
+            print(f"  {category}: {count} ({byte_count} bytes)")
     print(f"Skipped out-of-ROM     : {stats['skipped_bounds']}")
     print(f"Encode errors          : {stats['encode_errors']}")
+    print(f"Fixed overrides used   : {stats['fixed_overrides_used']}")
     print(f"Fixed truncated        : {stats['fixed_truncated']}")
+    print(f"Fixed bytes removed    : {stats['fixed_truncated_bytes']}")
+    if stats["fixed_truncated_by_category"]:
+        print("Fixed trunc categories :")
+        for category, count in sorted(
+                stats["fixed_truncated_by_category"].items(),
+                key=lambda item: (-item[1], item[0]),
+        ):
+            byte_count = stats["fixed_truncated_bytes_by_category"][category]
+            print(f"  {category}: {count} ({byte_count} bytes)")
     print(f"No-reloc in-place      : {stats['no_relocation_in_place']}")
     print(f"No-reloc truncated     : {stats['no_relocation_truncated']}")
     print(f"Ability desc compacted : {stats['ability_descriptions_compacted']}")
+    print(f"Ability bytes removed  : {stats['ability_description_bytes_removed']}")
     print(f"Runtime patches        : {stats['runtime_patches']}")
     if truncation_samples:
         print("Fixed truncation sample:")
@@ -815,6 +1096,10 @@ def main():
     if mismatch_samples:
         print("Pointer mismatch sample:")
         for sample in mismatch_samples:
+            print(f"  {sample}")
+    if implausible_samples:
+        print("Implausible pointer sample:")
+        for sample in implausible_samples:
             print(f"  {sample}")
     if no_space_samples:
         print("No-space sample:")

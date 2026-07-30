@@ -1,0 +1,22 @@
+{
+  "entries": [
+    {
+      "id": "fixed_battle_token",
+      "category": "battle_messages",
+      "address": "0x100",
+      "byte_length": 18,
+      "original": "\\\\10 attacked!",
+      "translated": "\\\\10 ha sferrato un attacco!",
+      "translated_fixed": "\\\\10 attacca!"
+    },
+    {
+      "id": "fixed_ability_text",
+      "category": "ability_descriptions",
+      "address": "0x120",
+      "byte_length": 24,
+      "original": "Stops status in sun.",
+      "translated": "Protegge dalle condizioni di stato quando c{B4}? il sole.",
+      "translated_fixed": "Col sole non c{B4}? alcuno stato."
+    }
+  ]
+}

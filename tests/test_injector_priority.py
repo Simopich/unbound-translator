@@ -43,6 +43,9 @@ class InjectionPriorityTests(unittest.TestCase):
         rom[20] = 0x67
         self.assertTrue(INJECTOR.plausible_pointer_source(rom, 21))
 
+        rom[24] = 0x9B
+        self.assertTrue(INJECTOR.plausible_pointer_source(rom, 25))
+
         rom[27:31] = (0x02000010).to_bytes(4, "little")
         self.assertTrue(INJECTOR.plausible_pointer_source(rom, 31))
 
@@ -97,6 +100,102 @@ class InjectionPriorityTests(unittest.TestCase):
             {"id": "second", "category": "menu_pc"},
         ]
         self.assertEqual(INJECTOR.prioritize_entries(entries), entries)
+
+
+    def test_reclaim_requires_complete_plausible_pointer_coverage(self):
+        rom = bytearray(b"\x00" * 0x400)
+        pointer = INJECTOR.GBA_POINTER_BASE + 0x100
+        rom[0x20:0x24] = pointer.to_bytes(4, "little")
+        # Even an unaligned occurrence with no recognized opcode shape must
+        # disqualify reuse; it may be an engine pointer form we do not know.
+        rom[0x31:0x35] = pointer.to_bytes(4, "little")
+        candidate = INJECTOR.RelocationCandidate(
+            entry={"id": "text"},
+            address=0x100,
+            max_size=0x20,
+            encoded=b"Italiano\xFF",
+            sources=(0x20,),
+        )
+
+        blocks = INJECTOR.build_reclaimed_text_blocks(
+            rom,
+            [candidate],
+            [{"pointer_sources": ["0x20"]}],
+        )
+
+        self.assertFalse(candidate.reclaimable)
+        self.assertEqual(blocks, [])
+
+    def test_relocation_plan_uses_vetted_then_reclaimed_storage(self):
+        vetted = [INJECTOR.FreeBlock(0x1000, 0x1010, 0x1000)]
+        reclaimed = [
+            INJECTOR.FreeBlock(0x2000, 0x2100, 0x2000, "reclaimed_text")
+        ]
+        candidates = [
+            INJECTOR.RelocationCandidate(
+                entry={"id": "first"},
+                address=0x3000,
+                max_size=8,
+                encoded=b"A" * 8,
+                sources=(0x40,),
+            ),
+            INJECTOR.RelocationCandidate(
+                entry={"id": "second"},
+                address=0x3010,
+                max_size=8,
+                encoded=b"B" * 12,
+                sources=(0x44,),
+            ),
+        ]
+
+        _blocks, plan, missing = INJECTOR.plan_relocations(
+            vetted, reclaimed, candidates, 4
+        )
+
+        self.assertEqual(plan["first"], (0x1000, "vetted_ff"))
+        self.assertEqual(plan["second"], (0x2000, "reclaimed_text"))
+        self.assertEqual(missing, [])
+
+    def test_relocation_preflight_refuses_lossy_ability_compaction_by_default(self):
+        rom = bytearray(b"\x00" * 0x400)
+        address = 0x100
+        source = 0x20
+        rom[source : source + 4] = (
+            INJECTOR.GBA_POINTER_BASE + address
+        ).to_bytes(4, "little")
+        entry = {
+            "id": "long_ability",
+            "category": "ability_descriptions",
+            "address": hex(address),
+            "byte_length": 8,
+            "original": "Short.",
+            "translated": (
+                "Aumenta Attacco se colpito da una mossa di tipo Erba molto potente."
+            ),
+            "pointer_sources": [hex(source)],
+        }
+        cmap = INJECTOR.Charmap(target_lang="it")
+
+        with self.assertRaisesRegex(RuntimeError, "compaction refused"):
+            INJECTOR.collect_relocation_candidates(
+                rom, [entry], cmap, "oversized", set(), 0x100
+            )
+
+        candidates, skipped = INJECTOR.collect_relocation_candidates(
+            rom,
+            [entry],
+            cmap,
+            "oversized",
+            set(),
+            0x100,
+            allow_lossy_fit=True,
+        )
+
+        self.assertEqual(skipped, {})
+        self.assertEqual(len(candidates), 1)
+        self.assertLessEqual(
+            len(candidates[0].encoded), INJECTOR.ABILITY_DESCRIPTION_MAX_BYTES
+        )
 
 
 if __name__ == "__main__":

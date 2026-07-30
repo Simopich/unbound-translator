@@ -15,16 +15,27 @@ The project was previously based on [Olcmyk/Meowth-GBA-Translator](https://githu
 The current injector uses a hybrid strategy:
 
 - Short translated strings that still fit their original slots are written in place.
-- Longer pointer-based strings are relocated into free space inside the existing ROM.
-- Free space is found by scanning for contiguous `0xFF` blocks.
+- Longer pointer-based strings are relocated first into vetted writable `0xFF` spans, then into safely reclaimed old
+  text slots.
+- An old text slot is reclaimable only when a whole-ROM scan proves that every raw occurrence of its pointer is among the
+  extracted pointer operands that will be updated.
 - Script pointers are then updated to point at the relocated translated text.
 
 This avoids expanding the ROM while still allowing longer translations where the original text was pointer-based.
-By default, the injector only relocates pointer-based text when the encoded translation no longer fits its original slot. Use `--pointer-policy changed` only for experiments that intentionally relocate every changed pointer string.
-When free space is limited, structured player-facing UI is allocated first: Trainer Card labels, then other menu/UI
-text, then scripts and broad pointer discoveries. The map report groups no-space skips by category, so low-priority
-coverage cannot silently consume space needed by core screens.
-Some common engine routine strings are marked with `no_relocation: true` during extraction. These entries must stay in their original slots because redirecting their pointers can freeze receive-item, Cube, PC, or field routines. Keep their translations short enough to fit their original `byte_length`; the injector will never relocate them and reports `No-reloc truncated` if any are too long.
+By default, the injector only relocates pointer-based text when the encoded translation no longer fits its original
+slot. Use `--pointer-policy changed` only for experiments that intentionally relocate every changed pointer string.
+Relocation is transactional: every destination and pointer update is validated and allocated before generic text writes
+begin. The build aborts if even one relocation cannot fit, so entries are never silently left untranslated for lack of
+space. The map records vetted/reclaimed capacity, usage, relocation storage kind, and loss counters.
+
+Fixed-size entries may use `translated_fixed` for a concise Italian display value while retaining the complete wording
+in `translated`. The compact value must preserve all semantic/control tokens. Fixed-slot truncation and the legacy
+ability-description compactor are rejected by default; `--allow-lossy-fit` exists only for explicit diagnostic or
+legacy builds.
+
+Some common engine routine strings are marked with `no_relocation: true` during extraction. These entries must stay in
+their original slots because redirecting their pointers can freeze receive-item, Cube, PC, or field routines. Supply a
+fitting `translated_fixed` value when needed; otherwise the injector aborts before writing the output ROM.
 
 This project keeps its own architecture and solutions. When useful,
 [AntonyKervazoCanut/gba_translator](https://github.com/AntonyKervazoCanut/gba_translator) can serve as an optional
@@ -37,7 +48,9 @@ is neither a runtime dependency nor the source of Italian wording.
 
 ## Free Space
 
-This relocation approach was possible because Pokémon Unbound still has `1,102,003` bytes of free space available in the ROM. Those regions are detected by scanning for contiguous `0xFF` blocks and are used as targets for translated strings that no longer fit in their original locations.
+Relocation uses two capacity pools without expanding the ROM: vetted writable spans inside contiguous `0xFF`
+runs, followed by old pointer-text slots proven unreachable after their complete pointer set is repointed. Exact
+capacity and usage are data-dependent and recorded in the injector map.
 
 ## Workflow
 
@@ -306,13 +319,15 @@ Relocation excludes `0x16586A-0x166C9A` and `0x19A837-0x19B86A` (engine-owned FF
 when those regions contain long `0xFF` runs. Detected runs are additionally clipped to the proven writable spans in
 `lib/unbound_free_space.py`; this prevents apparent free-run edge bytes used by the engine from being overwritten.
 The allocator also leaves an eight-byte margin at both ends of each run.
-Like the validated advanced translator, it scans eligible runs in ROM-address order and uses first-fit allocation with
-a 1 KB minimum run; it does not best-fit into scattered high-risk gaps.
+Vetted runs are scanned in ROM-address order and use first-fit allocation with a 1 KB minimum run. After those spans,
+the allocator may use old pointer-text slots whose complete reference set was verified before any write. All relocation
+destinations are reserved transactionally, so source slots are not reused until every changed pointer has a destination.
 Pointer updates are limited to aligned pointer sites and verified Unbound script operand forms; unaligned raw-scan
 matches are rejected so translated addresses cannot overwrite executable code or unrelated live data.
 
 The injector globally caps encoded ability descriptions to a conservative 46-byte ceiling observed in the working
-French ROM. Over-budget text is compacted at token-safe word boundaries; longer Italian payloads corrupt Summary.
+French ROM because longer payloads corrupt Summary. Supply a fitting `translated_fixed` display value for longer
+wording. The injector aborts by default; legacy token-safe compaction is available only with `--allow-lossy-fit`.
 
 Controlfix removes excess `[player]`/`[rival]` tokens invented by translation while preserving source counts. This
 prevents dynamic PC labels, residence signs, and possessive messages from rendering names twice.
@@ -378,8 +393,9 @@ The scripts have been tested with the Italian language. Support for other langua
 ## Notes
 
 - The injector does not expand the ROM.
-- Pointer-based text may be relocated into existing `0xFF` free space.
-- Fixed-size text and `no_relocation` pointer text may still need shorter translations.
-- `hybrid-map.json` records relocation decisions and injection stats.
+- Pointer-based text may be relocated into vetted `0xFF` spans or safely reclaimed old text slots.
+- Fixed-size and `no_relocation` entries use token-safe `translated_fixed` display text when full wording cannot fit.
+- The default injector aborts on no-space, truncation, or ability compaction instead of silently dropping text.
+- `hybrid-map.json` records relocation storage, capacity, usage, and zero-loss counters.
 - Issues and pull requests are welcome.
 - Yes, this repo is vibecoded, I'm sorry but I don't have time to manually work on this...

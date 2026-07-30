@@ -207,6 +207,47 @@ def test_pokedex_description_uses_french_observed_three_line_budget():
     assert "..." in wrapped
 
 
+def test_ready_constrained_text_is_meaningfully_condensed_without_added_ellipsis():
+    fixture_path = Path(__file__).parent / "fixtures" / "condensed_layout_cases.json"
+    fixtures = json.loads(fixture_path.read_text(encoding="utf-8"))
+    ready_path = Path(__file__).resolve().parents[1] / "ready-translations" / "it.json"
+    entries = json.loads(ready_path.read_text(encoding="utf-8"))["entries"]
+    by_id = {entry["id"]: entry for entry in entries}
+
+    for fixture in fixtures:
+        assert by_id[fixture["id"]]["translated"] == fixture["translated"]
+        assert "..." not in fixture["translated"]
+        assert "\u2026" not in fixture["translated"]
+
+    budgets = {
+        "pokedex_descriptions": (43, 3, 124),
+        "mission_objectives": (35, 2, 65),
+    }
+    checked = {category: 0 for category in budgets}
+    for entry in entries:
+        category = entry.get("category")
+        if category not in budgets:
+            continue
+
+        width, max_lines, max_total = budgets[category]
+        translated = entry.get("translated", "")
+        lines = translated.splitlines()
+        checked[category] += 1
+
+        if "..." not in entry.get("original", ""):
+            assert "..." not in translated, entry["id"]
+        if "\u2026" not in entry.get("original", ""):
+            assert "\u2026" not in translated, entry["id"]
+        assert len(lines) <= max_lines, entry["id"]
+        assert max(map(controlfix.visible_width, lines), default=0) <= width, entry["id"]
+        assert controlfix.visible_width(" ".join(lines)) <= max_total, entry["id"]
+
+    assert checked == {
+        "pokedex_descriptions": 993,
+        "mission_objectives": 57,
+    }
+
+
 def test_mission_objective_uses_french_observed_shared_budget():
     wrapped, changed, _long_words, skipped = controlfix.wrap_translation(
         "Guardati intorno nel Magazzino Vivill e trova un modo per entrare nel Centro di Comando!",

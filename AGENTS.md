@@ -8,12 +8,16 @@ This repository is `unbound-translator`, a Python toolchain for translating Poke
 - The project now uses custom scripts and a local PCS text codec in `lib/pcs_text.py`.
 - Text relocation uses vetted writable spans inside the ROM's contiguous `0xFF` blocks. The spans were validated against
   a known-working build so engine-owned bytes at apparent free-run edges are not overwritten.
-- The injection strategy is hybrid: short translated text is written in place, and longer pointer-based text is relocated into detected free space with script pointers updated to the new addresses.
+- The injection strategy is hybrid: short translated text is written in place, and longer pointer-based text is
+  relocated first into vetted `0xFF` spans, then into safely reclaimed old text slots, with every pointer updated.
 - `005_hybrid_injector.py` defaults to `--pointer-policy oversized`; use `--pointer-policy changed` only for experiments that intentionally relocate every changed pointer string.
-- Relocation space is limited. The injector prioritizes `menu_trainer_card`, then other structured menu/UI text, before
-  `scripts` and broad `pointer_texts`; map output records no-space totals by category. This prevents discovery coverage
-  from starving core UI labels.
-- Some extracted entries have `no_relocation: true` for fragile engine/common routine text, including receive-item, Cube, PC, and field routine pointers. Keep these translations short enough for their original `byte_length`; the injector forces them in place and reports `No-reloc truncated` if they do not fit.
+- Relocation is transactional. Before generic writes, the injector validates every pointer source, proves reclaimable
+  source slots with a whole-ROM raw-pointer scan, and allocates every destination. It aborts if any entry cannot
+  fit; successful map output records vetted/reclaimed capacity, usage, storage kind, and loss counters.
+- Some extracted entries have `no_relocation: true` for fragile engine/common routine text, including receive-item,
+  Cube, PC, and field routine pointers. Use a token-safe `translated_fixed` value when the complete `translated` text
+  does not fit. Fixed truncation and ability compaction abort by default; `--allow-lossy-fit` explicitly restores legacy
+  lossy behavior for diagnostics only.
 - The source ROM used by this project has MD5 `9cad8e771940e7f7094d13911552cef0`.
 
 ## External Double-Checks
@@ -41,15 +45,14 @@ This repository is `unbound-translator`, a Python toolchain for translating Poke
   preserves the JSON shape, fills `translated` fields, supports `--resume`, restores semantic/control placeholders to
   real tokens, validates returned batches, and retries model output that drops/adds protected placeholders or tokens.
 - `004_controlfix_translations.py`: repairs translated control codes, quote tokens, apostrophes, and other formatting damage caused by translation. It also recomputes post-translation text wrapping/layout for dialogue and description-like text.
-- `005_hybrid_injector.py`: injects translated text into the ROM using in-place writes and pointer relocation into free
-  `0xFF` space. It excludes engine-owned FF storage (`0x16586A-0x166C9A` and `0x19A837-0x19B86A`), battle graphics (`0x230000-0x500000`), and CFRU/Unbound reserved upper-ROM data
-  (`0x1000000-0x1FE0000`), keeps eight-byte free-run margins, intersects detected runs with
-  `lib/unbound_free_space.py`, and only repoints aligned or verified script pointer operands so raw-scan false positives
-  cannot overwrite code/live data. Eligible runs use a 1 KB minimum and
-  address-ordered first-fit allocation, matching the advanced translator's validated strategy. It also discovers and
-  applies every
-  `patches/<target-lang>/*.py` runtime patch in filename order.
-  Runtime-patch file paths in map output always use POSIX `/` separators so reports are stable on Windows and Unix.
+- `005_hybrid_injector.py`: injects translated text with transactional in-place writes and pointer relocation. It uses
+  vetted `0xFF` spans first, then reclaims an old text slot only when a whole-ROM raw-pointer scan exactly matches
+  its extracted pointer sources. It excludes engine-owned FF storage (`0x16586A-0x166C9A` and
+  `0x19A837-0x19B86A`), battle graphics (`0x230000-0x500000`), and CFRU/Unbound reserved upper-ROM data
+  (`0x1000000-0x1FE0000`), keeps eight-byte margins, intersects detected runs with `lib/unbound_free_space.py`, and
+  only repoints aligned or verified script operands. All relocation destinations are allocated before generic writes;
+  no-space aborts the build. It discovers and applies every `patches/<target-lang>/*.py` runtime patch in filename order.
+  Runtime-patch paths in map output always use POSIX `/` separators so reports are stable on Windows and Unix.
 - `006_decontrolfix_translations.py`: removes controlfix layout from translated JSON for manual re-editing, preserving the controlfixed value in `translated_controlfixed` by default.
 - `lib/pcs_text.py`: local PCS charmap and codec. Do not reintroduce Meowth charmap dependencies.
 - `lib/translation_tokens.py`: shared layout and semantic/control token helpers used by prepare, translation, and layout repair code.
@@ -147,9 +150,8 @@ When resuming LLM translation, use the same input and output paths with `--resum
   `Yes\nNo` remain selectable on separate rows. Tune with `--wrap-width`, `--description-wrap-width`, and
   `--wrap-categories`, or disable with `--no-wrap`.
 - The injector caps every encoded ability description to a conservative 46-byte ceiling observed in the working French
-  ROM.
-  Over-budget descriptions are compacted at a token-safe word boundary because longer payloads corrupt Summary
-  rendering.
+  ROM because longer payloads corrupt Summary. Preserve complete wording in `translated` and provide a token-safe,
+  fitting `translated_fixed` display value. Over-budget values abort unless `--allow-lossy-fit` is explicitly used.
 - Controlfix removes excess `[player]`/`[rival]` tokens invented by translation while preserving source counts, avoiding
   duplicate names in PC labels, residence signs, and possessive messages.
 - Controlfix restores source boundary spaces on short `battle_messages` fragments. Italian stat templates carry
