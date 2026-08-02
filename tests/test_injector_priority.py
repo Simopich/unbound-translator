@@ -101,36 +101,37 @@ class InjectionPriorityTests(unittest.TestCase):
         ]
         self.assertEqual(INJECTOR.prioritize_entries(entries), entries)
 
+    def test_text_relocation_defaults_to_byte_alignment(self):
+        self.assertEqual(INJECTOR.DEFAULT_TEXT_ALIGNMENT, 1)
 
-    def test_reclaim_requires_complete_plausible_pointer_coverage(self):
-        rom = bytearray(b"\x00" * 0x400)
-        pointer = INJECTOR.GBA_POINTER_BASE + 0x100
-        rom[0x20:0x24] = pointer.to_bytes(4, "little")
-        # Even an unaligned occurrence with no recognized opcode shape must
-        # disqualify reuse; it may be an engine pointer form we do not know.
-        rom[0x31:0x35] = pointer.to_bytes(4, "little")
-        candidate = INJECTOR.RelocationCandidate(
-            entry={"id": "text"},
-            address=0x100,
-            max_size=0x20,
-            encoded=b"Italiano\xFF",
-            sources=(0x20,),
-        )
-
-        blocks = INJECTOR.build_reclaimed_text_blocks(
-            rom,
-            [candidate],
-            [{"pointer_sources": ["0x20"]}],
-        )
-
-        self.assertFalse(candidate.reclaimable)
-        self.assertEqual(blocks, [])
-
-    def test_relocation_plan_uses_vetted_then_reclaimed_storage(self):
-        vetted = [INJECTOR.FreeBlock(0x1000, 0x1010, 0x1000)]
-        reclaimed = [
-            INJECTOR.FreeBlock(0x2000, 0x2100, 0x2000, "reclaimed_text")
+    def test_vetted_only_plan_reports_unfitted_candidates(self):
+        vetted = [INJECTOR.FreeBlock(0x1000, 0x1008, 0x1000)]
+        candidates = [
+            INJECTOR.RelocationCandidate(
+                entry={"id": "fits"},
+                address=0x2000,
+                max_size=8,
+                encoded=b"A" * 8,
+                sources=(0x40,),
+            ),
+            INJECTOR.RelocationCandidate(
+                entry={"id": "stays_english"},
+                address=0x2010,
+                max_size=8,
+                encoded=b"B" * 8,
+                sources=(0x44,),
+            ),
         ]
+
+        plan, missing = INJECTOR.plan_relocations(vetted, candidates, 1)
+
+        self.assertEqual(plan, {"fits": (0x1000, "vetted_ff", False)})
+        self.assertEqual([candidate.entry["id"] for candidate in missing], [
+            "stays_english"
+        ])
+
+    def test_relocation_plan_deduplicates_identical_payloads(self):
+        vetted = [INJECTOR.FreeBlock(0x1000, 0x1020, 0x1000)]
         candidates = [
             INJECTOR.RelocationCandidate(
                 entry={"id": "first"},
@@ -146,14 +147,20 @@ class InjectionPriorityTests(unittest.TestCase):
                 encoded=b"B" * 12,
                 sources=(0x44,),
             ),
+            INJECTOR.RelocationCandidate(
+                entry={"id": "duplicate"},
+                address=0x3020,
+                max_size=8,
+                encoded=b"A" * 8,
+                sources=(0x48,),
+            ),
         ]
 
-        _blocks, plan, missing = INJECTOR.plan_relocations(
-            vetted, reclaimed, candidates, 4
-        )
+        plan, missing = INJECTOR.plan_relocations(vetted, candidates, 4)
 
-        self.assertEqual(plan["first"], (0x1000, "vetted_ff"))
-        self.assertEqual(plan["second"], (0x2000, "reclaimed_text"))
+        self.assertEqual(plan["first"], (0x1000, "vetted_ff", False))
+        self.assertEqual(plan["second"], (0x1008, "vetted_ff", False))
+        self.assertEqual(plan["duplicate"], (0x1000, "vetted_ff", True))
         self.assertEqual(missing, [])
 
     def test_relocation_preflight_refuses_lossy_ability_compaction_by_default(self):

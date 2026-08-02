@@ -26,4 +26,14 @@ For experiments, write ROM/map outputs to `/tmp`.
 
 Inspect map/report data for relocated count, in-place count, skipped entries, free-space use, overlapping writes, and entries that could not fit. Pointer-based longer text may relocate; fixed-size non-pointer text needs shorter translations or new pointer coverage.
 
+Audit `vetted_ff` destinations against `FREE_SPACE_EXCLUDE_RANGES`. `reclaimed_script_text` is a separate ownership
+model: only `scripts` literals fully inside `0x1EE0000-0x1FB0000` qualify; every reference must be a direct script
+`0x0F`/`0x67` operand; whole-ROM scanning must find no hidden pointer to the slot start or interior; pointer operands
+and
+non-owned entry ranges must be subtracted. Never reclaim structured tables, Pokédex text, menus, abilities, battle data,
+generic `pointer_texts`, or arbitrary old slots. PCS text is byte-addressable; alignment 1 is valid.
+
+Relocation preflight must allocate every candidate or abort. A release ROM must have zero pointer mismatches, encode
+errors, lossy truncations, and missing relocation plans.
+
 Preserve the source ROM. Do not run destructive git or file cleanup commands without explicit request.

@@ -6,14 +6,17 @@ This repository is `unbound-translator`, a Python toolchain for translating Poke
 
 - Pokemon Unbound is already a 32 MB GBA ROM, so the old Meowth-GBA-Translator approach of expanding the ROM to 32 MB and writing all text into one dedicated area is not suitable here.
 - The project now uses custom scripts and a local PCS text codec in `lib/pcs_text.py`.
-- Text relocation uses vetted writable spans inside the ROM's contiguous `0xFF` blocks. The spans were validated against
-  a known-working build so engine-owned bytes at apparent free-run edges are not overwritten.
+- Text relocation uses vetted writable spans inside the ROM's contiguous `0xFF` blocks plus strictly owned old script
+  literals in the dedicated `0x1EE0000-0x1FB0000` text bank.
 - The injection strategy is hybrid: short translated text is written in place, and longer pointer-based text is
-  relocated first into vetted `0xFF` spans, then into safely reclaimed old text slots, with every pointer updated.
+  relocated with every pointer updated.
 - `005_hybrid_injector.py` defaults to `--pointer-policy oversized`; use `--pointer-policy changed` only for experiments that intentionally relocate every changed pointer string.
-- Relocation is transactional. Before generic writes, the injector validates every pointer source, proves reclaimable
-  source slots with a whole-ROM raw-pointer scan, and allocates every destination. It aborts if any entry cannot
-  fit; successful map output records vetted/reclaimed capacity, usage, storage kind, and loss counters.
+- Relocation is transactional. Before generic writes, the injector validates every pointer source and allocates every
+  destination or aborts without writing an output ROM. PCS text destinations use byte alignment. Old-slot reclamation is
+  limited to `scripts` entries in the dedicated high text bank whose references are all direct script `0x0F`/`0x67`
+  operands. A whole-ROM scan rejects slots with hidden exact or interior pointers; overlapping entries and all pointer
+  operands are subtracted. Structured tables, Pokédex text, menus, abilities, battle data, and generic aligned-pointer
+  discoveries are never reclaimed.
 - Some extracted entries have `no_relocation: true` for fragile engine/common routine text, including receive-item,
   Cube, PC, and field routine pointers. Use a token-safe `translated_fixed` value when the complete `translated` text
   does not fit. Fixed truncation and ability compaction abort by default; `--allow-lossy-fit` explicitly restores legacy
@@ -45,13 +48,16 @@ This repository is `unbound-translator`, a Python toolchain for translating Poke
   preserves the JSON shape, fills `translated` fields, supports `--resume`, restores semantic/control placeholders to
   real tokens, validates returned batches, and retries model output that drops/adds protected placeholders or tokens.
 - `004_controlfix_translations.py`: repairs translated control codes, quote tokens, apostrophes, and other formatting damage caused by translation. It also recomputes post-translation text wrapping/layout for dialogue and description-like text.
-- `005_hybrid_injector.py`: injects translated text with transactional in-place writes and pointer relocation. It uses
-  vetted `0xFF` spans first, then reclaims an old text slot only when a whole-ROM raw-pointer scan exactly matches
-  its extracted pointer sources. It excludes engine-owned FF storage (`0x16586A-0x166C9A` and
+- `005_hybrid_injector.py`: injects translated text with transactional in-place writes and pointer relocation. It first
+  uses vetted `0xFF` spans. It excludes engine-owned FF storage (`0x16586A-0x166C9A` and
   `0x19A837-0x19B86A`), battle graphics (`0x230000-0x500000`), and CFRU/Unbound reserved upper-ROM data
-  (`0x1000000-0x1FE0000`), keeps eight-byte margins, intersects detected runs with `lib/unbound_free_space.py`, and
+  (`0x1000000-0x1FE0000`), keeps eight-byte FF-run margins, intersects detected runs with `lib/unbound_free_space.py`,
+  and
   only repoints aligned or verified script operands. All relocation destinations are allocated before generic writes;
-  no-space aborts the build. It discovers and applies every `patches/<target-lang>/*.py` runtime patch in filename order.
+  byte-addressable PCS text uses alignment 1. When vetted FF storage is exhausted, it reuses only fully owned direct
+  script literals from the high text bank under the strict checks above. Insufficient space aborts the build instead of
+  leaving translated entries unchanged. It discovers and applies every `patches/<target-lang>/*.py` runtime patch in
+  filename order.
   Runtime-patch paths in map output always use POSIX `/` separators so reports are stable on Windows and Unix.
 - `006_decontrolfix_translations.py`: removes controlfix layout from translated JSON for manual re-editing, preserving the controlfixed value in `translated_controlfixed` by default.
 - `lib/pcs_text.py`: local PCS charmap and codec. Do not reintroduce Meowth charmap dependencies.

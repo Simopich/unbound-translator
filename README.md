@@ -15,18 +15,23 @@ The project was previously based on [Olcmyk/Meowth-GBA-Translator](https://githu
 The current injector uses a hybrid strategy:
 
 - Short translated strings that still fit their original slots are written in place.
-- Longer pointer-based strings are relocated first into vetted writable `0xFF` spans, then into safely reclaimed old
-  text slots.
-- An old text slot is reclaimable only when a whole-ROM scan proves that every raw occurrence of its pointer is among the
-  extracted pointer operands that will be updated.
+- Longer pointer-based strings are relocated into vetted writable `0xFF` spans, then strictly owned old script literals
+  when the vetted spans fill.
 - Script pointers are then updated to point at the relocated translated text.
 
 This avoids expanding the ROM while still allowing longer translations where the original text was pointer-based.
 By default, the injector only relocates pointer-based text when the encoded translation no longer fits its original
 slot. Use `--pointer-policy changed` only for experiments that intentionally relocate every changed pointer string.
 Relocation is transactional: every destination and pointer update is validated and allocated before generic text writes
-begin. The build aborts if even one relocation cannot fit, so entries are never silently left untranslated for lack of
-space. The map records vetted/reclaimed capacity, usage, relocation storage kind, and loss counters.
+begin. If any relocation cannot fit, injection aborts without writing an incomplete output ROM. PCS strings are
+byte-addressable and use alignment 1, minimizing padding waste. The map records vetted and reclaimed capacity, usage,
+relocations, and loss counters.
+
+Old-slot reclamation is deliberately narrow. Only `scripts` strings inside Unbound's dedicated
+`0x1EE0000-0x1FB0000` text bank qualify, and every known reference must be a direct script `0x0F` or `0x67` pointer
+operand. A whole-ROM scan rejects any slot with an unowned pointer to its start or interior. Pointer operands,
+overlapping extracted entries, structured tables, Pokédex text, menus, abilities, battle data, and generic pointer-text
+discoveries remain protected.
 
 Fixed-size entries may use `translated_fixed` for a concise Italian display value while retaining the complete wording
 in `translated`. The compact value must preserve all semantic/control tokens. Fixed-slot truncation and the legacy
@@ -48,9 +53,9 @@ is neither a runtime dependency nor the source of Italian wording.
 
 ## Free Space
 
-Relocation uses two capacity pools without expanding the ROM: vetted writable spans inside contiguous `0xFF`
-runs, followed by old pointer-text slots proven unreachable after their complete pointer set is repointed. Exact
-capacity and usage are data-dependent and recorded in the injector map.
+Relocation uses vetted writable spans inside contiguous `0xFF` runs without expanding the ROM, then fully owned direct
+script literals under the strict rules above. Exact capacity and usage are recorded in the injector map. Allocation is
+all-or-nothing: insufficient space fails the build instead of producing a partly translated ROM.
 
 ## Workflow
 
@@ -393,9 +398,10 @@ The scripts have been tested with the Italian language. Support for other langua
 ## Notes
 
 - The injector does not expand the ROM.
-- Pointer-based text may be relocated into vetted `0xFF` spans or safely reclaimed old text slots.
+- Pointer-based text is relocated into vetted `0xFF` spans, then verified direct script-literal slots.
 - Fixed-size and `no_relocation` entries use token-safe `translated_fixed` display text when full wording cannot fit.
-- The default injector aborts on no-space, truncation, or ability compaction instead of silently dropping text.
+- The injector aborts when relocation space is insufficient, or when truncation or ability compaction would silently
+  remove text.
 - `hybrid-map.json` records relocation storage, capacity, usage, and zero-loss counters.
 - Issues and pull requests are welcome.
 - Yes, this repo is vibecoded, I'm sorry but I don't have time to manually work on this...

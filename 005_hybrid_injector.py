@@ -15,6 +15,7 @@ GBA_POINTER_BASE = 0x08000000
 DEFAULT_MIN_ADDRESS = 0x100
 DEFAULT_MIN_FREE_RUN = 0x400
 DEFAULT_FREE_RUN_MARGIN = 8
+DEFAULT_TEXT_ALIGNMENT = 1
 # These FF runs contain engine-owned graphics or CFRU/Unbound reserved data.
 FREE_SPACE_EXCLUDE_RANGES = (
     # Referenced engine-owned FF storage. The known-working French build also
@@ -358,7 +359,6 @@ class RelocationCandidate:
     max_size: int
     encoded: bytes
     sources: tuple[int, ...]
-    reclaimable: bool = False
 
 
 def allocate_near(blocks, size, alignment, origin, max_distance=0x3FFFFE):
@@ -592,63 +592,28 @@ def collect_relocation_candidates(
     return candidates, skipped
 
 
-def discover_pointer_sources(rom, expected_pointers):
-    """Index every raw occurrence of a candidate pointer before any ROM writes."""
-    expected_pointers = set(expected_pointers)
-    discovered = {pointer: set() for pointer in expected_pointers}
-    if not expected_pointers:
-        return discovered
-
-    for source in range(0, len(rom) - 3):
-        pointer = int.from_bytes(rom[source: source + 4], "little")
-        if pointer in expected_pointers:
-            discovered[pointer].add(source)
-    return discovered
-
-
-def build_reclaimed_text_blocks(rom, candidates, entries):
-    """Return old text slots safe to reuse after transactional repointing."""
-    expected_pointers = {
-        GBA_POINTER_BASE + candidate.address for candidate in candidates
-    }
-    discovered = discover_pointer_sources(rom, expected_pointers)
-
-    reclaim_ranges = []
-    for candidate in candidates:
-        expected_pointer = GBA_POINTER_BASE + candidate.address
-        candidate.reclaimable = discovered[expected_pointer] == set(candidate.sources)
-        if candidate.reclaimable:
-            reclaim_ranges.append(
-                (candidate.address, candidate.address + candidate.max_size)
-            )
-
-    pointer_operands = merge_ranges(
-        (
-            parse_address(source),
-            parse_address(source) + 4,
-        )
-        for entry in entries
-        for source in pointer_sources(entry)
-    )
-    reclaim_ranges = subtract_ranges(merge_ranges(reclaim_ranges), pointer_operands)
-    return [
-        FreeBlock(start, end, start, "reclaimed_text")
-        for start, end in reclaim_ranges
-    ]
-
-
-def plan_relocations(vetted_blocks, reclaimed_blocks, candidates, alignment):
-    """Allocate every candidate before generic text or pointer writes begin."""
-    blocks = [*vetted_blocks, *reclaimed_blocks]
+def plan_relocations(blocks, candidates, alignment):
+    """Allocate unique payloads once before generic writes begin."""
     plan = {}
     missing = []
+    payload_plan = {}
+    missing_payloads = set()
     for candidate in candidates:
-        offset, block = allocate_with_block(blocks, len(candidate.encoded), alignment)
-        if offset is None:
+        cached = payload_plan.get(candidate.encoded)
+        if cached is not None:
+            plan[candidate.entry.get("id")] = (*cached, True)
+            continue
+        if candidate.encoded in missing_payloads:
             missing.append(candidate)
             continue
-        plan[candidate.entry.get("id")] = (offset, block.kind)
-    return blocks, plan, missing
+        offset, block = allocate_with_block(blocks, len(candidate.encoded), alignment)
+        if offset is None:
+            missing_payloads.add(candidate.encoded)
+            missing.append(candidate)
+            continue
+        payload_plan[candidate.encoded] = (offset, block.kind)
+        plan[candidate.entry.get("id")] = (offset, block.kind, False)
+    return plan, missing
 
 def injection_priority(entry):
     """Reserve limited relocation space for structured player-facing text."""
@@ -704,8 +669,8 @@ def main():
     parser.add_argument(
         "--alignment",
         type=int,
-        default=4,
-        help="Alignment for relocated text addresses. Default: 4",
+        default=DEFAULT_TEXT_ALIGNMENT,
+        help="Alignment for relocated text addresses. Default: 1 (PCS text is byte-addressable)",
     )
     parser.add_argument(
         "--pointer-policy",
@@ -785,10 +750,8 @@ def main():
         min_address,
         args.allow_lossy_fit,
     )
-    reclaimed_blocks = build_reclaimed_text_blocks(rom, candidates, entries)
-    allocation_blocks, relocation_plan, missing_candidates = plan_relocations(
+    relocation_plan, missing_candidates = plan_relocations(
         free_blocks,
-        reclaimed_blocks,
         candidates,
         args.alignment,
     )
@@ -804,21 +767,10 @@ def main():
 
     stats = {
         "input_entries": len(entries),
-        "free_blocks": len(allocation_blocks),
-        "free_bytes": sum(block.end - block.start for block in allocation_blocks),
-        "vetted_free_blocks": len(free_blocks),
-        "vetted_free_bytes": sum(block.end - block.start for block in free_blocks),
-        "reclaimed_text_blocks": len(reclaimed_blocks),
-        "reclaimed_text_bytes": sum(
-            block.end - block.start for block in reclaimed_blocks
-        ),
-        "reclaimable_candidates": sum(
-            candidate.reclaimable for candidate in candidates
-        ),
-        "retained_old_slot_candidates": sum(
-            not candidate.reclaimable for candidate in candidates
-        ),
+        "free_blocks": len(free_blocks),
+        "free_bytes": sum(block.end - block.start for block in free_blocks),
         "relocated": 0,
+        "deduplicated_relocations": 0,
         "relocated_bytes": 0,
         "pointer_writes": 0,
         "in_place": 0,
@@ -829,10 +781,6 @@ def main():
         "skipped_duplicate_fixed": 0,
         "skipped_pointer_mismatch": 0,
         "skipped_implausible_pointer": 0,
-        "skipped_no_space": 0,
-        "skipped_no_space_bytes": 0,
-        "no_space_by_category": {},
-        "no_space_bytes_by_category": {},
         "skipped_bounds": 0,
         "encode_errors": 0,
         "fixed_overrides_used": 0,
@@ -852,7 +800,6 @@ def main():
     truncation_samples = []
     mismatch_samples = []
     implausible_samples = []
-    no_space_samples = []
     seen_fixed_slots = set()
 
     for entry in entries:
@@ -927,14 +874,13 @@ def main():
                 if len(mismatch_samples) < 20:
                     mismatch_samples.append(entry_id or "?")
                 continue
-
             candidate = candidates_by_id.get(entry_id)
             if candidate is None or entry_id not in relocation_plan:
                 raise RuntimeError(
                     f"Missing transactional relocation plan for {entry_id or '?'}"
                 )
 
-            relocated_offset, storage_kind = relocation_plan[entry_id]
+            relocated_offset, storage_kind, shared_payload = relocation_plan[entry_id]
             sources = list(candidate.sources)
             new_pointer = GBA_POINTER_BASE + relocated_offset
             if not args.dry_run:
@@ -943,6 +889,7 @@ def main():
                     rom[source : source + 4] = new_pointer.to_bytes(4, "little")
 
             stats["relocated"] += 1
+            stats["deduplicated_relocations"] += int(shared_payload)
             stats["relocated_bytes"] += len(encoded)
             stats["pointer_writes"] += len(sources)
             relocation_map.append(
@@ -955,7 +902,7 @@ def main():
                     "byte_length": len(encoded),
                     "pointer_sources": [f"0x{source:X}" for source in sources],
                     "storage": storage_kind,
-                    "old_slot_reclaimed": candidate.reclaimable,
+                    "shared_payload": shared_payload,
                 }
             )
             continue
@@ -1012,13 +959,10 @@ def main():
             stats["no_relocation_in_place"] += 1
 
     used_free_bytes = sum(
-        block.cursor - block.start for block in allocation_blocks
+        block.cursor - block.start for block in free_blocks
     )
     remaining_free_bytes = sum(
-        block.end - block.cursor for block in allocation_blocks
-    )
-    used_reclaimed_text_bytes = sum(
-        block.cursor - block.start for block in reclaimed_blocks
+        block.end - block.cursor for block in free_blocks
     )
 
     if args.map_output:
@@ -1030,7 +974,6 @@ def main():
             "stats": stats,
             "used_free_bytes": used_free_bytes,
             "remaining_free_bytes": remaining_free_bytes,
-            "used_reclaimed_text_bytes": used_reclaimed_text_bytes,
             "relocations": relocation_map,
             "runtime_patches": runtime_patches,
         }
@@ -1044,14 +987,10 @@ def main():
     print(f"Input entries          : {stats['input_entries']}")
     print(f"Free blocks            : {stats['free_blocks']}")
     print(f"Free bytes             : {stats['free_bytes']}")
-    print(f"Vetted FF bytes        : {stats['vetted_free_bytes']}")
-    print(f"Reclaimed text bytes   : {stats['reclaimed_text_bytes']}")
     print(f"Used free bytes        : {used_free_bytes}")
-    print(f"Used reclaimed bytes   : {used_reclaimed_text_bytes}")
     print(f"Remaining free bytes   : {remaining_free_bytes}")
-    print(f"Reclaimable candidates : {stats['reclaimable_candidates']}")
-    print(f"Retained old slots     : {stats['retained_old_slot_candidates']}")
     print(f"Relocated              : {stats['relocated']}")
+    print(f"Deduplicated relocations: {stats['deduplicated_relocations']}")
     print(f"Relocated bytes        : {stats['relocated_bytes']}")
     print(f"Pointer writes         : {stats['pointer_writes']}")
     print(f"In-place patched       : {stats['in_place']}")
@@ -1062,15 +1001,6 @@ def main():
     print(f"Skipped duplicate fixed: {stats['skipped_duplicate_fixed']}")
     print(f"Pointer mismatches     : {stats['skipped_pointer_mismatch']}")
     print(f"Implausible pointers   : {stats['skipped_implausible_pointer']}")
-    print(f"Skipped no space       : {stats['skipped_no_space']}")
-    print(f"No-space bytes         : {stats['skipped_no_space_bytes']}")
-    if stats["no_space_by_category"]:
-        print("No-space categories   :")
-        for category, count in sorted(
-                stats["no_space_by_category"].items(), key=lambda item: (-item[1], item[0])
-        ):
-            byte_count = stats["no_space_bytes_by_category"][category]
-            print(f"  {category}: {count} ({byte_count} bytes)")
     print(f"Skipped out-of-ROM     : {stats['skipped_bounds']}")
     print(f"Encode errors          : {stats['encode_errors']}")
     print(f"Fixed overrides used   : {stats['fixed_overrides_used']}")
@@ -1100,10 +1030,6 @@ def main():
     if implausible_samples:
         print("Implausible pointer sample:")
         for sample in implausible_samples:
-            print(f"  {sample}")
-    if no_space_samples:
-        print("No-space sample:")
-        for sample in no_space_samples:
             print(f"  {sample}")
     print(f"Output ROM             : {'(dry run)' if args.dry_run else output_path}")
     print("===================================")
