@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unbound Runtime Patch"
+  short_description: "Implement safe language-specific ROM behavior."
+  default_prompt: "Use $unbound-runtime-patch to implement or audit a target-language runtime ROM patch."

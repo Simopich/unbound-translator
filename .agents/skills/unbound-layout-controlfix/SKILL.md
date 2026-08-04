@@ -1,30 +1,54 @@
 ---
 name: unbound-layout-controlfix
-description: Repair Pokemon Unbound translated control codes and layout. Use when asked about broken tokens, quote/apostrophe damage, dialogue wrapping, plain_scripts line breaks, description widths, overflowing text, or preparing translated JSON for injection.
+description: Repair Pokemon Unbound translated controls and screen layout. Use for broken placeholders/tokens, quote bytes, wrapping, description limits, menu overflow, plain-script controls, battle grammar, or preparing JSON for injection; do not use for extraction coverage, runtime ROM behavior, or relocation-capacity curation.
 ---
 
 # Unbound Layout Controlfix
 
-Use `004_controlfix_translations.py` after every translation run and before injection.
+## Inputs And Output
 
-Develop layout fixes from this repository's renderer evidence and requirements first. When useful, optionally
-double-check Unbound behavior or gather inspiration from the separate, more advanced
-`https://github.com/AntonyKervazoCanut/gba_translator` project and local `out/working_fr.gba`; do not copy its approach
-by default. Use `out/red_ita.gba` for official Italian FireRed wording/control conventions. Reference ROMs are
-local/ignored and must not be committed or released.
-
-## Workflow
+- Input: translated JSON plus the prepared/source JSON used as control reference.
+- Output: controlfixed JSON and optional mismatch report.
+- Never repair wording/layout in raw extraction output. Run this after translation and before injection.
 
 ```bash
-./004_controlfix_translations.py out/unbound-texts-it.json -o out/unbound-texts-it-controlfix.json --source out/unbound-texts-prepared.json --report out/controlfix-report.json
+python 004_controlfix_translations.py out/unbound-texts-it.json -o out/unbound-texts-it-controlfix.json --source out/unbound-texts-prepared.json --report out/controlfix-report.json
 ```
 
-Tune with `--wrap-width`, `--description-wrap-width`, `--wrap-categories`, or `--no-wrap` only for targeted diagnosis.
+Use `006_decontrolfix_translations.py` before manually editing already-controlfixed text, then rerun controlfix.
 
 ## Rules
 
-Preserve semantic/control tokens exactly: `[player]`, `[buffer1]`, colors, `\CC12`, `\btn01`, `\pk`, `\mn`, `\qo`, `\qc`, and raw `{B4}`-style bytes.
+- Preserve semantic/control tokens exactly: player/buffer placeholders, colors, `\CC*`, `\btn*`, `\pk`, `\mn`,
+  `\qo`, `\qc`, raw `{B4}` bytes, and category-specific controls. Reordering is allowed only for established grammar
+  templates that validate source/target token counts.
+- Normal `scripts` use dialogue `\n`, `\l`, and page controls. `plain_scripts` use plain line breaks; blank lines must
+  not become dialogue prompt/scroll controls.
+- Keep compact multi-row choices on separate rows. Do not flatten selectable labels.
+- Use FireRed font metrics or measured renderer evidence, not character count alone when the screen is pixel-bounded.
+- Keep language-specific wording in JSON and runtime behavior in `patches/<language>/`, never hard-coded in shared
+  controlfix logic.
 
-Normal `scripts` use dialogue page controls. `plain_scripts` are full-screen text and must use plain line breaks, not dialogue `\l` wrapping.
+## Known Budgets
 
-Report entry id, category, source text, translated text, token difference, and wrapping issue.
+- Pokédex descriptions: at most 3 lines, 43 visible characters per line, 124 total.
+- Mission Log descriptions: at most 3 plain lines, 172 pixels each; no scroll/page controls.
+- Pause-menu mission objectives: 2 lines, 35 visible characters per line, 65 total.
+- Move/ability descriptions use `--description-wrap-width` (default 24).
+- Item descriptions use `--item-description-wrap-width` (default 34) and 3 lines.
+- Ability descriptions require a complete token-safe `translated_fixed` value within the injector's 46-byte display
+  ceiling when full wording cannot fit.
+
+## References And Diagnosis
+
+Use `out/red_ita.gba` for official Italian FireRed wording/control conventions. For difficult Unbound renderer behavior,
+optionally compare `out/working_fr.gba` or the separate French translator as behavioral evidence, not architecture to
+copy.
+
+For each failure, record entry ID/category, original, translated value, protected-token delta, encoded size, line/pixel
+width, and renderer context.
+
+## Verification
+
+Add a focused fixture/test for every layout or token bug. Run controlfix, the relevant tests, and an applicable ROM
+build. Report controlfix report, ROM, and injector map paths.

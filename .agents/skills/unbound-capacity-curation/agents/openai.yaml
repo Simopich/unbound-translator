@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unbound Capacity Curation"
+  short_description: "Shorten translations without losing meaning."
+  default_prompt: "Use $unbound-capacity-curation to resolve translation fit or relocation-capacity failures safely."
