@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unbound Release Pipeline"
+  short_description: "Maintain BPS releases and Discord announcements."
+  default_prompt: "Use $unbound-release-pipeline to update or diagnose the BPS-only GitHub release workflow."

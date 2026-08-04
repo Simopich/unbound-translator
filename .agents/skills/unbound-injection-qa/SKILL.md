@@ -1,39 +1,49 @@
 ---
 name: unbound-injection-qa
-description: Verify Pokemon Unbound hybrid injection safety. Use when asked to inject a translated ROM, inspect relocation/free-space behavior, debug corrupted ROM output, check pointer updates, map output, fixed-size overflow, or in-place versus relocated writes.
+description: Build or audit Pokemon Unbound translated ROMs and diagnose relocation safety. Use for injection, free-space/map analysis, pointer mismatches, corruption, freezes linked to relocated text, or in-place-versus-relocated behavior; use unbound-capacity-curation when the confirmed remedy is shortening translation JSON.
 ---
 
 # Unbound Injection QA
 
-Run injection only on controlfixed JSON.
+## Inputs And Output
 
-Diagnose and design within this repository first. For difficult Unbound-specific pointer, protected-region, allocator,
-or corruption cases, optionally double-check findings against the separate, more advanced
-`https://github.com/AntonyKervazoCanut/gba_translator` project and local known-working `out/working_fr.gba`. Use them
-for
-behavioral comparison, debugging leads, or inspiration; do not copy its architecture or patches by default, add it as
-a dependency, or copy its ROM. `/tmp` clones are ephemeral.
+- Input ROM must match MD5 `9cad8e771940e7f7094d13911552cef0`.
+- Input JSON must already be controlfixed. Release input is `ready-translations/<language>.json`.
+- Output is a translated ROM plus map report. Preserve the source ROM; never commit or release ROM files.
 
-## Workflow
+## Build
 
 ```bash
-./005_hybrid_injector.py rom/unbound.gba out/unbound-texts-it-controlfix.json -o out/unbound-translated.gba --map-output out/hybrid-map.json
+python 005_hybrid_injector.py rom/unbound.gba ready-translations/it.json -o out/unbound-translated-it.gba --target-lang it --map-output out/hybrid-map-it.json
 ```
 
-For experiments, write ROM/map outputs to `/tmp`.
+Use `--dry-run` for capacity/pointer preflight. Use OS-provided temporary storage or `out/debug-*` artifacts; never
+assume `/tmp` exists. Never use `--allow-lossy-fit` for a release.
 
-## Checks
+## Safety Model
 
-Inspect map/report data for relocated count, in-place count, skipped entries, free-space use, overlapping writes, and entries that could not fit. Pointer-based longer text may relocate; fixed-size non-pointer text needs shorter translations or new pointer coverage.
+- Generic writes begin only after every relocation candidate has a validated source and allocated destination.
+- PCS text is byte-addressable; alignment 1 is valid.
+- `vetted_ff` destinations must remain inside `VETTED_FREE_SPACE_RANGES` and outside
+  `FREE_SPACE_EXCLUDE_RANGES`.
+- `reclaimed_script_text` may contain only `scripts` literals fully inside `0x1EE0000-0x1FB0000` whose references are
+  all direct script `0x0F`/`0x67` operands. Whole-ROM scanning must find no hidden exact/interior pointers; subtract
+  pointer operands, overlapping entries, and non-owned ranges.
+- Never reclaim structured tables, Pokédex text, menus, abilities, battle data, generic `pointer_texts`, or arbitrary
+  old slots.
+- `no_relocation` text must fit in place through complete token-safe wording, normally `translated_fixed`.
 
-Audit `vetted_ff` destinations against `FREE_SPACE_EXCLUDE_RANGES`. `reclaimed_script_text` is a separate ownership
-model: only `scripts` literals fully inside `0x1EE0000-0x1FB0000` qualify; every reference must be a direct script
-`0x0F`/`0x67` operand; whole-ROM scanning must find no hidden pointer to the slot start or interior; pointer operands
-and
-non-owned entry ranges must be subtracted. Never reclaim structured tables, Pokédex text, menus, abilities, battle data,
-generic `pointer_texts`, or arbitrary old slots. PCS text is byte-addressable; alignment 1 is valid.
+## Diagnosis
 
-Relocation preflight must allocate every candidate or abort. A release ROM must have zero pointer mismatches, encode
-errors, lossy truncations, and missing relocation plans.
+Inspect map/report data for input count, free/used/remaining bytes, relocated and deduplicated entries, pointer writes,
+runtime patches, fixed overrides, skips, and per-category no-space/truncation data. Trace suspicious entry IDs through
+their original address, pointer sources, destination, storage kind, and encoded size.
 
-Preserve the source ROM. Do not run destructive git or file cleanup commands without explicit request.
+For difficult Unbound-specific behavior, investigate locally first. Optionally compare against
+`out/working_fr.gba` or `https://github.com/AntonyKervazoCanut/gba_translator` as behavioral evidence only; do not copy
+its architecture or ROM.
+
+## Success Criteria
+
+A release-capable build has zero missing relocation candidates, pointer mismatches, implausible pointers, encode
+errors, lossy fixed/no-relocation truncations, and ability compactions. Report ROM and map paths plus decisive counts.

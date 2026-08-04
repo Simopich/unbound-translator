@@ -1,407 +1,441 @@
 # unbound-translator
 
-[![](https://dcbadge.limes.pink/api/server/https://discord.gg/ctFaR77WrR)](https://discord.gg/ctFaR77WrR)
+[![Release patches](https://github.com/Simopich/unbound-translator/actions/workflows/release-ready-translations.yml/badge.svg)](https://github.com/Simopich/unbound-translator/actions/workflows/release-ready-translations.yml)
+[![Tests](https://github.com/Simopich/unbound-translator/actions/workflows/test.yml/badge.svg)](https://github.com/Simopich/unbound-translator/actions/workflows/test.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Discord](https://dcbadge.limes.pink/api/server/https://discord.gg/ctFaR77WrR)](https://discord.gg/ctFaR77WrR)
 
-`unbound-translator` is a project aimed at translating the game Pokémon Unbound into other languages.
+A safety-first translation toolchain for Pokemon Unbound ROM text.
 
-## Preview
+`unbound-translator` extracts, localizes, formats, and reinjects game text without expanding the 32 MB ROM. It combines
+official PokeAPI localizations with optional LLM translation, preserves game control tokens, applies screen-aware text
+layout, and creates redistributable BPS patches instead of ROM files.
 
-![Pokémon Unbound Italian Screenshot](resources/showcase.png)
+![Pokemon Unbound translated into Italian](resources/showcase.png)
 
-The project was previously based on [Olcmyk/Meowth-GBA-Translator](https://github.com/Olcmyk/Meowth-GBA-Translator), but it quickly transitioned to custom scripts because of how that translator works. Meowth expands the ROM to 32 MB and writes all translated text into a dedicated area. That approach cannot work cleanly with Pokémon Unbound, because Unbound is already a 32 MB GBA ROM.
+> [!IMPORTANT]
+> This repository does not provide a Pokemon Unbound ROM. You must supply a legally obtained English source ROM with
+> MD5 `9cad8e771940e7f7094d13911552cef0`. Never publish ROM files, save files, API keys, or webhook secrets.
 
-## How It Works
+## Contents
 
-The current injector uses a hybrid strategy:
+- [Status](#status)
+- [Highlights](#highlights)
+- [Use A Released Patch](#use-a-released-patch)
+- [Build From Source](#build-from-source)
+- [Translation Workflow](#translation-workflow)
+- [How Injection Stays Safe](#how-injection-stays-safe)
+- [Advanced Workflows](#advanced-workflows)
+- [Troubleshooting](#troubleshooting)
+- [Ready Translations And Releases](#ready-translations-and-releases)
+- [Testing](#testing)
+- [Project Structure](#project-structure)
+- [Contributing And Support](#contributing-and-support)
+- [Roadmap](#roadmap)
+- [Acknowledgements](#acknowledgements)
+- [License And Legal](#license-and-legal)
 
-- Short translated strings that still fit their original slots are written in place.
-- Longer pointer-based strings are relocated into vetted writable `0xFF` spans, then strictly owned old script literals
-  when the vetted spans fill.
-- Script pointers are then updated to point at the relocated translated text.
+## Status
 
-This avoids expanding the ROM while still allowing longer translations where the original text was pointer-based.
-By default, the injector only relocates pointer-based text when the encoded translation no longer fits its original
-slot. Use `--pointer-policy changed` only for experiments that intentionally relocate every changed pointer string.
-Relocation is transactional: every destination and pointer update is validated and allocated before generic text writes
-begin. If any relocation cannot fit, injection aborts without writing an incomplete output ROM. PCS strings are
-byte-addressable and use alignment 1, minimizing padding waste. The map records vetted and reclaimed capacity, usage,
-relocations, and loss counters.
+The project is usable but still early and primarily tested with Italian.
 
-Old-slot reclamation is deliberately narrow. Only `scripts` strings inside Unbound's dedicated
-`0x1EE0000-0x1FB0000` text bank qualify, and every known reference must be a direct script `0x0F` or `0x67` pointer
-operand. A whole-ROM scan rejects any slot with an unowned pointer to its start or interior. Pointer operands,
-overlapping extracted entries, structured tables, Pokédex text, menus, abilities, battle data, and generic pointer-text
-discoveries remain protected.
+| Capability | Status |
+| --- | --- |
+| Release-ready translation | Italian (`ready-translations/it.json`) |
+| Translation CLI targets | `de`, `en`, `es`, `fr`, `it`, `pt`, `pt-br` |
+| Non-Latin scripts | Not supported yet; likely requires a font patch |
+| Supported systems | Windows, macOS, and Linux |
+| Python | 3.10 or newer |
+| Release format | BPS patch only; all automated releases are prereleases |
+| License | [MIT](LICENSE) |
+| Source ROM | Pokemon Unbound English, MD5 `9cad8e771940e7f7094d13911552cef0` |
 
-Fixed-size entries may use `translated_fixed` for a concise Italian display value while retaining the complete wording
-in `translated`. The compact value must preserve all semantic/control tokens. Fixed-slot truncation and the legacy
-ability-description compactor are rejected by default; `--allow-lossy-fit` exists only for explicit diagnostic or
-legacy builds.
+Known limitations include occasional untranslated text, layout glitches, and game-specific rendering behavior that may
+need further testing. Please report reproducible issues with the affected screen, text, language, and build commit.
 
-Some common engine routine strings are marked with `no_relocation: true` during extraction. These entries must stay in
-their original slots because redirecting their pointers can freeze receive-item, Cube, PC, or field routines. Supply a
-fitting `translated_fixed` value when needed; otherwise the injector aborts before writing the output ROM.
+## Highlights
 
-This project keeps its own architecture and solutions. When useful,
-[AntonyKervazoCanut/gba_translator](https://github.com/AntonyKervazoCanut/gba_translator) can serve as an optional
-double-check against a separate project at a more advanced stage: it may provide debugging leads, behavioral evidence,
-or inspiration, but its architecture, patches, and workflows should not be copied by default. Problems are investigated
-and solved within this repository first.
-Local comparison ROMs may be placed at `out/working_fr.gba` (working French Unbound build) and `out/red_ita.gba`
-(official Italian FireRed); ROMs are ignored local assets and are never committed or released. The external translator
-is neither a runtime dependency nor the source of Italian wording.
+- **Lossless extraction:** preserves original PCS text, controls, addresses, categories, and pointer ownership.
+- **PokeAPI first:** uses official localized Pokemon, move, item, ability, type, nature, habitat, species, and flavor
+  text where a safe match exists.
+- **LLM fallback:** supports OpenAI-compatible Chat Completions endpoints or an existing Codex ChatGPT login.
+- **Protected controls:** validates placeholders and game tokens before accepting translated batches.
+- **Layout-aware output:** wraps dialogue, menus, descriptions, missions, battle messages, and summary text for their
+  actual renderers.
+- **Transactional injection:** validates every relocation and pointer update before writing the output ROM.
+- **No silent loss:** release builds refuse fixed-slot truncation, ability compaction, and incomplete relocation.
+- **Patch-only releases:** GitHub Actions publishes BPS files and never uploads a ROM.
 
-## Free Space
+## Use A Released Patch
 
-Relocation uses vetted writable spans inside contiguous `0xFF` runs without expanding the ROM, then fully owned direct
-script literals under the strict rules above. Exact capacity and usage are recorded in the injector map. Allocation is
-all-or-nothing: insufficient space fails the build instead of producing a partly translated ROM.
+1. Download `unbound-translated-<language>.bps` from the repository's
+   [Releases](https://github.com/Simopich/unbound-translator/releases) page.
+2. Verify that your English Pokemon Unbound ROM has MD5 `9cad8e771940e7f7094d13911552cef0`.
+3. Apply the BPS file with a BPS-compatible patcher such as
+   [Rom Patcher JS](https://www.marcrobledo.com/RomPatcher.js/).
+4. Save the patched result as a new ROM. Keep the original ROM unchanged.
 
-## Workflow
+A BPS patch contains differences only. It is not a playable ROM by itself.
 
-Put the source ROM somewhere in the repo, for example:
+## Build From Source
 
-```bash
-rom/unbound.gba
-```
+### Requirements
 
-The ROM used for this project has MD5:
+- Windows 10/11, macOS, or Linux
+- Python 3.10 or newer
+- Git
+- A legally obtained English source ROM matching the required MD5
+- For new LLM translations only: an API key/model or a logged-in Codex CLI session
+- No compiler or non-Python runtime dependency
 
-```text
-9cad8e771940e7f7094d13911552cef0
-```
+The command-line scripts use the Python standard library. `requirements-dev.txt` installs `pytest` for development and
+CI. Commands below assume a terminal opened at the repository root.
 
-### 1. Extract Text
-
-```bash
-./001_extract_unbound_text.py rom/unbound.gba -o out/unbound-texts.json
-```
-
-This step extracts text as-is from the ROM. It should stay lossless and should not try to reshape dialogue layout.
-
-The extractor intentionally reads 255 ability-description pointers even though the ROM has 293 ability names. Those
-pointers resolve to 252 unique strings; words after pointer index 254 are not text pointers and decode as garbage, so
-they are skipped.
-
-Opening narration and other full-screen script text is extracted into the `plain_scripts` category. These entries still use `scr_` ids, but they are kept separate from normal dialogue scripts so later layout repair can use plain full-screen line breaks instead of dialogue continuation controls.
-
-Manual entries are extracted for common UI, Cube V3, title/start menu choices, save, game settings, PC, party, item
-storage, link control, battle, trainer-card, multiplayer, standalone label, options, descriptions, Pokémon summary text,
-and mission text. Structured pointer tables cover legacy move descriptions, item-record descriptions, extra-form Pokédex
-descriptions, and Pokédex form names. Extracted ids are address-stable: script ids use `scr_<ROMADDR>`, and table/manual
-ids use `tbl_<category>_<table_index>_<ROMADDR>`. High-bank pointer scanning covers sources in `0x1E00000-0x1F00000` and
-`0x1FB0000-0x1FC0000` targeting `0x1EE0000-0x1FB0000`; trainer and link structs also have vetted unaligned pointer-field
-patterns. A default strict pass checks every aligned GBA pointer and emits additional language-like strings as
-`pointer_texts`, rejecting control-only, repetitive, fragmentary, and data-like candidates plus trainer structs and
-adjacent binary data at `0x23EAC8-0x246E00`. Use
-`--no-aligned-pointer-text` only to reproduce the narrower legacy scan. Duplicate ROM addresses are merged into one
-entry, preferring specific table/category ownership while retaining every pointer source. The current source ROM
-extracts `23,268` unique-address entries, including `3,516` newly covered `pointer_texts`, `85` mission-title strings,
-and `82` mission-description strings. These cover all 84 missions: the main mission has separate Hero/Heroine title
-variants, while two side-mission registrations reuse existing text records. Mission registration titles are identified
-from the exact `loadpointer 0, title; call mission_handler` script signature.
-
-To audit text coverage during extraction, search the ROM for PCS-encoded UI strings and compare the hits against the
-extracted entries:
+### Clone The Repository
 
 ```bash
-./001_extract_unbound_text.py rom/unbound.gba -o out/unbound-texts.json --audit-menu-text
+git clone https://github.com/Simopich/unbound-translator.git
+cd unbound-translator
 ```
 
-This is an optional extraction check, not a separate workflow stage. Add arbitrary strings with repeated
-`--audit-string` options or one UTF-8 string per line via `--audit-strings-file`; default auditing also checks
-upper/title-case variants, unless `--audit-no-case-variants` is set. It reports `found_and_extracted`,
-`found_but_not_extracted`, and `not_found_as_pcs_text`. A not-found result may be graphical/tile text, compressed data,
-or a custom UI encoding. Use `--audit-output out/text-audit.json` when a machine-readable report is useful. Use
-`--include-orphans` and `--all-pointers` only as noisy discovery aids: confirm the real table/pointer owner, then add a
-narrow fixed table, pointer table, explicit address list, vetted PCS range, or constrained pointer-source pattern
-instead of relying on broad scans.
-
-### 2. Prepare Translation Text
+### Set Up macOS Or Linux
 
 ```bash
-./002_prepare_translation_text.py out/unbound-texts.json -o out/unbound-texts-prepared.json
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements-dev.txt
+mkdir -p rom out
 ```
 
-This adds a `translation_source` field to each entry. The `original` field stays untouched, while `translation_source` removes layout markers such as actual line breaks, `\n`, `\l`, `\p`, and `\pn`.
+### Set Up Windows PowerShell
 
-Semantic/control tokens are preserved in `original` because the game engine needs them. In `translation_source`, they are replaced with readable placeholders such as `[player-name-1]`, `[buffer1-2]`, `[color-red-3]`, `[button-icon-4]`, or `[control-code-5]`. The matching real tokens are stored in `semantic_token_placeholders` so the translator can restore them after the LLM responds. Examples of real tokens include variables like `[player]`, buffer placeholders like `[buffer1]`, color tags like `[red]`, byte/control escapes like `\CC12`, button icons like `\btn01`, Pokémon glyph tokens like `\pk` and `\mn`, quote tokens like `\qo` and `\qc`, and raw byte placeholders like `{B4}`.
+```powershell
+py -3 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements-dev.txt
+New-Item -ItemType Directory -Force rom, out | Out-Null
+```
 
-### 3. Translate Text
+If PowerShell blocks activation, run `Set-ExecutionPolicy -Scope Process Bypass` once in that terminal, then retry the
+activation command. Alternatively, invoke `.\.venv\Scripts\python.exe` directly instead of activating the environment.
+
+### Add And Verify The Source ROM
+
+Place the source ROM at `rom/unbound.gba`. Verify MD5 with the command for your system:
 
 ```bash
-./003_llm_translate.py out/unbound-texts-prepared.json \
-  --target it \
-  --api-base https://opencode.ai/zen/go/v1 \
-  --api-key YOUR_API_KEY \
-  --model your-model-name \
-  --workers 4 \
-  --batch-size 20 \
-  -o out/unbound-texts-it.json
+# Linux
+md5sum rom/unbound.gba
+
+# macOS
+md5 rom/unbound.gba
 ```
 
-If the translation is interrupted, resume from the existing output JSON:
+```powershell
+# Windows PowerShell
+(Get-FileHash rom\unbound.gba -Algorithm MD5).Hash.ToLower()
+```
+
+Expected result: `9cad8e771940e7f7094d13911552cef0`.
+
+Confirm the environment before running the pipeline:
 
 ```bash
-./003_llm_translate.py out/unbound-texts-prepared.json \
-  --target it \
-  --api-base https://opencode.ai/zen/go/v1 \
-  --api-key YOUR_API_KEY \
-  --model your-model-name \
-  --workers 4 \
-  --batch-size 20 \
-  -o out/unbound-texts-it.json \
-  --resume
+python --version
+python 005_hybrid_injector.py --help
+python -m pytest
 ```
 
-The script defaults to an OpenAI-compatible chat completions API. It validates every returned batch. If a batch reaches the API output token limit, the script falls back to translating each entry individually; if a single-entry request still reaches the limit, it retries that entry with a compact single-item prompt and then a plain-text prompt using the same model. If the entry still cannot be translated because of the output token limit, the script prints a warning with the entry id, leaves that entry untranslated, and continues.
+ROMs, generated ROMs, saves, and `.cache/` are local artifacts and must not be committed.
 
-Before creating LLM batches, the script queries [PokeAPI v2](https://pokeapi.co/docs/v2) for official localized text. It
-covers Pokémon names, Pokédex species labels and descriptions, move names and descriptions, item names and descriptions,
-ability names and descriptions, types, natures, and habitat names. Category-specific IDs and English slugs handle ROM
-placeholder rows and non-numeric tables. When a numeric name-table record fails validation, a cached PokeAPI
-resource-list lookup resolves the canonical English slug and validation runs again. Pokédex genera accept the ROM's
-shorter label without its trailing `Pokémon`; flavor text must match the English text and version/version-group before
-its paired target-language text is used. This keeps Unbound-exclusive content and changed records out of false matches.
-Existing/manual/resumed translations always win, protected-token entries are skipped, and every API miss or network
-failure remains in the normal LLM fallback queue.
+### Build The Included Italian Translation
 
-Responses are cached under `.cache/pokeapi` so subsequent and resumed runs avoid repeat requests; `.cache/` is ignored
-by Git and should not be committed. PokeAPI calls run with 8 parallel workers by default, deduplicating simultaneous
-lookups for the same resource. A live progress bar reports processed entries and successful localizations before LLM
-batching. Use `--pokeapi-workers N` to tune concurrency, `--pokeapi-cache PATH` to move the cache,
-`--pokeapi-timeout SECONDS` to change its timeout, `--pokeapi-base URL` for a compatible mirror/test server, or
-`--no-pokeapi` to disable this prefill pass.
-
-The translator uses `translation_source` when present. It asks the model to preserve the readable placeholders, replaces those placeholders with the original semantic/control tokens after each response, then checks that every protected token from the English source is present with the same count and that no extra protected tokens or layout markers were added. If the check fails, it prints a warning and retries the translation.
-
-If the script has to fall back to a single-entry prompt, it prints a warning with the affected entry id. These cases use less context than the normal batch prompt and may produce less accurate translations, so they are worth reviewing and keeping as rare as possible.
-
-For debugging, `--exclude-categories` removes whole categories from the translated output JSON before translation. Excluded categories are not copied as English entries. `--include-ids`, `--include-id-ranges`, `--include-categories`, and `--include-category-prefixes` keep only a manual whitelist. `--priority-order` sorts missing entries so common UI/menu/short/high-value text is translated first, and `--limit N` translates only the first `N` missing entries after filtering and sorting.
-
-To use a ChatGPT subscription login instead of an API key, install and log in with the Codex CLI first (`codex login`), or provide `CODEX_ACCESS_TOKEN`. Then run the translator with `--auth chatgpt`; this delegates model calls to `codex exec` and reuses Codex's saved ChatGPT credentials:
+The fastest source build uses the already-controlfixed ready translation and does not require an LLM API:
 
 ```bash
-./003_llm_translate.py out/unbound-texts-prepared.json \
-  --target it \
-  --auth chatgpt \
-  --model gpt-5.4 \
-  --workers 1 \
-  --batch-size 10 \
-  -o out/unbound-texts-it.json
+python 005_hybrid_injector.py rom/unbound.gba ready-translations/it.json -o out/unbound-translated-it.gba --target-lang it --map-output out/hybrid-map-it.json
 ```
 
-Translation progress is shown as a fixed `0` to `100%` progress bar based on the total translatable entries in the file, so resumed runs continue from the already completed percentage. When `--rate-limit` makes the script wait before the next API call, the progress bar temporarily shows a shared `waiting for rate limit reset` countdown and clears it once the wait is over.
-
-Transient API failures such as empty responses, non-JSON HTTP responses, invalid model JSON, missing choices, semantic/control-token mismatches, and server/network errors are retried up to 3 total attempts. Unauthorized requests, forbidden requests, rate-limit responses, other 4xx client errors, and partial or mismatched batch responses stop immediately.
-
-For slow or free-tier APIs, use `--rate-limit` to cap total API calls per minute across all workers:
+Create a shareable BPS patch:
 
 ```bash
-./003_llm_translate.py out/unbound-texts-prepared.json \
-  --target it \
-  --api-base https://opencode.ai/zen/go/v1 \
-  --api-key YOUR_API_KEY \
-  --model your-model-name \
-  --workers 4 \
-  --batch-size 20 \
-  --rate-limit 30 \
-  -o out/unbound-texts-it.json \
-  --resume
+python scripts/create_bps.py rom/unbound.gba out/unbound-translated-it.gba -o out/unbound-translated-it.bps
 ```
 
-For OpenCode, use `--api-base https://opencode.ai/zen/go/v1`; the script appends `/chat/completions` automatically. If the provider returns `API HTTP 403: error code: 1010`, the request is being rejected by the upstream gateway before reaching the model. The script sends a browser-like `User-Agent` by default, and it can be overridden with `--user-agent`.
+Share the BPS file only, never the generated ROM.
 
-For now, only Latin-script target languages are supported by the translation script because non-Latin languages will
-likely require a font patch. For every target-language translation addition, edit, or fix, use PokeAPI localized data
-first, then Bulbapedia/Pokémon Database, then the official FireRed ROM in the target language for exact in-game wording
-and control/layout conventions. Use a known local FireRed ROM path when available (Italian: `out/red_ita.gba`);
-otherwise ask for the path before relying on it. Plain OpenAI-compatible chat APIs usually do not browse the web by
-themselves. For Italian battle text, prefer official-style wording such as `Brutto colpo!`, `è esausto!`,
-`Punti Esperienza`, and official ability names like `Pressione`.
+## Translation Workflow
 
-### Debug Build
+```mermaid
+flowchart LR
+    A[English ROM] --> B[Extract]
+    B --> C[Prepare]
+    C --> D[PokeAPI and LLM]
+    D --> E[Controlfix]
+    E --> F[Transactional injection]
+    F --> G[Translated ROM]
+    A --> H[BPS creation]
+    G --> H
+    H --> I[Shareable BPS patch]
+```
 
-This launches the full workflow on a manually whitelisted translation set. It is useful for quickly testing specific dialogue ranges and all extracted menu text without spending time translating the whole ROM.
+### 1. Extract
 
 ```bash
-./001_extract_unbound_text.py rom/unbound.gba -o out/debug-unbound-texts.json
-./002_prepare_translation_text.py out/debug-unbound-texts.json -o out/debug-unbound-texts-prepared.json
-./003_llm_translate.py out/debug-unbound-texts-prepared.json \
-  --target it \
-  --api-base https://opencode.ai/zen/go/v1 \
-  --api-key YOUR_API_KEY \
-  --model your-model-name \
-  --workers 4 \
-  --batch-size 20 \
-  --include-ids tbl_menu_pause_00003_415A6E,tbl_menu_pause_00004_415A77,tbl_battle_messages_00412_3FE6D5 \
-  --include-category-prefixes menu_ \
-  -o out/debug-unbound-texts-it.json \
-  --overwrite
-./004_controlfix_translations.py out/debug-unbound-texts-it.json \
-  -o out/debug-unbound-texts-it-controlfix.json \
-  --source out/debug-unbound-texts-prepared.json \
-  --report out/debug-controlfix-report.json
-./005_hybrid_injector.py rom/unbound.gba out/debug-unbound-texts-it-controlfix.json \
-  -o out/debug-unbound-translated.gba \
-  --map-output out/debug-hybrid-map.json
+python 001_extract_unbound_text.py rom/unbound.gba -o out/unbound-texts.json
 ```
 
-All entries outside the whitelist are omitted from `out/debug-unbound-texts-it.json`, which keeps the debug JSON smaller and easier to inspect.
+Extraction is intentionally lossless. The current baseline contains `23,268` unique-address entries, including
+`10,828` script strings, `3,516` strict aligned-pointer discoveries, all 84 missions, and dedicated categories for
+menus, battle text, descriptions, summary screens, and other UI.
 
-When working with Codex, every bugfix or translation/layout/control/injection fix builds a test ROM automatically when
-its source ROM and translation input are available. It uses a focused debug ROM only when that covers the issue;
-otherwise it builds the applicable full translation ROM and reports its ROM and map-output paths.
-
-### Codex Project Agents
-
-Project-scoped Codex settings live in `.codex/config.toml`, custom subagents live in `.codex/agents/`, and reusable repo
-skills live in `.agents/skills/`. `unbound-text-extraction` is the extraction playbook for all ROM text sources, audits,
-and safe coverage extensions; the other skills cover debug builds, translation runs, controlfix/layout repair, injector
-QA, docs sync, and bounded parallel review.
-
-### 4. Repair Control Codes And Layout
-
-Run the control-fix script after translation:
+### 2. Prepare
 
 ```bash
-./004_controlfix_translations.py out/unbound-texts-it.json \
-  -o out/unbound-texts-it-controlfix.json \
-  --source out/unbound-texts-prepared.json \
-  --report out/controlfix-report.json
+python 002_prepare_translation_text.py out/unbound-texts.json -o out/unbound-texts-prepared.json
 ```
 
-This step is still needed. It repairs common translation damage such as broken control codes, misplaced braces, outer
-quotes, and apostrophes. It also permits known battle stat-change and trainer-switch prompts to reorder protected tokens
-for natural or official target-language grammar and keeps the `What will [pokemon] do?` battle prompt to
-two lines with the Pokémon name alone on line 2. It also recomputes layout after translation: dialogue-like text is
-wrapped into pages using line breaks
-and `\l`, while `plain_scripts`, descriptions, mission text, Pokémon summary text, and battle messages are wrapped with
-regular line breaks. Mission Log descriptions use three narrower lines, while pause-menu mission objectives remain
-limited to two wider lines. Mission names are capped to the longest extracted English mission-title width,
-`start_menu_labels` are capped so labels such as Mission Log and Game Settings do not clip, and `setting_names` are
-capped for the game settings list. Item descriptions use a wider 3-line layout by default. Compact multi-row menu labels
-keep their original row breaks, which is required for selectable choices such as `Yes\nNo`.
+Preparation keeps `original` untouched, removes source layout from `translation_source`, and replaces semantic/control
+tokens with readable protected placeholders for translation.
 
-If you need to manually edit translations after this step, remove the controlfix layout first:
+### 3. Translate
 
 ```bash
-./006_decontrolfix_translations.py out/unbound-texts-it-controlfix.json \
-  -o out/unbound-texts-it-editable.json
+python 003_llm_translate.py out/unbound-texts-prepared.json --target it --api-base https://opencode.ai/zen/go/v1 --api-key YOUR_API_KEY --model your-model-name --workers 4 --batch-size 20 -o out/unbound-texts-it.json
 ```
 
-This writes clean editable `translated` strings and keeps the previous wrapped value in `translated_controlfixed` by default. It is not a perfect inverse: controlfix trims and repairs cannot be reconstructed. After editing, run `004_controlfix_translations.py` again before injection.
+Before LLM calls, the translator queries [PokeAPI v2](https://pokeapi.co/docs/v2) using category-specific IDs, slugs,
+English-source matching, and version-aware flavor-text matching. Existing translations win; ROM-exclusive records,
+protected-token entries, unavailable localizations, and unmatched text fall back to the LLM.
 
-### 5. Inject Translation
+PokeAPI responses are cached under `.cache/pokeapi` and looked up in parallel. The cache is ignored by Git and should
+not be committed. Resume an interrupted translation by repeating the same command with `--resume`.
+
+### 4. Repair Controls And Layout
 
 ```bash
-./005_hybrid_injector.py rom/unbound.gba out/unbound-texts-it-controlfix.json \
-  -o out/unbound-translated.gba \
-  --map-output out/hybrid-map.json
+python 004_controlfix_translations.py out/unbound-texts-it.json -o out/unbound-texts-it-controlfix.json --source out/unbound-texts-prepared.json --report out/controlfix-report.json
 ```
 
-The output ROM will be written to:
+Controlfix restores protected controls and recalculates layout for each renderer. It handles dialogue pages, plain
+full-screen scripts, battle templates, menu labels, descriptions, Pokemon summary text, and separate Mission Log versus
+pause-menu mission limits. Always run it after translation and before injection.
+
+### 5. Inject
 
 ```bash
-out/unbound-translated.gba
+python 005_hybrid_injector.py rom/unbound.gba out/unbound-texts-it-controlfix.json -o out/unbound-translated-it.gba --target-lang it --map-output out/hybrid-map-it.json
 ```
 
-For `plain_scripts`, the injector preserves full-screen blank lines as repeated newline bytes (`0xFE 0xFE`) instead of the paragraph/prompt byte (`0xFB`). This avoids the bottom-arrow prompt behavior used by normal dialogue boxes.
+The map records capacity, relocations, pointer writes, runtime patches, and loss/error counters. A release-capable build
+must report zero missing relocation candidates, pointer mismatches, implausible pointers, encode errors, truncations,
+and ability compactions.
 
-During injection, `005_hybrid_injector.py` applies every Python patch in `patches/<target-lang>/` in filename order
-before allocating relocated text. Each behavior lives in one patch file; languages without a patch directory receive
-none.
-Applied files and their ROM offsets are recorded in map output. Patch file paths always use POSIX `/` separators, making
-maps stable on Windows and Unix.
+Run any script with `--help` for its complete CLI reference.
 
-Italian `pokedex_category_order.py` swaps the Pokédex render operands and changes the fixed suffix to `Pokémon `, so
-species categories use official Italian order (`Pokémon Ratto`, not `Ratto Pokémon`). The patch owns `scr_415F8F` so
-generic text injection cannot overwrite its required trailing space. Controlfix strips redundant leading/trailing
-`Pokémon` from category fields because the renderer supplies that prefix.
+## How Injection Stays Safe
 
-Relocation excludes `0x16586A-0x166C9A` and `0x19A837-0x19B86A` (engine-owned FF storage), `0x230000-0x500000` (battle graphics), and
-`0x1000000-0x1FE0000` (CFRU/Unbound reserved data), even
-when those regions contain long `0xFF` runs. Detected runs are additionally clipped to the proven writable spans in
-`lib/unbound_free_space.py`; this prevents apparent free-run edge bytes used by the engine from being overwritten.
-The allocator also leaves an eight-byte margin at both ends of each run.
-Vetted runs are scanned in ROM-address order and use first-fit allocation with a 1 KB minimum run. After those spans,
-the allocator may use old pointer-text slots whose complete reference set was verified before any write. All relocation
-destinations are reserved transactionally, so source slots are not reused until every changed pointer has a destination.
-Pointer updates are limited to aligned pointer sites and verified Unbound script operand forms; unaligned raw-scan
-matches are rejected so translated addresses cannot overwrite executable code or unrelated live data.
+Pokemon Unbound already occupies a 32 MB ROM, so this project does not expand it or use the old single-text-bank model.
+The hybrid injector instead:
 
-The injector globally caps encoded ability descriptions to a conservative 46-byte ceiling observed in the working
-French ROM because longer payloads corrupt Summary. Supply a fitting `translated_fixed` display value for longer
-wording. The injector aborts by default; legacy token-safe compaction is available only with `--allow-lossy-fit`.
+1. Writes translations in place when they fit.
+2. Relocates oversized pointer-owned strings into vetted writable `0xFF` spans.
+3. Reuses only fully owned direct script literals after vetted space is exhausted.
+4. Updates every verified pointer source to the new location.
+5. Applies target-language runtime patches before generic text writes.
 
-Controlfix removes excess `[player]`/`[rival]` tokens invented by translation while preserving source counts. This
-prevents dynamic PC labels, residence signs, and possessive messages from rendering names twice.
+Relocation is transactional: all candidates must have valid sources and destinations before any generic text is
+written. Structured tables, menus, Pokedex data, abilities, battle data, generic pointer discoveries, hidden/interior
+pointers, and engine-reserved areas are not reclaimed.
 
-For Italian stat changes, the conjugated verb lives in the battle template before the engine-built intensity buffer.
-This renders `aumenta di molto!` / `diminuisce di molto!`; the modifier carries a leading space and the `!` buffer has
-none. The move-use template does not add punctuation already supplied by its move buffer, and `Cosa deve fare` keeps the
-Pokémon name alone on line 2.
+Fragile engine text is marked `no_relocation` and must remain in place. Fixed-size entries can provide a complete,
+token-safe `translated_fixed` display value while retaining full wording in `translated`. The diagnostic
+`--allow-lossy-fit` option must never be used for a release build.
 
-Pokédex descriptions follow limits measured from the working French ROM: at most 3 lines, 43 visible characters per
-line, and 124 visible characters total. Over-budget translations preserve their beginning and ending with a middle
-ellipsis. Tune with `--pokedex-description-wrap-width`, `--pokedex-description-max-lines`, and
-`--pokedex-description-max-total`.
+Language-specific runtime behavior lives in one file per patch under `patches/<language>/`. The injector validates and
+reports every applied patch. Italian currently includes Pokedex category-order and Mission Log tab-title patches.
 
-Mission Log descriptions use the working French pipeline's non-scrolling budget of 3 plain lines at 172 pixels per
-line; tune with `--mission-description-max-pixels` and `--mission-description-max-lines`. Pause-menu mission objectives
-remain limited to 2 lines, 35 visible characters per line, and 65 total; tune with the corresponding
-`--mission-objective-*` options.
+## Advanced Workflows
 
-Italian Mission Log filter tabs use complete labels (`Tutte le Missioni`, `Missioni Attive`, `Missioni Inattive`, and
-`Missioni Completate`). The Italian runtime patch follows pointer `0x1EBE988` and blanks the shared English ` Missions`
-suffix, preventing the menu from concatenating it after each translated label.
+### Use A Codex ChatGPT Login
 
-## Tests
-
-Install development test dependencies and run the regression suite with:
+Log in once with `codex login`, then translate without an API key:
 
 ```bash
-python3 -m pip install -r requirements-dev.txt
-python3 -m pytest
+python 003_llm_translate.py out/unbound-texts-prepared.json --target it --auth chatgpt --workers 1 --batch-size 10 -o out/unbound-texts-it.json
 ```
 
-Normal tests use small fixtures and do not require a ROM. When fixing a layout, wrapping, or protected-token bug, add a
-regression fixture/test so the case stays covered.
+`CODEX_ACCESS_TOKEN` and `--codex-profile` are also supported. A `--model` override is optional in this mode.
 
-## Ready Translations
+### Audit Missing Text
 
-`ready-translations/` contains one complete controlfixed translation JSON per language. The GitHub Actions workflow
-`Release Ready Translation Patches` turns every `*.json` in that folder into a release asset named
-`unbound-translated-<language>.bps`; it injects the ready JSON directly and never uploads a ROM. Configure the
-repository secret `UNBOUND_ENGLISH_ROM_URL` with the private English-ROM download URL. The workflow runs on every push
-to `main`, cancels obsolete running builds, and uses the release tag `ready-<UTC-build-time>-<commit-sha>`; a manual
-run can provide a replacement tag. The downloaded ROM must match MD5 `9cad8e771940e7f7094d13911552cef0`. Its release
-description lists flag-marked BPS assets with the latest repository version tag and linked commit hashes/messages. All
-generated releases are marked as pre-releases. To receive Discord notifications, create an incoming webhook for the
-target channel and store its URL in the optional repository secret `DISCORD_WEBHOOK_URL`. Successful notifications
-link the prerelease and list its BPS assets. Failed and cancelled builds do not notify the channel, and notification
-delivery is non-blocking.
+```bash
+python 001_extract_unbound_text.py rom/unbound.gba -o out/unbound-texts.json --audit-menu-text --audit-string "Missing text" --audit-output out/text-audit.json
+```
 
-The ready translations currently included in the repo were made using DeepSeek V4 Flash.
+`found_but_not_extracted` requires a proven table, record, pointer source, script operand, or bounded text bank before
+adding extraction. `not_found_as_pcs_text` may indicate graphical, compressed, custom-encoded, or dynamically assembled
+text. `--include-orphans` and `--all-pointers` are noisy discovery tools, not safe default extraction modes.
 
-## Known Issues
+### Build A Focused Debug ROM
 
-This repo is in a very early stage, so bugs can occur. Some text may glitch out of the screen, or the screen may flash red or other colors in some places.
+Use translation filters such as `--include-ids`, `--include-id-ranges`, `--include-categories`, or
+`--include-category-prefixes` to create a small test JSON. Entries outside the filter are omitted.
 
-The scripts have been tested with the Italian language. Support for other languages can be added, for example German.
+```bash
+python 003_llm_translate.py out/unbound-texts-prepared.json --target it --api-base https://opencode.ai/zen/go/v1 --api-key YOUR_API_KEY --model your-model-name --include-category-prefixes menu_ --priority-order --limit 1000 -o out/debug-unbound-texts-it.json --overwrite
+```
 
-## TODO
+Then run controlfix and injection against that debug JSON. Use a full translation build when the bug depends on global
+ROM text or relocation capacity.
 
-- Add pre-made translations for other languages
-- Polishing
+### Edit A Controlfixed Translation
 
-## Notes
+Do not manually remove line controls one by one. Create an editable copy first:
 
-- The injector does not expand the ROM.
-- Pointer-based text is relocated into vetted `0xFF` spans, then verified direct script-literal slots.
-- Fixed-size and `no_relocation` entries use token-safe `translated_fixed` display text when full wording cannot fit.
-- The injector aborts when relocation space is insufficient, or when truncation or ability compaction would silently
-  remove text.
-- `hybrid-map.json` records relocation storage, capacity, usage, and zero-loss counters.
-- Issues and pull requests are welcome.
-- Yes, this repo is vibecoded, I'm sorry but I don't have time to manually work on this...
+```bash
+python 006_decontrolfix_translations.py out/unbound-texts-it-controlfix.json -o out/unbound-texts-it-editable.json
+```
+
+Edit `translated`, rerun controlfix, and inject again. Decontrolfix preserves the prior wrapped value in
+`translated_controlfixed` by default but cannot reverse every earlier trim or repair.
+
+### Check Capacity Without Writing A ROM
+
+```bash
+python 005_hybrid_injector.py rom/unbound.gba ready-translations/it.json -o out/unbound-translated-it.gba --target-lang it --map-output out/hybrid-map-it.json --dry-run
+```
+
+If transactional preflight fails, shorten translations category by category using natural phrasing before recognizable
+abbreviations. Never solve capacity by enabling lossy fitting.
+
+## Troubleshooting
+
+### Source ROM Fails Validation
+
+The injector and release workflow expect MD5 `9cad8e771940e7f7094d13911552cef0`. A different Unbound revision or an
+already-patched ROM is not a safe input. Keep the original ROM unchanged and patch a new copy.
+
+### Translation Appears Stuck Before LLM Calls
+
+PokeAPI localization runs first and displays its own progress. Cached responses live in `.cache/pokeapi`. Tune network
+work with `--pokeapi-workers`, `--pokeapi-timeout`, or `--pokeapi-cache`; use `--no-pokeapi` only to diagnose the
+localization pass.
+
+### API Returns HTTP 403 Or Error 1010
+
+The upstream gateway rejected the request before the model handled it. Verify the provider URL and credentials, then
+try the script's browser-like default User-Agent or set `--user-agent`. For OpenCode, use
+`--api-base https://opencode.ai/zen/go/v1`; the translator appends `/chat/completions`.
+
+### Control Or Placeholder Mismatch
+
+Do not edit protected placeholders away. Rerun the affected translation with a smaller batch or targeted ID, then run
+controlfix with the prepared source JSON and inspect `controlfix-report.json`.
+
+### Relocation Preflight Does Not Fit
+
+Do not use `--allow-lossy-fit`. Confirm the failure with `--dry-run`, then shorten natural wording category by category
+while preserving meaning and protected tokens. A pointer mismatch or unsafe ownership problem belongs in injection or
+extraction logic, not translation shortening.
+
+### The ROM Builds But A Screen Freezes Or Corrupts
+
+Keep the failing ROM, map, save, entry IDs, and exact reproduction steps local. Compare the map's relocation and runtime
+patch records, reproduce with the smallest valid build, and report the affected Pokemon, menu, battle, or event. Never
+attach a ROM or save file to a public issue.
+
+## Ready Translations And Releases
+
+`ready-translations/` contains one complete, controlfixed JSON per release language. Files are named by language code;
+the release workflow turns each one into `unbound-translated-<language>.bps`.
+
+`.github/workflows/release-ready-translations.yml` runs on every push to `main` and can also be started manually. It:
+
+1. Downloads the private source ROM from `UNBOUND_ENGLISH_ROM_URL`.
+2. Verifies the required MD5.
+3. Injects every ready translation directly; controlfix is not rerun in CI.
+4. Creates BPS-only assets and removes temporary translated ROMs.
+5. Publishes a prerelease with flag-marked assets and linked commit messages.
+6. Optionally announces successful releases through `DISCORD_WEBHOOK_URL`.
+
+Failed or cancelled builds do not notify Discord, and notification delivery failure does not fail an otherwise
+successful release. The current Italian ready translation was produced with DeepSeek V4 Flash and subsequently curated
+and controlfixed in this repository.
+
+## Testing
+
+Install the development dependency and run the complete fixture-based suite:
+
+```bash
+python -m pip install -r requirements-dev.txt
+python -m pytest
+```
+
+Most tests do not require a ROM. Layout/control bugs should include a focused JSON fixture and regression test. Changes
+to translation, layout, injection, or runtime patches should also produce an applicable test ROM and injector map when
+the required local inputs are available.
+
+## Project Structure
+
+| Path | Purpose |
+| --- | --- |
+| `001_extract_unbound_text.py` | Lossless extraction and PCS coverage audits |
+| `002_prepare_translation_text.py` | Translation-source cleanup and protected placeholders |
+| `003_llm_translate.py` | PokeAPI localization and LLM fallback |
+| `004_controlfix_translations.py` | Control repair and renderer-specific layout |
+| `005_hybrid_injector.py` | Transactional in-place writes, relocation, and runtime patches |
+| `006_decontrolfix_translations.py` | Editable cleanup of controlfixed JSON |
+| `lib/` | PCS codec, font metrics, token helpers, PokeAPI client, and vetted free space |
+| `patches/<language>/` | One target-language runtime behavior per patch file |
+| `ready-translations/` | Canonical controlfixed release inputs |
+| `scripts/create_bps.py` | BPS patch creation |
+| `tests/` | Fixture-based regression suite |
+| `.agents/skills/` | Repository-specific Codex workflows |
+
+## Contributing And Support
+
+Issues and pull requests are welcome. Before submitting a change:
+
+- Keep extraction lossless and shared scripts language-agnostic.
+- Use PokeAPI localization, then Bulbapedia/Pokemon Database, then the official target-language FireRed ROM for manual
+  wording and layout references.
+- Add focused tests for extraction, token, layout, injection, or runtime-patch changes.
+- Run `python -m pytest` and report any game-level testing performed.
+- Never commit ROMs, generated ROMs, save files, `.cache/`, API credentials, or webhook URLs.
+
+Use [GitHub Issues](https://github.com/Simopich/unbound-translator/issues) for reproducible bugs and feature requests.
+Use [Discord](https://discord.gg/ctFaR77WrR) for community discussion.
+
+## Roadmap
+
+- Add and validate ready translations for more Latin-script languages.
+- Continue extraction coverage and translation/layout polish.
+- Add deterministic emulator-level E2E testing with a pinned headless mGBA/libmgba runner. Planned scenarios include
+  Pokemon Summary navigation, caught-Pokemon Pokedex pages, PC boxes, Mission Log, single/double trainer battles, and
+  save/reload flows using replayable inputs and normal save fixtures. Freeze detection should combine state/memory
+  checkpoints, input response, framebuffer changes, and timeouts. Failures should retain screenshots, emulator logs,
+  frame number, CPU state, and a small memory dump without ever uploading a ROM.
+
+## Acknowledgements
+
+- [PokeAPI](https://pokeapi.co/) provides official localized Pokemon data used before LLM fallback.
+- [Olcmyk/Meowth-GBA-Translator](https://github.com/Olcmyk/Meowth-GBA-Translator) inspired the project's earliest
+  experiments. Unbound's already-full 32 MB ROM required an independent extractor and hybrid injector.
+- [AntonyKervazoCanut/gba_translator](https://github.com/AntonyKervazoCanut/gba_translator) and the local
+  `out/working_fr.gba` build may be consulted as optional behavioral second opinions for difficult bugs. This project
+  keeps its own architecture and does not copy that translator wholesale.
+- The official target-language FireRed ROM is used only as a local wording/layout reference when legally available;
+  Italian development uses `out/red_ita.gba`.
+
+## License And Legal
+
+The project software and translation data are available under the permissive [MIT License](LICENSE). You may use,
+modify, distribute, sublicense, and sell copies as long as the copyright and license notices are preserved.
+
+Pokemon, Pokemon Unbound, FireRed, Nintendo, Game Freak, and related names and assets belong to their respective owners.
+This unofficial project is not affiliated with or endorsed by them. The repository distributes tooling, translation
+data, and BPS patches only. The MIT License does not grant rights to third-party games, ROMs, trademarks, or copyrighted
+assets. Obtain and use ROMs in accordance with the laws that apply to you.
