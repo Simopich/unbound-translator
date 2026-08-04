@@ -33,6 +33,7 @@ LANGUAGE_NAMES = {
     "en": "English",
     "es": "Spanish",
     "fr": "French",
+    "id": "Indonesian",
     "it": "Italian",
     "pt": "Portuguese",
     "pt-br": "Brazilian Portuguese",

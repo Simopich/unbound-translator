@@ -88,6 +88,7 @@ jobs:
                 en) flag="🇬🇧"; label="EN" ;;
                 es) flag="🇪🇸"; label="ES" ;;
                 fr) flag="🇫🇷"; label="FR" ;;
+                id) flag="🇮🇩"; label="ID" ;;
                 pt) flag="🇵🇹"; label="PT" ;;
                 pt-br) flag="🇧🇷"; label="PT-BR" ;;
                 *) flag="🌐"; label="$(printf '%s' "$language" | tr '[:lower:]' '[:upper:]')" ;;

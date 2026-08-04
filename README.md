@@ -41,8 +41,8 @@ The project is usable but still early and primarily tested with Italian.
 
 | Capability | Status |
 | --- | --- |
-| Release-ready translation | Italian (`ready-translations/it.json`) |
-| Translation CLI targets | `de`, `en`, `es`, `fr`, `it`, `pt`, `pt-br` |
+| Release-ready translations | Indonesian (`ready-translations/id.json`), Italian (`ready-translations/it.json`) |
+| Translation CLI targets | `de`, `en`, `es`, `fr`, `id`, `it`, `pt`, `pt-br` |
 | Non-Latin scripts | Not supported yet; likely requires a font patch |
 | Supported systems | Windows, macOS, and Linux |
 | Python | 3.10 or newer |
@@ -421,6 +421,8 @@ Use [Discord](https://discord.gg/ctFaR77WrR) for community discussion.
 
 ## Acknowledgements
 
+- [Hendi Saputra](https://github.com/orangesoncom) contributed the initial Indonesian translation through
+  [PR #1](https://github.com/Simopich/unbound-translator/pull/1).
 - [PokeAPI](https://pokeapi.co/) provides official localized Pokemon data used before LLM fallback.
 - [Olcmyk/Meowth-GBA-Translator](https://github.com/Olcmyk/Meowth-GBA-Translator) inspired the project's earliest
   experiments. Unbound's already-full 32 MB ROM required an independent extractor and hybrid injector.

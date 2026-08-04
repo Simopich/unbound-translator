@@ -49,6 +49,15 @@ def test_normalize_and_repair_common_control_damage():
     assert controlfix.fix_apostrophes("l'amico d{B4}oro") == "l{B4}amico d{B4}oro"
 
 
+def test_paragraph_before_indonesian_k_is_not_pokemon_glyph():
+    fixed = controlfix.normalize_actual_layout_breaks("Pertama.\n\nkamu lanjut.")
+
+    assert fixed == "Pertama.\\pnkamu lanjut."
+    assert controlfix.Charmap(target_lang="id").encode(fixed) == controlfix.Charmap(
+        target_lang="id"
+    ).encode("Pertama.\n\nkamu lanjut.")
+
+
 def test_remove_excess_dynamic_name_keeps_possessive_position():
     fixed, changed = controlfix.remove_excess_name_tokens(
         "[player]PC di [player]", "[player]’s PC"

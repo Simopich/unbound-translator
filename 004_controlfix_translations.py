@@ -403,7 +403,9 @@ def normalize_actual_layout_breaks(text):
 
     def paragraph_repl(match):
         count = len(match.group(0))
-        return "\\p" * (count // 2) + ("\\n" if count % 2 else "")
+        # The explicit alias prevents paragraph + "k..." from becoming the
+        # longer Pokemon glyph token ``\\pk`` during PCS encoding.
+        return "\\pn" * (count // 2) + ("\\n" if count % 2 else "")
 
     text = re.sub(r"\n{2,}", paragraph_repl, text)
     return text.replace("\n", "\\n")
