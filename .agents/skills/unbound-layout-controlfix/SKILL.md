@@ -28,6 +28,12 @@ Use `006_decontrolfix_translations.py` before manually editing already-controlfi
 - Use FireRed font metrics or measured renderer evidence, not character count alone when the screen is pixel-bounded.
 - Keep language-specific wording in JSON and runtime behavior in `patches/<language>/`, never hard-coded in shared
   controlfix logic.
+- Compare mismatch ID sets before and after changes. Equal counts can hide one resolved ID and one new regression;
+  require the post-change set to introduce no new IDs.
+- Validate target tokens against prepared/source `semantic_token_placeholders`, not existing target text. Existing text
+  may contain duplicated `[buffer*]`/color controls or a raw byte that merely spells a normal glyph.
+- Distinguish literal layout tokens from actual JSON newlines. `\n` and an actual newline can encode similarly but are
+  not interchangeable when fixtures or renderer contracts require the literal token.
 
 ## Known Budgets
 
@@ -52,3 +58,6 @@ width, and renderer context.
 
 Add a focused fixture/test for every layout or token bug. Run controlfix, the relevant tests, and an applicable ROM
 build. Report controlfix report, ROM, and injector map paths.
+
+Run exact ready-translation fixtures before accepting capacity edits. Restore fixture wording instead of changing a test
+to bless a shorter unofficial form.

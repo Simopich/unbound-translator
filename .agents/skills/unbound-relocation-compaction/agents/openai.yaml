@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unbound Relocation Compaction"
+  short_description: "Fit relocated translations within PCS slots."
+  default_prompt: "Use $unbound-relocation-compaction to compact relocated Pokemon Unbound translations without losing meaning."

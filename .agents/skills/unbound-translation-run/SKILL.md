@@ -50,10 +50,18 @@ For every manual addition/fix, research wording in this order:
 Preserve all semantic/control placeholders and restored engine tokens exactly. Prefer established official terminology;
 do not add language-specific replacement branches to shared Python scripts.
 
+For relocation compaction, use two editorial passes. First obtain natural byte-safe wording. Then compare every result
+against both `translation_source` and prior target text to catch dropped clauses, weakened gameplay conditions, wrong
+tone, and plausible but unofficial move/item/ability names. Revalidate official names even when wording is grammatical.
+If exact official wording is protected by a repository fixture, preserve it and allow relocation instead of weakening
+the fixture contract.
+
 ## Verification And Failure Handling
 
 - Confirm output shape/count and filled `translated` values.
 - Validate placeholder counts, semantic/control tokens, and absence of model-invented layout controls.
+- Treat prepared/source `semantic_token_placeholders` as token authority. Existing translated text is evidence, not
+  authority, because it may already duplicate a buffer, color, raw-byte, or control token.
 - Retry malformed batches with smaller batches or targeted IDs; do not accept partial/mismatched model output.
 - API output-limit fallbacks may reach single-entry/plain-text prompts. If a final single entry still fails, leave it
   untranslated and report its ID rather than inventing/truncating text.

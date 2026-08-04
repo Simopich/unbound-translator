@@ -1,6 +1,6 @@
 ---
 name: unbound-injection-qa
-description: Build or audit Pokemon Unbound translated ROMs and diagnose relocation safety. Use for injection, free-space/map analysis, pointer mismatches, corruption, freezes linked to relocated text, or in-place-versus-relocated behavior; use unbound-capacity-curation when the confirmed remedy is shortening translation JSON.
+description: Build or audit Pokemon Unbound translated ROMs and diagnose relocation safety. Use for injection, free-space/map analysis, pointer mismatches, corruption, freezes linked to relocated text, or in-place-versus-relocated behavior; use unbound-relocation-compaction for bulk ordinary relocation fitting and unbound-capacity-curation for total-capacity or rigid-slot failures.
 ---
 
 # Unbound Injection QA
@@ -47,3 +47,8 @@ its architecture or ROM.
 
 A release-capable build has zero missing relocation candidates, pointer mismatches, implausible pointers, encode
 errors, lossy fixed/no-relocation truncations, and ability compactions. Report ROM and map paths plus decisive counts.
+
+For relocation-compaction QA, compare before/after maps and record relocation count, relocated bytes, and remaining free
+bytes. Require every remaining relocation ID to have documented complete blocked wording, except exact official fixture
+text deliberately restored after tests. Count-only comparison is insufficient: compare actual ID sets and report
+remaining categories. Build the full ROM after dry-run; keep ROM artifacts private under `out/`.

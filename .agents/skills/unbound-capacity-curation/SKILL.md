@@ -1,6 +1,6 @@
 ---
 name: unbound-capacity-curation
-description: Resolve Pokemon Unbound relocation-capacity or fixed-slot fit failures by safely shortening translated JSON category by category. Use when transactional preflight reports entries or bytes that do not fit, translations require translated_fixed, or a release JSON exceeds safe ROM capacity; do not use automated truncation or abbreviate before natural shorter wording is exhausted.
+description: Resolve Pokemon Unbound total free-space deficits and rigid fixed-slot fit failures through safe translation curation. Use when injector capacity is insufficient, no_relocation text exceeds its slot, translated_fixed is required, or ability/display limits fail; use unbound-relocation-compaction for bulk map-driven fitting of ordinary pointer-based relocations.
 ---
 
 # Unbound Capacity Curation
@@ -20,18 +20,19 @@ evidence, not lossy controlfix or automatic truncation.
 
 1. Preserve the current JSON and establish whether it is editable or controlfixed. If controlfixed, run
    `006_decontrolfix_translations.py` to an editable working file.
-2. Reproduce with `005_hybrid_injector.py --dry-run`. Record missing entry/byte totals and any fixed/no-relocation error.
-3. Select one category batch. Prioritize strings whose encoded translation exceeds the original slot or consumes
-   relocation space; retain entry IDs and source wording for review.
+2. Reproduce with `005_hybrid_injector.py --dry-run`. Record missing entries/bytes, remaining free space, and every
+   fixed/no-relocation error. Use `unbound-relocation-compaction` when ordinary relocation fitting is the actual task.
+3. Select one failing category or rigid contract. Retain entry IDs, source wording, display/slot budget, and renderer
+   context for review.
 4. Rewrite each value with shorter natural syntax while preserving full meaning, official terminology, semantic/control
    tokens, required punctuation, and renderer context.
 5. Use abbreviations only after natural shorter phrasing fails, and only for immediately recognizable terms. Never
    remove clauses, placeholders, gameplay facts, or required controls merely to fit.
 6. For `no_relocation`, fixed-size, or ability-display limits, keep full wording in `translated` and add a complete,
    token-safe `translated_fixed` only when the entry contract requires it.
-7. Rerun controlfix, token/layout tests, and injector dry-run. Iterate until the batch passes or the remaining deficit is
-   quantified. Then build the full ROM and inspect the map.
-8. Apply approved edits to the canonical JSON before moving to the next batch. Do not mix unrelated translation cleanup.
+7. Rerun controlfix, token/layout tests, and injector dry-run. Iterate until the rigid contract passes or the remaining
+   capacity deficit is quantified. Build the full ROM and inspect the map.
+8. Apply approved edits to the canonical JSON only after checks pass. Do not mix unrelated translation cleanup.
 
 ## Stop Conditions
 
@@ -41,8 +42,12 @@ failure is actually pointer ownership/free-space logic, or a runtime renderer ne
 
 ## Verification And Report
 
-- Protected-token counts match source; controlfix reports no new mismatch.
+- Compare semantic tokens against source `semantic_token_placeholders`, not existing target text: existing translations
+  may already contain duplicated controls or raw glyph bytes. Compare mismatch ID sets before/after, not only counts;
+  require no new IDs and report resolved IDs.
 - Injector reports zero missing candidates, truncations, ability compactions, pointer mismatches, implausible pointers,
   and encode errors.
+- Report unresolved fixed/rigid entries or remaining free-space deficit rather than weakening complete wording.
+- Run the full test suite. Exact official wording fixtures override capacity reduction.
 - Report category, entries reviewed/changed, bytes recovered when measurable, representative before/after wording, and
   ROM/map paths.

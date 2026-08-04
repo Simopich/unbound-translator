@@ -103,7 +103,8 @@ release input is `ready-translations/it.json`.
 - `unbound-text-extraction`: find and add missing ROM text coverage.
 - `unbound-translation-run`: prepare, translate, resume, and curate official wording.
 - `unbound-layout-controlfix`: repair tokens, wrapping, controls, and overflow.
-- `unbound-capacity-curation`: shorten translations safely when relocation capacity is insufficient.
+- `unbound-relocation-compaction`: fit ordinary relocated translations back into original PCS byte slots.
+- `unbound-capacity-curation`: curate total-capacity, fixed-slot, and `no_relocation` failures safely.
 - `unbound-injection-qa`: build ROMs and audit relocation/map safety.
 - `unbound-runtime-patch`: implement target-language runtime behavior that JSON cannot express.
 - `unbound-debug-build`: build focused whitelist/category test ROMs.
