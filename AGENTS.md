@@ -1,5 +1,9 @@
 # AGENTS.md
 
+## Session Mode
+
+Start every new session in `/caveman ultra` mode.
+
 ## Project
 
 `unbound-translator` is a Python toolchain for extracting, translating, formatting, and injecting Pokemon Unbound text
