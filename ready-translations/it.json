@@ -172883,7 +172883,7 @@
       "byte_length": 225,
       "is_pointer_based": true,
       "translation_source": "Ever since ancient times, the mythical Pokémon Darkrai has haunted this town. It is said, every night when the clock strikes one, he comes out to haunt the dreams of the masses. Be wary, child! Don’t fall into the dark void!",
-      "translated": "Fin dai tempi antichi, il mitico\nPokémon Darkrai infesta questa\\lcittà. Si dice che ogni notte,\n\nquando l{B4}orologio batte l{B4}una, esca\nper tormentare i sogni delle masse.\\lStai attento, bambino! Non cadere\n\nel vuoto oscuro!"
+      "translated": "Fin dai tempi antichi, il mitico\nPokémon Darkrai infesta questa\\lcittà. Si dice che ogni notte,\n\nquando l{B4}orologio batte l{B4}una, esca\nper tormentare i sogni delle masse.\\lStai attento, bambino! Non cadere\n\nnel vuoto oscuro!"
     },
     {
       "id": "scr_7B8F88",
@@ -178347,7 +178347,7 @@
       "byte_length": 119,
       "is_pointer_based": true,
       "translation_source": "Aye, I just finished delivering goods to all the Poké Marts. Soon, I’ll be heading back to Antisis City for the night.",
-      "translated": "Sì, ho appena finito di consegnare\nla merce a tutti i Poké Mart. Tra\\lpoco tornerò ad Antisis City per la\n\notte."
+      "translated": "Sì, ho appena finito di consegnare\nla merce a tutti i Poké Mart. Tra\\lpoco tornerò ad Antisis City per la\n\nnotte."
     },
     {
       "id": "scr_7C695F",
@@ -187388,7 +187388,7 @@
       "byte_length": 161,
       "is_pointer_based": true,
       "translation_source": "Hi there! My grandmother has a business of teaching Pokémon a move in exchange for a Yellow Shard. If you haven’t had a chance to find any, let me help you out.",
-      "translated": "Ciao! Mia nonna ha un{B4}attività in\ncui insegna una mossa ai Pokémon in\\lcambio di una Scheggia Gialla. Se\n\non ne hai ancora trovate, lascia\nche ti dia una mano."
+      "translated": "Ciao! Mia nonna ha un{B4}attività in\ncui insegna una mossa ai Pokémon in\\lcambio di una Scheggia Gialla. Se\n\nnon ne hai ancora trovate, lascia\nche ti dia una mano."
     },
     {
       "id": "scr_7E7D68",
@@ -195340,7 +195340,7 @@
       "byte_length": 119,
       "is_pointer_based": true,
       "translation_source": "My boyfriend is so strong and tough! There ain’t no one like him here in the city! Well, aside from Big Mo, of course.",
-      "translated": "Il mio ragazzo è così forte e\ntosto! Qui in città non c{B4}è nessuno\\lcome lui! Beh, a parte Big Mo,\n\naturalmente."
+      "translated": "Il mio ragazzo è così forte e\ntosto! Qui in città non c{B4}è nessuno\\lcome lui! Beh, a parte Big Mo,\n\nnaturalmente."
     },
     {
       "id": "scr_7F8B25",
@@ -223605,7 +223605,7 @@
       "byte_length": 119,
       "is_pointer_based": true,
       "translation_source": "My boyfriend is so strong and tough! There ain’t no one like him here in the city! Well, aside from Big Mo, of course.",
-      "translated": "Il mio ragazzo è fortissimo e\ntosto! Qui in città non c{B4}è nessuno\\lcome lui! Be{B4}, a parte Big Mo,\n\naturalmente."
+      "translated": "Il mio ragazzo è fortissimo e\ntosto! Qui in città non c{B4}è nessuno\\lcome lui! Be{B4}, a parte Big Mo,\n\nnaturalmente."
     },
     {
       "id": "scr_1EDE051",
@@ -225960,7 +225960,7 @@
           "token": "\\CC0818"
         }
       ],
-      "translated": "Ah, [player]. Spero che tu stia\nbene. No, non sono qui per un\\lincarico. Ho le mie\\.\\CC0818 ragioni\n\npersonali. Sei diventato di recente\nil nuovo Campione della regione di\\lBorrius, vero? Vedi, le mie\n\nresponsabilità come Capopalestra e\ncome agente mi impongono spesso di\\.\\CC0818\\lnascondere la mia vera forza. Ma\n\nora, non vedo motivo di non\nconcedermelo, ora che la pace è\\ltornata. Se sei disposto, ti\n\nandrebbe di metterti alla prova\ncontro di me? Sono consapevole,\\lovviamente, che potresti ancora\n\nutrire rancore per le mie azioni al\nVulcano Cenere. Se non altro,\\lpensala come un{B4}opportunità per\\.\\CC0818\n\nsfogare un po{B4} di frustrazione\nrepressa."
+      "translated": "Ah, [player]. Spero che tu stia\nbene. No, non sono qui per un\\lincarico. Ho le mie\\.\\CC0818 ragioni\n\npersonali. Sei diventato di recente\nil nuovo Campione della regione di\\lBorrius, vero? Vedi, le mie\n\nresponsabilità come Capopalestra e\ncome agente mi impongono spesso di\\.\\CC0818\\lnascondere la mia vera forza. Ma\n\nora, non vedo motivo di non\nconcedermelo, ora che la pace è\\ltornata. Se sei disposto, ti\n\nandrebbe di metterti alla prova\ncontro di me? Sono consapevole,\\lovviamente, che potresti ancora\n\nnutrire rancore per le mie azioni\nal Vulcano Cenere. Se non altro,\\lpensala come un{B4}opportunità per\\.\\CC0818\n\nsfogare un po{B4} di frustrazione\nrepressa."
     },
     {
       "id": "scr_1EE13FE",
@@ -226291,7 +226291,7 @@
           "token": "\\."
         }
       ],
-      "translated": "[red]Ah\\. e così è finita alla fine? È\nstato ispirante. Davvero. Suppongo\\lche sia stato il caso o l{B4}abilità\\.\n\non cambia molto. Mi ha commosso,\ncomunque. Tieni questo. Forse\\lquesto Z-Cristallo può ribaltare la\n\nprossima lotta\\. proprio così."
+      "translated": "[red]Ah\\. e così è finita alla fine? È\nstato ispirante. Davvero. Suppongo\\lche sia stato il caso o l{B4}abilità\\.\n\nnon cambia molto. Mi ha commosso,\ncomunque. Tieni questo. Forse\\lquesto Z-Cristallo può ribaltare la\n\nprossima lotta\\. proprio così."
     },
     {
       "id": "scr_1EE1F1E",
@@ -234061,7 +234061,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Splendido! Il mio compito è il\nseguente: distruggi le [green]porte\\lcrollate[blue] che ingombrano la [green]KBT\n\nExpressway[blue] usando il tuo [green]ADM[blue] e\ncattura [green]3 Carbink[blue], a partire da\\lora. Per abbattere una porta,\n\ndovrai prima caricare il tuo ADM.\nSe carichi il tuo ADM con [green]3\\lCrecaluce[blue], sarà abbastanza potente\n\nda distruggere le macerie! Dove\ntrovi la Crecaluce? Ha una discreta\\lprobabilità di apparire quando mini\n\nelle pareti della KBT Expressway.\nUna volta fatto ciò, per favore\\ltorna da me per una ricompensa."
+      "translated": "Splendido! Il mio compito è il\nseguente: distruggi le [green]porte\\lcrollate[blue] che ingombrano la [green]KBT\n\nExpressway[blue] usando il tuo [green]ADM[blue] e\ncattura [green]3 Carbink[blue], a partire da\\lora. Per abbattere una porta,\n\ndovrai prima caricare il tuo ADM.\nSe carichi il tuo ADM con [green]3\\lCrecaluce[blue], sarà abbastanza potente\n\nda distruggere le macerie! Dove\ntrovi la Crecaluce? Ha una discreta\\lprobabilità di apparire quando mini\n\nnelle pareti della KBT Expressway.\nUna volta fatto ciò, per favore\\ltorna da me per una ricompensa."
     },
     {
       "id": "scr_1EEDF0B",
@@ -244880,7 +244880,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Sniff, sniff\\. Sniff, sniff\\. Oh, che\naroma! Ha un profumo così gourmet!\\lHai un ingrediente meraviglioso\n\nella borsa? Lo venderesti a me?"
+      "translated": "Sniff, sniff\\. Sniff, sniff\\. Oh, che\naroma! Ha un profumo così gourmet!\\lHai un ingrediente meraviglioso\n\nnella borsa? Lo venderesti a me?"
     },
     {
       "id": "scr_1EFAFD3",
@@ -248025,7 +248025,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "Su [green]Percorso 2[red] ci sono tanti Pokémon\nche si evolvono solo quando si\\laffezionano a te. Se ne catturi uno\n\ne me lo mostri, ti darò qualcosa di\nbello."
+      "translated": "Su [green]Percorso 2[red] ci sono tanti Pokémon\nche si evolvono solo quando si\\laffezionano a te. Se ne catturi uno\n\nne me lo mostri, ti darò qualcosa\ndi bello."
     },
     {
       "id": "scr_1EFF6E9",
@@ -252052,7 +252052,7 @@
       "byte_length": 225,
       "is_pointer_based": true,
       "translation_source": "Aye, I just finished delivering goods to all the Poké Marts. Soon, I’ll be heading back to Antisis City for the night. But it looks like I still have some leftover items. How about instead of tossing ’em, I let you have ’em!",
-      "translated": "Sì, ho appena finito di consegnare\nmerci a tutti i Poké Market. Fra\\lpoco tornerò ad Antisis City per la\n\notte. Però sembra che mi siano\nrimasti ancora alcuni oggetti. Che\\lne dici se, invece di buttarli, li\n\nlascio a te!"
+      "translated": "Sì, ho appena finito di consegnare\nmerci a tutti i Poké Market. Fra\\lpoco tornerò ad Antisis City per la\n\nnotte. Però sembra che mi siano\nrimasti ancora alcuni oggetti. Che\\lne dici se, invece di buttarli, li\n\nlascio a te!"
     },
     {
       "id": "scr_1F049E7",
@@ -255478,7 +255478,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "Lunga vita alla rivoluzione! Se fai\nacquisti [green][buffer1][red] ai Poké Mart, il\\lsistema comunista crollerà e la\n\nostra rivoluzione capitalista potrà\ncominciare."
+      "translated": "Lunga vita alla rivoluzione! Se fai\nacquisti [green][buffer1][red] ai Poké Mart, il\\lsistema comunista crollerà e la\n\nnostra rivoluzione capitalista\npotrà cominciare."
     },
     {
       "id": "scr_1F08489",
@@ -256824,7 +256824,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "Allenatore, mi aiuti? La mia\nfamiglia prepara un banchetto e\\lserve molto Miele. Ho sette\n\nbarattoli, me ne servono altri tre.\nSi trovano nei Combee selvatici, ma\\lnon li trovo. Puoi trovare [green]3[red] Combee\n\ne darmi il loro [green]Miele[red]?"
+      "translated": "Allenatore, mi aiuti? La mia\nfamiglia prepara un banchetto e\\lserve molto Miele. Ho sette\n\nbarattoli, me ne servono altri tre.\nSi trovano nei Combee selvatici, ma\\lnon li trovo. Puoi trovare [green]3[red] Combee\n\nne darmi il loro [green]Miele[red]?"
     },
     {
       "id": "scr_1F0A273",
@@ -258514,7 +258514,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Quel tipo strano di prima ci ha\nseguiti fino a casa. Però comincio\\la chiedermi\\. E se fosse davvero\n\nostro padre?"
+      "translated": "Quel tipo strano di prima ci ha\nseguiti fino a casa. Però comincio\\la chiedermi\\. E se fosse davvero\n\nnostro padre?"
     },
     {
       "id": "scr_1F0C886",
@@ -272996,7 +272996,7 @@
       "byte_length": 166,
       "is_pointer_based": true,
       "translation_source": "The boulders that were here! They mysteriously vanished! One moment I was standing here, and the next thing I knew, they were gone! What could have happened to them?",
-      "translated": "I massi che erano qui! Sono spariti\nmisteriosamente! Un attimo prima\\lero qui in piedi, e un attimo dopo\n\non c{B4}erano più! Cosa può essere\nsuccesso loro?"
+      "translated": "I massi che erano qui! Sono spariti\nmisteriosamente! Un attimo prima\\lero qui in piedi, e un attimo dopo\n\nnon c{B4}erano più! Cosa può essere\nsuccesso loro?"
     },
     {
       "id": "scr_1F223AB",
@@ -276624,7 +276624,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Magnifico\\. Hai reso il mio sogno\nrealtà. Tuttavia\\. Il dono che vorrei\\lfarti richiede uno spazio libero\n\nella tua squadra."
+      "translated": "Magnifico\\. Hai reso il mio sogno\nrealtà. Tuttavia\\. Il dono che vorrei\\lfarti richiede uno spazio libero\n\nnella tua squadra."
     },
     {
       "id": "scr_1F271CD",
@@ -278473,7 +278473,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Uhm\\. Per quanto ricordo, un [buffer1]\nnon assomigliava affatto a quello.\\lE purtroppo non sto cercando\n\nient{B4}altro\\."
+      "translated": "Uhm\\. Per quanto ricordo, un [buffer1]\nnon assomigliava affatto a quello.\\lE purtroppo non sto cercando\n\nnient{B4}altro\\."
     },
     {
       "id": "scr_1F29440",
@@ -283937,7 +283937,7 @@
       "byte_length": 190,
       "is_pointer_based": true,
       "translation_source": "Then make sure Fey doesn’t find out about what happened. Our priority right now is obtaining the package needed for the mission. We’ll deal with that second one who escaped at a later time.",
-      "translated": "Allora assicurati che Fey non\nscopra cosa è successo. La nostra\\lpriorità adesso è ottenere il pacco\n\necessario per la missione. Ci\noccuperemo di quel secondo\\lfuggitivo in un secondo momento."
+      "translated": "Allora assicurati che Fey non\nscopra cosa è successo. La nostra\\lpriorità adesso è ottenere il pacco\n\nnecessario per la missione. Ci\noccuperemo di quel secondo\\lfuggitivo in un secondo momento."
     },
     {
       "id": "scr_1F2E3CF",
@@ -285647,7 +285647,7 @@
           "token": "\\CC0818"
         }
       ],
-      "translated": "Fallo tenere a un [green]Salamence[blue], e\npotrà Mega Evolvere. Jax stava\\lallenando un Bagon, di nascosto\\.\\CC0818 ma\n\nel frattempo gli serviva qualcosa\ncon cui volare, quindi ha allenato\\lanche uno Starly. Però ormai si è\n\naffezionato parecchio a entrambi!"
+      "translated": "Fallo tenere a un [green]Salamence[blue], e\npotrà Mega Evolvere. Jax stava\\lallenando un Bagon, di nascosto\\.\\CC0818 ma\n\nnel frattempo gli serviva qualcosa\ncon cui volare, quindi ha allenato\\lanche uno Starly. Però ormai si è\n\naffezionato parecchio a entrambi!"
     },
     {
       "id": "scr_1F30F62",
@@ -291730,7 +291730,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "Non importa. Quando [player]\nsalirà, Zeph sarà pronto per la\\lliberazione. Tuttavia, se fosse\n\necessario, ti chiederò di\ntrattenere [player] il più a lungo\\lpossibile."
+      "translated": "Non importa. Quando [player]\nsalirà, Zeph sarà pronto per la\\lliberazione. Tuttavia, se fosse\n\nnecessario, ti chiederò di\ntrattenere [player] il più a lungo\\lpossibile."
     },
     {
       "id": "scr_1F39418",
@@ -301617,7 +301617,7 @@
       "byte_length": 358,
       "is_pointer_based": true,
       "translation_source": "Look, mate. I told you already, I’m sorry, but it can’t be helped. The ship’s having engine troubles, and there’s not a thing I can do. But a friend of mine who owes me a favor can take you to Polder Town, if it’s that urgent. He can be found on the docks north of here. Show him one of these S.S. Tickets, tell him I sent you, and he should take you there.",
-      "translated": "Senti, amico. Te l{B4}ho già detto, mi\ndispiace, ma non si può fare. La\\lnave ha dei problemi al motore, e\n\non posso farci niente. Ma un mio\namico che mi deve un favore può\\lportarti a Polder Town, se è così\n\nurgente. Lo puoi trovare ai moli a\nnord di qui. Mostragli uno di\\lquesti Biglietti S.S., digli che ti\n\nmando io, e dovrebbe portarti lì."
+      "translated": "Senti, amico. Te l{B4}ho già detto, mi\ndispiace, ma non si può fare. La\\lnave ha dei problemi al motore, e\n\nnon posso farci niente. Ma un mio\namico che mi deve un favore può\\lportarti a Polder Town, se è così\n\nurgente. Lo puoi trovare ai moli a\nnord di qui. Mostragli uno di\\lquesti Biglietti S.S., digli che ti\n\nmando io, e dovrebbe portarti lì."
     },
     {
       "id": "scr_1F4725D",
@@ -303272,7 +303272,7 @@
       "byte_length": 123,
       "is_pointer_based": true,
       "translation_source": "You may have gotten the better of me before, but this time, I’m taking you down a peg! I’m gonna stop you and save us all!",
-      "translated": "Potresti avermi battuto la volta\nscorsa, ma stavolta ti darò una\\llezione! Ti fermerò e salverò tutti\n\noi!"
+      "translated": "Potresti avermi battuto la volta\nscorsa, ma stavolta ti darò una\\llezione! Ti fermerò e salverò tutti\n\nnoi!"
     },
     {
       "id": "scr_1F4953C",
@@ -318041,7 +318041,7 @@
           "token": "\\."
         }
       ],
-      "translated": "I temporali in realtà non hanno\neffetto sulla pesca. Ma [green]Profumino[blue]\\.\\lQuella non si può usare se il tempo\n\non è sereno."
+      "translated": "I temporali in realtà non hanno\neffetto sulla pesca. Ma [green]Profumino[blue]\\.\\lQuella non si può usare se il tempo\n\nnon è sereno."
     },
     {
       "id": "scr_1F5E534",
@@ -320023,7 +320023,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Accetti la sfida? Figo! Porta a\ncasa quelle vittorie! Ci sono [green]18[blue]\\ltipi in totale, e dovrai entrare\n\nella Hall of Fame con squadre per\nognuno. Oh, e tieni a mente questo:\\lse fai megaevolvere un Pokémon, sia\n\nla specie base che la specie Mega\nconteranno per il tipo della\\lsquadra. Quindi, diciamo che vuoi\n\nusare un Mega Gyarados. Oltre a una\nsquadra di tipo Acqua, potresti\\lusarlo sia in squadre di tipo\n\nVolante che Buio!"
+      "translated": "Accetti la sfida? Figo! Porta a\ncasa quelle vittorie! Ci sono [green]18[blue]\\ltipi in totale, e dovrai entrare\n\nnella Hall of Fame con squadre per\nognuno. Oh, e tieni a mente questo:\\lse fai megaevolvere un Pokémon, sia\n\nla specie base che la specie Mega\nconteranno per il tipo della\\lsquadra. Quindi, diciamo che vuoi\n\nusare un Mega Gyarados. Oltre a una\nsquadra di tipo Acqua, potresti\\lusarlo sia in squadre di tipo\n\nVolante che Buio!"
     },
     {
       "id": "scr_1F612C4",
@@ -321817,7 +321817,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Uff\\. Meglio che mi riposi\\. Ugh\\. Quel\nvulcano ti sfianca parecchio!\\lLascia che curi i tuoi Pokémon così\n\non ti stanchi come me."
+      "translated": "Uff\\. Meglio che mi riposi\\. Ugh\\. Quel\nvulcano ti sfianca parecchio!\\lLascia che curi i tuoi Pokémon così\n\nnon ti stanchi come me."
     },
     {
       "id": "scr_1F63A65",
@@ -326869,7 +326869,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Gli [green]Sharpedo[blue] nuotano [green]sott{B4}acqua[blue] sul\n[green]Percorso 17[blue]. I ragazzi al quartier\\lgenerale mi hanno informato che ce\n\ne sono circa [green][buffer1][blue] che si sono\nagitati. Ah, e devo avvertirti,\\lqualsiasi Sharpedo calmato\n\nprobabilmente si agiterà di nuovo\nse riemergi in superficie.\\lAssicurati di non emergere\n\ndall{B4}acqua finché non li avrai\nsistemati tutti. Se sei\\lintelligente, e so che lo sei,\n\nfarai scorta di strumenti curativi\nprima di scendere laggiù."
+      "translated": "Gli [green]Sharpedo[blue] nuotano [green]sott{B4}acqua[blue] sul\n[green]Percorso 17[blue]. I ragazzi al quartier\\lgenerale mi hanno informato che ce\n\nne sono circa [green][buffer1][blue] che si sono\nagitati. Ah, e devo avvertirti,\\lqualsiasi Sharpedo calmato\n\nprobabilmente si agiterà di nuovo\nse riemergi in superficie.\\lAssicurati di non emergere\n\ndall{B4}acqua finché non li avrai\nsistemati tutti. Se sei\\lintelligente, e so che lo sei,\n\nfarai scorta di strumenti curativi\nprima di scendere laggiù."
     },
     {
       "id": "scr_1F6A4F1",
@@ -336219,7 +336219,7 @@
       "byte_length": 153,
       "is_pointer_based": true,
       "translation_source": "I have to tell ye, the S.S. Marine’s a lot smoother than the one I sailed with in Alola! And I know that’s not just because of the calmer water, either!",
-      "translated": "Devo dirti che la S.S. Marine è\nmolto più scorrevole di quella su\\lcui ho navigato ad Alola! E so che\n\non è solo per via dell{B4}acqua più\ncalma, eh!"
+      "translated": "Devo dirti che la S.S. Marine è\nmolto più scorrevole di quella su\\lcui ho navigato ad Alola! E so che\n\nnon è solo per via dell{B4}acqua più\ncalma, eh!"
     },
     {
       "id": "scr_1F7598D",
@@ -355526,7 +355526,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "La Torre Lotta è una struttura per\nsfide di Lotta Singola, Doppia,\\lMultipla e Metronomo. Una volta\n\niniziata, la tua sfida dura finché\nnon sconfiggi il Direttore Torre o\\lscegli di riposare. Nel formato\n\nLotta Singola, hai la scelta di\nentrare con tre o sei Pokémon. Nel\\lformato Lotta Doppia, hai la scelta\n\ndi entrare con quattro o sei\nPokémon. Le lotte si svolgono in\\lSale Lotta, di cui ce ne sono molte\n\nella torre. In ognuna delle Sale\nLotta, gli Allenatori attendono la\\ltua sfida. Per ogni Allenatore che\n\nsconfiggi, guadagni [green]Punti Lotta[blue]\n([green]PL[blue]). Se vuoi interrompere la tua\\lsfida, i tuoi progressi verranno\n\nregistrati per quando desideri\ncontinuare. Se a un certo punto\\lesci senza salvare, verrai\n\nsqualificato dalla tua sfida. Per\nfavore, tienilo presente!"
+      "translated": "La Torre Lotta è una struttura per\nsfide di Lotta Singola, Doppia,\\lMultipla e Metronomo. Una volta\n\niniziata, la tua sfida dura finché\nnon sconfiggi il Direttore Torre o\\lscegli di riposare. Nel formato\n\nLotta Singola, hai la scelta di\nentrare con tre o sei Pokémon. Nel\\lformato Lotta Doppia, hai la scelta\n\ndi entrare con quattro o sei\nPokémon. Le lotte si svolgono in\\lSale Lotta, di cui ce ne sono molte\n\nnella torre. In ognuna delle Sale\nLotta, gli Allenatori attendono la\\ltua sfida. Per ogni Allenatore che\n\nsconfiggi, guadagni [green]Punti Lotta[blue]\n([green]PL[blue]). Se vuoi interrompere la tua\\lsfida, i tuoi progressi verranno\n\nregistrati per quando desideri\ncontinuare. Se a un certo punto\\lesci senza salvare, verrai\n\nsqualificato dalla tua sfida. Per\nfavore, tienilo presente!"
     },
     {
       "id": "scr_1F8FBEF",
@@ -383469,7 +383469,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "[player], vieni, tesoro. Ho bisogno\nd{B4}aiuto: alcuni scagnozzi fanno\\lbaccano qui nella Palude di Cootes.\n\nIl mio Swampert, protettore della\npalude, è sparito come un vegano a\\luna festa di maiali! Dovrebbe\n\nmantenere l{B4}equilibrio di questo\necosistema, ma senza di lui nessuno\\lferma gli scagnozzi. Devo fermarli\n\ne trovare Swampert per ristabilire\nl{B4}equilibrio. Da sola non posso\\laffrontarli tutti. Che ne dici di\n\nun{B4}avventura con la vecchia Tessy?"
+      "translated": "[player], vieni, tesoro. Ho bisogno\nd{B4}aiuto: alcuni scagnozzi fanno\\lbaccano qui nella Palude di Cootes.\n\nIl mio Swampert, protettore della\npalude, è sparito come un vegano a\\luna festa di maiali! Dovrebbe\n\nmantenere l{B4}equilibrio di questo\necosistema, ma senza di lui nessuno\\lferma gli scagnozzi. Devo fermarli\n\nne trovare Swampert per ristabilire\nl{B4}equilibrio. Da sola non posso\\laffrontarli tutti. Che ne dici di\n\nun{B4}avventura con la vecchia Tessy?"
     },
     {
       "id": "scr_1FAB000",
@@ -383799,7 +383799,7 @@
           "token": "\\."
         }
       ],
-      "translated": "[blue]Grrr\\. Arr\\. Potresti aver sconfitto\nFeraligatr, ma senza Swampert la\\lpalude è ancora nel caos. Ne\n\nsorgeranno altri, e prenderemo per\nnoi i più forti. Presto potremo\\lchiamare Polder Town casa nostra, e\n\non ci sarà niente che tu possa fare\nper fermarci!"
+      "translated": "[blue]Grrr\\. Arr\\. Potresti aver sconfitto\nFeraligatr, ma senza Swampert la\\lpalude è ancora nel caos. Ne\n\nsorgeranno altri, e prenderemo per\nnoi i più forti. Presto potremo\\lchiamare Polder Town casa nostra, e\n\nnon ci sarà niente che tu possa\nfare per fermarci!"
     },
     {
       "id": "scr_1FAB825",

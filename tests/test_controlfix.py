@@ -58,6 +58,17 @@ def test_paragraph_before_indonesian_k_is_not_pokemon_glyph():
     ).encode("Pertama.\n\nkamu lanjut.")
 
 
+def test_paragraph_before_italian_n_preserves_first_letter():
+    fixed = controlfix.normalize_actual_layout_breaks(
+        "ottenere il pacco\n\nnecessario per la missione"
+    )
+
+    assert fixed == "ottenere il pacco\\pnnecessario per la missione"
+    assert controlfix.Charmap(target_lang="it").encode(fixed) == controlfix.Charmap(
+        target_lang="it"
+    ).encode("ottenere il pacco\n\nnecessario per la missione")
+
+
 def test_remove_excess_dynamic_name_keeps_possessive_position():
     fixed, changed = controlfix.remove_excess_name_tokens(
         "[player]PC di [player]", "[player]’s PC"
