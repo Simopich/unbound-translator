@@ -615,6 +615,18 @@ def plan_relocations(blocks, candidates, alignment):
         plan[candidate.entry.get("id")] = (offset, block.kind, False)
     return plan, missing
 
+
+def enforce_relocation_capacity(missing_candidates, fail_on_no_space):
+    """Optionally require every relocation candidate to fit."""
+    if not missing_candidates or not fail_on_no_space:
+        return
+    missing_bytes = sum(len(candidate.encoded) for candidate in missing_candidates)
+    raise RuntimeError(
+        "Transactional relocation preflight failed: "
+        f"{len(missing_candidates)} entries / {missing_bytes} bytes do not fit"
+    )
+
+
 def injection_priority(entry):
     """Reserve limited relocation space for structured player-facing text."""
     category = entry.get("category", "")
@@ -693,6 +705,14 @@ def main():
         help="Do all allocation, encoding, and pointer checks without writing the ROM.",
     )
     parser.add_argument(
+        "--fail-on-no-space",
+        action="store_true",
+        help=(
+            "Abort when relocation space is exhausted. By default those "
+            "translations stay unchanged and are reported as skipped."
+        ),
+    )
+    parser.add_argument(
         "--allow-lossy-fit",
         action="store_true",
         help=(
@@ -755,12 +775,10 @@ def main():
         candidates,
         args.alignment,
     )
-    if missing_candidates:
-        missing_bytes = sum(len(candidate.encoded) for candidate in missing_candidates)
-        raise RuntimeError(
-            "Transactional relocation preflight failed: "
-            f"{len(missing_candidates)} entries / {missing_bytes} bytes do not fit"
-        )
+    enforce_relocation_capacity(missing_candidates, args.fail_on_no_space)
+    missing_candidates_by_id = {
+        candidate.entry.get("id"): candidate for candidate in missing_candidates
+    }
     candidates_by_id = {
         candidate.entry.get("id"): candidate for candidate in candidates
     }
@@ -781,6 +799,9 @@ def main():
         "skipped_duplicate_fixed": 0,
         "skipped_pointer_mismatch": 0,
         "skipped_implausible_pointer": 0,
+        "skipped_no_space": 0,
+        "skipped_no_space_bytes": 0,
+        "skipped_no_space_by_category": {},
         "skipped_bounds": 0,
         "encode_errors": 0,
         "fixed_overrides_used": 0,
@@ -800,6 +821,8 @@ def main():
     truncation_samples = []
     mismatch_samples = []
     implausible_samples = []
+    no_space_samples = []
+    missing_fixed_slots = []
     seen_fixed_slots = set()
 
     for entry in entries:
@@ -875,10 +898,25 @@ def main():
                     mismatch_samples.append(entry_id or "?")
                 continue
             candidate = candidates_by_id.get(entry_id)
-            if candidate is None or entry_id not in relocation_plan:
+            if candidate is None:
                 raise RuntimeError(
                     f"Missing transactional relocation plan for {entry_id or '?'}"
                 )
+            if entry_id not in relocation_plan:
+                missing_candidate = missing_candidates_by_id.get(entry_id)
+                if missing_candidate is None:
+                    raise RuntimeError(
+                        f"Missing transactional relocation plan for {entry_id or '?'}"
+                    )
+                category = entry.get("category", "unknown")
+                stats["skipped_no_space"] += 1
+                stats["skipped_no_space_bytes"] += len(missing_candidate.encoded)
+                stats["skipped_no_space_by_category"][category] = (
+                    stats["skipped_no_space_by_category"].get(category, 0) + 1
+                )
+                if len(no_space_samples) < 20:
+                    no_space_samples.append(entry_id or "?")
+                continue
 
             relocated_offset, storage_kind, shared_payload = relocation_plan[entry_id]
             sources = list(candidate.sources)
@@ -923,11 +961,33 @@ def main():
 
         if len(encoded) > max_size:
             if not args.allow_lossy_fit:
-                raise RuntimeError(
-                    "Lossy fixed-slot truncation refused for "
-                    f"{entry.get('id', '?')}: {len(encoded)} -> {max_size} bytes. "
-                    "Add a compact translated_fixed value or use --allow-lossy-fit."
+                if args.fail_on_no_space:
+                    raise RuntimeError(
+                        "Lossy fixed-slot truncation refused for "
+                        f"{entry.get('id', '?')}: {len(encoded)} -> {max_size} bytes. "
+                        "Add a compact translated_fixed value or omit "
+                        "--fail-on-no-space to leave it unchanged."
+                    )
+                entry_id = entry.get("id")
+                category = entry.get("category", "unknown")
+                stats["skipped_no_space"] += 1
+                stats["skipped_no_space_bytes"] += len(encoded)
+                stats["skipped_no_space_by_category"][category] = (
+                    stats["skipped_no_space_by_category"].get(category, 0) + 1
                 )
+                if len(no_space_samples) < 20:
+                    no_space_samples.append(entry_id or "?")
+                missing_fixed_slots.append(
+                    {
+                        "id": entry_id,
+                        "category": entry.get("category"),
+                        "offset": f"0x{address:X}",
+                        "encoded_bytes": len(encoded),
+                        "slot_bytes": max_size,
+                        "no_relocation": bool(entry.get("no_relocation")),
+                    }
+                )
+                continue
             stats["fixed_truncated"] += 1
             overflow = len(encoded) - max_size
             category = entry.get("category", "unknown")
@@ -975,6 +1035,19 @@ def main():
             "used_free_bytes": used_free_bytes,
             "remaining_free_bytes": remaining_free_bytes,
             "relocations": relocation_map,
+            "missing_relocations": [
+                {
+                    "id": candidate.entry.get("id"),
+                    "category": candidate.entry.get("category"),
+                    "old_offset": f"0x{candidate.address:X}",
+                    "byte_length": len(candidate.encoded),
+                    "pointer_sources": [
+                        f"0x{source:X}" for source in candidate.sources
+                    ],
+                }
+                for candidate in missing_candidates
+            ],
+            "missing_fixed_slots": missing_fixed_slots,
             "runtime_patches": runtime_patches,
         }
         report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
@@ -1001,6 +1074,15 @@ def main():
     print(f"Skipped duplicate fixed: {stats['skipped_duplicate_fixed']}")
     print(f"Pointer mismatches     : {stats['skipped_pointer_mismatch']}")
     print(f"Implausible pointers   : {stats['skipped_implausible_pointer']}")
+    print(f"Skipped no space       : {stats['skipped_no_space']}")
+    print(f"No-space bytes         : {stats['skipped_no_space_bytes']}")
+    if stats["skipped_no_space_by_category"]:
+        print("No-space categories    :")
+        for category, count in sorted(
+                stats["skipped_no_space_by_category"].items(),
+                key=lambda item: (-item[1], item[0]),
+        ):
+            print(f"  {category}: {count}")
     print(f"Skipped out-of-ROM     : {stats['skipped_bounds']}")
     print(f"Encode errors          : {stats['encode_errors']}")
     print(f"Fixed overrides used   : {stats['fixed_overrides_used']}")
@@ -1030,6 +1112,10 @@ def main():
     if implausible_samples:
         print("Implausible pointer sample:")
         for sample in implausible_samples:
+            print(f"  {sample}")
+    if no_space_samples:
+        print("No-space skip sample:")
+        for sample in no_space_samples:
             print(f"  {sample}")
     print(f"Output ROM             : {'(dry run)' if args.dry_run else output_path}")
     print("===================================")

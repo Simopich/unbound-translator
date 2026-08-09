@@ -163,6 +163,23 @@ class InjectionPriorityTests(unittest.TestCase):
         self.assertEqual(plan["duplicate"], (0x1000, "vetted_ff", True))
         self.assertEqual(missing, [])
 
+    def test_relocation_capacity_skips_by_default_and_can_be_strict(self):
+        missing = [
+            INJECTOR.RelocationCandidate(
+                entry={"id": "stays_english"},
+                address=0x2010,
+                max_size=8,
+                encoded=b"B" * 12,
+                sources=(0x44,),
+            )
+        ]
+
+        INJECTOR.enforce_relocation_capacity(missing, fail_on_no_space=False)
+        with self.assertRaisesRegex(
+            RuntimeError, "1 entries / 12 bytes do not fit"
+        ):
+            INJECTOR.enforce_relocation_capacity(missing, fail_on_no_space=True)
+
     def test_relocation_preflight_refuses_lossy_ability_compaction_by_default(self):
         rom = bytearray(b"\x00" * 0x400)
         address = 0x100

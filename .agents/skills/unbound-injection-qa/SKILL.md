@@ -18,11 +18,13 @@ python 005_hybrid_injector.py rom/unbound.gba ready-translations/it.json -o out/
 ```
 
 Use `--dry-run` for capacity/pointer preflight. Use OS-provided temporary storage or `out/debug-*` artifacts; never
-assume `/tmp` exists. Never use `--allow-lossy-fit` for a release.
+assume `/tmp` exists. Unfitted translations remain original by default and appear in the map; add
+`--fail-on-no-space` for strict capacity audits. Never use `--allow-lossy-fit` for a release.
 
 ## Safety Model
 
-- Generic writes begin only after every relocation candidate has a validated source and allocated destination.
+- Generic writes begin only after every applied relocation candidate has a validated source and allocated destination.
+  Candidates without space and oversized fixed slots stay unchanged and are reported, never truncated.
 - PCS text is byte-addressable; alignment 1 is valid.
 - `vetted_ff` destinations must remain inside `VETTED_FREE_SPACE_RANGES` and outside
   `FREE_SPACE_EXCLUDE_RANGES`.
@@ -36,8 +38,9 @@ assume `/tmp` exists. Never use `--allow-lossy-fit` for a release.
 ## Diagnosis
 
 Inspect map/report data for input count, free/used/remaining bytes, relocated and deduplicated entries, pointer writes,
-runtime patches, fixed overrides, skips, and per-category no-space/truncation data. Trace suspicious entry IDs through
-their original address, pointer sources, destination, storage kind, and encoded size.
+runtime patches, fixed overrides, `missing_relocations`, `missing_fixed_slots`, skips, and per-category
+no-space/truncation data. Trace suspicious entry IDs through their original address, pointer sources, destination,
+storage kind, and encoded size.
 
 For difficult Unbound-specific behavior, investigate locally first. Optionally compare against
 `out/working_fr.gba` or `https://github.com/AntonyKervazoCanut/gba_translator` as behavioral evidence only; do not copy

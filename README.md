@@ -62,8 +62,8 @@ need further testing. Please report reproducible issues with the affected screen
 - **Protected controls:** validates placeholders and game tokens before accepting translated batches.
 - **Layout-aware output:** wraps dialogue, menus, descriptions, missions, battle messages, and summary text for their
   actual renderers.
-- **Transactional injection:** validates every relocation and pointer update before writing the output ROM.
-- **No silent loss:** release builds refuse fixed-slot truncation, ability compaction, and incomplete relocation.
+- **Transactional injection:** validates every applied relocation and pointer update before writing the output ROM.
+- **No silent loss:** unfitted translations remain original and are listed in the map; strict builds can abort instead.
 - **Patch-only releases:** GitHub Actions publishes BPS files and never uploads a ROM.
 
 ## Use A Released Patch
@@ -246,9 +246,11 @@ The hybrid injector instead:
 4. Updates every verified pointer source to the new location.
 5. Applies target-language runtime patches before generic text writes.
 
-Relocation is transactional: all candidates must have valid sources and destinations before any generic text is
-written. Structured tables, menus, Pokedex data, abilities, battle data, generic pointer discoveries, hidden/interior
-pointers, and engine-reserved areas are not reclaimed.
+Relocation is transactional: every applied candidate has valid sources and a destination before generic text is
+written. Candidates without space, plus oversized fixed slots, remain unchanged and are reported in
+`missing_relocations`, `missing_fixed_slots`, and the no-space counters. Pass `--fail-on-no-space` when every
+translation must fit or the build must abort. Structured tables, menus, Pokedex data, abilities, battle data, generic
+pointer discoveries, hidden/interior pointers, and engine-reserved areas are not reclaimed.
 
 Fragile engine text is marked `no_relocation` and must remain in place. Fixed-size entries can provide a complete,
 token-safe `translated_fixed` display value while retaining full wording in `translated`. The diagnostic
@@ -308,8 +310,9 @@ Edit `translated`, rerun controlfix, and inject again. Decontrolfix preserves th
 python 005_hybrid_injector.py rom/unbound.gba ready-translations/it.json -o out/unbound-translated-it.gba --target-lang it --map-output out/hybrid-map-it.json --dry-run
 ```
 
-If transactional preflight fails, shorten translations category by category using natural phrasing before recognizable
-abbreviations. Never solve capacity by enabling lossy fitting.
+Inspect `missing_relocations`, `missing_fixed_slots`, and the no-space category counts. Shorten translations category
+by category using natural phrasing before recognizable abbreviations. Add `--fail-on-no-space` to make this audit fail
+until every entry fits. Never solve capacity by enabling lossy fitting.
 
 ## Troubleshooting
 
@@ -337,8 +340,9 @@ controlfix with the prepared source JSON and inspect `controlfix-report.json`.
 
 ### Relocation Preflight Does Not Fit
 
-Do not use `--allow-lossy-fit`. Confirm the failure with `--dry-run`, then shorten natural wording category by category
-while preserving meaning and protected tokens. A pointer mismatch or unsafe ownership problem belongs in injection or
+Do not use `--allow-lossy-fit`. Run with `--dry-run --fail-on-no-space`, then shorten natural wording category by
+category while preserving meaning and protected tokens. Without strict mode, inspect skipped no-space counters and map
+records; those entries remain original. A pointer mismatch or unsafe ownership problem belongs in injection or
 extraction logic, not translation shortening.
 
 ### The ROM Builds But A Screen Freezes Or Corrupts
