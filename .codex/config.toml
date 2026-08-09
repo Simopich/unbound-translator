@@ -1,13 +1,13 @@
-model = "gpt-5.5"
+model = "gpt-5.6-sol"
 model_reasoning_effort = "medium"
 model_reasoning_summary = "none"
 model_verbosity = "low"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
-web_search = "disabled"
+web_search = "cached"
 
 [agents]
-max_threads = 6
+max_threads = 10
 max_depth = 1
 job_max_runtime_seconds = 1800
 
