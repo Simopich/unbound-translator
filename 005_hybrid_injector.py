@@ -894,7 +894,8 @@ def plan_relocations(
         ):
             plan[entry_id] = (*cached, True)
             continue
-        if candidate.encoded in missing_payloads:
+        missing_key = (candidate.encoded, can_use_reclaimed)
+        if missing_key in missing_payloads:
             missing.append(candidate)
             continue
         offset, block = allocate_with_block(blocks, len(candidate.encoded), alignment)
@@ -905,7 +906,7 @@ def plan_relocations(
                 alignment,
             )
         if offset is None:
-            missing_payloads.add(candidate.encoded)
+            missing_payloads.add(missing_key)
             missing.append(candidate)
             continue
         payload_plan[candidate.encoded] = (offset, block.kind)

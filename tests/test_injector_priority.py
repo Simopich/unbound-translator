@@ -484,6 +484,47 @@ class InjectionPriorityTests(unittest.TestCase):
         )
         self.assertEqual(missing, [])
 
+    def test_unproven_failure_does_not_suppress_identical_proven_payload(self):
+        reclaimed = [
+            INJECTOR.FreeBlock(
+                0x2000,
+                0x2100,
+                0x2000,
+                "reclaimed_script_text",
+            )
+        ]
+        candidates = [
+            INJECTOR.RelocationCandidate(
+                entry={"id": "unproven", "category": "pointer_texts"},
+                address=0x3000,
+                max_size=8,
+                encoded=b"Shared\xFF",
+                sources=(0x40,),
+            ),
+            INJECTOR.RelocationCandidate(
+                entry={"id": "proven", "category": "pointer_texts"},
+                address=0x3010,
+                max_size=8,
+                encoded=b"Shared\xFF",
+                sources=(0x44,),
+            ),
+        ]
+
+        plan, missing = INJECTOR.plan_relocations(
+            [],
+            candidates,
+            1,
+            reclaimed,
+            reclaimed_entry_ids={"proven"},
+        )
+
+        self.assertNotIn("unproven", plan)
+        self.assertEqual(plan["proven"], (0x2000, "reclaimed_script_text", False))
+        self.assertEqual(
+            [candidate.entry["id"] for candidate in missing],
+            ["unproven"],
+        )
+
     def test_relocation_plan_deduplicates_identical_payloads(self):
         vetted = [INJECTOR.FreeBlock(0x1000, 0x1020, 0x1000)]
         candidates = [
