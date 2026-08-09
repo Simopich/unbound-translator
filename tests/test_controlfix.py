@@ -205,6 +205,21 @@ def test_wrap_translation_uses_plain_line_breaks_for_plain_scripts_and_descripti
     assert item_wrapped == "cura ogni\nproblema di\nstato del\npokemon"
 
 
+def test_move_descriptions_wrap_one_character_before_other_descriptions():
+    wrapped, changed, _long_words, skipped = controlfix.wrap_translation(
+        "uno due tre quattro cinque",
+        {"category": "move_descriptions"},
+        "Move description",
+        _args(description_wrap_width=12),
+        {"move_descriptions"},
+    )
+
+    assert changed
+    assert not skipped
+    assert wrapped == "uno due tre\nquattro\ncinque"
+    assert max(map(controlfix.visible_width, wrapped.splitlines())) <= 11
+
+
 def test_pokedex_description_uses_french_observed_three_line_budget():
     text = (
         "La composizione delle sue cellule è simile a quella delle molecole "
@@ -357,3 +372,13 @@ def test_mission_and_start_menu_labels_are_trimmed_to_width():
     assert mission_text == "Missione"
     assert start_changed
     assert start_text == "Impostazioni"
+
+
+def test_setting_names_use_screen_pixel_width_not_character_count():
+    text, changed = controlfix.trim_to_pixel_width("Opzioni generali", 93)
+    assert not changed
+    assert text == "Opzioni generali"
+
+    text, changed = controlfix.trim_to_pixel_width("Opzioni generali estese", 93)
+    assert changed
+    assert text == "Opzioni generali"

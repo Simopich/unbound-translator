@@ -3,6 +3,7 @@ from pathlib import Path
 
 import pytest
 
+from lib.gen3_font import text_pixel_width
 from lib.pcs_text import hma_quote
 from lib.translation_tokens import semantic_token_counts
 from tests.helpers import load_script_module
@@ -112,3 +113,95 @@ def test_ready_italian_compact_overrides_are_lossless_and_fit():
             assert len(encoded) <= int(entry["byte_length"]), entry["id"]
 
     assert checked > 0
+
+
+def test_misc_menu_text_respects_observed_screen_budgets():
+    entries = json.loads(READY_ITALIAN.read_text(encoding="utf-8"))["entries"]
+
+    setting_name_entries = [
+        entry
+        for entry in entries
+        if entry.get("category") == "setting_names"
+    ]
+    assert len(setting_name_entries) == 32
+    setting_name_budget = max(
+        text_pixel_width(entry["original"][1:-1]) for entry in setting_name_entries
+    )
+    assert setting_name_budget == 93
+    assert max(text_pixel_width(entry["translated"]) for entry in setting_name_entries) <= setting_name_budget
+
+    setting_description_entries = [
+        entry
+        for entry in entries
+        if entry.get("category") == "menu_game_settings"
+           and 0x1F4DD6D <= int(entry["address"], 16) <= 0x1F4E214
+    ]
+    assert len(setting_description_entries) == 36
+    setting_descriptions = [entry["translated"] for entry in setting_description_entries]
+    assert all("\n" not in text and "\\n" not in text for text in setting_descriptions)
+    description_budget = max(
+        text_pixel_width(entry["original"][1:-1])
+        for entry in setting_description_entries
+    )
+    assert description_budget == 224
+    assert max(map(text_pixel_width, setting_descriptions)) <= description_budget
+
+    summary_entries = [
+        entry
+        for entry in entries
+        if entry.get("category") == "menu_pokemon_summary"
+           and entry.get("table_index", 99) < 14
+    ]
+    assert len(summary_entries) == 14
+    for entry in summary_entries:
+        text = entry["translated"]
+        assert text.startswith("Natura \\?00.")
+        assert text.count("\\?00") == 1
+        assert max(map(text_pixel_width, text.splitlines())) <= 154
+
+
+def test_natures_and_pokedex_controls_keep_safe_complete_ownership():
+    entries = json.loads(READY_ITALIAN.read_text(encoding="utf-8"))["entries"]
+    by_id = {entry["id"]: entry for entry in entries}
+    natures = [entry for entry in entries if entry.get("category") == "nature_names"]
+    assert len(natures) == 25
+    for index, entry in enumerate(natures):
+        assert entry["pointer_sources"] == [
+            f"0x{0x463E60 + 4 * index:X}",
+            f"0x{0x1FE65F4 + 4 * index:X}",
+        ]
+        assert "translated_fixed" not in entry
+
+    cmap = INJECTOR.Charmap(target_lang="it")
+    compact_ids = {
+        "scr_415D2C",
+        "scr_415D48",
+        "scr_415D50",
+        "scr_415D60",
+        "scr_415D78",
+        "scr_415DC4",
+        "scr_415DCA",
+        "scr_415DD7",
+        "scr_415DE0",
+        "scr_415E95",
+        "scr_415EA4",
+        "scr_415ED5",
+        "scr_415F51",
+        "scr_415F6C",
+        "scr_415FB3",
+        "scr_415FCF",
+        "scr_416002",
+        "scr_A43AD4",
+        "scr_A43B61",
+        "tbl_menu_link_controls_00006_418E77",
+        "tbl_menu_link_controls_00012_418EB5",
+    }
+    for entry_id in compact_ids:
+        entry = by_id[entry_id]
+        fixed = entry["translated_fixed"]
+        assert semantic_token_counts(fixed) == semantic_token_counts(entry["translated"])
+        assert len(INJECTOR.encode_text(cmap, fixed)) <= int(entry["byte_length"])
+
+    cry = by_id["tbl_menu_pokedex_00000_415FAD"]
+    assert cry["translated"] == "\\btn04Verso"
+    assert cry["pointer_sources"] == ["0x105FE4", "0x1067B8"]

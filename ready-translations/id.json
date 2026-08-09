@@ -55192,10 +55192,13 @@
       "id": "tbl_nature_names_00000_463DBC",
       "category": "nature_names",
       "address": "0x463DBC",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463E60",
+        "0x1FE65F4"
+      ],
       "original": "\"Hardy\"",
       "byte_length": 6,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 0,
       "translation_source": "Hardy",
@@ -55205,10 +55208,13 @@
       "id": "tbl_nature_names_00001_463DC2",
       "category": "nature_names",
       "address": "0x463DC2",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463E64",
+        "0x1FE65F8"
+      ],
       "original": "\"Lonely\"",
       "byte_length": 7,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 1,
       "translation_source": "Lonely"
@@ -55217,10 +55223,13 @@
       "id": "tbl_nature_names_00002_463DC9",
       "category": "nature_names",
       "address": "0x463DC9",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463E68",
+        "0x1FE65FC"
+      ],
       "original": "\"Brave\"",
       "byte_length": 6,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 2,
       "translation_source": "Brave"
@@ -55229,10 +55238,13 @@
       "id": "tbl_nature_names_00003_463DCF",
       "category": "nature_names",
       "address": "0x463DCF",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463E6C",
+        "0x1FE6600"
+      ],
       "original": "\"Adamant\"",
       "byte_length": 8,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 3,
       "translation_source": "Adamant"
@@ -55241,10 +55253,13 @@
       "id": "tbl_nature_names_00004_463DD7",
       "category": "nature_names",
       "address": "0x463DD7",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463E70",
+        "0x1FE6604"
+      ],
       "original": "\"Naughty\"",
       "byte_length": 8,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 4,
       "translation_source": "Naughty",
@@ -55254,10 +55269,13 @@
       "id": "tbl_nature_names_00005_463DDF",
       "category": "nature_names",
       "address": "0x463DDF",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463E74",
+        "0x1FE6608"
+      ],
       "original": "\"Bold\"",
       "byte_length": 5,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 5,
       "translation_source": "Bold"
@@ -55266,10 +55284,13 @@
       "id": "tbl_nature_names_00006_463DE4",
       "category": "nature_names",
       "address": "0x463DE4",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463E78",
+        "0x1FE660C"
+      ],
       "original": "\"Docile\"",
       "byte_length": 7,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 6,
       "translation_source": "Docile"
@@ -55278,10 +55299,13 @@
       "id": "tbl_nature_names_00007_463DEB",
       "category": "nature_names",
       "address": "0x463DEB",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463E7C",
+        "0x1FE6610"
+      ],
       "original": "\"Relaxed\"",
       "byte_length": 8,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 7,
       "translation_source": "Relaxed",
@@ -55291,10 +55315,13 @@
       "id": "tbl_nature_names_00008_463DF3",
       "category": "nature_names",
       "address": "0x463DF3",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463E80",
+        "0x1FE6614"
+      ],
       "original": "\"Impish\"",
       "byte_length": 7,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 8,
       "translation_source": "Impish",
@@ -55304,10 +55331,13 @@
       "id": "tbl_nature_names_00009_463DFA",
       "category": "nature_names",
       "address": "0x463DFA",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463E84",
+        "0x1FE6618"
+      ],
       "original": "\"Lax\"",
       "byte_length": 4,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 9,
       "translation_source": "Lax"
@@ -55316,10 +55346,13 @@
       "id": "tbl_nature_names_00010_463DFE",
       "category": "nature_names",
       "address": "0x463DFE",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463E88",
+        "0x1FE661C"
+      ],
       "original": "\"Timid\"",
       "byte_length": 6,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 10,
       "translation_source": "Timid"
@@ -55328,10 +55361,13 @@
       "id": "tbl_nature_names_00011_463E04",
       "category": "nature_names",
       "address": "0x463E04",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463E8C",
+        "0x1FE6620"
+      ],
       "original": "\"Hasty\"",
       "byte_length": 6,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 11,
       "translation_source": "Hasty"
@@ -55340,10 +55376,13 @@
       "id": "tbl_nature_names_00012_463E0A",
       "category": "nature_names",
       "address": "0x463E0A",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463E90",
+        "0x1FE6624"
+      ],
       "original": "\"Serious\"",
       "byte_length": 8,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 12,
       "translation_source": "Serious",
@@ -55353,10 +55392,13 @@
       "id": "tbl_nature_names_00013_463E12",
       "category": "nature_names",
       "address": "0x463E12",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463E94",
+        "0x1FE6628"
+      ],
       "original": "\"Jolly\"",
       "byte_length": 6,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 13,
       "translation_source": "Jolly",
@@ -55366,10 +55408,13 @@
       "id": "tbl_nature_names_00014_463E18",
       "category": "nature_names",
       "address": "0x463E18",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463E98",
+        "0x1FE662C"
+      ],
       "original": "\"Naive\"",
       "byte_length": 6,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 14,
       "translation_source": "Naive",
@@ -55379,10 +55424,13 @@
       "id": "tbl_nature_names_00015_463E1E",
       "category": "nature_names",
       "address": "0x463E1E",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463E9C",
+        "0x1FE6630"
+      ],
       "original": "\"Modest\"",
       "byte_length": 7,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 15,
       "translation_source": "Modest"
@@ -55391,10 +55439,13 @@
       "id": "tbl_nature_names_00016_463E25",
       "category": "nature_names",
       "address": "0x463E25",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463EA0",
+        "0x1FE6634"
+      ],
       "original": "\"Mild\"",
       "byte_length": 5,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 16,
       "translation_source": "Mild"
@@ -55403,10 +55454,13 @@
       "id": "tbl_nature_names_00017_463E2A",
       "category": "nature_names",
       "address": "0x463E2A",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463EA4",
+        "0x1FE6638"
+      ],
       "original": "\"Quiet\"",
       "byte_length": 6,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 17,
       "translation_source": "Quiet"
@@ -55415,10 +55469,13 @@
       "id": "tbl_nature_names_00018_463E30",
       "category": "nature_names",
       "address": "0x463E30",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463EA8",
+        "0x1FE663C"
+      ],
       "original": "\"Bashful\"",
       "byte_length": 8,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 18,
       "translation_source": "Bashful",
@@ -55428,10 +55485,13 @@
       "id": "tbl_nature_names_00019_463E38",
       "category": "nature_names",
       "address": "0x463E38",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463EAC",
+        "0x1FE6640"
+      ],
       "original": "\"Rash\"",
       "byte_length": 5,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 19,
       "translation_source": "Rash"
@@ -55440,10 +55500,13 @@
       "id": "tbl_nature_names_00020_463E3D",
       "category": "nature_names",
       "address": "0x463E3D",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463EB0",
+        "0x1FE6644"
+      ],
       "original": "\"Calm\"",
       "byte_length": 5,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 20,
       "translation_source": "Calm"
@@ -55452,10 +55515,13 @@
       "id": "tbl_nature_names_00021_463E42",
       "category": "nature_names",
       "address": "0x463E42",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463EB4",
+        "0x1FE6648"
+      ],
       "original": "\"Gentle\"",
       "byte_length": 7,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 21,
       "translation_source": "Gentle",
@@ -55465,10 +55531,13 @@
       "id": "tbl_nature_names_00022_463E49",
       "category": "nature_names",
       "address": "0x463E49",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463EB8",
+        "0x1FE664C"
+      ],
       "original": "\"Sassy\"",
       "byte_length": 6,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 22,
       "translation_source": "Sassy"
@@ -55477,10 +55546,13 @@
       "id": "tbl_nature_names_00023_463E4F",
       "category": "nature_names",
       "address": "0x463E4F",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463EBC",
+        "0x1FE6650"
+      ],
       "original": "\"Careful\"",
       "byte_length": 8,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 23,
       "translation_source": "Careful"
@@ -55489,10 +55561,13 @@
       "id": "tbl_nature_names_00024_463E57",
       "category": "nature_names",
       "address": "0x463E57",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x463EC0",
+        "0x1FE6654"
+      ],
       "original": "\"Quirky\"",
       "byte_length": 7,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.pokemon.natures.names",
       "table_index": 24,
       "translation_source": "Quirky",
@@ -138617,6 +138692,22 @@
       "byte_length": 9,
       "is_pointer_based": true,
       "translation_source": "Pokémon"
+    },
+    {
+      "id": "tbl_menu_pokedex_00000_415FAD",
+      "category": "menu_pokedex",
+      "address": "0x415FAD",
+      "pointer_sources": [
+        "0x105FE4",
+        "0x1067B8"
+      ],
+      "original": "\"\\btn04Cry\"",
+      "byte_length": 6,
+      "is_pointer_based": true,
+      "table_name": "data.menus.text.pokedex.controls",
+      "table_index": 0,
+      "translation_source": "Cry",
+      "translated": "\\btn04Cry"
     },
     {
       "id": "scr_415FB3",

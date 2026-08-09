@@ -492,6 +492,10 @@ def wrap_width_for_entry(entry, args):
         return args.mission_objective_wrap_width
     if entry.get("category") == "item_descriptions":
         return args.item_description_wrap_width
+    if entry.get("category") == "move_descriptions":
+        # Move-summary box is one glyph narrower than the other description
+        # boxes.  Keeping its right edge one character early prevents clipping.
+        return max(1, args.description_wrap_width - 1)
     if entry.get("category") in DESCRIPTION_CATEGORIES:
         return args.description_wrap_width
     return args.wrap_width
@@ -798,6 +802,30 @@ def trim_to_width(text, max_width):
     return trimmed, trimmed != text
 
 
+def trim_to_pixel_width(text, max_pixels):
+    plain_text, _removed_layout = remove_layout_tokens(text)
+    if max_pixels <= 0 or text_pixel_width(plain_text) <= max_pixels:
+        return text, False
+    words = plain_text.split()
+    if not words:
+        return text, False
+    kept = []
+    for word in words:
+        candidate = " ".join(kept + [word])
+        if text_pixel_width(candidate) > max_pixels:
+            break
+        kept.append(word)
+    if kept:
+        trimmed = " ".join(kept)
+    else:
+        trimmed = ""
+        for char in plain_text:
+            if text_pixel_width(trimmed + char) > max_pixels:
+                break
+            trimmed += char
+    return trimmed, trimmed != text
+
+
 def trim_mission_name(text, max_width):
     return trim_to_width(text, max_width)
 
@@ -848,7 +876,10 @@ def main():
         "--description-wrap-width",
         type=int,
         default=24,
-        help="Visible character width for move/ability descriptions. Default: 24.",
+        help=(
+            "Visible character width for ability descriptions; move descriptions "
+            "use one character less. Default: 24."
+        ),
     )
     parser.add_argument(
         "--mission-description-max-pixels",
@@ -933,8 +964,8 @@ def main():
     parser.add_argument(
         "--setting-name-max-width",
         type=int,
-        default=15,
-        help="Maximum visible width for game setting names. Default: 15.",
+        default=93,
+        help="Maximum pixel width for game setting names. Default: 93.",
     )
     args = parser.parse_args()
 
@@ -1048,7 +1079,9 @@ def main():
         text = next_text
 
         if entry.get("category") == "setting_names":
-            next_text, setting_trimmed = trim_to_width(text, args.setting_name_max_width)
+            next_text, setting_trimmed = trim_to_pixel_width(
+                text, args.setting_name_max_width
+            )
             stats["setting_name_trims"] += int(setting_trimmed)
             text = next_text
 

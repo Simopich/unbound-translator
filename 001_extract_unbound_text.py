@@ -143,6 +143,16 @@ SEQUENTIAL_TABLES = [
 ]
 
 POINTER_TABLES = [
+    # Both summary implementations read the same 25 nature strings through
+    # pointer tables.  Recording both owners lets translated nature names move
+    # without leaving either summary screen pointing at their old fixed slots.
+    PointerTable("nature_names", "data.pokemon.natures.summary", 0x463E60, 25),
+    PointerTable(
+        "nature_names",
+        "data.pokemon.natures.summaryAlternate",
+        0x1FE65F4,
+        25,
+    ),
     # Unbound has 293 ability names, but the ability-description pointer table
     # only contains valid text pointers through index 254. The following words
     # point into non-text data and decode as control-heavy garbage.
@@ -239,6 +249,10 @@ DEFAULT_MENU_AUDIT_STRINGS = [
 ]
 
 MANUAL_TEXT_TABLES = {
+    "menu_pokedex": (
+        "data.menus.text.pokedex.controls",
+        [0x415FAD],  # \btn04Cry; two summary-page pointer owners
+    ),
     "menu_common": (
         "data.text.menu.common",
         [

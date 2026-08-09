@@ -19,6 +19,22 @@ def decode(text: str):
 
 
 class AlignedPointerTextTests(unittest.TestCase):
+    def test_nature_names_have_both_summary_pointer_tables(self):
+        nature_tables = [
+            table
+            for table in EXTRACTOR.POINTER_TABLES
+            if table.category == "nature_names"
+        ]
+        self.assertEqual(
+            [(table.start, table.count) for table in nature_tables],
+            [(0x463E60, 25), (0x1FE65F4, 25)],
+        )
+
+    def test_pokedex_cry_control_has_explicit_owner(self):
+        table_name, addresses = EXTRACTOR.MANUAL_TEXT_TABLES["menu_pokedex"]
+        self.assertEqual(table_name, "data.menus.text.pokedex.controls")
+        self.assertEqual(addresses, [0x415FAD])
+
     def test_accepts_sentence_and_short_label(self):
         self.assertTrue(
             EXTRACTOR.looks_like_aligned_pointer_text(
