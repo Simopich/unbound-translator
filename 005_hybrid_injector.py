@@ -743,6 +743,48 @@ def build_reclaimed_script_text_blocks(
     return blocks, owner_ids
 
 
+def select_reclaimed_script_text_blocks(blocks, candidates, allowed_owner_ids):
+    """Restrict prevalidated reclaimed ranges to relocated owner slots."""
+    allowed_owner_ids = set(allowed_owner_ids)
+    candidate_by_id = {
+        candidate.entry.get("id"): candidate for candidate in candidates
+    }
+    allowed_ranges = merge_ranges(
+        (
+            candidate_by_id[entry_id].address,
+            candidate_by_id[entry_id].address
+            + candidate_by_id[entry_id].max_size,
+        )
+        for entry_id in allowed_owner_ids
+        if entry_id in candidate_by_id
+    )
+    selected_ranges = []
+    for block in blocks:
+        for start, end in allowed_ranges:
+            overlap_start = max(block.start, start)
+            overlap_end = min(block.end, end)
+            if overlap_start < overlap_end:
+                selected_ranges.append((overlap_start, overlap_end))
+
+    selected_ranges = merge_ranges(selected_ranges)
+    selected_owner_ids = {
+        entry_id
+        for entry_id in allowed_owner_ids
+        if entry_id in candidate_by_id
+        and any(
+            start
+            < candidate_by_id[entry_id].address
+            + candidate_by_id[entry_id].max_size
+            and candidate_by_id[entry_id].address < end
+            for start, end in selected_ranges
+        )
+    }
+    return [
+        FreeBlock(start, end, start, "reclaimed_script_text")
+        for start, end in selected_ranges
+    ], selected_owner_ids
+
+
 def reference_proven_pointer_text_ids(source_rom, reference_rom, candidates):
     """Return heuristic entries independently repointed by a working ROM."""
     if len(reference_rom) != len(source_rom):
@@ -785,6 +827,43 @@ def reference_proven_pointer_text_ids(source_rom, reference_rom, candidates):
         if reference_targets and len(set(reference_targets)) == 1:
             proven.add(candidate.entry.get("id"))
     return proven
+
+
+def table_proven_pointer_text_ids(rom, entries, candidates, minimum_records=8):
+    """Prove pointer operands by membership in regular extracted tables."""
+    known_sources = set()
+    for entry in entries:
+        try:
+            expected = GBA_POINTER_BASE + parse_address(entry["address"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        for raw_source in pointer_sources(entry):
+            try:
+                source = parse_address(raw_source)
+            except (TypeError, ValueError):
+                continue
+            if current_pointer_matches(rom, source, expected):
+                known_sources.add(source)
+
+    def belongs_to_regular_run(source):
+        for stride in range(4, 49, 4):
+            start = source
+            while start - stride in known_sources:
+                start -= stride
+            end = source
+            while end + stride in known_sources:
+                end += stride
+            if (end - start) // stride + 1 >= minimum_records:
+                return True
+        return False
+
+    return {
+        candidate.entry.get("id")
+        for candidate in candidates
+        if candidate.entry.get("category") == "pointer_texts"
+        and candidate.sources
+        and all(belongs_to_regular_run(source) for source in candidate.sources)
+    }
 
 
 def plan_relocations(
@@ -936,7 +1015,7 @@ def main():
         help=(
             "Experimentally reuse fully owned high-bank script literals after "
             "vetted FF space. Reclaimed destinations accept explicit scripts "
-            "only; heuristic pointer_texts remain unchanged."
+            "and pointer_texts enabled by a separate proof option."
         ),
     )
     parser.add_argument(
@@ -944,6 +1023,15 @@ def main():
         help=(
             "Working translated ROM used to prove heuristic pointer_texts "
             "ownership before placing those entries in reclaimed script slots. "
+            "Requires --reclaim-script-slots."
+        ),
+    )
+    parser.add_argument(
+        "--reclaim-pointer-tables",
+        action="store_true",
+        help=(
+            "Experimentally allow pointer_texts whose every source belongs "
+            "to a regular table of at least eight extracted pointer fields. "
             "Requires --reclaim-script-slots."
         ),
     )
@@ -979,6 +1067,10 @@ def main():
         raise ValueError(
             "--reclaim-reference-rom requires --reclaim-script-slots"
         )
+    if args.reclaim_pointer_tables and not args.reclaim_script_slots:
+        raise ValueError(
+            "--reclaim-pointer-tables requires --reclaim-script-slots"
+        )
 
     rom = bytearray(rom_path.read_bytes())
     source_rom = bytes(rom)
@@ -1012,28 +1104,31 @@ def main():
     )
     reclaimed_blocks = []
     reclaimed_owner_ids = set()
+    vetted_reclaimed_owner_ids = set()
     reference_proven_ids = set()
+    table_proven_ids = set()
     if args.reclaim_script_slots:
-        preliminary_blocks = [
+        reclamation_base_blocks = [
             FreeBlock(block.start, block.end, block.cursor, block.kind)
             for block in free_blocks
         ]
+        vetted_blocks = [
+            FreeBlock(block.start, block.end, block.cursor, block.kind)
+            for block in reclamation_base_blocks
+        ]
         preliminary_plan, _preliminary_missing = plan_relocations(
-            preliminary_blocks,
+            vetted_blocks,
             candidates,
             args.alignment,
         )
-        vetted_owner_ids = {
+        all_reclaimed_blocks, all_reclaimed_owner_ids = (
+            build_reclaimed_script_text_blocks(rom, candidates, entries)
+        )
+        vetted_reclaimed_owner_ids = {
             entry_id
             for entry_id, (_offset, storage, _shared) in preliminary_plan.items()
-            if storage == "vetted_ff"
+            if storage == "vetted_ff" and entry_id in all_reclaimed_owner_ids
         }
-        reclaimed_blocks, reclaimed_owner_ids = build_reclaimed_script_text_blocks(
-            rom,
-            candidates,
-            entries,
-            vetted_owner_ids,
-        )
         if args.reclaim_reference_rom:
             reference_rom = Path(args.reclaim_reference_rom).read_bytes()
             reference_proven_ids = reference_proven_pointer_text_ids(
@@ -1041,13 +1136,52 @@ def main():
                 reference_rom,
                 candidates,
             )
-    relocation_plan, missing_candidates = plan_relocations(
-        free_blocks,
-        candidates,
-        args.alignment,
-        reclaimed_blocks,
-        reclaimed_entry_ids=reference_proven_ids,
-    )
+        if args.reclaim_pointer_tables:
+            table_proven_ids = table_proven_pointer_text_ids(
+                source_rom,
+                entries,
+                candidates,
+            )
+        reclaimed_consumer_ids = reference_proven_ids | table_proven_ids
+        active_owner_ids = set(vetted_reclaimed_owner_ids)
+        while True:
+            trial_free_blocks = [
+                FreeBlock(block.start, block.end, block.cursor, block.kind)
+                for block in reclamation_base_blocks
+            ]
+            trial_reclaimed_blocks, trial_owner_ids = (
+                select_reclaimed_script_text_blocks(
+                    all_reclaimed_blocks,
+                    candidates,
+                    active_owner_ids,
+                )
+            )
+            trial_plan, trial_missing = plan_relocations(
+                trial_free_blocks,
+                candidates,
+                args.alignment,
+                trial_reclaimed_blocks,
+                reclaimed_entry_ids=reclaimed_consumer_ids,
+            )
+            next_owner_ids = all_reclaimed_owner_ids.intersection(trial_plan)
+            if next_owner_ids == active_owner_ids:
+                free_blocks = trial_free_blocks
+                reclaimed_blocks = trial_reclaimed_blocks
+                reclaimed_owner_ids = trial_owner_ids
+                relocation_plan = trial_plan
+                missing_candidates = trial_missing
+                break
+            if not next_owner_ids.issuperset(active_owner_ids):
+                raise RuntimeError(
+                    "Reclaimed-slot ownership expansion was not monotonic"
+                )
+            active_owner_ids = next_owner_ids
+    else:
+        relocation_plan, missing_candidates = plan_relocations(
+            free_blocks,
+            candidates,
+            args.alignment,
+        )
     missing_reclaimed_owners = reclaimed_owner_ids - relocation_plan.keys()
     if missing_reclaimed_owners:
         sample = ", ".join(sorted(missing_reclaimed_owners)[:10])
@@ -1055,18 +1189,6 @@ def main():
             "Reclaimed-slot ownership closure failed: "
             f"{len(missing_reclaimed_owners)} owners lack relocation plans "
             f"({sample})"
-        )
-    non_vetted_reclaimed_owners = {
-        entry_id
-        for entry_id in reclaimed_owner_ids
-        if relocation_plan[entry_id][1] != "vetted_ff"
-    }
-    if non_vetted_reclaimed_owners:
-        sample = ", ".join(sorted(non_vetted_reclaimed_owners)[:10])
-        raise RuntimeError(
-            "Reclaimed-slot seed plan changed: "
-            f"{len(non_vetted_reclaimed_owners)} owners no longer use vetted FF "
-            f"destinations ({sample})"
         )
     candidate_by_id = {
         candidate.entry.get("id"): candidate for candidate in candidates
@@ -1108,8 +1230,10 @@ def main():
             block.end - block.start for block in reclaimed_blocks
         ),
         "reclaimable_text_owners": len(reclaimed_owner_ids),
+        "vetted_reclaim_seed_owners": len(vetted_reclaimed_owner_ids),
         "used_reclaimed_text_owners": len(used_reclaimed_owner_ids),
         "reference_proven_pointer_texts": len(reference_proven_ids),
+        "table_proven_pointer_texts": len(table_proven_ids),
         "relocated": 0,
         "deduplicated_relocations": 0,
         "relocated_bytes": 0,
@@ -1366,6 +1490,7 @@ def main():
             "reclaimable_slot_owners": sorted(reclaimed_owner_ids),
             "reclaimed_slot_owners": sorted(used_reclaimed_owner_ids),
             "reference_proven_pointer_text_ids": sorted(reference_proven_ids),
+            "table_proven_pointer_text_ids": sorted(table_proven_ids),
             "relocations": relocation_map,
             "missing_relocations": [
                 {
@@ -1397,6 +1522,7 @@ def main():
     print(f"Reclaimable owners     : {stats['reclaimable_text_owners']}")
     print(f"Reclaimed slot owners  : {stats['used_reclaimed_text_owners']}")
     print(f"Reference-proven texts : {stats['reference_proven_pointer_texts']}")
+    print(f"Table-proven texts     : {stats['table_proven_pointer_texts']}")
     print(f"Used free bytes        : {used_free_bytes}")
     print(f"Used reclaimed bytes   : {used_reclaimed_text_bytes}")
     print(f"Remaining free bytes   : {remaining_free_bytes}")

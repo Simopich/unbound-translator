@@ -228,6 +228,56 @@ class InjectionPriorityTests(unittest.TestCase):
         self.assertEqual(owners, set())
         self.assertEqual(blocks, [])
 
+    def test_reclaimed_blocks_expand_only_for_relocated_owner_generations(self):
+        first = INJECTOR.RelocationCandidate(
+            entry={"id": "first", "category": "scripts"},
+            address=0x100,
+            max_size=0x20,
+            encoded=b"A" * 0x30,
+            sources=(0x20,),
+        )
+        second = INJECTOR.RelocationCandidate(
+            entry={"id": "second", "category": "scripts"},
+            address=0x120,
+            max_size=0x20,
+            encoded=b"B" * 0x30,
+            sources=(0x40,),
+        )
+        validated = [
+            INJECTOR.FreeBlock(
+                0x100,
+                0x140,
+                0x100,
+                "reclaimed_script_text",
+            )
+        ]
+
+        first_blocks, first_owners = (
+            INJECTOR.select_reclaimed_script_text_blocks(
+                validated,
+                [first, second],
+                {"first"},
+            )
+        )
+        expanded_blocks, expanded_owners = (
+            INJECTOR.select_reclaimed_script_text_blocks(
+                validated,
+                [first, second],
+                {"first", "second"},
+            )
+        )
+
+        self.assertEqual(first_owners, {"first"})
+        self.assertEqual(
+            [(block.start, block.end) for block in first_blocks],
+            [(0x100, 0x120)],
+        )
+        self.assertEqual(expanded_owners, {"first", "second"})
+        self.assertEqual(
+            [(block.start, block.end) for block in expanded_blocks],
+            [(0x100, 0x140)],
+        )
+
     def test_reference_rom_proves_pointer_text_ownership(self):
         source_rom = bytearray(b"\x00" * 0x300)
         reference_rom = bytearray(source_rom)
@@ -264,6 +314,45 @@ class InjectionPriorityTests(unittest.TestCase):
             ),
             set(),
         )
+
+    def test_regular_extracted_pointer_table_proves_every_candidate_source(self):
+        rom = bytearray(b"\x00" * 0x500)
+        entries = []
+        for index in range(8):
+            source = 0x40 + index * 4
+            address = 0x200 + index * 8
+            rom[source : source + 4] = (
+                INJECTOR.GBA_POINTER_BASE + address
+            ).to_bytes(4, "little")
+            entries.append(
+                {
+                    "id": f"entry_{index}",
+                    "address": hex(address),
+                    "pointer_sources": [hex(source)],
+                }
+            )
+        proven = INJECTOR.RelocationCandidate(
+            entry={"id": "proven", "category": "pointer_texts"},
+            address=0x200,
+            max_size=8,
+            encoded=b"Italiano\xFF",
+            sources=(0x40,),
+        )
+        partly_isolated = INJECTOR.RelocationCandidate(
+            entry={"id": "isolated", "category": "pointer_texts"},
+            address=0x208,
+            max_size=8,
+            encoded=b"Italiano\xFF",
+            sources=(0x44, 0x100),
+        )
+
+        result = INJECTOR.table_proven_pointer_text_ids(
+            rom,
+            entries,
+            [proven, partly_isolated],
+        )
+
+        self.assertEqual(result, {"proven"})
 
     def test_ability_description_compaction_is_bounded_at_word_boundary(self):
         encoded = b"Aumenta\x00Attacco\x00se\x00colpito\x00da\x00una\x00mossa\x00Erba\xFF"
