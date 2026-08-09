@@ -28,9 +28,11 @@ assume `/tmp` exists. Unfitted translations remain original by default and appea
 - PCS text is byte-addressable; alignment 1 is valid.
 - `vetted_ff` destinations must remain inside `VETTED_FREE_SPACE_RANGES` and outside
   `FREE_SPACE_EXCLUDE_RANGES`.
-- `reclaimed_script_text` may contain only `scripts` literals fully inside `0x1EE0000-0x1FB0000` whose references are
-  all direct script `0x0F`/`0x67` operands. Whole-ROM scanning must find no hidden exact/interior pointers; subtract
-  pointer operands, overlapping entries, and non-owned ranges.
+- `--reclaim-script-slots` is experimental. `reclaimed_script_text` may contain only `scripts` literals fully inside
+  `0x1EE0000-0x1FB0000` whose owners already have independent `vetted_ff` destinations. Sources must be explicit
+  `loadword 0; callstd 2..6` or high-bank `message` operands. Whole-ROM scanning must find no hidden exact/interior
+  pointers; subtract pointer operands, overlapping entries, and non-owned ranges. Reclaimed destinations accept only
+  `scripts`/`plain_scripts`; never use the added capacity to activate heuristic `pointer_texts`.
 - Never reclaim structured tables, Pokédex text, menus, abilities, battle data, generic `pointer_texts`, or arbitrary
   old slots.
 - `no_relocation` text must fit in place through complete token-safe wording, normally `translated_fixed`.

@@ -2,6 +2,7 @@ import importlib.util
 import sys
 import unittest
 from pathlib import Path
+from unittest import mock
 
 SCRIPT_PATH = Path(__file__).resolve().parents[1] / "005_hybrid_injector.py"
 SPEC = importlib.util.spec_from_file_location("hybrid_injector", SCRIPT_PATH)
@@ -92,6 +93,141 @@ class InjectionPriorityTests(unittest.TestCase):
             [(0x1820, 0x1860)],
         )
 
+    def test_reclaim_requires_explicit_msgbox_consumption(self):
+        rom = bytearray(b"\x00" * 0x100)
+        source = 0x20
+        rom[source - 2 : source] = b"\x0F\x00"
+        rom[source + 4 : source + 6] = b"\x09\x04"
+
+        self.assertTrue(INJECTOR.is_explicit_script_message_source(rom, source))
+
+        rom[source + 4 : source + 6] = b"\x16\x00"
+        self.assertFalse(INJECTOR.is_explicit_script_message_source(rom, source))
+
+    def test_reclaim_accepts_only_fully_owned_script_literal(self):
+        rom = bytearray(b"\x00" * 0x400)
+        address = 0x100
+        source = 0x20
+        rom[source - 2 : source] = b"\x0F\x00"
+        rom[source : source + 4] = (
+            INJECTOR.GBA_POINTER_BASE + address
+        ).to_bytes(4, "little")
+        rom[source + 4 : source + 6] = b"\x09\x04"
+        entry = {
+            "id": "script",
+            "category": "scripts",
+            "address": hex(address),
+            "byte_length": 0x20,
+            "pointer_sources": [hex(source)],
+        }
+        candidate = INJECTOR.RelocationCandidate(
+            entry=entry,
+            address=address,
+            max_size=0x20,
+            encoded=b"Italiano\xFF",
+            sources=(source,),
+        )
+
+        with mock.patch.object(
+            INJECTOR,
+            "RECLAIMABLE_SCRIPT_TEXT_RANGES",
+            ((0x100, 0x200),),
+        ):
+            blocks, owners = INJECTOR.build_reclaimed_script_text_blocks(
+                rom,
+                [candidate],
+                [entry],
+            )
+
+        self.assertTrue(candidate.reclaimable)
+        self.assertEqual(owners, {"script"})
+        self.assertEqual(
+            [(block.start, block.end, block.kind) for block in blocks],
+            [(0x100, 0x120, "reclaimed_script_text")],
+        )
+
+    def test_reclaim_rejects_hidden_pointer_into_literal(self):
+        rom = bytearray(b"\x00" * 0x400)
+        address = 0x100
+        source = 0x20
+        rom[source - 2 : source] = b"\x0F\x00"
+        rom[source : source + 4] = (
+            INJECTOR.GBA_POINTER_BASE + address
+        ).to_bytes(4, "little")
+        rom[source + 4 : source + 6] = b"\x09\x04"
+        rom[0x31:0x35] = (
+            INJECTOR.GBA_POINTER_BASE + address + 8
+        ).to_bytes(4, "little")
+        entry = {
+            "id": "script",
+            "category": "scripts",
+            "address": hex(address),
+            "byte_length": 0x20,
+            "pointer_sources": [hex(source)],
+        }
+        candidate = INJECTOR.RelocationCandidate(
+            entry=entry,
+            address=address,
+            max_size=0x20,
+            encoded=b"Italiano\xFF",
+            sources=(source,),
+        )
+
+        with mock.patch.object(
+            INJECTOR,
+            "RECLAIMABLE_SCRIPT_TEXT_RANGES",
+            ((0x100, 0x200),),
+        ):
+            blocks, owners = INJECTOR.build_reclaimed_script_text_blocks(
+                rom,
+                [candidate],
+                [entry],
+            )
+
+        self.assertFalse(candidate.reclaimable)
+        self.assertEqual(owners, set())
+        self.assertEqual(blocks, [])
+
+    def test_reclaim_requires_owner_seeded_in_vetted_space(self):
+        rom = bytearray(b"\x00" * 0x400)
+        address = 0x100
+        source = 0x20
+        rom[source - 2 : source] = b"\x0F\x00"
+        rom[source : source + 4] = (
+            INJECTOR.GBA_POINTER_BASE + address
+        ).to_bytes(4, "little")
+        rom[source + 4 : source + 6] = b"\x09\x04"
+        entry = {
+            "id": "script",
+            "category": "scripts",
+            "address": hex(address),
+            "byte_length": 0x20,
+            "pointer_sources": [hex(source)],
+        }
+        candidate = INJECTOR.RelocationCandidate(
+            entry=entry,
+            address=address,
+            max_size=0x20,
+            encoded=b"Italiano\xFF",
+            sources=(source,),
+        )
+
+        with mock.patch.object(
+            INJECTOR,
+            "RECLAIMABLE_SCRIPT_TEXT_RANGES",
+            ((0x100, 0x200),),
+        ):
+            blocks, owners = INJECTOR.build_reclaimed_script_text_blocks(
+                rom,
+                [candidate],
+                [entry],
+                allowed_owner_ids=set(),
+            )
+
+        self.assertFalse(candidate.reclaimable)
+        self.assertEqual(owners, set())
+        self.assertEqual(blocks, [])
+
     def test_ability_description_compaction_is_bounded_at_word_boundary(self):
         encoded = b"Aumenta\x00Attacco\x00se\x00colpito\x00da\x00una\x00mossa\x00Erba\xFF"
 
@@ -146,6 +282,50 @@ class InjectionPriorityTests(unittest.TestCase):
         self.assertEqual([candidate.entry["id"] for candidate in missing], [
             "stays_english"
         ])
+
+    def test_reclaimed_storage_does_not_activate_pointer_discoveries(self):
+        vetted = [INJECTOR.FreeBlock(0x1000, 0x1008, 0x1000)]
+        reclaimed = [
+            INJECTOR.FreeBlock(
+                0x2000,
+                0x2100,
+                0x2000,
+                "reclaimed_script_text",
+            )
+        ]
+        candidates = [
+            INJECTOR.RelocationCandidate(
+                entry={"id": "script", "category": "scripts"},
+                address=0x3000,
+                max_size=8,
+                encoded=b"A" * 12,
+                sources=(0x40,),
+            ),
+            INJECTOR.RelocationCandidate(
+                entry={"id": "discovery", "category": "pointer_texts"},
+                address=0x3010,
+                max_size=8,
+                encoded=b"B" * 12,
+                sources=(0x44,),
+            ),
+        ]
+
+        plan, missing = INJECTOR.plan_relocations(
+            vetted,
+            candidates,
+            1,
+            reclaimed,
+        )
+
+        self.assertEqual(
+            plan["script"],
+            (0x2000, "reclaimed_script_text", False),
+        )
+        self.assertNotIn("discovery", plan)
+        self.assertEqual(
+            [candidate.entry["id"] for candidate in missing],
+            ["discovery"],
+        )
 
     def test_relocation_plan_deduplicates_identical_payloads(self):
         vetted = [INJECTOR.FreeBlock(0x1000, 0x1020, 0x1000)]

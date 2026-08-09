@@ -75,8 +75,9 @@ release input is `ready-translations/it.json`.
 - Inject only controlfixed JSON. Default pointer policy is `oversized`; `changed` is experimental.
 - Relocation is transactional: validate and allocate every applied source/destination before generic writes. Entries
   without space remain original and appear in the map; use `--fail-on-no-space` for strict capacity audits.
-- Reclaim only injector-proven, fully owned high-bank `scripts` literals. Never reclaim structured tables, menus,
-  Pokedex text, abilities, battle data, generic `pointer_texts`, or arbitrary old slots.
+- `--reclaim-script-slots` is experimental. Reclaim only injector-proven, fully owned high-bank `scripts` literals
+  whose owners are independently placed in vetted FF space. Never reclaim structured tables, menus, Pokedex text,
+  abilities, battle data, generic `pointer_texts`, or arbitrary old slots.
 - `--allow-lossy-fit` is diagnostic only and forbidden for release builds.
 
 ## External Evidence

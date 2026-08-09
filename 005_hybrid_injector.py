@@ -4,6 +4,8 @@ import argparse
 import importlib.util
 import json
 import re
+import struct
+from bisect import bisect_left
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -30,6 +32,10 @@ FREE_SPACE_EXCLUDE_RANGES = (
 )
 TERMINATOR = 0xFF
 ABILITY_DESCRIPTION_MAX_BYTES = 46
+RECLAIMABLE_SCRIPT_TEXT_RANGES = (
+    (0x1EE0000, 0x1FB0000),
+)
+RECLAIMED_DESTINATION_CATEGORIES = frozenset({"scripts", "plain_scripts"})
 
 
 def parse_address(value):
@@ -363,6 +369,7 @@ class RelocationCandidate:
     max_size: int
     encoded: bytes
     sources: tuple[int, ...]
+    reclaimable: bool = False
 
 
 def allocate_near(blocks, size, alignment, origin, max_distance=0x3FFFFE):
@@ -596,21 +603,178 @@ def collect_relocation_candidates(
     return candidates, skipped
 
 
-def plan_relocations(blocks, candidates, alignment):
-    """Allocate unique payloads once before generic writes begin."""
+def is_explicit_script_message_source(rom, source):
+    """Require an opcode shape that unambiguously consumes a text pointer."""
+    if (
+        source >= 2
+        and rom[source - 2 : source] == b"\x0F\x00"
+        and source + 5 < len(rom)
+        and rom[source + 4] == 0x09
+        and 0x02 <= rom[source + 5] <= 0x06
+    ):
+        return True
+    return (
+        source >= 1
+        and rom[source - 1] == 0x67
+        and (source >> 20) == 0x1E
+    )
+
+
+def discover_raw_rom_pointers(rom, minimum_target, maximum_target):
+    """Find every aligned or unaligned absolute ROM pointer in a target range."""
+    references = []
+    for high_byte in (b"\x08", b"\x09"):
+        position = rom.find(high_byte, 3)
+        while position >= 0:
+            source = position - 3
+            target = struct.unpack_from("<I", rom, source)[0] - GBA_POINTER_BASE
+            if minimum_target <= target < maximum_target:
+                references.append((target, source))
+            position = rom.find(high_byte, position + 1)
+    references.sort()
+    return references
+
+
+def build_reclaimed_script_text_blocks(
+    rom,
+    candidates,
+    entries,
+    allowed_owner_ids=None,
+):
+    """Return only old script literals with complete, explicit ownership."""
+    allowed_owner_ids = (
+        set(allowed_owner_ids) if allowed_owner_ids is not None else None
+    )
+    eligible = []
+    for candidate in candidates:
+        start = candidate.address
+        end = start + candidate.max_size
+        if (
+            candidate.entry.get("category") == "scripts"
+            and (
+                allowed_owner_ids is None
+                or candidate.entry.get("id") in allowed_owner_ids
+            )
+            and candidate.sources
+            and any(
+                allowed_start <= start < end <= allowed_end
+                for allowed_start, allowed_end in RECLAIMABLE_SCRIPT_TEXT_RANGES
+            )
+            and all(
+                is_explicit_script_message_source(rom, source)
+                for source in candidate.sources
+            )
+        ):
+            eligible.append(candidate)
+
+    ordered = sorted(eligible, key=lambda candidate: candidate.address)
+    overlapping = set()
+    for index, candidate in enumerate(ordered):
+        end = candidate.address + candidate.max_size
+        if index and candidate.address < (
+            ordered[index - 1].address + ordered[index - 1].max_size
+        ):
+            overlapping.update((id(candidate), id(ordered[index - 1])))
+        if index + 1 < len(ordered) and ordered[index + 1].address < end:
+            overlapping.update((id(candidate), id(ordered[index + 1])))
+
+    raw_references = discover_raw_rom_pointers(
+        rom,
+        RECLAIMABLE_SCRIPT_TEXT_RANGES[0][0],
+        RECLAIMABLE_SCRIPT_TEXT_RANGES[-1][1],
+    )
+    raw_targets = [target for target, _source in raw_references]
+    reclaimed = []
+    for candidate in ordered:
+        if id(candidate) in overlapping:
+            continue
+        start = candidate.address
+        end = start + candidate.max_size
+        references = raw_references[
+            bisect_left(raw_targets, start) : bisect_left(raw_targets, end)
+        ]
+        expected = sorted((start, source) for source in candidate.sources)
+        if references != expected:
+            continue
+        candidate.reclaimable = True
+        reclaimed.append(candidate)
+
+    reclaim_ranges = merge_ranges(
+        (candidate.address, candidate.address + candidate.max_size)
+        for candidate in reclaimed
+    )
+    pointer_operands = merge_ranges(
+        (parse_address(source), parse_address(source) + 4)
+        for entry in entries
+        for source in pointer_sources(entry)
+    )
+    reclaim_ranges = subtract_ranges(reclaim_ranges, pointer_operands)
+
+    reclaimed_entry_ids = {candidate.entry.get("id") for candidate in reclaimed}
+    other_entry_ranges = []
+    for entry in entries:
+        if entry.get("id") in reclaimed_entry_ids:
+            continue
+        try:
+            start = parse_address(entry["address"])
+            length = int(entry["byte_length"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        if length > 0 and start + length <= len(rom):
+            other_entry_ranges.append((start, start + length))
+    reclaim_ranges = subtract_ranges(
+        reclaim_ranges,
+        merge_ranges(other_entry_ranges),
+    )
+
+    owner_ids = {
+        candidate.entry.get("id")
+        for candidate in reclaimed
+        if any(
+            start < candidate.address + candidate.max_size
+            and candidate.address < end
+            for start, end in reclaim_ranges
+        )
+    }
+    blocks = [
+        FreeBlock(start, end, start, "reclaimed_script_text")
+        for start, end in reclaim_ranges
+    ]
+    return blocks, owner_ids
+
+
+def plan_relocations(
+    blocks,
+    candidates,
+    alignment,
+    reclaimed_blocks=None,
+    reclaimed_categories=RECLAIMED_DESTINATION_CATEGORIES,
+):
+    """Allocate unique payloads, restricting old slots to explicit scripts."""
+    reclaimed_blocks = reclaimed_blocks or []
     plan = {}
     missing = []
     payload_plan = {}
     missing_payloads = set()
     for candidate in candidates:
         cached = payload_plan.get(candidate.encoded)
-        if cached is not None:
+        category = candidate.entry.get("category")
+        if cached is not None and (
+            cached[1] != "reclaimed_script_text"
+            or category in reclaimed_categories
+        ):
             plan[candidate.entry.get("id")] = (*cached, True)
             continue
         if candidate.encoded in missing_payloads:
             missing.append(candidate)
             continue
         offset, block = allocate_with_block(blocks, len(candidate.encoded), alignment)
+        if offset is None and category in reclaimed_categories:
+            offset, block = allocate_with_block(
+                reclaimed_blocks,
+                len(candidate.encoded),
+                alignment,
+            )
         if offset is None:
             missing_payloads.add(candidate.encoded)
             missing.append(candidate)
@@ -717,6 +881,15 @@ def main():
         ),
     )
     parser.add_argument(
+        "--reclaim-script-slots",
+        action="store_true",
+        help=(
+            "Experimentally reuse fully owned high-bank script literals after "
+            "vetted FF space. Reclaimed destinations accept explicit scripts "
+            "only; heuristic pointer_texts remain unchanged."
+        ),
+    )
+    parser.add_argument(
         "--allow-lossy-fit",
         action="store_true",
         help=(
@@ -774,11 +947,73 @@ def main():
         min_address,
         args.allow_lossy_fit,
     )
+    reclaimed_blocks = []
+    reclaimed_owner_ids = set()
+    if args.reclaim_script_slots:
+        preliminary_blocks = [
+            FreeBlock(block.start, block.end, block.cursor, block.kind)
+            for block in free_blocks
+        ]
+        preliminary_plan, _preliminary_missing = plan_relocations(
+            preliminary_blocks,
+            candidates,
+            args.alignment,
+        )
+        vetted_owner_ids = {
+            entry_id
+            for entry_id, (_offset, storage, _shared) in preliminary_plan.items()
+            if storage == "vetted_ff"
+        }
+        reclaimed_blocks, reclaimed_owner_ids = build_reclaimed_script_text_blocks(
+            rom,
+            candidates,
+            entries,
+            vetted_owner_ids,
+        )
     relocation_plan, missing_candidates = plan_relocations(
         free_blocks,
         candidates,
         args.alignment,
+        reclaimed_blocks,
     )
+    missing_reclaimed_owners = reclaimed_owner_ids - relocation_plan.keys()
+    if missing_reclaimed_owners:
+        sample = ", ".join(sorted(missing_reclaimed_owners)[:10])
+        raise RuntimeError(
+            "Reclaimed-slot ownership closure failed: "
+            f"{len(missing_reclaimed_owners)} owners lack relocation plans "
+            f"({sample})"
+        )
+    non_vetted_reclaimed_owners = {
+        entry_id
+        for entry_id in reclaimed_owner_ids
+        if relocation_plan[entry_id][1] != "vetted_ff"
+    }
+    if non_vetted_reclaimed_owners:
+        sample = ", ".join(sorted(non_vetted_reclaimed_owners)[:10])
+        raise RuntimeError(
+            "Reclaimed-slot seed plan changed: "
+            f"{len(non_vetted_reclaimed_owners)} owners no longer use vetted FF "
+            f"destinations ({sample})"
+        )
+    candidate_by_id = {
+        candidate.entry.get("id"): candidate for candidate in candidates
+    }
+    used_reclaimed_ranges = [
+        (block.start, block.cursor)
+        for block in reclaimed_blocks
+        if block.cursor > block.start
+    ]
+    used_reclaimed_owner_ids = {
+        entry_id
+        for entry_id in reclaimed_owner_ids
+        if any(
+            start < candidate_by_id[entry_id].address
+            + candidate_by_id[entry_id].max_size
+            and candidate_by_id[entry_id].address < end
+            for start, end in used_reclaimed_ranges
+        )
+    }
     enforce_relocation_capacity(missing_candidates, args.fail_on_no_space)
     missing_candidates_by_id = {
         candidate.entry.get("id"): candidate for candidate in missing_candidates
@@ -789,8 +1024,19 @@ def main():
 
     stats = {
         "input_entries": len(entries),
-        "free_blocks": len(free_blocks),
-        "free_bytes": sum(block.end - block.start for block in free_blocks),
+        "free_blocks": len(free_blocks) + len(reclaimed_blocks),
+        "free_bytes": sum(
+            block.end - block.start
+            for block in (*free_blocks, *reclaimed_blocks)
+        ),
+        "vetted_free_blocks": len(free_blocks),
+        "vetted_free_bytes": sum(block.end - block.start for block in free_blocks),
+        "reclaimed_text_blocks": len(reclaimed_blocks),
+        "reclaimed_text_bytes": sum(
+            block.end - block.start for block in reclaimed_blocks
+        ),
+        "reclaimable_text_owners": len(reclaimed_owner_ids),
+        "used_reclaimed_text_owners": len(used_reclaimed_owner_ids),
         "relocated": 0,
         "deduplicated_relocations": 0,
         "relocated_bytes": 0,
@@ -945,6 +1191,7 @@ def main():
                     "pointer_sources": [f"0x{source:X}" for source in sources],
                     "storage": storage_kind,
                     "shared_payload": shared_payload,
+                    "old_slot_reclaimed": entry_id in used_reclaimed_owner_ids,
                 }
             )
             continue
@@ -1022,11 +1269,13 @@ def main():
         if entry.get("no_relocation"):
             stats["no_relocation_in_place"] += 1
 
-    used_free_bytes = sum(
-        block.cursor - block.start for block in free_blocks
+    used_vetted_bytes = sum(block.cursor - block.start for block in free_blocks)
+    used_reclaimed_text_bytes = sum(
+        block.cursor - block.start for block in reclaimed_blocks
     )
+    used_free_bytes = used_vetted_bytes + used_reclaimed_text_bytes
     remaining_free_bytes = sum(
-        block.end - block.cursor for block in free_blocks
+        block.end - block.cursor for block in (*free_blocks, *reclaimed_blocks)
     )
 
     if args.map_output:
@@ -1038,6 +1287,10 @@ def main():
             "stats": stats,
             "used_free_bytes": used_free_bytes,
             "remaining_free_bytes": remaining_free_bytes,
+            "used_vetted_bytes": used_vetted_bytes,
+            "used_reclaimed_text_bytes": used_reclaimed_text_bytes,
+            "reclaimable_slot_owners": sorted(reclaimed_owner_ids),
+            "reclaimed_slot_owners": sorted(used_reclaimed_owner_ids),
             "relocations": relocation_map,
             "missing_relocations": [
                 {
@@ -1064,7 +1317,12 @@ def main():
     print(f"Input entries          : {stats['input_entries']}")
     print(f"Free blocks            : {stats['free_blocks']}")
     print(f"Free bytes             : {stats['free_bytes']}")
+    print(f"Vetted FF bytes        : {stats['vetted_free_bytes']}")
+    print(f"Reclaimed text bytes   : {stats['reclaimed_text_bytes']}")
+    print(f"Reclaimable owners     : {stats['reclaimable_text_owners']}")
+    print(f"Reclaimed slot owners  : {stats['used_reclaimed_text_owners']}")
     print(f"Used free bytes        : {used_free_bytes}")
+    print(f"Used reclaimed bytes   : {used_reclaimed_text_bytes}")
     print(f"Remaining free bytes   : {remaining_free_bytes}")
     print(f"Relocated              : {stats['relocated']}")
     print(f"Deduplicated relocations: {stats['deduplicated_relocations']}")

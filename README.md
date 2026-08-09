@@ -242,7 +242,7 @@ The hybrid injector instead:
 
 1. Writes translations in place when they fit.
 2. Relocates oversized pointer-owned strings into vetted writable `0xFF` spans.
-3. Reuses only fully owned direct script literals after vetted space is exhausted.
+3. Can optionally reuse fully owned direct script literals after vetted space is exhausted.
 4. Updates every verified pointer source to the new location.
 5. Applies target-language runtime patches before generic text writes.
 
@@ -251,6 +251,12 @@ written. Candidates without space, plus oversized fixed slots, remain unchanged 
 `missing_relocations`, `missing_fixed_slots`, and the no-space counters. Pass `--fail-on-no-space` when every
 translation must fit or the build must abort. Structured tables, menus, Pokedex data, abilities, battle data, generic
 pointer discoveries, hidden/interior pointers, and engine-reserved areas are not reclaimed.
+
+`--reclaim-script-slots` enables the experimental old-slot allocator. It reuses only high-bank script literals whose
+owners already have independent `vetted_ff` destinations, whose sources are explicit `msgbox`/`message` operands, and
+whose complete slots have no hidden exact or interior ROM pointers. Reclaimed destinations accept only `scripts` and
+`plain_scripts`; heuristic `pointer_texts` remain unchanged. Keep this mode out of release builds until the generated
+ROM passes the crash-sensitive Pokédex, Summary, PC, Mission Log, battle, and save/reload gameplay checks.
 
 Fragile engine text is marked `no_relocation` and must remain in place. Fixed-size entries can provide a complete,
 token-safe `translated_fixed` display value while retaining full wording in `translated`. The diagnostic
