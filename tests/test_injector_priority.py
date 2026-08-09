@@ -228,6 +228,43 @@ class InjectionPriorityTests(unittest.TestCase):
         self.assertEqual(owners, set())
         self.assertEqual(blocks, [])
 
+    def test_reference_rom_proves_pointer_text_ownership(self):
+        source_rom = bytearray(b"\x00" * 0x300)
+        reference_rom = bytearray(source_rom)
+        source = 0x20
+        address = 0x100
+        reference_target = 0x180
+        source_rom[source : source + 4] = (
+            INJECTOR.GBA_POINTER_BASE + address
+        ).to_bytes(4, "little")
+        reference_rom[source : source + 4] = (
+            INJECTOR.GBA_POINTER_BASE + reference_target
+        ).to_bytes(4, "little")
+        reference_rom[reference_target : reference_target + 3] = b"\xBB\xBC\xFF"
+        candidate = INJECTOR.RelocationCandidate(
+            entry={"id": "proven", "category": "pointer_texts"},
+            address=address,
+            max_size=8,
+            encoded=b"Italiano\xFF",
+            sources=(source,),
+        )
+
+        proven = INJECTOR.reference_proven_pointer_text_ids(
+            source_rom,
+            reference_rom,
+            [candidate],
+        )
+
+        self.assertEqual(proven, {"proven"})
+        self.assertEqual(
+            INJECTOR.reference_proven_pointer_text_ids(
+                source_rom,
+                source_rom,
+                [candidate],
+            ),
+            set(),
+        )
+
     def test_ability_description_compaction_is_bounded_at_word_boundary(self):
         encoded = b"Aumenta\x00Attacco\x00se\x00colpito\x00da\x00una\x00mossa\x00Erba\xFF"
 
@@ -326,6 +363,37 @@ class InjectionPriorityTests(unittest.TestCase):
             [candidate.entry["id"] for candidate in missing],
             ["discovery"],
         )
+
+    def test_reference_proven_pointer_discovery_can_use_reclaimed_storage(self):
+        reclaimed = [
+            INJECTOR.FreeBlock(
+                0x2000,
+                0x2100,
+                0x2000,
+                "reclaimed_script_text",
+            )
+        ]
+        candidate = INJECTOR.RelocationCandidate(
+            entry={"id": "proven", "category": "pointer_texts"},
+            address=0x3000,
+            max_size=8,
+            encoded=b"A" * 12,
+            sources=(0x40,),
+        )
+
+        plan, missing = INJECTOR.plan_relocations(
+            [],
+            [candidate],
+            1,
+            reclaimed,
+            reclaimed_entry_ids={"proven"},
+        )
+
+        self.assertEqual(
+            plan["proven"],
+            (0x2000, "reclaimed_script_text", False),
+        )
+        self.assertEqual(missing, [])
 
     def test_relocation_plan_deduplicates_identical_payloads(self):
         vetted = [INJECTOR.FreeBlock(0x1000, 0x1020, 0x1000)]

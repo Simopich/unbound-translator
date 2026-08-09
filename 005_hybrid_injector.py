@@ -9,7 +9,7 @@ from bisect import bisect_left
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from lib.pcs_text import Charmap, fc_arg_count
+from lib.pcs_text import Charmap, decode_pcs, fc_arg_count, strip_control_tokens
 from lib.translation_tokens import semantic_token_counts
 from lib.unbound_free_space import VETTED_FREE_SPACE_RANGES
 
@@ -743,15 +743,61 @@ def build_reclaimed_script_text_blocks(
     return blocks, owner_ids
 
 
+def reference_proven_pointer_text_ids(source_rom, reference_rom, candidates):
+    """Return heuristic entries independently repointed by a working ROM."""
+    if len(reference_rom) != len(source_rom):
+        raise ValueError(
+            "Reference ROM size mismatch: "
+            f"{len(reference_rom)} != {len(source_rom)}"
+        )
+
+    proven = set()
+    for candidate in candidates:
+        if candidate.entry.get("category") != "pointer_texts":
+            continue
+        expected = GBA_POINTER_BASE + candidate.address
+        reference_targets = []
+        for source in candidate.sources:
+            if source + 4 > len(source_rom):
+                reference_targets = []
+                break
+            original_pointer = struct.unpack_from("<I", source_rom, source)[0]
+            reference_pointer = struct.unpack_from("<I", reference_rom, source)[0]
+            target = reference_pointer - GBA_POINTER_BASE
+            if (
+                original_pointer != expected
+                or reference_pointer == original_pointer
+                or not 0 <= target < len(reference_rom)
+            ):
+                reference_targets = []
+                break
+            decoded = decode_pcs(reference_rom, target, 0x800)
+            visible = strip_control_tokens(decoded.text).strip()
+            if (
+                not decoded.terminated
+                or decoded.raw_count
+                or decoded.byte_length < 3
+                or len(visible) < 2
+            ):
+                reference_targets = []
+                break
+            reference_targets.append(target)
+        if reference_targets and len(set(reference_targets)) == 1:
+            proven.add(candidate.entry.get("id"))
+    return proven
+
+
 def plan_relocations(
     blocks,
     candidates,
     alignment,
     reclaimed_blocks=None,
     reclaimed_categories=RECLAIMED_DESTINATION_CATEGORIES,
+    reclaimed_entry_ids=None,
 ):
     """Allocate unique payloads, restricting old slots to explicit scripts."""
     reclaimed_blocks = reclaimed_blocks or []
+    reclaimed_entry_ids = set(reclaimed_entry_ids or ())
     plan = {}
     missing = []
     payload_plan = {}
@@ -759,17 +805,21 @@ def plan_relocations(
     for candidate in candidates:
         cached = payload_plan.get(candidate.encoded)
         category = candidate.entry.get("category")
+        entry_id = candidate.entry.get("id")
+        can_use_reclaimed = (
+            category in reclaimed_categories or entry_id in reclaimed_entry_ids
+        )
         if cached is not None and (
             cached[1] != "reclaimed_script_text"
-            or category in reclaimed_categories
+            or can_use_reclaimed
         ):
-            plan[candidate.entry.get("id")] = (*cached, True)
+            plan[entry_id] = (*cached, True)
             continue
         if candidate.encoded in missing_payloads:
             missing.append(candidate)
             continue
         offset, block = allocate_with_block(blocks, len(candidate.encoded), alignment)
-        if offset is None and category in reclaimed_categories:
+        if offset is None and can_use_reclaimed:
             offset, block = allocate_with_block(
                 reclaimed_blocks,
                 len(candidate.encoded),
@@ -780,7 +830,7 @@ def plan_relocations(
             missing.append(candidate)
             continue
         payload_plan[candidate.encoded] = (offset, block.kind)
-        plan[candidate.entry.get("id")] = (offset, block.kind, False)
+        plan[entry_id] = (offset, block.kind, False)
     return plan, missing
 
 
@@ -890,6 +940,14 @@ def main():
         ),
     )
     parser.add_argument(
+        "--reclaim-reference-rom",
+        help=(
+            "Working translated ROM used to prove heuristic pointer_texts "
+            "ownership before placing those entries in reclaimed script slots. "
+            "Requires --reclaim-script-slots."
+        ),
+    )
+    parser.add_argument(
         "--allow-lossy-fit",
         action="store_true",
         help=(
@@ -917,8 +975,13 @@ def main():
         raise ValueError("--pad-byte must be between 00 and FF")
     if args.alignment < 1:
         raise ValueError("--alignment must be >= 1")
+    if args.reclaim_reference_rom and not args.reclaim_script_slots:
+        raise ValueError(
+            "--reclaim-reference-rom requires --reclaim-script-slots"
+        )
 
     rom = bytearray(rom_path.read_bytes())
+    source_rom = bytes(rom)
     data = json.loads(json_path.read_text(encoding="utf-8"))
     entries = prioritize_entries(list(iter_entries(data)))
     cmap = Charmap(target_lang=args.target_lang)
@@ -949,6 +1012,7 @@ def main():
     )
     reclaimed_blocks = []
     reclaimed_owner_ids = set()
+    reference_proven_ids = set()
     if args.reclaim_script_slots:
         preliminary_blocks = [
             FreeBlock(block.start, block.end, block.cursor, block.kind)
@@ -970,11 +1034,19 @@ def main():
             entries,
             vetted_owner_ids,
         )
+        if args.reclaim_reference_rom:
+            reference_rom = Path(args.reclaim_reference_rom).read_bytes()
+            reference_proven_ids = reference_proven_pointer_text_ids(
+                source_rom,
+                reference_rom,
+                candidates,
+            )
     relocation_plan, missing_candidates = plan_relocations(
         free_blocks,
         candidates,
         args.alignment,
         reclaimed_blocks,
+        reclaimed_entry_ids=reference_proven_ids,
     )
     missing_reclaimed_owners = reclaimed_owner_ids - relocation_plan.keys()
     if missing_reclaimed_owners:
@@ -1037,6 +1109,7 @@ def main():
         ),
         "reclaimable_text_owners": len(reclaimed_owner_ids),
         "used_reclaimed_text_owners": len(used_reclaimed_owner_ids),
+        "reference_proven_pointer_texts": len(reference_proven_ids),
         "relocated": 0,
         "deduplicated_relocations": 0,
         "relocated_bytes": 0,
@@ -1192,6 +1265,7 @@ def main():
                     "storage": storage_kind,
                     "shared_payload": shared_payload,
                     "old_slot_reclaimed": entry_id in used_reclaimed_owner_ids,
+                    "reference_proven": entry_id in reference_proven_ids,
                 }
             )
             continue
@@ -1291,6 +1365,7 @@ def main():
             "used_reclaimed_text_bytes": used_reclaimed_text_bytes,
             "reclaimable_slot_owners": sorted(reclaimed_owner_ids),
             "reclaimed_slot_owners": sorted(used_reclaimed_owner_ids),
+            "reference_proven_pointer_text_ids": sorted(reference_proven_ids),
             "relocations": relocation_map,
             "missing_relocations": [
                 {
@@ -1321,6 +1396,7 @@ def main():
     print(f"Reclaimed text bytes   : {stats['reclaimed_text_bytes']}")
     print(f"Reclaimable owners     : {stats['reclaimable_text_owners']}")
     print(f"Reclaimed slot owners  : {stats['used_reclaimed_text_owners']}")
+    print(f"Reference-proven texts : {stats['reference_proven_pointer_texts']}")
     print(f"Used free bytes        : {used_free_bytes}")
     print(f"Used reclaimed bytes   : {used_reclaimed_text_bytes}")
     print(f"Remaining free bytes   : {remaining_free_bytes}")
