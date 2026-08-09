@@ -75,6 +75,23 @@ class InjectionPriorityTests(unittest.TestCase):
             [(0x1800, 0x2000), (0x2800, 0x2900)],
         )
 
+    def test_vetted_small_ff_span_bypasses_generic_minimum_run(self):
+        rom = bytearray(b"\x00" * 0x4000)
+        rom[0x1800:0x1880] = b"\xFF" * 0x80
+
+        blocks = INJECTOR.build_free_blocks(
+            rom,
+            [],
+            0x400,
+            0x100,
+            ((0x1820, 0x1860),),
+        )
+
+        self.assertEqual(
+            [(block.start, block.end) for block in blocks],
+            [(0x1820, 0x1860)],
+        )
+
     def test_ability_description_compaction_is_bounded_at_word_boundary(self):
         encoded = b"Aumenta\x00Attacco\x00se\x00colpito\x00da\x00una\x00mossa\x00Erba\xFF"
 

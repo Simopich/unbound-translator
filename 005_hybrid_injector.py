@@ -322,14 +322,18 @@ def intersect_ranges(ranges, allowed_ranges):
 
 
 def build_free_blocks(rom, entries, min_run, min_address, allowed_ranges=None):
-    runs = find_byte_runs(rom, 0xFF, min_run, min_address)
+    # An explicit allowlist may contain small spans proven writable by a
+    # working reference ROM. Discover their containing FF runs even when the
+    # generic minimum-run heuristic would otherwise hide them.
+    scan_min_len = 1 if allowed_ranges is not None else min_run
+    runs = find_byte_runs(rom, 0xFF, scan_min_len, min_address)
     runs = subtract_ranges(runs, FREE_SPACE_EXCLUDE_RANGES)
     protected = protected_entry_ranges(entries, len(rom), min_address)
     runs = subtract_ranges(runs, protected)
     runs = [
         (start + DEFAULT_FREE_RUN_MARGIN, end - DEFAULT_FREE_RUN_MARGIN)
         for start, end in runs
-        if end - start >= min_run
+        if end - start >= scan_min_len
            and end - start > 2 * DEFAULT_FREE_RUN_MARGIN
     ]
     if allowed_ranges is not None:
