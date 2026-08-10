@@ -43,10 +43,14 @@ Use `006_decontrolfix_translations.py` before manually editing already-controlfi
 - Move descriptions use at most 6 lines and the 122-pixel maximum observed among ordinary French-ROM rows 0–893 through
   `--move-description-max-pixels`; the separate G-Max template block at rows 894–921 is wider and must not define
   the normal summary-screen budget. Apply the conservative 122-pixel limit to every translated move description.
-  Ability descriptions use `--description-wrap-width` (default 24).
+  Ability descriptions use exactly 1 line and the 191-pixel maximum observed across all 255 entries in the original
+  English ROM through `--ability-description-max-pixels`. The original maximum is 34 visible characters and 35 encoded
+  bytes including the terminator; character counts are secondary because the font is proportional. The working French
+  ROM is not authoritative here because 8 of its entries introduce a second line absent from the original.
 - Item descriptions use `--item-description-wrap-width` (default 34) and 3 lines.
-- Ability descriptions require a complete token-safe `translated_fixed` value within the injector's 46-byte display
-  ceiling when full wording cannot fit.
+- Ability descriptions require a complete token-safe `translated_fixed` value within the original ROM's observed
+  35-byte maximum when full wording cannot fit. The injector's broader 46-byte technical ceiling is not the layout
+  budget and must not justify longer release wording.
 
 ## References And Diagnosis
 

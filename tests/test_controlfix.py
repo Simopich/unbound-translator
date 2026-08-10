@@ -5,6 +5,8 @@ import sys
 from pathlib import Path
 from types import SimpleNamespace
 
+import pytest
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from tests.helpers import load_script_module
@@ -18,6 +20,9 @@ def _args(**overrides):
         "wrap_width": 12,
         "description_wrap_width": 12,
         "move_description_max_pixels": 122,
+        "ability_description_max_pixels": 191,
+        "ability_description_max_lines": 1,
+        "ability_description_max_chars": 34,
         "pokedex_description_wrap_width": 43,
         "pokedex_description_max_lines": 3,
         "pokedex_description_max_total": 124,
@@ -231,6 +236,45 @@ def test_move_descriptions_use_french_observed_pixel_width():
     assert changed
     assert not skipped
     assert max(map(controlfix.text_pixel_width, wrapped.splitlines())) <= 60
+
+
+def test_ability_descriptions_use_original_rom_one_line_pixel_budget():
+    wrapped, changed, _long_words, skipped = controlfix.wrap_translation(
+        "Potenzia le mosse Folletto.",
+        {"category": "ability_descriptions"},
+        "Ability description",
+        _args(),
+        {"ability_descriptions"},
+    )
+
+    assert not changed
+    assert not skipped
+    assert len(wrapped.splitlines()) == 1
+    assert max(map(controlfix.text_pixel_width, wrapped.splitlines())) <= 191
+
+    with pytest.raises(ValueError, match="needs 2 rows"):
+        controlfix.wrap_translation(
+            "Le mosse Normali diventano di tipo Ghiaccio.",
+            {"id": "ability-test", "category": "ability_descriptions"},
+            "Ability description",
+            _args(),
+            {"ability_descriptions"},
+        )
+
+    full, changed, _long_words, skipped = controlfix.wrap_translation(
+        "Le mosse Normali diventano di tipo Ghiaccio.",
+        {
+            "id": "ability-test",
+            "category": "ability_descriptions",
+            "translated_fixed": "Mosse Normali diventano Ghiaccio.",
+        },
+        "Ability description",
+        _args(),
+        {"ability_descriptions"},
+    )
+    assert not changed
+    assert not skipped
+    assert full == "Le mosse Normali diventano di tipo Ghiaccio."
 
 
 def test_pokedex_description_uses_french_observed_three_line_budget():

@@ -680,6 +680,29 @@ def wrap_words_for_entry(text, entry, args):
             for word in text.split()
         )
         return lines, long_words
+    if entry.get("category") == "ability_descriptions":
+        lines = wrap_words_by_pixels(text, args.ability_description_max_pixels)
+        if (
+            args.ability_description_max_lines > 0
+            and len(lines) > args.ability_description_max_lines
+        ):
+            raise ValueError(
+                f"Ability description {entry.get('id', '<unknown>')} needs "
+                f"{len(lines)} rows; compact it to at most "
+                f"{args.ability_description_max_lines} rows of "
+                f"{args.ability_description_max_pixels} pixels"
+            )
+        if max((visible_width(line) for line in lines), default=0) > args.ability_description_max_chars:
+            raise ValueError(
+                f"Ability description {entry.get('id', '<unknown>')} exceeds "
+                f"the original-ROM limit of {args.ability_description_max_chars} "
+                "visible characters"
+            )
+        long_words = sum(
+            text_pixel_width(word) > args.ability_description_max_pixels
+            for word in text.split()
+        )
+        return lines, long_words
     width = wrap_width_for_entry(entry, args)
     lines, long_words = wrap_words(text, width)
     if (
@@ -759,6 +782,11 @@ def restore_battle_prompt_layout(text, _original, entry):
 
 def wrap_translation(text, entry, original, args, wrap_categories):
     if args.no_wrap or entry.get("category") not in wrap_categories:
+        return text, False, 0, False
+    if (
+        entry.get("category") == "ability_descriptions"
+        and entry.get("translated_fixed")
+    ):
         return text, False, 0, False
     if should_skip_wrap(text):
         return text, False, 0, True
@@ -888,6 +916,33 @@ def main():
         help=(
             "Maximum pixel width for move-description lines, measured from the "
             "ordinary entries in the working French ROM. Default: 122."
+        ),
+    )
+    parser.add_argument(
+        "--ability-description-max-pixels",
+        type=int,
+        default=191,
+        help=(
+            "Maximum pixel width for ability-description lines, measured from "
+            "the original English ROM. Default: 191."
+        ),
+    )
+    parser.add_argument(
+        "--ability-description-max-lines",
+        type=int,
+        default=1,
+        help=(
+            "Maximum ability-description rows observed in the original English "
+            "ROM. Default: 1."
+        ),
+    )
+    parser.add_argument(
+        "--ability-description-max-chars",
+        type=int,
+        default=34,
+        help=(
+            "Maximum visible characters in an ability description, observed "
+            "in the original English ROM. Default: 34."
         ),
     )
     parser.add_argument(

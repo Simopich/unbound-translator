@@ -115,6 +115,25 @@ def test_ready_italian_compact_overrides_are_lossless_and_fit():
     assert checked > 0
 
 
+def test_ready_italian_ability_descriptions_fit_original_rom_layout_budget():
+    entries = json.loads(READY_ITALIAN.read_text(encoding="utf-8"))["entries"]
+    cmap = INJECTOR.Charmap(target_lang="it")
+    checked = 0
+
+    for entry in entries:
+        if entry.get("category") != "ability_descriptions":
+            continue
+        checked += 1
+        text = INJECTOR.translation_for_injection(entry)
+        lines = text.splitlines()
+        assert len(lines) == 1, entry["id"]
+        assert max(map(text_pixel_width, lines), default=0) <= 191, entry["id"]
+        assert visible_width(text) <= 34, entry["id"]
+        assert len(INJECTOR.encode_text(cmap, text)) <= 35, entry["id"]
+
+    assert checked == 252
+
+
 def test_misc_menu_text_respects_observed_screen_budgets():
     entries = json.loads(READY_ITALIAN.read_text(encoding="utf-8"))["entries"]
 

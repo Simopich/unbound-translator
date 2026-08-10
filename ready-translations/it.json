@@ -56664,7 +56664,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 0,
       "translation_source": "No special ability.",
-      "translated": "Nessuna abilità\nspeciale."
+      "translated": "Nessuna abilità speciale."
     },
     {
       "id": "tbl_ability_descriptions_00001_24F3D8",
@@ -56679,7 +56679,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 1,
       "translation_source": "Helps repel wild Pokémon.",
-      "translated": "Aiuta a respingere i\nPokémon selvatici."
+      "translated": "Aiuta a respingere i Pokémon selvatici.",
+      "translated_fixed": "Allontana i Pokémon selvatici."
     },
     {
       "id": "tbl_ability_descriptions_00002_24F3F2",
@@ -56709,7 +56710,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 3,
       "translation_source": "Gradually boosts Speed.",
-      "translated": "Aumenta gradualmente la\nVelocità."
+      "translated": "Aumenta gradualmente la Velocità."
     },
     {
       "id": "tbl_ability_descriptions_00004_24F422",
@@ -56739,7 +56740,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 5,
       "translation_source": "Negates 1-hit KO attacks.",
-      "translated": "Nega le mosse KO a un\ncolpo."
+      "translated": "Nega le mosse KO a un colpo."
     },
     {
       "id": "tbl_ability_descriptions_00006_24F452",
@@ -56754,7 +56755,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 6,
       "translation_source": "Prevents self-destruction.",
-      "translated": "Impedisce\nl{B4}autodistruzione."
+      "translated": "Impedisce l{B4}autodistruzione."
     },
     {
       "id": "tbl_ability_descriptions_00007_24F46D",
@@ -56784,7 +56785,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 8,
       "translation_source": "Ups evasion in a sandstorm.",
-      "translated": "Aumenta l{B4}elusione in\nuna tempesta di sabbia."
+      "translated": "Aumenta l{B4}elusione in una tempesta di sabbia.",
+      "translated_fixed": "Aumenta l{B4}elusione nella sabbia."
     },
     {
       "id": "tbl_ability_descriptions_00009_24F49D",
@@ -56814,7 +56816,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 10,
       "translation_source": "Turns electricity into HP.",
-      "translated": "Trasforma l{B4}elettricità\nin PS."
+      "translated": "Trasforma l{B4}elettricità in PS."
     },
     {
       "id": "tbl_ability_descriptions_00011_24F4CE",
@@ -56859,7 +56861,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 13,
       "translation_source": "Negates weather effects.",
-      "translated": "Nega gli effetti del\nmeteo."
+      "translated": "Nega gli effetti del meteo."
     },
     {
       "id": "tbl_ability_descriptions_00014_24F513",
@@ -56904,7 +56906,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 16,
       "translation_source": "Changes type to foe’s move.",
-      "translated": "Cambia il tipo in base\nalla mossa del nemico."
+      "translated": "Cambia il tipo in base alla mossa del nemico.",
+      "translated_fixed": "Cambia tipo con la mossa nemica."
     },
     {
       "id": "tbl_ability_descriptions_00017_24F550",
@@ -56919,7 +56922,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 17,
       "translation_source": "Prevents poisoning.",
-      "translated": "Previene\nl{B4}avvelenamento."
+      "translated": "Previene l{B4}avvelenamento."
     },
     {
       "id": "tbl_ability_descriptions_00018_24F564",
@@ -56934,7 +56937,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 18,
       "translation_source": "Powers up if hit by fire.",
-      "translated": "Si potenzia se colpito\ndal fuoco."
+      "translated": "Si potenzia se colpito dal fuoco."
     },
     {
       "id": "tbl_ability_descriptions_00019_24F57E",
@@ -56949,7 +56952,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 19,
       "translation_source": "Prevents added effects.",
-      "translated": "Previene gli effetti\naggiuntivi."
+      "translated": "Previene gli effetti aggiuntivi."
     },
     {
       "id": "tbl_ability_descriptions_00020_24F596",
@@ -56979,7 +56982,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 21,
       "translation_source": "Firmly anchors the body.",
-      "translated": "Ancorata saldamente al\nterreno."
+      "translated": "Ancorata saldamente al terreno."
     },
     {
       "id": "tbl_ability_descriptions_00022_24F5C3",
@@ -56994,7 +56997,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 22,
       "translation_source": "Lowers the foe’s Attack.",
-      "translated": "Riduce l{B4}Attacco del\nnemico."
+      "translated": "Riduce l{B4}Attacco del nemico."
     },
     {
       "id": "tbl_ability_descriptions_00023_24F5DC",
@@ -57009,7 +57012,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 23,
       "translation_source": "Prevents the foe’s escape.",
-      "translated": "Impedisce la fuga del\nnemico."
+      "translated": "Impedisce la fuga del nemico."
     },
     {
       "id": "tbl_ability_descriptions_00024_24F5F7",
@@ -57049,7 +57052,7 @@
           "token": "\\qc"
         }
       ],
-      "translated": "\\qoColpi \\qo superefficaci\n\\qc."
+      "translated": "\\qoColpi \\qo superefficaci \\qc."
     },
     {
       "id": "tbl_ability_descriptions_00026_24F61F",
@@ -57064,7 +57067,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 26,
       "translation_source": "Not hit by Ground attacks.",
-      "translated": "Non viene colpito dalle\nmosse di tipo Terra."
+      "translated": "Non viene colpito dalle mosse di tipo Terra.",
+      "translated_fixed": "Immune alle mosse Terra."
     },
     {
       "id": "tbl_ability_descriptions_00027_24F63A",
@@ -57079,7 +57083,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 27,
       "translation_source": "Leaves spores on contact.",
-      "translated": "Lascia spore al\ncontatto."
+      "translated": "Lascia spore al contatto."
     },
     {
       "id": "tbl_ability_descriptions_00028_24F654",
@@ -57094,7 +57098,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 28,
       "translation_source": "Passes on status problems.",
-      "translated": "Trasmette i problemi di\nstato."
+      "translated": "Trasmette i problemi di stato."
     },
     {
       "id": "tbl_ability_descriptions_00029_24F66F",
@@ -57110,7 +57114,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 29,
       "translation_source": "Prevents stat reduction.",
-      "translated": "Previene la riduzione\ndelle statistiche."
+      "translated": "Previene la riduzione delle statistiche.",
+      "translated_fixed": "Evita cali delle statistiche."
     },
     {
       "id": "tbl_ability_descriptions_00030_24F68B",
@@ -57125,7 +57130,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 30,
       "translation_source": "Heals upon switching out.",
-      "translated": "Cura quando viene\nritirato."
+      "translated": "Cura quando viene ritirato."
     },
     {
       "id": "tbl_ability_descriptions_00031_24F6A5",
@@ -57140,7 +57145,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 31,
       "translation_source": "Draws electrical moves.",
-      "translated": "Attira le mosse\nelettriche."
+      "translated": "Attira le mosse elettriche."
     },
     {
       "id": "tbl_ability_descriptions_00032_24F6BD",
@@ -57155,7 +57160,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 32,
       "translation_source": "Promotes added effects.",
-      "translated": "Favorisce gli effetti\naggiuntivi."
+      "translated": "Favorisce gli effetti aggiuntivi."
     },
     {
       "id": "tbl_ability_descriptions_00033_24F6D5",
@@ -57170,7 +57175,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 33,
       "translation_source": "Raises Speed in rain.",
-      "translated": "Aumenta la Velocità\nsotto la pioggia."
+      "translated": "Aumenta la Velocità sotto la pioggia.",
+      "translated_fixed": "Velocità aumenta sotto la pioggia."
     },
     {
       "id": "tbl_ability_descriptions_00034_24F6EB",
@@ -57185,7 +57191,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 34,
       "translation_source": "Raises Speed in sunshine.",
-      "translated": "Aumenta la Velocità\nsotto il sole."
+      "translated": "Aumenta la Velocità sotto il sole."
     },
     {
       "id": "tbl_ability_descriptions_00035_24F705",
@@ -57200,7 +57206,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 35,
       "translation_source": "Encounter rate increases.",
-      "translated": "La frequenza degli\nincontri aumenta."
+      "translated": "La frequenza degli incontri aumenta.",
+      "translated_fixed": "Aumenta gli incontri."
     },
     {
       "id": "tbl_ability_descriptions_00036_24F71F",
@@ -57215,7 +57222,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 36,
       "translation_source": "Copies special ability.",
-      "translated": "Copia l{B4}abilità\nspeciale."
+      "translated": "Copia l{B4}abilità speciale."
     },
     {
       "id": "tbl_ability_descriptions_00037_24F737",
@@ -57245,7 +57252,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 38,
       "translation_source": "Poisons foe on contact.",
-      "translated": "Avvelena il nemico a\ncontatto."
+      "translated": "Avvelena il nemico a contatto."
     },
     {
       "id": "tbl_ability_descriptions_00039_24F75E",
@@ -57260,7 +57267,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 39,
       "translation_source": "Prevents flinching.",
-      "translated": "Previene il\ntentennamento."
+      "translated": "Previene il tentennamento."
     },
     {
       "id": "tbl_ability_descriptions_00040_A34F4C",
@@ -57275,7 +57282,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 40,
       "translation_source": "Can’t get frostbite.",
-      "translated": "Non può subire\nassideramento."
+      "translated": "Non può subire assideramento."
     },
     {
       "id": "tbl_ability_descriptions_00041_24F785",
@@ -57305,7 +57312,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 42,
       "translation_source": "Traps Steel-type Pokémon.",
-      "translated": "Intrappola i Pokémon di\ntipo Acciaio."
+      "translated": "Intrappola i Pokémon di tipo Acciaio.",
+      "translated_fixed": "Intrappola i Pokémon Acciaio."
     },
     {
       "id": "tbl_ability_descriptions_00043_24F7AF",
@@ -57320,7 +57328,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 43,
       "translation_source": "Avoids sound-based moves.",
-      "translated": "Evita le mosse basate\nsul suono."
+      "translated": "Evita le mosse basate sul suono."
     },
     {
       "id": "tbl_ability_descriptions_00044_24F7C9",
@@ -57335,7 +57343,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 44,
       "translation_source": "Slight HP recovery in rain.",
-      "translated": "Leggero recupero PS\nnella pioggia."
+      "translated": "Leggero recupero PS nella pioggia.",
+      "translated_fixed": "Recupera pochi PS nella pioggia."
     },
     {
       "id": "tbl_ability_descriptions_00045_24F7E5",
@@ -57350,7 +57359,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 45,
       "translation_source": "Summons a sandstorm.",
-      "translated": "Evoca una tempesta di\nsabbia."
+      "translated": "Evoca una tempesta di sabbia."
     },
     {
       "id": "tbl_ability_descriptions_00046_24F7FA",
@@ -57365,7 +57374,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 46,
       "translation_source": "Raises foe’s PP usage.",
-      "translated": "Aumenta il consumo di PP\ndel nemico."
+      "translated": "Aumenta il consumo di PP del nemico.",
+      "translated_fixed": "Aumenta il consumo di PP nemico."
     },
     {
       "id": "tbl_ability_descriptions_00047_24F811",
@@ -57380,7 +57390,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 47,
       "translation_source": "Heat-and-cold protection.",
-      "translated": "Protezione dal caldo e\ndal freddo."
+      "translated": "Protezione dal caldo e dal freddo.",
+      "translated_fixed": "Protegge da caldo e freddo."
     },
     {
       "id": "tbl_ability_descriptions_00048_24F82B",
@@ -57395,7 +57406,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 48,
       "translation_source": "Awakens quickly from sleep.",
-      "translated": "Si sveglia rapidamente\ndal sonno."
+      "translated": "Si sveglia rapidamente dal sonno."
     },
     {
       "id": "tbl_ability_descriptions_00049_24F847",
@@ -57410,7 +57421,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 49,
       "translation_source": "Burns the foe on contact.",
-      "translated": "Brucia il nemico al\ncontatto."
+      "translated": "Brucia il nemico al contatto."
     },
     {
       "id": "tbl_ability_descriptions_00050_24F861",
@@ -57425,7 +57436,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 50,
       "translation_source": "Makes escaping easier.",
-      "translated": "Rende più facile la\nfuga."
+      "translated": "Rende più facile la fuga."
     },
     {
       "id": "tbl_ability_descriptions_00051_24F878",
@@ -57440,7 +57451,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 51,
       "translation_source": "Prevents loss of accuracy.",
-      "translated": "Previene la perdita di\nprecisione."
+      "translated": "Previene la perdita di precisione."
     },
     {
       "id": "tbl_ability_descriptions_00052_24F893",
@@ -57455,7 +57466,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 52,
       "translation_source": "Prevents Attack reduction.",
-      "translated": "Previene la riduzione\ndell{B4}Attacco."
+      "translated": "Previene la riduzione dell{B4}Attacco.",
+      "translated_fixed": "Evita la riduzione dell{B4}Attacco."
     },
     {
       "id": "tbl_ability_descriptions_00053_24F8AE",
@@ -57470,7 +57482,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 53,
       "translation_source": "May pick up items.",
-      "translated": "Può raccogliere\nstrumenti."
+      "translated": "Può raccogliere strumenti."
     },
     {
       "id": "tbl_ability_descriptions_00054_24F8C1",
@@ -57485,7 +57497,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 54,
       "translation_source": "Moves only every two turns.",
-      "translated": "Si muove solo ogni due\nturni."
+      "translated": "Si muove solo ogni due turni."
     },
     {
       "id": "tbl_ability_descriptions_00055_24F8DD",
@@ -57500,7 +57512,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 55,
       "translation_source": "Trades accuracy for power.",
-      "translated": "Scambia precisione con\npotenza."
+      "translated": "Scambia precisione con potenza."
     },
     {
       "id": "tbl_ability_descriptions_00056_24F8F8",
@@ -57515,7 +57527,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 56,
       "translation_source": "Infatuates on contact.",
-      "translated": "Fa innamorare a\ncontatto."
+      "translated": "Fa innamorare a contatto."
     },
     {
       "id": "tbl_ability_descriptions_00057_24F90F",
@@ -57575,7 +57587,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 60,
       "translation_source": "Prevents item theft.",
-      "translated": "Impedisce il furto degli\nstrumenti."
+      "translated": "Impedisce il furto degli strumenti.",
+      "translated_fixed": "Impedisce il furto di strumenti."
     },
     {
       "id": "tbl_ability_descriptions_00061_24F969",
@@ -57590,7 +57603,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 61,
       "translation_source": "Heals the body by shedding.",
-      "translated": "Guarisce il corpo\nattraverso la muta."
+      "translated": "Guarisce il corpo attraverso la muta.",
+      "translated_fixed": "La muta cura il corpo."
     },
     {
       "id": "tbl_ability_descriptions_00062_24F985",
@@ -57605,7 +57619,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 62,
       "translation_source": "Ups Attack if suffering.",
-      "translated": "Aumenta l{B4}Attacco se\nsoffre."
+      "translated": "Aumenta l{B4}Attacco se soffre."
     },
     {
       "id": "tbl_ability_descriptions_00063_24F99E",
@@ -57620,7 +57634,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 63,
       "translation_source": "Ups Defense if suffering.",
-      "translated": "Aumenta la Difesa se è\nsofferente."
+      "translated": "Aumenta la Difesa se è sofferente."
     },
     {
       "id": "tbl_ability_descriptions_00064_24F9B8",
@@ -57635,7 +57649,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 64,
       "translation_source": "Draining causes injury.",
-      "translated": "Le mosse drenanti\nferiscono chi le usa."
+      "translated": "Le mosse drenanti feriscono chi le usa.",
+      "translated_fixed": "Drenare ferisce chi usa la mossa."
     },
     {
       "id": "tbl_ability_descriptions_00065_24F9D0",
@@ -57650,8 +57665,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 65,
       "translation_source": "Ups Grass moves in a pinch.",
-      "translated": "Potenzia le mosse Erba\nin situazioni difficili.",
-      "translated_fixed": "Più mosse Erba\nin crisi."
+      "translated": "Potenzia le mosse Erba in situazioni difficili.",
+      "translated_fixed": "Più mosse Erba in crisi."
     },
     {
       "id": "tbl_ability_descriptions_00066_24F9EC",
@@ -57666,7 +57681,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 66,
       "translation_source": "Ups Fire moves in a pinch.",
-      "translated": "Potenzia le mosse Fuoco\nnei momenti critici."
+      "translated": "Potenzia le mosse Fuoco nei momenti critici.",
+      "translated_fixed": "Potenzia mosse Fuoco in crisi."
     },
     {
       "id": "tbl_ability_descriptions_00067_24FA07",
@@ -57681,8 +57697,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 67,
       "translation_source": "Ups Water moves in a pinch.",
-      "translated": "Potenzia le mosse Acqua\nin situazioni difficili.",
-      "translated_fixed": "Più mosse Acqua\nin crisi."
+      "translated": "Potenzia le mosse Acqua in situazioni difficili.",
+      "translated_fixed": "Più mosse Acqua in crisi."
     },
     {
       "id": "tbl_ability_descriptions_00068_24FA23",
@@ -57697,8 +57713,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 68,
       "translation_source": "Ups Bug moves in a pinch.",
-      "translated": "Potenzia le mosse\nColeottero nei momenti\ncritici.",
-      "translated_fixed": "Più Coleottero\nin\ncrisi."
+      "translated": "Potenzia le mosse Coleottero nei momenti critici.",
+      "translated_fixed": "Più Coleottero in crisi."
     },
     {
       "id": "tbl_ability_descriptions_00069_24FA3D",
@@ -57713,7 +57729,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 69,
       "translation_source": "Prevents recoil damage.",
-      "translated": "Impedisce i danni da\ncontraccolpo."
+      "translated": "Impedisce i danni da contraccolpo."
     },
     {
       "id": "tbl_ability_descriptions_00070_24FA55",
@@ -57728,7 +57744,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 70,
       "translation_source": "Summons sunlight in battle.",
-      "translated": "Invoca la luce del sole\nin lotta."
+      "translated": "Invoca la luce del sole in lotta."
     },
     {
       "id": "tbl_ability_descriptions_00071_24FA71",
@@ -57758,7 +57774,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 72,
       "translation_source": "Powers up Electric-type moves.",
-      "translated": "Potenzia le mosse di\ntipo Elettro."
+      "translated": "Potenzia le mosse di tipo Elettro."
     },
     {
       "id": "tbl_ability_descriptions_00073_A36258",
@@ -57773,7 +57789,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 73,
       "translation_source": "Powers up Dragon-type moves.",
-      "translated": "Potenzia le mosse di\ntipo Drago."
+      "translated": "Potenzia le mosse di tipo Drago."
     },
     {
       "id": "tbl_ability_descriptions_00074_A361EA",
@@ -57788,7 +57804,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 74,
       "translation_source": "All Abilities are nullified.",
-      "translated": "Tutte le Abilità vengono\nannullate."
+      "translated": "Tutte le Abilità vengono annullate.",
+      "translated_fixed": "Annulla tutte le Abilità."
     },
     {
       "id": "tbl_ability_descriptions_00075_24FABE",
@@ -57818,7 +57835,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 76,
       "translation_source": "Changes form each turn.",
-      "translated": "Cambia forma a ogni\nturno."
+      "translated": "Cambia forma a ogni turno."
     },
     {
       "id": "tbl_ability_descriptions_00078_A34F61",
@@ -57833,7 +57850,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 78,
       "translation_source": "Keeps user and allies awake.",
-      "translated": "Mantiene svegli\nl{B4}utilizzatore e gli\nalleati."
+      "translated": "Mantiene svegli l{B4}utilizzatore e gli alleati.",
+      "translated_fixed": "Tiene svegli l{B4}utente e alleati."
     },
     {
       "id": "tbl_ability_descriptions_00079_A34F7E",
@@ -57848,7 +57866,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 79,
       "translation_source": "Multi-hit moves hit five times.",
-      "translated": "Le mosse multicolpo\ncolpiscono cinque volte."
+      "translated": "Le mosse multicolpo colpiscono cinque volte.",
+      "translated_fixed": "I multicolpo centrano 5 volte."
     },
     {
       "id": "tbl_ability_descriptions_00080_A34F9E",
@@ -57863,7 +57882,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 80,
       "translation_source": "Turns electricity into Speed.",
-      "translated": "Converte l{B4}elettricità\nin Velocità."
+      "translated": "Converte l{B4}elettricità in Velocità.",
+      "translated_fixed": "l{B4}elettricità diventa Velocità."
     },
     {
       "id": "tbl_ability_descriptions_00081_A34FBC",
@@ -57878,7 +57898,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 81,
       "translation_source": "Reduces damage at full HP.",
-      "translated": "Riduce i danni a PS\npieni."
+      "translated": "Riduce i danni a PS pieni."
     },
     {
       "id": "tbl_ability_descriptions_00082_A34FD7",
@@ -57893,7 +57913,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 82,
       "translation_source": "Boosts weaker moves.",
-      "translated": "Potenzia le mosse più\ndeboli."
+      "translated": "Potenzia le mosse più deboli."
     },
     {
       "id": "tbl_ability_descriptions_00083_A34FEC",
@@ -57908,8 +57928,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 83,
       "translation_source": "Moves hit Ghost-type Pokémon.",
-      "translated": "Le mosse colpiscono i\nPokémon di tipo Spettro.",
-      "translated_fixed": "Colpisce Pokémon\nSpettro."
+      "translated": "Le mosse colpiscono i Pokémon di tipo Spettro.",
+      "translated_fixed": "Colpisce Pokémon Spettro."
     },
     {
       "id": "tbl_ability_descriptions_00084_A3500A",
@@ -57924,7 +57944,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 84,
       "translation_source": "Critical hits land more often.",
-      "translated": "I colpi critici arrivano\npiù spesso."
+      "translated": "I colpi critici arrivano più spesso.",
+      "translated_fixed": "Aumenta i colpi critici."
     },
     {
       "id": "tbl_ability_descriptions_00085_A35029",
@@ -57939,7 +57960,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 85,
       "translation_source": "Boosts critical hits.",
-      "translated": "Aumenta la probabilità\ndei colpi critici."
+      "translated": "Aumenta la probabilità dei colpi critici.",
+      "translated_fixed": "Potenzia i colpi critici."
     },
     {
       "id": "tbl_ability_descriptions_00086_A3503F",
@@ -57954,7 +57976,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 86,
       "translation_source": "Heals upon switching out.",
-      "translated": "Cura quando viene\nritirato."
+      "translated": "Cura quando viene ritirato."
     },
     {
       "id": "tbl_ability_descriptions_00087_A35059",
@@ -57969,7 +57991,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 87,
       "translation_source": "Status moves hit first.",
-      "translated": "Le mosse di stato\ncolpiscono per prime."
+      "translated": "Le mosse di stato colpiscono per prime.",
+      "translated_fixed": "Dà priorità alle mosse di stato."
     },
     {
       "id": "tbl_ability_descriptions_00088_A35071",
@@ -57984,7 +58007,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 88,
       "translation_source": "Boosts same type attacks.",
-      "translated": "Potenzia gli attacchi\ndello stesso tipo."
+      "translated": "Potenzia gli attacchi dello stesso tipo.",
+      "translated_fixed": "Potenzia mosse dello stesso tipo."
     },
     {
       "id": "tbl_ability_descriptions_00089_A3508B",
@@ -57999,7 +58023,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 89,
       "translation_source": "Prevents Defense reduction.",
-      "translated": "Impedisce la riduzione\ndella Difesa."
+      "translated": "Impedisce la riduzione della Difesa.",
+      "translated_fixed": "Evita cali della Difesa."
     },
     {
       "id": "tbl_ability_descriptions_00090_A350A7",
@@ -58014,7 +58039,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 90,
       "translation_source": "Reflects status moves.",
-      "translated": "Riflette al mittente le\nmosse di stato."
+      "translated": "Riflette al mittente le mosse di stato.",
+      "translated_fixed": "Riflette le mosse di stato."
     },
     {
       "id": "tbl_ability_descriptions_00091_A350BE",
@@ -58029,7 +58055,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 91,
       "translation_source": "Boosts moves with recoil.",
-      "translated": "Potenzia le mosse con\ncontraccolpo."
+      "translated": "Potenzia le mosse con contraccolpo.",
+      "translated_fixed": "Potenzia mosse con contraccolpo."
     },
     {
       "id": "tbl_ability_descriptions_00092_A350D8",
@@ -58044,8 +58071,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 92,
       "translation_source": "Trades added effects for power.",
-      "translated": "Scambia gli effetti\naggiuntivi con la\npotenza.",
-      "translated_fixed": "Effetti aggiunti\nper\npotenza."
+      "translated": "Scambia gli effetti aggiuntivi con la potenza.",
+      "translated_fixed": "Effetti aggiunti per potenza."
     },
     {
       "id": "tbl_ability_descriptions_00093_A350F8",
@@ -58060,7 +58087,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 93,
       "translation_source": "Boosts punching moves.",
-      "translated": "Potenzia le mosse di\npugno."
+      "translated": "Potenzia le mosse di pugno."
     },
     {
       "id": "tbl_ability_descriptions_00094_A3510F",
@@ -58075,8 +58102,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 94,
       "translation_source": "Ups power against same gender.",
-      "translated": "Aumenta la potenza\ncontro i Pokémon dello\nstesso sesso.",
-      "translated_fixed": "Potenza contro\nstesso\nsesso."
+      "translated": "Aumenta la potenza contro i Pokémon dello stesso sesso.",
+      "translated_fixed": "Potenza contro stesso sesso."
     },
     {
       "id": "tbl_ability_descriptions_00095_A3512E",
@@ -58091,7 +58118,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 95,
       "translation_source": "Boosts moves in a sandstorm.",
-      "translated": "Potenzia le mosse in una\ntempesta di sabbia."
+      "translated": "Potenzia le mosse in una tempesta di sabbia.",
+      "translated_fixed": "Potenzia le mosse nella sabbia."
     },
     {
       "id": "tbl_ability_descriptions_00096_A3514B",
@@ -58106,7 +58134,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 96,
       "translation_source": "Trades HP for power in sunshine.",
-      "translated": "Scambia PS con potenza\nalla luce del sole."
+      "translated": "Scambia PS con potenza alla luce del sole.",
+      "translated_fixed": "Sole: più potenza, meno PS."
     },
     {
       "id": "tbl_ability_descriptions_00097_A3516C",
@@ -58136,7 +58165,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 98,
       "translation_source": "Prefers the rain to heat.",
-      "translated": "Preferisce la pioggia al\ncaldo."
+      "translated": "Preferisce la pioggia al caldo."
     },
     {
       "id": "tbl_ability_descriptions_00099_A35197",
@@ -58161,7 +58190,8 @@
           "token": "\\qc"
         }
       ],
-      "translated": "Potenzia le mosse \\qonon\nmolto efficaci\\qc."
+      "translated": "Potenzia le mosse \\qonon molto efficaci\\qc.",
+      "translated_fixed": "Potenzia mosse \\qopoco efficaci\\qc."
     },
     {
       "id": "tbl_ability_descriptions_00100_A3623A",
@@ -58176,7 +58206,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 100,
       "translation_source": "Contact moves bypass Protect.",
-      "translated": "Le mosse di contatto\nignorano Protezione."
+      "translated": "Le mosse di contatto ignorano Protezione.",
+      "translated_fixed": "Contatto: ignora Protezione."
     },
     {
       "id": "tbl_ability_descriptions_00101_A351BA",
@@ -58192,7 +58223,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 101,
       "translation_source": "Weakens super effective moves.",
-      "translated": "Indebolisce le mosse\nsuperefficaci."
+      "translated": "Indebolisce le mosse superefficaci.",
+      "translated_fixed": "Riduce danni superefficaci."
     },
     {
       "id": "tbl_ability_descriptions_00102_A351D9",
@@ -58207,7 +58239,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 102,
       "translation_source": "Passes through barriers and Fog.",
-      "translated": "Attraversa barriere e\nNebbia."
+      "translated": "Attraversa barriere e Nebbia."
     },
     {
       "id": "tbl_ability_descriptions_00103_A351FA",
@@ -58222,8 +58254,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 103,
       "translation_source": "Adjusts power from foe’s stats.",
-      "translated": "Regola la potenza in\nbase alle statistiche\ndel nemico.",
-      "translated_fixed": "Potenza da\nstatistiche\nnemiche."
+      "translated": "Regola la potenza in base alle statistiche del nemico.",
+      "translated_fixed": "Potenza da statistiche nemiche."
     },
     {
       "id": "tbl_ability_descriptions_00104_A3521A",
@@ -58238,7 +58270,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 104,
       "translation_source": "Restores HP if poisoned.",
-      "translated": "Ripristina i PS se è\navvelenato."
+      "translated": "Ripristina i PS se è avvelenato."
     },
     {
       "id": "tbl_ability_descriptions_00105_A35233",
@@ -58253,7 +58285,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 105,
       "translation_source": "Slight HP recovery in hail.",
-      "translated": "Leggero recupero PS\nnella grandine."
+      "translated": "Leggero recupero PS nella grandine.",
+      "translated_fixed": "Recupera pochi PS nella grandine."
     },
     {
       "id": "tbl_ability_descriptions_00106_A3524F",
@@ -58268,7 +58301,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 106,
       "translation_source": "Ups one stat and downs another.",
-      "translated": "Aumenta una statistica e\nne abbassa un{B4}altra."
+      "translated": "Aumenta una statistica e ne abbassa un{B4}altra.",
+      "translated_fixed": "Alza una stat., cala un{B4}altra."
     },
     {
       "id": "tbl_ability_descriptions_00107_A3526F",
@@ -58283,7 +58317,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 107,
       "translation_source": "Heals status problems in rain.",
-      "translated": "Cura i problemi di stato\nsotto la pioggia."
+      "translated": "Cura i problemi di stato sotto la pioggia.",
+      "translated_fixed": "Pioggia: cura gli stati alterati."
     },
     {
       "id": "tbl_ability_descriptions_00108_A3528E",
@@ -58298,7 +58333,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 108,
       "translation_source": "May heal ally’s status problems.",
-      "translated": "Può curare i problemi di\nstato dell{B4}alleato."
+      "translated": "Può curare i problemi di stato dell{B4}alleato.",
+      "translated_fixed": "Può curare gli stati dell{B4}alleato."
     },
     {
       "id": "tbl_ability_descriptions_00109_A352AF",
@@ -58313,7 +58349,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 109,
       "translation_source": "Ups evasion in hail.",
-      "translated": "Aumenta l{B4}elusione con\nla Grandine."
+      "translated": "Aumenta l{B4}elusione con la Grandine.",
+      "translated_fixed": "Alza l{B4}elusione con la Grandine."
     },
     {
       "id": "tbl_ability_descriptions_00110_A352C4",
@@ -58328,7 +58365,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 110,
       "translation_source": "Ups evasion if confused.",
-      "translated": "Aumenta l{B4}elusione se è\nconfuso."
+      "translated": "Aumenta l{B4}elusione se è confuso."
     },
     {
       "id": "tbl_ability_descriptions_00111_A352DD",
@@ -58343,7 +58380,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 111,
       "translation_source": "Summons a hailstorm in battle.",
-      "translated": "Evoca una grandinata in\nlotta."
+      "translated": "Evoca una grandinata in lotta."
     },
     {
       "id": "tbl_ability_descriptions_00112_A352FC",
@@ -58358,7 +58395,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 112,
       "translation_source": "Ups Speed if suffering.",
-      "translated": "Aumenta la Velocità se\nsoffre."
+      "translated": "Aumenta la Velocità se soffre."
     },
     {
       "id": "tbl_ability_descriptions_00113_A35314",
@@ -58373,8 +58410,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 113,
       "translation_source": "Boosts Attack if hit by Grass.",
-      "translated": "Aumenta l{B4}Attacco se\nviene colpito da una\nmossa di tipo Erba.",
-      "translated_fixed": "l{B4}Attacco+ se\ncolpito da\nErba."
+      "translated": "Aumenta l{B4}Attacco se viene colpito da una mossa di tipo Erba.",
+      "translated_fixed": "l{B4}Attacco sale se colpito da Erba."
     },
     {
       "id": "tbl_ability_descriptions_00114_A35333",
@@ -58389,8 +58426,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 114,
       "translation_source": "Immune to weather and powder.",
-      "translated": "Immunità agli effetti\natmosferici e alle\npolveri.",
-      "translated_fixed": "Immune meteo,\npolveri,\nspore."
+      "translated": "Immunità agli effetti atmosferici e alle polveri.",
+      "translated_fixed": "Immune meteo, polveri, spore."
     },
     {
       "id": "tbl_ability_descriptions_00115_A35351",
@@ -58405,7 +58442,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 115,
       "translation_source": "Only damaged by attacks.",
-      "translated": "Subisce danni solo dagli\nattacchi."
+      "translated": "Subisce danni solo dagli attacchi."
     },
     {
       "id": "tbl_ability_descriptions_00116_A3536A",
@@ -58420,7 +58457,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 116,
       "translation_source": "Avoids ball and bomb moves.",
-      "translated": "Evita le mosse a sfera e\nbomba."
+      "translated": "Evita le mosse a sfera e bomba."
     },
     {
       "id": "tbl_ability_descriptions_00117_A35386",
@@ -58435,8 +58472,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 117,
       "translation_source": "Flying-type moves hit first.",
-      "translated": "Le mosse di tipo Volante\ncolpiscono per prime.",
-      "translated_fixed": "Mosse Volanti\nprime."
+      "translated": "Le mosse di tipo Volante colpiscono per prime.",
+      "translated_fixed": "Mosse Volanti prime."
     },
     {
       "id": "tbl_ability_descriptions_00118_A353A3",
@@ -58451,7 +58488,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 118,
       "translation_source": "Knockouts boost Attack.",
-      "translated": "I KO aumentano\nl{B4}Attacco."
+      "translated": "I KO aumentano l{B4}Attacco."
     },
     {
       "id": "tbl_ability_descriptions_00119_A353BB",
@@ -58466,7 +58503,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 119,
       "translation_source": "Fainting damages the foe.",
-      "translated": "Quando sviene, danneggia\nl{B4}avversario."
+      "translated": "Quando sviene, danneggia l{B4}avversario.",
+      "translated_fixed": "Se sviene, danneggia l{B4}avversario."
     },
     {
       "id": "tbl_ability_descriptions_00120_A353D5",
@@ -58481,7 +58519,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 120,
       "translation_source": "May disable a foe’s move.",
-      "translated": "Può disabilitare la\nmossa di un avversario."
+      "translated": "Può disabilitare la mossa di un avversario.",
+      "translated_fixed": "Può inibire una mossa avversaria."
     },
     {
       "id": "tbl_ability_descriptions_00121_A353EF",
@@ -58496,8 +58535,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 121,
       "translation_source": "Lowers the foe’s Speed if hit.",
-      "translated": "Riduce la Velocità del\nnemico se viene colpito.",
-      "translated_fixed": "Cala Velocità\nse colpisce."
+      "translated": "Riduce la Velocità del nemico se viene colpito.",
+      "translated_fixed": "Cala Velocità se colpisce."
     },
     {
       "id": "tbl_ability_descriptions_00122_A3540E",
@@ -58512,7 +58551,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 122,
       "translation_source": "Spreads with contact.",
-      "translated": "Si diffonde con il\ncontatto."
+      "translated": "Si diffonde con il contatto."
     },
     {
       "id": "tbl_ability_descriptions_00123_A36294",
@@ -58527,7 +58566,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 123,
       "translation_source": "Knockouts boost Sp. Atk.",
-      "translated": "I KO aumentano l{B4}Att.\nSp."
+      "translated": "I KO aumentano l{B4}Att. Sp."
     },
     {
       "id": "tbl_ability_descriptions_00124_A35434",
@@ -58542,8 +58581,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 124,
       "translation_source": "Raises Speed in a sandstorm.",
-      "translated": "Aumenta la Velocità in\nuna tempesta di sabbia.",
-      "translated_fixed": "Più Velocità in\nsabbia."
+      "translated": "Aumenta la Velocità in una tempesta di sabbia.",
+      "translated_fixed": "Più Velocità in sabbia."
     },
     {
       "id": "tbl_ability_descriptions_00125_A35451",
@@ -58558,7 +58597,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 125,
       "translation_source": "Moving last boosts power.",
-      "translated": "Muoversi per ultimi\npotenzia la forza."
+      "translated": "Muoversi per ultimi potenzia la forza.",
+      "translated_fixed": "Agendo ultimo aumenta la potenza."
     },
     {
       "id": "tbl_ability_descriptions_00126_A3546B",
@@ -58573,7 +58613,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 126,
       "translation_source": "Ensures that all moves land.",
-      "translated": "Garantisce che tutte le\nmosse vadano a segno."
+      "translated": "Garantisce che tutte le mosse vadano a segno.",
+      "translated_fixed": "Fa sì che ogni mossa colpisca."
     },
     {
       "id": "tbl_ability_descriptions_00127_A35488",
@@ -58588,7 +58629,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 127,
       "translation_source": "Boosts aura and pulse moves.",
-      "translated": "Potenzia le mosse aura e\npulse."
+      "translated": "Potenzia le mosse aura e pulse."
     },
     {
       "id": "tbl_ability_descriptions_00128_A354A5",
@@ -58603,7 +58644,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 128,
       "translation_source": "Boosts moves that make contact.",
-      "translated": "Potenzia le mosse di\ncontatto."
+      "translated": "Potenzia le mosse di contatto."
     },
     {
       "id": "tbl_ability_descriptions_00129_A354C5",
@@ -58618,7 +58659,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 129,
       "translation_source": "Boosts biting moves.",
-      "translated": "Potenzia le mosse basate\nsul morso."
+      "translated": "Potenzia le mosse basate sul morso.",
+      "translated_fixed": "Potenzia le mosse da morso."
     },
     {
       "id": "tbl_ability_descriptions_00130_A354DA",
@@ -58633,7 +58675,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 130,
       "translation_source": "Raises own and ally’s accuracy.",
-      "translated": "Aumenta la precisione\nsua e dell{B4}alleato."
+      "translated": "Aumenta la precisione sua e dell{B4}alleato.",
+      "translated_fixed": "Più precisione a sé e all{B4}alleato."
     },
     {
       "id": "tbl_ability_descriptions_00131_A354FA",
@@ -58648,7 +58691,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 131,
       "translation_source": "Draws in water to up Sp. Atk.",
-      "translated": "Attira l{B4}acqua per\naumentare l{B4}Att. Sp."
+      "translated": "Attira l{B4}acqua per aumentare l{B4}Att. Sp.",
+      "translated_fixed": "l{B4}acqua aumenta l{B4}Att. Sp."
     },
     {
       "id": "tbl_ability_descriptions_00132_A35518",
@@ -58663,7 +58707,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 132,
       "translation_source": "Powers up Dark-type moves.",
-      "translated": "Potenzia le mosse di\ntipo Buio."
+      "translated": "Potenzia le mosse di tipo Buio."
     },
     {
       "id": "tbl_ability_descriptions_00133_A35533",
@@ -58678,7 +58722,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 133,
       "translation_source": "Powers up Fairy-type moves.",
-      "translated": "Potenzia le mosse di\ntipo Folletto."
+      "translated": "Potenzia le mosse di tipo Folletto.",
+      "translated_fixed": "Potenzia le mosse Folletto."
     },
     {
       "id": "tbl_ability_descriptions_00134_A3554F",
@@ -58708,7 +58753,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 135,
       "translation_source": "Normal moves become Ice.",
-      "translated": "Le mosse Normali\ndiventano di tipo\nGhiaccio."
+      "translated": "Le mosse Normali diventano di tipo Ghiaccio.",
+      "translated_fixed": "Mosse Normali diventano Ghiaccio."
     },
     {
       "id": "tbl_ability_descriptions_00136_A35581",
@@ -58723,7 +58769,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 136,
       "translation_source": "Normal moves become Fairy.",
-      "translated": "Le mosse Normali\ndiventano di tipo\nFolletto."
+      "translated": "Le mosse Normali diventano di tipo Folletto.",
+      "translated_fixed": "Mosse Normali diventano Folletto."
     },
     {
       "id": "tbl_ability_descriptions_00137_A3559C",
@@ -58738,7 +58785,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 137,
       "translation_source": "Normal moves become Flying.",
-      "translated": "Le mosse Normali\ndiventano di tipo\nVolante."
+      "translated": "Le mosse Normali diventano di tipo Volante.",
+      "translated_fixed": "Mosse Normali diventano Volante."
     },
     {
       "id": "tbl_ability_descriptions_00138_A355B8",
@@ -58753,7 +58801,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 138,
       "translation_source": "All moves become Normal-type.",
-      "translated": "Tutte le mosse diventano\ndi tipo Normale."
+      "translated": "Tutte le mosse diventano di tipo Normale.",
+      "translated_fixed": "Tutte le mosse diventano Normali."
     },
     {
       "id": "tbl_ability_descriptions_00139_A355D6",
@@ -58768,7 +58817,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 139,
       "translation_source": "Doubles Speed if item is lost.",
-      "translated": "Raddoppia la Velocità se\nperde lo strumento."
+      "translated": "Raddoppia la Velocità se perde lo strumento.",
+      "translated_fixed": "Senza strumento, Velocità doppia."
     },
     {
       "id": "tbl_ability_descriptions_00140_A355F5",
@@ -58783,7 +58833,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 140,
       "translation_source": "Doubles stat changes.",
-      "translated": "Raddoppia i cambiamenti\ndelle statistiche."
+      "translated": "Raddoppia i cambiamenti delle statistiche.",
+      "translated_fixed": "Raddoppia ogni variazione di stat."
     },
     {
       "id": "tbl_ability_descriptions_00141_A3560B",
@@ -58798,8 +58849,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 141,
       "translation_source": "Ignores foe’s stat changes.",
-      "translated": "Ignora le modifiche alle\nstatistiche del nemico.",
-      "translated_fixed": "Ignora variazioni\nnemiche."
+      "translated": "Ignora le modifiche alle statistiche del nemico.",
+      "translated_fixed": "Ignora variazioni nemiche."
     },
     {
       "id": "tbl_ability_descriptions_00142_A35627",
@@ -58814,8 +58865,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 142,
       "translation_source": "Attack rises when stats fall.",
-      "translated": "L{B4}Attacco aumenta quando\nle statistiche calano.",
-      "translated_fixed": "l{B4}Attacco+ se\ncalano."
+      "translated": "L{B4}Attacco aumenta quando le statistiche calano.",
+      "translated_fixed": "l{B4}Attacco aumenta se calano."
     },
     {
       "id": "tbl_ability_descriptions_00143_A35645",
@@ -58830,8 +58881,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 143,
       "translation_source": "Sp. Atk rises when stats fall.",
-      "translated": "L{B4}Att. Sp. aumenta\nquando le statistiche\ncalano.",
-      "translated_fixed": "l{B4}Att. Sp.+\nse\ncalano."
+      "translated": "L{B4}Att. Sp. aumenta quando le statistiche calano.",
+      "translated_fixed": "l{B4}Att. Sp. aumenta se calano."
     },
     {
       "id": "tbl_ability_descriptions_00144_A35664",
@@ -58846,7 +58897,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 144,
       "translation_source": "Gives up at half HP.",
-      "translated": "Si arrende a metà dei\nPS."
+      "translated": "Si arrende a metà dei PS."
     },
     {
       "id": "tbl_ability_descriptions_00145_A35679",
@@ -58861,7 +58912,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 145,
       "translation_source": "Takes a while to get going.",
-      "translated": "Ci mette un po{B4} a\ningranare."
+      "translated": "Ci mette un po{B4} a ingranare."
     },
     {
       "id": "tbl_ability_descriptions_00146_A35695",
@@ -58876,7 +58927,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 146,
       "translation_source": "Attack rises when poisoned.",
-      "translated": "L{B4}Attacco aumenta quando\nè avvelenato."
+      "translated": "L{B4}Attacco aumenta quando è avvelenato.",
+      "translated_fixed": "l{B4}Attacco sale se avvelenato."
     },
     {
       "id": "tbl_ability_descriptions_00147_A356B1",
@@ -58891,7 +58943,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 147,
       "translation_source": "Sp. Atk rises when burned.",
-      "translated": "L{B4}Att. Sp. aumenta\nquando è bruciato."
+      "translated": "L{B4}Att. Sp. aumenta quando è bruciato.",
+      "translated_fixed": "l{B4}Att. Sp. sale se scottato."
     },
     {
       "id": "tbl_ability_descriptions_00148_A356CC",
@@ -58921,7 +58974,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 149,
       "translation_source": "Ups status move evasion.",
-      "translated": "Aumenta l{B4}elusione delle\nmosse di stato."
+      "translated": "Aumenta l{B4}elusione delle mosse di stato.",
+      "translated_fixed": "Alza l{B4}elusione da mosse di stato."
     },
     {
       "id": "tbl_ability_descriptions_00150_A356FD",
@@ -58936,7 +58990,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 150,
       "translation_source": "Changes type to match move.",
-      "translated": "Cambia il tipo per\nadattarlo alla mossa."
+      "translated": "Cambia il tipo per adattarlo alla mossa.",
+      "translated_fixed": "Cambia tipo secondo la mossa."
     },
     {
       "id": "tbl_ability_descriptions_00151_A35719",
@@ -58951,7 +59006,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 151,
       "translation_source": "Moves get a weaker second hit.",
-      "translated": "Le mosse hanno un\nsecondo colpo più\ndebole."
+      "translated": "Le mosse hanno un secondo colpo più debole.",
+      "translated_fixed": "Segue un secondo colpo debole."
     },
     {
       "id": "tbl_ability_descriptions_00152_A35738",
@@ -58966,7 +59022,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 152,
       "translation_source": "Moves ignore Abilities.",
-      "translated": "Le mosse ignorano le\nAbilità."
+      "translated": "Le mosse ignorano le Abilità."
     },
     {
       "id": "tbl_ability_descriptions_00153_A362AD",
@@ -58981,7 +59037,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 153,
       "translation_source": "Both Unnerve and Grim Neigh.",
-      "translated": "Sia Prepotenza che\nNitrito Spettrale."
+      "translated": "Sia Prepotenza che Nitrito Spettrale.",
+      "translated_fixed": "Prepotenza e Nitrito Spettrale."
     },
     {
       "id": "tbl_ability_descriptions_00154_A362CA",
@@ -58996,7 +59053,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 154,
       "translation_source": "Both Unnerve and Chilling Neigh.",
-      "translated": "Sia Unnerve che Chilling\nNeigh."
+      "translated": "Sia Unnerve che Chilling Neigh."
     },
     {
       "id": "tbl_ability_descriptions_00155_A35750",
@@ -59011,8 +59068,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 155,
       "translation_source": "Transforms below half HP.",
-      "translated": "Si trasforma quando i PS\nscendono sotto la metà.",
-      "translated_fixed": "Trasforma sotto\nmetà PS."
+      "translated": "Si trasforma quando i PS scendono sotto la metà.",
+      "translated_fixed": "Trasforma sotto metà PS."
     },
     {
       "id": "tbl_ability_descriptions_00156_A3576A",
@@ -59042,8 +59099,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 157,
       "translation_source": "KOing a foe ups highest stat.",
-      "translated": "Mandare KO un avversario\naumenta la statistica\npiù alta.",
-      "translated_fixed": "KO,\nstatistica più\nalta."
+      "translated": "Mandare KO un avversario aumenta la statistica più alta.",
+      "translated_fixed": "KO, statistica più alta."
     },
     {
       "id": "tbl_ability_descriptions_00158_A3579F",
@@ -59058,7 +59115,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 158,
       "translation_source": "May poison any type.",
-      "translated": "Può avvelenare qualsiasi\ntipo."
+      "translated": "Può avvelenare qualsiasi tipo."
     },
     {
       "id": "tbl_ability_descriptions_00159_A357B4",
@@ -59073,7 +59130,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 159,
       "translation_source": "Takes one hit with no damage.",
-      "translated": "Resiste a un colpo senza\nsubire danni."
+      "translated": "Resiste a un colpo senza subire danni.",
+      "translated_fixed": "Annulla i danni del primo colpo."
     },
     {
       "id": "tbl_ability_descriptions_00160_A357D2",
@@ -59088,8 +59146,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 160,
       "translation_source": "Switches out below half HP.",
-      "translated": "Efettua il cambio quando\ngli PS scendono sotto\nmetà.",
-      "translated_fixed": "Si ritira sotto\nmetà\nPS."
+      "translated": "Efettua il cambio quando gli PS scendono sotto metà.",
+      "translated_fixed": "Si ritira sotto metà PS."
     },
     {
       "id": "tbl_ability_descriptions_00161_A357EE",
@@ -59104,8 +59162,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 161,
       "translation_source": "Halves contact hits. Weak to Fire.",
-      "translated": "Riduce della metà i\ndanni delle mosse di\ncontatto. Debole al\nFuoco.",
-      "translated_fixed": "Danni /2\ncontatto.\nDebole\nFuoco."
+      "translated": "Riduce della metà i danni delle mosse di contatto. Debole al Fuoco.",
+      "translated_fixed": "Danni /2 contatto. Debole Fuoco."
     },
     {
       "id": "tbl_ability_descriptions_00162_A3616A",
@@ -59120,8 +59178,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 162,
       "translation_source": "Boosts own and ally Steel moves.",
-      "translated": "Potenzia le mosse di\ntipo Acciaio sue e\ndell{B4}alleato.",
-      "translated_fixed": "Mosse\nAcciaio +\nsue e l{B4}alleato."
+      "translated": "Potenzia le mosse di tipo Acciaio sue e dell{B4}alleato.",
+      "translated_fixed": "Più Acciaio per sé e l{B4}alleato."
     },
     {
       "id": "tbl_ability_descriptions_00163_A3618B",
@@ -59136,8 +59194,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 163,
       "translation_source": "Gives a perish count on contact.",
-      "translated": "Imposta il conto alla\nrovescia di Esaurimento\nal contatto.",
-      "translated_fixed": "Conto\nEsaurimento al\ncontatto."
+      "translated": "Imposta il conto alla rovescia di Esaurimento al contatto.",
+      "translated_fixed": "Conto Esaurimento al contatto."
     },
     {
       "id": "tbl_ability_descriptions_00164_A361AC",
@@ -59152,7 +59210,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 164,
       "translation_source": "Trades Abilities on contact.",
-      "translated": "Scambia le Abilità al\ncontatto."
+      "translated": "Scambia le Abilità al contatto."
     },
     {
       "id": "tbl_ability_descriptions_00165_A35825",
@@ -59167,8 +59225,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 165,
       "translation_source": "Transforms below half HP.",
-      "translated": "Si trasforma quando i PS\nscendono sotto la metà.",
-      "translated_fixed": "Trasforma sotto\nmetà PS."
+      "translated": "Si trasforma quando i PS scendono sotto la metà.",
+      "translated_fixed": "Trasforma sotto metà PS."
     },
     {
       "id": "tbl_ability_descriptions_00167_A3583F",
@@ -59183,7 +59241,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 167,
       "translation_source": "Changes type to match Memory.",
-      "translated": "Cambia tipo per\ncorrispondere alla\nMemoria."
+      "translated": "Cambia tipo per corrispondere alla Memoria.",
+      "translated_fixed": "Cambia tipo secondo la Memoria."
     },
     {
       "id": "tbl_ability_descriptions_00168_A3585D",
@@ -59198,7 +59257,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 168,
       "translation_source": "Schools up with high HP.",
-      "translated": "Si riunisce in branco\ncon PS alti."
+      "translated": "Si riunisce in branco con PS alti."
     },
     {
       "id": "tbl_ability_descriptions_00169_A35876",
@@ -59213,7 +59272,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 169,
       "translation_source": "Reduces damage at full HP.",
-      "translated": "Riduce i danni a PS\npieni."
+      "translated": "Riduce i danni a PS pieni."
     },
     {
       "id": "tbl_ability_descriptions_00170_A35891",
@@ -59228,7 +59287,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 170,
       "translation_source": "Lowers shields below half HP.",
-      "translated": "Le barriere si abbassano\nsotto metà PS."
+      "translated": "Le barriere si abbassano sotto metà PS.",
+      "translated_fixed": "Sotto metà PS, barriere ridotte."
     },
     {
       "id": "tbl_ability_descriptions_00171_A358AF",
@@ -59243,7 +59303,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 171,
       "translation_source": "Boosts speed in Hail.",
-      "translated": "Aumenta la Velocità con\nla Grandine."
+      "translated": "Aumenta la Velocità con la Grandine.",
+      "translated_fixed": "Grandine: Velocità aumenta."
     },
     {
       "id": "tbl_ability_descriptions_00172_A358C5",
@@ -59258,7 +59319,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 172,
       "translation_source": "Knockouts boost Sp. Atk.",
-      "translated": "I KO aumentano l{B4}Att.\nSp."
+      "translated": "I KO aumentano l{B4}Att. Sp."
     },
     {
       "id": "tbl_ability_descriptions_00173_A358DE",
@@ -59273,7 +59334,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 173,
       "translation_source": "Taking a hit raises Defense.",
-      "translated": "Subire un colpo aumenta\nla Difesa."
+      "translated": "Subire un colpo aumenta la Difesa."
     },
     {
       "id": "tbl_ability_descriptions_00174_A358FB",
@@ -59288,8 +59349,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 174,
       "translation_source": "Powers up Steel-type moves.",
-      "translated": "Aumenta la potenza delle\nmosse di tipo Acciaio.",
-      "translated_fixed": "Potenzia le mosse di\ntipo Acciaio."
+      "translated": "Aumenta la potenza delle mosse di tipo Acciaio.",
+      "translated_fixed": "Potenzia le mosse di tipo Acciaio."
     },
     {
       "id": "tbl_ability_descriptions_00176_A35917",
@@ -59304,7 +59365,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 176,
       "translation_source": "Gives priority to healing moves.",
-      "translated": "Dà priorità alle mosse\ndi cura."
+      "translated": "Dà priorità alle mosse di cura."
     },
     {
       "id": "tbl_ability_descriptions_00177_A35938",
@@ -59319,8 +59380,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 177,
       "translation_source": "Ups Water attacks. Prevents burn.",
-      "translated": "Potenzia le mosse di\ntipo Acqua. Impedisce le\nscottature.",
-      "translated_fixed": "Mosse Acqua.\nEvita\nscottature."
+      "translated": "Potenzia le mosse di tipo Acqua. Impedisce le scottature.",
+      "translated_fixed": "Mosse Acqua. Evita scottature."
     },
     {
       "id": "tbl_ability_descriptions_00178_A3595A",
@@ -59335,8 +59396,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 178,
       "translation_source": "Water-type hits raise Defense.",
-      "translated": "Gli attacchi di tipo\nAcqua aumentano la\nDifesa.",
-      "translated_fixed": "Colpi Acqua\nalzano\nDifesa."
+      "translated": "Gli attacchi di tipo Acqua aumentano la Difesa.",
+      "translated_fixed": "Colpi Acqua alzano Difesa."
     },
     {
       "id": "tbl_ability_descriptions_00179_A35979",
@@ -59351,7 +59412,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 179,
       "translation_source": "Often attacks last.",
-      "translated": "Attacca spesso per\nultimo."
+      "translated": "Attacca spesso per ultimo."
     },
     {
       "id": "tbl_ability_descriptions_00180_A3598D",
@@ -59366,7 +59427,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 180,
       "translation_source": "Changes type to match held Plate.",
-      "translated": "Cambia tipo in base alla\nLastra tenuta."
+      "translated": "Cambia tipo in base alla Lastra tenuta.",
+      "translated_fixed": "Cambia tipo secondo la Lastra."
     },
     {
       "id": "tbl_ability_descriptions_00181_A359AF",
@@ -59411,7 +59473,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 183,
       "translation_source": "Creates a Misty Terrain.",
-      "translated": "Crea un Terreno\nNebbioso."
+      "translated": "Crea un Terreno Nebbioso."
     },
     {
       "id": "tbl_ability_descriptions_00184_A359FF",
@@ -59426,7 +59488,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 184,
       "translation_source": "Creates a Psychic Terrain.",
-      "translated": "Crea un Terreno\nPsichico."
+      "translated": "Crea un Terreno Psichico."
     },
     {
       "id": "tbl_ability_descriptions_00185_A35A1A",
@@ -59441,7 +59503,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 185,
       "translation_source": "Boosts Speed on Electric Terrain.",
-      "translated": "Aumenta la Velocità su\nTerreno Elettrico."
+      "translated": "Aumenta la Velocità su Terreno Elettrico.",
+      "translated_fixed": "Campo Elettrico: Velocità aumenta."
     },
     {
       "id": "tbl_ability_descriptions_00186_A35A3C",
@@ -59456,7 +59519,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 186,
       "translation_source": "Ups Defense on Grassy Terrain.",
-      "translated": "Aumenta la Difesa su\nTerreno Erboso."
+      "translated": "Aumenta la Difesa su Terreno Erboso.",
+      "translated_fixed": "Campo Erboso: Difesa aumenta."
     },
     {
       "id": "tbl_ability_descriptions_00187_A35A5B",
@@ -59471,8 +59535,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 187,
       "translation_source": "Maxes Attack after a critical hit.",
-      "translated": "Porta l{B4}Attacco al\nmassimo dopo un colpo\ncritico.",
-      "translated_fixed": "l{B4}Att. al\nmassimo dopo\nun critico."
+      "translated": "Porta l{B4}Attacco al massimo dopo un colpo critico.",
+      "translated_fixed": "l{B4}Att. al massimo dopo un critico."
     },
     {
       "id": "tbl_ability_descriptions_00188_A35A7E",
@@ -59487,7 +59551,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 188,
       "translation_source": "Senses super effective moves.",
-      "translated": "Percepisce le mosse\nsuperefficaci."
+      "translated": "Percepisce le mosse superefficaci."
     },
     {
       "id": "tbl_ability_descriptions_00189_A35A9C",
@@ -59502,7 +59566,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 189,
       "translation_source": "Warns of the foe’s strongest move.",
-      "translated": "Avverte della mossa più\nforte del nemico."
+      "translated": "Avverte della mossa più forte del nemico.",
+      "translated_fixed": "Segnala la mossa nemica più forte."
     },
     {
       "id": "tbl_ability_descriptions_00190_A35ABF",
@@ -59517,7 +59582,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 190,
       "translation_source": "Reveals the foe’s held item.",
-      "translated": "Rivela lo strumento\ntenuto dal nemico."
+      "translated": "Rivela lo strumento tenuto dal nemico.",
+      "translated_fixed": "Rivela lo strumento del nemico."
     },
     {
       "id": "tbl_ability_descriptions_00191_A35ADC",
@@ -59532,7 +59598,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 191,
       "translation_source": "Reverses stat changes.",
-      "translated": "Inverte le modifiche\nalle statistiche."
+      "translated": "Inverte le modifiche alle statistiche.",
+      "translated_fixed": "Inverte le variazioni statistiche."
     },
     {
       "id": "tbl_ability_descriptions_00192_A35AF3",
@@ -59547,7 +59614,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 192,
       "translation_source": "Stops the foe from eating Berries.",
-      "translated": "Impedisce al nemico di\nmangiare le Bacche."
+      "translated": "Impedisce al nemico di mangiare le Bacche.",
+      "translated_fixed": "Il nemico non può usare Bacche."
     },
     {
       "id": "tbl_ability_descriptions_00193_A35B16",
@@ -59562,7 +59630,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 193,
       "translation_source": "Hits up Speed but drop Defense.",
-      "translated": "Aumenta la Velocità ma\nriduce la Difesa."
+      "translated": "Aumenta la Velocità ma riduce la Difesa.",
+      "translated_fixed": "Colpito: Velocità su, Difesa giù."
     },
     {
       "id": "tbl_ability_descriptions_00194_A35B36",
@@ -59607,7 +59676,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 196,
       "translation_source": "Flinching raises Speed.",
-      "translated": "Il tentennamento aumenta\nla Velocità."
+      "translated": "Il tentennamento aumenta la Velocità.",
+      "translated_fixed": "Tentennare aumenta la Velocità."
     },
     {
       "id": "tbl_ability_descriptions_00197_A35B6D",
@@ -59622,7 +59692,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 197,
       "translation_source": "Transforms upon entering battle.",
-      "translated": "Si trasforma entrando in\nbattaglia."
+      "translated": "Si trasforma entrando in battaglia.",
+      "translated_fixed": "Si trasforma entrando in lotta."
     },
     {
       "id": "tbl_ability_descriptions_00198_A35B8E",
@@ -59637,7 +59708,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 198,
       "translation_source": "Dark-type hits raise Attack.",
-      "translated": "I colpi di tipo Buio\naumentano l{B4}Attacco."
+      "translated": "I colpi di tipo Buio aumentano l{B4}Attacco.",
+      "translated_fixed": "Buio subito alza l{B4}Attacco."
     },
     {
       "id": "tbl_ability_descriptions_00199_A35BAB",
@@ -59652,8 +59724,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 199,
       "translation_source": "Scary move types raise Speed.",
-      "translated": "Le mosse di tipo pauroso\naumentano la Velocità.",
-      "translated_fixed": "Mosse paurose\nalzano Vel."
+      "translated": "Le mosse di tipo pauroso aumentano la Velocità.",
+      "translated_fixed": "Mosse paurose alzano Vel."
     },
     {
       "id": "tbl_ability_descriptions_00200_A35BC9",
@@ -59668,7 +59740,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 200,
       "translation_source": "Critically hits poisoned foes.",
-      "translated": "Infligge colpi critici\nai nemici avvelenati."
+      "translated": "Infligge colpi critici ai nemici avvelenati.",
+      "translated_fixed": "Critici sui nemici avvelenati."
     },
     {
       "id": "tbl_ability_descriptions_00201_A35BE8",
@@ -59683,7 +59756,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 201,
       "translation_source": "Protects against mental problems.",
-      "translated": "Protegge dai problemi\nmentali."
+      "translated": "Protegge dai problemi mentali."
     },
     {
       "id": "tbl_ability_descriptions_00202_A35C0A",
@@ -59698,8 +59771,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 202,
       "translation_source": "Protects Grass-types from status.",
-      "translated": "Protegge i Pokémon di\ntipo Erba dagli stati\nalterati.",
-      "translated_fixed": "Protegge Erba\nda stati\nalterati."
+      "translated": "Protegge i Pokémon di tipo Erba dagli stati alterati.",
+      "translated_fixed": "Protegge Erba da stati alterati."
     },
     {
       "id": "tbl_ability_descriptions_00203_A35C2C",
@@ -59714,8 +59787,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 203,
       "translation_source": "Protects from status when sunny.",
-      "translated": "Protegge dalle\ncondizioni di stato\nquando c{B4}è il sole.",
-      "translated_fixed": "Col sole c{B4}è,\nstati\ninnocui."
+      "translated": "Protegge dalle condizioni di stato quando c{B4}è il sole.",
+      "translated_fixed": "Col sole c{B4}è, stati innocui."
     },
     {
       "id": "tbl_ability_descriptions_00204_A35C4D",
@@ -59730,7 +59803,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 204,
       "translation_source": "Can’t use items.",
-      "translated": "Non permette di usare\nstrumenti."
+      "translated": "Non permette di usare strumenti."
     },
     {
       "id": "tbl_ability_descriptions_00205_A35C5E",
@@ -59745,7 +59818,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 205,
       "translation_source": "Powers up team when sunny.",
-      "translated": "Potenzia la squadra\nquando c{B4}è il sole."
+      "translated": "Potenzia la squadra quando c{B4}è il sole.",
+      "translated_fixed": "Se c{B4}è sole, potenzia la squadra."
     },
     {
       "id": "tbl_ability_descriptions_00206_A35C79",
@@ -59760,7 +59834,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 206,
       "translation_source": "Hurts sleeping foes.",
-      "translated": "Ferisce i nemici\naddormentati."
+      "translated": "Ferisce i nemici addormentati."
     },
     {
       "id": "tbl_ability_descriptions_00207_A35C8E",
@@ -59775,8 +59849,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 207,
       "translation_source": "Steals foe’s item when hit.",
-      "translated": "Ruba lo strumento del\nnemico quando viene\ncolpito.",
-      "translated_fixed": "Oggetto\nrubato se\ncolpito."
+      "translated": "Ruba lo strumento del nemico quando viene colpito.",
+      "translated_fixed": "Oggetto rubato se colpito."
     },
     {
       "id": "tbl_ability_descriptions_00208_A35CAA",
@@ -59791,7 +59865,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 208,
       "translation_source": "Weakens non-contact moves.",
-      "translated": "Indebolisce le mosse\nsenza contatto."
+      "translated": "Indebolisce le mosse senza contatto.",
+      "translated_fixed": "Indebolisce mosse senza contatto."
     },
     {
       "id": "tbl_ability_descriptions_00209_A35CC5",
@@ -59806,7 +59881,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 209,
       "translation_source": "Can poison foe on contact.",
-      "translated": "Può avvelenare il nemico\nal contatto."
+      "translated": "Può avvelenare il nemico al contatto.",
+      "translated_fixed": "Può avvelenare al contatto."
     },
     {
       "id": "tbl_ability_descriptions_00210_A35CE0",
@@ -59821,8 +59897,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 210,
       "translation_source": "Can steal foe’s item after attack.",
-      "translated": "Può rubare lo strumento\ndel nemico dopo\nl{B4}attacco.",
-      "translated_fixed": "Ruba oggetto\nnemico dopo\nl{B4}colpo."
+      "translated": "Può rubare lo strumento del nemico dopo l{B4}attacco.",
+      "translated_fixed": "Ruba oggetto nemico dopo l{B4}colpo."
     },
     {
       "id": "tbl_ability_descriptions_00211_A35D03",
@@ -59837,7 +59913,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 211,
       "translation_source": "Switches form when attacking.",
-      "translated": "Cambia forma quando\nattacca."
+      "translated": "Cambia forma quando attacca."
     },
     {
       "id": "tbl_ability_descriptions_00212_A35D21",
@@ -59852,7 +59928,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 212,
       "translation_source": "Summons a heavy rainstorm.",
-      "translated": "Evoca un violento\ntemporale."
+      "translated": "Evoca un violento temporale."
     },
     {
       "id": "tbl_ability_descriptions_00213_A35D3C",
@@ -59867,7 +59943,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 213,
       "translation_source": "Summons extremely harsh sunlight.",
-      "translated": "Evoca una luce solare\nestremamente intensa."
+      "translated": "Evoca una luce solare estremamente intensa.",
+      "translated_fixed": "Evoca una luce solare fortissima."
     },
     {
       "id": "tbl_ability_descriptions_00214_A35D5E",
@@ -59882,7 +59959,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 214,
       "translation_source": "Summons a mysterious air current.",
-      "translated": "Evoca una misteriosa\ncorrente d{B4}aria."
+      "translated": "Evoca una misteriosa corrente d{B4}aria.",
+      "translated_fixed": "Evoca una corrente d{B4}aria arcana."
     },
     {
       "id": "tbl_ability_descriptions_00215_A361C9",
@@ -59897,8 +59975,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 215,
       "translation_source": "Ups Attack, but allows one move.",
-      "translated": "Aumenta l{B4}Attacco, ma\npermette una sola mossa.",
-      "translated_fixed": "Aumenta l{B4}Att.,\nuna sola mossa."
+      "translated": "Aumenta l{B4}Attacco, ma permette una sola mossa.",
+      "translated_fixed": "Aumenta l{B4}Att., una sola mossa."
     },
     {
       "id": "tbl_ability_descriptions_00216_A35D80",
@@ -59913,7 +59991,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 216,
       "translation_source": "Ups Sp. Atk below half HP.",
-      "translated": "Aumenta l{B4}Att. Sp. sotto\nmetà PS."
+      "translated": "Aumenta l{B4}Att. Sp. sotto metà PS."
     },
     {
       "id": "tbl_ability_descriptions_00217_A35D9B",
@@ -59928,7 +60006,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 217,
       "translation_source": "Never makes contact.",
-      "translated": "Non entra mai in\ncontatto."
+      "translated": "Non entra mai in contatto."
     },
     {
       "id": "tbl_ability_descriptions_00218_A35DB0",
@@ -59943,7 +60021,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 218,
       "translation_source": "Sound moves become Water-type.",
-      "translated": "Le mosse sonore\ndiventano di tipo Acqua."
+      "translated": "Le mosse sonore diventano di tipo Acqua.",
+      "translated_fixed": "Le mosse sonore diventano Acqua."
     },
     {
       "id": "tbl_ability_descriptions_00219_A362EB",
@@ -59958,7 +60037,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 219,
       "translation_source": "Sometimes moves quicker.",
-      "translated": "A volte si muove più\nvelocemente."
+      "translated": "A volte si muove più velocemente."
     },
     {
       "id": "tbl_ability_descriptions_00220_A35DE6",
@@ -59973,7 +60052,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 220,
       "translation_source": "Fainting damages the foe.",
-      "translated": "Quando sviene, danneggia\nl{B4}avversario."
+      "translated": "Quando sviene, danneggia l{B4}avversario.",
+      "translated_fixed": "Se sviene, danneggia l{B4}avversario."
     },
     {
       "id": "tbl_ability_descriptions_00221_A35E00",
@@ -59988,7 +60068,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 221,
       "translation_source": "Blocks priority moves.",
-      "translated": "Blocca le mosse con\npriorità."
+      "translated": "Blocca le mosse con priorità."
     },
     {
       "id": "tbl_ability_descriptions_00222_A35E17",
@@ -60003,7 +60083,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 222,
       "translation_source": "Eats Berries early.",
-      "translated": "Consuma le Bacche prima\ndel previsto."
+      "translated": "Consuma le Bacche prima del previsto.",
+      "translated_fixed": "Mangia le Bacche in anticipo."
     },
     {
       "id": "tbl_ability_descriptions_00223_A35E2B",
@@ -60018,7 +60099,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 223,
       "translation_source": "Picks up Honey after battle.",
-      "translated": "Raccoglie Miele dopo la\nlotta."
+      "translated": "Raccoglie Miele dopo la lotta."
     },
     {
       "id": "tbl_ability_descriptions_00224_A35E48",
@@ -60033,7 +60114,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 224,
       "translation_source": "Reduces damage done to allies.",
-      "translated": "Riduce il danno subito\ndagli alleati."
+      "translated": "Riduce il danno subito dagli alleati.",
+      "translated_fixed": "Riduce i danni agli alleati."
     },
     {
       "id": "tbl_ability_descriptions_00225_A35E67",
@@ -60048,7 +60130,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 225,
       "translation_source": "Can regain consumed Berries.",
-      "translated": "Può recuperare le\nBaccche consumate."
+      "translated": "Può recuperare le Baccche consumate.",
+      "translated_fixed": "Può recuperare Bacche consumate."
     },
     {
       "id": "tbl_ability_descriptions_00226_A35E84",
@@ -60063,7 +60146,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 226,
       "translation_source": "Protects from allies’ moves.",
-      "translated": "Protegge dalle mosse\ndegli alleati."
+      "translated": "Protegge dalle mosse degli alleati.",
+      "translated_fixed": "Protegge dalle mosse alleate."
     },
     {
       "id": "tbl_ability_descriptions_00227_A35EA1",
@@ -60078,7 +60162,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 227,
       "translation_source": "Enters battle disguised.",
-      "translated": "Entra in lotta\ntravestito."
+      "translated": "Entra in lotta travestito."
     },
     {
       "id": "tbl_ability_descriptions_00228_A35EBA",
@@ -60093,7 +60177,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 228,
       "translation_source": "Eating Berries restores HP.",
-      "translated": "Mangiare le Baccche\nripristina PS."
+      "translated": "Mangiare le Baccche ripristina PS."
     },
     {
       "id": "tbl_ability_descriptions_00229_A35ED6",
@@ -60108,7 +60192,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 229,
       "translation_source": "Gives item to ally after use.",
-      "translated": "Dopo l{B4}uso, dà lo\nstrumento a un alleato."
+      "translated": "Dopo l{B4}uso, dà lo strumento a un alleato.",
+      "translated_fixed": "Dà all{B4}alleato lo strumento usato."
     },
     {
       "id": "tbl_ability_descriptions_00230_A35EF4",
@@ -60123,7 +60208,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 230,
       "translation_source": "Doubles damage on replacements.",
-      "translated": "Raddoppia i danni sui\nsostituti."
+      "translated": "Raddoppia i danni sui sostituti."
     },
     {
       "id": "tbl_ability_descriptions_00231_A35F14",
@@ -60138,7 +60223,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 231,
       "translation_source": "Acts as if asleep.",
-      "translated": "Agisce come se fosse\naddormentato."
+      "translated": "Agisce come se fosse addormentato.",
+      "translated_fixed": "Agisce come se dormisse."
     },
     {
       "id": "tbl_ability_descriptions_00232_A35F27",
@@ -60183,7 +60269,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 234,
       "translation_source": "Takes over a KOed ally’s Ability.",
-      "translated": "Assume l{B4}abilità di un\nalleato K.O."
+      "translated": "Assume l{B4}abilità di un alleato K.O.",
+      "translated_fixed": "Copia l{B4}abilità di un alleato K.O."
     },
     {
       "id": "tbl_ability_descriptions_00235_A36304",
@@ -60198,8 +60285,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 235,
       "translation_source": "Resets ally’s stat changes.",
-      "translated": "Reimposta le modifiche\nalle statistiche\ndell{B4}alleato.",
-      "translated_fixed": "Azzera\ncambi\ndell{B4}alleato."
+      "translated": "Reimposta le modifiche alle statistiche dell{B4}alleato.",
+      "translated_fixed": "Azzera cambi dell{B4}alleato."
     },
     {
       "id": "tbl_ability_descriptions_00236_A35F6F",
@@ -60214,7 +60301,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 236,
       "translation_source": "Powers up super effective hits.",
-      "translated": "Potenzia le mosse\nsuperefficaci."
+      "translated": "Potenzia le mosse superefficaci."
     },
     {
       "id": "tbl_ability_descriptions_00237_A35F8F",
@@ -60229,8 +60316,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 237,
       "translation_source": "Normal moves become Electric.",
-      "translated": "Le mosse di tipo Normale\ndiventano di tipo\nElettro.",
-      "translated_fixed": "Mosse Normali\nsono\nElettro."
+      "translated": "Le mosse di tipo Normale diventano di tipo Elettro.",
+      "translated_fixed": "Mosse Normali sono Elettro."
     },
     {
       "id": "tbl_ability_descriptions_00238_A35FAD",
@@ -60245,7 +60332,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 238,
       "translation_source": "Ups Attack on entry.",
-      "translated": "Aumenta l{B4}Attacco\nall{B4}ingresso."
+      "translated": "Aumenta l{B4}Attacco all{B4}ingresso."
     },
     {
       "id": "tbl_ability_descriptions_00239_A35FC2",
@@ -60260,7 +60347,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 239,
       "translation_source": "Ups Defense on entry.",
-      "translated": "Aumenta la Difesa\nall{B4}ingresso."
+      "translated": "Aumenta la Difesa all{B4}ingresso."
     },
     {
       "id": "tbl_ability_descriptions_00240_A35FD8",
@@ -60275,7 +60362,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 240,
       "translation_source": "Fetches first failed Poké Ball.",
-      "translated": "Recupera la prima Poké\nBall fallita."
+      "translated": "Recupera la prima Poké Ball fallita.",
+      "translated_fixed": "Riprende la prima Poké Ball persa."
     },
     {
       "id": "tbl_ability_descriptions_00241_A35FF8",
@@ -60290,8 +60378,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 241,
       "translation_source": "Lowers everyone’s Speed when hit.",
-      "translated": "Abbassa la Velocità di\ntutti quando viene\ncolpito.",
-      "translated_fixed": "Abbassa Vel. di\ntutti se\ncolpito."
+      "translated": "Abbassa la Velocità di tutti quando viene colpito.",
+      "translated_fixed": "Abbassa Vel. di tutti se colpito."
     },
     {
       "id": "tbl_ability_descriptions_00242_A3601A",
@@ -60306,7 +60394,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 242,
       "translation_source": "Bounces back stat decreases.",
-      "translated": "Respinge i cali di\nstatistiche."
+      "translated": "Respinge i cali di statistiche."
     },
     {
       "id": "tbl_ability_descriptions_00243_A36037",
@@ -60321,8 +60409,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 243,
       "translation_source": "Spits prey if hit after a swim.",
-      "translated": "Sputa la preda se viene\ncolpito dopo aver\nnuotato.",
-      "translated_fixed": "Preda sputata\nse colpito\nnuoto."
+      "translated": "Sputa la preda se viene colpito dopo aver nuotato.",
+      "translated_fixed": "Preda sputata se colpito nuoto."
     },
     {
       "id": "tbl_ability_descriptions_00244_A36057",
@@ -60337,7 +60425,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 244,
       "translation_source": "Moves ignore redirection.",
-      "translated": "Le mosse ignorano il\ncambio di bersaglio."
+      "translated": "Le mosse ignorano il cambio di bersaglio.",
+      "translated_fixed": "Le mosse ignorano deviazioni."
     },
     {
       "id": "tbl_ability_descriptions_00245_A36071",
@@ -60352,8 +60441,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 245,
       "translation_source": "Fire and Water hits boost Speed.",
-      "translated": "Le mosse di Fuoco e\nAcqua aumentano la\nVelocità.",
-      "translated_fixed": "Colpi Fuoco e\nAcqua alzano\nVel."
+      "translated": "Le mosse di Fuoco e Acqua aumentano la Velocità.",
+      "translated_fixed": "Colpi Fuoco e Acqua alzano Vel."
     },
     {
       "id": "tbl_ability_descriptions_00246_A36092",
@@ -60368,7 +60457,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 246,
       "translation_source": "Ups and resists sound moves.",
-      "translated": "Potenzia e resiste alle\nmosse sonore."
+      "translated": "Potenzia e resiste alle mosse sonore.",
+      "translated_fixed": "Potenzia e resiste a mosse sonore."
     },
     {
       "id": "tbl_ability_descriptions_00247_A360AF",
@@ -60383,8 +60473,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 247,
       "translation_source": "Creates a sandstorm when hit.",
-      "translated": "Genera una tempesta di\nsabbia quando viene\ncolpito.",
-      "translated_fixed": "Sabbia: tempesta\nse\ncolpito."
+      "translated": "Genera una tempesta di sabbia quando viene colpito.",
+      "translated_fixed": "Sabbia: tempesta se colpito."
     },
     {
       "id": "tbl_ability_descriptions_00248_A360CD",
@@ -60399,7 +60489,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 248,
       "translation_source": "Halves special damage.",
-      "translated": "Dimezza i danni\nspeciali."
+      "translated": "Dimezza i danni speciali."
     },
     {
       "id": "tbl_ability_descriptions_00249_A360E4",
@@ -60414,7 +60504,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 249,
       "translation_source": "Doubles Berry effects.",
-      "translated": "Raddoppia gli effetti\ndelle Bacche."
+      "translated": "Raddoppia gli effetti delle Bacche.",
+      "translated_fixed": "Effetti delle Bacche raddoppiati."
     },
     {
       "id": "tbl_ability_descriptions_00250_A360FB",
@@ -60429,8 +60520,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 250,
       "translation_source": "Free physical hit. Hail renews.",
-      "translated": "Il primo colpo fisico\nnon subisce danni. La\ngrandine si rinnova.",
-      "translated_fixed": "Fisico nullo.\nGrandine\nrinnova."
+      "translated": "Il primo colpo fisico non subisce danni. La grandine si rinnova.",
+      "translated_fixed": "Fisico nullo. Grandine rinnova."
     },
     {
       "id": "tbl_ability_descriptions_00251_A3611B",
@@ -60445,7 +60536,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 251,
       "translation_source": "Powers up ally moves.",
-      "translated": "Potenzia le mosse degli\nalleati."
+      "translated": "Potenzia le mosse degli alleati."
     },
     {
       "id": "tbl_ability_descriptions_00252_A36131",
@@ -60460,7 +60551,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 252,
       "translation_source": "Changes type with terrain.",
-      "translated": "Cambia tipo in base al\nterreno."
+      "translated": "Cambia tipo in base al terreno."
     },
     {
       "id": "tbl_ability_descriptions_00253_A3614C",
@@ -60475,7 +60566,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 253,
       "translation_source": "Screens are removed on entry.",
-      "translated": "Le barriere vengono\nrimosse all{B4}entrata."
+      "translated": "Le barriere vengono rimosse all{B4}entrata.",
+      "translated_fixed": "Rimuove le barriere all{B4}entrata."
     },
     {
       "id": "tbl_ability_descriptions_00254_A36207",
@@ -60490,7 +60582,7 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 254,
       "translation_source": "Protects team from poison.",
-      "translated": "Protegge la squadra dal\nveleno."
+      "translated": "Protegge la squadra dal veleno."
     },
     {
       "id": "tbl_move_descriptions_00000_482834",
