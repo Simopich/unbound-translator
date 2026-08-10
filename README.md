@@ -46,7 +46,7 @@ The project is usable but still early and primarily tested with Italian.
 | Non-Latin scripts | Not supported yet; likely requires a font patch |
 | Supported systems | Windows, macOS, and Linux |
 | Python | 3.10 or newer |
-| Release format | BPS patch only; all automated releases are prereleases |
+| Release format | BPS patch only; `main` publishes stable releases and `qa` publishes prereleases |
 | License | [MIT](LICENSE) |
 | Source ROM | Pokemon Unbound English, MD5 `9cad8e771940e7f7094d13911552cef0` |
 
@@ -362,13 +362,14 @@ attach a ROM or save file to a public issue.
 `ready-translations/` contains one complete, controlfixed JSON per release language. Files are named by language code;
 the release workflow turns each one into `unbound-translated-<language>.bps`.
 
-`.github/workflows/release-ready-translations.yml` runs on every push to `main` and can also be started manually. It:
+`.github/workflows/release-ready-translations.yml` runs on every push to `main` or `qa` and can also be started
+manually. It:
 
 1. Downloads the private source ROM from `UNBOUND_ENGLISH_ROM_URL`.
 2. Verifies the required MD5.
 3. Injects every ready translation directly; controlfix is not rerun in CI.
 4. Creates BPS-only assets and removes temporary translated ROMs.
-5. Publishes a prerelease with flag-marked assets and linked commit messages.
+5. Publishes a stable release for `main` or a prerelease for `qa`, with flag-marked assets and linked commit messages.
 6. Optionally announces successful releases through `DISCORD_WEBHOOK_URL`.
 
 Failed or cancelled builds do not notify Discord, and notification delivery failure does not fail an otherwise

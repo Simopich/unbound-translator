@@ -4,10 +4,11 @@ on:
   push:
     branches:
       - main
+      - qa
   workflow_dispatch:
     inputs:
       tag:
-        description: Optional release tag; defaults to ready-<UTC-build-time>-<commit-sha>
+        description: Optional release tag; defaults to ready-... on main or qa-... on qa
         required: false
         type: string
 
@@ -16,7 +17,7 @@ permissions:
 
 concurrency:
   group: ready-translation-release-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.ref_name != 'qa' }}
 
 jobs:
   release:
@@ -35,12 +36,24 @@ jobs:
       - name: Set release tag
         shell: bash
         run: |
+          if [[ "$GITHUB_REF_NAME" == "qa" ]]; then
+            release_prefix="qa"
+            release_prerelease="true"
+            release_label="prerelease"
+          else
+            release_prefix="ready"
+            release_prerelease="false"
+            release_label="release"
+          fi
+
           if [[ -n "$MANUAL_TAG" ]]; then
             release_tag="$MANUAL_TAG"
           else
-            release_tag="ready-$(date -u +'%Y%m%d-%H%M%S')-${GITHUB_SHA:0:7}"
+            release_tag="${release_prefix}-$(date -u +'%Y%m%d-%H%M%S')-${GITHUB_SHA:0:7}"
           fi
           printf 'RELEASE_TAG=%s\n' "$release_tag" >> "$GITHUB_ENV"
+          printf 'RELEASE_PRERELEASE=%s\n' "$release_prerelease" >> "$GITHUB_ENV"
+          printf 'RELEASE_LABEL=%s\n' "$release_label" >> "$GITHUB_ENV"
 
       - name: Download and verify English ROM
         shell: bash
@@ -106,7 +119,7 @@ jobs:
         with:
           tag_name: ${{ env.RELEASE_TAG }}
           body_path: release-body.md
-          prerelease: true
+          prerelease: ${{ env.RELEASE_PRERELEASE }}
           files: dist/unbound-translated-*.bps
 
       - name: Notify Discord
@@ -118,7 +131,11 @@ jobs:
           commit_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}"
           commit_subject="$(git log -1 --format=%s "$GITHUB_SHA" 2>/dev/null || echo 'Unknown commit')"
           timestamp="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          title="Translation release published"
+          if [[ "$RELEASE_PRERELEASE" == "true" ]]; then
+            title="QA translation prerelease published"
+          else
+            title="Translation release published"
+          fi
           color=5763719
           release_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/releases/tag/${RELEASE_TAG}"
           assets=""
@@ -126,7 +143,7 @@ jobs:
           for patch in dist/unbound-translated-*.bps; do
             assets+="- \`${patch##*/}\`"$'\n'
           done
-          description="[Open prerelease](${release_url})"$'\n\n'"**BPS patches**"$'\n'"${assets}"$'\n'"[\`${GITHUB_SHA:0:7}\`](${commit_url}) ${commit_subject}"$'\n'"[View workflow run](${run_url})"
+          description="[Open ${RELEASE_LABEL}](${release_url})"$'\n\n'"**BPS patches**"$'\n'"${assets}"$'\n'"[\`${GITHUB_SHA:0:7}\`](${commit_url}) ${commit_subject}"$'\n'"[View workflow run](${run_url})"
 
           payload="$(jq -n \
             --arg title "$title" \

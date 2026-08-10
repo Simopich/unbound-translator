@@ -116,7 +116,8 @@ release input is `ready-translations/it.json`.
 ## Release Contract
 
 `.github/workflows/release-ready-translations.yml` downloads the secret English ROM URL, verifies MD5, injects every
-`ready-translations/*.json`, and publishes only `unbound-translated-<language>.bps`. Releases are prereleases. Failed or
-cancelled builds do not announce to Discord. Notification failure must not fail a successful release. Never upload a ROM.
+`ready-translations/*.json`, and publishes only `unbound-translated-<language>.bps`. Pushes to `main` publish stable
+releases; pushes to `qa` publish prereleases. Failed or cancelled builds do not announce to Discord. Notification failure
+must not fail a successful release. Never upload a ROM.
 
 Keep roadmap and future proposals in `README.md` or dedicated documentation, not this file.
