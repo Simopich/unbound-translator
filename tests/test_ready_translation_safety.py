@@ -5,7 +5,7 @@ import pytest
 
 from lib.gen3_font import text_pixel_width
 from lib.pcs_text import hma_quote
-from lib.translation_tokens import semantic_token_counts
+from lib.translation_tokens import semantic_token_counts, visible_width
 from tests.helpers import load_script_module
 
 READY_ITALIAN = Path(__file__).resolve().parents[1] / "ready-translations" / "it.json"
@@ -146,6 +146,18 @@ def test_misc_menu_text_respects_observed_screen_budgets():
     assert description_budget == 224
     assert max(map(text_pixel_width, setting_descriptions)) <= description_budget
 
+    move_description_entries = [
+        entry for entry in entries if entry.get("category") == "move_descriptions"
+    ]
+    move_description_lines = [
+        line
+        for entry in move_description_entries
+        for line in entry["translated"].splitlines()
+    ]
+    assert max(len(entry["translated"].splitlines()) for entry in move_description_entries) <= 6
+    assert move_description_lines
+    assert max(map(text_pixel_width, move_description_lines)) <= 122
+
     summary_entries = [
         entry
         for entry in entries
@@ -158,6 +170,64 @@ def test_misc_menu_text_respects_observed_screen_budgets():
         assert text.startswith("Natura \\?00.")
         assert text.count("\\?00") == 1
         assert max(map(text_pixel_width, text.splitlines())) <= 154
+
+
+def test_verified_official_italian_terms_and_pokedex_layout():
+    entries = json.loads(READY_ITALIAN.read_text(encoding="utf-8"))["entries"]
+    by_source = {
+        (entry.get("category"), entry.get("translation_source")): entry
+        for entry in entries
+    }
+
+    assert by_source[("move_names", "Clang Scales")]["translated"] == "Clamorsquame"
+    assert by_source[("move_names", "Dark Lariat")]["translated"] == "Braccioteso"
+    assert by_source[("move_names", "SmellingSalt")]["translated"] == "Maniereforti"
+    assert by_source[("item_names", "Leek")]["translated"] == "Gambo"
+    assert by_source[("ability_names", "As One")]["translated"] == "Sintonia Equina"
+    assert by_source[("pokedex_species", "Tiny Turtle")]["translated"] == "Tartaghina"
+
+    descriptions = [
+        entry for entry in entries if entry.get("category") == "pokedex_descriptions"
+    ]
+    assert descriptions
+    for entry in descriptions:
+        lines = entry["translated"].splitlines()
+        assert len(lines) <= 3, entry["id"]
+        assert max(map(visible_width, lines)) <= 43, entry["id"]
+        assert visible_width(" ".join(lines)) <= 124, entry["id"]
+
+
+def test_game_setting_values_and_save_prompt_match_french_layout():
+    entries = json.loads(READY_ITALIAN.read_text(encoding="utf-8"))["entries"]
+    by_id = {entry["id"]: entry for entry in entries}
+    fixture_path = Path(__file__).parent / "fixtures" / "game_settings_layout.json"
+    fixture = json.loads(fixture_path.read_text(encoding="utf-8"))
+
+    value_entries = [
+        entry
+        for entry in entries
+        if entry.get("category") == "menu_game_settings"
+        and (
+            int(entry["address"], 16) == 0x1F4DA6C
+            or 0x1F4DBA5 <= int(entry["address"], 16) <= 0x1F4DD5F
+        )
+    ]
+    assert len(value_entries) == 30
+    assert max(text_pixel_width(entry["translated"]) for entry in value_entries) <= fixture[
+        "value_max_pixels"
+    ]
+    for entry_id, translated in fixture["values"].items():
+        assert by_id[entry_id]["translated"] == translated
+
+    prompt_fixture = fixture["save_prompt"]
+    prompt = by_id[prompt_fixture["id"]]
+    assert prompt["translated"] == prompt_fixture["translated"]
+    assert semantic_token_counts(prompt["translated"]) == semantic_token_counts(
+        prompt["original"]
+    )
+    prompt_lines = prompt["translated"].split("\\n")
+    assert len(prompt_lines) == 2
+    assert max(map(text_pixel_width, prompt_lines)) <= prompt_fixture["max_line_pixels"]
 
 
 def test_natures_and_pokedex_controls_keep_safe_complete_ownership():
@@ -179,6 +249,7 @@ def test_natures_and_pokedex_controls_keep_safe_complete_ownership():
         "scr_415D50",
         "scr_415D60",
         "scr_415D78",
+        "scr_415DB8",
         "scr_415DC4",
         "scr_415DCA",
         "scr_415DD7",
@@ -191,6 +262,7 @@ def test_natures_and_pokedex_controls_keep_safe_complete_ownership():
         "scr_415FB3",
         "scr_415FCF",
         "scr_416002",
+        "scr_800FD0",
         "scr_A43AD4",
         "scr_A43B61",
         "tbl_menu_link_controls_00006_418E77",

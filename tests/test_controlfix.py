@@ -17,6 +17,7 @@ def _args(**overrides):
         "no_wrap": False,
         "wrap_width": 12,
         "description_wrap_width": 12,
+        "move_description_max_pixels": 122,
         "pokedex_description_wrap_width": 43,
         "pokedex_description_max_lines": 3,
         "pokedex_description_max_total": 124,
@@ -205,19 +206,31 @@ def test_wrap_translation_uses_plain_line_breaks_for_plain_scripts_and_descripti
     assert item_wrapped == "cura ogni\nproblema di\nstato del\npokemon"
 
 
-def test_move_descriptions_wrap_one_character_before_other_descriptions():
+def test_move_descriptions_use_french_observed_pixel_width():
+    narrow_text = "iiii iiiii iiiii iiiii iiiii"
     wrapped, changed, _long_words, skipped = controlfix.wrap_translation(
-        "uno due tre quattro cinque",
+        narrow_text,
         {"category": "move_descriptions"},
         "Move description",
-        _args(description_wrap_width=12),
+        _args(move_description_max_pixels=122),
         {"move_descriptions"},
     )
 
+    assert not changed
+    assert not skipped
+    assert wrapped == narrow_text
+    assert controlfix.visible_width(wrapped) > 24
+
+    wrapped, changed, _long_words, skipped = controlfix.wrap_translation(
+        "MMMMM MMMMM MMMMM MMMMM",
+        {"category": "move_descriptions"},
+        "Move description",
+        _args(move_description_max_pixels=60),
+        {"move_descriptions"},
+    )
     assert changed
     assert not skipped
-    assert wrapped == "uno due tre\nquattro\ncinque"
-    assert max(map(controlfix.visible_width, wrapped.splitlines())) <= 11
+    assert max(map(controlfix.text_pixel_width, wrapped.splitlines())) <= 60
 
 
 def test_pokedex_description_uses_french_observed_three_line_budget():

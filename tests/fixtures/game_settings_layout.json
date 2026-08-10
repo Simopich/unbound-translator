@@ -1,0 +1,14 @@
+{
+  "value_max_pixels": 118,
+  "values": {
+    "tbl_menu_game_settings_00008_1F4DC62": "Condiv. Esp. limitata",
+    "tbl_menu_game_settings_00011_1F4DC8A": "Solo Allenatore avv.",
+    "tbl_menu_game_settings_00003_1F4DCF6": "Sempre la migliore",
+    "tbl_menu_game_settings_00008_1F4DD24": "Prendi strum. selv."
+  },
+  "save_prompt": {
+    "id": "tbl_menu_game_settings_00004_1F4E4E2",
+    "translated": "[green]Salvare[black] o [red]scartare[black]\\nle impostazioni selezionate?",
+    "max_line_pixels": 161
+  }
+}

@@ -492,10 +492,6 @@ def wrap_width_for_entry(entry, args):
         return args.mission_objective_wrap_width
     if entry.get("category") == "item_descriptions":
         return args.item_description_wrap_width
-    if entry.get("category") == "move_descriptions":
-        # Move-summary box is one glyph narrower than the other description
-        # boxes.  Keeping its right edge one character early prevents clipping.
-        return max(1, args.description_wrap_width - 1)
     if entry.get("category") in DESCRIPTION_CATEGORIES:
         return args.description_wrap_width
     return args.wrap_width
@@ -677,6 +673,13 @@ def wrap_words_for_entry(text, entry, args):
             args.mission_objective_max_lines,
             args.mission_objective_max_total,
         )
+    if entry.get("category") == "move_descriptions":
+        lines = wrap_words_by_pixels(text, args.move_description_max_pixels)
+        long_words = sum(
+            text_pixel_width(word) > args.move_description_max_pixels
+            for word in text.split()
+        )
+        return lines, long_words
     width = wrap_width_for_entry(entry, args)
     lines, long_words = wrap_words(text, width)
     if (
@@ -876,9 +879,15 @@ def main():
         "--description-wrap-width",
         type=int,
         default=24,
+        help="Visible character width for ability descriptions. Default: 24.",
+    )
+    parser.add_argument(
+        "--move-description-max-pixels",
+        type=int,
+        default=122,
         help=(
-            "Visible character width for ability descriptions; move descriptions "
-            "use one character less. Default: 24."
+            "Maximum pixel width for move-description lines, measured from the "
+            "ordinary entries in the working French ROM. Default: 122."
         ),
     )
     parser.add_argument(

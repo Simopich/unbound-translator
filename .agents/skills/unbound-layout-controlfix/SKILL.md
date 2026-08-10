@@ -40,7 +40,10 @@ Use `006_decontrolfix_translations.py` before manually editing already-controlfi
 - Pokédex descriptions: at most 3 lines, 43 visible characters per line, 124 total.
 - Mission Log descriptions: at most 3 plain lines, 172 pixels each; no scroll/page controls.
 - Pause-menu mission objectives: 2 lines, 35 visible characters per line, 65 total.
-- Move/ability descriptions use `--description-wrap-width` (default 24).
+- Move descriptions use at most 6 lines and the 122-pixel maximum observed among ordinary French-ROM rows 0–893 through
+  `--move-description-max-pixels`; the separate G-Max template block at rows 894–921 is wider and must not define
+  the normal summary-screen budget. Apply the conservative 122-pixel limit to every translated move description.
+  Ability descriptions use `--description-wrap-width` (default 24).
 - Item descriptions use `--item-description-wrap-width` (default 34) and 3 lines.
 - Ability descriptions require a complete token-safe `translated_fixed` value within the injector's 46-byte display
   ceiling when full wording cannot fit.

@@ -209,6 +209,54 @@ class PokeAPILocalizerTests(unittest.TestCase):
             self.assertEqual(localizer.translate_entry(entry), "Pozione")
             self.assertEqual(len(opener.calls), 3)
 
+    def test_unbound_abbreviated_move_name_uses_official_alias(self):
+        numeric_url = "https://example.test/api/v2/move/584/"
+        list_url = "https://example.test/api/v2/move/?limit=10000"
+        canonical_url = "https://example.test/api/v2/move/clanging-scales/"
+        payloads = {
+            numeric_url: {"names": [localized("en", name="Spirit Shackle")]},
+            list_url: {"results": [{"name": "clanging-scales"}]},
+            canonical_url: {
+                "names": [
+                    localized("en", name="Clanging Scales"),
+                    localized("it", name="Clamorsquame"),
+                ]
+            },
+        }
+        with tempfile.TemporaryDirectory() as cache_dir:
+            localizer, opener = self.make_localizer(payloads, cache_dir)
+            entry = {
+                "category": "move_names",
+                "table_index": 584,
+                "translation_source": "Clang Scales",
+            }
+            self.assertEqual(localizer.translate_entry(entry), "Clamorsquame")
+            self.assertEqual(len(opener.calls), 3)
+
+    def test_unbound_abbreviated_ability_name_uses_official_alias(self):
+        numeric_url = "https://example.test/api/v2/ability/74/"
+        list_url = "https://example.test/api/v2/ability/?limit=10000"
+        canonical_url = "https://example.test/api/v2/ability/neutralizing-gas/"
+        payloads = {
+            numeric_url: {"names": [localized("en", name="Download")]},
+            list_url: {"results": [{"name": "neutralizing-gas"}]},
+            canonical_url: {
+                "names": [
+                    localized("en", name="Neutralizing Gas"),
+                    localized("it", name="Gas Reagente"),
+                ]
+            },
+        }
+        with tempfile.TemporaryDirectory() as cache_dir:
+            localizer, opener = self.make_localizer(payloads, cache_dir)
+            entry = {
+                "category": "ability_names",
+                "table_index": 74,
+                "translation_source": "Neutralize Gas",
+            }
+            self.assertEqual(localizer.translate_entry(entry), "Gas Reagente")
+            self.assertEqual(len(opener.calls), 3)
+
 
 if __name__ == "__main__":
     unittest.main()
