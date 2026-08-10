@@ -77,7 +77,8 @@ release input is `ready-translations/it.json`.
   without space remain original and appear in the map; use `--fail-on-no-space` for strict capacity audits.
 - `--reclaim-script-slots` is experimental. Reclaim only injector-proven, fully owned high-bank `scripts` literals
   whose owners are independently placed in vetted FF space. Never reclaim structured tables, menus, Pokedex text,
-  abilities, battle data, generic `pointer_texts`, or arbitrary old slots.
+  abilities, battle data, generic `pointer_texts`, or arbitrary old slots. Reserve vetted FF for entries that cannot
+  use reclaimed storage before allocating eligible scripts.
 - `--allow-lossy-fit` is diagnostic only and forbidden for release builds.
 
 ## External Evidence
@@ -115,8 +116,9 @@ release input is `ready-translations/it.json`.
 
 ## Release Contract
 
-`.github/workflows/release-ready-translations.yml` downloads the secret English ROM URL, verifies MD5, injects every
-`ready-translations/*.json`, and publishes only `unbound-translated-<language>.bps`. Pushes to `main` publish stable
+`.github/workflows/release-ready-translations.yml` downloads the secret English ROM URL, verifies MD5, strictly injects
+every `ready-translations/*.json` with safe script-slot reclamation, and publishes only
+`unbound-translated-<language>.bps`. Pushes to `main` publish stable
 releases; pushes to `qa` publish prereleases. Failed or cancelled builds do not announce to Discord. Notification failure
 must not fail a successful release. Never upload a ROM.
 

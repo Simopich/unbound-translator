@@ -13,6 +13,7 @@ documentation. Keep release changes narrow and never expose ROM data.
 - Input: each complete controlfixed `ready-translations/<language>.json` and secret `UNBOUND_ENGLISH_ROM_URL`.
 - Verify source ROM MD5 `9cad8e771940e7f7094d13911552cef0` before injection.
 - Output only `dist/unbound-translated-<language>.bps`; delete temporary translated ROMs.
+- Inject with safe script-slot reclamation plus `--fail-on-no-space`; never publish a partial translation.
 - Pushes to `main` publish stable releases; pushes to `qa` publish prereleases. Releases contain BPS assets only.
 - Successful releases may announce through optional `DISCORD_WEBHOOK_URL`.
 - Failed/cancelled builds stay silent. Discord delivery failure is non-blocking.

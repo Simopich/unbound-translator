@@ -72,6 +72,21 @@ def test_ready_italian_preserves_known_binary_pointer_false_positives():
             assert hma_quote(entry["translated"]) == entry["original"]
 
 
+def test_pokedex_unknown_fallback_stays_in_place_and_fits():
+    italian = json.loads(READY_ITALIAN.read_text(encoding="utf-8"))["entries"]
+    indonesian = json.loads(READY_INDONESIAN.read_text(encoding="utf-8"))["entries"]
+    italian_entry = next(entry for entry in italian if entry["id"] == "scr_1A357CC")
+    indonesian_entry = next(
+        entry for entry in indonesian if entry["id"] == "scr_1A357CC"
+    )
+
+    assert italian_entry["no_relocation"] is True
+    assert indonesian_entry["no_relocation"] is True
+    assert italian_entry["translated"] == "Sconosciuto"
+    assert italian_entry["translated_fixed"] == "Ignoto"
+    assert len(INJECTOR.Charmap(target_lang="it").encode("Ignoto")) <= 8
+
+
 def test_compact_translation_fixture_prefers_display_text_and_preserves_tokens():
     entries = json.loads(FIXTURE.read_text(encoding="utf-8"))["entries"]
 

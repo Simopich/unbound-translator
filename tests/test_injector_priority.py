@@ -453,6 +453,47 @@ class InjectionPriorityTests(unittest.TestCase):
             ["discovery"],
         )
 
+    def test_vetted_space_is_reserved_for_restricted_pointer_discoveries(self):
+        vetted = [INJECTOR.FreeBlock(0x1000, 0x100C, 0x1000)]
+        reclaimed = [
+            INJECTOR.FreeBlock(
+                0x2000,
+                0x200C,
+                0x2000,
+                "reclaimed_script_text",
+            )
+        ]
+        candidates = [
+            INJECTOR.RelocationCandidate(
+                entry={"id": "script", "category": "scripts"},
+                address=0x3000,
+                max_size=8,
+                encoded=b"A" * 12,
+                sources=(0x40,),
+            ),
+            INJECTOR.RelocationCandidate(
+                entry={"id": "discovery", "category": "pointer_texts"},
+                address=0x3010,
+                max_size=8,
+                encoded=b"B" * 12,
+                sources=(0x44,),
+            ),
+        ]
+
+        plan, missing = INJECTOR.plan_relocations(
+            vetted,
+            candidates,
+            1,
+            reclaimed,
+        )
+
+        self.assertEqual(plan["discovery"], (0x1000, "vetted_ff", False))
+        self.assertEqual(
+            plan["script"],
+            (0x2000, "reclaimed_script_text", False),
+        )
+        self.assertEqual(missing, [])
+
     def test_reference_proven_pointer_discovery_can_use_reclaimed_storage(self):
         reclaimed = [
             INJECTOR.FreeBlock(

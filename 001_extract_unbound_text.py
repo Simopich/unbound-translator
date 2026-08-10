@@ -79,6 +79,11 @@ NO_RELOCATION_POINTER_SOURCE_RANGES = (
     (0x452CF0, 0x452D08),  # Cube pocket labels
     (0xA6D180, 0xA6D1A8),  # Cube V3 menu labels
 )
+# Shared Pokédex fallback label. Redirecting its apparent pointer owners makes
+# the Pokédex freeze even when every discovered source is patched.
+NO_RELOCATION_POINTER_TARGETS = {
+    0x1A357CC,  # "Unknown"
+}
 
 
 @dataclass(frozen=True)
@@ -878,7 +883,10 @@ def make_entry(
         entry["table_name"] = table_name
     if table_index is not None:
         entry["table_index"] = table_index
-    if no_relocation_pointer_sources(pointer_sources or []):
+    if (
+        address in NO_RELOCATION_POINTER_TARGETS
+        or no_relocation_pointer_sources(pointer_sources or [])
+    ):
         entry["no_relocation"] = True
     return entry
 

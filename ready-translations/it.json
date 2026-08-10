@@ -222737,8 +222737,10 @@
       "original": "\"Unknown\"",
       "byte_length": 8,
       "is_pointer_based": true,
+      "no_relocation": true,
       "translation_source": "Unknown",
-      "translated": "Sconosciuto"
+      "translated": "Sconosciuto",
+      "translated_fixed": "Ignoto"
     },
     {
       "id": "scr_1EB0AE5",

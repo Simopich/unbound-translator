@@ -14,7 +14,7 @@ description: Build or audit Pokemon Unbound translated ROMs and diagnose relocat
 ## Build
 
 ```bash
-python 005_hybrid_injector.py rom/unbound.gba ready-translations/it.json -o out/unbound-translated-it.gba --target-lang it --map-output out/hybrid-map-it.json
+python 005_hybrid_injector.py rom/unbound.gba ready-translations/it.json -o out/unbound-translated-it.gba --target-lang it --map-output out/hybrid-map-it.json --reclaim-script-slots --fail-on-no-space
 ```
 
 Use `--dry-run` for capacity/pointer preflight. Use OS-provided temporary storage or `out/debug-*` artifacts; never
@@ -33,6 +33,8 @@ assume `/tmp` exists. Unfitted translations remain original by default and appea
   `loadword 0; callstd 2..6` or high-bank `message` operands. Whole-ROM scanning must find no hidden exact/interior
   pointers; subtract pointer operands, overlapping entries, and non-owned ranges. Reclaimed destinations accept only
   `scripts`/`plain_scripts`; never use the added capacity to activate heuristic `pointer_texts`.
+- Allocate candidates restricted to vetted FF before scripts that may use reclaimed storage. This preserves universal
+  space for heuristic pointer text without weakening reclaimed-slot ownership.
 - Never reclaim structured tables, Pokédex text, menus, abilities, battle data, generic `pointer_texts`, or arbitrary
   old slots.
 - `no_relocation` text must fit in place through complete token-safe wording, normally `translated_fixed`.

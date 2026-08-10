@@ -35,6 +35,20 @@ class AlignedPointerTextTests(unittest.TestCase):
         self.assertEqual(table_name, "data.menus.text.pokedex.controls")
         self.assertEqual(addresses, [0x415FAD])
 
+    def test_pokedex_unknown_fallback_label_cannot_relocate(self):
+        result = decode("Unknown")
+        entry = EXTRACTOR.make_entry(
+            "scr_1A357CC",
+            "pointer_texts",
+            0x1A357CC,
+            result,
+            result.byte_length,
+            True,
+            [0x88E34, 0x165BC34],
+        )
+
+        self.assertTrue(entry["no_relocation"])
+
     def test_accepts_sentence_and_short_label(self):
         self.assertTrue(
             EXTRACTOR.looks_like_aligned_pointer_text(

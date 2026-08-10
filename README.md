@@ -255,8 +255,10 @@ pointer discoveries, hidden/interior pointers, and engine-reserved areas are not
 `--reclaim-script-slots` enables the experimental old-slot allocator. It reuses only high-bank script literals whose
 owners already have independent `vetted_ff` destinations, whose sources are explicit `msgbox`/`message` operands, and
 whose complete slots have no hidden exact or interior ROM pointers. Reclaimed destinations accept only `scripts` and
-`plain_scripts`; heuristic `pointer_texts` remain unchanged. Keep this mode out of release builds until the generated
-ROM passes the crash-sensitive Pokédex, Summary, PC, Mission Log, battle, and save/reload gameplay checks.
+`plain_scripts`; heuristic `pointer_texts` remain in vetted FF space. Allocation reserves vetted FF for entries that
+cannot use reclaimed slots, preventing eligible scripts from starving restricted text. Release builds enable this mode
+with `--fail-on-no-space`, so any incomplete translation aborts instead of producing a partial patch. Keep validating
+generated ROMs on crash-sensitive Pokédex, Summary, PC, Mission Log, battle, and save/reload paths.
 
 Fragile engine text is marked `no_relocation` and must remain in place. Fixed-size entries can provide a complete,
 token-safe `translated_fixed` display value while retaining full wording in `translated`. The diagnostic
@@ -313,7 +315,7 @@ Edit `translated`, rerun controlfix, and inject again. Decontrolfix preserves th
 ### Check Capacity Without Writing A ROM
 
 ```bash
-python 005_hybrid_injector.py rom/unbound.gba ready-translations/it.json -o out/unbound-translated-it.gba --target-lang it --map-output out/hybrid-map-it.json --dry-run
+python 005_hybrid_injector.py rom/unbound.gba ready-translations/it.json -o out/unbound-translated-it.gba --target-lang it --map-output out/hybrid-map-it.json --dry-run --reclaim-script-slots --fail-on-no-space
 ```
 
 Inspect `missing_relocations`, `missing_fixed_slots`, and the no-space category counts. Shorten translations category
@@ -367,7 +369,8 @@ manually. It:
 
 1. Downloads the private source ROM from `UNBOUND_ENGLISH_ROM_URL`.
 2. Verifies the required MD5.
-3. Injects every ready translation directly; controlfix is not rerun in CI.
+3. Injects every ready translation directly with safe script-slot reclamation and strict no-space failure; controlfix is
+   not rerun in CI.
 4. Creates BPS-only assets and removes temporary translated ROMs.
 5. Publishes a stable release for `main` or a prerelease for `qa`, with flag-marked assets and linked commit messages.
 6. Optionally announces successful releases through `DISCORD_WEBHOOK_URL`.

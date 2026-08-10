@@ -72,7 +72,7 @@ jobs:
           for translation in "${translations[@]}"; do
             language="$(basename "$translation" .json)"
             translated_rom="out/unbound-translated-${language}.gba"
-            ./005_hybrid_injector.py rom/unbound.gba "$translation" -o "$translated_rom" --target-lang "$language"
+            ./005_hybrid_injector.py rom/unbound.gba "$translation" -o "$translated_rom" --target-lang "$language" --reclaim-script-slots --fail-on-no-space
             ./scripts/create_bps.py rom/unbound.gba "$translated_rom" -o "dist/unbound-translated-${language}.bps"
             rm -f "$translated_rom"
           done

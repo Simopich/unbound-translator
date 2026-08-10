@@ -874,32 +874,47 @@ def plan_relocations(
     reclaimed_categories=RECLAIMED_DESTINATION_CATEGORIES,
     reclaimed_entry_ids=None,
 ):
-    """Allocate unique payloads, restricting old slots to explicit scripts."""
+    """Allocate unique payloads, reserving vetted space for restricted texts."""
     reclaimed_blocks = reclaimed_blocks or []
     reclaimed_entry_ids = set(reclaimed_entry_ids or ())
+
+    def can_use_reclaimed(candidate):
+        return (
+            candidate.entry.get("category") in reclaimed_categories
+            or candidate.entry.get("id") in reclaimed_entry_ids
+        )
+
+    # Vetted FF accepts every relocation candidate; reclaimed old text slots
+    # intentionally accept only explicit scripts or independently proven IDs.
+    # Plan restricted candidates first so reclaim-eligible scripts cannot
+    # consume the only storage available to heuristic pointer discoveries.
+    ordered_candidates = [
+        candidate
+        for _index, candidate in sorted(
+            enumerate(candidates),
+            key=lambda item: (can_use_reclaimed(item[1]), item[0]),
+        )
+    ]
     plan = {}
     missing = []
     payload_plan = {}
     missing_payloads = set()
-    for candidate in candidates:
+    for candidate in ordered_candidates:
         cached = payload_plan.get(candidate.encoded)
-        category = candidate.entry.get("category")
         entry_id = candidate.entry.get("id")
-        can_use_reclaimed = (
-            category in reclaimed_categories or entry_id in reclaimed_entry_ids
-        )
+        candidate_can_use_reclaimed = can_use_reclaimed(candidate)
         if cached is not None and (
             cached[1] != "reclaimed_script_text"
-            or can_use_reclaimed
+            or candidate_can_use_reclaimed
         ):
             plan[entry_id] = (*cached, True)
             continue
-        missing_key = (candidate.encoded, can_use_reclaimed)
+        missing_key = (candidate.encoded, candidate_can_use_reclaimed)
         if missing_key in missing_payloads:
             missing.append(candidate)
             continue
         offset, block = allocate_with_block(blocks, len(candidate.encoded), alignment)
-        if offset is None and can_use_reclaimed:
+        if offset is None and candidate_can_use_reclaimed:
             offset, block = allocate_with_block(
                 reclaimed_blocks,
                 len(candidate.encoded),
