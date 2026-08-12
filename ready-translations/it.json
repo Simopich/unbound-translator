@@ -96777,7 +96777,7 @@
       "table_name": "data.items.stats.description",
       "table_index": 265,
       "translation_source": "A ticket required for sailing between West and East Borrius. It has a drawing of a ship.",
-      "translated": "Un biglietto necessario per\nviaggiare in nave tra Borrius Ovest\ne Borrius Est. Ha il disegno di una nave."
+      "translated": "Un biglietto necessario per\nnavigare tra Borrius Occidentale e\nBorrius Orientale. Raffigura una nave."
     },
     {
       "id": "tbl_item_descriptions_00266_EB1BB5",
@@ -97001,7 +97001,7 @@
       "table_name": "data.items.stats.description",
       "table_index": 281,
       "translation_source": "A key that disengages the Shadows’ electric barrier in Thundercap Mt.",
-      "translated": "Una chiave che disattiva la\nbarriera elettrica degli Shadows a\nThundercap Mt."
+      "translated": "Una chiave che disattiva la\nbarriera elettrica delle Ombre sul\nMonte Thundercap."
     },
     {
       "id": "tbl_item_descriptions_00282_3D9139",
@@ -97046,7 +97046,7 @@
       "table_name": "data.items.stats.description",
       "table_index": 284,
       "translation_source": "A card-type key that unlocks doors with a clearance level of 1 in The Shadow.",
-      "translated": "Una chiave a scheda che sblocca le\nporte con livello di accesso 1 nel\nThe Shadow."
+      "translated": "Una chiave a scheda che sblocca le\nporte con livello di accesso 1\nnella nave Ombra."
     },
     {
       "id": "tbl_item_descriptions_00285_3D925F",
@@ -113072,7 +113072,7 @@
           "token": "[pause]"
         }
       ],
-      "translated": "La modalità del pulsante R è stata impostata su Scansione Estrazione. Mentre\\nti trovi nella [green]KBT Expressway[black], nella [green]stanza laterale[black] al [green]Crystal Peak 1F[black], o\\n[green]sott{B4}acqua[black], premi \\btn03 per eseguire una scansione alla ricerca di oggetti\\nnascosti. Quando un bagliore appare sulla parete, premi \\btn00 per estrarre lì.[pause]"
+      "translated": "La modalità del Pulsante R è stata impostata su Scansione Mineraria. Nella\n[green]Superstrada KBT[black], nella [green]stanza laterale[black] al [green]Picco Cristallo 1F[black], o [green]sott{B4}acqua[black],\npremi \\btn03 per cercare oggetti nascosti. Quando compare un luccichio sulla\nparete, premi \\btn00 per scavare lì.[pause]"
     },
     {
       "id": "tbl_credits_text_00000_41D3BE",
@@ -116676,7 +116676,7 @@
       "byte_length": 88,
       "is_pointer_based": true,
       "translation_source": "Hello! Welcome to Dehara Dept. Store! The board on the wall describes the store layout.",
-      "translated": "Salve! Benvenuto al Grande\nMagazzino di Dehara! La bacheca sul\\lmuro descrive la disposizione del\n\negozio."
+      "translated": "Ciao! Benvenuto ai Grandi Magazzini\ndi Dehara! La bacheca sulla parete\\ldescrive la disposizione del\n\nnegozio."
     },
     {
       "id": "scr_195638",
@@ -119401,7 +119401,8 @@
       "is_pointer_based": true,
       "no_relocation": true,
       "translation_source": "Closed link to Prof. Log’s PC.",
-      "translated": "Link PC Log chiuso."
+      "translated": "Collegamento chiuso al PC di Prof.\nLog.",
+      "translated_fixed": "PC del Prof. Log: link chiuso."
     },
     {
       "id": "scr_1A5C4D",
@@ -119603,7 +119604,8 @@
           "token": "\\qc"
         }
       ],
-      "translated": "Box \\qo[buffer3]\\qc pieno. [buffer2]\ntrasferito al Box \\qo[buffer1]\\qc"
+      "translated": "Il Box \\qo[buffer3]\\qc sul PC di Ayla\nera pieno. [buffer2] è stato\\ltrasferito nel Box \\qo[buffer1].\\qc",
+      "translated_fixed": "Box \\qo[buffer3]\\qc del PC di Ayla pieno. [buffer2] trasferito al Box \\qo[buffer1].\\qc"
     },
     {
       "id": "scr_1A5E31",
@@ -156087,7 +156089,7 @@
       "byte_length": 54,
       "is_pointer_based": true,
       "translation_source": "Dark Forest, Cinder Volcano, Crater Town, and Route 6",
-      "translated": "Foresta Buia, Vulcano Ceneris,\nCrater Town e Percorso 6"
+      "translated": "Foresta Oscura, Vulcano delle\nCeneri, Città Cratere e Percorso 6"
     },
     {
       "id": "scr_740037",
@@ -156505,7 +156507,7 @@
           "token": "\\ar"
         }
       ],
-      "translated": "Boschi Cupi \\al Vulcano Cinder \\ar\nDresco Town"
+      "translated": "Bosco Tetro \\al Vulcano delle Ceneri\n\\ar Borgo Dresco"
     },
     {
       "id": "scr_74513B",
@@ -156589,7 +156591,7 @@
       "byte_length": 165,
       "is_pointer_based": true,
       "translation_source": "It’s a statue of the Legendary Fire Pokémon, Moltres. It says here that Moltres was once used as a herald to a great darkness, but now it resides in Cinder Volcano.",
-      "translated": "È una statua del Pokémon\nleggendario di tipo Fuoco, Moltres.\\lQui dice che Moltres un tempo\n\nveniva usato come araldo di una\ngrande oscurità, ma ora risiede nel\\lVulcano Ceneri."
+      "translated": "È una statua del Pokémon\nleggendario di tipo Fuoco, Moltres.\\lQui c{B4}è scritto che un tempo\n\nMoltres veniva usato come araldo di\nuna grande oscurità, ma ora vive in\\lVulcano delle Ceneri."
     },
     {
       "id": "scr_74549C",
@@ -156841,7 +156843,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Uuuh! Sembra che tu abbia aperto un\nvarco per te. Ora continua a\\ldirigerti [green]verso est[blue] finché non\n\nraggiungi [green]Thundercap Mt.[blue]"
+      "translated": "Uuuh! Sembra che tu abbia aperto un\nvarco per te. Ora continua a\\ldirigerti [green]verso est[blue] finché non\n\nraggiungi [green]Monte Thundercap[blue]"
     },
     {
       "id": "scr_746471",
@@ -157252,7 +157254,7 @@
       "byte_length": 48,
       "is_pointer_based": true,
       "translation_source": "You came from Icicle Cave? May I have a Swinub?",
-      "translated": "Sei venuto dalla Grotta di\nGhiaccio? Posso avere uno Swinub?"
+      "translated": "Vieni da Grotta Ghiacciata? Posso\navere uno Swinub?"
     },
     {
       "id": "scr_74BCAD",
@@ -157638,7 +157640,7 @@
       "byte_length": 46,
       "is_pointer_based": true,
       "translation_source": "I will uncover the secrets of Cinder Volcano!",
-      "translated": "Svelerò i segreti del Vulcano\nCinder!"
+      "translated": "Scoprirò i segreti di Vulcano delle\nCeneri!"
     },
     {
       "id": "scr_74F960",
@@ -157981,7 +157983,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Jax: [blue]La tua oscura reggenza del\nterrore finisce qui e ora! Non ti\\llascerò fuggire dal Vulcano\n\nCenerino con Moltres in pugno!"
+      "translated": "Jax: [blue]Il tuo regno oscuro del\nterrore finisce qui e ora! Non ti\\llascerò scappare da Vulcano delle\n\nCeneri con Moltres al seguito!"
     },
     {
       "id": "scr_7503EA",
@@ -158250,7 +158252,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Arthur: [blue]Bene, bene. Quanto a te,\n[player], voglio che tu vada al\\l[green]Monte Thundercap. [blue]e salvi [green]Zapdos[blue].\n\nHai dimostrato il tuo valore\ndifendendo Jax al Vulcano Cinder, e\\lpenso che tu sia all{B4}altezza del\n\ncompito. Puoi arrivare al [green]Monte\nThundercap. [blue] prendendo l{B4}autostrada\\la sud-est dalla prossima città,\n\n[green]Città Cratere[blue]. Se non ti sbrighi,\nla regione di Borrius sarà\\lcondannata."
+      "translated": "Arthur: [blue]Bene, bene. Quanto a te,\n[player], voglio che tu vada al\\l[green]Monte Thundercap [blue]e salvi [green]Zapdos[blue]. Ti\n\nsei dimostrato all{B4}altezza\ndifendendo Jax nel Vulcano delle\\lCeneri, e penso che tu sia pronto\n\nper l{B4}incarico. Puoi raggiungere il\n[green]Monte Thundercap [blue]prendendo\\ll{B4}autostrada a sud-est dalla città\n\nsuccessiva, [green]Città Cratere[blue]. Se non\nti sbrighi, la regione di Borrius\\lsarà condannata."
     },
     {
       "id": "scr_750AF3",
@@ -158604,7 +158606,7 @@
       "byte_length": 131,
       "is_pointer_based": true,
       "translation_source": "My brother caught his Pokémon by talking a Poké Ball in Vivill Woods. But I heard different Pokémon appear for different trainers.",
-      "translated": "Mio fratello ha catturato il suo\nPokémon parlando a una Poké Ball\\lnella Foresta di Vivill. Però ho\n\nsentito che Pokémon diversi\ncompaiono per Allenatori diversi."
+      "translated": "Mio fratello ha catturato il suo\nPokémon lanciando una Poké Ball nel\\lBosco di Vivill. Ma ho sentito dire\n\nche Pokémon diversi appaiono per\nallenatori diversi."
     },
     {
       "id": "scr_7535A6",
@@ -161324,7 +161326,7 @@
       "byte_length": 42,
       "is_pointer_based": true,
       "translation_source": "Route 5 is at the foot of Cinder Volcano.",
-      "translated": "Percorso 5 si trova ai piedi del\nVulcano Cinder."
+      "translated": "Il Percorso 5 si trova ai piedi del\nVulcano delle Ceneri."
     },
     {
       "id": "scr_76D29F",
@@ -161553,7 +161555,7 @@
       "byte_length": 14,
       "is_pointer_based": true,
       "translation_source": "Black Emboar!",
-      "translated": "Emboar nero!"
+      "translated": "Emboar Neri!"
     },
     {
       "id": "scr_770CF9",
@@ -161699,7 +161701,7 @@
           "token": "\\ar"
         }
       ],
-      "translated": "\\arCittà di Dresco"
+      "translated": "\\ar Borgo Dresco"
     },
     {
       "id": "scr_770F08",
@@ -162557,7 +162559,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Fallshore City è la casa della [green]Casa\ndella Lotta Inversa[blue] e del [green]QG\\lMissioni[blue]. Non è fantastico? È così\n\nbello vivere qui!"
+      "translated": "Città di Fallshore ospita la [green]Casa\ndelle Lotte Inverse[blue] e il [green]Quartier\\lGenerale Missioni[blue]. Non è\n\nfantastico? È così bello vivere\nqui!"
     },
     {
       "id": "scr_772874",
@@ -164194,7 +164196,7 @@
           "token": "\\ar"
         }
       ],
-      "translated": "Percorso 7 \\au Monte Gelato, Percorso\n8 \\ad Percorso 9 \\ar Percorso 6"
+      "translated": "Percorso 7 \\au Monte Gelo, Percorso 8\n\\ad Percorso 9 \\ar Percorso 6"
     },
     {
       "id": "scr_77F003",
@@ -164253,7 +164255,7 @@
           "token": "\\ad"
         }
       ],
-      "translated": "Percorso 9 \\au Percorso 7, Monte Gelo\n\\ad Città di Tehl"
+      "translated": "Percorso 9 \\au Percorso 7, Monte Gelo\n\\ad Borgo Tehl"
     },
     {
       "id": "scr_77F096",
@@ -164276,7 +164278,7 @@
           "token": "\\ar"
         }
       ],
-      "translated": "Percorso 9 \\au Percorso 7, Monte Gelo\n\\ar Città di Tehl"
+      "translated": "Percorso 9 \\au Percorso 7, Monte Gelo\n\\ar Borgo Tehl"
     },
     {
       "id": "scr_77F0D0",
@@ -164593,7 +164595,7 @@
       "byte_length": 51,
       "is_pointer_based": true,
       "translation_source": "Whoever named it should have called it Cliff Cave.",
-      "translated": "Chiunque l{B4}abbia chiamata avrebbe dovuto chiamarla Grotto Scogliera."
+      "translated": "Chiunque l{B4}abbia chiamata così avrebbe dovuto chiamarla Grotta della Scogliera."
     },
     {
       "id": "scr_77FC7B",
@@ -166806,7 +166808,7 @@
       "byte_length": 109,
       "is_pointer_based": true,
       "translation_source": "This area is sealed off to anyone who isn’t a member of The Shadows. Since you’re not one of us, scram, kid!",
-      "translated": "Quest{B4}area è interdetta a chiunque\nnon sia membro degli Shadows. E\\lvisto che non sei dei nostri,\n\nsmamma, ragazzino!"
+      "translated": "Quest{B4}area è vietata a chiunque non\nsia un membro delle Ombre. Non\\lessendo uno di noi, vattene,\n\nragazzino!"
     },
     {
       "id": "scr_78CED7",
@@ -166878,7 +166880,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Marlon: [blue]Va bene, reclute. Il nostro\nobiettivo attuale è andare a\\l[green]Vulcano Cinder [blue]e aiutare Ivory a\n\nottenere Specimen TRES."
+      "translated": "Marlon: [blue]Bene, reclute. Il nostro\nobiettivo attuale è recarci al\\l[green]Vulcano delle Ceneri [blue]e aiutare\n\nIvory a ottenere l{B4}Esemplare TRES."
     },
     {
       "id": "scr_78D4B8",
@@ -167088,7 +167090,7 @@
       "byte_length": 20,
       "is_pointer_based": true,
       "translation_source": "Cinder Volcano West",
-      "translated": "Vulcano Cinder Ovest"
+      "translated": "Vulcano delle Ceneri Ovest"
     },
     {
       "id": "scr_78D7EC",
@@ -168325,7 +168327,7 @@
           "token": "\\."
         }
       ],
-      "translated": "[blue]Ottimo! Grazie per aver accettato\ndi aiutarmi! Potresti prestarmi per\\lun attimo il tuo Cube... \\. Perfetto!\n\nIl tuo Cube è stato aggiornato per\npermetterti di vedere e raccogliere\\lle Cellule di Zygarde. Le cellule\n\nsi possono trovare sparse in tutta\nBorrius Ovest e Borrius Est. Una\\lvolta che ne avrai raccolto almeno\n\nil 10 percento, vieni a trovarmi.\nPer ora, buona fortuna!"
+      "translated": "[blue]Fantastico! Grazie per aver\naccettato di aiutarmi! Potresti\\ldarmi il tuo Cubo per un attimo...?\n\n\\. Perfetto! Il tuo Cubo è stato\naggiornato per permetterti di\\lvedere e raccogliere le Cellule di\n\nZygarde. Le cellule sono sparse sia\na Borrius Occidentale sia a Borrius\\lOrientale. Quando ne avrai raccolto\n\nalmeno il 10 percento, vieni a\ntrovarmi. Ma per ora, buona\\lfortuna!"
     },
     {
       "id": "scr_79223B",
@@ -169517,7 +169519,7 @@
           "token": "\\."
         }
       ],
-      "translated": "La palestra di Mel è un labirinto\ncomplicato di stagni, ninfee e\\lcascate. Probabilmente sarebbe un\n\ngioco da ragazzi attraversarla se\navessi un Pokémon che conosce Surf\\le Cascata. Ma sono quasi certo che\n\non puoi usare Surf finché non hai\nla [green]Medaglia Zap[blue]. E quella medaglia\\larriva dopo la Medaglia Fall\\."
+      "translated": "La palestra di Mel è un labirinto\ncomplicato di stagni, ninfee e\\lcascate. Probabilmente sarebbe un\n\ngioco da ragazzi attraversarla se\navessi un Pokémon che conosce Surf\\le Cascata. Ma sono quasi certo che\n\nnon puoi usare Surf finché non hai\nla [green]Medaglia Zap[blue]. E quella medaglia\\larriva dopo la Medaglia Autunno\\."
     },
     {
       "id": "scr_7A3CF0",
@@ -169836,7 +169838,7 @@
       "byte_length": 24,
       "is_pointer_based": true,
       "translation_source": "Damn that Shadow Admin!",
-      "translated": "Dannato Shadow Admin!"
+      "translated": "Dannato Amministratore Ombra!"
     },
     {
       "id": "scr_7A5A40",
@@ -169948,7 +169950,7 @@
           "token": "\\ar"
         }
       ],
-      "translated": "Percorso 6 \\au Grotta della Valle \\ad\nIdrovia Auburn \\al Percorso 7, Monte\\lFrost \\ar Percorso 14"
+      "translated": "Percorso 6 \\au Grotta della Valle \\ad\nCanale Auburn \\al Percorso 7, Monte\\lGelo \\ar Percorso 14"
     },
     {
       "id": "scr_7A6C49",
@@ -170466,7 +170468,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "[player]! Spero che tu non abbia\nvisto quello che è appena successo\\. \\.\\lBeh\\.ehm\\.sono stato colto di sorpresa\\.\n\nSì\\. Comunque, devo chiederti un\nfavore. So che mio nonno ti ha\\lchiesto di andare al Monte Tuono,\n\nma pensi di potermi dare una mano\nal [green]Percorso 9[blue]? Le Ombre hanno\\leretto una sorta di barriera\n\npsichica attorno al percorso che mi\nimpedisce di volarci sopra."
+      "translated": "[player]! Spero che tu non l{B4}abbia\nvisto proprio adesso\\. \\. Beh\\.ehm\\.sono\\lstato colto alla sprovvista\\. Già\\.\n\nComunque, devo chiederti un favore.\nSo che mio nonno ti ha chiesto di\\landare a Monte Thundercap, ma pensi\n\ndi potermi dare una mano sul\n[green]Percorso 9[blue]? Ombre ha eretto una\\lsorta di barriera psichica intorno\n\nal percorso, impedendomi di volare\nfin lì."
     },
     {
       "id": "scr_7A86EE",
@@ -171396,7 +171398,7 @@
           "token": "\\ar"
         }
       ],
-      "translated": "Thundercap Mt. \\al Città Epidimy \\ar\nCittà Antisis"
+      "translated": "Monte Thundercap \\al Borgo Epidimy \\ar\nCittà di Antisis"
     },
     {
       "id": "scr_7B1D45",
@@ -171960,7 +171962,7 @@
       "byte_length": 23,
       "is_pointer_based": true,
       "translation_source": "Cinder Volcano Passage",
-      "translated": "Passaggio del Vulcano Cinder"
+      "translated": "Passaggio di Vulcano delle Ceneri"
     },
     {
       "id": "scr_7B47EC",
@@ -172383,7 +172385,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Con la Medaglia d{B4}Autunno,\nqualsiasi Pokémon fino al Lv. 60 ti\\lobbedirà. Inoltre permette ai tuoi\n\nPokémon di spostare massi pesanti\ncon [green]Forza[blue]. Onestamente, non capisco\\lperché qualsiasi Pokémon forte non\n\npossa già farlo\\.. Ma che ci vuoi\nfare? È così che va il mondo.\\lComunque, prendi questa MT insieme\n\na quella medaglia."
+      "translated": "Con la Medaglia Autunno, qualsiasi\nPokémon fino al Lv. 60 ti obbedirà.\\lInoltre permette ai tuoi Pokémon di\n\nspostare massi pesanti con [green]Forza[blue].\nOnestamente, non capisco perché\\lqualsiasi Pokémon forte non possa\n\ngià farlo\\.. Ma che ci vuoi fare? È\ncosì che va il mondo. Comunque,\\lprendi questa MT insieme a quella\n\nmedaglia."
     },
     {
       "id": "scr_7B5DDC",
@@ -172811,7 +172813,7 @@
           "token": "\\ad"
         }
       ],
-      "translated": "Percorso 1 \\au Frozen Heights, Grotta\ndi Icicle \\ad Cittadina di Bellin"
+      "translated": "Percorso 1 \\au Alture Ghiacciate,\nGrotta Ghiacciata \\ad Borgo Bellin"
     },
     {
       "id": "scr_7B88E4",
@@ -172834,7 +172836,7 @@
           "token": "\\ar"
         }
       ],
-      "translated": "Percorso 2 \\al Città di Dresco \\ar\nGrotta dei Ghiaccioli"
+      "translated": "Percorso 2 \\al Borgo Dresco \\ar Grotta\nGhiacciata"
     },
     {
       "id": "scr_7B896D",
@@ -173749,7 +173751,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Volevo solo fare un picnic sul\nThundercap Mt. Non pensavo di\\lperdermi in un posto come questo\\."
+      "translated": "Volevo solo fare un picnic sul\nMonte Thundercap. Non pensavo di\\lperdermi in un posto come questo\\."
     },
     {
       "id": "scr_7BB0D4",
@@ -174345,7 +174347,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "[blue]Ti devo un favore per aver aiutato\nil mio Electivire. Qui non posso\\ldarti nulla, quindi incontrami al\n\n[green]Centro Pokémon di Epidimy [blue]se vuoi\nuna ricompensa per il tuo aiuto."
+      "translated": "[blue]Ti devo un favore per aver aiutato\nil mio Electivire. Qui non posso\\ldarti nulla, quindi incontriamoci\n\nal Centro Pokémon di [green]Borgo Epidimy\n[blue]se vuoi una ricompensa per il tuo\\laiuto."
     },
     {
       "id": "scr_7BBE83",
@@ -174958,7 +174960,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "In Borrius è risaputo che teppisti\ne malviventi si trovano\\lprincipalmente ad Antisis City.\n\nTuttavia, una delle gang di lì, i\n\\qoTerror Granbull\\qc, sembra aver\\llasciato quella zona. Abbiamo\n\nricevuto diverse segnalazioni\nultimamente riguardo ad alcuni dei\\lloro membri che si radunano e\n\ncausano problemi sulla [green]Route 10[blue]. Le\nnostre forze di polizia sono\\lpiuttosto limitate al momento, e\n\nqualsiasi aiuto extra per catturare\nquesti malviventi sarebbe molto\\lapprezzato. Te lo chiedo di nuovo.\n\nVorresti dare una mano alla polizia\nlocale?"
+      "translated": "A Borrius è risaputo che teppisti e\nmalviventi si concentrano\\lsoprattutto a Città di Antisis.\n\nTuttavia, una delle bande\nprovenienti da lì, i \\qoGranbull del\\lTerrore\\qc, sembra aver lasciato\n\nquella zona. Ultimamente abbiamo\nricevuto diverse segnalazioni su\\lalcuni loro membri che si radunano\n\ne causano problemi sul [green]Percorso 10[blue].\nAl momento la nostra forza di\\lpolizia è piuttosto a corto di\n\npersonale, quindi qualsiasi aiuto\nextra per catturare questi furfanti\\lsarebbe molto apprezzato. Te lo\n\nchiederò di nuovo. Ti piacerebbe\ndare una mano alla forza di polizia\\llocale?"
     },
     {
       "id": "scr_7C0278",
@@ -175736,7 +175738,7 @@
       "byte_length": 163,
       "is_pointer_based": true,
       "translation_source": "Thundercap Mountain can be accessed through that hole down the stairs. It’s really dangerous, so if you go, make sure you have lots of revives and Paralyze Heals!",
-      "translated": "La Montagna Thundercap si può\nraggiungere attraverso quel buco in\\lfondo alle scale. È davvero\n\npericolosa, quindi se ci vai\nassicurati di avere un sacco di\\lRevitalizzanti e Antiparalisi!"
+      "translated": "Monte Thundercap è raggiungibile\npassando da quel buco in fondo alle\\lscale. È davvero pericoloso,\n\nquindi, se ci vai, assicurati di\navere molti Revitalizzanti e Cure\\lParalisi!"
     },
     {
       "id": "scr_7C19F0",
@@ -175873,7 +175875,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "[black]G-Roughs: [blue]Ahahah! Solo perché mi\nhai battuto, non significa che mi\\lconsegnerò! Sto salendo sulla\n\nprossima nave per Borrius Est!"
+      "translated": "[black]G-Roughs: [blue]Ahahah! Solo perché mi\nhai battuto, non significa che mi\\lcostituirò! Salterò sulla prossima\n\nnave diretta a Borrius Orientale!"
     },
     {
       "id": "scr_7C1E8A",
@@ -176101,7 +176103,7 @@
       "byte_length": 120,
       "is_pointer_based": true,
       "translation_source": "Strength lets you move giant boulders with raw power! But only if you have the Fall Badge from the Fallshore Gym! Huah!",
-      "translated": "Forza ti permette di spostare massi\nenormi con la tua potenza bruta! Ma\\lsolo se hai la Fall Badge della\n\nPalestra di Fallshore! Huah!"
+      "translated": "Forza ti permette di spostare massi\nenormi con la tua potenza bruta! Ma\\lsolo se hai la Medaglia Autunno\n\ndella Palestra di Fallshore! Huah!"
     },
     {
       "id": "scr_7C278A",
@@ -177444,7 +177446,7 @@
           "token": "\\ar"
         }
       ],
-      "translated": "Thundercap Mt. Ingresso Est \\ar Città\ndi Antisis"
+      "translated": "Monte Thundercap - Ingresso Est \\ar\nCittà di Antisis"
     },
     {
       "id": "scr_7C54BA",
@@ -179111,7 +179113,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Hoooo weeee! Se non è la cosa più\nstrana che abbia mai visto! Un\\l[buffer1] che esce da un portale\n\nmagico! Da dove vieni, [buffer1]? \\.\nCome? Stavi cercando di raggiungere\\lThundercap Mt. quando\n\nall{B4}improvviso sei stato rapito!\nHoooo weeee! Sembra davvero\\lspaventoso, [buffer1]."
+      "translated": "Hoooo weeee! Se non è la cosa più\nstrana che abbia mai visto! Un\\l[buffer1] che esce da un portale\n\nmagico! Da dove vieni, [buffer1]? \\.\nCome? Stavi cercando di raggiungere\\lMonte Thundercap quando\n\nall{B4}improvviso sei stato rapito!\nHoooo weeee! Sembra davvero\\lspaventoso, [buffer1]."
     },
     {
       "id": "scr_7C7DFA",
@@ -180263,7 +180265,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "[red]Per quanto riguarda te, [player],\nnon ti ucciderò ancora. Devi\\ldiventare un esempio per chiunque\n\nsia abbastanza sciocco da credere\ndi poter affrontare gli Shadows.\\lFarò ciò che sia Marlon che Zeph on\n\nsono riusciti a fare. È tempo di\ntrovare la tua fine in battaglia!"
+      "translated": "[red]Quanto a te, [player], non ho\nintenzione di ucciderti... per ora.\\lDevi diventare un esempio per\n\nchiunque sia abbastanza folle da\ncredere di poter affrontare Ombre.\\lFarò ciò in cui hanno fallito sia\n\nMarlon che Zeph. È giunta l{B4}ora che\ntu incontri la tua fine in\\lbattaglia!"
     },
     {
       "id": "scr_7CA003",
@@ -180454,7 +180456,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Mentre faccio questo, dovresti\ndirigerti verso [green]Thundercap Mt.[blue] La\\lmossa [green]Forza[blue] è necessaria per andare\n\novunque all{B4}interno, quindi dovrai\nbattere il [green]Fallshore Gym[blue] prima.\\lPenso di aver visto il Capopalestra\n\nin giro per [green]Tehl Town[blue], in realtà\\. Ti\nraggiungerò di nuovo dopo che avrai\\lsalvato [green]Zapdos[blue]."
+      "translated": "Mentre faccio questo, dovresti\ndirigerti verso [green]Monte Thundercap[blue].\\lLa mossa [green]Forza[blue] è necessaria per\n\nandare ovunque all{B4}interno, quindi\ndovrai battere il [green]Fallshore Gym[blue]\\lprima. Penso di aver visto il\n\nCapopalestra in giro per [green]Tehl Town[blue],\nin realtà\\. Ti raggiungerò di nuovo\\ldopo che avrai salvato [green]Zapdos[blue]."
     },
     {
       "id": "scr_7CDE4B",
@@ -180800,7 +180802,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "[player] ha ricevuto il Megacerchio\nda Successora Maxima!"
+      "translated": "[player] ha ricevuto l{B4}Anello Mega\nda Successore Maxima!"
     },
     {
       "id": "scr_7CE798",
@@ -181649,7 +181651,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Sono le Rovine del Vuoto! E quelli\\.\nQuelli sono le reclute Ombra!"
+      "translated": "Sono le Rovine del Vuoto! E quelli\\.\nQuelli sono le Reclute Ombra!"
     },
     {
       "id": "scr_7D2062",
@@ -183943,7 +183945,7 @@
           "token": "\\qc"
         }
       ],
-      "translated": "Marlon: [blue]Non mi importa quello che\nti ha detto questa persona\\l\\qoAklove\\qc! Che ne avete fatto di\n\ntutti i Guerrieri Ombra?"
+      "translated": "Marlon: [blue]Non mi importa di ciò che\nti ha detto questa persona\\l\\qoAklove\\qc! Che ne hai fatto di tutti\n\ni Guerrieri Ombra?"
     },
     {
       "id": "scr_7D6975",
@@ -186769,7 +186771,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Sebbene Aros se ne fosse andato,\ncontinuammo le prove in sua\\lmemoria. Tuttavia, i nostri\n\n\\qoGuerrieri Ombra\\qc erano difficili\nda controllare all{B4}inizio. Alcuni\\lsi scagliarono, sfregiandomi il\n\nviso\\. Nonostante ciò, andammo\navanti. Nei successivi anni,\\lcontinuammo a catturare Pokémon e\n\ncombinarli con le ceneri degli\numani. E più facevamo questo, più\\lla nostra esitazione a uccidere\n\ndiminuiva. Alla fine, dopo aver\nstabilito che non saremmo riusciti\\la creare una creatura che\n\nconservasse i ricordi della sua\nvita precedente, decidemmo per un\\lnuovo approccio."
+      "translated": "Sebbene Aros non ci fosse più,\nabbiamo continuato gli esperimenti\\lin sua memoria. Tuttavia,\n\nall{B4}inizio i nostri \\qoGuerrieri\nOmbra\\qc erano difficili da\\lcontrollare. Alcuni si sono\n\nscagliati contro di me, lasciandomi\ncicatrici sul viso\\. Nonostante ciò,\\labbiamo continuato. Nei diversi\n\nanni successivi, abbiamo continuato\na catturare Pokémon e a combinarli\\lcon le ceneri degli esseri umani. E\n\npiù lo facevamo, più diminuiva la\nnostra esitazione a uccidere. Alla\\lfine, dopo aver stabilito che non\n\nsaremmo riusciti a creare una\ncreatura capace di conservare i\\lricordi della sua vita precedente,\n\noptammo per un nuovo approccio."
     },
     {
       "id": "scr_7DDC4C",
@@ -187108,7 +187110,7 @@
       "byte_length": 132,
       "is_pointer_based": true,
       "translation_source": "If you’re going north, you’ll head towards Route 6, a grassy route. If you’re going south, you’ll head towards the Auburn Waterway.",
-      "translated": "Se vai a nord, ti dirigerai verso\nil Percorso 6, un percorso erboso.\\lSe vai a sud, ti dirigerai verso il\n\nCanale di Auburn."
+      "translated": "Se vai a nord, ti dirigerai verso\nil Percorso 6, un percorso erboso.\\lSe vai a sud, ti dirigerai verso il\n\nCanale Auburn."
     },
     {
       "id": "scr_7E5C7C",
@@ -187984,7 +187986,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Ehi. \\. Cosa? Vuoi che dica qualcosa\ndi interessante? Va bene allora\\.\\lNegli ultimi tempi ho avuto\n\nproblemi con mio fratello. Si è\ncacciato nei guai con una banda che\\lsi fa chiamare \\qoBlack Emboar\\qo. Non\n\nso davvero di cosa si tratti, ma\nsono davvero preoccupato per la sua\\lsicurezza. Non parlo con lui da\n\ngiorni, quindi temo che gli sia\nsuccesso qualcosa di grave. \\. Cos{B4}è?\\lSaresti disposto a controllare come\n\nsta per me?"
+      "translated": "Ehi. \\. Cosa? Vuoi che dica qualcosa\ndi interessante? Va bene allora\\.\\lUltimamente ho avuto dei problemi\n\ncon mio fratello. Si è immischiato\nfino al collo con questa banda che\\lsi fa chiamare \\qoEmboar Neri\\qo. Non\n\nso bene di cosa si tratti, ma sono\ndavvero preoccupato per la sua\\lincolumità. Non gli parlo da\n\ngiorni, quindi temo che gli sia\nsuccesso qualcosa di brutto. \\. Cosa?\\lSaresti disposto a controllare come\n\nsta al posto mio?"
     },
     {
       "id": "scr_7E8EF5",
@@ -190378,7 +190380,7 @@
       "byte_length": 138,
       "is_pointer_based": true,
       "translation_source": "Ohhhhhhhhhhhh yeahhhhhhhhh! Now that I’ve gotten rid of that dead weight, it’s finally time to party in East Borrius! See you around kid!",
-      "translated": "Ooooooooh sìììììììì! Ora che mi\nsono sbarazzato di quel peso morto,\\lè finalmente il momento di far\n\nfesta a Borrius Est! Ci si vede in\ngiro, ragazzino!"
+      "translated": "Ohhhhhhhhhhhh sìììììììììììììììììì!\nOra che mi sono liberato di quel\\lpeso morto, è finalmente ora di\n\nfesteggiare a Borrius Orientale! Ci\nvediamo in giro, ragazzo!"
     },
     {
       "id": "scr_7EE9AA",
@@ -192105,7 +192107,7 @@
       "byte_length": 94,
       "is_pointer_based": true,
       "translation_source": "The Shadow Warrior is currently in battle with a Floette. Would you like to remove its cloak?",
-      "translated": "Il Guerriero dell{B4}Ombra è\nattualmente in lotta con una\\lFloette. Vuoi rimuovere il suo\n\nmantello?"
+      "translated": "Il Guerriero Ombra è attualmente in\nlotta con una Floette. Vuoi\\lrimuovere il suo mantello?"
     },
     {
       "id": "scr_7F2939",
@@ -192673,7 +192675,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Sgherro delle Ombre: [blue]Come hai\npotuto tradire le Ombre, Billy? Ti\\lhanno reso l{B4}uomo che sei! [black]Sgherro\n\nLOR: [blue]Mi sono fatto da solo, Ronald.\nHo scelto la mia strada!"
+      "translated": "Recluta Ombra: [blue]Come hai potuto\ntradire le Ombre, Billy? Ti hanno\\lreso l{B4}uomo che sei! [black]Sgherro LOR:\n\n[blue]Mi sono fatto da solo, Ronald. Ho\nscelto la mia strada!"
     },
     {
       "id": "scr_7F38F7",
@@ -192700,7 +192702,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "Recluta LOR: [blue]Ho perso molti amici\nquando la tua nave ha sfondato il\\lmuro! [black]Recluta di Shadow: [red]Se lo\n\nmeritavano per aver abbandonato The\nShadows!"
+      "translated": "Recluta LOR: [blue]Ho perso molti amici\nquando la tua nave ha sfondato il\\lmuro! [black]Recluta Ombra: [red]Se lo\n\nmeritavano per aver abbandonato The\nShadows!"
     },
     {
       "id": "scr_7F39A1",
@@ -192732,7 +192734,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "[player], sono contento che tu sia\nriuscito a venire. Spero che tu non\\labbia avuto problemi con gli Shadow\n\nWarriors. Avevano l{B4}ordine di\nuccidere chiunque non fosse membro\\ldegli Shadows, ma ho dimenticato di\n\nfare un{B4}eccezione per te. Beh, sono\nsicuro che tu sia riuscito a\\levitarli, visto che sei qui ora.\n\nCerca solo di startene fuori dai\nloro piedi. Quei sei Shadow\\lWarriors d{B4}élite sono gli ultimi\n\nche ci restano."
+      "translated": "[player], sono contento che tu ce\nl{B4}abbia fatta. Spero che tu non\\labbia avuto problemi con i\n\nGuerrieri Ombra. Avevano ricevuto\nl{B4}ordine di uccidere chiunque non\\lfosse un membro delle Ombre, ma mi\n\nsono dimenticato di fare\nun{B4}eccezione specifica per te. Beh,\\lsono certo che tu sia riuscito a\n\nevitarli, visto che ora sei qui.\nCerca solo di stare alla larga da\\lloro. Quei sei Guerrieri Ombra\n\nd{B4}élite sono gli ultimi rimasti."
     },
     {
       "id": "scr_7F3B74",
@@ -193435,7 +193437,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Véga: [blue]Ho cattive notizie, Aklove.\nGli Shadows hanno fatto schiantare\\lla loro barca contro la scogliera,\n\nsfondando il muro e inondando la\nSala di Ricerca."
+      "translated": "Véga: [blue]Ho delle brutte notizie,\nAklove. Ombre ha fatto schiantare\\lla sua barca contro la scogliera,\n\nmandando in frantumi la parete e\nallagando la Sala delle Ricerche."
     },
     {
       "id": "scr_7F4F44",
@@ -193604,7 +193606,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Aklove: [blue]Perché non vai a bruciare\nnel Vulcano Cinder. È la giusta\\lricompensa per tutte le vite che\n\nhai ridotto in cenere."
+      "translated": "Aklove: [blue]Perché non vai a bruciare\nnel Vulcano delle Ceneri? È la\\lgiusta ricompensa per tutte le vite\n\nche hai ridotto in cenere."
     },
     {
       "id": "scr_7F5200",
@@ -195143,7 +195145,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Looker: [blue]Hai perso parecchio anche\ntu, [player]. Come da programma,\\lstavo aspettando fuori dal\n\nmagazzino te e [rival], quando\nalcune figure incappucciate sono\\luscite dal magazzino con un grande\n\nPokémon viola. Ero pronto ad\narrestarli, quando all{B4}improvviso,\\lil loro capo ha urlato qualcosa al\n\nPokémon dietro di loro. Il momento\ndopo, erano svaniti senza lasciare\\ltraccia. Ho subito perquisito il\n\nmagazzino alla ricerca di eventuali\nritardatari, ma ma sono riuscito a\\ltrovare solo una recluta che era\n\nrimasta indietro. Mi ha informato\nche tutto ciò che sapeva, era che\\lla Luce della Rovina è diretta da\n\nqualche parte in [green]Est di Borrius[blue]."
+      "translated": "Bellocchio: [blue]Anche tu ti sei perso\nparecchio, [player]. Come previsto,\\lstavo aspettando te e [rival]\n\nfuori dal magazzino, quando alcune\nfigure incappucciate sono uscite\\ldal magazzino con un grande Pokémon\n\nviola. Ero pronto ad arrestarle,\nquando all{B4}improvviso il loro\\lleader ha urlato qualcosa al\n\nPokémon dietro di loro. Un attimo\ndopo, erano svaniti senza lasciare\\ltraccia. Ho perquisito\n\nimmediatamente il magazzino alla\nricerca di eventuali ritardatari,\\lma sono riuscito a trovare solo una\n\nrecluta rimasta indietro. Mi ha\ninformato che tutto ciò che sapeva\\lera che la Luce della Rovina si sta\n\ndirigendo verso [green]Borrius Orientale[blue]."
     },
     {
       "id": "scr_7F8011",
@@ -195170,7 +195172,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Jax: [blue][green]Borrius Est[blue]? Cosa ci starebbe\na fare la Luce della Rovina?"
+      "translated": "Jax: [blue][green]Borrius Orientale[blue]? Che cosa ci\nfarebbe lì la Luce della Rovina?"
     },
     {
       "id": "scr_7F805A",
@@ -195224,7 +195226,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Jax: [blue]Beh, non risolveremo niente\nrestando fermi qui. Dobbiamo salire\\lsu una barca per [green]Borrius Est [blue]da\n\n[green]Seaport City[blue]!"
+      "translated": "Jax: [blue]Be{B4}, non scopriremo nulla\nrestando qui impalati. Dobbiamo\\lprendere una barca per [green]Borrius\n\nOrientale [blue]da [green]Città Portuale[blue]!"
     },
     {
       "id": "scr_7F8154",
@@ -195891,7 +195893,7 @@
       "byte_length": 229,
       "is_pointer_based": true,
       "translation_source": "This base used to belong to the old gang that used to run Antisis City. After the Black Ferrothorn kicked them out, they left this base abandoned. We fixed it up when we came, and even replaced the hole to the sewer with stairs!",
-      "translated": "Questa base apparteneva una volta\nalla vecchia banda che gestiva\\lAntisis City. Dopo che il\n\nFerrothorn Nero li ha cacciati,\nhanno lasciato questa base\\labbandonata. L{B4}abbiamo sistemata\n\nquando siamo arrivati, e abbiamo\npersino sostituito il buco per la\\lfogna con delle scale!"
+      "translated": "Questa base apparteneva alla\nvecchia banda che gestiva Città di\\lAntisis. Dopo che i Ferrothorn Neri\n\nli hanno cacciati, hanno lasciato\nla base abbandonata. Quando siamo\\larrivati, l{B4}abbiamo sistemata e\n\nabbiamo persino sostituito il buco\nche portava alle fogne con delle\\lscale!"
     },
     {
       "id": "scr_7F9B92",
@@ -195904,7 +195906,7 @@
       "byte_length": 68,
       "is_pointer_based": true,
       "translation_source": "We’re discussing our strategy for taking down the Black Ferrothorn.",
-      "translated": "Stiamo discutendo la nostra\nstrategia per abbattere il\\lFerrothorn Nero."
+      "translated": "Stiamo discutendo della nostra\nstrategia per sconfiggere i\\lFerrothorn Neri."
     },
     {
       "id": "scr_7F9C4A",
@@ -199964,7 +199966,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Oh! Che sbadata! Come posso\naspettarmi che tu trovi [green]Caverna di\\lGhiaccio[blue] se non conosci la strada?\n\nQuesta [green]Mappa Città[blue] ti sarà di\ngrande aiuto!"
+      "translated": "Oh! Che sbadato! Come posso\naspettarmi che tu trovi [green]Grotta\\lGhiacciata[blue] se non conosci la\n\nstrada? Questa [green]Mappa Città[blue] dovrebbe\naiutarti moltissimo!"
     },
     {
       "id": "scr_8CB47B",
@@ -201082,7 +201084,7 @@
           "token": "\\qc"
         }
       ],
-      "translated": "Arthur: [blue]Penso che Jax sia in grado\ndi risolvere questo problema. A\\lquesto punto ha già dimostrato il\n\nsuo valore. Avevo intenzione di\nmandarlo a confrontarsi con queste\\l\\qoOmbre\\qc e fermarle prima che\n\nraggiungano Moltres."
+      "translated": "Arthur: [blue]Credo che Jax sia in grado\ndi risolvere questo problema. A\\lquesto punto ha già dimostrato il\n\nsuo valore. Avevo intenzione di\nmandarlo ad affrontare queste\\l\\qoOmbre\\qc e fermarle prima che\n\nraggiungano Moltres."
     },
     {
       "id": "scr_8CDB97",
@@ -201532,7 +201534,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Benvenuto al Quartier Generale\ndelle Missioni! È la tua prima\\lvolta qui, vero? Allora dimmi,\n\nconosci le [green]Missioni[blue]?"
+      "translated": "Benvenuto al Quartier Generale\nMissioni! È la prima volta che\\lvieni qui, vero? Allora dimmi,\n\nconosci le [green]Missioni[blue]?"
     },
     {
       "id": "scr_8CF025",
@@ -217706,7 +217708,7 @@
       "byte_length": 16,
       "is_pointer_based": true,
       "translation_source": "Ex Shadow Admin",
-      "translated": "Ex Admin del Team Ombra"
+      "translated": "Ex Amministratore Ombra"
     },
     {
       "id": "scr_A4CAF9",
@@ -223046,7 +223048,7 @@
       "byte_length": 38,
       "is_pointer_based": true,
       "translation_source": "VROOM VROOM The Black Ferrothorn!",
-      "translated": "VROOM VROOM Il Ferrothorn Nero!"
+      "translated": "VRUUUM VRUUUM I Ferrothorn Neri!"
     },
     {
       "id": "scr_1EDD126",
@@ -223059,7 +223061,7 @@
       "byte_length": 78,
       "is_pointer_based": true,
       "translation_source": "I’m a member of the Black Ferrothorn! Stare at me too long and I’ll poke you!",
-      "translated": "Sono un membro del Ferrothorn Nero!\nSe mi guardi troppo a lungo, ti\\lpunzecchio!"
+      "translated": "Sono un membro dei Ferrothorn Neri!\nFissami troppo a lungo e ti\\lpungerò!"
     },
     {
       "id": "scr_1EDD174",
@@ -225269,7 +225271,7 @@
       "byte_length": 85,
       "is_pointer_based": true,
       "translation_source": "Calling all Gym Leaders! Calling all Gym Leaders! You’re needed at the Battleground!",
-      "translated": "Attenzione, Capipalestra!\nAttenzione, Capipalestra! Siete\\lrichiesti al Campo di Battaglia!"
+      "translated": "A tutti i Capipalestra! A tutti i\nCapipalestra! Vi vogliamo al Campo\\ldi Lotta!"
     },
     {
       "id": "scr_1EE05CD",
@@ -226046,7 +226048,7 @@
           "token": "\\CC0818"
         }
       ],
-      "translated": "Ah, [player]. Spero che tu stia\nbene. No, non sono qui per un\\lincarico. Ho le mie\\.\\CC0818 ragioni\n\npersonali. Sei diventato di recente\nil nuovo Campione della regione di\\lBorrius, vero? Vedi, le mie\n\nresponsabilità come Capopalestra e\ncome agente mi impongono spesso di\\.\\CC0818\\lnascondere la mia vera forza. Ma\n\nora, non vedo motivo di non\nconcedermelo, ora che la pace è\\ltornata. Se sei disposto, ti\n\nandrebbe di metterti alla prova\ncontro di me? Sono consapevole,\\lovviamente, che potresti ancora\n\nnutrire rancore per le mie azioni\nal Vulcano Cenere. Se non altro,\\lpensala come un{B4}opportunità per\\.\\CC0818\n\nsfogare un po{B4} di frustrazione\nrepressa."
+      "translated": "Ah, [player]. Spero che tu stia\nbene. No, non sono qui per un\\lincarico. Ho le mie\\.\\CC0818 ragioni\n\npersonali. Di recente sei diventato\nil nuovo Campione della regione di\\lBorrius, vero? Vedi, le mie\n\nresponsabilità come Capopalestra e\ncome agente mi impongono spesso\\.\\CC0818 di\\lcelare la mia vera forza. Ma ora\n\nvedo ben pochi motivi per non\nassecondare i miei desideri, ora\\lche la pace è tornata. Se sei\n\ndisposto, forse ti andrebbe di\nmetterti alla prova contro di me?\\lSono consapevole, naturalmente, che\n\npotresti serbare ancora del rancore\nper le mie azioni al Vulcano delle\\lCeneri. Se non altro, consideralo\n\nun{B4}opportunità per\\.\\CC0818 sfogare un po{B4}\ndelle tue frustrazioni represse."
     },
     {
       "id": "scr_1EE13FE",
@@ -226556,7 +226558,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Ma guarda un po{B4}\\. Se non è [player].\nImmagino che tutto quel trambusto\\ldopo il Monte Tuono sia andato per\n\nil verso giusto, eh? Da allora\\. c{B4}è\nqualcosa di diverso nel tuo\\laspetto. No, non sei diventato\n\nbello quanto me\\. Nessuno è più\naffascinante del vecchio Mel.\\lIntendo dire che sei più rilassato.\n\nRicordo che alla mia Palestra\neravate tutti tesi come corde di\\lviolino. In realtà\\. ora che siamo\n\nqui\\. che ne diresti di una rivincita\ncon questo bel tipo? Voglio vedere\\lcome combatti davvero, senza\n\ndistrazioni a trattenerti. Che ne\ndici? Facciamo un altro round?"
+      "translated": "Toh, guarda chi si vede\\.! Se non è\n[player]. Immagino che tutto quel\\ltrambusto dopo Monte Thundercap\n\nabbia dato i suoi frutti, eh? Da\nallora\\. c{B4}è qualcosa di diverso nel\\ltuo aspetto. Nah, non sei diventato\n\nbello quanto me\\.. Nessuno è più\nbello del vecchio Mel. Voglio dire,\\lsembri più rilassato. Ricordo che\n\nnella mia Palestra eravate tesi\ncome un lazo. A dire il vero\\., ora\\lche siamo qui\\., che ne diresti di\n\nuna rivincita contro questo bel\nfusto? Voglio vedere come combatti\\ldavvero, senza distrazioni a\n\ntrattenerti. Che ne dici? Facciamo\nun altro rodeo?"
     },
     {
       "id": "scr_1EE24C3",
@@ -229289,7 +229291,7 @@
       "byte_length": 16,
       "is_pointer_based": true,
       "translation_source": "Blizzard City D",
-      "translated": "Città Blizzard D"
+      "translated": "Città Bufera D"
     },
     {
       "id": "scr_1EE6DE2",
@@ -229302,7 +229304,7 @@
       "byte_length": 16,
       "is_pointer_based": true,
       "translation_source": "Blizzard City N",
-      "translated": "Città Blizzard N"
+      "translated": "Città Bufera N"
     },
     {
       "id": "scr_1EE6DF2",
@@ -232974,7 +232976,7 @@
       "byte_length": 46,
       "is_pointer_based": true,
       "translation_source": "I will unravel the secrets of Cinder Volcano!",
-      "translated": "Svelerò i segreti del Vulcano\nCinder!"
+      "translated": "Svelerò i segreti del Vulcano delle\nCeneri!"
     },
     {
       "id": "scr_1EEC300",
@@ -233088,7 +233090,7 @@
       "byte_length": 234,
       "is_pointer_based": true,
       "translation_source": "The fact that you are here means you have acquired at least four Gym Badges. But Badges alone are not enough to prove your worth to me. I will challenge you to a battle if, and only if you defeat all other Trainers in Cinder Volcano.",
-      "translated": "Il fatto che tu sia qui significa\nche hai ottenuto almeno quattro\\lMedaglie della Palestra. Ma le\n\nMedaglie da sole non bastano a\ndimostrare il tuo valore per me. Ti\\lsfiderò in battaglia solo se\n\nsconfiggerai tutti gli altri\nAllenatori nel Vulcano Ceneride."
+      "translated": "Il fatto che tu sia qui significa\nche hai ottenuto almeno quattro\\lMedaglie. Ma le sole Medaglie non\n\nbastano a dimostrarmi il tuo\nvalore. Ti sfiderò in una lotta se,\\le solo se, sconfiggerai tutti gli\n\naltri Allenatori nel Vulcano delle\nCeneri."
     },
     {
       "id": "scr_1EEC628",
@@ -233195,7 +233197,7 @@
       "byte_length": 240,
       "is_pointer_based": true,
       "translation_source": "Hi, Trainer. Oh! I see you possess a DexNav. I have just the task for you. Would you use your DexNav to aid yourself in the capture of all of the Pokémon that live in this area? I want to know all about the Pokémon that live in Cootes Bog.",
-      "translated": "Ciao, Allenatore. Oh! Vedo che\npossiedi un DexNav. Ho proprio il\\lcompito che fa per te. Useresti il\n\ntuo DexNav per aiutarti a catturare\ntutti i Pokémon che vivono in\\lquest{B4}area? Voglio sapere tutto sui\n\nPokémon che vivono nelle Paludi di\nCootes."
+      "translated": "Ciao, Allenatore. Oh! Vedo che\npossiedi un DexNav. Ho proprio il\\lcompito che fa per te. Useresti il\n\ntuo DexNav per aiutarti a catturare\ntutti i Pokémon che vivono in\\lquesta zona? Voglio sapere tutto\n\nsui Pokémon che vivono nella Palude\nCootes."
     },
     {
       "id": "scr_1EEC8F1",
@@ -233494,7 +233496,7 @@
       "byte_length": 50,
       "is_pointer_based": true,
       "translation_source": "Just over yonder is the entrance to Crystal Peak.",
-      "translated": "Poco più in là c{B4}è l{B4}ingresso al\nPicco di Cristallo."
+      "translated": "Proprio laggiù c{B4}è l{B4}ingresso del\nPicco Cristallo."
     },
     {
       "id": "scr_1EED148",
@@ -233826,7 +233828,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Quella caverna laggiù ti porta\nfuori città, verso il Percorso 6.\\lDa lì, è una tirata dritta\n\nattraverso il Percorso 7, su per il\nMonte Frost e su per il Percorso 8\\lfino a [green]Blizzard City[blue]. Se devi fare\n\ntutta quella salita, assicurati di\navere molte Poké Ball per catturare\\li Pokémon. Ora che lo Skinny Tree\n\nche lo bloccava è stato abbattuto,\nviene usato molto più spesso."
+      "translated": "Quella grotta laggiù ti porta fuori\ncittà, sulla Via 6. Da lì, basta\\lproseguire dritto lungo la Via 7,\n\nsalire sul Monte Gelo e poi\npercorrere la Via 8 fino a [green]Città\\lBufera[blue]. Se hai intenzione di salire\n\nfin lassù, assicurati di avere\nmolte Poké Ball per catturare i\\lPokémon. Ora che l{B4}Albero Esile che\n\nla bloccava è stato abbattuto,\nviene utilizzata molto più spesso."
     },
     {
       "id": "scr_1EED7F3",
@@ -235146,7 +235148,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "Si dice che i Capipalestra dell{B4}Est\nBorrius si affidino sia al potere\\ldella [green]Mega Evoluzione[red] sia a strane\n\ncondizioni di lotta. Devi stare\nattento e prepararti se vuoi\\lbatterli. E per strane condizioni\n\ndi lotta intendo cose su cui dovrai\nriflettere ancora più attentamente\\lprima dello scontro."
+      "translated": "Si dice che i Capipalestra di\nBorrius Orientale facciano\\laffidamento sia sul potere della\n\n[green]Mega Evoluzione[red] sia su strane\ncondizioni di lotta. Dovrai stare\\lin guardia e prepararti se vuoi\n\nbatterli. E con strane condizioni\ndi lotta intendo situazioni su cui\\ldovrai riflettere attentamente per\n\ncapire come affrontarle prima della\nlotta."
     },
     {
       "id": "scr_1EEF808",
@@ -236879,7 +236881,7 @@
       "byte_length": 15,
       "is_pointer_based": true,
       "translation_source": "Crystal Peak A",
-      "translated": "Picco di Cristallo A"
+      "translated": "Picco Cristallo A"
     },
     {
       "id": "scr_1EF0C84",
@@ -236892,7 +236894,7 @@
       "byte_length": 15,
       "is_pointer_based": true,
       "translation_source": "Crystal Peak B",
-      "translated": "Picco di Cristallo B"
+      "translated": "Picco Cristallo B"
     },
     {
       "id": "scr_1EF0C93",
@@ -238943,7 +238945,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Abbasso Cube Corp! Abbasso Cube\nCorp! Sto protestando contro le\\lmalvagità della Cube Corp, e in\n\nparticolare della Science Society.\nHanno condotto esperimenti crudeli\\lsui Pokémon, inclusi quelli di cui\n\nsono responsabile! Hmm\\\\.? Ho delle\n[green]scaglie dure e innevate[blue] attaccate\\lai vestiti? Sì, esatto\\\\. Aiuto a\n\nutrire uno dei loro esperimenti\nimportati, dopo che la loro\\lpopolazione è aumentata qui a\n\nBorrius, nella [green]Grotta Ghiacciolo[blue].\nDimentico i loro nomi\\\\. sono una\\lspecie di Pokémon della regione di\n\n[green]Alola[blue]\\\\. Come si chiamavano?"
+      "translated": "Abbasso la Cube Corp! Abbasso la\nCube Corp! Sto protestando contro i\\lmali della Cube Corp, e soprattutto\n\ncontro la Società Scientifica.\nHanno condotto esperimenti crudeli\\lsui Pokémon, compresi quelli di cui\n\nsono responsabile! Hmm\\.? Ho delle\n[green]scaglie dure e innevate[blue] attaccate\\lai vestiti? Sì, è proprio così\\.\n\nAiuto a tenere nutrito uno dei loro\nesperimenti importati, dopo che la\\lloro popolazione è aumentata qui a\n\nBorrius, presso [green]Grotta Ghiacciata[blue].\nNon ricordo i loro nomi\\., sono una\\lspecie di Pokémon della [green]regione di\n\nAlola[blue]\\. Come si chiamavano?"
     },
     {
       "id": "scr_1EF3A36",
@@ -240850,7 +240852,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Hai visto i vari [green]Raid Den[blue] in giro\nper Borrius? Non sono affascinanti?\\lSono stati creati quando un\n\nmeteorite contenente energia\nultraterrena stava quasi per\\lschiantarsi su Borrius. Ho sentito\n\ndire che in una regione lontana, lì\nla gente ha vissuto più o meno la\\lstessa cosa\\. Così sono state create\n\nle Den, uno spazio in cui i Pokémon\nricevono l{B4}energia per diventare\\lenormi, e tuttavia non possono\n\nlasciare quello spazio finché non\nvengono catturati\\. Ti andrebbe di\\lfare una prova veloce per me, ora\n\nche hai ascoltato il mio piccolo\ndiscorso?"
+      "translated": "Hai visto le varie [green]Tane Raid[blue] sparse\nper Borrius? Non sono affascinanti?\\lSi sono formate quando un meteorite\n\ncontenente energia ultraterrena è\nquasi precipitato su Borrius. Ho\\lsentito dire che, in una regione\n\nlontana, le persone hanno vissuto\nqualcosa di molto simile\\. Creando\\lcosì le Tane Raid: uno spazio in\n\ncui i Pokémon ricevono l{B4}energia\nnecessaria per crescere a\\ldismisura, ma dal quale non possono\n\nuscire finché non vengono catturati\\.\nOra che hai ascoltato il mio\\lpiccolo discorso, saresti disposto\n\na sottopormi a una rapida prova?"
     },
     {
       "id": "scr_1EF5E19",
@@ -240924,7 +240926,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Ti affido il compito di trovare\ntutti i [green][buffer1][blue] Raid Den nascosti\\lin giro per Borrius e di svuotarli.\n\nNe restano ancora [green][buffer3][blue], quindi\nsbrigati prima che vengano\\lripopolati di nuovo alla fine della\n\ngiornata!"
+      "translated": "Ti incarico di trovare tutte le\n[green][buffer1][blue] Tane Raid nascoste nella\\lregione di Borrius ed eliminarle.\n\nNe restano ancora [green][buffer3][blue], quindi\nsbrigati prima che vengano\\lnuovamente popolate a fine\n\ngiornata!"
     },
     {
       "id": "scr_1EF5FD2",
@@ -240937,7 +240939,7 @@
       "byte_length": 167,
       "is_pointer_based": true,
       "translation_source": "Ah, I do believe that you’ve managed to find and conquer all the Raid Dens. Good, good! Well, thank you for aiding my research. Here, have this, I invented it myself.",
-      "translated": "Ah, credo proprio che tu sia\nriuscito a trovare e conquistare\\ltutti i Nidi Raid. Bene, bene!\n\nGrazie per aver aiutato la mia\nricerca. Tieni, prendi questo: l{B4}ho\\linventato io stesso."
+      "translated": "Ah, credo proprio che tu sia\nriuscito a trovare e conquistare\\ltutte le Tane Raid. Bene, bene!\n\nGrazie per aver aiutato la mia\nricerca. Ecco, prendi questo: l{B4}ho\\linventato io stesso."
     },
     {
       "id": "scr_1EF6079",
@@ -240969,7 +240971,7 @@
       "byte_length": 211,
       "is_pointer_based": true,
       "translation_source": "Thanks to your help, I’ve discovered that if you throw a Wishing Piece in a Raid Den, then the Pokémon in every other Raid Den seems to change as well! Could they all be linked by some sort of mysterious power?",
-      "translated": "Grazie al tuo aiuto, ho scoperto\nche se lanci un Pezzo dei Desideri\\lin un Antro Raid, allora sembra che\n\nanche i Pokémon in ogni altro Antro\nRaid cambino! Potrebbero essere\\ltutti collegati da una sorta di\n\npotere misterioso?"
+      "translated": "Grazie al tuo aiuto, ho scoperto\nche se lanci un Desioblocco in una\\lTana Raid, allora anche i Pokémon\n\nin ogni altra Tana Raid sembrano\ncambiare! Potrebbero essere tutti\\lcollegati da una sorta di potere\n\nmisterioso?"
     },
     {
       "id": "scr_1EF6184",
@@ -241737,7 +241739,7 @@
       "byte_length": 64,
       "is_pointer_based": true,
       "translation_source": "This person was found just outside the entrance to Icicle Cave.",
-      "translated": "Questa persona è stata trovata\nappena fuori dall{B4}ingresso della\\lGrotta Ghiaccioli."
+      "translated": "Questa persona è stata trovata\nproprio fuori dall{B4}ingresso della\\lGrotta Ghiacciata."
     },
     {
       "id": "scr_1EF6E3E",
@@ -241919,7 +241921,7 @@
       "byte_length": 61,
       "is_pointer_based": true,
       "translation_source": "This person was found in the house next to the Battleground.",
-      "translated": "Questa persona è stata trovata\nnella casa accanto al Campo di\\lBattaglia."
+      "translated": "Questa persona è stata trovata\nnella casa accanto al Campo di\\lLotta."
     },
     {
       "id": "scr_1EF7205",
@@ -244855,7 +244857,7 @@
       "byte_length": 143,
       "is_pointer_based": true,
       "translation_source": "Pyukumuku are one of the most famous Alolan Pokémon. But a lot of tourists from East Borrius don’t understand their appeal. It’s a real shame.",
-      "translated": "I Pyukumuku sono uno dei Pokémon di\nAlola più famosi. Ma molti turisti\\ldell{B4}Est di Borrius non ne\n\ncapiscono il fascino. È un vero\npeccato."
+      "translated": "I Pyukumuku sono tra i Pokémon di\nAlola più famosi. Ma molti turisti\\lprovenienti da Borrius Orientale\n\nnon ne capiscono il fascino. È\ndavvero un peccato."
     },
     {
       "id": "scr_1EFAD93",
@@ -246934,7 +246936,7 @@
       "byte_length": 88,
       "is_pointer_based": true,
       "translation_source": "Hello! Welcome to Dehara Dept. Store! The board on the wall describes the store layout.",
-      "translated": "Salve! Benvenuto al Grande\nMagazzino di Dehara! La bacheca sul\\lmuro descrive la disposizione del\n\negozio."
+      "translated": "Salve! Benvenuto ai Grandi\nMagazzini di Grandi Magazzini di\\lDehara! Il cartello sul muro\n\ndescrive la disposizione del\nnegozio."
     },
     {
       "id": "scr_1EFDFB1",
@@ -247949,7 +247951,7 @@
       "byte_length": 14,
       "is_pointer_based": true,
       "translation_source": "Dresco Town D",
-      "translated": "Città di Dresco D"
+      "translated": "Borgo Dresco D"
     },
     {
       "id": "scr_1EFF26E",
@@ -248026,7 +248028,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Mi dispiace, ma non puoi entrare\nqui adesso. Mio nonno sta facendo\\lil suo sonnellino quotidiano e non\n\nvuole che nessuno lo disturbi.\nProva ad affrontare la [green]Palestra di\\lDresco[blue] mentre aspetti. Lì dentro\n\nc{B4}è molta nebbia, quindi un Pokémon\ncon una mossa che cambia il clima\\lcome [green]Sabbia[blue] o [green]Scacciabruma[blue] potrebbe\n\ndavvero esserti d{B4}aiuto. Ora che ci\npenso, uno degli amici di mio nonno\\lstava cercando di scambiare un\n\n[green]Ducklett[blue] con Scacciabruma,\nrecentemente\\."
+      "translated": "Mi dispiace, ma al momento non puoi\nentrare qui. Mio nonno sta facendo\\lil suo pisolino quotidiano e non\n\nvuole che nessuno lo disturbi.\nNell{B4}attesa, prova ad affrontare la\\l[green]Palestra di Borgo Dresco[blue]. C{B4}è\n\nparecchia nebbia là dentro, quindi\nun Pokémon con una mossa che cambia\\lle condizioni atmosferiche, come\n\n[green]Terrempesta[blue] o [green]Scacciabruma[blue],\npotrebbe davvero aiutarti. Ora che\\lci penso, recentemente un amico di\n\nmio nonno cercava di scambiare un\n[green]Ducklett[blue] con Scacciabruma\\."
     },
     {
       "id": "scr_1EFF446",
@@ -248396,7 +248398,7 @@
       "byte_length": 76,
       "is_pointer_based": true,
       "translation_source": "This Trainer Tips sign was read directly south of the Icicle Cave entrance.",
-      "translated": "Questo cartello Consigli Allenatore\nè stato letto direttamente a sud\\ldell{B4}ingresso della Grotta di\n\nGhiaccio."
+      "translated": "Questo cartello degli Aiutini\ndell{B4}Allenatore è stato letto\\ldirettamente a sud dell{B4}ingresso\n\ndella Grotta Ghiacciata."
     },
     {
       "id": "scr_1EFFCFB",
@@ -248448,7 +248450,7 @@
       "byte_length": 85,
       "is_pointer_based": true,
       "translation_source": "This Trainer Tips sign was read after leaving the upper west exit of Cinder Volcano.",
-      "translated": "Questo cartello dei Consigli per\nAllenatori è stato letto dopo aver\\llasciato l{B4}uscita nord-occidentale\n\ndel Vulcano Cinder."
+      "translated": "Questo cartello dei Consigli\ndell{B4}Allenatore è stato letto dopo\\laver lasciato l{B4}uscita superiore a\n\novest di Vulcano delle Ceneri."
     },
     {
       "id": "scr_1EFFE3E",
@@ -251228,7 +251230,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Bene, bene, bene\\. Se non è [player]!\nMarlon mi ha detto di non lasciarti\\lentrare nel Thundercap Mt., così on\n\npuoi interferire con i nostri\npiani. Anche se ti lasciassi\\lentrare, saresti spacciato senza il\n\npotere della [green]Mega Evoluzione[blue].\nQuindi non lo capisci? Dovresti\\lrestare qui fuori per il tuo bene."
+      "translated": "Bene, bene, bene\\. Se non è [player]!\nMarlon mi ha detto di non lasciarti\\lentrare nel Monte Thundercap, così\n\non puoi interferire con i nostri\npiani. Anche se ti lasciassi\\lentrare, saresti spacciato senza il\n\npotere della [green]Mega Evoluzione[blue].\nQuindi non lo capisci? Dovresti\\lrestare qui fuori per il tuo bene."
     },
     {
       "id": "scr_1F036DD",
@@ -251277,7 +251279,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Thundercap Mt. ha due ingressi\ndiversi: uno a Epidimy Town e\\ll{B4}altro ad Antisis City. Questi\n\ningressi ti portano alla cima dove\nsosta Zapdos. Però non ti consiglio\\ldi usare l{B4}ingresso vicino ad\n\nAntisis City. Quel posto è un\ncasino\\."
+      "translated": "Monte Thundercap ha due ingressi\ndiversi: uno a Epidimy Town e\\ll{B4}altro ad Antisis City. Questi\n\ningressi ti portano alla cima dove\nsosta Zapdos. Però non ti consiglio\\ldi usare l{B4}ingresso vicino ad\n\nAntisis City. Quel posto è un\ncasino\\."
     },
     {
       "id": "scr_1F0383E",
@@ -251290,7 +251292,7 @@
       "byte_length": 308,
       "is_pointer_based": true,
       "translation_source": "I tried exploring Thundercap Mt. through the nearby entrance once. The opening where Zapdos is said to roost goes really high up! I actually got really dizzy and fell down while climbing! The doctor says I now suffer from minor head trauma. Take this item, so you don’t have to worry about head trauma, too.",
-      "translated": "Ho provato una volta a esplorare\nThundercap Mt. dall{B4}ingresso qui\\lvicino. L{B4}apertura dove si dice che\n\nZapdos si posi va davvero molto in\nalto! In realtà mi è venuto un\\lfortissimo giramento di testa e\n\nsono caduto mentre scalavo! Il\ndottore dice che ora soffro di un\\llieve trauma cranico. Prendi questo\n\noggetto, così non dovrai\npreoccuparti anche tu di un trauma\\lcranico."
+      "translated": "Ho provato una volta a esplorare\nMonte Thundercap dall{B4}ingresso qui\\lvicino. L{B4}apertura dove si dice che\n\nZapdos si posi va davvero molto in\nalto! In realtà mi è venuto un\\lfortissimo giramento di testa e\n\nsono caduto mentre scalavo! Il\ndottore dice che ora soffro di un\\llieve trauma cranico. Prendi questo\n\noggetto, così non dovrai\npreoccuparti anche tu di un trauma\\lcranico."
     },
     {
       "id": "scr_1F03972",
@@ -251972,7 +251974,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "Se stai lavorando al Pokédex,\nvisita [green]Thundercap Mt.[red]! Lì vivono\\lPokémon di tipo Elettro di ogni\n\ngenere, anche molto rari. Si dice\npersino che Zapdos si appolli sulla\\lcima!"
+      "translated": "Se stai lavorando al Pokédex,\nvisita [green]Monte Thundercap[red]! Lì vivono\\lPokémon di tipo Elettro di ogni\n\ngenere, anche molto rari. Si dice\npersino che Zapdos si appolli sulla\\lcima!"
     },
     {
       "id": "scr_1F045DD",
@@ -252034,7 +252036,7 @@
       "byte_length": 17,
       "is_pointer_based": true,
       "translation_source": "Fallshore City D",
-      "translated": "Città Fallshore D"
+      "translated": "Città di Fallshore D"
     },
     {
       "id": "scr_1F04780",
@@ -252047,7 +252049,7 @@
       "byte_length": 17,
       "is_pointer_based": true,
       "translation_source": "Fallshore City N",
-      "translated": "Città Fallshore N"
+      "translated": "Città di Fallshore N"
     },
     {
       "id": "scr_1F04791",
@@ -252697,7 +252699,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Mel usciva con Tessy, la vecchia\nCapopalestra di Fallshore City. Si\\lsono lasciati quando lei si è\n\ntrasferita a Polder Town, nell{B4}Est\nBorrius, ma gli ha lasciato la sua\\lPalestra come regalo d{B4}addio. Penso\n\nche questo sia il vero motivo per\ncui non ha ristrutturato la\\lPalestra dopo che se n{B4}è andata. È\n\nl{B4}unica cosa che gli è rimasta di\nlei\\."
+      "translated": "Mel stava insieme a Tessy, la\nvecchia Capopalestra di Città di\\lFallshore. Si lasciarono quando lei\n\nsi trasferì a Borgo Polder, nel\nBorrius Orientale, ma gli lasciò la\\lsua Palestra come regalo d{B4}addio.\n\nPenso che questo sia il vero motivo\nper cui non ristrutturò la Palestra\\ldopo che lei se ne fu andata. È\n\nl{B4}unica cosa che gli è rimasta di\nlei\\."
     },
     {
       "id": "scr_1F056C9",
@@ -254308,7 +254310,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Benvenuto al Quartier Generale\ndelle Missioni! È la tua prima\\lvolta qui, vero? Allora dimmi,\n\nconosci le [green]Missioni[blue]?"
+      "translated": "Benvenuto al Quartier Generale\nMissioni! È la prima volta che\\lvieni qui, vero? Allora dimmi:\n\nconosci le [green]Missioni[blue]?"
     },
     {
       "id": "scr_1F06BD9",
@@ -256949,7 +256951,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "Fantastico! Grazie per aver\naccettato di aiutare! Combee si\\ltrova in tutto il Paradiso Fiorito.\n\nTuttavia, avresti più fortuna a\ntrovarli nei fiori [blue]blu[red]. Potresti\\lanche provare a catturare un\n\n[green]Cutiefly[red] con [green]Mielcovata[red]. C{B4}è una\npossibilità che trovi del Miele\\ldopo ogni lotta, e verrai avvisato\n\nse ciò accade."
+      "translated": "Grande! Grazie per aver accettato\ndi aiutarmi! Combee si può trovare\\lin tutto Paradiso dei Fiori.\n\nTuttavia, avresti più fortuna a\ntrovarli nei fiori [blue]blu[red]. Potresti\\lanche provare a catturare un\n\n[green]Cutiefly[red] con [green]Mielincetta[red]. Potrebbe\ntrovare del Miele dopo ogni lotta\\le, in tal caso, riceverai una\n\nnotifica!"
     },
     {
       "id": "scr_1F0A3B5",
@@ -257605,7 +257607,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Un po{B4} di tempo fa, alcuni teppisti\ncon una grossa faccia di Granbull\\lsulla schiena hanno cercato di\n\ncatturare il raro uccello blu che\nun tempo viveva sul Monte\\lGhiacciato. Ma lui ha trasformato\n\nin ghiaccioli un bel po{B4} di loro ed\nè volato via da qualche parte.\\lChissà se tornerà\\."
+      "translated": "Un po{B4} di tempo fa, alcuni teppisti\ncon una grande faccia di Granbull\\lsulla schiena cercarono di\n\ncatturare il raro uccello blu che\nviveva a Monte Gelo. Ma quello\\ltrasformò una buona parte di loro\n\nin ghiaccioli e volò via chissà\ndove. Mi chiedo se tornerà\\."
     },
     {
       "id": "scr_1F0B03D",
@@ -257763,7 +257765,7 @@
       "byte_length": 17,
       "is_pointer_based": true,
       "translation_source": "Frozen Heights D",
-      "translated": "Alture Gelate D"
+      "translated": "Alture Ghiacciate D"
     },
     {
       "id": "scr_1F0B448",
@@ -257776,7 +257778,7 @@
       "byte_length": 17,
       "is_pointer_based": true,
       "translation_source": "Frozen Heights N",
-      "translated": "Alture Gelate N"
+      "translated": "Alture Ghiacciate N"
     },
     {
       "id": "scr_1F0B460",
@@ -260626,7 +260628,7 @@
       "byte_length": 291,
       "is_pointer_based": true,
       "translation_source": "My mother always told me to get a job I’d love. But work requires effort, so I became a Gambler. Sometimes, I win and make money; other times, I become indebted to the Black Ferrothorn. I want to quit, but I’m the best, and I can’t quit while I’m number one. Can you out pop me in balloons?",
-      "translated": "Mia madre mi diceva sempre di\nprendermi un lavoro che mi sarebbe\\lpiaciuto. Ma il lavoro richiede\n\nimpegno, così sono diventato un\ngiocatore d{B4}azzardo. A volte vinco\\le faccio soldi; altre volte, mi\n\nindebito con il Ferrothorn Nero.\nVorrei smettere, ma sono il\\lmigliore, e non posso mollare\n\nfinché sono il numero uno. Riesci a\nbattermi nel gioco dei palloncini?"
+      "translated": "Mia madre mi diceva sempre di\ntrovare un lavoro che amassi. Ma\\llavorare richiede impegno, così\n\nsono diventato uno Scommettitore. A\nvolte vinco e guadagno, altre volte\\lmi ritrovo indebitato con\n\nFerrothorn Neri. Vorrei smettere,\nma sono il migliore e non posso\\lsmettere finché sono il numero uno.\n\nRiesci a battermi facendo scoppiare\ni palloncini?"
     },
     {
       "id": "scr_1F0E8BB",
@@ -260661,7 +260663,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Hai grinta. Per battere il mio\nrecord, dovrai raccogliere almeno\\l[green][buffer1][blue] Monete in un solo giorno\n\ngiocando a [green]Cloud Burst[blue]. Ti darei\nqualche Moneta per giocare, ma devo\\lancora dei soldi al Ferrothorn\n\nNero."
+      "translated": "Hai un certo spirito. Per battere\nil mio record, dovrai raccogliere\\lalmeno [green][buffer1][blue] Monete in un solo\n\ngiorno giocando a [green]Scoppio di\nNuvole[blue]. Ti presterei delle Monete\\lper giocare, ma devo ancora dei\n\nsoldi agli Ferrothorn Neri."
     },
     {
       "id": "scr_1F0E997",
@@ -262151,7 +262153,7 @@
           "token": "\\+"
         }
       ],
-      "translated": "In Modalità Sandbox, sono presenti\nle seguenti modifiche: 1) Lo\\lScanner delle statistiche può\n\nmodificare EV, IV, Nature, Livelli,\nAbilità, generi, mosse ed\\levoluzioni. 2) Il DexNav,\n\nCercametalli, Scanner delle\nstatistiche, Porta-PC, Bicicletta e\\lGiratempo possono essere usati\n\nistantaneamente. 3) L{B4}anteprima\ndella squadra in battaglia rivelerà\\lsempre la squadra nemica. 4) Il\n\nPokédex viene precaricato,\npermettendo scansioni facili con il\\lDexNav. 5) Tutti i Pokémon hanno un\n\ntasso di cattura del 100%. 6) Gli\nstrumenti consumabili ritornano\\lsempre dopo le lotte contro gli\n\nAllenatori. 7) Le MN possono sempre\nessere usate finché la MN è nel tuo\\lCube. 8) La difficoltà NON può\n\nessere ridotta al di sotto di\nEsperto in qualsiasi punto del\\lgioco. Se siete solo in New Game \\+,\n\npotete passare liberamente tra\nEsperto e Folle. 9) C{B4}è un\\lpost-game limitato. Tutte le lotte\n\nimportanti saranno disponibili\ndalla Frontiera Lotta dopo essere\\lentrati nella Hall of Fame.\n\nInoltre, i Pokémon completamente\nevoluti saranno acquistabili nella\\lTorre Lotta. Tuttavia, non ci sarà\n\npiù alcuna esplorazione."
+      "translated": "Nella Modalità Sandbox, sono\npresenti i seguenti cambiamenti: 1)\\lLo Scanner Statistiche può\n\nmodificare EV, IV, Nature, Livelli,\nAbilità, sessi, mosse ed\\levoluzioni. 2) L{B4}DexNav, il\n\nCercastrumenti, lo Scanner\nStatistiche, il Porta-PC, la\\lBicicletta e l{B4}Invertitempo possono\n\nessere usati istantaneamente. 3)\nL{B4}anteprima della squadra durante\\lla lotta rivelerà sempre la squadra\n\navversaria. 4) Il Pokédex è già\ncompilato, consentendo scansioni\\lfacili con l{B4}DexNav. 5) Tutti i\n\nPokémon hanno una probabilità di\ncattura del 100%. 6) Gli strumenti\\lconsumabili ritornano sempre dopo\n\nle lotte contro gli Allenatori. 7)\nLe MN possono essere usate sempre,\\lpurché la MN si trovi nel tuo Cubo.\n\n8) La difficoltà NON PUÒ essere\nridotta al di sotto di Esperto in\\lnessun momento del gioco. Se stai\n\ngiocando solo a Nuova Partita \\+,\npuoi passare liberamente da Esperto\\la Folle e viceversa. 9) Il\n\ncontenuto post-partita è LIMITATO.\nDopo essere entrati nella Sala\\ld{B4}Onore, tutte le lotte importanti\n\nsaranno disponibili alla Frontiera\nLotta. Inoltre, nella Torre Lotta\\lsarà possibile acquistare Pokémon\n\ncompletamente evoluti. Tuttavia,\nnon ci sarà altra esplorazione."
     },
     {
       "id": "scr_1F10DC2",
@@ -263155,7 +263157,7 @@
       "byte_length": 60,
       "is_pointer_based": true,
       "translation_source": "Not all have the heart to become of of the Undying Lucario.",
-      "translated": "Non tutti hanno il coraggio di\ndiventare un Lucario Immortale."
+      "translated": "Non tutti hanno il cuore per\ndiventare uno degli Lucario\\lImmortali."
     },
     {
       "id": "scr_1F12282",
@@ -263195,7 +263197,7 @@
       "byte_length": 163,
       "is_pointer_based": true,
       "translation_source": "You have demonstrated that you have the heart of a warrior. I now induct you into the cult of the Undying Lucario, in which you will also receive our sacred rock.",
-      "translated": "Hai dimostrato di avere il cuore di\nun guerriero. Ora ti ammetto nel\\lculto del Lucario Immortale, in cui\n\nriceverai anche la nostra pietra\nsacra."
+      "translated": "Hai dimostrato di avere il cuore di\nun guerriero. Ora ti accolgo nel\\lculto degli Lucario Immortali, nel\n\nquale riceverai anche la nostra\nroccia sacra."
     },
     {
       "id": "scr_1F12399",
@@ -264243,7 +264245,7 @@
       "byte_length": 140,
       "is_pointer_based": true,
       "translation_source": "Hello, I have been stationed here by the Science Society to study fossils. If you have found one, I can take a stab at reviving it for you.",
-      "translated": "Salve, sono stato assegnato qui\ndalla Società delle Scienze per\\lstudiare i fossili. Se ne hai\n\ntrovato uno, posso provare a\nrianimarlo per te."
+      "translated": "Salve, sono stato mandato qui dalla\nSocietà Scientifica per studiare i\\lfossili. Se ne hai trovato uno,\n\nposso provare a rianimarlo per te."
     },
     {
       "id": "scr_1F13E45",
@@ -265921,7 +265923,7 @@
       "byte_length": 16,
       "is_pointer_based": true,
       "translation_source": "Dresco Town Gym",
-      "translated": "Palestra di Paese Dresco"
+      "translated": "Borgo Dresco Palestra"
     },
     {
       "id": "scr_1F15C64",
@@ -266404,7 +266406,7 @@
       "byte_length": 16,
       "is_pointer_based": true,
       "translation_source": "Crater Town Gym",
-      "translated": "Palestra di Paese Crater"
+      "translated": "Città Cratere Palestra"
     },
     {
       "id": "scr_1F164B9",
@@ -267148,7 +267150,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Accidenti\\. pensavo che il formato ti\navrebbe messo un po{B4} in difficoltà,\\lma mi hai proprio smentito. Direi\n\nche la Medaglia è tua, dopotutto.\nTieni. Una [green]Medaglia Autunnale[blue], per\\lgentile concessione di Mel."
+      "translated": "Accidenti\\. pensavo che il formato ti\navrebbe messo un po{B4} in difficoltà,\\lma mi hai proprio smentito. Direi\n\nche la Medaglia è tua, dopotutto.\nTieni. Una [green]Medaglia Autunno[blue], per\\lgentile concessione di Mel."
     },
     {
       "id": "scr_1F17835",
@@ -267202,7 +267204,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Con la Medaglia Autunnale,\nqualsiasi Pokémon fino a \\Lv 45 ti\\lobbedirà. Ti permette anche di\n\nspostare massi pesanti usando\n[green]Forza[blue]. Onestamente, non so proprio\\lperché un Pokémon forte non possa\n\ngià farlo\\. Ma è solo uno dei modi\nstrani in cui funziona il mondo.\\lComunque, prendi questa MT da\n\nabbinare a quella Medaglia."
+      "translated": "Con la Medaglia Autunno, qualsiasi\nPokémon fino a \\Lv 45 ti obbedirà. Ti\\lpermette anche di spostare massi\n\npesanti usando [green]Forza[blue]. Onestamente,\nnon so proprio perché un Pokémon\\lforte non possa già farlo\\. Ma è solo\n\nuno dei modi strani in cui funziona\nil mondo. Comunque, prendi questa\\lMT da abbinare a quella Medaglia."
     },
     {
       "id": "scr_1F1798C",
@@ -267251,7 +267253,7 @@
       "byte_length": 16,
       "is_pointer_based": true,
       "translation_source": "Dehara City Gym",
-      "translated": "Palestra di Città Dehara"
+      "translated": "Città di Dehara Palestra"
     },
     {
       "id": "scr_1F17ADA",
@@ -267673,7 +267675,7 @@
       "byte_length": 16,
       "is_pointer_based": true,
       "translation_source": "Polder Town Gym",
-      "translated": "Palestra di Paese Polder"
+      "translated": "Borgo Polder Palestra"
     },
     {
       "id": "scr_1F187A9",
@@ -267904,7 +267906,7 @@
       "byte_length": 20,
       "is_pointer_based": true,
       "translation_source": "Redwood Village Gym",
-      "translated": "Palestra di Redwood"
+      "translated": "Villaggio Redwood Palestra"
     },
     {
       "id": "scr_1F18D94",
@@ -270529,7 +270531,7 @@
       "byte_length": 109,
       "is_pointer_based": true,
       "translation_source": "Champ in the making! How you doin’? Welcome to East Borrius! Take a Fresh Water to commemorate your arrival.",
-      "translated": "Campione in divenire! Come va?\nBenvenuto a Borrius Est! Prendi\\lun{B4}Acqua Fresca per commemorare il\n\ntuo arrivo."
+      "translated": "Un campione in divenire! Come te la\npassi? Benvenuto a Borrius\\lOrientale! Prendi un{B4}Acqua Fresca\n\nper commemorare il tuo arrivo."
     },
     {
       "id": "scr_1F1E1A5",
@@ -272912,7 +272914,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Hoooo weeee! Sembra che tu abbia\naperto un passaggio per conto tuo.\\lOra continua semplicemente verso\n\n[green]est[blue] finché non raggiungi [green]Thundercap\nMt.[blue]"
+      "translated": "Hoooo weeee! Sembra che tu abbia\naperto un passaggio per conto tuo.\\lOra continua semplicemente verso\n\n[green]est[blue] finché non raggiungi [green]Monte\nThundercap[blue]"
     },
     {
       "id": "scr_1F21E34",
@@ -274297,7 +274299,7 @@
       "byte_length": 84,
       "is_pointer_based": true,
       "translation_source": "It’s a daunting task! See all Pokémon in West Borrius and report back to Prof. Log.",
-      "translated": "Vedi tutti i Pokémon di Borrius\nOvest e riferisci al Prof. Log!"
+      "translated": "Impresa ardua: vedi tutti i\nPokémon di Borrius Occidentale\ne riferisci al Prof. Log."
     },
     {
       "id": "scr_1F231F2",
@@ -274566,7 +274568,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Oh! Che sbadata! Come posso\naspettarmi che tu trovi [green]Caverna di\\lGhiaccio[blue] se non conosci la strada?\n\nQuesta [green]Mappa Città[blue] ti sarà di\ngrande aiuto!"
+      "translated": "Oh! Che sbadata! Come posso\naspettarmi che tu trovi [green]Grotta\\lGhiacciata[blue] se non conosci la\n\nstrada? Questa [green]Mappa Città[blue] dovrebbe\naiutarti moltissimo!"
     },
     {
       "id": "scr_1F23729",
@@ -274605,7 +274607,7 @@
       "byte_length": 413,
       "is_pointer_based": true,
       "translation_source": "Did you notice the yellow X over Dresco Town? That marker will automatically move when you have a new destination. And you know what? Now that you have your own Mission Log, allow me to record my request from earlier! First, you should aim to see every Pokémon in the Borrius Pokédex. Or, as it’s more commonly known, the West Borrius Pokédex. Pokémon that only appear in East Borrius are conspicuously left out.",
-      "translated": "Hai notato la X gialla sopra Dresco\nTown? Quel segnalino si sposterà\\lautomaticamente quando avrai una\n\nuova destinazione. E sai una cosa?\nOra che hai il tuo Registro\\lMissioni, permettimi di registrare\n\nla mia richiesta di prima! Per\nprima cosa, dovresti cercare di\\lvedere ogni Pokémon nel Pokédex di\n\nBorrius. O, come è più comunemente\nnoto, il Pokédex di Borrius Ovest.\\lI Pokémon che appaiono solo a\n\nBorrius Est sono volutamente\nesclusi."
+      "translated": "Hai notato la X gialla sopra Borgo\nDresco? Quel contrassegno si\\lsposterà automaticamente quando\n\navrai una nuova destinazione. E sai\nuna cosa? Ora che hai il tuo\\lRegistro Missioni, permettimi di\n\nregistrare la mia richiesta di\nprima! Per prima cosa, dovresti\\lcercare di vedere tutti i Pokémon\n\ndel Pokédex di Borrius. O, come è\npiù comunemente conosciuto, il\\lPokédex di Borrius Occidentale. I\n\nPokémon che compaiono solo in\nBorrius Orientale sono stranamente\\lesclusi."
     },
     {
       "id": "scr_1F2396B",
@@ -274747,7 +274749,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "[player], devi sbrigarti a\n[green]Thundercap Mt.[blue]! Se le Ombre\\larrivano prima di te, Borrius è\n\nperduta! Dirigiti a nord della\ncittà e prendi la [green]KBT Expressway[blue]\\lfino a [green]sud[blue] per andare velocemente."
+      "translated": "[player], devi sbrigarti a [green]Monte\nThundercap[blue]! Se le Ombre arrivano\\lprima di te, Borrius è perduta!\n\nDirigiti a nord della città e\nprendi la [green]KBT Expressway[blue] fino a [green]sud[blue]\\lper andare velocemente."
     },
     {
       "id": "scr_1F23CAE",
@@ -275467,7 +275469,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "[black][player] ha consegnato lo Scanner\ndelle statistiche."
+      "translated": "[black][player] ha consegnato lo Scanner\nStatistiche."
     },
     {
       "id": "scr_1F2500B",
@@ -275633,7 +275635,7 @@
       "byte_length": 72,
       "is_pointer_based": true,
       "translation_source": "You’ve seen every Pokémon in the West Borrius Pokédex! Congratulations!",
-      "translated": "Hai visto tutti i Pokémon del\nPokédex di Borrius Ovest!\\lCongratulazioni!"
+      "translated": "Hai visto tutti i Pokémon nel\nPokédex di Borrius Occidentale!\\lCongratulazioni!"
     },
     {
       "id": "scr_1F25647",
@@ -276510,7 +276512,7 @@
       "byte_length": 16,
       "is_pointer_based": true,
       "translation_source": "Magnolia Town D",
-      "translated": "Paese Magnolia D"
+      "translated": "Borgo Magnolia D"
     },
     {
       "id": "scr_1F26B42",
@@ -276523,7 +276525,7 @@
       "byte_length": 16,
       "is_pointer_based": true,
       "translation_source": "Magnolia Town N",
-      "translated": "Paese Magnolia N"
+      "translated": "Borgo Magnolia N"
     },
     {
       "id": "scr_1F26B52",
@@ -276551,7 +276553,7 @@
       "byte_length": 68,
       "is_pointer_based": true,
       "translation_source": "Scour both West and East Borrius to find the Vivillon hidden about.",
-      "translated": "Esplora Borrius Est e Ovest\nper trovare i Vivillon nascosti."
+      "translated": "Esplora Borrius Occidentale e\nBorrius Orientale per trovare i\nVivillon nascosti."
     },
     {
       "id": "scr_1F26BA7",
@@ -278120,7 +278122,7 @@
       "byte_length": 106,
       "is_pointer_based": true,
       "translation_source": "If you ever wish for a powerful partner in a Hidden Grotto, my Venusaur and I are sure to be a good pick.",
-      "translated": "Se mai desideri un partner potente\nin una Tana Nascosta, il mio\\lVenusaur e io saremo sicuramente\n\nuna buona scelta."
+      "translated": "Se desideri un compagno potente in\nuna Grotta Nascosta, io e il mio\\lVenusaur siamo sicuramente una\n\nbuona scelta."
     },
     {
       "id": "scr_1F28DF5",
@@ -280756,7 +280758,7 @@
           "token": "\\qc"
         }
       ],
-      "translated": "[blue]Che cosa significa la \\qoT\\qc in \\qoKBT\nExpressway\\qc?"
+      "translated": "[blue]Che cosa indica la \\qoT\\qc in\n\\qoSuperstrada KBT\\qc?"
     },
     {
       "id": "scr_1F2BD3C",
@@ -284751,7 +284753,7 @@
       "byte_length": 30,
       "is_pointer_based": true,
       "translation_source": "Shadow Warriors! Restrain it!",
-      "translated": "Guerrieri dell{B4}Ombra! Trattenetelo!"
+      "translated": "Guerrieri Ombra! Trattienilo!"
     },
     {
       "id": "scr_1F2F82B",
@@ -285308,7 +285310,7 @@
           "token": "\\qc"
         }
       ],
-      "translated": "Jax volerà fuori per intercettare\nqueste \\qoShadows\\qc. Finora, si è\\ldimostrato un Allenatore piuttosto\n\ncapace\\. E come sai, Euler, l{B4}ho\naddestrato come mio successore,\\lquindi credo che sia la nostra\n\nmigliore speranza. Affronterà\nqueste \\qoShadows\\qc e le fermerà prima\\lche raggiungano Moltres."
+      "translated": "Jax volerà per intercettare queste\n\\qoOmbre\\qc. Finora, si è dimostrato un\\lAllenatore piuttosto capace\\. E come\n\nsai, Euler, l{B4}ho addestrato come\nmio successore, quindi credo che\\lsia la nostra migliore speranza.\n\nAffronterà queste \\qoOmbre\\qc e le\nfermerà prima che raggiungano\\lMoltres."
     },
     {
       "id": "scr_1F30375",
@@ -285396,7 +285398,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "Ora aspetta un momento, Euler. So\nche Jax è capace, ma credo che\\lquesto giovane [buffer1] possa\n\nessere altrettanto utile. [player]\nha già avuto esperienza con queste\\l\\qoShadows\\qc, e Jax potrebbe trarre\n\ngrande beneficio dall{B4}aiuto extra\nche [player] potrebbe offrire."
+      "translated": "Aspetta un momento, Euler. So che\nJax è capace, ma credo che questo\\lgiovane [buffer1] possa essere\n\naltrettanto utile. [player] ha già\navuto esperienza con queste\\l\\qoOmbre\\qc, e Jax potrebbe trarre\n\ngrande beneficio dall{B4}aiuto\naggiuntivo che [player] potrebbe\\loffrire."
     },
     {
       "id": "scr_1F305EB",
@@ -285581,7 +285583,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Stiamo finendo il tempo, [player].\nDevi sbrigarti a [green]Thundercap Mt.[blue] e\\lsalvare [green]Zapdos[blue]! Se viene catturato\n\nanche lui, saremo tutti condannati\\."
+      "translated": "Stiamo finendo il tempo, [player].\nDevi sbrigarti a [green]Monte Thundercap[blue] e\\lsalvare [green]Zapdos[blue]! Se viene catturato\n\nanche lui, saremo tutti condannati\\."
     },
     {
       "id": "scr_1F309BE",
@@ -285771,7 +285773,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "Muoviti, [player], verso il Vulcano\nCenere - e sbrigati. Non credo sia\\lqualcosa che Jax non possa gestire,\n\nma potrebbe apprezzare il tuo\naiuto."
+      "translated": "Muoviti, [player], verso Vulcano\ndelle Ceneri - e fai presto. Non\\lcredo sia qualcosa che Jax non\n\npossa gestire, ma potrebbe\napprezzare il tuo aiuto."
     },
     {
       "id": "scr_1F30FFC",
@@ -285829,7 +285831,7 @@
       "byte_length": 35,
       "is_pointer_based": true,
       "translation_source": "Now, Shadow Warriors! Restrain it!",
-      "translated": "Ora, Guerrieri dell{B4}Ombra!\nImmobilizzatelo!"
+      "translated": "Ora, Guerrieri Ombra! Trattienilo!"
     },
     {
       "id": "scr_1F31125",
@@ -286446,7 +286448,7 @@
       "byte_length": 133,
       "is_pointer_based": true,
       "translation_source": "Of course, Ivory. I have this under control. Take the Shadow Warriors and go. I can hold off this boy until you escape with Moltres.",
-      "translated": "Certo, Ivory. Ho tutto sotto\ncontrollo. Prendi i Guerrieri\\ldell{B4}Ombra e vai. Posso tenere a\n\nbada questo ragazzo finché non\nscappi con Moltres."
+      "translated": "Certo, Ivory. Ho tutto sotto\ncontrollo. Prendi i Guerrieri Ombra\\le vai. Posso tenere a bada questo\n\nragazzo finché non riuscirai a\nfuggire con Moltres."
     },
     {
       "id": "scr_1F31AF5",
@@ -286713,7 +286715,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Zapdos\\. Vive in [green]Thundercap Mt.[blue],\ngiusto? Parto subito."
+      "translated": "Zapdos\\. Vive in [green]Monte Thundercap[blue],\ngiusto? Parto subito."
     },
     {
       "id": "scr_1F31FED",
@@ -286812,7 +286814,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Bene, bene. Nel frattempo, [player]\nsarà colui che si dirigerà al [green]Monte\\lTuono[blue] per salvare [green]Zapdos[blue]. [player]\\.\\CC0818\n\nhai dimostrato il tuo valore\ndifendendo Jax al Vulcano Cenere e\\lpenso che tu sia all{B4}altezza del\n\ncompito. Puoi arrivarci prendendo\nl{B4}autostrada a sud-est dalla\\lprossima città, [green]Città del Cratere[blue].\n\nPotresti aver bisogno della\nMedaglia di quella città per\\lviaggiare verso il [green]Monte Tuono[blue],\n\nquindi assicurati che ottenere la\nMedaglia sia la tua massima\\lpriorità."
+      "translated": "Bene, bene. Nel frattempo, [player]\nsarà colui che andrà a [green]Monte\\lThundercap[blue] e salverà [green]Zapdos[blue].\n\n[player]\\.\\CC0818 hai dimostrato il tuo\nvalore difendendo Jax a Vulcano\\ldelle Ceneri, e penso che tu sia\n\nall{B4}altezza del compito. Puoi\narrivarci prendendo l{B4}autostrada a\\lsud-est dalla città successiva,\n\n[green]Città Cratere[blue]. Potresti aver\nbisogno della Medaglia lì per poter\\lviaggiare fino a [green]Monte Thundercap[blue],\n\nquindi assicurati che ottenere la\nMedaglia sia la tua massima\\lpriorità."
     },
     {
       "id": "scr_1F32300",
@@ -287449,7 +287451,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Hoooo weeee! Se non è la cosa più\nstrana che abbia mai visto - un\\l[buffer1] che esce da un portale\n\nmagico! Da dove vieni, [buffer1]? \\.\nCome? Stavi cercando di raggiungere\\lThundercap Mt. quando\n\nall{B4}improvviso sei stato rapito?\nHoooo weeee! Sembra davvero\\lspaventoso, [buffer1]."
+      "translated": "Hoooo weeee! Se non è la cosa più\nstrana che abbia mai visto - un\\l[buffer1] che esce da un portale\n\nmagico! Da dove vieni, [buffer1]? \\.\nCome? Stavi cercando di raggiungere\\lMonte Thundercap quando\n\nall{B4}improvviso sei stato rapito?\nHoooo weeee! Sembra davvero\\lspaventoso, [buffer1]."
     },
     {
       "id": "scr_1F3316D",
@@ -287488,7 +287490,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Beh, se non ti avessero rapito,\navresti molti meno problemi ad\\larrivare a Thundercap Mt. Vedi,\n\nparte del soffitto è crollata poco\nfa e ha bloccato la strada! E a\\lmeno che tu non abbia la MN di\n\n[green]Spaccaroccia[blue], avrai un bel\ngrattacapo a passare di lì. Ma\\.\\CC0818\\limmagino che tu non ce l{B4}abbia,\n\naltrimenti non staresti ancora\nparlando con me. In tal caso, un\\lmio amico a [green]Blizzard City[blue] può\n\naiutarti dandoti Spaccaroccia.\nQuindi, prendi questa MN per\\laiutarti ad arrivare da lui."
+      "translated": "Beh, se non ti avessero rapito,\navresti molti meno problemi ad\\larrivare a Monte Thundercap. Vedi,\n\nparte del soffitto è crollata poco\nfa e ha bloccato la strada! E a\\lmeno che tu non abbia la MN di\n\n[green]Spaccaroccia[blue], avrai un bel\ngrattacapo a passare di lì. Ma\\.\\CC0818\\limmagino che tu non ce l{B4}abbia,\n\naltrimenti non staresti ancora\nparlando con me. In tal caso, un\\lmio amico a [green]Blizzard City[blue] può\n\naiutarti dandoti Spaccaroccia.\nQuindi, prendi questa MN per\\laiutarti ad arrivare da lui."
     },
     {
       "id": "scr_1F33351",
@@ -287552,7 +287554,7 @@
       "byte_length": 323,
       "is_pointer_based": true,
       "translation_source": "I’ve just received new directions from Zeph. We’ll be tightening security on Route 9. The green-hatted boy who tried to interfere with our operation in Cinder Volcano has been spotted flying overhead. While you three stand guard at the gate, I’m going to find a suitable place to set up a psychic barrier around the route.",
-      "translated": "Ho appena ricevuto nuove istruzioni\nda Zeph. Rafforzeremo la sicurezza\\lsulla Route 9. Il ragazzo con il\n\ncappello verde che ha cercato di\ninterferire con la nostra\\loperazione nel Vulcano Cinder è\n\nstato avvistato in volo sopra di\nnoi. Mentre voi tre fate la guardia\\lal cancello, io andrò a trovare un\n\nposto adatto per erigere una\nbarriera psichica attorno al\\lpercorso."
+      "translated": "Ho appena ricevuto nuove direttive\nda Zeph. Aumenteremo la sicurezza\\lsul Percorso 9. Il ragazzo con il\n\ncappello verde che ha cercato di\ninterferire con la nostra\\loperazione al Vulcano delle Ceneri\n\nè stato avvistato mentre volava\nsopra di noi. Mentre voi tre fate\\lla guardia al cancello, troverò un\n\nluogo adatto per creare una\nbarriera psichica intorno al\\lpercorso."
     },
     {
       "id": "scr_1F336B1",
@@ -287876,7 +287878,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "Mmm? [player]\\.\\CC0820 sei tu? Cosa ti porta\nfin qui? Aspetta\\.\\CC0818 non dirmelo\\.\\CC0818 sei\\lvenuto qui in cerca di altri\n\nPokémon? Beh, è quello che sto\nfacendo io, comunque. Per quanto\\lriguarda i progressi, ho registrato\n\noltre 100 specie, ora. Hai sentito\nparlare della sorella di Log? Vive\\la [green]Blizzard City[blue]. E quando ha visto\n\ncome procedeva il mio Pokédex, lo\nha aggiornato con la funzione\\l[green]DexNav[blue], così ora trovare Pokémon\n\nrari è stato un gioco da ragazzi! \\.\nCapisco\\.\\CC0818 ti serve l{B4}MN Spaccaroccia\\lsu a Blizzard City\\. \\.\\CC0818{D9} hai deciso di\n\nregolare i conti anche con gli\nShadow, eh? Beh, mentre te ne\\landavi in giro a fare l{B4}eroe, io\n\nsono diventato molto più forte. Non\nhai più alcuna possibilità contro\\ldi me, [player]. Anzi, te lo\n\ndimostrerò, proprio qui, proprio\nora!"
+      "translated": "Mmm? [player]\\.\\CC0820 sei tu? Cosa ti porta\nfin qui? Aspetta\\.\\CC0818 non dirmi\\.\\CC0818 che sei\\lvenuto qui in cerca di altri\n\nPokémon? Beh, è proprio quello che\nho fatto io, comunque. Per quanto\\lriguarda i progressi, ormai ho\n\nregistrato più di 100 specie. Hai\nmai sentito parlare della sorella\\ldi Log? Vive a [green]Città Bufera[blue]. E\n\nquando ha visto come procedeva il\nmio Pokédex, lo ha potenziato con\\lla funzione [green]DexNav[blue], così ora\n\ntrovare Pokémon rari è un gioco da\nragazzi! \\. Capisco\\.\\CC0818 ti serve la MN\\lSpaccaroccia su Città Bufera\\. \\.\\CC0818e hai\n\ndeciso di regolare i conti anche\ncon le Ombre, eh? Beh, mentre\\lcorrevi in giro a fare l{B4}eroe, io\n\nsono diventato molto più forte.\nOrmai non hai alcuna possibilità\\lcontro di me, [player]. Anzi, te lo\n\ndimostrerò proprio qui e ora!"
     },
     {
       "id": "scr_1F33CAE",
@@ -288262,7 +288264,7 @@
       "byte_length": 44,
       "is_pointer_based": true,
       "translation_source": "Gah! That Shadow Admin really ticks me off!",
-      "translated": "Gah! Quell{B4}Amministratore del Team\nOmbra mi fa davvero arrabbiare!"
+      "translated": "Gah! Quell{B4}Amministratore Ombra mi\nfa davvero arrabbiare!"
     },
     {
       "id": "scr_1F343A8",
@@ -288387,7 +288389,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "[player]! Uh\\.\\CC0818 Spero che tu non abbia\\.\\CC0818\nsai\\.\\CC0818 visto quello\\. Beh\\.\\CC0818 sono stato\\lsolo\\.\\CC0818 colto di sorpresa\\. Ugh, lascia\n\nperdere. Ascolta, ho bisogno di\nchiederti un favore. So che mio\\lnonno ti ha chiesto di andare al\n\nMonte Tuonocima, ma prima di farlo\\.\nTi dispiacerebbe darmi una mano?\\lVedi, le Ombre hanno eretto una\n\nsorta di barriera invisibile\nattorno al percorso verso cui stavo\\lcercando di volare. Ho bisogno di\n\naiuto per abbatterla o per trovare\nun altro modo per arrivare al\\l[green]Percorso 9[blue]. Pensi di poter dedicare\n\nun momento a farlo?"
+      "translated": "[player]! Ehm\\.\\CC0818 spero che tu non\nabbia\\.\\CC0818 insomma\\.\\CC0818 visto quello\\. Beh\\.\\CC0818 sono\\lstato colto\\.\\CC0818 alla sprovvista\\. Uff,\n\nlascia perdere. Ascolta, devo\nchiederti un favore. So che mio\\lnonno ti ha chiesto di andare al\n\nMonte Thundercap, ma prima di farlo\\.\nti dispiacerebbe darmi una mano?\\lVedi, le Ombre hanno eretto una\n\nspecie di barriera invisibile\nattorno al percorso verso cui stavo\\lcercando di volare. Ho bisogno di\n\naiuto per abbatterla o per trovare\nun altro modo per raggiungere il\\l[green]Percorso 9[blue]. Pensi di poter dedicare\n\nun momento a questa faccenda?"
     },
     {
       "id": "scr_1F3463C",
@@ -289253,7 +289255,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "[red]Guerrieri dell{B4}Ombra, attaccate!"
+      "translated": "[red]Guerrieri Ombra, all{B4}attacco!"
     },
     {
       "id": "scr_1F356DF",
@@ -289532,7 +289534,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Le [green]Rovine del Vuoto[blue], ha detto\\.\n[player], torno a fare rapporto al\\lnonno su quanto accaduto. Mentre lo\n\nfaccio, dovresti dirigerti al [green]Monte\nTuono[blue]. Finché le Ombre non hanno\\lZapdos, c{B4}è ancora una possibilità\n\ndi fermarle! Oh, giusto\\.\\CC0818 dato che ti\nserve la MN [green]Forza[blue] per navigare sul\\lsentiero di montagna\\. Dovresti\n\nprobabilmente tornare a [green]Borgo\nFoglia[blue] e ottenere la Medaglia della\\lPalestra lì. Credo di aver visto\n\nl{B4}ultimo Capopalestra a [green]Città di\nTehl[blue], in realtà\\. Una volta fatto ciò\\le salvato [green]Zapdos[blue], ti incontrerò a\n\n[green]Città di Epidimy[blue]."
+      "translated": "Il [green]Rovine del Vuoto[blue], ha detto\\.\n[player], torno indietro per\\lriferire al nonno ciò che è\n\nsuccesso. Mentre lo faccio,\ndovresti dirigerti al [green]Monte\\lThundercap[blue] Finché le Ombre non\n\navranno Zapdos, c{B4}è ancora una\npossibilità di fermarle! Ah già\\.\\CC0818\\ldato che ti serve la mossa MN [green]Forza[blue]\n\nper attraversare il sentiero di\nmontagna\\. Dovresti probabilmente\\ltornare a [green]Città di Fallshore[blue] e\n\nottenere la Medaglia della\nPalestra. Credo di aver visto\\ll{B4}ultima volta il Capopalestra a\n\n[green]Borgo Tehl[blue], in effetti\\. Una volta\nfatto ciò e salvato [green]Zapdos[blue], ci\\lincontreremo a [green]Borgo Epidimy[blue]."
     },
     {
       "id": "scr_1F35B93",
@@ -289724,7 +289726,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "Rifiuto di abbandonare il mio\nposto. Devo impedire a [player] di\\lentrare in Thundercap Mt. a ogni\n\ncosto."
+      "translated": "Rifiuto di abbandonare il mio\nposto. Devo impedire a [player] di\\lentrare in Monte Thundercap a ogni\n\ncosto."
     },
     {
       "id": "scr_1F3632A",
@@ -291223,7 +291225,7 @@
           "token": "\\CC0820"
         }
       ],
-      "translated": "Pronto, siamo collegati? \\.\\CC0820Sono io,\nla recluta che hai incontrato\\lprima. Ho appena procurato l{B4}ultimo\n\nPokémon necessario. Tra poco andrò\nalle Rovine del Vuoto. \\.\\CC0820Sì, certo.\\lQuindi, come promesso\\. sarò io ad\n\nassumere il comando della sede?\n\\.\\CC0820Certamente - purché Hoopa sia\\lrelativamente illeso, potrai\n\nscoprire tutto ciò che vuoi. \\.\\CC0820Non\npreoccuparti - l{B4}eliminazione dei\\lGuerrieri dell{B4}Ombra sarà rapida e\n\npulita. Non resterà alcuna traccia\\.\n\\.\\CC0820Capito. Ci sentiremo più tardi\\lquando ti riferirò i miei\n\nprogressi."
+      "translated": "Salve, ci siamo messi in contatto?\n\\.\\CC0820Sono io, la recluta che hai\\lincontrato prima. Ho appena messo\n\nal sicuro l{B4}ultimo Pokémon\nnecessario. Tra poco mi recherò\\lalle Rovine del Vuoto. \\.\\CC0820Sì, certo.\n\nDunque, proprio come promesso\\.\nassumerò il comando del ramo?\\l\\.\\CC0820Certamente: finché Hoopa sarà\n\nrelativamente illeso, potrai\nscoprire tutto ciò che vuoi. \\.\\CC0820Non\\lpreoccuparti: sbarazzarsi dei\n\nGuerrieri Ombra sarà semplice e\nveloce. Non ne rimarrà traccia\\.\\l\\.\\CC0820Capito. Parleremo più tardi, quando\n\nriferirò dei miei progressi."
     },
     {
       "id": "scr_1F3853F",
@@ -291456,7 +291458,7 @@
       "byte_length": 70,
       "is_pointer_based": true,
       "translation_source": "It has to be. Look, those are Shadow Grunts at the top of the stairs!",
-      "translated": "Deve esserlo. Guarda, sono delle\nreclute Ombra in cima alle scale!"
+      "translated": "Deve esserlo. Guarda, sono delle\nReclute Ombra in cima alle scale!"
     },
     {
       "id": "scr_1F38EEF",
@@ -294210,7 +294212,7 @@
       "byte_length": 195,
       "is_pointer_based": true,
       "translation_source": "Hand me your Cubes. I’ll make the necessary modifications for your escape. If I’m correct, opening your Cubes in here will cause a chain reaction, one that’ll forcibly eject you from Cube Space.",
-      "translated": "Dammi i tuoi Cubi. Apporterò le\nmodifiche necessarie per la tua\\lfuga. Se ho ragione, aprire i tuoi\n\nCubi qui dentro causerà una\nreazione a catena, una che ti\\lespellerà con la forza dallo Spazio\n\nCubico."
+      "translated": "Dammi i tuoi Cubi. Apporterò le\nmodifiche necessarie per la tua\\lfuga. Se ho ragione, aprire i tuoi\n\nCubi qui dentro provocherà una\nreazione a catena che ti espellerà\\lcon la forza dallo Spazio Cubo."
     },
     {
       "id": "scr_1F3C9DD",
@@ -294873,7 +294875,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Solo per chiarire eventuali\nmalintesi\\. \\.The Shadow Warriors, cosa\\lavete intenzione di fare con loro\n\nadesso?"
+      "translated": "Solo per chiarire eventuali\nmalintesi\\. \\.I Guerrieri Ombra, cosa\\lavete intenzione di fare con loro\n\nadesso?"
     },
     {
       "id": "scr_1F3D898",
@@ -295394,7 +295396,7 @@
       "byte_length": 182,
       "is_pointer_based": true,
       "translation_source": "What now, Marlon? You cannot keep holding me here - the cave will soon collapse, and we will both be trapped. You cannot hope to find the Shadow Warriors whilst buried under rubble.",
-      "translated": "E adesso, Marlon? Non puoi\ncontinuare a tenermi qui - la\\lgrotta crollerà presto, e resteremo\n\nentrambi intrappolati. Non puoi\nsperare di trovare i Guerrieri\\ldell{B4}Ombra mentre sei sepolto sotto\n\nle macerie."
+      "translated": "E adesso, Marlon? Non puoi\ncontinuare a tenermi qui: la grotta\\lcrollerà presto e rimarremo\n\nentrambi intrappolati. Non puoi\nsperare di trovare i Guerrieri\\lOmbra sepolto sotto le macerie."
     },
     {
       "id": "scr_1F3E2FE",
@@ -296831,7 +296833,7 @@
           "token": "\\qc"
         }
       ],
-      "translated": "Tuttavia, come scoprimmo presto,\nnoi tre potevamo fare solo fino a\\lun certo punto da soli. E così, ci\n\nunimmo a un{B4}organizzazione\nindipendente, nota come \\qoSocietà\\ldella Scienza\\qc."
+      "translated": "Tuttavia, come scoprimmo ben\npresto, noi tre potevamo fare ben\\lpoco da soli. Così, collaborammo\n\ncon un{B4}organizzazione indipendente\nconosciuta come \\qoLa Società\\lScientifica\\qc."
     },
     {
       "id": "scr_1F40462",
@@ -296967,7 +296969,7 @@
           "token": "\\qc"
         }
       ],
-      "translated": "Pertanto, prima di dimettermi da\nCEO, ho istituito un nuovo ramo\\lpresso Cube Corp. interamente\n\ndedicato agli sforzi di\nrivitalizzazione. L{B4}ho chiamato il\\lramo Ombra. O come lo conosci, il\n\n\\qoOmbre\\qc. Per evitare di macchiare\nla reputazione di Cube Corp.,\\ldovevo assicurarmi che i nostri\n\nesperimenti non avessero alcun\nlegame con la società. E con ciò\\lrisolto, siamo stati in grado di\n\nsperimentare senza preoccupazioni."
+      "translated": "Così, prima di lasciare il mio\nincarico di amministratore\\ldelegato, fondai una nuova sezione\n\npresso Cube Corp., interamente\ndedicata agli sforzi di\\lresurrezione. La chiamai sezione\n\nOmbra. O, come la conosci tu, le\n\\qoOmbre\\qc. Per evitare di infangare\\lla reputazione di Cube Corp.,\n\ndovetti assicurarmi che i nostri\nesperimenti non avessero\\lassolutamente alcun legame con\n\nl{B4}azienda. Una volta risolto questo\nproblema, potemmo sperimentare\\lsenza preoccupazioni."
     },
     {
       "id": "scr_1F40954",
@@ -301386,7 +301388,7 @@
       "byte_length": 89,
       "is_pointer_based": true,
       "translation_source": "We have little time, Jax. I’ll arrange passage for us to East Borrius from Seaport City.",
-      "translated": "Abbiamo poco tempo, Jax.\nOrganizzerò per noi il passaggio a\\lEst Borrius da Seaport City."
+      "translated": "Abbiamo poco tempo, Jax.\nOrganizzerò il viaggio per Borrius\\lOrientale da Città Portuale."
     },
     {
       "id": "scr_1F46A3A",
@@ -301399,7 +301401,7 @@
       "byte_length": 54,
       "is_pointer_based": true,
       "translation_source": "I don’t need passage! Tell me what’s at Crystal Peak!",
-      "translated": "Non mi serve il passaggio! Dimmi\nche cosa c{B4}è al Picco di Cristallo!"
+      "translated": "Non mi serve nessun viaggio! Dimmi\ncosa c{B4}è a Picco Cristallo!"
     },
     {
       "id": "scr_1F46A70",
@@ -304844,7 +304846,7 @@
           "token": "\\qc"
         }
       ],
-      "translated": "[player]! Arthur mi ha appena\nriferito la buona notizia! Meno\\lmale che sei ancora sano e salvo! E\n\naturalmente, grazie! Tu, Jax,\n[rival]\\.\\CC0818 voi tutti avete dato tutto\\lquello che avevate per salvare\n\nBorrius. Naturalmente, mi è stato\ndetto che non tutto è stato risolto\\lcon questo \\qoAklove\\qc, ma è una cosa\n\ndi cui preoccuparsi dopo, suppongo.\nPer ora, preoccupati di quel posto\\lvuoto, destinato al Campione!\n\nQuindi ecco, penso che questi\npossano esserti utili."
+      "translated": "[player]! Arthur mi ha appena\nriferito la buona notizia! Grazie\\lal cielo sei ancora tutto intero! E\n\nnaturalmente, grazie! Tu, Jax,\n[rival]\\.\\CC0818 avete dato tutto quello\\lche avevate per salvare Borrius.\n\nNaturalmente, mi hanno detto che\nnon tutto è stato risolto con\\lquesta \\qoAklove\\qc, ma suppongo che\n\nsia qualcosa di cui potrai\npreoccuparti più avanti. Per ora,\\lpensa solo a quel posto vuoto,\n\nriservato al Campione! Ecco, credo\nche questi possano esserti utili."
     },
     {
       "id": "scr_1F4B14C",
@@ -307763,7 +307765,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "Ehi, [player]! Finalmente ti ho\nraggiunto! Che storia divertente -\\lHo dovuto accantonare la mia Sfida\n\nin Palestra, grazie a mio papà\\. Ma\nora che abbiamo finito di\\lrecuperare, mi sono fatto strada\n\nattraverso l{B4}Elite Four, solo per\nvederti. Quindi torniamo a ciò che\\lè veramente importante. Io\\.\\CC0820 prendo\n\nil tuo titolo di Campione! Ho messo\ninsieme il meglio del meglio in\\lquesta squadra\\. E questo include un\n\nPokémon super raro che ho trovato\nal Vulcano Cinder! Pronto,\\l[player]? Perché stai per perdere!"
+      "translated": "Ehi, [player]! Finalmente ti ho\nraggiunto! È una storia divertente:\\lho dovuto mettere da parte la mia\n\nSfida della Palestra, per colpa di\nmio padre\\. Ma ora che abbiamo finito\\ldi recuperare il tempo perduto, mi\n\nsono fatto strada attraverso i\nSuperquattro solo per vederti.\\lQuindi torniamo a ciò che conta\n\ndavvero. Io\\.\\CC0820 ti porterò via il\ntitolo di Campione! Ho riunito il\\lmeglio del meglio in questa squadra\\.\n\nE questo include un Pokémon\nrarissimo che ho trovato a Vulcano\\ldelle Ceneri! Sei pronto, [player]?\n\nPerché perderai!"
     },
     {
       "id": "scr_1F51924",
@@ -307825,7 +307827,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Aspetta un momento, [player]! Sei\nsorpreso di vedermi qui fuori? Beh,\\lpensavo di aver sentito un verso\n\nfamiliare che mi chiamava\\. È stato\nil momento in cui ho incontrato\\lZapdos. No, non quello del Monte\n\nTuono\\.\\CC0818 quello che Aklove ha usato\nper lo scioglimento alle Rovine del\\lVuoto. Non so ancora perché sia\n\nvenuto da me, perché abbia scelto\nme come suo Allenatore\\. Ma sapevo\\lche era un segno: che dovevo\n\ntrovarti e lottare di nuovo contro\ndi te! Ad essere onesti,\\lsconfiggerti è l{B4}obiettivo di\n\n[rival], innanzitutto\\. Ma sono suo\npadre: non posso starmene seduto a\\llasciare che le mie abilità\n\nristagnino, no? Quindi, per quanto\nsia improbabile, vorrei provare a\\lsconfiggerti!"
+      "translated": "Aspetta un momento, [player]! Sei\nsorpreso di vedermi qui? Beh, mi è\\lsembrato di sentire un verso\n\nfamiliare che mi chiamava\\. È stato\nallora che ho incontrato Zapdos.\\lNo, non quello di Monte Thundercap\\.\\CC0818\n\nquello che Aklove ha usato per lo\nscioglimento del vincolo alle\\lRovine del Vuoto. Non so ancora\n\nperché sia venuto da me, perché\nabbia scelto me come suo Allenatore\\.\\lMa ho capito che era un segno:\n\ndovevo trovarti e lottare di nuovo\ncontro di te! A dire il vero,\\lsconfiggerti è l{B4}obiettivo di\n\n[rival], prima di tutto\\. Ma sono\nsuo padre: non posso stare con le\\lmani in mano e lasciare che le mie\n\nabilità ristagnino, no? Quindi, per\nquanto possa sembrare un{B4}impresa\\ldisperata, vorrei provare a\n\nsconfiggerti!"
     },
     {
       "id": "scr_1F51D12",
@@ -308142,7 +308144,7 @@
       "byte_length": 160,
       "is_pointer_based": true,
       "translation_source": "Welcome to East Borrius! Polder Town is a far cry from any place in West Borrius, don’t you think? Like, I doubt West Borrians would willingly live in a swamp.",
-      "translated": "Benvenuto nell{B4}Est di Borrius!\nPolder Town è ben lontana da\\lqualsiasi posto del West di\n\nBorrius, non credi? Tipo, dubito\nche gli abitanti del West di\\lBorrius vivrebbero volentieri in\n\nuna palude."
+      "translated": "Benvenuto a Borrius Orientale!\nBorgo Polder è completamente\\ldiverso da qualsiasi luogo di\n\nBorrius Occidentale, non credi?\nInsomma, dubito che i Borriani\\lOccidentali sceglierebbero di\n\nvivere in una palude."
     },
     {
       "id": "scr_1F52B3C",
@@ -308857,7 +308859,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Ehi, Allenatore! Ti ricordi di me?\nIo di certo mi ricordo di te. Sono\\lil tipo che hai incontrato a Gurun\n\nTown! Speravo di fare fortuna qui a\nEast Borrius, ma l{B4}unico lavoro che\\lho trovato riguarda la pesca\\.\n\nComunque, sono stato assunto da\nCube Corp come promoter di articoli\\lsportivi. Volevano che\n\nincoraggiassi gli Allenatori a\npescare di più, e così promuovere\\lla loro fascia per canne da pesca\n\noriginale. Quindi, ecco il mio\nincoraggiamento per te! Se peschi\\lalmeno [green][buffer1][blue] Pokémon usando\n\ncanne da pesca che ottieni tu\nstesso, sarai idoneo per una\\lricompensa! Che te ne pare? Ottimo,\n\nvero? Torna da me se hai pescato\nalmeno [green][buffer1][blue] volte!"
+      "translated": "Ehi, Allenatore! Ti ricordi di me?\nIo di certo mi ricordo di te. Sono\\lil tipo che hai incontrato a Borgo\n\nGurun! Speravo di fare fortuna qui\na Borrius Orientale, ma l{B4}unico\\llavoro che ho trovato riguarda la\n\npesca\\. Comunque, Cube Corp. mi ha\nassunto come promotore di articoli\\lsportivi. Volevano che\n\nincoraggiassi gli Allenatori a\npescare di più e promuovessi così\\lil loro marchio di canne da pesca.\n\nQuindi, ecco il mio incoraggiamento\nper te! Se peschi almeno [green][buffer1][blue]\\lPokémon usando canne da pesca che\n\nhai ottenuto tu stesso, avrai\ndiritto a una ricompensa! Che ne\\ldici? Fantastico, vero? Torna da me\n\nquando avrai pescato almeno\n[green][buffer1][blue] volte!"
     },
     {
       "id": "scr_1F5378E",
@@ -310738,7 +310740,7 @@
           "token": "\\qc"
         }
       ],
-      "translated": "Questo MT è stato assegnato per\naver completato \\qoL{B4}Emboar nero\\qc."
+      "translated": "Questa MT è stata assegnata per\naver completato \\qogli Emboar Neri\\qc."
     },
     {
       "id": "scr_1F55B1F",
@@ -310852,7 +310854,7 @@
           "token": "\\qc"
         }
       ],
-      "translated": "Questa MT è stata assegnata\ncompletando \\qoIl Terrore Granbull\\qc."
+      "translated": "Questa MT è stata assegnata per\naver completato \\qoi Granbull del\\lTerrore\\qc."
     },
     {
       "id": "scr_1F55D06",
@@ -311828,7 +311830,7 @@
       "table_name": "data.missions.objectives.mainStory",
       "table_index": 29,
       "translation_source": "Help Marlon destroy the Shadow Warriors in Cinder Volcano!",
-      "translated": "Aiuta Marlon a distruggere i\nGuerrieri Ombra nel Vulcano Cinder!"
+      "translated": "Nel Vulcano delle Ceneri aiuta\nMarlon: elimina i Guerrieri Ombra!"
     },
     {
       "id": "tbl_mission_objectives_00030_1F566A7",
@@ -311843,7 +311845,7 @@
       "table_name": "data.missions.objectives.mainStory",
       "table_index": 30,
       "translation_source": "Follow Marlon and Véga deeper into Cinder Volcano!",
-      "translated": "Segui Marlon e Véga nelle\nprofondità del Vulcano Cinder!"
+      "translated": "Segui Marlon e Véga più a fondo\nnel Vulcano delle Ceneri!"
     },
     {
       "id": "tbl_mission_objectives_00031_1F566DA",
@@ -312044,7 +312046,7 @@
       "table_name": "data.missions.objectives.mainStory",
       "table_index": 43,
       "translation_source": "Make your way to Seaport City and board a boat to East Borrius!",
-      "translated": "Raggiungi Seaport City e sali su\nuna nave per Borrius Est!"
+      "translated": "Vai a Città Portuale e imbarcati\nper Borrius Orientale!"
     },
     {
       "id": "tbl_mission_objectives_00044_1F568F7",
@@ -312411,7 +312413,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "Questo buco che vedi qui è ciò che\nè conosciuto come una Tana del\\lRaid. Potenti Pokémon abitano in\n\nqueste tane e, una volta al giorno,\npuoi lottare per avere la\\lpossibilità di catturarne uno in\n\nogni tana presente a Borrius!\nQuesti Pokémon sono spaventosamente\\lforti, quindi è una buona idea\n\nscegliere il partner giusto per\ncombattere al tuo fianco. Quando\\linizi la lotta, noterai che il\n\nPokémon che stai affrontando sembra\nmolto grande. Questo è dovuto al\\lfenomeno conosciuto come [green]Dynamax[red].\n\nRimarrà così per tutta la lotta e\npotrà essere catturato solo dopo\\lessere stato sconfitto e tornato\n\nalle dimensioni normali."
+      "translated": "Questa cavità che vedi qui è ciò\nche viene chiamato una Tana Raid.\\lPokémon potenti abitano queste tane\n\ne, una volta al giorno, puoi\ncombattere per avere la possibilità\\ldi catturarne uno in ogni tana che\n\nsi trova nei dintorni di Borrius!\nQuesti Pokémon sono spaventosamente\\lforti, quindi è una buona idea\n\nscegliere il partner giusto per\ncombattere al tuo fianco. Quando\\linizi la lotta, noterai che il\n\nPokémon contro cui stai combattendo\nsembra molto grande. Questo è\\ldovuto al fenomeno noto come\n\n[green]Dynamax[red]. Rimarrà così per tutta la\nlotta e potrà essere catturato solo\\ldopo essere stato sconfitto e\n\nriportato alle sue dimensioni\nnormali."
     },
     {
       "id": "scr_1F56FD0",
@@ -312570,7 +312572,7 @@
       "byte_length": 91,
       "is_pointer_based": true,
       "translation_source": "This Raid Den was found in a Hidden Grotto after using Cut on the south side of the route.",
-      "translated": "Questo Antro Raid è stato trovato\nin una Grotta Nascosta dopo aver\\lusato Taglio sul lato sud della\n\nroute."
+      "translated": "Questa Tana Raid è stata trovata in\nuna Grotta Nascosta dopo aver usato\\lTaglio sul lato sud del percorso."
     },
     {
       "id": "scr_1F575B8",
@@ -312596,7 +312598,7 @@
       "byte_length": 89,
       "is_pointer_based": true,
       "translation_source": "This Raid Den was found in a Hidden Grotto on the road that connects Route 7 to Route 6.",
-      "translated": "Questo Antro Raid è stato trovato\nin una Grotta Nascosta sulla strada\\lche collega Route 7 a Route 6."
+      "translated": "Questa Tana Raid è stata trovata in\nuna Grotta Nascosta sulla strada\\lche collega il Percorso 7 al\n\nPercorso 6."
     },
     {
       "id": "scr_1F57675",
@@ -312622,7 +312624,7 @@
       "byte_length": 76,
       "is_pointer_based": true,
       "translation_source": "This Raid Den was found in a Hidden Grotto on the western side of the lake.",
-      "translated": "Questo Antro Raid è stato trovato\nin una Grotta Nascosta sul lato\\loccidentale del lago."
+      "translated": "Questa Tana Raid è stata trovata in\nuna Grotta Nascosta sul lato\\loccidentale del lago."
     },
     {
       "id": "scr_1F5771F",
@@ -312635,7 +312637,7 @@
       "byte_length": 88,
       "is_pointer_based": true,
       "translation_source": "This Raid Den was found in a Hidden Grotto after heading directly north from Tehl Town.",
-      "translated": "Questo Antro Raid è stato trovato\nin una Grotta Nascosta dopo essersi\\ldiretti dritti a nord da Tehl Town."
+      "translated": "Questa Tana Raid è stata trovata in\nuna Grotta Nascosta dopo essersi\\ldiretti direttamente a nord da\n\nBorgo Tehl."
     },
     {
       "id": "scr_1F57777",
@@ -312648,7 +312650,7 @@
       "byte_length": 91,
       "is_pointer_based": true,
       "translation_source": "This Raid Den was found in a Hidden Grotto after using Surf by the entrance to Cliff Cave.",
-      "translated": "Questo Antro Raid è stato trovato\nin una Grotta Nascosta dopo aver\\lusato Surf all{B4}ingresso della\n\nGrotta Scogliera."
+      "translated": "Questa Tana Raid è stata trovata in\nuna Grotta Nascosta dopo aver usato\\lSurf vicino all{B4}ingresso della\n\nGrotta della Scogliera."
     },
     {
       "id": "scr_1F577D2",
@@ -312661,7 +312663,7 @@
       "byte_length": 84,
       "is_pointer_based": true,
       "translation_source": "This Raid Den was found in a Hidden Grotto outside the Mansion’s secret exit on 1F.",
-      "translated": "Questa Tana Raid è stata trovata in\nun Anfratto Nascosto fuori\\ldall{B4}uscita segreta della Villa al\n\n1° piano."
+      "translated": "Questa Tana Raid è stata trovata in\nuna Grotta Nascosta all{B4}esterno\\ldell{B4}uscita segreta della Villa al\n\n1º piano."
     },
     {
       "id": "scr_1F57826",
@@ -312674,7 +312676,7 @@
       "byte_length": 89,
       "is_pointer_based": true,
       "translation_source": "This Raid Den was found in a Hidden Grotto on the west side of the route near the Hiker.",
-      "translated": "Questo Antro Raid è stato trovato\nin una Grotta Nascosta sul lato\\lovest del percorso vicino al\n\nCamminatore."
+      "translated": "Questa Tana Raid è stata trovata in\nuna Grotta Nascosta sul lato\\loccidentale del percorso, vicino\n\nall{B4}Escursionista."
     },
     {
       "id": "scr_1F5787F",
@@ -312700,7 +312702,7 @@
       "byte_length": 74,
       "is_pointer_based": true,
       "translation_source": "This Raid Den was found above the Tomb of Borrius after using Rock Climb.",
-      "translated": "Questo Antro Raid è stato trovato\nsopra la Tomba di Borrius dopo aver\\lusato Scalaroccia."
+      "translated": "Questa Tana Raid è stata trovata\nsopra la Tomba di Borrius dopo aver\\lusato Scalaroccia."
     },
     {
       "id": "scr_1F57925",
@@ -312739,7 +312741,7 @@
       "byte_length": 84,
       "is_pointer_based": true,
       "translation_source": "This Raid Den was found in a Hidden Grotto after crossing the bridge and using Cut.",
-      "translated": "Questa Tana Raid è stata trovata in\nun Anfratto Nascosto dopo aver\\lattraversato il ponte e usato\n\nTaglio."
+      "translated": "Questa Tana Raid è stata trovata in\nuna Grotta Nascosta dopo aver\\lattraversato il ponte e usato\n\nTaglio."
     },
     {
       "id": "scr_1F57A38",
@@ -312791,7 +312793,7 @@
       "byte_length": 87,
       "is_pointer_based": true,
       "translation_source": "This Raid Den was found in a Hidden Grotto after using Surf to go east from the docks.",
-      "translated": "Questo Antro Raid è stato trovato\nin una Grotta Nascosta dopo aver\\lusato Surf per andare a est dal\n\nmolo."
+      "translated": "Questa Tana Raid è stata trovata in\nuna Grotta Nascosta dopo aver usato\\lSurf per andare verso est dal molo."
     },
     {
       "id": "scr_1F57BAA",
@@ -312817,7 +312819,7 @@
       "byte_length": 88,
       "is_pointer_based": true,
       "translation_source": "This Raid Den was found in the hidden section of Icicle Cave behind the Braille tablet.",
-      "translated": "Questo Antro Raid è stato trovato\nnella sezione nascosta della Grotta\\ldi Icicle dietro la tavoletta\n\nBraille."
+      "translated": "Questa Tana Raid è stata trovata\nnella sezione nascosta della Grotta\\lGhiacciata dietro la tavoletta in\n\nBraille."
     },
     {
       "id": "scr_1F57C22",
@@ -312857,7 +312859,7 @@
       "byte_length": 84,
       "is_pointer_based": true,
       "translation_source": "This Raid Den was found in a small room after breaking through a collapsed doorway.",
-      "translated": "Questo Nido Raid è stato trovato in\nuna piccola stanza dopo aver\\lsfondato un ingresso crollato."
+      "translated": "Questa Tana Raid è stata trovata in\nuna stanzetta dopo aver\\lattraversato una porta crollata."
     },
     {
       "id": "scr_1F57D0C",
@@ -312922,7 +312924,7 @@
       "byte_length": 75,
       "is_pointer_based": true,
       "translation_source": "This Raid Den was found in the large room on 1F behind the Braille tablet.",
-      "translated": "Questo Antro Raid è stato trovato\nnella grande stanza al 1F dietro la\\ltavoletta Braille."
+      "translated": "Questa Tana Raid è stata trovata\nnella grande stanza al piano 1F\\ldietro la tavoletta in Braille."
     },
     {
       "id": "scr_1F57E3C",
@@ -312935,7 +312937,7 @@
       "byte_length": 75,
       "is_pointer_based": true,
       "translation_source": "This Raid Den was found in the lava room on B1F behind the Braille tablet.",
-      "translated": "Questo Antro Raid è stato trovato\nnella stanza di lava al B1F dietro\\lla tavoletta Braille."
+      "translated": "Questa Tana Raid è stata trovata\nnella stanza della lava al piano\\lB1F dietro la tavoletta in Braille."
     },
     {
       "id": "scr_1F57E88",
@@ -315940,7 +315942,7 @@
       "byte_length": 100,
       "is_pointer_based": true,
       "translation_source": "If you can defeat all the Trainers here and on the Auburn Waterway, I’d like to see your fury, too.",
-      "translated": "Se riesci a sconfiggere tutti gli\nAllenatori qui e sulla Via\\lAcquatica di Auburn, vorrei vedere\n\nanche la tua furia."
+      "translated": "Se riesci a sconfiggere tutti gli\nAllenatori qui e sul Canale Auburn,\\lvorrei vedere anche la tua furia."
     },
     {
       "id": "scr_1F5B9FA",
@@ -319631,7 +319633,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Entrambi i miei amici mi danno del\npazzo per stare qui fuori da solo.\\lMa cosa ne sanno loro? Passano\n\ntutto il giorno a fissarsi fuori\ndal Vulcano Cinder\\."
+      "translated": "Entrambi i miei amici mi danno del\npazzo perché me ne sto fin quaggiù.\\lMa cosa ne sanno? Passano tutto il\n\ngiorno a fissarsi fuori dal Vulcano\ndelle Ceneri\\."
     },
     {
       "id": "scr_1F606B1",
@@ -321628,7 +321630,7 @@
       "byte_length": 123,
       "is_pointer_based": true,
       "translation_source": "Cinder Volcano is dangerous, and temperatures are extreme. If you don’t have your Pokémon to protect you, you could faint.",
-      "translated": "Il Vulcano Cinder è pericoloso e le\ntemperature sono estreme. Se non\\lhai i tuoi Pokémon a proteggerti,\n\npotresti svenire."
+      "translated": "Il Vulcano delle Ceneri è\npericoloso e le temperature sono\\lestreme. Se non hai i tuoi Pokémon\n\na proteggerti, potresti svenire."
     },
     {
       "id": "scr_1F63618",
@@ -326209,7 +326211,7 @@
       "byte_length": 15,
       "is_pointer_based": true,
       "translation_source": "Seaport City D",
-      "translated": "Città di Seaport D"
+      "translated": "Città Portuale D"
     },
     {
       "id": "scr_1F692A0",
@@ -326222,7 +326224,7 @@
       "byte_length": 15,
       "is_pointer_based": true,
       "translation_source": "Seaport City N",
-      "translated": "Città di Seaport N"
+      "translated": "Città Portuale N"
     },
     {
       "id": "scr_1F692AF",
@@ -326328,7 +326330,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "Come va, amico? Sono venuto fin qui\nda [green]Magnolia Town[red], nell{B4}Est di\\lBorrius, per dare un{B4}occhiata a\n\nquesto [green]Battle Frontier[red]! Ho sentito\nche si possono passare ore a\\lcombattere senza sosta!"
+      "translated": "Come va, amico? Sono venuto fin qui\nda [green]Borgo Magnolia[red] a Borrius\\lOrientale per dare un{B4}occhiata a\n\nquesta [green]Battle Frontier[red]! Ho sentito\ndire che puoi passare ore a lottare\\lsenza fermarti!"
     },
     {
       "id": "scr_1F695DE",
@@ -326364,7 +326366,7 @@
       "byte_length": 63,
       "is_pointer_based": true,
       "translation_source": "I’m sorry, but only members are allowed into the Battleground.",
-      "translated": "Mi dispiace, ma solo i membri\npossono entrare nel Campo di\\lBattaglia."
+      "translated": "Mi dispiace, ma solo i membri\npossono entrare nel Campo di Lotta."
     },
     {
       "id": "scr_1F696A0",
@@ -326419,7 +326421,7 @@
       "byte_length": 234,
       "is_pointer_based": true,
       "translation_source": "Ever since Antisis City closed its port to passengers, this port has been booming! Not only do we sail passengers to various locations in East Borrius, but we also transport cargo to different places around Borrius. It’s a great gig!",
-      "translated": "Da quando Antisis City ha chiuso il\nsuo porto ai passeggeri, questo\\lporto è in pieno boom! Non solo\n\ntrasportiamo passeggeri verso varie\nlocalità nella parte orientale di\\lBorrius, ma trasportiamo anche\n\nmerci in diversi luoghi di Borrius.\nÈ un ottimo lavoro!"
+      "translated": "Da quando Città di Antisis ha\nchiuso il suo porto ai passeggeri,\\lquesto porto è diventato un viavai\n\ncontinuo! Non solo trasportiamo\npasseggeri in varie località di\\lBorrius Orientale, ma trasportiamo\n\nanche merci in diversi luoghi di\nBorrius. È proprio un ottimo\\llavoro!"
     },
     {
       "id": "scr_1F699F9",
@@ -329185,7 +329187,7 @@
           "token": "\\btn00"
         }
       ],
-      "translated": "Non solo puoi usare il [green]ADM[blue] al posto\ndelle MN, ma puoi anche usarlo per\\lestrarre tesori! Le pareti della\n\n[green]KBT Expressway[blue] e del [green]fondale marino[blue]\nsono piene di tesori che aspettano\\lsolo che tu li scavi! Se ti trovi\n\nin uno di questi posti, imposta la\n[green]Modalità Pulsante R[blue] su [green]Scansione\\lEstrazione[blue] nel [green]Menu Opzioni[blue] e premi\n\n\\btn03. Se ci sono punti intorno a te\ndove puoi scavare per tesori, l{B4}ADM\\lli illuminerà! Premi \\btn00 vicino a uno\n\ndi questi punti per iniziare a\nscavare."
+      "translated": "Non solo puoi usare [green]ADM[blue] al posto\ndelle MN, ma puoi anche usarlo per\\lscavare alla ricerca di tesori! Le\n\npareti della [green]Superstrada KBT[blue] e il\n[green]fondale marino[blue] sono pieni di\\loggetti preziosi che aspettano solo\n\ndi essere portati alla luce! Se ti\ntrovi in uno di quei luoghi,\\limposta la [green]Modalità pulsante R[blue] su\n\n[green]Scansione Mineraria[blue] nel [green]Menu\nOpzioni[blue] e premi \\btn03. Se nei dintorni\\lci sono punti in cui puoi scavare\n\nalla ricerca di tesori, ADM li\nilluminerà! Premi semplicemente \\btn00\\laccanto a uno di quei punti per\n\niniziare a scavare."
     },
     {
       "id": "scr_1F6D25F",
@@ -329386,7 +329388,7 @@
           "token": "\\qc"
         }
       ],
-      "translated": "Vedi quella grande nave nera? È il\nprototipo di un{B4}imbarcazione\\lchiamata \\qoThe Shadow\\qc. È stata\n\nprogettata per attraversare\nl{B4}oceano in silenzio nel cuore\\ldella notte. Un uomo misterioso che\n\nsi faceva chiamare \\qoZ\\qc ne ha\nfinanziato la costruzione."
+      "translated": "Vedi quella grande nave nera? È il\nprototipo di un{B4}imbarcazione\\lchiamata \\qoOmbra\\qc. È stata\n\nprogettata per attraversare\nl{B4}oceano in silenzio nel cuore\\ldella notte. Un uomo misterioso che\n\nsi faceva chiamare \\qoZ\\qc ne ha\nfinanziato la costruzione."
     },
     {
       "id": "scr_1F6D60A",
@@ -329435,7 +329437,7 @@
       "byte_length": 373,
       "is_pointer_based": true,
       "translation_source": "If you have an ADM, you can use it to mine for treasure! There are three different places you can mine in Borrius: the KBT Expressway, Underwater, or in a single room of Crystal Peak. Mining in the KBT Expressway will yield a good variety of items, while mining underwater will be more likely to yield Fossils, and mining in Crystal Peak will be more likely to yield Gems.",
-      "translated": "Se hai un ADM, puoi usarlo per\nscavare alla ricerca di tesori! Ci\\lsono tre posti diversi in cui puoi\n\nscavare a Borrius: l{B4}autostrada\nKBT, sott{B4}acqua, o in una singola\\lstanza di Crystal Peak. Scavare\n\nell{B4}autostrada KBT darà una buona\nvarietà di oggetti, mentre scavare\\lsott{B4}acqua avrà più probabilità di\n\ndare Fossili, e scavare a Crystal\nPeak avrà più probabilità di dare\\lGemme."
+      "translated": "Se hai un ADM, puoi usarlo per\nscavare alla ricerca di tesori! In\\lBorrius puoi scavare in tre luoghi\n\ndiversi: nella Superstrada KBT,\nsott{B4}acqua o in una singola stanza\\ldi Picco Cristallo. Scavando nella\n\nSuperstrada KBT troverai una buona\nvarietà di oggetti, mentre scavando\\lsott{B4}acqua sarà più probabile\n\ntrovare Fossili; scavando in Picco\nCristallo, invece, sarà più\\lprobabile trovare Gemme."
     },
     {
       "id": "scr_1F6D9F8",
@@ -330089,7 +330091,7 @@
       "byte_length": 123,
       "is_pointer_based": true,
       "translation_source": "The S.S. Marine usually sets sail on Mondays and Fridays to East Borrius. But right now I hear it’s having engine trouble.",
-      "translated": "La S.S. Marine di solito salpa il\nlunedì e il venerdì per Est\\lBorrius. Ma al momento sento che ha\n\nproblemi al motore."
+      "translated": "La M/N Marine salpa di solito il\nlunedì e il venerdì per Borrius\\lOrientale. Ma proprio ora sento che\n\nha dei problemi al motore."
     },
     {
       "id": "scr_1F6E3B3",
@@ -330120,7 +330122,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "La S.S. Marine salpa per Est\nBorrius ogni [green]lunedì[blue] e [green]venerdì[blue]."
+      "translated": "La M/N Marine salpa per Borrius\nOrientale ogni [green]lunedì[blue] e [green]venerdì[blue]."
     },
     {
       "id": "scr_1F6E402",
@@ -331251,7 +331253,7 @@
       "byte_length": 167,
       "is_pointer_based": true,
       "translation_source": "Oh, Marlon, sir! I spent some time back at HQ with the Science Society, and learned about a new way to make our Pokémon stronger in battles! Would you like to see it?",
-      "translated": "Oh, signor Marlon! Ho passato un\npo{B4} di tempo al quartier generale\\lcon la Società delle Scienze, e ho\n\nimparato un nuovo modo per rendere\ni nostri Pokémon più forti in\\lbattaglia! Vuole vederlo?"
+      "translated": "Oh, Marlon, signore! Ho passato un\npo{B4} di tempo al quartier generale\\lcon la Società Scientifica e ho\n\nscoperto un nuovo modo per rendere\ni nostri Pokémon più forti nelle\\llotte! Vuoi vederlo?"
     },
     {
       "id": "scr_1F6FDED",
@@ -331699,7 +331701,7 @@
           "token": "\\al"
         }
       ],
-      "translated": "Percorso 1 \\qoPasso di Montagna\nNevoso\\qc \\au Frozen Heights \\ad Bellin\\lTown \\al Grotta di Ghiaccio"
+      "translated": "Percorso 1 \\qoPasso della Montagna\nNevosa\\qc \\au Alture Ghiacciate \\ad Borgo\\lBellin \\al Grotta Ghiacciata"
     },
     {
       "id": "scr_1F709B2",
@@ -331821,7 +331823,7 @@
       "byte_length": 178,
       "is_pointer_based": true,
       "translation_source": "It’s a statue of the Legendary Fire-type Pokémon, Moltres. It says here that Moltres was once used to reinforce a seal on a great darkness, but now it resides in Cinder Volcano.",
-      "translated": "È una statua del Pokémon\nleggendario di tipo Fuoco, Moltres.\\lQui dice che Moltres venne usato\n\nuna volta per rafforzare un sigillo\nsu una grande oscurità, ma ora\\lrisiede nel Vulcano Ceneri."
+      "translated": "È una statua del Pokémon\nleggendario di tipo Fuoco, Moltres.\\lQui dice che un tempo Moltres\n\nveniva usato per rafforzare un\nsigillo su una grande oscurità, ma\\lora risiede a Vulcano delle Ceneri."
     },
     {
       "id": "scr_1F70C64",
@@ -331871,7 +331873,7 @@
           "token": "\\ad"
         }
       ],
-      "translated": "Percorso 3 \\qoParadiso Road\\qc \\au\nParadiso dei Fiori \\ad Città di\\lDresco"
+      "translated": "Percorso 3 \\qoVia del Paradiso\\qc \\au\nParadiso dei Fiori \\ad Borgo Dresco"
     },
     {
       "id": "scr_1F70CE4",
@@ -331942,7 +331944,7 @@
           "token": "\\ar"
         }
       ],
-      "translated": "Bosco di Grim \\al Cinder Volcano \\ar\nDresco Town"
+      "translated": "Bosco Tetro \\al Vulcano delle Ceneri\n\\ar Borgo Dresco"
     },
     {
       "id": "scr_1F70D8E",
@@ -331961,7 +331963,7 @@
           "token": "\\ar"
         }
       ],
-      "translated": "\\ar Bosco Cupo"
+      "translated": "\\ar Bosco Tetro"
     },
     {
       "id": "scr_1F70D9B",
@@ -331974,7 +331976,7 @@
       "byte_length": 23,
       "is_pointer_based": true,
       "translation_source": "Cinder Volcano Passage",
-      "translated": "Passaggio del Vulcano Cinder"
+      "translated": "Vulcano delle Ceneri Passaggio"
     },
     {
       "id": "scr_1F70DB2",
@@ -332317,7 +332319,7 @@
           "token": "\\ad"
         }
       ],
-      "translated": "Percorso 8 \\qoFrost Mountain Peak\\qc \\au\nBlizzard City \\ad Frost Mountain,\\lPercorso 7"
+      "translated": "Percorso 8 \\qoVetta Monte Gelo\\qc \\au\nCittà Bufera \\ad Monte Gelo, Percorso\\l7"
     },
     {
       "id": "scr_1F710E5",
@@ -332405,7 +332407,7 @@
           "token": "\\ar"
         }
       ],
-      "translated": "Percorso 9 \\qoBosco Autl\\qc \\au Percorso\n7, Monte Gelo \\ar Città di Tehl,\\lPercorso 10"
+      "translated": "Percorso 9 \\qoBosco Autl\\qc \\au Percorso\n7, Monte Gelo \\ar Borgo Tehl,\\lPercorso 10"
     },
     {
       "id": "scr_1F711CF",
@@ -332526,7 +332528,7 @@
           "token": "\\ad"
         }
       ],
-      "translated": "Canale di Auburn \\au Percorso 6,\nGrotta della Valle \\ad Percorso 10"
+      "translated": "Canale Auburn \\au Percorso 6, Grotta\ndella Valle \\ad Percorso 10"
     },
     {
       "id": "scr_1F712D0",
@@ -332675,7 +332677,7 @@
           "token": "\\ar"
         }
       ],
-      "translated": "Thundercap Mt. \\al Città di Epidimy \\ar\nCittà di Antisis"
+      "translated": "Monte Thundercap \\al Città di Epidimy\n\\ar Città di Antisis"
     },
     {
       "id": "scr_1F7150B",
@@ -332852,7 +332854,7 @@
       "byte_length": 46,
       "is_pointer_based": true,
       "translation_source": "Find what you need at the Dehara Dept. Store!",
-      "translated": "Trova ciò che ti serve al grande\nmagazzino di Dehara!"
+      "translated": "Trova ciò che ti serve ai Grandi\nMagazzini di Dehara!"
     },
     {
       "id": "scr_1F71777",
@@ -333057,7 +333059,7 @@
           "token": "\\ar"
         }
       ],
-      "translated": "Percorso 13 \\qoIl Canale di Borrius\\qc\n\\au Percorso 4, Vulcano Cinder, Bosco\\lTetro \\ad Percorso 14 \\ar Città di\n\nDehara"
+      "translated": "Percorso 13 \\qoIl Canale Borrius\\qc \\au\nPercorso 4, Vulcano delle Ceneri,\\lBosco Tetro \\ad Percorso 14 \\ar Città\n\ndi Dehara"
     },
     {
       "id": "scr_1F719C0",
@@ -333854,7 +333856,7 @@
           "token": "\\al"
         }
       ],
-      "translated": "Palude di Cootes \\au Città di\nMagnolia \\ad Cittadina di Polder \\al\\lPicco di Crystal"
+      "translated": "Palude Cootes \\auBorgo Magnolia\n\\adBorgo Polder \\alPicco Cristallo"
     },
     {
       "id": "scr_1F72345",
@@ -333896,7 +333898,7 @@
           "token": "\\ar"
         }
       ],
-      "translated": "\\auCittà Magnolia \\arVetta Cristallo"
+      "translated": "\\auBorgo Magnolia \\arPicco Cristallo"
     },
     {
       "id": "scr_1F72370",
@@ -333923,7 +333925,7 @@
           "token": "\\ar"
         }
       ],
-      "translated": "Palude di Cootes \\au Città di\nMagnolia \\ad Cittadina di Polder \\ar\\lPicco di Crystal"
+      "translated": "Palude Cootes \\auBorgo Magnolia\n\\adBorgo Polder \\arPicco Cristallo"
     },
     {
       "id": "scr_1F723A5",
@@ -334456,7 +334458,7 @@
       "byte_length": 20,
       "is_pointer_based": true,
       "translation_source": "Exit C: Crater Town",
-      "translated": "Uscita C: Città di Crater"
+      "translated": "Uscita C: Città Cratere"
     },
     {
       "id": "scr_1F72872",
@@ -337113,7 +337115,7 @@
       "byte_length": 161,
       "is_pointer_based": true,
       "translation_source": "I don’t like East Borrius all that much - it’s too humid and damp. But, they do have the most amazing café in Magnolia Town, which is worth the trip every time.",
-      "translated": "Non mi piace granché l{B4}Est di\nBorrius: è troppo umido e afoso.\\lPerò, a Magnolia Town c{B4}è il caffè\n\npiù fantastico di tutti, e vale il\nviaggio ogni volta."
+      "translated": "Non mi piace poi così tanto Borrius\nOrientale: è troppo umido e afoso.\\lPerò, lì c{B4}è il caffè più\n\nstraordinario di Borgo Magnolia, e\nvale sempre la pena andarci."
     },
     {
       "id": "scr_1F77609",
@@ -338139,7 +338141,7 @@
           "token": "[pause]"
         }
       ],
-      "translated": "Oh? Sembra che l{B4}Assistente del\nProf. Log abbia alcuni\\laggiornamenti per lo Scanner delle\n\nstatistiche! Torna a Frozen Heights\nper prenderli.[pause]"
+      "translated": "Oh? Sembra che l{B4}Assistente di\nProf. Log abbia fatto degli\\laggiornamenti allo Scanner\n\nStatistiche! Torna alle Alture\nGhiacciate per ottenerli.[pause]"
     },
     {
       "id": "scr_1F780E9",
@@ -338569,7 +338571,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Quindi hai ottenuto ciò per cui eri\nvenuto, eh? Ora che il potere della\\lMegaevoluzione è tuo, qual è il\n\nprossimo passo? Mosse Z? Ho sentito\nche a Est Borrius le usano molto.\\lMa perché aspettare di arrivarci?\n\nIl tuo [buffer1] può attivare\nfacilmente anche le Mosse Z! Allora\\lche aspetti? Inizia già a\n\ncollezionare i Cristalli Z!"
+      "translated": "Quindi hai ottenuto ciò per cui eri\nvenuto, eh? Ora che il potere della\\lMegaevoluzione è tuo, cosa ti\n\naspetta? Mosse Z? Ho sentito dire\nche a Borrius Orientale le usano\\lspesso. Ma perché aspettare di\n\narrivarci? Il tuo [buffer1] può\nattivare facilmente anche le Mosse\\lZ! Allora, cosa aspetti? Inizia già\n\na collezionare Cristalli Z!"
     },
     {
       "id": "scr_1F78CE2",
@@ -338582,7 +338584,7 @@
       "byte_length": 128,
       "is_pointer_based": true,
       "translation_source": "You’ll never be able to beat my super, rare, awesome, Sandslash! I got it all the way up in this hidden section of Icicle Cave!",
-      "translated": "Non riuscirai mai a battere il mio\nSandslash super, raro, fantastico!\\lL{B4}ho preso proprio in questa\n\nsezione nascosta di Grotto\nGhiacciata!"
+      "translated": "Non riuscirai mai a battere il mio\nSandslash super raro e fantastico!\\lL{B4}ho trovato proprio in questa\n\nsezione nascosta della Grotta\nGhiacciata!"
     },
     {
       "id": "scr_1F78D62",
@@ -339417,7 +339419,7 @@
       "byte_length": 102,
       "is_pointer_based": true,
       "translation_source": "Somewhere in this house resides Successor Maxima. If you find her, she’ll give you something special.",
-      "translated": "Da qualche parte in questa casa si\ntrova la Successora Maxima. Se la\\ltrovi, ti darà qualcosa di\n\nspeciale."
+      "translated": "Da qualche parte in questa casa\nvive Successore Maxima. Se la\\ltrovi, ti darà qualcosa di\n\nspeciale."
     },
     {
       "id": "scr_1F79E8F",
@@ -341476,7 +341478,7 @@
       "byte_length": 95,
       "is_pointer_based": true,
       "translation_source": "Help a researcher study seasonal form changes around Borrius by bringing him various Sawsbuck.",
-      "translated": "Aiuta un ricercatore: portagli\nvari Sawsbuck per studiarne le\nforme stagionali."
+      "translated": "Porta vari Sawsbuck di Borrius\na un ricercatore: studierà\nle loro forme stagionali."
     },
     {
       "id": "scr_1F7D0C5",
@@ -342477,7 +342479,7 @@
       "byte_length": 97,
       "is_pointer_based": true,
       "translation_source": "A little boy has lost his way in Thundercap Mt. 4F! Team up with him, and guide him to the exit.",
-      "translated": "Un bimbo si è perso al 4F di\nThundercap Mt.! Guidalo fino\nall{B4}uscita."
+      "translated": "Un bimbo si è perso al 4F di\nMonte Thundercap! Guidalo fino\nall{B4}uscita."
     },
     {
       "id": "scr_1F7E24D",
@@ -343774,7 +343776,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Volevo solo fare un picnic sul\nThundercap Mt. Non pensavo di\\lperdermi in un posto come questo\\."
+      "translated": "Volevo solo fare un picnic sul\nMonte Thundercap. Non pensavo di\\lperdermi in un posto come questo\\."
     },
     {
       "id": "scr_1F803F0",
@@ -347819,7 +347821,7 @@
       "byte_length": 17,
       "is_pointer_based": true,
       "translation_source": "Vivill Town Dark",
-      "translated": "Paese Vivill Oscuro"
+      "translated": "Borgo Vivill Buio"
     },
     {
       "id": "scr_1F84FDD",
@@ -349219,7 +349221,7 @@
           "token": "[black]"
         }
       ],
-      "translated": "[black]Il Guerriero dell{B4}Ombra è\nattualmente in lotta con una\\lFloette. Vuoi rimuovere il suo\n\nmantello?"
+      "translated": "[black]Il Guerriero Ombra è attualmente in\nlotta con una Floette. Vuoi\\lrimuovere il suo mantello?"
     },
     {
       "id": "scr_1F86575",
@@ -349676,7 +349678,7 @@
       "byte_length": 181,
       "is_pointer_based": true,
       "translation_source": "When I was a chef for ze Shadows, they made me feed every single one of ze Shadow Warriors. Zey have quite the appetite! Who knew undead creatures needed so much energy to survive?",
-      "translated": "Quando ero cuoco per ze Shadows, mi\nfacevano dare da mangiare a ogni\\lsingolo Shadow Warrior. Hanno\n\ndavvero un bell{B4}appetito! Chi\navrebbe mai detto che delle\\lcreature non morte avessero bisogno\n\ndi così tanta energia per\nsopravvivere?"
+      "translated": "Quando ero chef per le Ombre, mi\nfacevano nutrire ogni singolo\\lGuerrieri Ombra. Zey hanno proprio\n\nun bell{B4}appetito! Chi avrebbe mai\npensato che delle creature non\\lmorte avessero bisogno di così\n\ntanta energia per sopravvivere?"
     },
     {
       "id": "scr_1F87276",
@@ -350367,7 +350369,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Fantastico! Grazie per aver\naccettato di aiutarmi! Se potessi\\ldarmi il tuo Cube per un secondo\\. \\.\n\nVa bene! Il tuo Super Cube è stato\naggiornato per permetterti di\\lvedere e raccogliere le Celle di\n\nZygarde sparse sia in Borrius Ovest\nche in Borrius Est. Una volta che\\lavrai raccolto almeno [green]10[blue] percento,\n\nvieni a trovare mia moglie. Per\nora, in bocca al lupo!"
+      "translated": "Fantastico! Grazie per aver\naccettato di aiutarmi! Potresti per\\lfavore darmi il tuo Cube per un\n\nsecondo\\. \\. Bene! Il tuo Super Cube è\nstato aggiornato e ora ti permette\\ldi vedere e raccogliere le Cellule\n\ndi Zygarde disseminate sia a ovest\nsia a Borrius Orientale. Quando ne\\lavrai raccolto almeno il [green]10[blue]\n\npercento, vieni a trovare mia\nmoglie. Per ora, buona fortuna!"
     },
     {
       "id": "scr_1F88037",
@@ -353007,7 +353009,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "La Miniera di Lotta è una struttura\nper sfide speciali. Una volta\\liniziata, la tua sfida dura finché\n\non sconfiggi lo Scavatore della\nMiniera, o scegli di riposare. A\\logni livello che scendi nella\n\nminiera, un Allenatore ti aspetta.\nIl formato che scegli determina in\\lquale categoria possono essere\n\naffrontati, e la profondità\ndetermina altre impostazioni di\\llotta, come Singola o Doppia,\n\nlivello, dimensione della squadra,\nLotte Inverse e Dynamax. Per un\\lelenco delle categorie, consulta la\n\nmia sezione \\qo[green]Categorie di Lotta[blue]\\qc.\nPer ogni Allenatore che sconfiggi,\\lguadagnerai [green]Punti Lotta[blue] ([green]PL[blue]).\n\nInoltre, alla sconfitta, alcuni\nAllenatori potrebbero lasciare\\lcadere gli oggetti che stavano\n\nestraendo, per farteli raccogliere.\nSe vuoi interrompere la tua sfida,\\li tuoi progressi verranno\n\nregistrati per quando vorrai\ncontinuare. Se a un certo punto\\lesci senza salvare, verrai\n\nsqualificato dalla tua sfida.\nTienilo presente!"
+      "translated": "La Miniera Lotta è una struttura\ndedicata alle sfide speciali. Una\\lvolta iniziata, la tua sfida durerà\n\nfino a quando non sconfiggerai\nl{B4}Escavatore della Miniera o\\lsceglierai di riposarti. A ogni\n\nlivello di profondità a cui\nscenderai nella miniera, ti\\lattenderà un Allenatore. Il formato\n\nche scegli determina in quale\ncategoria potrai affrontarlo,\\lmentre la profondità determina\n\naltre impostazioni della lotta,\ncome le Lotte in singolo o in\\ldoppio, il livello, le dimensioni\n\ndella squadra, le Lotte inverse e\nil Dynamax. Per un elenco delle\\lcategorie, consulta la sezione\n\n\\qo[green]Categorie di lotta[blue]\\qc. Per ogni\nAllenatore sconfitto, otterrai\\l[green]Punti Lotta[blue] ([green]PL[blue]). Inoltre, dopo\n\nessere stati sconfitti, alcuni\nAllenatori potrebbero lasciare\\lcadere gli strumenti che stavano\n\nestraendo, così potrai\nraccoglierli. Se vuoi interrompere\\lla sfida, i tuoi progressi verranno\n\nregistrati per permetterti di\ncontinuare quando vorrai. Se in\\lqualsiasi momento te ne vai senza\n\nsalvare, verrai squalificato dalla\nsfida. Tienilo bene a mente!"
     },
     {
       "id": "scr_1F8C485",
@@ -354211,7 +354213,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "Ehi, ehi, [player]! Ti ricordi di\nme? Sono Milo! Mi hai aiutato\\lquando ero perso sul Monte\n\nThundercap, ricordi? Ti sono così\ngrato, voglio lottare con te! Vuoi\\lunirti a me?"
+      "translated": "Ciao, ciao, [player]! Ti ricordi di\nme? Sono Milo! Hai aiutato Milo\\lquando si era perso sul Monte\n\nThundercap, ricordi? Te ne sono\ncosì grato che vorrei lottare con\\lte! Vuoi unirti a me?"
     },
     {
       "id": "scr_1F8DF40",
@@ -357554,7 +357556,7 @@
       "byte_length": 373,
       "is_pointer_based": true,
       "translation_source": "The Battle Frontier has four facilities dedicated to battling. At the Battle Tower, the objective is to beat many Trainers in a row. At the Battle Sands, other Trainers battle with your Pokémon. At the Battle Circus, random effects are present every battle. And finally, at the Battle Mine, you must use a team of six Pokémon that can handle many different battle formats.",
-      "translated": "La Frontiera Lotta ha quattro\nstrutture dedicate alla lotta. Alla\\lTorre Lotta, l{B4}obiettivo è\n\nsconfiggere molti Allenatori di\nfila. Alla Sabbia della Lotta,\\laltri Allenatori lottano con i tuoi\n\nPokémon. Al Circo della Lotta,\neffetti casuali sono presenti in\\logni lotta. E infine, alla Miniera\n\ndella Lotta, devi usare una squadra\ndi sei Pokémon che possa gestire\\lmolti diversi formati di lotta."
+      "translated": "La Frontiera Lotta dispone di\nquattro strutture dedicate alle\\llotte. Alla Torre Lotta,\n\nl{B4}obiettivo è sconfiggere molti\nAllenatori di fila. Alle Spiagge\\lLotta, altri Allenatori lotteranno\n\nusando i tuoi Pokémon. Al Circo\nLotta, sono presenti effetti\\lcasuali in ogni lotta. Infine, alla\n\nMiniera Lotta, devi usare una\nsquadra di sei Pokémon in grado di\\laffrontare molti formati di lotta\n\ndiversi."
     },
     {
       "id": "scr_1F93690",
@@ -359543,7 +359545,7 @@
       "byte_length": 25,
       "is_pointer_based": true,
       "translation_source": "Battle! Black Ferrothorn",
-      "translated": "Lotta! Ferrothorn Nero"
+      "translated": "Lotta! Ferrothorn Neri"
     },
     {
       "id": "scr_1F9464E",
@@ -359571,7 +359573,7 @@
       "byte_length": 24,
       "is_pointer_based": true,
       "translation_source": "Battle! Science Society",
-      "translated": "Lotta! Società della Scienza"
+      "translated": "Lotta! Società Scientifica"
     },
     {
       "id": "scr_1F94674",
@@ -361045,7 +361047,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Poca roba. Il tuo [green][buffer1][blue] adesso\nha [green]0[blue] punti di potenziale in\\l[green]Attacco[blue]. Rifacciamolo qualche\n\nvolta, Saetta\\."
+      "translated": "Rammollito. Ora [green][buffer1][blue] ha un\npotenziale di [green]Attacco[blue] pari a [green]0[blue].\\lRifacciamolo prima o poi, Sparky\\."
     },
     {
       "id": "scr_1F9617B",
@@ -361092,7 +361094,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Lento. Il tuo [green][buffer1][blue] adesso ha [green]0[blue]\npunti di potenziale in [green]Velocità[blue].\\lRifacciamolo qualche volta, Saetta\\."
+      "translated": "Lento. Ora [green][buffer1][blue] ha un\npotenziale di [green]Velocità[blue] pari a [green]0[blue].\\lRifacciamolo prima o poi, Sparky\\."
     },
     {
       "id": "scr_1F96264",
@@ -361551,7 +361553,7 @@
       "byte_length": 134,
       "is_pointer_based": true,
       "translation_source": "Pardon? I cannot train zis Pokémon’s Individual Values. Zey are already maxed out! Would you like to choose anozzer Pokémon, instead?",
-      "translated": "Come? Non posso allenare i Valori\nIndividuali di questo Pokémon. Sono\\lgià al massimo! Vuoi scegliere\n\ninvece un altro Pokémon?"
+      "translated": "Pardon? Non posso allenare i Valori\nIndividuali di questo Pokémon. Zey\\lsono già al massimo! Vuoi scegliere\n\nun altro Pokémon?"
     },
     {
       "id": "scr_1F969D1",
@@ -374186,7 +374188,7 @@
           "token": "\\qc"
         }
       ],
-      "translated": "Salva il fratello di un uomo\ndalle grinfie del \\qoBlack\nEmboar\\qc nella KBT Expressway."
+      "translated": "Salva il fratello di un uomo\ndalle grinfie di \\qoEmboar Neri\\qc\nnella Superstrada KBT."
     },
     {
       "id": "scr_1F9D3BF",
@@ -374289,7 +374291,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Ehi, Allenatore. \\. Cosa? Vuoi che ti\ndica qualcosa di interessante?\\lBene, allora\\. Ultimamente, ho avuto\n\nproblemi con mio fratello. Si è\ncacciato in grossi guai con questa\\lgang che si fa chiamare il \\qoEmboar\n\nNero\\qc. Non so davvero di cosa si\ntratti, ma sono molto preoccupato\\lper la sua sicurezza. Non ho\n\nparlato con lui per giorni, quindi\nho paura che gli sia successo\\lqualcosa di grave. \\. Cosa? Saresti\n\ndisposto a controllarlo per me?"
+      "translated": "Ehi, Allenatore. \\. Cosa? Vuoi che\ndica qualcosa di interessante? Va\\lbene, allora\\. Ultimamente ho avuto\n\ndei problemi con mio fratello. Si è\ncacciato nei guai con quella banda\\lche si fa chiamare \\qoEmboar Neri\\qc.\n\nNon so bene di cosa si tratti, ma\nsono davvero preoccupato per la sua\\lincolumità. Non parlo con lui da\n\ngiorni, quindi temo che gli sia\nsuccesso qualcosa di brutto. \\. Che\\lc{B4}è? Saresti disposto a controllare\n\ncome sta per me?"
     },
     {
       "id": "scr_1F9D58E",
@@ -377485,7 +377487,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "Siamo la Black Horizon! Il Terrore\nGranbull si è unito al Black\\l[player], così adesso la nostra\n\nbanda è più grande e più forte!"
+      "translated": "Siamo gli Orizzonte Nero! Gli\nGranbull del Terrore si sono uniti\\lai [player] Neri, quindi ora la\n\nnostra banda è più grande e più\nforte!"
     },
     {
       "id": "scr_1FA2753",
@@ -377706,7 +377708,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Chaw ha ha ha! Aspetta, eri serio?\nNon pensavo che la mente dietro il\\l[player] Nero fosse così debole!\n\n\\.aspetta. ERI serio. Pensavi davvero\ndi battere Barbs. Beh, lascia che\\lti dica una cosa, stupido nessuno.\n\nIo guido i Ferrothorn Neri. IO SONO\nil Ferrothorn Nero. E ho una\\lreputazione da mantenere, capisci?\n\nQuindi, se pensavi seriamente di\npoter rubare il nostro territorio e\\lle nostre provviste, distruggere i\n\nostri covi e picchiare i miei\nragazzi\\. Beh, questo darebbe solo ad\\laltre gang la stessa stupida idea,\n\ncapisci? Quindi, ora che hai\nfinito, sai cosa farò? Ormai, i\\lmiei ragazzi hanno già schiacciato\n\ni tuoi e preso i loro Pokémon.\nQuindi\\.\\CC0818 prenderò la tua carcassa\\lsenza valore, ti appenderò insieme\n\nal resto di loro\\. E vedrai che gli\naculei di un Ferrothorn non sono\\lsolo per bellezza!"
+      "translated": "Chaw ha ha ha! Aspetta, facevi sul\nserio? Non pensavo che il cervello\\ldietro ai [player] Neri fosse così\n\nsmidollato! \\.Aspetta. FACEVI sul\nserio. Pensavi davvero di riuscire\\la battere Barbs. Beh, lascia che ti\n\ndica una cosa, stupido nessuno. Io\nguido gli Ferrothorn Neri. IO sono\\ll{B4}Ferrothorn Neri. E ho una\n\nreputazione da difendere, capito?\nQuindi, se pensavi davvero di\\lpoterci semplicemente rubare il\n\nterritorio e le provviste,\ndevastare il nostro covo e\\lsconfiggere i miei ragazzi\\. Beh,\n\nquesto darebbe alle altre bande la\nstessa stupida idea, capisci?\\lQuindi, ora che hai finito, sai\n\ncosa farò? Ormai i miei ragazzi\nhanno già distrutto i tuoi e preso\\li loro Pokémon. Quindi\\.\\CC0818 Prenderò la\n\ntua carcassa inutile e ti\nimpiccherò insieme agli altri\\. E\\lvedrai che gli aculei di Ferrothorn\n\nnon sono solo una decorazione!"
     },
     {
       "id": "scr_1FA3140",
@@ -379425,7 +379427,7 @@
           "token": "[black]"
         }
       ],
-      "translated": "Sembra che il Pokémon si stia\ndirigendo verso [green]Grotta di Ghiaccio[black]."
+      "translated": "Il Pokémon sembra dirigersi verso\n[green]Grotta Ghiacciata[black]."
     },
     {
       "id": "scr_1FA54E9",
@@ -380309,7 +380311,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Oh, cielo! Le Miltank, il nostro\norgoglio e la nostra gioia\\. Ce le\\lhanno rubate! Dei teppisti che si\n\nfanno chiamare \\qoTerror Granbull\\qc o\nqualcosa del genere sono venuti e\\lci hanno portato via le Miltank!\n\nCome faremo a sopravvivere senza di\nloro? \\. Ecco! Tu sei il nuovo\\lCampione di Borrius, vero? Non\n\nvorresti aiutarci a riprenderci le\nMiltank?"
+      "translated": "Oh, cielo! I Miltank, il nostro\norgoglio e la nostra gioia\\. Ce li\\lhanno rubati! Una banda di teppisti\n\nche si fa chiamare i \\qoGranbull del\nTerrore\\qc o qualcosa del genere è\\lvenuta a rubarci i Miltank! Come\n\nfaremo a sopravvivere senza di\nloro? \\. È deciso! Sei il nuovo\\lCampione di Borrius, vero? Non\n\nvorresti aiutarci a riprenderci i\nnostri Miltank?"
     },
     {
       "id": "scr_1FA67CC",
@@ -381963,7 +381965,7 @@
       "byte_length": 48,
       "is_pointer_based": true,
       "translation_source": "We’ll slow you down! The Black Ferrothorn rule!",
-      "translated": "Ti rallenteremo! La regola del\nFerrothorn Nero!"
+      "translated": "Vi rallenteremo! I Ferrothorn Neri\ndettano legge!"
     },
     {
       "id": "scr_1FA9116",
@@ -383298,7 +383300,7 @@
       "byte_length": 89,
       "is_pointer_based": true,
       "translation_source": "This Pokémon was found during the day above Cinder Volcano after going up the waterfall.",
-      "translated": "Questo Pokémon è stato trovato di\ngiorno sopra il Vulcano Cinder dopo\\laver risalito la cascata."
+      "translated": "Questo Pokémon è stato trovato di\ngiorno sopra Vulcano delle Ceneri\\ldopo aver risalito la cascata."
     },
     {
       "id": "scr_1FAA7DA",
@@ -383337,7 +383339,7 @@
       "byte_length": 96,
       "is_pointer_based": true,
       "translation_source": "This Pokémon was found at night in the centre of the meteorites by the entrance to Valley Cave.",
-      "translated": "Questo Pokémon è stato trovato di\nnotte al centro dei meteoriti\\lvicino all{B4}ingresso di Grotta\n\nValle."
+      "translated": "Questo Pokémon è stato trovato di\nnotte al centro dei meteoriti,\\lvicino all{B4}ingresso di Grotta della\n\nValle."
     },
     {
       "id": "scr_1FAA8C5",
@@ -384169,7 +384171,7 @@
       "byte_length": 98,
       "is_pointer_based": true,
       "translation_source": "A little girl has gone missing in Rift Cave! Find her, and bring her home to her worried parents.",
-      "translated": "Una bambina è scomparsa nella\nGrotta Rift! Trovala e\nriportala ai genitori."
+      "translated": "Una bambina è scomparsa nella\nGrotta del Varco! Trovala e\nriportala ai genitori in ansia."
     },
     {
       "id": "scr_1FAC166",
@@ -384350,7 +384352,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Ohhh\\. Sono scappato di casa per\ngiocare nella Grotta Rift, ma ogni\\lvolta che provo a uscire, finisco\n\ndi nuovo in questa stanza\\. Per\nfavore, gentile Allenatore! Portami\\la casa!"
+      "translated": "Ohhh\\. Sono scappata di casa per\ngiocare nella Grotta del Varco, ma\\logni volta che provo ad andarmene,\n\nfinisco di nuovo in questa stanza\\.\nPer favore, gentile Allenatore!\\lPortami a casa!"
     },
     {
       "id": "scr_1FAC61E",
@@ -384726,7 +384728,7 @@
       "byte_length": 96,
       "is_pointer_based": true,
       "translation_source": "A nerd’s Electivire has gone rogue! Find it in Thundercap Mt. 4F and bring it back to the nerd.",
-      "translated": "L{B4}Electivire di un nerd si è\nribellato! Trovalo nel Thundercap\\lMt. 4F e riportalo dal nerd."
+      "translated": "L{B4}Electivire di un nerd si è\nribellato! Trovalo sul Monte\\lThundercap, al 4F, e riportalo dal\n\nnerd."
     },
     {
       "id": "scr_1FACC4F",
@@ -385552,7 +385554,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Ahi\\. La Società delle Scienze sarà\nestremamente delusa quando verrà a\\lsapere dei miei tentativi falliti.\n\nTuttavia\\. sono comunque riuscito a\nsfruttare il potere delle Grotte\\lNascoste, quindi non è stata una\n\nperdita completa\\. Addio, per ora,\nAllenatore. Un giorno, in futuro,\\lti mostrerò il vero potere della\n\nscienza!"
+      "translated": "Urk\\. La Società Scientifica sarà\nestremamente delusa quando verrà a\\lsapere dei miei tentativi falliti.\n\nTuttavia\\. sono comunque riuscito a\nsfruttare il potere delle Grotte\\lNascoste, quindi potrebbe non\n\nessere una perdita totale\\. Addio,\nper ora, Allenatore. Un giorno, in\\lfuturo, ti mostrerò il vero potere\n\ndella scienza!"
     },
     {
       "id": "scr_1FADC75",
@@ -386305,7 +386307,7 @@
           "token": "\\qc"
         }
       ],
-      "translated": "Ah, bene, bene. Allora, come sai,\nil problema della criminalità di\\lBorrius è principalmente legato\n\nalle gang che sono state confinate\ninsieme in [green]Antisis City[blue].\\lRecentemente, però, la gang che un\n\ntempo dominava la maggior parte dei\nterritori lì, la cosiddetta \\qoTerror\\lGranbull\\qc, ha abbandonato la sua\n\nvecchia base. Inoltre, ci sono\nstate segnalazioni che diversi\\lmembri della gang si sono radunati\n\ne hanno causato problemi in varie\nlocalità. Con le nostre forze di\\lpolizia così ridotte, abbiamo\n\nbisogno di un Allenatore forte come\nte per aiutare a radunare quei\\lteppisti."
+      "translated": "Ah, bene, bene. Allora, come sai,\nil problema della criminalità di\\lBorrius riguarda soprattutto le\n\nbande che sono state confinate\ninsieme nella [green]Città di Antisis[blue]. Di\\lrecente, tuttavia, la banda che un\n\ntempo dominava il maggior numero di\nterritori laggiù, la cosiddetta\\l\\qoGranbull del Terrore\\qc, ha\n\nabbandonato la sua vecchia base.\nInoltre, sono giunte segnalazioni\\lsecondo cui diversi membri della\n\nbanda si stanno radunando e stanno\ncausando problemi in varie\\llocalità. Con le nostre forze di\n\npolizia così esigue, abbiamo\nbisogno di un Allenatore forte come\\lte per aiutarci a catturare quei\n\nteppisti."
     },
     {
       "id": "scr_1FAECED",
@@ -386720,7 +386722,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Heh\\. va bene, ho capito - mi hai\nbeccato, pulito e tondo! Ma non\\lpensare che mi consegni, chiaro?\n\nSto salendo su una barca per Est\nBorrius, e io e i ragazzi\\lricominceremo da capo laggiù! Ci si\n\nvede, sbirro! E la prossima volta,\nricordati di confiscarmi la bici!"
+      "translated": "Heh\\. Va bene, ho capito: mi hai\nbeccato, in modo leale e onesto! Ma\\lnon pensare che mi stia\n\ncostituendo, capito? Salto su una\nbarca diretta a Borrius Orientale,\\le io e i ragazzi faremo lì un nuovo\n\ninizio! Ci si vede, sbirro! E la\nprossima volta, ricordati di\\lconfiscare la mia bici!"
     },
     {
       "id": "scr_1FAFAEE",

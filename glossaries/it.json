@@ -1,0 +1,2711 @@
+{
+  "language": "it",
+  "status": "proposed",
+  "note": "Initial Italian draft for review; targets are not release-approved yet.",
+  "terms": [
+    {
+      "source": "West Borrius",
+      "target": "Borrius Occidentale",
+      "kind": "region"
+    },
+    {
+      "source": "East Borrius",
+      "target": "Borrius Orientale",
+      "kind": "region"
+    },
+    {
+      "source": "Borrius",
+      "target": "Borrius",
+      "kind": "region",
+      "case_sensitive": false
+    },
+    {
+      "source": "Frozen Heights",
+      "target": "Alture Ghiacciate",
+      "kind": "place"
+    },
+    {
+      "source": "Bellin Town",
+      "target": "Borgo Bellin",
+      "kind": "place"
+    },
+    {
+      "source": "Dresco Town",
+      "target": "Borgo Dresco",
+      "kind": "place"
+    },
+    {
+      "source": "Crater Town",
+      "target": "Città Cratere",
+      "kind": "place"
+    },
+    {
+      "source": "Blizzard City",
+      "target": "Città Bufera",
+      "kind": "place"
+    },
+    {
+      "source": "Tehl Town",
+      "target": "Borgo Tehl",
+      "kind": "place"
+    },
+    {
+      "source": "Fallshore City",
+      "target": "Città di Fallshore",
+      "kind": "place"
+    },
+    {
+      "source": "Epidimy Town",
+      "target": "Borgo Epidimy",
+      "kind": "place"
+    },
+    {
+      "source": "Tarmigan Town",
+      "target": "Borgo Tarmigan",
+      "kind": "place"
+    },
+    {
+      "source": "Dehara City",
+      "target": "Città di Dehara",
+      "kind": "place"
+    },
+    {
+      "source": "Seaport City",
+      "target": "Città Portuale",
+      "kind": "place"
+    },
+    {
+      "source": "Antisis City",
+      "target": "Città di Antisis",
+      "kind": "place"
+    },
+    {
+      "source": "Vivill Town",
+      "target": "Borgo Vivill",
+      "kind": "place"
+    },
+    {
+      "source": "Gurun Town",
+      "target": "Borgo Gurun",
+      "kind": "place"
+    },
+    {
+      "source": "Polder Town",
+      "target": "Borgo Polder",
+      "kind": "place"
+    },
+    {
+      "source": "Magnolia Town",
+      "target": "Borgo Magnolia",
+      "kind": "place"
+    },
+    {
+      "source": "Redwood Village",
+      "target": "Villaggio Redwood",
+      "kind": "place"
+    },
+    {
+      "source": "Valley City",
+      "target": "Città della Valle",
+      "kind": "place"
+    },
+    {
+      "source": "Dresco Gym",
+      "target": "Palestra di Dresco",
+      "kind": "place"
+    },
+    {
+      "source": "Crater Gym",
+      "target": "Palestra di Crater",
+      "kind": "place"
+    },
+    {
+      "source": "Blizzard Gym",
+      "target": "Palestra di Blizzard",
+      "kind": "place"
+    },
+    {
+      "source": "Fallshore Gym",
+      "target": "Palestra di Fallshore",
+      "kind": "place"
+    },
+    {
+      "source": "Dehara Gym",
+      "target": "Palestra di Dehara",
+      "kind": "place"
+    },
+    {
+      "source": "Antisis Gym",
+      "target": "Palestra di Antisis",
+      "kind": "place"
+    },
+    {
+      "source": "Polder Gym",
+      "target": "Palestra di Polder",
+      "kind": "place"
+    },
+    {
+      "source": "Redwood Gym",
+      "target": "Palestra di Redwood",
+      "kind": "place"
+    },
+    {
+      "source": "Fallshore Beach",
+      "target": "Spiaggia di Fallshore",
+      "kind": "place"
+    },
+    {
+      "source": "Ruins of Void",
+      "target": "Rovine del Vuoto",
+      "kind": "place"
+    },
+    {
+      "source": "Great Desert",
+      "target": "Grande Deserto",
+      "kind": "place"
+    },
+    {
+      "source": "Vivill Warehouse",
+      "target": "Magazzino di Vivill",
+      "kind": "place"
+    },
+    {
+      "source": "Cube Space",
+      "target": "Spazio Cubo",
+      "kind": "place"
+    },
+    {
+      "source": "Grim Woods",
+      "target": "Bosco Tetro",
+      "kind": "place"
+    },
+    {
+      "source": "Cinder Volcano",
+      "target": "Vulcano delle Ceneri",
+      "kind": "place"
+    },
+    {
+      "source": "Cinder Volcano Depths",
+      "target": "Profondità del Vulcano delle Ceneri",
+      "kind": "place"
+    },
+    {
+      "source": "Hidden Grotto",
+      "target": "Grotta Nascosta",
+      "kind": "place"
+    },
+    {
+      "source": "Underground Pass",
+      "target": "Passaggio Sotterraneo",
+      "kind": "place"
+    },
+    {
+      "source": "Frost Mountain",
+      "target": "Monte Gelo",
+      "kind": "place"
+    },
+    {
+      "source": "Valley Cave",
+      "target": "Grotta della Valle",
+      "kind": "place"
+    },
+    {
+      "source": "Shadow Base",
+      "target": "Base Ombra",
+      "kind": "place"
+    },
+    {
+      "source": "KBT Expressway",
+      "target": "Superstrada KBT",
+      "kind": "place"
+    },
+    {
+      "source": "Tarmigan Mansion",
+      "target": "Villa Tarmigan",
+      "kind": "place"
+    },
+    {
+      "source": "Flower Paradise",
+      "target": "Paradiso dei Fiori",
+      "kind": "place"
+    },
+    {
+      "source": "Thundercap Mountain",
+      "target": "Monte Thundercap",
+      "kind": "place"
+    },
+    {
+      "source": "Thundercap Mt.",
+      "target": "Monte Thundercap",
+      "kind": "place"
+    },
+    {
+      "source": "Thundercap Mt",
+      "target": "Monte Thundercap",
+      "kind": "place"
+    },
+    {
+      "source": "Mt. Thundercap",
+      "target": "Monte Thundercap",
+      "kind": "place"
+    },
+    {
+      "source": "Rift Cave",
+      "target": "Grotta del Varco",
+      "kind": "place"
+    },
+    {
+      "source": "Vivill Woods",
+      "target": "Bosco di Vivill",
+      "kind": "place"
+    },
+    {
+      "source": "Icicle Cave",
+      "target": "Grotta Ghiacciata",
+      "kind": "place"
+    },
+    {
+      "source": "Auburn Waterway",
+      "target": "Canale Auburn",
+      "kind": "place"
+    },
+    {
+      "source": "Antisis Sewers",
+      "target": "Fogne di Antisis",
+      "kind": "place"
+    },
+    {
+      "source": "Seaport Warehouses",
+      "target": "Magazzini di Seaport",
+      "kind": "place"
+    },
+    {
+      "source": "Black Ferrothorn Turf",
+      "target": "Territorio dei Ferrothorn Neri",
+      "kind": "place"
+    },
+    {
+      "source": "Cootes Bog",
+      "target": "Palude Cootes",
+      "kind": "place"
+    },
+    {
+      "source": "Magnolia Fields",
+      "target": "Campi Magnolia",
+      "kind": "place"
+    },
+    {
+      "source": "Redwood Forest",
+      "target": "Foresta Redwood",
+      "kind": "place"
+    },
+    {
+      "source": "Autl Woods",
+      "target": "Bosco Autl",
+      "kind": "place"
+    },
+    {
+      "source": "Cliff Cave",
+      "target": "Grotta della Scogliera",
+      "kind": "place"
+    },
+    {
+      "source": "Antisis Port",
+      "target": "Porto di Antisis",
+      "kind": "place"
+    },
+    {
+      "source": "Ferrothorn Turf",
+      "target": "Territorio dei Ferrothorn",
+      "kind": "place"
+    },
+    {
+      "source": "Tomb of Borrius",
+      "target": "Tomba di Borrius",
+      "kind": "place"
+    },
+    {
+      "source": "Desert Ruins",
+      "target": "Rovine del Deserto",
+      "kind": "place"
+    },
+    {
+      "source": "Frozen Tomb",
+      "target": "Tomba Ghiacciata",
+      "kind": "place"
+    },
+    {
+      "source": "Battle Mine",
+      "target": "Miniera Lotta",
+      "kind": "place"
+    },
+    {
+      "source": "Battle Circus",
+      "target": "Circo Lotta",
+      "kind": "place"
+    },
+    {
+      "source": "Crystal Peak",
+      "target": "Picco Cristallo",
+      "kind": "place"
+    },
+    {
+      "source": "Glimmer Isle",
+      "target": "Isola Scintillante",
+      "kind": "place"
+    },
+    {
+      "source": "Frozen Forest",
+      "target": "Foresta Ghiacciata",
+      "kind": "place"
+    },
+    {
+      "source": "Lost Tunnel",
+      "target": "Tunnel Perduto",
+      "kind": "place"
+    },
+    {
+      "source": "Icy Hole",
+      "target": "Antro Gelato",
+      "kind": "place"
+    },
+    {
+      "source": "Battleground",
+      "target": "Campo di Lotta",
+      "kind": "place"
+    },
+    {
+      "source": "S.S. Marine",
+      "target": "M/N Marine",
+      "kind": "place"
+    },
+    {
+      "source": "Dehara Dept.",
+      "target": "Grandi Magazzini di Dehara",
+      "kind": "place"
+    },
+    {
+      "source": "Victory Ascent",
+      "target": "Ascesa della Vittoria",
+      "kind": "place"
+    },
+    {
+      "source": "Afterlife",
+      "target": "Aldilà",
+      "kind": "place"
+    },
+    {
+      "source": "Professor Log",
+      "target": "Professor Log",
+      "kind": "character",
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ],
+      "case_sensitive": true
+    },
+    {
+      "source": "Prof. Log",
+      "target": "Prof. Log",
+      "kind": "character",
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ],
+      "case_sensitive": true
+    },
+    {
+      "source": "Euler Log",
+      "target": "Euler Log",
+      "kind": "character",
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ],
+      "case_sensitive": true
+    },
+    {
+      "source": "Melony",
+      "target": "Melony",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Jax",
+      "target": "Jax",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Zeph",
+      "target": "Zeph",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Aklove",
+      "target": "Aklove",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Marlon",
+      "target": "Marlon",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Ivory",
+      "target": "Ivory",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Mirskle",
+      "target": "Mirskle",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Véga",
+      "target": "Véga",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Galavan",
+      "target": "Galavan",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Big Mo",
+      "target": "Big Mo",
+      "kind": "character",
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ],
+      "case_sensitive": true
+    },
+    {
+      "source": "Tessy",
+      "target": "Tessy",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Benjamin",
+      "target": "Benjamin",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Alice",
+      "target": "Alice",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Arthur",
+      "target": "Arthur",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Aros",
+      "target": "Aros",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Fey",
+      "target": "Fey",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Successor Maxima",
+      "target": "Successore Maxima",
+      "kind": "character",
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ],
+      "case_sensitive": true
+    },
+    {
+      "source": "Maxima",
+      "target": "Maxima",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Moleman",
+      "target": "Moleman",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Elias",
+      "target": "Elias",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Arabella",
+      "target": "Arabella",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Penny",
+      "target": "Penny",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Zygardia",
+      "target": "Zygardia",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Mel",
+      "target": "Mel",
+      "kind": "character",
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ],
+      "case_sensitive": true
+    },
+    {
+      "source": "Ayla",
+      "target": "Ayla",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "James",
+      "target": "James",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Sparky",
+      "target": "Sparky",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Rory",
+      "target": "Rory",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Chad",
+      "target": "Chad",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Harth",
+      "target": "Harth",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Nat",
+      "target": "Nat",
+      "kind": "character",
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ],
+      "case_sensitive": true
+    },
+    {
+      "source": "Paula",
+      "target": "Paula",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Milo",
+      "target": "Milo",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Lily",
+      "target": "Lily",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Davy",
+      "target": "Davy",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Krystal",
+      "target": "Krystal",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Zygfried",
+      "target": "Zygfried",
+      "kind": "character",
+      "case_sensitive": true,
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ]
+    },
+    {
+      "source": "Zey",
+      "target": "Zey",
+      "kind": "character",
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ],
+      "case_sensitive": true
+    },
+    {
+      "source": "Looker",
+      "target": "Bellocchio",
+      "kind": "character",
+      "note": "Nome italiano ufficiale Pokémon.",
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ],
+      "case_sensitive": true
+    },
+    {
+      "source": "The Shadows",
+      "target": "Ombre",
+      "kind": "faction"
+    },
+    {
+      "source": "Shadows",
+      "target": "Ombre",
+      "kind": "faction"
+    },
+    {
+      "source": "Shadow Warriors",
+      "target": "Guerrieri Ombra",
+      "kind": "faction"
+    },
+    {
+      "source": "The Shadow Warriors",
+      "target": "Guerrieri Ombra",
+      "kind": "faction"
+    },
+    {
+      "source": "The Shadow Warrior",
+      "target": "Guerriero Ombra",
+      "kind": "faction"
+    },
+    {
+      "source": "Shadow Admin",
+      "target": "Admin Ombra",
+      "full_target": "Amministratore Ombra",
+      "kind": "faction",
+      "limits": [
+        {
+          "categories": [
+            "trainer_classes"
+          ],
+          "max_length": 13,
+          "length_unit": "pcs_bytes",
+          "use_compact_target": true
+        }
+      ]
+    },
+    {
+      "source": "Shadow Grunts",
+      "target": "Reclute Ombra",
+      "kind": "faction"
+    },
+    {
+      "source": "Shadow Grunt",
+      "target": "Recluta Ombra",
+      "kind": "faction"
+    },
+    {
+      "source": "The Shadow",
+      "target": "Ombra",
+      "kind": "feature",
+      "categories": [
+        "battle_messages",
+        "item_descriptions",
+        "scripts"
+      ],
+      "note": "Nome della nave e lemma del messaggio di battaglia; le forme The Shadow Warrior(s) hanno termini più lunghi dedicati."
+    },
+    {
+      "source": "Fall Badge",
+      "target": "Medaglia Autunno",
+      "kind": "feature"
+    },
+    {
+      "source": "Guardian of Borrius",
+      "target": "Guardiano di Borrius",
+      "kind": "feature"
+    },
+    {
+      "source": "Cube Corp.",
+      "target": "Cube Corp.",
+      "kind": "organization"
+    },
+    {
+      "source": "Science Society",
+      "target": "Società Scientifica",
+      "kind": "organization"
+    },
+    {
+      "source": "Black Emboar",
+      "target": "Emboar Neri",
+      "kind": "faction",
+      "limits": [
+        {
+          "categories": [
+            "trainer_classes"
+          ],
+          "max_length": 13,
+          "length_unit": "pcs_bytes"
+        }
+      ]
+    },
+    {
+      "source": "Black Ferrothorn",
+      "target": "Ferrothorn Neri",
+      "kind": "faction"
+    },
+    {
+      "source": "Terror Granbull",
+      "target": "Granbull del Terrore",
+      "kind": "faction"
+    },
+    {
+      "source": "Black Horizon",
+      "target": "Orizzonte Nero",
+      "kind": "faction"
+    },
+    {
+      "source": "Undying Lucario",
+      "target": "Lucario Immortali",
+      "kind": "faction"
+    },
+    {
+      "source": "ADM",
+      "target": "ADM",
+      "kind": "feature",
+      "case_sensitive": false,
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 13,
+          "length_unit": "pcs_bytes"
+        }
+      ]
+    },
+    {
+      "source": "DexNav",
+      "target": "DexNav",
+      "kind": "feature",
+      "case_sensitive": false,
+      "limits": [
+        {
+          "categories": [
+            "start_menu_labels"
+          ],
+          "max_length": 13,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Stat Scanner",
+      "target": "Scannerstat.",
+      "kind": "feature",
+      "full_target": "Scanner Statistiche",
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 13,
+          "length_unit": "pcs_bytes",
+          "use_compact_target": true
+        }
+      ]
+    },
+    {
+      "source": "Trainer Catalogue",
+      "target": "Catalogo Allenatori",
+      "kind": "feature"
+    },
+    {
+      "source": "Mission Log",
+      "target": "Missioni",
+      "kind": "feature",
+      "full_target": "Registro Missioni",
+      "limits": [
+        {
+          "categories": [
+            "start_menu_labels"
+          ],
+          "max_length": 13,
+          "length_unit": "visible_characters",
+          "use_compact_target": true
+        },
+        {
+          "categories": [
+            "setting_names"
+          ],
+          "max_length": 93,
+          "length_unit": "pixels"
+        }
+      ]
+    },
+    {
+      "source": "Mission HQ",
+      "target": "Quartier Generale Missioni",
+      "kind": "feature"
+    },
+    {
+      "source": "Cube System",
+      "target": "Sistema Cubo",
+      "kind": "feature"
+    },
+    {
+      "source": "Cloud Burst",
+      "target": "Scoppio di Nuvole",
+      "kind": "minigame"
+    },
+    {
+      "source": "Mining Scan",
+      "target": "Scansione min.",
+      "kind": "feature",
+      "full_target": "Scansione Mineraria",
+      "limits": [
+        {
+          "categories": [
+            "setting_names"
+          ],
+          "max_length": 93,
+          "length_unit": "pixels",
+          "use_compact_target": true
+        }
+      ]
+    },
+    {
+      "source": "Raid Den",
+      "target": "Tana Raid",
+      "kind": "feature"
+    },
+    {
+      "source": "Raid Dens",
+      "target": "Tane Raid",
+      "kind": "feature"
+    },
+    {
+      "source": "Portal Purge",
+      "target": "Bonifica dei Portali",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Gimme a V",
+      "target": "Dammi una V",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "If We Were Meant to Fly",
+      "target": "Nati per volare",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters",
+          "use_compact_target": true
+        }
+      ],
+      "full_target": "Se fossimo fatti per volare"
+    },
+    {
+      "source": "Sweet Pie",
+      "target": "Torta dolce",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Juicy Pie",
+      "target": "Torta succosa",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Ultimate Pie",
+      "target": "Torta suprema",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Hunter of the Swamp",
+      "target": "Cacciatore della palude",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Major Miner",
+      "target": "Minatore provetto",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "One Purple Balloon",
+      "target": "Un palloncino viola",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Blazing Emeralds",
+      "target": "Smeraldi ardenti",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "And Den There Were None",
+      "target": "E non rimase alcuna tana",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "The Daily Grind",
+      "target": "La routine quotidiana",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Extreme Hyperosmia",
+      "target": "Iperosmia estrema",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Pyukumuku Chucker",
+      "target": "Lanciatore di Pyukumuku",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "The Strongest There Is",
+      "target": "Il più forte che ci sia",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Basic Literacy",
+      "target": "Alfabetizzazione di base",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Don’t Turn Off the Power",
+      "target": "Non spegnere!",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "No Survivors",
+      "target": "Nessun sopravvissuto",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Wingin’ It",
+      "target": "Alla bell'e meglio",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Bye-Bye, Butterfree",
+      "target": "Addio, Butterfree",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "The Communist Revolution",
+      "target": "La rivoluzione comunista",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "The Capitalist Revolution",
+      "target": "La rivoluzione capitalista",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Population Control",
+      "target": "Controllo demografico",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "The Trash-Man",
+      "target": "L'uomo dei rifiuti",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Darwin Was Right",
+      "target": "Darwin aveva ragione",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Exp. Millionaire",
+      "target": "Milionario di PE",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters",
+          "use_compact_target": true
+        }
+      ],
+      "full_target": "Milionario di Punti Esperienza"
+    },
+    {
+      "source": "Honey Gather",
+      "target": "Raccolta di miele",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Neighbourly Assistance",
+      "target": "Aiuto di buon vicinato",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "A Life of No Regrets",
+      "target": "Una vita senza rimpianti",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Warmonger",
+      "target": "Guerrafondaio",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Weed Whacker",
+      "target": "Tagliaerbacce",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "As Hard as They Come",
+      "target": "Più duri non si può",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Treasure Hunter",
+      "target": "Cacciatore di tesori",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Am I Blind?",
+      "target": "Sono cieco?",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "The West Borrius Pokédex",
+      "target": "Pokédex Borrius Ovest",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters",
+          "use_compact_target": true
+        }
+      ],
+      "full_target": "Il Pokédex di Borrius Occidentale"
+    },
+    {
+      "source": "The National Pokédex",
+      "target": "Il Pokédex Nazionale",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "The Most Dangerous Game",
+      "target": "Il gioco più pericoloso",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Butterfly Effect",
+      "target": "Effetto farfalla",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Lost Hanky",
+      "target": "Fazzoletto smarrito",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "A Hero’s Journey",
+      "target": "Il viaggio di un eroe",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "A Heroine’s Journey",
+      "target": "Il viaggio di un'eroina",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "You Are My Only",
+      "target": "Sei il mio unico",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Average Angler",
+      "target": "Pescatore nella media",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Great Piscator",
+      "target": "Grande pescatore",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Fisher Master",
+      "target": "Maestro pescatore",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "All the Right Moves",
+      "target": "Tutte le mosse giuste",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Numbskull",
+      "target": "Testa vuota",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Splishy Splash",
+      "target": "Splash e spruzzi",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Hero of the Hall",
+      "target": "Eroe della Sala d'Onore",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Leg Day",
+      "target": "Giornata delle gambe",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "No Fall Damage",
+      "target": "Nessun danno da caduta",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Shark Bait",
+      "target": "Esca per squali",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Pangs of Hunger",
+      "target": "Morsi della fame",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Flaming Body",
+      "target": "Corpo ardente",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Armoured Magma",
+      "target": "Magma corazzato",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Master Incubator",
+      "target": "Maestro dell'incubazione",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Statue of Regi",
+      "target": "Statua di Regi",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Seasonal Research",
+      "target": "Ricerca stagionale",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "The Wayward Kid",
+      "target": "Il ragazzo smarrito",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Tomb Raider",
+      "target": "Predatore di tombe",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Dowsing Wizard",
+      "target": "Mago del cercoggetti",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Trader Traitor",
+      "target": "Mercante traditore",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "The Powerhouse of the Cell",
+      "target": "La centrale della cellula",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "More Than A Game",
+      "target": "Più di un gioco",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Abandonment Issues",
+      "target": "Problemi di abbandono",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Bad Babysitter",
+      "target": "Pessima babysitter",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "The Black Emboar",
+      "target": "Gli Emboar Neri",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Flushed Away",
+      "target": "Portato via dallo scarico",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "A Minor Scrap",
+      "target": "Una piccola scaramuccia",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Odd Odd Docks",
+      "target": "Strani strani moli",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Supply and Demand",
+      "target": "Domanda e offerta",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "The Battle of Antisis",
+      "target": "La battaglia di Antisis",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "The Endless Nightmare",
+      "target": "L'incubo senza fine",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "The Food Thief",
+      "target": "Il ladro di cibo",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Guardians of the Lake",
+      "target": "Guardiani del lago",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Herd But Not Seen",
+      "target": "Mandria invisibile",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Home for a Hobo",
+      "target": "Una casa per un senzatetto",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Island Saviour",
+      "target": "Salvatore dell'isola",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Nine Tails of Snow",
+      "target": "Nove code di neve",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Protector of the Swamp",
+      "target": "Protettore della palude",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "A Rift in Space",
+      "target": "Una frattura nello spazio",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "The Rogue Electivire",
+      "target": "L'Electivire ribelle",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Swords of Justice",
+      "target": "Spade della Giustizia",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "The Terror Granbull",
+      "target": "I Granbull del Terrore",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    },
+    {
+      "source": "Too Much TV",
+      "target": "Troppa TV",
+      "kind": "mission",
+      "categories": [
+        "mission_names"
+      ],
+      "limits": [
+        {
+          "categories": [
+            "mission_names"
+          ],
+          "max_length": 26,
+          "length_unit": "visible_characters"
+        }
+      ]
+    }
+  ]
+}

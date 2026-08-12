@@ -207,8 +207,19 @@ python 003_llm_translate.py out/unbound-texts-prepared.json --target it --api-ba
 ```
 
 Before LLM calls, the translator queries [PokeAPI v2](https://pokeapi.co/docs/v2) using category-specific IDs, slugs,
-English-source matching, and version-aware flavor-text matching. Existing translations win; ROM-exclusive records,
-protected-token entries, unavailable localizations, and unmatched text fall back to the LLM.
+English-source matching, and version-aware flavor-text matching. Existing glossary-conforming translations win;
+ROM-exclusive records, protected-token entries, unavailable localizations, and unmatched text fall back to the LLM.
+
+Target-language Unbound terminology lives in `glossaries/<language>.json`. When a glossary exists, the translator
+loads it automatically, protects every matched place, character, faction, feature, and mission name during LLM calls,
+then writes the approved target term into `translated`. On resume, an existing translation missing a required glossary
+term is queued for translation again. Use `--glossary PATH` to test another glossary or `--no-glossary` only for
+diagnosis. `glossaries/it.json` is the initial Italian proposal and should be reviewed before its wording is treated as
+final.
+
+Glossary entries with rigid limits record category-specific `max_length` values and their measurement unit. If full
+wording does not fit, `full_target` preserves it while `target` contains the compact reviewable in-game value;
+`use_compact_target` marks only limits requiring that value. Other contexts use `full_target`.
 
 PokeAPI responses are cached under `.cache/pokeapi` and looked up in parallel. The cache is ignored by Git and should
 not be committed. Resume an interrupted translation by repeating the same command with `--resume`.

@@ -41,12 +41,13 @@ release input is `ready-translations/it.json`.
 
 - `001_extract_unbound_text.py`: lossless extraction and coverage audit.
 - `002_prepare_translation_text.py`: layout cleanup and readable protected-token placeholders.
-- `003_llm_translate.py`: PokeAPI localization, LLM fallback, resume, and filters.
+- `003_llm_translate.py`: target glossary enforcement, PokeAPI localization, LLM fallback, resume, and filters.
 - `004_controlfix_translations.py`: token repair and category-specific layout.
 - `005_hybrid_injector.py`: transactional in-place writes, relocation, runtime patches, and map output.
 - `006_decontrolfix_translations.py`: editable cleanup of controlfixed JSON.
 - `lib/pcs_text.py`: authoritative PCS codec.
 - `lib/translation_tokens.py`: protected-token and layout helpers.
+- `glossaries/<language>.json`: approved Unbound-specific names and terminology enforced during translation.
 - `patches/<language>/*.py`: one language-specific runtime behavior per file.
 - `ready-translations/`: complete controlfixed release inputs.
 - `.agents/skills/unbound-*`: detailed task workflows. Use the matching skill instead of adding procedure here.
@@ -64,6 +65,7 @@ release input is `ready-translations/it.json`.
 
 - Prepare before translation; controlfix after translation and before injection.
 - Preserve semantic/control tokens exactly unless a tested grammar rule explicitly permits reordering.
+- Keep Unbound-specific terminology in the target glossary; every matched occurrence must restore its glossary target.
 - For manual wording, use PokeAPI localization first, then Bulbapedia/Pokemon Database, then the official target-
   language FireRed ROM. Italian FireRed is `out/red_ita.gba`.
 - Keep wording in translation JSON. Put target-language runtime behavior in `patches/<language>/`, not shared scripts.

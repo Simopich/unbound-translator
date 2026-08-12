@@ -15,6 +15,12 @@ from pathlib import Path
 from queue import Empty, Queue
 
 from lib import translation_tokens
+from lib.translation_glossary import (
+    GlossaryError,
+    default_glossary_path,
+    load_glossary,
+    restore_glossary_placeholders,
+)
 from lib.pokeapi_localizer import (
     CATEGORY_SPECS,
     PokeAPILocalizer,
@@ -188,6 +194,24 @@ def apply_existing_translations(data, existing_data):
             entry["translated"] = existing_entry["translated"]
             applied += 1
     return applied
+
+
+def invalidate_nonconforming_glossary_translations(data, glossary):
+    invalidated = 0
+    for entry in iter_entries(data):
+        if not has_translation(entry):
+            continue
+        source = entry.get("translation_source")
+        if not isinstance(source, str):
+            source = strip_hma_quotes(entry.get("original", ""))
+        if glossary.missing_targets(
+            source,
+            entry["translated"],
+            entry.get("category", ""),
+        ):
+            del entry["translated"]
+            invalidated += 1
+    return invalidated
 
 
 def parse_value_set(value):
@@ -378,6 +402,8 @@ def make_system_prompt(target):
         "- semantic_placeholder_counts maps each placeholder to the number of "
         "times it MUST appear in your translation: no more, no fewer, none added, "
         "none renamed.\n"
+        "- Preserve every placeholder listed in glossary_replacements exactly once. "
+        "They will be replaced deterministically with approved target-language names.\n"
         "- Layout markers such as line breaks, \\n, \\l, \\p, and \\pn are not "
         "semantic tokens. They were removed before translation and will be "
         "recomputed later, so do not add them.\n"
@@ -403,6 +429,7 @@ def make_user_prompt(batch, target):
             ),
             "semantic_tokens": item["semantic_tokens"],
             "semantic_token_counts": token_counts_to_dict(item["semantic_token_counts"]),
+            "glossary_replacements": item["glossary_replacements"],
         }
         for item in batch
     ]
@@ -424,6 +451,7 @@ def make_single_system_prompt(target):
         "tokens and have meaningful labels such as [player-name-1] or "
         "[control-code-2]. Do not add layout markers such as \\n, \\l, \\p, or "
         "\\pn.\n"
+        "Preserve every placeholder listed in glossary_replacements exactly once.\n"
         "Return only valid JSON in this exact shape:\n"
         '{"translated":"translated text"}\n'
     )
@@ -442,6 +470,7 @@ def make_single_user_prompt(item, target):
             ),
             "semantic_tokens": item["semantic_tokens"],
             "semantic_token_counts": token_counts_to_dict(item["semantic_token_counts"]),
+            "glossary_replacements": item["glossary_replacements"],
         },
         ensure_ascii=False,
     )
@@ -454,6 +483,7 @@ def make_plain_single_system_prompt(target):
         "Preserve every placeholder listed in semantic_placeholders exactly and "
         "in the same count. Do not add layout markers such as \\n, \\l, \\p, or "
         "\\pn.\n"
+        "Preserve every placeholder listed in glossary_replacements exactly once.\n"
         "Return only the translated text. Do not return JSON. Do not explain.\n"
     )
 
@@ -664,6 +694,19 @@ def validate_and_restore_semantic_tokens(batch, translations):
             raise RetryableTranslationError(
                 "unresolved semantic/control placeholder in model output."
             )
+        try:
+            restored = restore_glossary_placeholders(
+                restored,
+                item["glossary_replacements"],
+            )
+        except GlossaryError as exc:
+            print(
+                f"warning: glossary placeholder mismatch for {item['id']}: {exc}; retrying",
+                file=sys.stderr,
+            )
+            raise RetryableTranslationError(
+                "glossary placeholder mismatch in model output."
+            ) from exc
         restored_translations.append(restored)
 
     return validate_semantic_tokens(batch, restored_translations)
@@ -1062,7 +1105,7 @@ class CodexExecClient:
         return parse_model_json(content)
 
 
-def build_work_items(data):
+def build_work_items(data, glossary=None):
     work = []
     skipped_empty = 0
     already_translated = 0
@@ -1108,6 +1151,13 @@ def build_work_items(data):
             semantic_placeholders = []
             semantic_placeholder_counts = Counter()
 
+        glossary_replacements = []
+        if glossary is not None:
+            text, glossary_replacements = glossary.protect(
+                text,
+                entry.get("category", ""),
+            )
+
         work.append(
             {
                 "id": entry_key(index, entry),
@@ -1118,6 +1168,7 @@ def build_work_items(data):
                 "semantic_token_placeholders": semantic_token_placeholders,
                 "semantic_tokens": protected_tokens,
                 "semantic_token_counts": protected_token_counts,
+                "glossary_replacements": glossary_replacements,
                 "entry": entry,
             }
         )
@@ -1330,6 +1381,17 @@ def parse_args():
         help="Disable PokeAPI localization and send all missing entries to the LLM.",
     )
     parser.add_argument(
+        "--glossary",
+        help=(
+            "Glossary JSON path. Defaults to glossaries/<target>.json when present."
+        ),
+    )
+    parser.add_argument(
+        "--no-glossary",
+        action="store_true",
+        help="Disable the target language glossary.",
+    )
+    parser.add_argument(
         "--pokeapi-base",
         default="https://pokeapi.co/api/v2",
         help="PokeAPI v2 base URL. Default: https://pokeapi.co/api/v2.",
@@ -1441,6 +1503,8 @@ def validate_args(args, output_path):
         )
     if args.resume and args.overwrite:
         raise SystemExit("error: --resume and --overwrite cannot be used together")
+    if args.glossary and args.no_glossary:
+        raise SystemExit("error: --glossary and --no-glossary cannot be used together")
 
 
 def main():
@@ -1452,6 +1516,15 @@ def main():
     validate_args(args, output_path)
 
     data = load_json(input_path)
+    glossary = None
+    if not args.no_glossary:
+        glossary_path = Path(args.glossary) if args.glossary else default_glossary_path(args.target)
+        if glossary_path is not None:
+            try:
+                glossary = load_glossary(glossary_path, expected_language=args.target)
+            except GlossaryError as exc:
+                raise SystemExit(f"error: {exc}") from exc
+            print(f"glossary: loaded {len(glossary.terms)} terms from {glossary_path}")
     include_ids = parse_value_set(args.include_ids)
     include_ranges = parse_id_ranges(args.include_id_ranges)
     include_categories = parse_category_set(args.include_categories)
@@ -1489,7 +1562,14 @@ def main():
     elif args.resume:
         print(f"resume: {output_path} does not exist yet; starting from input JSON")
 
-    work, already_translated, skipped_empty = build_work_items(data)
+    if glossary is not None:
+        invalidated = invalidate_nonconforming_glossary_translations(data, glossary)
+        if invalidated:
+            print(
+                f"glossary: queued {invalidated} existing translations for refresh"
+            )
+
+    work, already_translated, skipped_empty = build_work_items(data, glossary)
     total_missing_before_limit = len(work)
     if args.priority_order:
         sort_work_by_priority(work)

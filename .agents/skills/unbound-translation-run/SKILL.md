@@ -23,10 +23,29 @@ python 003_llm_translate.py out/unbound-texts-prepared.json --target it --api-ba
 Use `--resume` with the same input/output. Use `--rate-limit N` for a global request cap. Use `--auth chatgpt` only
 after `codex login` or with `CODEX_ACCESS_TOKEN`.
 
+## Unbound Glossary
+
+`glossaries/<target>.json` loads automatically when present. Each term requires `source`, `target`, and `kind`; optional
+`note` records evidence or editorial intent, `case_sensitive` defaults to true, and `categories` limits ambiguous terms
+to named extraction categories. Scope mission titles to `mission_names` so titles such as `Honey Gather` cannot replace
+same-named official moves, items, or abilities. Keep only Unbound-specific proper names, places, factions, features,
+and named missions here. Official franchise terminology remains owned by PokeAPI.
+
+Rigid renderer or PCS-slot contracts use `limits`, each containing `categories`, positive `max_length`, and
+`length_unit` (`visible_characters`, `pixels`, or `pcs_bytes`). When complete wording exceeds a listed limit, keep
+compact approved wording in `target`, complete wording in `full_target`, and set `use_compact_target` on the specific
+failing limit. Translator uses compact `target` only for those categories and restores `full_target` elsewhere. Never
+store silent truncation as glossary wording.
+
+Matched source occurrences become protected glossary placeholders before an LLM call. The translator rejects a model
+response that loses, duplicates, or invents one, then restores the glossary target into `translated`. During resume,
+existing translations missing required targets are cleared and queued again. Use `--glossary PATH` for review variants;
+use `--no-glossary` only for diagnosis.
+
 ## PokeAPI First
 
 PokeAPI localization precedes LLM fallback for Pokemon names/species/descriptions, moves, items, abilities, types,
-natures, and habitats. Existing translations take precedence. Numeric IDs/slugs plus normalized English matching guard
+natures, and habitats. Existing glossary-conforming translations take precedence. Numeric IDs/slugs plus normalized English matching guard
 against placeholder/reordered ROM rows; unmatched, ROM-exclusive, tokenized, or unavailable records fall back to LLM.
 
 Cache responses under `.cache/pokeapi` and keep that directory uncommitted. Tune with `--pokeapi-workers`,
