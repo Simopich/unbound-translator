@@ -105504,19 +105504,6 @@
       "translated": "Gli strumenti tenuti devono essere diversi!"
     },
     {
-      "id": "tbl_menu_pokemon_00020_41736B",
-      "category": "menu_pokemon",
-      "address": "0x41736B",
-      "pointer_sources": [],
-      "original": "\"t is much too fast!\"",
-      "byte_length": 20,
-      "is_pointer_based": false,
-      "table_name": "data.menus.text.pokemon",
-      "table_index": 20,
-      "translation_source": "t is much too fast!",
-      "translated": "È troppo veloce!"
-    },
-    {
       "id": "tbl_menu_pokemon_00021_417242",
       "category": "menu_pokemon",
       "address": "0x417242",
@@ -198091,119 +198078,6 @@
       "is_pointer_based": true,
       "translation_source": "EVs:",
       "translated": "EVs:"
-    },
-    {
-      "id": "scr_876331",
-      "category": "pointer_texts",
-      "address": "0x876331",
-      "pointer_sources": [
-        "0x178CFF4"
-      ],
-      "original": "\"   Dive Ball\"",
-      "byte_length": 13,
-      "is_pointer_based": true,
-      "translation_source": "Dive Ball",
-      "translated": "Sub Ball"
-    },
-    {
-      "id": "scr_877326",
-      "category": "pointer_texts",
-      "address": "0x877326",
-      "pointer_sources": [
-        "0x1AC5744"
-      ],
-      "original": "\"          Dawn Stone\"",
-      "byte_length": 21,
-      "is_pointer_based": true,
-      "translation_source": "Dawn Stone",
-      "translated": "Pietralbore"
-    },
-    {
-      "id": "scr_877698",
-      "category": "pointer_texts",
-      "address": "0x877698",
-      "pointer_sources": [
-        "0x1CD27DC"
-      ],
-      "original": "\"        Mega Tiara\"",
-      "byte_length": 19,
-      "is_pointer_based": true,
-      "translation_source": "Mega Tiara",
-      "translated": "Tiara Mega"
-    },
-    {
-      "id": "scr_87771F",
-      "category": "pointer_texts",
-      "address": "0x87771F",
-      "pointer_sources": [
-        "0xBE538C"
-      ],
-      "original": "\" À   Glitter Mail\"",
-      "byte_length": 18,
-      "is_pointer_based": true,
-      "translation_source": "À Glitter Mail",
-      "translated": "Posta Brillante"
-    },
-    {
-      "id": "scr_877777",
-      "category": "pointer_texts",
-      "address": "0x877777",
-      "pointer_sources": [
-        "0x39CA60",
-        "0xAF68E4",
-        "0xAF78E8",
-        "0xAF80E8",
-        "0xAF88E8",
-        "0xAF910C",
-        "0xAFA110",
-        "0xAFA910",
-        "0xAFB110",
-        "0xE74A5C"
-      ],
-      "original": "\" Â   Wood Mail\"",
-      "byte_length": 15,
-      "is_pointer_based": true,
-      "translation_source": "Â Wood Mail",
-      "translated": "Lettera Legno"
-    },
-    {
-      "id": "scr_87871E",
-      "category": "pointer_texts",
-      "address": "0x87871E",
-      "pointer_sources": [
-        "0x18F3360"
-      ],
-      "original": "\"  Dragon Fang\"",
-      "byte_length": 14,
-      "is_pointer_based": true,
-      "translation_source": "Dragon Fang",
-      "translated": "Dente Drago"
-    },
-    {
-      "id": "scr_878770",
-      "category": "pointer_texts",
-      "address": "0x878770",
-      "pointer_sources": [
-        "0xD02FEC"
-      ],
-      "original": "\"        Up-Grade\"",
-      "byte_length": 17,
-      "is_pointer_based": true,
-      "translation_source": "Up-Grade",
-      "translated": "Upgrade"
-    },
-    {
-      "id": "scr_87DDBD",
-      "category": "pointer_texts",
-      "address": "0x87DDBD",
-      "pointer_sources": [
-        "0x43C44"
-      ],
-      "original": "\"   Flower Sweet\"",
-      "byte_length": 16,
-      "is_pointer_based": true,
-      "translation_source": "Flower Sweet",
-      "translated": "Dolce Fiore"
     },
     {
       "id": "scr_8854B0",

@@ -124,6 +124,30 @@ class AlignedPointerTextTests(unittest.TestCase):
         self.assertEqual(merged[0]["category"], "menu")
         self.assertEqual(merged[0]["pointer_sources"], ["0x100", "0x200"])
 
+    def test_pointer_alias_overlapping_structured_slot_is_rejected(self):
+        rom = bytearray(128)
+        source = 4
+        target = 40
+        encoded = Charmap().encode("    Dawn Stone")
+        rom[source: source + 4] = (0x08000000 + target).to_bytes(4, "little")
+        rom[target: target + len(encoded)] = encoded
+
+        entries, stats = EXTRACTOR.scan_pointer_texts(
+            bytes(rom),
+            known_targets={44},
+            known_pointer_sources=set(),
+            min_target=1,
+            max_length=64,
+            start_index=0,
+            occupied_ranges=[(44, 57)],
+        )
+
+        self.assertEqual(entries, [])
+        self.assertEqual(stats["overlap_targets"], 1)
+
+    def test_mid_string_manual_menu_owner_is_excluded(self):
+        self.assertIn(0x41736B, EXTRACTOR.MANUAL_TEXT_EXCLUDED_ADDRESSES)
+
     def test_bounty_descriptions_use_non_scrolling_category(self):
         self.assertEqual(len(EXTRACTOR.MISSION_DESCRIPTION_TEXT_ADDRESSES), 82)
         for address in EXTRACTOR.MISSION_DESCRIPTION_TEXT_ADDRESSES:

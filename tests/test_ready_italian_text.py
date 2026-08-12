@@ -102,6 +102,13 @@ def test_opening_intro_is_clear_and_keeps_paragraph_boundaries():
         assert all(len(line.replace("{B4}", "'")) <= 35 for line in translated.splitlines())
 
 
+def test_dawn_stone_uses_only_the_structured_item_name_owner():
+    entries = ready_entries()
+
+    assert entries["tbl_item_names_00100_877330"]["translated"] == "Pietralbore"
+    assert "scr_877326" not in entries
+
+
 def test_gendered_dialogue_fragments_are_all_translated():
     entries = ready_entries()
     fragments = [

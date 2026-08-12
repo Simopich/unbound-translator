@@ -668,6 +668,12 @@ MANUAL_TEXT_POINTER_SOURCES = {
     0x1FA7656: [0x1EAB923],
 }
 
+# Addresses retained in their manual-table lists to keep later table indices
+# stable, but rejected as disproven translation owners.
+MANUAL_TEXT_EXCLUDED_ADDRESSES = {
+    0x41736B,  # Mid-string suffix of "The current is much too fast!"
+}
+
 
 MANUAL_TEXT_RANGES = [
     ManualTextRange("menu_game_settings", "data.menus.text.gameSettings.range", 0x1F4DA6C, 0x1F4DA71),
@@ -1215,6 +1221,8 @@ def extract_manual_tables(
     if include_tables:
         for category, (table_name, addresses) in MANUAL_TEXT_TABLES.items():
             for index, address in enumerate(addresses):
+                if address in MANUAL_TEXT_EXCLUDED_ADDRESSES:
+                    continue
                 result = decode_pcs(rom, address, DEFAULT_MAX_TEXT_LENGTH)
                 known_targets.add(address)
                 pointer_sources = list(
@@ -1325,10 +1333,11 @@ def scan_pointer_texts(
 
     entries = []
     script_index = 0
-    occupied = sorted(occupied_ranges or [])
+    occupied = merge_ranges(occupied_ranges or [])
+    protected_ranges = list(occupied)
     mission_title_targets = mission_registration_title_addresses(rom)
     for target in sorted(sources_by_target):
-        if offset_in_ranges(target, occupied):
+        if range_overlaps(target, target + 1, occupied):
             stats["overlap_targets"] += 1
             continue
         is_aligned_only = target not in normal_targets
@@ -1336,6 +1345,14 @@ def scan_pointer_texts(
             stats["excluded_aligned_targets"] += 1
             continue
         result = decode_pcs(rom, target, max_length)
+        if range_overlaps(target, target + result.byte_length, protected_ranges):
+            # A pointer may start in padding immediately before a structured
+            # slot and decode through that slot's terminator.  It is an alias,
+            # not an independent translation owner; writing it separately can
+            # overwrite the structured value (for example Dawn Stone in the
+            # item-name table).
+            stats["overlap_targets"] += 1
+            continue
         if target not in mission_title_targets and any(
                 target < title < target + result.byte_length
                 for title in mission_title_targets
@@ -1362,8 +1379,7 @@ def scan_pointer_texts(
                 sources_by_target[target],
             )
         )
-        occupied.append((target, target + result.byte_length))
-        occupied.sort()
+        insert_merged_range(occupied, target, target + result.byte_length)
         script_index += 1
         if is_aligned_only:
             stats["aligned_pointer_text_accepted"] += 1
@@ -1374,6 +1390,58 @@ def scan_pointer_texts(
 
 def offset_in_ranges(offset: int, ranges: list[tuple[int, int]]) -> bool:
     return any(start < offset < end for start, end in ranges)
+
+
+def range_overlaps(
+    start: int,
+    end: int,
+    ranges: list[tuple[int, int]],
+) -> bool:
+    low = 0
+    high = len(ranges)
+    while low < high:
+        middle = (low + high) // 2
+        if ranges[middle][0] < end:
+            low = middle + 1
+        else:
+            high = middle
+    return low > 0 and ranges[low - 1][1] > start
+
+
+def merge_ranges(ranges: list[tuple[int, int]]) -> list[tuple[int, int]]:
+    merged: list[tuple[int, int]] = []
+    for start, end in sorted(ranges):
+        if merged and start <= merged[-1][1]:
+            previous_start, previous_end = merged[-1]
+            merged[-1] = (previous_start, max(previous_end, end))
+        else:
+            merged.append((start, end))
+    return merged
+
+
+def insert_merged_range(
+    ranges: list[tuple[int, int]],
+    start: int,
+    end: int,
+) -> None:
+    low = 0
+    high = len(ranges)
+    while low < high:
+        middle = (low + high) // 2
+        if ranges[middle][0] < start:
+            low = middle + 1
+        else:
+            high = middle
+    index = low
+    if index and ranges[index - 1][1] >= start:
+        index -= 1
+        start = min(start, ranges[index][0])
+        end = max(end, ranges[index][1])
+    last = index
+    while last < len(ranges) and ranges[last][0] <= end:
+        end = max(end, ranges[last][1])
+        last += 1
+    ranges[index:last] = [(start, end)]
 
 
 def is_text_pointer_source(rom: bytes, source: int, target: int) -> bool:
