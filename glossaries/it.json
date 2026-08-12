@@ -1093,6 +1093,456 @@
       "kind": "feature"
     },
     {
+      "source": "Leaf Badge",
+      "target": "Medaglia Foglia",
+      "kind": "feature",
+      "note": "Nome della Medaglia della Palestra di Dresco documentato dalla Unbound Wiki."
+    },
+    {
+      "source": "Vision Badge",
+      "target": "Medaglia Visione",
+      "kind": "feature",
+      "note": "Nome della Medaglia della Palestra di Crater documentato dalla Unbound Wiki."
+    },
+    {
+      "source": "Wings Badge",
+      "target": "Medaglia Ala",
+      "kind": "feature",
+      "note": "Nome della Medaglia della Palestra di Blizzard documentato dalla Unbound Wiki."
+    },
+    {
+      "source": "Battery Badge",
+      "target": "Medaglia Batteria",
+      "kind": "feature",
+      "note": "Nome della Medaglia della Palestra di Dehara documentato dalla Unbound Wiki."
+    },
+    {
+      "source": "Ring Badge",
+      "target": "Medaglia Anello",
+      "kind": "feature",
+      "note": "Nome della Medaglia della Palestra di Antisis documentato dalla Unbound Wiki."
+    },
+    {
+      "source": "Swamp Badge",
+      "target": "Medaglia Palude",
+      "kind": "feature",
+      "note": "Nome della Medaglia della Palestra di Polder documentato dalla Unbound Wiki."
+    },
+    {
+      "source": "Time Badge",
+      "target": "Medaglia Tempo",
+      "kind": "feature",
+      "note": "Nome della Medaglia della Palestra di Redwood documentato dalla Unbound Wiki."
+    },
+    {
+      "source": "Dresco Town Gym",
+      "target": "Palestra di Dresco",
+      "kind": "place"
+    },
+    {
+      "source": "Crater Town Gym",
+      "target": "Palestra di Crater",
+      "kind": "place"
+    },
+    {
+      "source": "Blizzard City Gym",
+      "target": "Palestra di Blizzard",
+      "kind": "place"
+    },
+    {
+      "source": "Fallshore City Gym",
+      "target": "Palestra di Fallshore",
+      "kind": "place"
+    },
+    {
+      "source": "Dehara City Gym",
+      "target": "Palestra di Dehara",
+      "kind": "place"
+    },
+    {
+      "source": "Antisis City Gym",
+      "target": "Palestra di Antisis",
+      "kind": "place"
+    },
+    {
+      "source": "Polder Town Gym",
+      "target": "Palestra di Polder",
+      "kind": "place"
+    },
+    {
+      "source": "Redwood Village Gym",
+      "target": "Palestra di Redwood",
+      "kind": "place"
+    },
+    {
+      "source": "Cloud Game Corner",
+      "target": "Sala Giochi Cloud",
+      "kind": "place",
+      "note": "Struttura esclusiva di Borrius documentata dalla Unbound Wiki."
+    },
+    {
+      "source": "Magnolia Café",
+      "target": "Caffè Magnolia",
+      "kind": "place"
+    },
+    {
+      "source": "Magnolia Cafe",
+      "target": "Caffè Magnolia",
+      "kind": "place",
+      "note": "Variante senza accento presente nel testo della ROM."
+    },
+    {
+      "source": "Dream Research Lab",
+      "target": "Laboratorio di Ricerca sui Sogni",
+      "kind": "place"
+    },
+    {
+      "source": "Pokémon Breeder’s School",
+      "target": "Scuola per Allevatori Pokémon",
+      "kind": "place"
+    },
+    {
+      "source": "Breeder’s School",
+      "target": "Scuola per Allevatori",
+      "kind": "place"
+    },
+    {
+      "source": "Unbound Cloud",
+      "target": "Unbound Cloud",
+      "kind": "feature",
+      "note": "Nome proprio del servizio cloud del gioco."
+    },
+    {
+      "source": "Pep Quiz",
+      "target": "Quiz della grinta",
+      "kind": "feature"
+    },
+    {
+      "source": "Mega Trainer",
+      "target": "Allen. Mega",
+      "full_target": "Allenatore Mega",
+      "kind": "character",
+      "limits": [
+        {
+          "categories": [
+            "trainer_classes"
+          ],
+          "max_length": 13,
+          "length_unit": "pcs_bytes",
+          "use_compact_target": true
+        }
+      ]
+    },
+    {
+      "source": "Natasha",
+      "target": "Natasha",
+      "kind": "character",
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "plain_scripts",
+        "item_descriptions",
+        "mission_descriptions",
+        "mission_objectives",
+        "trainer_classes"
+      ],
+      "case_sensitive": true,
+      "note": "Personaggio nominato nella Unbound Wiki e nel testo della ROM."
+    },
+    {
+      "source": "Barrier Key",
+      "target": "Ch. Barriera",
+      "full_target": "Chiave Barriera",
+      "kind": "item",
+      "categories": [
+        "item_names",
+        "scripts"
+      ],
+      "case_sensitive": true,
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 13,
+          "length_unit": "pcs_bytes",
+          "use_compact_target": true
+        }
+      ]
+    },
+    {
+      "source": "Baby Monitor",
+      "target": "Baby monitor",
+      "kind": "item",
+      "categories": [
+        "item_names",
+        "scripts"
+      ],
+      "case_sensitive": true,
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 13,
+          "length_unit": "pcs_bytes"
+        }
+      ]
+    },
+    {
+      "source": "Braille Converter",
+      "target": "Conv. Braille",
+      "full_target": "Convertitore Braille",
+      "kind": "item",
+      "categories": [
+        "item_names",
+        "scripts"
+      ],
+      "case_sensitive": true,
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 18,
+          "length_unit": "pcs_bytes",
+          "use_compact_target": true
+        }
+      ]
+    },
+    {
+      "source": "Costume Box",
+      "target": "Box Costumi",
+      "full_target": "Scatola Costumi",
+      "kind": "item",
+      "categories": [
+        "item_names",
+        "scripts",
+        "start_menu_labels"
+      ],
+      "case_sensitive": true,
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 13,
+          "length_unit": "pcs_bytes",
+          "use_compact_target": true
+        },
+        {
+          "categories": [
+            "start_menu_labels"
+          ],
+          "max_length": 13,
+          "length_unit": "visible_characters",
+          "use_compact_target": true
+        }
+      ]
+    },
+    {
+      "source": "Frontier Card",
+      "target": "Carta Front.",
+      "full_target": "Carta della Frontiera",
+      "kind": "item",
+      "categories": [
+        "item_names",
+        "scripts"
+      ],
+      "case_sensitive": true,
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 14,
+          "length_unit": "pcs_bytes",
+          "use_compact_target": true
+        }
+      ]
+    },
+    {
+      "source": "Grubby Hanky",
+      "target": "Fazz. Sporco",
+      "full_target": "Fazzoletto Sporco",
+      "kind": "item",
+      "categories": [
+        "item_names",
+        "scripts"
+      ],
+      "case_sensitive": true,
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 13,
+          "length_unit": "pcs_bytes",
+          "use_compact_target": true
+        }
+      ]
+    },
+    {
+      "source": "Jade Orb",
+      "target": "Sfera Giada",
+      "full_target": "Sfera di Giada",
+      "kind": "item",
+      "categories": [
+        "item_names",
+        "scripts"
+      ],
+      "case_sensitive": true,
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 13,
+          "length_unit": "pcs_bytes",
+          "use_compact_target": true
+        }
+      ]
+    },
+    {
+      "source": "Motorcycle",
+      "target": "Motocicletta",
+      "kind": "item",
+      "categories": [
+        "item_names",
+        "scripts"
+      ],
+      "case_sensitive": true,
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 13,
+          "length_unit": "pcs_bytes"
+        }
+      ]
+    },
+    {
+      "source": "Notebook",
+      "target": "Taccuino",
+      "kind": "item",
+      "categories": [
+        "item_names",
+        "scripts"
+      ],
+      "case_sensitive": true,
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 13,
+          "length_unit": "pcs_bytes"
+        }
+      ]
+    },
+    {
+      "source": "Porta-PC",
+      "target": "Porta-PC",
+      "kind": "item",
+      "categories": [
+        "item_names",
+        "scripts"
+      ],
+      "case_sensitive": true,
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 13,
+          "length_unit": "pcs_bytes"
+        }
+      ]
+    },
+    {
+      "source": "Time Turner",
+      "target": "Giratempo",
+      "kind": "item",
+      "categories": [
+        "item_names",
+        "scripts"
+      ],
+      "case_sensitive": true,
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 13,
+          "length_unit": "pcs_bytes"
+        }
+      ]
+    },
+    {
+      "source": "Key Card: 1",
+      "target": "Carta Ch. 1",
+      "full_target": "Carta Chiave: 1",
+      "kind": "item",
+      "categories": [
+        "item_names",
+        "scripts"
+      ],
+      "case_sensitive": true,
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 13,
+          "length_unit": "pcs_bytes",
+          "use_compact_target": true
+        }
+      ]
+    },
+    {
+      "source": "Key Card: 2",
+      "target": "Carta Ch. 2",
+      "full_target": "Carta Chiave: 2",
+      "kind": "item",
+      "categories": [
+        "item_names",
+        "scripts"
+      ],
+      "case_sensitive": true,
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 13,
+          "length_unit": "pcs_bytes",
+          "use_compact_target": true
+        }
+      ]
+    },
+    {
+      "source": "Key Card: 3",
+      "target": "Carta Ch. 3",
+      "full_target": "Carta Chiave: 3",
+      "kind": "item",
+      "categories": [
+        "item_names",
+        "scripts"
+      ],
+      "case_sensitive": true,
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 13,
+          "length_unit": "pcs_bytes",
+          "use_compact_target": true
+        }
+      ]
+    },
+    {
       "source": "Guardian of Borrius",
       "target": "Guardiano di Borrius",
       "kind": "feature"

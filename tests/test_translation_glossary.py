@@ -234,6 +234,55 @@ def test_every_italian_limited_target_fits_its_recorded_limit():
                 )
 
 
+def test_italian_glossary_covers_unbound_wiki_terms_found_in_rom():
+    glossary = load_glossary(ROOT / "glossaries" / "it.json", expected_language="it")
+    sources = {term.source for term in glossary.terms}
+
+    expected = {
+        "Leaf Badge",
+        "Vision Badge",
+        "Wings Badge",
+        "Battery Badge",
+        "Ring Badge",
+        "Swamp Badge",
+        "Time Badge",
+        "Dresco Town Gym",
+        "Crater Town Gym",
+        "Blizzard City Gym",
+        "Fallshore City Gym",
+        "Dehara City Gym",
+        "Antisis City Gym",
+        "Polder Town Gym",
+        "Redwood Village Gym",
+        "Cloud Game Corner",
+        "Magnolia Café",
+        "Magnolia Cafe",
+        "Dream Research Lab",
+        "Pokémon Breeder’s School",
+        "Breeder’s School",
+        "Unbound Cloud",
+        "Pep Quiz",
+        "Mega Trainer",
+        "Natasha",
+        "Barrier Key",
+        "Baby Monitor",
+        "Braille Converter",
+        "Costume Box",
+        "Frontier Card",
+        "Grubby Hanky",
+        "Jade Orb",
+        "Motorcycle",
+        "Notebook",
+        "Porta-PC",
+        "Time Turner",
+        "Key Card: 1",
+        "Key Card: 2",
+        "Key Card: 3",
+    }
+
+    assert expected <= sources
+
+
 def test_every_exact_nonrelocatable_glossary_name_records_its_pcs_limit():
     glossary = load_glossary(ROOT / "glossaries" / "it.json", expected_language="it")
     ready = json.loads(
@@ -266,8 +315,22 @@ def test_every_exact_nonrelocatable_glossary_name_records_its_pcs_limit():
         checked.append(entry["id"])
 
     assert checked == [
+        "tbl_item_names_00266_878FB8",
+        "tbl_item_names_00269_EB92FC",
         "tbl_item_names_00278_8791C8",
+        "tbl_item_names_00281_87924C",
+        "tbl_item_names_00282_879278",
+        "tbl_item_names_00283_8792A4",
+        "tbl_item_names_00348_879DD0",
+        "tbl_item_names_00350_879E28",
+        "tbl_item_names_00355_879F04",
+        "tbl_item_names_00356_879F30",
+        "tbl_item_names_00359_879FB4",
+        "tbl_item_names_00360_879FE0",
         "tbl_item_names_00366_87A0E8",
+        "tbl_item_names_00367_87A114",
+        "tbl_item_names_00368_87A140",
+        "tbl_trainer_classes_00036_23E72C",
         "tbl_trainer_classes_00045_23E7A1",
         "tbl_trainer_classes_00048_23E7C8",
     ]
