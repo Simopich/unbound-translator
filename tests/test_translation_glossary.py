@@ -94,6 +94,17 @@ def test_glossary_placeholder_loss_is_rejected():
         restore_glossary_placeholders("Giacomo", replacements)
 
 
+def test_controlfixed_apostrophe_bytes_satisfy_glossary_target():
+    glossary = TranslationGlossary(
+        "it",
+        [GlossaryTerm("A Hero's Journey", "Il viaggio di un'eroina", "mission")],
+    )
+
+    assert glossary.missing_targets(
+        "A Hero's Journey", "Il viaggio di un{B4}eroina"
+    ) == []
+
+
 def test_missing_targets_ignores_adjacent_rom_control_tokens(tmp_path):
     path = tmp_path / "it.json"
     path.write_text(
@@ -247,13 +258,21 @@ def test_italian_glossary_covers_unbound_wiki_terms_found_in_rom():
         "Swamp Badge",
         "Time Badge",
         "Dresco Town Gym",
+        "Dresco Town Gym Leader",
         "Crater Town Gym",
+        "Crater Town Gym Leader",
         "Blizzard City Gym",
+        "Blizzard City Gym Leader",
         "Fallshore City Gym",
+        "Fallshore City Gym Leader",
         "Dehara City Gym",
+        "Dehara City Gym Leader",
         "Antisis City Gym",
+        "Antisis City Gym Leader",
         "Polder Town Gym",
+        "Polder Town Gym Leader",
         "Redwood Village Gym",
+        "Redwood Village Gym Leader",
         "Cloud Game Corner",
         "Magnolia Café",
         "Magnolia Cafe",
@@ -281,6 +300,27 @@ def test_italian_glossary_covers_unbound_wiki_terms_found_in_rom():
     }
 
     assert expected <= sources
+
+
+def test_italian_glossary_localizes_supported_character_names():
+    glossary = load_glossary(ROOT / "glossaries" / "it.json", expected_language="it")
+    targets = {term.source: term.target for term in glossary.terms}
+
+    assert {
+        "Euler Log": "Eulero Log",
+        "Melony": "Melania",
+        "Zeph": "Zefiro",
+        "Marlon": "Ciprian",
+        "Ivory": "Avorio",
+        "Galavan": "Galvani",
+        "Big Mo": "Gran Mo",
+        "Moleman": "Talpino",
+        "Sparky": "Scintilla",
+        "Milo": "Yarrow",
+        "Krystal": "Cristal",
+        "Zygfried": "Zygfrido",
+        "Looker": "Bellocchio",
+    }.items() <= targets.items()
 
 
 def test_every_exact_nonrelocatable_glossary_name_records_its_pcs_limit():
@@ -312,6 +352,8 @@ def test_every_exact_nonrelocatable_glossary_name_records_its_pcs_limit():
             and limit.max_length == entry["byte_length"]
             for limit in term.limits
         ), entry["id"]
+        if "translated_fixed" in entry:
+            assert entry["translated_fixed"] == term.target_for(category), entry["id"]
         checked.append(entry["id"])
 
     assert checked == [

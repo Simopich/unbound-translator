@@ -426,8 +426,9 @@
     },
     {
       "source": "Euler Log",
-      "target": "Euler Log",
+      "target": "Eulero Log",
       "kind": "character",
+      "note": "Euler è tradizionalmente Eulero in italiano; Log resta invariato per conservare il gioco matematico con il logaritmo.",
       "categories": [
         "scripts",
         "pointer_texts",
@@ -441,8 +442,9 @@
     },
     {
       "source": "Melony",
-      "target": "Melony",
+      "target": "Melania",
       "kind": "character",
+      "note": "Melania è il nome italiano ufficiale usato per Melony in Pokémon Spada e Scudo.",
       "case_sensitive": true,
       "categories": [
         "scripts",
@@ -471,8 +473,9 @@
     },
     {
       "source": "Zeph",
-      "target": "Zeph",
+      "target": "Zefiro",
       "kind": "character",
+      "note": "Adattamento del riferimento inglese a zephyr secondo l'uso Pokémon di localizzare i nomi tematici.",
       "case_sensitive": true,
       "categories": [
         "scripts",
@@ -501,8 +504,9 @@
     },
     {
       "source": "Marlon",
-      "target": "Marlon",
+      "target": "Ciprian",
       "kind": "character",
+      "note": "Ciprian è il nome italiano ufficiale usato per Marlon in Pokémon Nero 2 e Bianco 2.",
       "case_sensitive": true,
       "categories": [
         "scripts",
@@ -516,8 +520,9 @@
     },
     {
       "source": "Ivory",
-      "target": "Ivory",
+      "target": "Avorio",
       "kind": "character",
+      "note": "Traduzione del nome cromatico, coerente con l'adattamento dei nomi tematici nei giochi Pokémon.",
       "case_sensitive": true,
       "categories": [
         "scripts",
@@ -561,8 +566,9 @@
     },
     {
       "source": "Galavan",
-      "target": "Galavan",
+      "target": "Galvani",
       "kind": "character",
+      "note": "Adattamento del gioco elettrico su galvanic; Galvani conserva il tema ed è un cognome italiano.",
       "case_sensitive": true,
       "categories": [
         "scripts",
@@ -576,8 +582,9 @@
     },
     {
       "source": "Big Mo",
-      "target": "Big Mo",
+      "target": "Gran Mo",
       "kind": "character",
+      "note": "Traduzione del soprannome descrittivo del Capopalestra di tipo Lotta.",
       "categories": [
         "scripts",
         "pointer_texts",
@@ -711,8 +718,9 @@
     },
     {
       "source": "Moleman",
-      "target": "Moleman",
+      "target": "Talpino",
       "kind": "character",
+      "note": "Nome italiano con tema talpa, modellato sui nomi brevi e tematici dei Superquattro Pokémon.",
       "case_sensitive": true,
       "categories": [
         "scripts",
@@ -831,8 +839,9 @@
     },
     {
       "source": "Sparky",
-      "target": "Sparky",
+      "target": "Scintilla",
       "kind": "character",
+      "note": "Traduzione del soprannome elettrico inglese.",
       "case_sensitive": true,
       "categories": [
         "scripts",
@@ -921,8 +930,9 @@
     },
     {
       "source": "Milo",
-      "target": "Milo",
+      "target": "Yarrow",
       "kind": "character",
+      "note": "Yarrow è il nome italiano ufficiale usato per Milo in Pokémon Spada e Scudo.",
       "case_sensitive": true,
       "categories": [
         "scripts",
@@ -966,8 +976,9 @@
     },
     {
       "source": "Krystal",
-      "target": "Krystal",
+      "target": "Cristal",
       "kind": "character",
+      "note": "Adattamento del gioco di parole con Crystal Peak, mantenuto come nome proprio breve.",
       "case_sensitive": true,
       "categories": [
         "scripts",
@@ -981,8 +992,9 @@
     },
     {
       "source": "Zygfried",
-      "target": "Zygfried",
+      "target": "Zygfrido",
       "kind": "character",
+      "note": "Adattamento italiano di Siegfried in Sigfrido, conservando il prefisso Zyg- condiviso con Zygarde.",
       "case_sensitive": true,
       "categories": [
         "scripts",
@@ -1140,9 +1152,21 @@
       "kind": "place"
     },
     {
+      "source": "Dresco Town Gym Leader",
+      "target": "Capopalestra di Dresco",
+      "kind": "character",
+      "note": "Variante grammaticale completa; evita di trattare Gym separatamente da Leader."
+    },
+    {
       "source": "Crater Town Gym",
       "target": "Palestra di Crater",
       "kind": "place"
+    },
+    {
+      "source": "Crater Town Gym Leader",
+      "target": "Capopalestra di Crater",
+      "kind": "character",
+      "note": "Variante grammaticale completa; evita di trattare Gym separatamente da Leader."
     },
     {
       "source": "Blizzard City Gym",
@@ -1150,9 +1174,21 @@
       "kind": "place"
     },
     {
+      "source": "Blizzard City Gym Leader",
+      "target": "Capopalestra di Blizzard",
+      "kind": "character",
+      "note": "Variante grammaticale completa; evita di trattare Gym separatamente da Leader."
+    },
+    {
       "source": "Fallshore City Gym",
       "target": "Palestra di Fallshore",
       "kind": "place"
+    },
+    {
+      "source": "Fallshore City Gym Leader",
+      "target": "Capopalestra di Fallshore",
+      "kind": "character",
+      "note": "Variante grammaticale completa; evita di trattare Gym separatamente da Leader."
     },
     {
       "source": "Dehara City Gym",
@@ -1160,9 +1196,21 @@
       "kind": "place"
     },
     {
+      "source": "Dehara City Gym Leader",
+      "target": "Capopalestra di Dehara",
+      "kind": "character",
+      "note": "Variante grammaticale completa; evita di trattare Gym separatamente da Leader."
+    },
+    {
       "source": "Antisis City Gym",
       "target": "Palestra di Antisis",
       "kind": "place"
+    },
+    {
+      "source": "Antisis City Gym Leader",
+      "target": "Capopalestra di Antisis",
+      "kind": "character",
+      "note": "Variante grammaticale completa; evita di trattare Gym separatamente da Leader."
     },
     {
       "source": "Polder Town Gym",
@@ -1170,9 +1218,21 @@
       "kind": "place"
     },
     {
+      "source": "Polder Town Gym Leader",
+      "target": "Capopalestra di Polder",
+      "kind": "character",
+      "note": "Variante grammaticale completa; evita di trattare Gym separatamente da Leader."
+    },
+    {
       "source": "Redwood Village Gym",
       "target": "Palestra di Redwood",
       "kind": "place"
+    },
+    {
+      "source": "Redwood Village Gym Leader",
+      "target": "Capopalestra di Redwood",
+      "kind": "character",
+      "note": "Variante grammaticale completa; evita di trattare Gym separatamente da Leader."
     },
     {
       "source": "Cloud Game Corner",

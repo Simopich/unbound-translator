@@ -109,8 +109,11 @@ class TranslationGlossary:
         # ROM control mnemonics may directly touch visible text, as in
         # ``\\qoAklove\\qc`` or ``\\auBorgo Magnolia``. Remove them before
         # applying word boundaries so their letters do not mask valid terms.
+        normalized_translation = translated_text.replace("{B4}", "'").replace(
+            "{B3}", "'"
+        )
         visible_translation = re.sub(
-            r"\s+", " ", CONTROL_TOKEN_RE.sub(" ", translated_text)
+            r"\s+", " ", CONTROL_TOKEN_RE.sub(" ", normalized_translation)
         )
         expected = Counter(
             term.target_for(category)
