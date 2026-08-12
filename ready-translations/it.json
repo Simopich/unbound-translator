@@ -22084,7 +22084,8 @@
       "table_name": "data.items.stats",
       "table_index": 369,
       "translation_source": "Trainer Catalogue",
-      "translated": "Catalogo Allenatori"
+      "translated": "Catalogo Allenatori",
+      "translated_fixed": "Catalogo Allenat."
     },
     {
       "id": "tbl_item_names_00370_EB92ED",
@@ -22099,7 +22100,8 @@
       "table_name": "data.items.stats",
       "table_index": 370,
       "translation_source": "Glimmer Ticket",
-      "translated": "Biglietto Scintillante"
+      "translated": "Biglietto Scintillante",
+      "translated_fixed": "Bigl. Scintillante"
     },
     {
       "id": "tbl_item_names_00371_EB92CE",
@@ -96666,7 +96668,7 @@
       "table_name": "data.items.stats.description",
       "table_index": 254,
       "translation_source": "An item to be held by a Pokémon. It slightly boosts the power of Psychic-type moves.",
-      "translated": "Uno strumento da tenere da parte di un Pokémon. Potenzia leggermente la ძალ;\nno, Italian text must be correct. Let me correct: Uno strumento da tenere da\nparte di un Pokémon. Potenzia leggermente la forza delle mosse di tipo Psico."
+      "translated": "Strumento da tenere. Potenzia di\npoco le mosse di tipo Psico."
     },
     {
       "id": "tbl_item_descriptions_00255_EB7EE6",

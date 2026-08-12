@@ -1783,8 +1783,35 @@
     },
     {
       "source": "Trainer Catalogue",
-      "target": "Catalogo Allenatori",
-      "kind": "feature"
+      "target": "Catalogo Allenat.",
+      "full_target": "Catalogo Allenatori",
+      "kind": "feature",
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 95,
+          "length_unit": "pixels",
+          "use_compact_target": true
+        }
+      ]
+    },
+    {
+      "source": "Glimmer Ticket",
+      "target": "Bigl. Scintillante",
+      "full_target": "Biglietto Scintillante",
+      "kind": "item",
+      "limits": [
+        {
+          "categories": [
+            "item_names"
+          ],
+          "max_length": 95,
+          "length_unit": "pixels",
+          "use_compact_target": true
+        }
+      ]
     },
     {
       "source": "Mission Log",

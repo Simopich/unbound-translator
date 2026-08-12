@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+from lib.gen3_font import text_pixel_width
+
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -107,6 +109,16 @@ def test_dawn_stone_uses_only_the_structured_item_name_owner():
 
     assert entries["tbl_item_names_00100_877330"]["translated"] == "Pietralbore"
     assert "scr_877326" not in entries
+
+
+def test_item_names_fit_the_original_screen_width():
+    entries = ready_entries()
+
+    for entry in entries.values():
+        if entry.get("category") != "item_names":
+            continue
+        displayed = entry.get("translated_fixed", entry.get("translated", ""))
+        assert text_pixel_width(displayed) <= 95, (entry["id"], displayed)
 
 
 def test_gendered_dialogue_fragments_are_all_translated():
