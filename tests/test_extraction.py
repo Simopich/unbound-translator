@@ -40,9 +40,24 @@ class AlignedPointerTextTests(unittest.TestCase):
 
         self.assertEqual(table_name, "data.menus.text.gameSettings")
         self.assertEqual(addresses[-2:], [0x75CE9A, 0x75CEA6])
+        self.assertEqual(EXTRACTOR.MANUAL_TEXT_POINTER_SOURCES[0x75CE9A], [0x75CD61])
+        self.assertEqual(EXTRACTOR.MANUAL_TEXT_POINTER_SOURCES[0x75CEA6], [0x75CDAF])
+
+    def test_gendered_dialogue_fragments_have_explicit_owners(self):
+        table_name, addresses = EXTRACTOR.MANUAL_TEXT_TABLES[
+            "gendered_dialogue_fragments"
+        ]
+
+        self.assertEqual(table_name, "data.dialogue.text.genderedFragments")
+        self.assertEqual(len(addresses), 54)
+        self.assertIn(0x789224, addresses)  # him
+        self.assertIn(0x78922E, addresses)  # her
+        self.assertIn(0x793FCB, addresses)  # boy
+        self.assertIn(0x793FCF, addresses)  # girl
+        self.assertIn(0x1EF97B3, addresses)  # dudette
         self.assertEqual(
-            EXTRACTOR.MANUAL_TEXT_POINTER_SOURCES,
-            {0x75CE9A: [0x75CD61], 0x75CEA6: [0x75CDAF]},
+            EXTRACTOR.MANUAL_TEXT_POINTER_SOURCES[0x1F8DD33],
+            [0x1E709FB, 0x1E9EE30, 0x1EA34E9, 0x1EA5258, 0x1EA57C1, 0x1EAB91D],
         )
 
     def test_pokedex_unknown_fallback_label_cannot_relocate(self):

@@ -1,5 +1,59 @@
 {
   "entries": [
+    {"id":"tbl_gendered_dialogue_fragments_00050_1EF97B3","category":"gendered_dialogue_fragments","address":"0x1EF97B3","pointer_sources":["0x1E62C59"],"original":"\"dudette\"","byte_length":8,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":50,"translation_source":"dudette"},
+    {"id":"tbl_gendered_dialogue_fragments_00051_1EF97BB","category":"gendered_dialogue_fragments","address":"0x1EF97BB","pointer_sources":["0x1E62C52"],"original":"\"Dude\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":51,"translation_source":"Dude"},
+    {"id":"tbl_gendered_dialogue_fragments_00052_1EF97C0","category":"gendered_dialogue_fragments","address":"0x1EF97C0","pointer_sources":["0x1E62C5F"],"original":"\"Dudette\"","byte_length":8,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":52,"translation_source":"Dudette"},
+    {"id":"tbl_gendered_dialogue_fragments_00053_1FA14C2","category":"gendered_dialogue_fragments","address":"0x1FA14C2","pointer_sources":["0x1EA7B8F"],"original":"\"guy\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":53,"translation_source":"guy"},
+    {"id":"tbl_gendered_dialogue_fragments_00000_3E9241","category":"gendered_dialogue_fragments","address":"0x3E9241","pointer_sources":["0x3E9420"],"original":"\"SON\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":0,"translation_source":"SON"},
+    {"id":"tbl_gendered_dialogue_fragments_00001_3E9278","category":"gendered_dialogue_fragments","address":"0x3E9278","pointer_sources":["0x3E9480"],"original":"\"BOY\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":1,"translation_source":"BOY"},
+    {"id":"tbl_gendered_dialogue_fragments_00002_3E92A9","category":"gendered_dialogue_fragments","address":"0x3E92A9","pointer_sources":["0x3E94D4"],"original":"\"MAN\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":2,"translation_source":"MAN"},
+    {"id":"tbl_gendered_dialogue_fragments_00003_3E92C1","category":"gendered_dialogue_fragments","address":"0x3E92C1","pointer_sources":["0x3E9510"],"original":"\"HER\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":3,"translation_source":"HER"},
+    {"id":"tbl_gendered_dialogue_fragments_00004_3E92C5","category":"gendered_dialogue_fragments","address":"0x3E92C5","pointer_sources":["0x3E951C"],"original":"\"HIM\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":4,"translation_source":"HIM"},
+    {"id":"tbl_gendered_dialogue_fragments_00005_3E92C9","category":"gendered_dialogue_fragments","address":"0x3E92C9","pointer_sources":["0x3E9528"],"original":"\"HE\"","byte_length":3,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":5,"translation_source":"HE"},
+    {"id":"tbl_gendered_dialogue_fragments_00006_3E92DB","category":"gendered_dialogue_fragments","address":"0x3E92DB","pointer_sources":["0x3E954C"],"original":"\"HIS\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":6,"translation_source":"HIS"},
+    {"id":"tbl_gendered_dialogue_fragments_00007_3E93CC","category":"gendered_dialogue_fragments","address":"0x3E93CC","pointer_sources":["0x3E972C"],"original":"\"SHE\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":7,"translation_source":"SHE"},
+    {"id":"tbl_gendered_dialogue_fragments_00008_415D93","category":"gendered_dialogue_fragments","address":"0x415D93","pointer_sources":["0x12FF98"],"original":"\"Boy\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":8,"translation_source":"Boy"},
+    {"id":"tbl_gendered_dialogue_fragments_00009_77F57B","category":"gendered_dialogue_fragments","address":"0x77F57B","pointer_sources":["0x751F69"],"original":"\"son\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":9,"translation_source":"son"},
+    {"id":"tbl_gendered_dialogue_fragments_00010_77F57F","category":"gendered_dialogue_fragments","address":"0x77F57F","pointer_sources":["0x751F70"],"original":"\"daughter\"","byte_length":9,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":10,"translation_source":"daughter"},
+    {"id":"tbl_gendered_dialogue_fragments_00011_781697","category":"gendered_dialogue_fragments","address":"0x781697","pointer_sources":["0x765981"],"original":"\"sir\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":11,"translation_source":"sir"},
+    {"id":"tbl_gendered_dialogue_fragments_00012_78169B","category":"gendered_dialogue_fragments","address":"0x78169B","pointer_sources":["0x765988"],"original":"\"madam\"","byte_length":6,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":12,"translation_source":"madam"},
+    {"id":"tbl_gendered_dialogue_fragments_00013_789224","category":"gendered_dialogue_fragments","address":"0x789224","pointer_sources":["0x7522AD","0x7BD1A9"],"original":"\"him\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":13,"translation_source":"him"},
+    {"id":"tbl_gendered_dialogue_fragments_00014_789228","category":"gendered_dialogue_fragments","address":"0x789228","pointer_sources":["0x7522B3"],"original":"\"he\"","byte_length":3,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":14,"translation_source":"he"},
+    {"id":"tbl_gendered_dialogue_fragments_00015_78922B","category":"gendered_dialogue_fragments","address":"0x78922B","pointer_sources":["0x7522B9"],"original":"\"He\"","byte_length":3,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":15,"translation_source":"He"},
+    {"id":"tbl_gendered_dialogue_fragments_00016_78922E","category":"gendered_dialogue_fragments","address":"0x78922E","pointer_sources":["0x7522C0","0x7BD1B0","0x7BD1B6"],"original":"\"her\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":16,"translation_source":"her"},
+    {"id":"tbl_gendered_dialogue_fragments_00017_789232","category":"gendered_dialogue_fragments","address":"0x789232","pointer_sources":["0x7522C6"],"original":"\"she\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":17,"translation_source":"she"},
+    {"id":"tbl_gendered_dialogue_fragments_00018_789236","category":"gendered_dialogue_fragments","address":"0x789236","pointer_sources":["0x7522CC"],"original":"\"She\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":18,"translation_source":"She"},
+    {"id":"tbl_gendered_dialogue_fragments_00019_78DA85","category":"gendered_dialogue_fragments","address":"0x78DA85","pointer_sources":["0x77F5F0"],"original":"\"grandson\"","byte_length":9,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":19,"translation_source":"grandson"},
+    {"id":"tbl_gendered_dialogue_fragments_00020_78DA8E","category":"gendered_dialogue_fragments","address":"0x78DA8E","pointer_sources":["0x78A3E6"],"original":"\"son\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":20,"translation_source":"son"},
+    {"id":"tbl_gendered_dialogue_fragments_00021_793FCB","category":"gendered_dialogue_fragments","address":"0x793FCB","pointer_sources":["0x76D292","0x7D98BF"],"original":"\"boy\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":21,"translation_source":"boy"},
+    {"id":"tbl_gendered_dialogue_fragments_00022_793FCF","category":"gendered_dialogue_fragments","address":"0x793FCF","pointer_sources":["0x76D299","0x7D98CC"],"original":"\"girl\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":22,"translation_source":"girl"},
+    {"id":"tbl_gendered_dialogue_fragments_00023_7A89DA","category":"gendered_dialogue_fragments","address":"0x7A89DA","pointer_sources":["0x762BEC"],"original":"\"man\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":23,"translation_source":"man"},
+    {"id":"tbl_gendered_dialogue_fragments_00024_7A89DE","category":"gendered_dialogue_fragments","address":"0x7A89DE","pointer_sources":["0x762BF9"],"original":"\"lady\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":24,"translation_source":"lady"},
+    {"id":"tbl_gendered_dialogue_fragments_00025_7A89E3","category":"gendered_dialogue_fragments","address":"0x7A89E3","pointer_sources":["0x762BF2"],"original":"\"mister\"","byte_length":7,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":25,"translation_source":"mister"},
+    {"id":"tbl_gendered_dialogue_fragments_00026_7A89EA","category":"gendered_dialogue_fragments","address":"0x7A89EA","pointer_sources":["0x762BFF"],"original":"\"miss\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":26,"translation_source":"miss"},
+    {"id":"tbl_gendered_dialogue_fragments_00027_7BD7C5","category":"gendered_dialogue_fragments","address":"0x7BD7C5","pointer_sources":["0x7BD1A3"],"original":"\"his\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":27,"translation_source":"his"},
+    {"id":"tbl_gendered_dialogue_fragments_00028_7C60F4","category":"gendered_dialogue_fragments","address":"0x7C60F4","pointer_sources":["0x7C5F09"],"original":"\"sir\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":28,"translation_source":"sir"},
+    {"id":"tbl_gendered_dialogue_fragments_00029_7C60F8","category":"gendered_dialogue_fragments","address":"0x7C60F8","pointer_sources":["0x7C5F10"],"original":"\"madam\"","byte_length":6,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":29,"translation_source":"madam"},
+    {"id":"tbl_gendered_dialogue_fragments_00030_7DE1E1","category":"gendered_dialogue_fragments","address":"0x7DE1E1","pointer_sources":["0x7D98C5"],"original":"\"son\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":30,"translation_source":"son"},
+    {"id":"tbl_gendered_dialogue_fragments_00031_7DE1E5","category":"gendered_dialogue_fragments","address":"0x7DE1E5","pointer_sources":["0x7D98D2"],"original":"\"daughter\"","byte_length":9,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":31,"translation_source":"daughter"},
+    {"id":"tbl_gendered_dialogue_fragments_00032_8CE1F8","category":"gendered_dialogue_fragments","address":"0x8CE1F8","pointer_sources":["0x8CD595"],"original":"\"man\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":32,"translation_source":"man"},
+    {"id":"tbl_gendered_dialogue_fragments_00033_8CE1FC","category":"gendered_dialogue_fragments","address":"0x8CE1FC","pointer_sources":["0x8CD59C"],"original":"\"lady\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":33,"translation_source":"lady"},
+    {"id":"tbl_gendered_dialogue_fragments_00034_1EE1185","category":"gendered_dialogue_fragments","address":"0x1EE1185","pointer_sources":["0x1E55982"],"original":"\"lady\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":34,"translation_source":"lady"},
+    {"id":"tbl_gendered_dialogue_fragments_00035_1EEAF9C","category":"gendered_dialogue_fragments","address":"0x1EEAF9C","pointer_sources":["0x1E57421"],"original":"\"grandson\"","byte_length":9,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":35,"translation_source":"grandson"},
+    {"id":"tbl_gendered_dialogue_fragments_00036_1EEAFA5","category":"gendered_dialogue_fragments","address":"0x1EEAFA5","pointer_sources":["0x1E57515"],"original":"\"son\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":36,"translation_source":"son"},
+    {"id":"tbl_gendered_dialogue_fragments_00037_1F41B0E","category":"gendered_dialogue_fragments","address":"0x1F41B0E","pointer_sources":["0x1E70A01","0x1E92DE2"],"original":"\"son\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":37,"translation_source":"son"},
+    {"id":"tbl_gendered_dialogue_fragments_00038_1F5B571","category":"gendered_dialogue_fragments","address":"0x1F5B571","pointer_sources":["0x1E83269","0x1E92DE9"],"original":"\"girl\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":38,"translation_source":"girl"},
+    {"id":"tbl_gendered_dialogue_fragments_00039_1F7C89E","category":"gendered_dialogue_fragments","address":"0x1F7C89E","pointer_sources":["0x1E9572F"],"original":"\"lad\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":39,"translation_source":"lad"},
+    {"id":"tbl_gendered_dialogue_fragments_00040_1F8BEEB","category":"gendered_dialogue_fragments","address":"0x1F8BEEB","pointer_sources":["0x1EA02EF"],"original":"\"She\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":40,"translation_source":"She"},
+    {"id":"tbl_gendered_dialogue_fragments_00041_1F8DD36","category":"gendered_dialogue_fragments","address":"0x1F8DD36","pointer_sources":["0x1E9EE36","0x1EA34EF","0x1EA525E","0x1EA57C7"],"original":"\"He\"","byte_length":3,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":41,"translation_source":"He"},
+    {"id":"tbl_gendered_dialogue_fragments_00042_1F99ACF","category":"gendered_dialogue_fragments","address":"0x1F99ACF","pointer_sources":["0x1EA2833","0x1EA5F3B"],"original":"\"sir\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":42,"translation_source":"sir"},
+    {"id":"tbl_gendered_dialogue_fragments_00043_1F99AD3","category":"gendered_dialogue_fragments","address":"0x1F99AD3","pointer_sources":["0x1EA283A"],"original":"\"miss\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":43,"translation_source":"miss"},
+    {"id":"tbl_gendered_dialogue_fragments_00044_1F9CA98","category":"gendered_dialogue_fragments","address":"0x1F9CA98","pointer_sources":["0x1EA5F42"],"original":"\"madam\"","byte_length":6,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":44,"translation_source":"madam"},
+    {"id":"tbl_gendered_dialogue_fragments_00045_1FA17C0","category":"gendered_dialogue_fragments","address":"0x1FA17C0","pointer_sources":["0x1EA7D66"],"original":"\"man\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":45,"translation_source":"man"},
+    {"id":"tbl_gendered_dialogue_fragments_00046_1FA17C8","category":"gendered_dialogue_fragments","address":"0x1FA17C8","pointer_sources":["0x1EA7D73"],"original":"\"woman\"","byte_length":6,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":46,"translation_source":"woman"},
+    {"id":"tbl_gendered_dialogue_fragments_00047_1FA17CE","category":"gendered_dialogue_fragments","address":"0x1FA17CE","pointer_sources":["0x1EA7D79"],"original":"\"Woman\"","byte_length":6,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":47,"translation_source":"Woman"},
+    {"id":"tbl_gendered_dialogue_fragments_00048_1FA764E","category":"gendered_dialogue_fragments","address":"0x1FA764E","pointer_sources":["0x1E709F5","0x1EAB917"],"original":"\"him\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":48,"translation_source":"him"},
+    {"id":"tbl_gendered_dialogue_fragments_00049_1FA7656","category":"gendered_dialogue_fragments","address":"0x1FA7656","pointer_sources":["0x1EAB923"],"original":"\"his\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":49,"translation_source":"his"},
     {
       "id": "tbl_pokemon_names_00000_166A98C",
       "category": "pokemon_names",
@@ -238347,6 +238401,7 @@
       "category": "scripts",
       "address": "0x1EF97AE",
       "pointer_sources": [
+        "0x1E55989",
         "0x1E62C4C"
       ],
       "original": "\"dude\"",
@@ -291739,7 +291794,8 @@
       "category": "scripts",
       "address": "0x1F41B12",
       "pointer_sources": [
-        "0x1E70A14"
+        "0x1E70A14",
+        "0x1E92DEF"
       ],
       "original": "\"daughter\"",
       "byte_length": 9,
@@ -309666,6 +309722,7 @@
       "category": "scripts",
       "address": "0x1F5B56D",
       "pointer_sources": [
+        "0x1E83262",
         "0x1E92DDC"
       ],
       "original": "\"boy\"",
@@ -346471,6 +346528,8 @@
       "category": "scripts",
       "address": "0x1F8BEE7",
       "pointer_sources": [
+        "0x1E70A0E",
+        "0x1EA02E9",
         "0x1EAB930"
       ],
       "original": "\"she\"",
@@ -347682,8 +347741,12 @@
       "category": "scripts",
       "address": "0x1F8DD33",
       "pointer_sources": [
+        "0x1E709FB",
         "0x1E9EE30",
-        "0x1EA5258"
+        "0x1EA34E9",
+        "0x1EA5258",
+        "0x1EA57C1",
+        "0x1EAB91D"
       ],
       "original": "\"he\"",
       "byte_length": 3,
@@ -373386,7 +373449,9 @@
       "category": "scripts",
       "address": "0x1FA7652",
       "pointer_sources": [
-        "0x1E70A08"
+        "0x1E70A08",
+        "0x1EAB92A",
+        "0x1EAB936"
       ],
       "original": "\"her\"",
       "byte_length": 4,

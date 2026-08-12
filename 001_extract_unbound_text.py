@@ -600,6 +600,22 @@ MANUAL_TEXT_TABLES = {
         "data.menus.text.save.prompts",
         [0x1C55C9],
     ),
+    "gendered_dialogue_fragments": (
+        "data.dialogue.text.genderedFragments",
+        [
+            0x3E9241, 0x3E9278, 0x3E92A9, 0x3E92C1, 0x3E92C5,
+            0x3E92C9, 0x3E92DB, 0x3E93CC, 0x415D93, 0x77F57B,
+            0x77F57F, 0x781697, 0x78169B, 0x789224, 0x789228,
+            0x78922B, 0x78922E, 0x789232, 0x789236, 0x78DA85,
+            0x78DA8E, 0x793FCB, 0x793FCF, 0x7A89DA, 0x7A89DE,
+            0x7A89E3, 0x7A89EA, 0x7BD7C5, 0x7C60F4, 0x7C60F8,
+            0x7DE1E1, 0x7DE1E5, 0x8CE1F8, 0x8CE1FC, 0x1EE1185,
+            0x1EEAF9C, 0x1EEAFA5, 0x1F41B0E, 0x1F5B571, 0x1F7C89E,
+            0x1F8BEEB, 0x1F8DD36, 0x1F99ACF, 0x1F99AD3, 0x1F9CA98,
+            0x1FA17C0, 0x1FA17C8, 0x1FA17CE, 0x1FA764E, 0x1FA7656,
+            0x1EF97B3, 0x1EF97BB, 0x1EF97C0, 0x1FA14C2,
+        ],
+    ),
 }
 
 # Valid pointers whose owning records are intentionally byte-packed rather
@@ -608,6 +624,48 @@ MANUAL_TEXT_TABLES = {
 MANUAL_TEXT_POINTER_SOURCES = {
     0x75CE9A: [0x75CD61],  # Easy
     0x75CEA6: [0x75CDAF],  # Hard
+    0x77F57B: [0x751F69],
+    0x781697: [0x765981],
+    0x789224: [0x7522AD, 0x7BD1A9],
+    0x789228: [0x7522B3],
+    0x78922B: [0x7522B9],
+    0x78922E: [0x7522C0, 0x7BD1B0, 0x7BD1B6],
+    0x789232: [0x7522C6],
+    0x793FCB: [0x76D292, 0x7D98BF],
+    0x7A89DE: [0x762BF9],
+    0x7A89E3: [0x762BF2],
+    0x7A89EA: [0x762BFF],
+    0x7BD7C5: [0x7BD1A3],
+    0x7C60F4: [0x7C5F09],
+    0x7DE1E1: [0x7D98C5],
+    0x7DE1E5: [0x7D98D2],
+    0x8CE1F8: [0x8CD595],
+    0x1EE1185: [0x1E55982],
+    0x1EEAF9C: [0x1E57421],
+    0x1EEAFA5: [0x1E57515],
+    0x1EF97AE: [0x1E55989, 0x1E62C4C],
+    0x1EF97B3: [0x1E62C59],
+    0x1EF97BB: [0x1E62C52],
+    0x1EF97C0: [0x1E62C5F],
+    0x1F41B0E: [0x1E70A01, 0x1E92DE2],
+    0x1F41B12: [0x1E70A14, 0x1E92DEF],
+    0x1F5B56D: [0x1E83262, 0x1E92DDC],
+    0x1F5B571: [0x1E83269, 0x1E92DE9],
+    0x1F7C89E: [0x1E9572F],
+    0x1F8BEE7: [0x1E70A0E, 0x1EA02E9, 0x1EAB930],
+    0x1F8BEEB: [0x1EA02EF],
+    0x1F8DD33: [0x1E709FB, 0x1E9EE30, 0x1EA34E9, 0x1EA5258, 0x1EA57C1, 0x1EAB91D],
+    0x1F8DD36: [0x1E9EE36, 0x1EA34EF, 0x1EA525E, 0x1EA57C7],
+    0x1F99ACF: [0x1EA2833, 0x1EA5F3B],
+    0x1F99AD3: [0x1EA283A],
+    0x1F9CA98: [0x1EA5F42],
+    0x1FA14C2: [0x1EA7B8F],
+    0x1FA17C0: [0x1EA7D66],
+    0x1FA17C8: [0x1EA7D73],
+    0x1FA17CE: [0x1EA7D79],
+    0x1FA764E: [0x1E709F5, 0x1EAB917],
+    0x1FA7652: [0x1E70A08, 0x1EAB92A, 0x1EAB936],
+    0x1FA7656: [0x1EAB923],
 }
 
 
@@ -1441,6 +1499,19 @@ def merge_entries_by_address(entries: list[dict]) -> list[dict]:
         if current.get("no_relocation") or entry.get("no_relocation"):
             preferred["no_relocation"] = True
         merged[index] = preferred
+
+    for entry in merged:
+        try:
+            address = int(entry.get("address", ""), 16)
+        except (TypeError, ValueError):
+            continue
+        sources = MANUAL_TEXT_POINTER_SOURCES.get(address, [])
+        if sources:
+            formatted = [format_offset(source) for source in sources]
+            entry["pointer_sources"] = list(
+                dict.fromkeys(entry.get("pointer_sources", []) + formatted)
+            )
+            entry["is_pointer_based"] = True
 
     return merged
 

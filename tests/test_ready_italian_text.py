@@ -100,3 +100,62 @@ def test_opening_intro_is_clear_and_keeps_paragraph_boundaries():
         assert entries[entry_id]["translated"] == translated
         assert "fangame on" not in translated
         assert all(len(line.replace("{B4}", "'")) <= 35 for line in translated.splitlines())
+
+
+def test_gendered_dialogue_fragments_are_all_translated():
+    entries = ready_entries()
+    fragments = [
+        entry
+        for entry in entries.values()
+        if entry.get("category") == "gendered_dialogue_fragments"
+    ]
+
+    assert len(fragments) == 54
+    for entry in fragments:
+        assert entry["translated"]
+        assert entry["translated"].casefold() != entry["translation_source"].casefold()
+        assert entry["pointer_sources"]
+
+    expected = {
+        "him": "lui",
+        "her": "lei",
+        "he": "lui",
+        "she": "lei",
+        "boy": "ragazzo",
+        "girl": "ragazza",
+        "son": "figlio",
+        "daughter": "figlia",
+        "sir": "signore",
+        "madam": "signora",
+        "dudette": "amica",
+    }
+    for source, target in expected.items():
+        matches = [
+            entry for entry in fragments if entry["translation_source"] == source
+        ]
+        assert matches, source
+        assert {entry["translated"] for entry in matches} == {target}
+
+
+def test_gendered_buffers_do_not_force_masculine_italian_grammar():
+    entries = ready_entries()
+
+    assert "Sei il\n[buffer1]" not in entries["scr_7527C2"]["translated"]
+    assert "questo\\lgiovane [buffer1]" not in entries["scr_1F30506"]["translated"]
+    for entry_id in (
+        "scr_1F9FC8C",
+        "scr_1F9FEB1",
+        "scr_1FA0DB8",
+        "scr_1FA1057",
+        "scr_1FA1088",
+        "scr_1FA115F",
+        "scr_1FA1372",
+        "scr_1FA13F5",
+        "scr_1FA1976",
+        "scr_1FA1D24",
+        "scr_1FA1E0C",
+    ):
+        translated = entries[entry_id]["translated"]
+        assert "Mio [buffer1]" not in translated
+        assert "mio [buffer1]" not in translated
+        assert "il mio [buffer1]" not in translated

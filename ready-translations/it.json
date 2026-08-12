@@ -1,5 +1,59 @@
 {
   "entries": [
+    {"id":"tbl_gendered_dialogue_fragments_00050_1EF97B3","category":"gendered_dialogue_fragments","address":"0x1EF97B3","pointer_sources":["0x1E62C59"],"original":"\"dudette\"","byte_length":8,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":50,"translation_source":"dudette","translated":"amica"},
+    {"id":"tbl_gendered_dialogue_fragments_00051_1EF97BB","category":"gendered_dialogue_fragments","address":"0x1EF97BB","pointer_sources":["0x1E62C52"],"original":"\"Dude\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":51,"translation_source":"Dude","translated":"Amico"},
+    {"id":"tbl_gendered_dialogue_fragments_00052_1EF97C0","category":"gendered_dialogue_fragments","address":"0x1EF97C0","pointer_sources":["0x1E62C5F"],"original":"\"Dudette\"","byte_length":8,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":52,"translation_source":"Dudette","translated":"Amica"},
+    {"id":"tbl_gendered_dialogue_fragments_00053_1FA14C2","category":"gendered_dialogue_fragments","address":"0x1FA14C2","pointer_sources":["0x1EA7B8F"],"original":"\"guy\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":53,"translation_source":"guy","translated":"tipo"},
+    {"id":"tbl_gendered_dialogue_fragments_00000_3E9241","category":"gendered_dialogue_fragments","address":"0x3E9241","pointer_sources":["0x3E9420"],"original":"\"SON\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":0,"translation_source":"SON","translated":"FIGLIO"},
+    {"id":"tbl_gendered_dialogue_fragments_00001_3E9278","category":"gendered_dialogue_fragments","address":"0x3E9278","pointer_sources":["0x3E9480"],"original":"\"BOY\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":1,"translation_source":"BOY","translated":"RAGAZZO"},
+    {"id":"tbl_gendered_dialogue_fragments_00002_3E92A9","category":"gendered_dialogue_fragments","address":"0x3E92A9","pointer_sources":["0x3E94D4"],"original":"\"MAN\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":2,"translation_source":"MAN","translated":"UOMO"},
+    {"id":"tbl_gendered_dialogue_fragments_00003_3E92C1","category":"gendered_dialogue_fragments","address":"0x3E92C1","pointer_sources":["0x3E9510"],"original":"\"HER\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":3,"translation_source":"HER","translated":"LEI"},
+    {"id":"tbl_gendered_dialogue_fragments_00004_3E92C5","category":"gendered_dialogue_fragments","address":"0x3E92C5","pointer_sources":["0x3E951C"],"original":"\"HIM\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":4,"translation_source":"HIM","translated":"LUI"},
+    {"id":"tbl_gendered_dialogue_fragments_00005_3E92C9","category":"gendered_dialogue_fragments","address":"0x3E92C9","pointer_sources":["0x3E9528"],"original":"\"HE\"","byte_length":3,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":5,"translation_source":"HE","translated":"LUI"},
+    {"id":"tbl_gendered_dialogue_fragments_00006_3E92DB","category":"gendered_dialogue_fragments","address":"0x3E92DB","pointer_sources":["0x3E954C"],"original":"\"HIS\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":6,"translation_source":"HIS","translated":"SUO"},
+    {"id":"tbl_gendered_dialogue_fragments_00007_3E93CC","category":"gendered_dialogue_fragments","address":"0x3E93CC","pointer_sources":["0x3E972C"],"original":"\"SHE\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":7,"translation_source":"SHE","translated":"LEI"},
+    {"id":"tbl_gendered_dialogue_fragments_00008_415D93","category":"gendered_dialogue_fragments","address":"0x415D93","pointer_sources":["0x12FF98"],"original":"\"Boy\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":8,"translation_source":"Boy","translated":"Ragazzo"},
+    {"id":"tbl_gendered_dialogue_fragments_00009_77F57B","category":"gendered_dialogue_fragments","address":"0x77F57B","pointer_sources":["0x751F69"],"original":"\"son\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":9,"translation_source":"son","translated":"figlio"},
+    {"id":"tbl_gendered_dialogue_fragments_00010_77F57F","category":"gendered_dialogue_fragments","address":"0x77F57F","pointer_sources":["0x751F70"],"original":"\"daughter\"","byte_length":9,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":10,"translation_source":"daughter","translated":"figlia"},
+    {"id":"tbl_gendered_dialogue_fragments_00011_781697","category":"gendered_dialogue_fragments","address":"0x781697","pointer_sources":["0x765981"],"original":"\"sir\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":11,"translation_source":"sir","translated":"signore"},
+    {"id":"tbl_gendered_dialogue_fragments_00012_78169B","category":"gendered_dialogue_fragments","address":"0x78169B","pointer_sources":["0x765988"],"original":"\"madam\"","byte_length":6,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":12,"translation_source":"madam","translated":"signora"},
+    {"id":"tbl_gendered_dialogue_fragments_00013_789224","category":"gendered_dialogue_fragments","address":"0x789224","pointer_sources":["0x7522AD","0x7BD1A9"],"original":"\"him\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":13,"translation_source":"him","translated":"lui"},
+    {"id":"tbl_gendered_dialogue_fragments_00014_789228","category":"gendered_dialogue_fragments","address":"0x789228","pointer_sources":["0x7522B3"],"original":"\"he\"","byte_length":3,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":14,"translation_source":"he","translated":"lui"},
+    {"id":"tbl_gendered_dialogue_fragments_00015_78922B","category":"gendered_dialogue_fragments","address":"0x78922B","pointer_sources":["0x7522B9"],"original":"\"He\"","byte_length":3,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":15,"translation_source":"He","translated":"Lui"},
+    {"id":"tbl_gendered_dialogue_fragments_00016_78922E","category":"gendered_dialogue_fragments","address":"0x78922E","pointer_sources":["0x7522C0","0x7BD1B0","0x7BD1B6"],"original":"\"her\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":16,"translation_source":"her","translated":"lei"},
+    {"id":"tbl_gendered_dialogue_fragments_00017_789232","category":"gendered_dialogue_fragments","address":"0x789232","pointer_sources":["0x7522C6"],"original":"\"she\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":17,"translation_source":"she","translated":"lei"},
+    {"id":"tbl_gendered_dialogue_fragments_00018_789236","category":"gendered_dialogue_fragments","address":"0x789236","pointer_sources":["0x7522CC"],"original":"\"She\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":18,"translation_source":"She","translated":"Lei"},
+    {"id":"tbl_gendered_dialogue_fragments_00019_78DA85","category":"gendered_dialogue_fragments","address":"0x78DA85","pointer_sources":["0x77F5F0"],"original":"\"grandson\"","byte_length":9,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":19,"translation_source":"grandson","translated":"nipote"},
+    {"id":"tbl_gendered_dialogue_fragments_00020_78DA8E","category":"gendered_dialogue_fragments","address":"0x78DA8E","pointer_sources":["0x78A3E6"],"original":"\"son\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":20,"translation_source":"son","translated":"figlio"},
+    {"id":"tbl_gendered_dialogue_fragments_00021_793FCB","category":"gendered_dialogue_fragments","address":"0x793FCB","pointer_sources":["0x76D292","0x7D98BF"],"original":"\"boy\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":21,"translation_source":"boy","translated":"ragazzo"},
+    {"id":"tbl_gendered_dialogue_fragments_00022_793FCF","category":"gendered_dialogue_fragments","address":"0x793FCF","pointer_sources":["0x76D299","0x7D98CC"],"original":"\"girl\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":22,"translation_source":"girl","translated":"ragazza"},
+    {"id":"tbl_gendered_dialogue_fragments_00023_7A89DA","category":"gendered_dialogue_fragments","address":"0x7A89DA","pointer_sources":["0x762BEC"],"original":"\"man\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":23,"translation_source":"man","translated":"uomo"},
+    {"id":"tbl_gendered_dialogue_fragments_00024_7A89DE","category":"gendered_dialogue_fragments","address":"0x7A89DE","pointer_sources":["0x762BF9"],"original":"\"lady\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":24,"translation_source":"lady","translated":"signora"},
+    {"id":"tbl_gendered_dialogue_fragments_00025_7A89E3","category":"gendered_dialogue_fragments","address":"0x7A89E3","pointer_sources":["0x762BF2"],"original":"\"mister\"","byte_length":7,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":25,"translation_source":"mister","translated":"signore"},
+    {"id":"tbl_gendered_dialogue_fragments_00026_7A89EA","category":"gendered_dialogue_fragments","address":"0x7A89EA","pointer_sources":["0x762BFF"],"original":"\"miss\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":26,"translation_source":"miss","translated":"signorina"},
+    {"id":"tbl_gendered_dialogue_fragments_00027_7BD7C5","category":"gendered_dialogue_fragments","address":"0x7BD7C5","pointer_sources":["0x7BD1A3"],"original":"\"his\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":27,"translation_source":"his","translated":"suo"},
+    {"id":"tbl_gendered_dialogue_fragments_00028_7C60F4","category":"gendered_dialogue_fragments","address":"0x7C60F4","pointer_sources":["0x7C5F09"],"original":"\"sir\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":28,"translation_source":"sir","translated":"signore"},
+    {"id":"tbl_gendered_dialogue_fragments_00029_7C60F8","category":"gendered_dialogue_fragments","address":"0x7C60F8","pointer_sources":["0x7C5F10"],"original":"\"madam\"","byte_length":6,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":29,"translation_source":"madam","translated":"signora"},
+    {"id":"tbl_gendered_dialogue_fragments_00030_7DE1E1","category":"gendered_dialogue_fragments","address":"0x7DE1E1","pointer_sources":["0x7D98C5"],"original":"\"son\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":30,"translation_source":"son","translated":"figlio"},
+    {"id":"tbl_gendered_dialogue_fragments_00031_7DE1E5","category":"gendered_dialogue_fragments","address":"0x7DE1E5","pointer_sources":["0x7D98D2"],"original":"\"daughter\"","byte_length":9,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":31,"translation_source":"daughter","translated":"figlia"},
+    {"id":"tbl_gendered_dialogue_fragments_00032_8CE1F8","category":"gendered_dialogue_fragments","address":"0x8CE1F8","pointer_sources":["0x8CD595"],"original":"\"man\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":32,"translation_source":"man","translated":"uomo"},
+    {"id":"tbl_gendered_dialogue_fragments_00033_8CE1FC","category":"gendered_dialogue_fragments","address":"0x8CE1FC","pointer_sources":["0x8CD59C"],"original":"\"lady\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":33,"translation_source":"lady","translated":"signora"},
+    {"id":"tbl_gendered_dialogue_fragments_00034_1EE1185","category":"gendered_dialogue_fragments","address":"0x1EE1185","pointer_sources":["0x1E55982"],"original":"\"lady\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":34,"translation_source":"lady","translated":"signora"},
+    {"id":"tbl_gendered_dialogue_fragments_00035_1EEAF9C","category":"gendered_dialogue_fragments","address":"0x1EEAF9C","pointer_sources":["0x1E57421"],"original":"\"grandson\"","byte_length":9,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":35,"translation_source":"grandson","translated":"nipote"},
+    {"id":"tbl_gendered_dialogue_fragments_00036_1EEAFA5","category":"gendered_dialogue_fragments","address":"0x1EEAFA5","pointer_sources":["0x1E57515"],"original":"\"son\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":36,"translation_source":"son","translated":"figlio"},
+    {"id":"tbl_gendered_dialogue_fragments_00037_1F41B0E","category":"gendered_dialogue_fragments","address":"0x1F41B0E","pointer_sources":["0x1E70A01","0x1E92DE2"],"original":"\"son\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":37,"translation_source":"son","translated":"figlio"},
+    {"id":"tbl_gendered_dialogue_fragments_00038_1F5B571","category":"gendered_dialogue_fragments","address":"0x1F5B571","pointer_sources":["0x1E83269","0x1E92DE9"],"original":"\"girl\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":38,"translation_source":"girl","translated":"ragazza"},
+    {"id":"tbl_gendered_dialogue_fragments_00039_1F7C89E","category":"gendered_dialogue_fragments","address":"0x1F7C89E","pointer_sources":["0x1E9572F"],"original":"\"lad\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":39,"translation_source":"lad","translated":"ragazzo"},
+    {"id":"tbl_gendered_dialogue_fragments_00040_1F8BEEB","category":"gendered_dialogue_fragments","address":"0x1F8BEEB","pointer_sources":["0x1EA02EF"],"original":"\"She\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":40,"translation_source":"She","translated":"Lei"},
+    {"id":"tbl_gendered_dialogue_fragments_00041_1F8DD36","category":"gendered_dialogue_fragments","address":"0x1F8DD36","pointer_sources":["0x1E9EE36","0x1EA34EF","0x1EA525E","0x1EA57C7"],"original":"\"He\"","byte_length":3,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":41,"translation_source":"He","translated":"Lui"},
+    {"id":"tbl_gendered_dialogue_fragments_00042_1F99ACF","category":"gendered_dialogue_fragments","address":"0x1F99ACF","pointer_sources":["0x1EA2833","0x1EA5F3B"],"original":"\"sir\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":42,"translation_source":"sir","translated":"signore"},
+    {"id":"tbl_gendered_dialogue_fragments_00043_1F99AD3","category":"gendered_dialogue_fragments","address":"0x1F99AD3","pointer_sources":["0x1EA283A"],"original":"\"miss\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":43,"translation_source":"miss","translated":"signorina"},
+    {"id":"tbl_gendered_dialogue_fragments_00044_1F9CA98","category":"gendered_dialogue_fragments","address":"0x1F9CA98","pointer_sources":["0x1EA5F42"],"original":"\"madam\"","byte_length":6,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":44,"translation_source":"madam","translated":"signora"},
+    {"id":"tbl_gendered_dialogue_fragments_00045_1FA17C0","category":"gendered_dialogue_fragments","address":"0x1FA17C0","pointer_sources":["0x1EA7D66"],"original":"\"man\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":45,"translation_source":"man","translated":"uomo"},
+    {"id":"tbl_gendered_dialogue_fragments_00046_1FA17C8","category":"gendered_dialogue_fragments","address":"0x1FA17C8","pointer_sources":["0x1EA7D73"],"original":"\"woman\"","byte_length":6,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":46,"translation_source":"woman","translated":"donna"},
+    {"id":"tbl_gendered_dialogue_fragments_00047_1FA17CE","category":"gendered_dialogue_fragments","address":"0x1FA17CE","pointer_sources":["0x1EA7D79"],"original":"\"Woman\"","byte_length":6,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":47,"translation_source":"Woman","translated":"Donna"},
+    {"id":"tbl_gendered_dialogue_fragments_00048_1FA764E","category":"gendered_dialogue_fragments","address":"0x1FA764E","pointer_sources":["0x1E709F5","0x1EAB917"],"original":"\"him\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":48,"translation_source":"him","translated":"lui"},
+    {"id":"tbl_gendered_dialogue_fragments_00049_1FA7656","category":"gendered_dialogue_fragments","address":"0x1FA7656","pointer_sources":["0x1EAB923"],"original":"\"his\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":49,"translation_source":"his","translated":"suo"},
     {
       "id": "tbl_pokemon_names_00000_166A98C",
       "category": "pokemon_names",
@@ -158488,7 +158542,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Salve. Aspetta\\. Può essere\\. Sei il\n[buffer1] dell{B4}allenatore\\lleggendario di Arceus, [green]Aros[blue]?"
+      "translated": "Salve. Aspetta\\. Può essere\\. Sei\n[buffer1] dell{B4}allenatore leggendario\\ldi Arceus, [green]Aros[blue]?"
     },
     {
       "id": "scr_752852",
@@ -166977,7 +167031,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Ah, dal distintivo sulla tua Carta\nAllenatore vedo che sei diventato\\lun Allenatore piuttosto abile. Hai\n\nsuperato di gran lunga il ruolo di\nfattorino di Log [buffer1]."
+      "translated": "Ah, dal distintivo sulla tua Carta\nAllenatore vedo che sei diventato\\lun Allenatore piuttosto abile. Hai\n\nsuperato da tempo il ruolo di\n[buffer1] tuttofare di Log."
     },
     {
       "id": "scr_78D625",
@@ -244041,6 +244095,7 @@
       "category": "scripts",
       "address": "0x1EF97AE",
       "pointer_sources": [
+        "0x1E55989",
         "0x1E62C4C"
       ],
       "original": "\"dude\"",
@@ -285428,7 +285483,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "Aspetta un momento, Euler. So che\nJax è capace, ma credo che questo\\lgiovane [buffer1] possa essere\n\naltrettanto utile. [player] ha già\navuto esperienza con queste\\l\\qoOmbre\\qc, e Jax potrebbe trarre\n\ngrande beneficio dall{B4}aiuto\naggiuntivo che [player] potrebbe\\loffrire."
+      "translated": "Aspetta un momento, Euler. So che\nJax è capace, ma credo che [buffer1],\\lpur così giovane, possa essere\n\naltrettanto utile. [player] ha già\navuto esperienza con queste\\l\\qoOmbre\\qc, e Jax potrebbe trarre\n\ngrande beneficio dall{B4}aiuto\naggiuntivo che [player] potrebbe\\loffrire."
     },
     {
       "id": "scr_1F305EB",
@@ -297702,7 +297757,8 @@
       "category": "scripts",
       "address": "0x1F41B12",
       "pointer_sources": [
-        "0x1E70A14"
+        "0x1E70A14",
+        "0x1E92DEF"
       ],
       "original": "\"daughter\"",
       "byte_length": 9,
@@ -305250,7 +305306,7 @@
           "token": "\\."
         }
       ],
-      "translated": "[player], il mio [buffer1],\nvivissime congratulazioni! Ho\\lsentito la notizia! Pensare che,\n\ndopo tutto questo tempo, alla fine\nho battuto il vecchio Arthur! Ho ho\\lho! Ehm\\. scusate. Ora, il mio\n\n[buffer1], il motivo della mia\nvisita. Ho ancora un{B4}altra\\lcommissione per te! Pensavi di aver\n\nfinito con quelle, vero? Ho ho ho!\nEhm\\. comunque, dopo la tua sconfitta\\ldi Hoopa in cima al Picco\n\nCristallo, misteriosi portali hanno\ncominciato ad apparire in tutta\\lBorrius. Si dice che, quando ci si\n\navvicina, potenti Pokémon balzino\nfuori. In quanto Guardiano di\\lBorrius, di nome e di fatto, è tua\n\nresponsabilità occuparti di questi\nPokémon. Presumo che, nella maggior\\lparte dei casi, se catturi il\n\nPokémon, i portali scompariranno\ndefinitivamente. Anche se è dubbio\\lche tutti spariranno per sempre\\. In\n\nogni caso! Cattura i Pokémon\ntrovati in questi misteriosi\\lportali. Alcuni portali potrebbero\n\napparire solo se porti con te\nPokémon specifici, ma i Pokémon in\\lquei portali devono comunque essere\n\ncatturati. E se un portale si\nrifiutasse di scomparire\\ldefinitivamente dopo aver catturato\n\nil Pokémon, sarà sufficiente\nregistrarlo nel Pokédex."
+      "translated": "[player], [buffer1] di Borrius,\nvivissime congratulazioni! Ho\\lsentito la notizia! Pensare che,\n\ndopo tutto questo tempo, alla fine\nho battuto il vecchio Arthur! Ho ho\\lho! Ehm\\. scusate. Ora, [buffer1], il motivo della mia\nvisita. Ho ancora un{B4}altra\\lcommissione per te! Pensavi di aver\n\nfinito con quelle, vero? Ho ho ho!\nEhm\\. comunque, dopo la tua sconfitta\\ldi Hoopa in cima al Picco\n\nCristallo, misteriosi portali hanno\ncominciato ad apparire in tutta\\lBorrius. Si dice che, quando ci si\n\navvicina, potenti Pokémon balzino\nfuori. In quanto Guardiano di\\lBorrius, di nome e di fatto, è tua\n\nresponsabilità occuparti di questi\nPokémon. Presumo che, nella maggior\\lparte dei casi, se catturi il\n\nPokémon, i portali scompariranno\ndefinitivamente. Anche se è dubbio\\lche tutti spariranno per sempre\\. In\n\nogni caso! Cattura i Pokémon\ntrovati in questi misteriosi\\lportali. Alcuni portali potrebbero\n\napparire solo se porti con te\nPokémon specifici, ma i Pokémon in\\lquei portali devono comunque essere\n\ncatturati. E se un portale si\nrifiutasse di scomparire\\ldefinitivamente dopo aver catturato\n\nil Pokémon, sarà sufficiente\nregistrarlo nel Pokédex."
     },
     {
       "id": "scr_1F4C712",
@@ -315556,7 +315612,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Ah, dal distintivo sulla tua Carta\nAllenatore vedo che sei diventato\\lun Allenatore piuttosto abile. Hai\n\nsuperato di gran lunga il ruolo di\n[buffer1] fattorino di Prof. Log.\\lTuttavia, per me non si è mai\n\ntroppo esperti per osservare un\nesperto catturare Pokémon! Allora,\\lche ne dici? Potrei insegnarti un\n\npaio di cose su come catturare\nPokémon."
+      "translated": "Ah, dal distintivo sulla tua Carta\nAllenatore vedo che sei diventato\\lun Allenatore piuttosto abile. Hai\n\nsuperato da tempo il ruolo di\n[buffer1] tuttofare del Prof. Log.\\lTuttavia, per me non si è mai\n\ntroppo esperti per osservare un\nesperto catturare Pokémon! Allora,\\lche ne dici? Potrei insegnarti un\n\npaio di cose su come catturare\nPokémon."
     },
     {
       "id": "scr_1F5B248",
@@ -315674,6 +315730,7 @@
       "category": "scripts",
       "address": "0x1F5B56D",
       "pointer_sources": [
+        "0x1E83262",
         "0x1E92DDC"
       ],
       "original": "\"boy\"",
@@ -352903,6 +352960,8 @@
       "category": "scripts",
       "address": "0x1F8BEE7",
       "pointer_sources": [
+        "0x1E70A0E",
+        "0x1EA02E9",
         "0x1EAB930"
       ],
       "original": "\"she\"",
@@ -353870,7 +353929,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Congratulazioni per la tua striscia\ndi vittorie, sfidante! Il [buffer1]\\lha fatto sapere che [buffer2] è\n\nrimasto colpito da te. [buffer3]\nvede la tua abilità, e [buffer2]\\lvorrebbe sfidarti a una lotta! Sei\n\npronto a sfidare il [buffer1]?"
+      "translated": "Congratulazioni per la tua striscia\ndi vittorie, sfidante! Il [buffer1]\\lha fatto sapere che [buffer2] ha\n\napprezzato la tua abilità. [buffer3]\nriconosce il tuo valore, e [buffer2]\\lvorrebbe sfidarti a una lotta! Sei\n\npronto a sfidare il [buffer1]?"
     },
     {
       "id": "scr_1F8D608",
@@ -354149,8 +354208,12 @@
       "category": "scripts",
       "address": "0x1F8DD33",
       "pointer_sources": [
+        "0x1E709FB",
         "0x1E9EE30",
-        "0x1EA5258"
+        "0x1EA34E9",
+        "0x1EA5258",
+        "0x1EA57C1",
+        "0x1EAB91D"
       ],
       "original": "\"he\"",
       "byte_length": 3,
@@ -375774,7 +375837,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "[player], mio [buffer1]! Mi deve\narrivare una spedizione di ehm\\. \\CC0818\\lIncenso Rosa al [green]Porto di Antisis[blue]\n\nuna di queste notti. Ma per me è\ntroppo difficile sgattaiolare via\\ldal porto con loro da solo. È qui\n\nche entri in gioco tu. Mi\nincontrerai ai moli, prenderai la\\lspedizione e la contrabbanderai\n\nfino alla base. Capisci?"
+      "translated": "[player], ehi [buffer1]! Mi deve\narrivare una spedizione di ehm\\. \\CC0818\\lIncenso Rosa al [green]Porto di Antisis[blue]\n\nuna di queste notti. Ma per me è\ntroppo difficile sgattaiolare via\\ldal porto con loro da solo. È qui\n\nche entri in gioco tu. Mi\nincontrerai ai moli, prenderai la\\lspedizione e la contrabbanderai\n\nfino alla base. Capisci?"
     },
     {
       "id": "scr_1F9FDB3",
@@ -376604,7 +376667,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "[player]! Mio [buffer1]! Vieni qua e\naiutami, che dici? Senti, amico.\\lQuei Black Ferrothorns, vedi, hanno\n\ntutta questa roba buona. Hanno\ntutti i contatti nei posti giusti\\lper rendere i loro Pokémon forti e\n\nrobusti. Se vogliamo farli fuori,\ndobbiamo tagliare la loro\\lfornitura, capito? La buona notizia\n\nè che so esattamente dove prendono\nla merce. Vedi, c{B4}è questa\\lscienziata - vive non molto lontano\n\nda qui. Ha fornito loro tutti gli\nultimi potenziamenti che la Società\\lScientifica ha messo sul mercato\n\nnero. Sono troppo fifone per\naffrontarla da solo, ma con te\\.\\lSarebbe tutta un{B4}altra storia,\n\ncapito? Allora, che dici, ci stai,\nmio [buffer1]?"
+      "translated": "[player]! Ehi, [buffer1]! Vieni qua e\naiutami, che dici? Senti, amico.\\lQuei Black Ferrothorns, vedi, hanno\n\ntutta questa roba buona. Hanno\ntutti i contatti nei posti giusti\\lper rendere i loro Pokémon forti e\n\nrobusti. Se vogliamo farli fuori,\ndobbiamo tagliare la loro\\lfornitura, capito? La buona notizia\n\nè che so esattamente dove prendono\nla merce. Vedi, c{B4}è questa\\lscienziata - vive non molto lontano\n\nda qui. Ha fornito loro tutti gli\nultimi potenziamenti che la Società\\lScientifica ha messo sul mercato\n\nnero. Sono troppo fifone per\naffrontarla da solo, ma con te\\.\\lSarebbe tutta un{B4}altra storia,\n\ncapito? Allora, che dici, ci stai,\n[buffer1]?"
     },
     {
       "id": "scr_1FA1057",
@@ -376623,7 +376686,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Davvero, il mio [buffer1]? Non\nriesco a credere a quello che\\lsento!"
+      "translated": "Davvero, [buffer1]? Non\nriesco a credere a quello che\\lsento!"
     },
     {
       "id": "scr_1FA1088",
@@ -376646,7 +376709,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Fantastico, il mio [buffer1]! Faremo\npompare i nostri Pokémon, grandi e\\lforti, capito? Facciamolo davvero!\n\nQuello scienziato vive nella casa\nproprio accanto al Centro Pokémon.\\lVado avanti e ci vediamo lì, il mio\n\n[buffer1]!"
+      "translated": "Fantastico, [buffer1]! Faremo\npompare i nostri Pokémon, grandi e\\lforti, capito? Facciamolo davvero!\n\nQuello scienziato vive nella casa\nproprio accanto al Centro Pokémon.\\lVado avanti e ci vediamo lì, [buffer1]!"
     },
     {
       "id": "scr_1FA115F",
@@ -376669,7 +376732,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "{B4}ey! Mio [buffer1]! Grazie al tuo\n{B4}aiuto, ora abbiamo un ottimo modo\\lper potenziare i nostri Pokémon\n\nprima di affrontare quelle Black\nFerrothorn! Quel Pokémon che ho\\lfregato a quello scienziato era\n\nquello che lei usava per creare il\nsiero che quelle Black Ferrothorn\\lhanno usato, hai capito? Però non\n\nho idea di come facesse. Deve\nessere stato qualche strano potere\\ldell{B4}alchimia. Comunque non importa\n\ndavvero, visto che James sa come\nfarlo anche per noi, hai capito?\\lOh, già, quasi dimenticavo, mio\n\n[buffer1]. James voleva che tu\navessi questo."
+      "translated": "{B4}ey! Ehi, [buffer1]! Grazie al tuo\n{B4}aiuto, ora abbiamo un ottimo modo\\lper potenziare i nostri Pokémon\n\nprima di affrontare quelle Black\nFerrothorn! Quel Pokémon che ho\\lfregato a quello scienziato era\n\nquello che lei usava per creare il\nsiero che quelle Black Ferrothorn\\lhanno usato, hai capito? Però non\n\nho idea di come facesse. Deve\nessere stato qualche strano potere\\ldell{B4}alchimia. Comunque non importa\n\ndavvero, visto che James sa come\nfarlo anche per noi, hai capito?\\lOh, già, quasi dimenticavo, [buffer1]. James voleva che tu\navessi questo."
     },
     {
       "id": "scr_1FA134F",
@@ -376705,7 +376768,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "[player]! Mio [buffer1]! Ho qualcosa\nda darti da parte di James, ma ti\\lserve più spazio in squadra se vuoi\n\nche te lo consegni, hai capito?"
+      "translated": "[player]! Ehi, [buffer1]! Ho qualcosa\nda darti da parte di James, ma ti\\lserve più spazio in squadra se vuoi\n\nche te lo consegni, hai capito?"
     },
     {
       "id": "scr_1FA13F5",
@@ -376732,7 +376795,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "[player]! Mio [buffer1]! Lo senti? È\nquasi ora di abbattere quei Black\\lFerrothorn, eh? Ora che non hanno\n\npiù quella roba che aumenta le\nstatistiche, non avranno alcuna\\lchance contro di noi Black\n\n[player]!"
+      "translated": "[player]! Ehi, [buffer1]! Lo senti? È\nquasi ora di abbattere quei Black\\lFerrothorn, eh? Ora che non hanno\n\npiù quella roba che aumenta le\nstatistiche, non avranno alcuna\\lchance contro di noi Black\n\n[player]!"
     },
     {
       "id": "scr_1FA14C6",
@@ -376974,7 +377037,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Sembra che sia KO, mio [buffer1].\nMettiamoci a cercare e scopriamo\\ldove ha messo tutti quei\n\npotenziatori delle statistiche che\nha usato per potenziare tutti\\lquegli Electrode."
+      "translated": "Sembra che sia KO, [buffer1].\nMettiamoci a cercare e scopriamo\\ldove ha messo tutti quei\n\npotenziatori delle statistiche che\nha usato per potenziare tutti\\lquegli Electrode."
     },
     {
       "id": "scr_1FA1A0B",
@@ -380835,7 +380898,9 @@
       "category": "scripts",
       "address": "0x1FA7652",
       "pointer_sources": [
-        "0x1E70A08"
+        "0x1E70A08",
+        "0x1EAB92A",
+        "0x1EAB936"
       ],
       "original": "\"her\"",
       "byte_length": 4,
