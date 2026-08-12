@@ -35,6 +35,16 @@ class AlignedPointerTextTests(unittest.TestCase):
         self.assertEqual(table_name, "data.menus.text.pokedex.controls")
         self.assertEqual(addresses, [0x415FAD])
 
+    def test_opening_difficulty_selector_has_all_unaligned_labels(self):
+        table_name, addresses = EXTRACTOR.MANUAL_TEXT_TABLES["menu_game_settings"]
+
+        self.assertEqual(table_name, "data.menus.text.gameSettings")
+        self.assertEqual(addresses[-2:], [0x75CE9A, 0x75CEA6])
+        self.assertEqual(
+            EXTRACTOR.MANUAL_TEXT_POINTER_SOURCES,
+            {0x75CE9A: [0x75CD61], 0x75CEA6: [0x75CDAF]},
+        )
+
     def test_pokedex_unknown_fallback_label_cannot_relocate(self):
         result = decode("Unknown")
         entry = EXTRACTOR.make_entry(

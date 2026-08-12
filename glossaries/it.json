@@ -4,6 +4,90 @@
   "note": "Initial Italian draft for review; targets are not release-approved yet.",
   "terms": [
     {
+      "source": "Difficult/Vanilla",
+      "target": "Difficile/Normale",
+      "kind": "difficulty",
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "menu_game_settings"
+      ]
+    },
+    {
+      "source": "Easy",
+      "target": "Facile",
+      "kind": "difficulty",
+      "categories": [
+        "scripts",
+        "menu_game_settings"
+      ]
+    },
+    {
+      "source": "Medium",
+      "target": "Media",
+      "kind": "difficulty",
+      "categories": [
+        "pointer_texts",
+        "menu_game_settings"
+      ]
+    },
+    {
+      "source": "Hard",
+      "target": "Difficile",
+      "kind": "difficulty",
+      "categories": [
+        "menu_game_settings"
+      ]
+    },
+    {
+      "source": "Vanilla",
+      "target": "Normale",
+      "kind": "difficulty",
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "menu_game_settings"
+      ]
+    },
+    {
+      "source": "Difficult",
+      "target": "Difficile",
+      "kind": "difficulty",
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "menu_game_settings"
+      ]
+    },
+    {
+      "source": "Expert Difficulty",
+      "target": "Difficoltà Esperto",
+      "kind": "difficulty",
+      "categories": [
+        "scripts",
+        "menu_game_settings"
+      ]
+    },
+    {
+      "source": "Expert difficulty",
+      "target": "difficoltà Esperto",
+      "kind": "difficulty",
+      "categories": [
+        "scripts",
+        "menu_game_settings"
+      ]
+    },
+    {
+      "source": "Insane",
+      "target": "Folle",
+      "kind": "difficulty",
+      "categories": [
+        "scripts",
+        "pointer_texts",
+        "menu_game_settings"
+      ]
+    },
+    {
       "source": "West Borrius",
       "target": "Borrius Occidentale",
       "kind": "region"

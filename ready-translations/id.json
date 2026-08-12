@@ -155868,6 +155868,20 @@
       "translated": "Sekarang kita punya Pokémon\nsendiri, ayo kembali ke pintu\\lkeluar. Kita akan paksa jalan\n\nkeluar dari sini!"
     },
     {
+      "id": "tbl_menu_game_settings_00016_75CE9A",
+      "category": "menu_game_settings",
+      "address": "0x75CE9A",
+      "pointer_sources": [
+        "0x75CD61"
+      ],
+      "original": "\"Easy\"",
+      "byte_length": 5,
+      "is_pointer_based": true,
+      "table_name": "data.menus.text.gameSettings",
+      "table_index": 16,
+      "translation_source": "Easy"
+    },
+    {
       "id": "scr_75CE9F",
       "category": "pointer_texts",
       "address": "0x75CE9F",
@@ -155878,6 +155892,20 @@
       "byte_length": 7,
       "is_pointer_based": true,
       "translation_source": "Medium"
+    },
+    {
+      "id": "tbl_menu_game_settings_00017_75CEA6",
+      "category": "menu_game_settings",
+      "address": "0x75CEA6",
+      "pointer_sources": [
+        "0x75CDAF"
+      ],
+      "original": "\"Hard\"",
+      "byte_length": 5,
+      "is_pointer_based": true,
+      "table_name": "data.menus.text.gameSettings",
+      "table_index": 17,
+      "translation_source": "Hard"
     },
     {
       "id": "scr_75D2AB",

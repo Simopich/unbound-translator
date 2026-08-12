@@ -159804,6 +159804,21 @@
       "translated": "Ora che abbiamo i nostri Pokémon,\ntorniamo all{B4}uscita. Ci faremo\\lstrada fuori di qui!"
     },
     {
+      "id": "tbl_menu_game_settings_00016_75CE9A",
+      "category": "menu_game_settings",
+      "address": "0x75CE9A",
+      "pointer_sources": [
+        "0x75CD61"
+      ],
+      "original": "\"Easy\"",
+      "byte_length": 5,
+      "is_pointer_based": true,
+      "table_name": "data.menus.text.gameSettings",
+      "table_index": 16,
+      "translation_source": "Easy",
+      "translated": "Facile"
+    },
+    {
       "id": "scr_75CE9F",
       "category": "pointer_texts",
       "address": "0x75CE9F",
@@ -159814,7 +159829,22 @@
       "byte_length": 7,
       "is_pointer_based": true,
       "translation_source": "Medium",
-      "translated": "Medio"
+      "translated": "Media"
+    },
+    {
+      "id": "tbl_menu_game_settings_00017_75CEA6",
+      "category": "menu_game_settings",
+      "address": "0x75CEA6",
+      "pointer_sources": [
+        "0x75CDAF"
+      ],
+      "original": "\"Hard\"",
+      "byte_length": 5,
+      "is_pointer_based": true,
+      "table_name": "data.menus.text.gameSettings",
+      "table_index": 17,
+      "translation_source": "Hard",
+      "translated": "Difficile"
     },
     {
       "id": "scr_75D2AB",
@@ -220589,7 +220619,7 @@
       "byte_length": 8,
       "is_pointer_based": true,
       "translation_source": "Vanilla",
-      "translated": "Vaniglia"
+      "translated": "Normale"
     },
     {
       "id": "scr_A4ED0C",
@@ -220615,7 +220645,7 @@
       "byte_length": 18,
       "is_pointer_based": true,
       "translation_source": "Difficult/Vanilla",
-      "translated": "Difficile/Vanilla"
+      "translated": "Difficile/Normale"
     },
     {
       "id": "scr_A4ED28",
@@ -225126,7 +225156,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Spiacente, Campione, ma il Gauntlet\ndei Capipalestra classici [green]Insano[blue] è\\lancora bloccato. Dovrai prima\n\ncompletare il Gauntlet dei\nCapipalestra classici [green]Esperto[blue]. Ti\\lbasta aprire il [green]Menu Opzioni[blue] e\n\nabbassare la tua [green]Difficoltà lotta[blue]."
+      "translated": "Spiacente, Campione, ma la Sfida\ndei Capipalestra classici [green]Folle[blue] è\\lancora bloccata. Prima devi\n\ncompletare la Sfida dei\nCapipalestra classici [green]Esperto[blue]. Ti\\lbasta aprire il [green]Menu Opzioni[blue] e\n\nabbassare la [green]Difficoltà lotta[blue]."
     },
     {
       "id": "scr_1EDFF51",
@@ -261105,7 +261135,7 @@
       "byte_length": 167,
       "is_pointer_based": true,
       "translation_source": "Welcome to Pokémon Unbound! Before you begin playing, please be aware that this is a non-profit fan game. If you paid for this game, reclaim your money immediately!",
-      "translated": "Benvenuto in Pokémon Unbound! Prima\ndi iniziare a giocare, tieni\npresente che questo è un fangame on\n\na scopo di lucro. Se hai pagato per\nquesto gioco, chiedi subito il\nrimborso!"
+      "translated": "Benvenuto in Pokémon Unbound!\n\nPrima di iniziare, ricorda che\nquesto fangame non ha scopo di\nlucro.\n\nSe hai pagato per ottenerlo,\nchiedi subito un rimborso!"
     },
     {
       "id": "scr_1F0F64D",
@@ -261118,7 +261148,7 @@
       "byte_length": 173,
       "is_pointer_based": true,
       "translation_source": "In the world which you are about to enter, you will embark on a grand adventure with you as the hero. The world is a big place. Take your time exploring; there is no rush.",
-      "translated": "Nel mondo in cui stai per entrare,\nintraprenderai una grande avventura\ncon te come eroe. Il mondo è un\n\nposto enorme. Prenditi il tuo tempo\nper esplorare; non c{B4}è fretta."
+      "translated": "Nel mondo in cui stai per entrare,\nsarai l{B4}eroe di una grande\navventura.\n\nIl mondo è vasto: esploralo con\ncalma. Non c{B4}è alcuna fretta."
     },
     {
       "id": "scr_1F0F6FA",
@@ -261131,7 +261161,7 @@
       "byte_length": 162,
       "is_pointer_based": true,
       "translation_source": "Speak to people, and check things wherever you go, be it towns, roads, or caves. The world and its people are alive. As you grow, they will grow along with you.",
-      "translated": "Parla con le persone e controlla\nogni cosa ovunque tu vada, che si\ntratti di città, strade o caverne.\n\nIl mondo e le sue persone sono\nvivi. Man mano che crescerai,\ncresceranno insieme a te."
+      "translated": "Parla con le persone ed esamina\nciò che trovi in città, lungo le\nstrade e nelle grotte.\n\nIl mondo e i suoi abitanti sono\nvivi: cresceranno insieme a te."
     },
     {
       "id": "scr_1F0F79C",
@@ -261150,7 +261180,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Con questo in mente, sei quasi\npronto per entrare nella regione di\nBorrius! Ma prima\\."
+      "translated": "Ora sei quasi pronto a entrare\nnella regione di Borrius!\n\nMa prima\\."
     },
     {
       "id": "scr_1F0F7EC",
@@ -261576,7 +261606,7 @@
           "token": "[black]"
         }
       ],
-      "translated": "Nota che questa modalità è stata\nprogettata per essere completata\\lcon una squadra completamente\n\nallenata in EV. Se hai una squadra\ndel genere, probabilmente non\\ldovrai cambiare squadra tra le\n\nbattaglie importanti. Sei SICURO di\nvoler continuare con la difficoltà\\l[green]Expert[black]?"
+      "translated": "Nota che questa modalità è stata\nprogettata per essere completata\\lcon una squadra completamente\n\nallenata in EV. Se hai una squadra\ndel genere, probabilmente non\\ldovrai cambiare squadra tra le\n\nbattaglie importanti. Sei SICURO di\nvoler continuare con la difficoltà\\l[green]Esperto[black]?"
     },
     {
       "id": "scr_1F101AC",
@@ -261611,7 +261641,7 @@
           "token": "[black]"
         }
       ],
-      "translated": "[lightgreen]ATTENZIONE![black] Questa modalità di\ngioco è stata progettata per essere\\lun compito quasi impossibile! In\n\nmolti punti sembrerà una sfida\ningiusta o noiosa. Questa era\\ll{B4}intenzione! Quindi, se scegli\n\nquesta difficoltà, preparati a\nperdere molte, molte volte! E sappi\\lche se scegli di procedere, non hai\n\nessuno da incolpare se non te\nstesso\\. Sei SICURO di voler giocare\\lcon la difficoltà [green]Insane[black]?"
+      "translated": "[lightgreen]ATTENZIONE![black] Questa modalità di\ngioco è stata progettata per essere\\lun compito quasi impossibile! In\n\nmolti punti sembrerà una sfida\ningiusta o noiosa. Questa era\\ll{B4}intenzione! Quindi, se scegli\n\nquesta difficoltà, preparati a\nperdere molte, molte volte! E sappi\\lche se scegli di procedere, non hai\n\nessuno da incolpare se non te\nstesso\\. Sei SICURO di voler giocare\\lcon la difficoltà [green]Folle[black]?"
     },
     {
       "id": "scr_1F10323",
@@ -261638,7 +261668,7 @@
           "token": "[black]"
         }
       ],
-      "translated": "La difficoltà del gioco è stata\nimpostata su [green][buffer1][black]. Sentiti\\llibero di passare da Vanilla a\n\nDifficult in qualsiasi momento\nusando il Menu Opzioni."
+      "translated": "La difficoltà del gioco è stata\nimpostata su [green][buffer1][black]. Sentiti\\llibero di passare da Normale a\n\nDifficile in qualsiasi momento\nusando il Menu Opzioni."
     },
     {
       "id": "scr_1F103AA",
@@ -261799,7 +261829,7 @@
       "byte_length": 8,
       "is_pointer_based": true,
       "translation_source": "Vanilla",
-      "translated": "Vaniglia"
+      "translated": "Normale"
     },
     {
       "id": "scr_1F10638",
@@ -271734,7 +271764,7 @@
       "byte_length": 347,
       "is_pointer_based": true,
       "translation_source": "If you are crazy enough to attempt Insane, then you should be crazy enough to buy healing items, or be prepared to pay the price of 6 Full Restores, 5 Revives, and 6 Max Elixirs every time you need to heal. Don’t like this? Play on a lower difficulty. This game mode is not meant for those who want to take the easy way out. You have been warned.",
-      "translated": "Se sei abbastanza pazzo da tentare\nl{B4}Insane, allora dovresti essere\\labbastanza pazzo da comprare\n\noggetti curativi, oppure prepararti\na pagare il prezzo di 6 Cura\\lTotale, 5 Revitalizzanti e 6 Max\n\nElisir ogni volta che hai bisogno\ndi curarti. Non ti piace? Gioca a\\luna difficoltà più bassa. Questa\n\nmodalità di gioco non è pensata per\nchi vuole scegliere la via più\\lfacile. Sei stato avvertito."
+      "translated": "Se sei abbastanza pazzo da tentare\nla modalità Folle, dovresti essere\\labbastanza pazzo da comprare\n\noggetti curativi, oppure prepararti\na pagare il prezzo di 6 Cura\\lTotale, 5 Revitalizzanti e 6 Max\n\nElisir ogni volta che hai bisogno\ndi curarti. Non ti piace? Gioca a\\luna difficoltà più bassa. Questa\n\nmodalità di gioco non è pensata per\nchi vuole scegliere la via più\\lfacile. Sei stato avvertito."
     },
     {
       "id": "scr_1F2069F",
@@ -306616,7 +306646,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "Mi dispiace, mentre si gioca a\n[green]Insane[red], le funzionalità link non\\lpossono essere utilizzate finché il\n\ngioco non viene completato."
+      "translated": "Mi dispiace, mentre si gioca a\n[green]Folle[red], le funzionalità link non\\lpossono essere utilizzate finché il\n\ngioco non viene completato."
     },
     {
       "id": "scr_1F4EAD7",
@@ -334878,7 +334908,7 @@
           "token": "[black]"
         }
       ],
-      "translated": "Consigli per gli Allenatori!\nL{B4}opzione [green]Restrizioni sugli\\lStrumenti[black] ti permette di scegliere\n\nquanti strumenti puoi usare in\nbattaglia! Se scegli [green]Nessun\\lStrumento[black], allora nessun Allenatore\n\npotrà usarne alcuno! Al minimo,\n[green]Solo 4 Strumenti[black] deve essere\\limpostato per [green]Esperto[black], e [green]Nessun\n\nStrumento[black] deve essere impostato per\n[green]Pazzo[black]. Se ti senti particolarmente\\lambizioso, impostarlo su [green]Solo\n\nAllenatore Avversario[black] permetterà ai\ntuoi avversari di usare strumenti\\lmentre impedirà a te! Quest{B4}ultima\n\nscelta funziona per qualsiasi\ndifficoltà."
+      "translated": "Consigli per gli Allenatori!\nL{B4}opzione [green]Restrizioni sugli\\lStrumenti[black] ti permette di scegliere\n\nquanti strumenti puoi usare in\nbattaglia! Se scegli [green]Nessun\\lStrumento[black], allora nessun Allenatore\n\npotrà usarne alcuno! Al minimo,\n[green]Solo 4 Strumenti[black] deve essere\\limpostato per [green]Esperto[black], e [green]Nessun\n\nStrumento[black] deve essere impostato per\n[green]Folle[black]. Se ti senti particolarmente\\lambizioso, impostarlo su [green]Solo\n\nAllenatore Avversario[black] permetterà ai\ntuoi avversari di usare strumenti\\lmentre impedirà a te! Quest{B4}ultima\n\nscelta funziona per qualsiasi\ndifficoltà."
     },
     {
       "id": "scr_1F732BD",
@@ -335530,7 +335560,7 @@
           "token": "[black]"
         }
       ],
-      "translated": "[black]Suggerimento Allenatori! Anche alla\ndifficoltà [green]Vanilla[black], il Superquattro\\ldiventa più forte man mano che\n\navanzi! Non farti cogliere di\nsorpresa e preparati a\\lcombattimenti intensi!"
+      "translated": "[black]Suggerimento Allenatori! Anche alla\ndifficoltà [green]Normale[black], il Superquattro\\ldiventa più forte man mano che\n\navanzi! Non farti cogliere di\nsorpresa e preparati a\\lcombattimenti intensi!"
     },
     {
       "id": "scr_1F747B8",

@@ -38,6 +38,18 @@ def test_italian_glossary_is_valid_and_has_unique_sources():
     assert "A Hero’s Journey" in sources
 
 
+def test_italian_glossary_defines_canonical_difficulty_terms():
+    glossary = load_glossary(ROOT / "glossaries" / "it.json", expected_language="it")
+    targets = {term.source: term.target for term in glossary.terms}
+
+    assert targets["Easy"] == "Facile"
+    assert targets["Medium"] == "Media"
+    assert targets["Hard"] == "Difficile"
+    assert targets["Vanilla"] == "Normale"
+    assert targets["Difficult"] == "Difficile"
+    assert targets["Insane"] == "Folle"
+
+
 def test_italian_glossary_covers_every_extracted_mission_name():
     glossary = load_glossary(ROOT / "glossaries" / "it.json", expected_language="it")
     prepared = json.loads(

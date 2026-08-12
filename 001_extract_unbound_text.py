@@ -348,6 +348,11 @@ MANUAL_TEXT_TABLES = {
             0x1F4DCB2,
             0x1F4DCBF,
             0x1F4DCCD,
+            # Unaligned pointers in the opening difficulty selector. Medium is
+            # found by the generic scan, but its adjacent Easy/Hard labels need
+            # explicit ownership so all three choices remain translatable.
+            0x75CE9A,
+            0x75CEA6,
         ],
     ),
     "menu_save": (
@@ -595,6 +600,14 @@ MANUAL_TEXT_TABLES = {
         "data.menus.text.save.prompts",
         [0x1C55C9],
     ),
+}
+
+# Valid pointers whose owning records are intentionally byte-packed rather
+# than 4-byte aligned. The generic source predicate cannot prove these, so
+# their manually identified text owners must preserve them explicitly.
+MANUAL_TEXT_POINTER_SOURCES = {
+    0x75CE9A: [0x75CD61],  # Easy
+    0x75CEA6: [0x75CDAF],  # Hard
 }
 
 
@@ -1146,7 +1159,12 @@ def extract_manual_tables(
             for index, address in enumerate(addresses):
                 result = decode_pcs(rom, address, DEFAULT_MAX_TEXT_LENGTH)
                 known_targets.add(address)
-                pointer_sources = find_pointer_sources(rom, address)
+                pointer_sources = list(
+                    dict.fromkeys(
+                        find_pointer_sources(rom, address)
+                        + MANUAL_TEXT_POINTER_SOURCES.get(address, [])
+                    )
+                )
                 known_pointer_sources.update(pointer_sources)
                 entries.append(
                     make_entry(
@@ -1185,7 +1203,12 @@ def extract_manual_tables(
                 cursor += 1
                 continue
             known_targets.add(cursor)
-            pointer_sources = find_pointer_sources(rom, cursor)
+            pointer_sources = list(
+                dict.fromkeys(
+                    find_pointer_sources(rom, cursor)
+                    + MANUAL_TEXT_POINTER_SOURCES.get(cursor, [])
+                )
+            )
             known_pointer_sources.update(pointer_sources)
             entries.append(
                 make_entry(
