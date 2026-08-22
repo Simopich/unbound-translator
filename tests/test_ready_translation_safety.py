@@ -10,6 +10,7 @@ from tests.helpers import load_script_module
 
 READY_ITALIAN = Path(__file__).resolve().parents[1] / "ready-translations" / "it.json"
 READY_INDONESIAN = Path(__file__).resolve().parents[1] / "ready-translations" / "id.json"
+READY_GERMAN = Path(__file__).resolve().parents[1] / "ready-translations" / "de.json"
 FIXTURE = (
     Path(__file__).resolve().parent / "fixtures" / "fixed_translation_overrides.json"
 )
@@ -203,7 +204,38 @@ def test_misc_menu_text_respects_observed_screen_budgets():
         text = entry["translated"]
         assert text.startswith("Natura \\?00.")
         assert text.count("\\?00") == 1
-        assert max(map(text_pixel_width, text.splitlines())) <= 154
+    assert max(map(text_pixel_width, text.splitlines())) <= 154
+
+
+def test_ready_german_settings_and_battle_text_respect_rendered_width_budgets():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+
+    def rendered_lines(text):
+        for token in ("\\pn", "\\p", "\\n", "\\l"):
+            text = text.replace(token, "\n")
+        return [line for line in text.splitlines() if line.strip()]
+
+    for entry in entries:
+        category = entry.get("category")
+        effective = INJECTOR.translation_for_injection(entry)
+        if category == "setting_names":
+            assert text_pixel_width(effective) <= 93, entry["id"]
+        elif category == "battle_messages":
+            assert max(
+                map(text_pixel_width, rendered_lines(effective)), default=0
+            ) <= 208, entry["id"]
+        elif category == "menu_game_settings":
+            address = int(entry["address"], 16)
+            if address == 0x1F4DA6C or 0x1F4DBA5 <= address <= 0x1F4DD5F:
+                assert text_pixel_width(effective) <= 118, entry["id"]
+            elif 0x1F4DD6D <= address <= 0x1F4E214:
+                assert text_pixel_width(effective) <= 224, entry["id"]
+        elif category == "mission_objectives":
+            lines = rendered_lines(effective)
+            assert "..." not in effective, entry["id"]
+            assert len(lines) <= 2, entry["id"]
+            assert max(map(visible_width, lines), default=0) <= 35, entry["id"]
+            assert visible_width(" ".join(lines)) <= 65, entry["id"]
 
 
 def test_verified_official_italian_terms_and_pokedex_layout():

@@ -33,6 +33,8 @@ def _args(**overrides):
         "mission_description_max_lines": 3,
         "item_description_wrap_width": 14,
         "item_description_max_lines": 3,
+        "battle_message_max_pixels": 208,
+        "setting_name_max_width": 93,
     }
     values.update(overrides)
     return SimpleNamespace(**values)
@@ -181,6 +183,23 @@ def test_wrap_translation_uses_dialogue_layout_for_scripts():
     assert not skipped
     assert long_words == 0
     assert wrapped == "uno due tre\nquattro\\lcinque sei"
+
+
+def test_battle_messages_wrap_dynamic_controls_by_pixel_width():
+    text = r"\\1C Das Team von \\1D \\2E Das Team von \\2F"
+    wrapped, changed, _long_words, skipped = controlfix.wrap_translation(
+        text,
+        {"category": "battle_messages"},
+        "Battle message",
+        _args(wrap_width=35, battle_message_max_pixels=208),
+        {"battle_messages"},
+    )
+
+    assert changed
+    assert not skipped
+    assert max(map(controlfix.text_pixel_width, wrapped.splitlines())) <= 208
+    for token in (r"\\1C", r"\\1D", r"\\2E", r"\\2F"):
+        assert wrapped.count(token) == 1
 
 
 def test_wrap_translation_uses_plain_line_breaks_for_plain_scripts_and_descriptions():
@@ -427,6 +446,14 @@ def test_menu_and_battle_layout_repairs():
     )
     assert battle_changed
     assert battle_text == "Cosa farà\n\\\\12?"
+
+    battle_text, battle_changed = controlfix.restore_battle_prompt_layout(
+        "Was soll \\\\12 tun?",
+        "What will \\\\12 do?",
+        {"id": "tbl_battle_messages_00412_3FE6D5"},
+    )
+    assert battle_changed
+    assert battle_text == "Was soll\n\\\\12 tun?"
 
     repaired, changed = controlfix.restore_battle_prompt_layout(
         "Cosa deve fare\\n\n\\\\12?",

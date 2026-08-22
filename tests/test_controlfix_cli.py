@@ -68,3 +68,11 @@ def test_controlfix_wrap_only_also_wraps_fixed_overrides(tmp_path):
     data = json.loads(output_path.read_text(encoding="utf-8"))
     fixed = next(entry for entry in data["entries"] if entry["id"] == "scr_token_layout")
     assert "\n" in fixed["translated_fixed"]
+    assert next(entry for entry in data["entries"] if entry["id"] == "tbl_menu_yes_no")[
+        "translated"
+    ] == "Sì\nNo"
+    assert next(
+        entry
+        for entry in data["entries"]
+        if entry["id"] == "tbl_battle_messages_00412_3FE6D5"
+    )["translated"] == "Cosa farà\n\\\\12?"
