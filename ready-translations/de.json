@@ -103823,7 +103823,7 @@
           "token": "\\CC1338"
         }
       ],
-      "translated": "\\CC0505\\CC040D0E0FKampf\\CC1338Cube-Pokémon\\CC1338Flucht"
+      "translated": "\\CC0505\\CC040D0E0FKampf\\CC1338Cube\\nPokémon\\CC1338Flucht"
     },
     {
       "id": "tbl_menu_battle_00004_A4C7DA",
@@ -103864,7 +103864,7 @@
           "token": "\\CC1338"
         }
       ],
-      "translated": "\\CC0505\\CC040D0E0FKampf\\CC1338\\CC040F0E0BCube-\\CC040D0E0FPokémon\\CC1338Flucht"
+      "translated": "\\CC0505\\CC040D0E0FKampf\\CC1338\\CC040F0E0BCube\\n\\CC040D0E0FPokémon\\CC1338Flucht"
     },
     {
       "id": "tbl_menu_battle_00005_A4C807",
@@ -103897,7 +103897,7 @@
           "token": "\\CC1338"
         }
       ],
-      "translated": "\\CC0505\\CC040D0E0FKampf\\CC1338Cube-Pokémon\\CC1338Zurück"
+      "translated": "\\CC0505\\CC040D0E0FKampf\\CC1338Cube\\nPokémon\\CC1338Zurück"
     },
     {
       "id": "tbl_menu_battle_00006_A4C82B",
@@ -103938,7 +103938,7 @@
           "token": "\\CC1338"
         }
       ],
-      "translated": "\\CC0505\\CC040D0E0FKampf\\CC1338\\CC040F0E0BCube-\\CC040D0E0FPokémon\\CC1338Zurück"
+      "translated": "\\CC0505\\CC040D0E0FKampf\\CC1338\\CC040F0E0BCube\\n\\CC040D0E0FPokémon\\CC1338Zurück"
     },
     {
       "id": "tbl_menu_trainer_card_00000_419CDA",

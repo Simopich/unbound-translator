@@ -297,6 +297,45 @@ def test_ready_german_wireless_status_slots_keep_dynamic_controls_and_fit():
             )
 
 
+def test_german_battle_command_menus_preserve_choice_order_and_layout():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+    by_id = {entry["id"]: entry for entry in entries}
+    expected = {
+        "tbl_menu_battle_00000_3FE725": (
+            r"\CC0505\CC040D0E0FKampf\CC1338Beutel\n"
+            r"Pokémon\CC1338Flucht"
+        ),
+        "tbl_menu_battle_00001_3FE747": (
+            r"\CC0505\CC040D0E0FBall\CC1338Köder\n"
+            r"Stein\CC1338Flucht"
+        ),
+        "tbl_menu_battle_00002_3FE791": r"\CC0505\CC040D0E0FJa\nNein",
+        "tbl_menu_battle_00003_A4C7B7": (
+            r"\CC0505\CC040D0E0FKampf\CC1338Cube\nPokémon\CC1338Flucht"
+        ),
+        "tbl_menu_battle_00004_A4C7DA": (
+            r"\CC0505\CC040D0E0FKampf\CC1338\CC040F0E0BCube\n"
+            r"\CC040D0E0FPokémon\CC1338Flucht"
+        ),
+        "tbl_menu_battle_00005_A4C807": (
+            r"\CC0505\CC040D0E0FKampf\CC1338Cube\nPokémon\CC1338Zurück"
+        ),
+        "tbl_menu_battle_00006_A4C82B": (
+            r"\CC0505\CC040D0E0FKampf\CC1338\CC040F0E0BCube\n"
+            r"\CC040D0E0FPokémon\CC1338Zurück"
+        ),
+    }
+
+    for entry_id, translation in expected.items():
+        entry = by_id[entry_id]
+        effective = INJECTOR.translation_for_injection(entry)
+        assert effective == translation
+        assert "Cube-" not in effective
+        assert semantic_token_counts(effective) == semantic_token_counts(
+            entry["original"]
+        )
+
+
 def test_verified_official_italian_terms_and_pokedex_layout():
     entries = json.loads(READY_ITALIAN.read_text(encoding="utf-8"))["entries"]
     by_source = {

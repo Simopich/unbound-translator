@@ -42,7 +42,7 @@ The project is usable but still early and primarily tested with Italian and the 
 
 | Capability | Status |
 | --- | --- |
-| Release-ready translations | Indonesian (`ready-translations/id.json`), Italian (`ready-translations/it.json`), German (`ready-translations/de.json`) in the [Bladestar2105 fork release](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.4) |
+| Release-ready translations | Indonesian (`ready-translations/id.json`), Italian (`ready-translations/it.json`), German (`ready-translations/de.json`) in the [Bladestar2105 fork release](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.5) |
 | Translation CLI targets | `de`, `en`, `es`, `fr`, `id`, `it`, `pt`, `pt-br` |
 | Non-Latin scripts | Not supported yet; likely requires a font patch |
 | Supported systems | Windows, macOS, and Linux |
@@ -66,9 +66,10 @@ It includes:
 - A lossless wrap-only formatting pass that keeps control tokens intact while fitting German dialogue to the game text window.
 - Strict injection validation with `--fail-on-no-space`, reporting zero entries skipped for space, pointer mismatches, implausible pointers, encoding errors, truncation, or bounds failures.
 - An independent original-ROM coverage audit that adds five previously unowned Wireless Communication Status slots, including dynamic player counts and the Cancel control.
+- Battle command menus keep `Cube`, `Pokémon`, `Flucht`, and related choices as separate menu slots with preserved control layout.
 - A public BPS patch release that contains no original or patched ROM.
 
-Download the [German translation patch v0.1.4](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.4) and apply it to a clean Pokémon Unbound v2.1.1.1 source ROM with MD5 `9cad8e771940e7f7094d13911552cef0` and SHA-256 `7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7`. The patch was round-trip verified against the generated 32 MB output. Release v0.1.4 additionally covers the previously unextracted Wireless Communication Status slots while retaining the battle-message spacing and German defeat/no-usable-Pokémon fixes. BPS SHA-256: `0b0bc83d068911cd18d4a8290c7a53e470107f8fae9fae7500c27fa8bdc15fef5`.
+Download the [German translation patch v0.1.5](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.5) and apply it to a clean Pokémon Unbound v2.1.1.1 source ROM with MD5 `9cad8e771940e7f7094d13911552cef0` and SHA-256 `7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7`. The patch was round-trip verified against the generated 32 MB output. Release v0.1.5 additionally keeps the Cube/Pokémon battle choices separate while retaining the Wireless Communication Status, battle-message spacing, and German defeat/no-usable-Pokémon fixes. BPS SHA-256: `ba15f620c472a99501f7900ec29791b679ea6fbce6aa2b4a78db51157edbfa05`.
 
 ## Highlights
 
@@ -92,7 +93,7 @@ Download the [German translation patch v0.1.4](https://github.com/Bladestar2105/
    [Rom Patcher JS](https://www.marcrobledo.com/RomPatcher.js/).
 4. Save the patched result as a new ROM. Keep the original ROM unchanged.
 
-For the current German build, use the [German translation patch release](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.4).
+For the current German build, use the [German translation patch release](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.5).
 
 A BPS patch contains differences only. It is not a playable ROM by itself.
 
