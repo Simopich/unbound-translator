@@ -43,6 +43,17 @@ class AlignedPointerTextTests(unittest.TestCase):
         self.assertEqual(EXTRACTOR.MANUAL_TEXT_POINTER_SOURCES[0x75CE9A], [0x75CD61])
         self.assertEqual(EXTRACTOR.MANUAL_TEXT_POINTER_SOURCES[0x75CEA6], [0x75CDAF])
 
+    def test_wireless_status_range_covers_unowned_count_and_cancel_slots(self):
+        self.assertIn(
+            EXTRACTOR.ManualTextRange(
+                "menu_link_controls",
+                "data.menus.text.linkControls.wirelessStatus",
+                0x41E2B4,
+                0x41E2F5,
+            ),
+            EXTRACTOR.POST_POINTER_MANUAL_TEXT_RANGES,
+        )
+
     def test_gendered_dialogue_fragments_have_explicit_owners(self):
         table_name, addresses = EXTRACTOR.MANUAL_TEXT_TABLES[
             "gendered_dialogue_fragments"

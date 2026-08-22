@@ -272,6 +272,31 @@ def test_ready_german_battle_fragments_keep_runtime_spaces_and_loss_text_german(
         )
 
 
+def test_ready_german_wireless_status_slots_keep_dynamic_controls_and_fit():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+    by_address = {entry["address"]: entry for entry in entries}
+    expected = {
+        "0x41E2B4": r"\?00 Spieler",
+        "0x41E2BF": r"\?01 Spieler",
+        "0x41E2C9": r"\?02 Spieler",
+        "0x41E2D4": r"\?03 Spieler",
+        "0x41E2EC": r"\btn01Zurück",
+    }
+    charmap = INJECTOR.Charmap(target_lang="de")
+
+    for address, translation in expected.items():
+        entry = by_address[address]
+        effective = INJECTOR.translation_for_injection(entry)
+        assert effective == translation
+        assert semantic_token_counts(effective) == semantic_token_counts(
+            entry["original"]
+        )
+        if not INJECTOR.pointer_sources(entry):
+            assert len(INJECTOR.encode_text(charmap, effective)) <= int(
+                entry["byte_length"]
+            )
+
+
 def test_verified_official_italian_terms_and_pokedex_layout():
     entries = json.loads(READY_ITALIAN.read_text(encoding="utf-8"))["entries"]
     by_source = {

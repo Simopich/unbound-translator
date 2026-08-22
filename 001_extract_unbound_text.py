@@ -714,6 +714,12 @@ MISSION_DESCRIPTION_TEXT_ADDRESSES = {
 }
 
 POST_POINTER_MANUAL_TEXT_RANGES = [
+    ManualTextRange(
+        "menu_link_controls",
+        "data.menus.text.linkControls.wirelessStatus",
+        0x41E2B4,
+        0x41E2F5,
+    ),
     ManualTextRange("menu_trainer_card", "data.menus.text.trainerCard.profile", 0x1F81E44, 0x1F81EE5),
     ManualTextRange("item_descriptions", "data.items.descriptions", 0x3D4F00, 0x3DB020),
     ManualTextRange("item_descriptions", "data.items.descriptions.extraBalls", 0x7B3EB0, 0x7B4468),

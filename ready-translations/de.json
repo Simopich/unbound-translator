@@ -397578,6 +397578,109 @@
         }
       ],
       "translated": "\\\\10 kann nicht mehr fliehen!"
+    },
+    {
+      "id": "tbl_menu_link_controls_00000_41E2B4",
+      "category": "menu_link_controls",
+      "address": "0x41E2B4",
+      "pointer_sources": [
+        "0x46FA9C"
+      ],
+      "original": "\"\\?00 players\"",
+      "byte_length": 11,
+      "is_pointer_based": true,
+      "table_name": "data.menus.text.linkControls.wirelessStatus",
+      "table_index": 0,
+      "translation_source": "[control-code-1] players",
+      "semantic_token_placeholders": [
+        {
+          "placeholder": "[control-code-1]",
+          "token": "\\?00"
+        }
+      ],
+      "translated": "\\?00 Spieler"
+    },
+    {
+      "id": "tbl_menu_link_controls_00001_41E2BF",
+      "category": "menu_link_controls",
+      "address": "0x41E2BF",
+      "pointer_sources": [
+        "0x46FAA0"
+      ],
+      "original": "\"\\?01 player\"",
+      "byte_length": 10,
+      "is_pointer_based": true,
+      "table_name": "data.menus.text.linkControls.wirelessStatus",
+      "table_index": 1,
+      "translation_source": "[control-code-1] player",
+      "semantic_token_placeholders": [
+        {
+          "placeholder": "[control-code-1]",
+          "token": "\\?01"
+        }
+      ],
+      "translated": "\\?01 Spieler"
+    },
+    {
+      "id": "tbl_menu_link_controls_00002_41E2C9",
+      "category": "menu_link_controls",
+      "address": "0x41E2C9",
+      "pointer_sources": [
+        "0x46FAA4"
+      ],
+      "original": "\"\\?02 players\"",
+      "byte_length": 11,
+      "is_pointer_based": true,
+      "table_name": "data.menus.text.linkControls.wirelessStatus",
+      "table_index": 2,
+      "translation_source": "[control-code-1] players",
+      "semantic_token_placeholders": [
+        {
+          "placeholder": "[control-code-1]",
+          "token": "\\?02"
+        }
+      ],
+      "translated": "\\?02 Spieler"
+    },
+    {
+      "id": "tbl_menu_link_controls_00003_41E2D4",
+      "category": "menu_link_controls",
+      "address": "0x41E2D4",
+      "pointer_sources": [
+        "0x46FAA8"
+      ],
+      "original": "\"\\?03 players\"",
+      "byte_length": 11,
+      "is_pointer_based": true,
+      "table_name": "data.menus.text.linkControls.wirelessStatus",
+      "table_index": 3,
+      "translation_source": "[control-code-1] players",
+      "semantic_token_placeholders": [
+        {
+          "placeholder": "[control-code-1]",
+          "token": "\\?03"
+        }
+      ],
+      "translated": "\\?03 Spieler"
+    },
+    {
+      "id": "tbl_menu_link_controls_00004_41E2EC",
+      "category": "menu_link_controls",
+      "address": "0x41E2EC",
+      "pointer_sources": [],
+      "original": "\"\\btn01Cancel\"",
+      "byte_length": 9,
+      "is_pointer_based": false,
+      "table_name": "data.menus.text.linkControls.wirelessStatus",
+      "table_index": 4,
+      "translation_source": "[button-icon-1]Cancel",
+      "semantic_token_placeholders": [
+        {
+          "placeholder": "[button-icon-1]",
+          "token": "\\btn01"
+        }
+      ],
+      "translated": "\\btn01Zurück"
     }
   ]
 }
