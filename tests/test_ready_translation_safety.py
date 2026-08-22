@@ -238,6 +238,40 @@ def test_ready_german_settings_and_battle_text_respect_rendered_width_budgets():
             assert visible_width(" ".join(lines)) <= 65, entry["id"]
 
 
+def test_ready_german_battle_fragments_keep_runtime_spaces_and_loss_text_german():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+    by_id = {entry["id"]: entry for entry in entries}
+
+    for entry_id in (
+        "tbl_battle_messages_00000_A4C636",
+        "tbl_battle_messages_00000_8BD155",
+    ):
+        assert INJECTOR.translation_for_injection(by_id[entry_id]).endswith(" ")
+
+    for entry_id in (
+        "tbl_battle_messages_00007_A4C689",
+        "tbl_battle_messages_00009_A4C6FD",
+        "tbl_battle_messages_00020_3FB433",
+        "tbl_battle_messages_00022_3FB484",
+        "scr_1A6197",
+        "scr_1A61E5",
+    ):
+        text = INJECTOR.translation_for_injection(by_id[entry_id])
+        assert "is out of" not in text
+        assert "usable Pokémon" not in text
+        assert "Player lost against" not in text
+
+    for entry_id in (
+        "tbl_battle_messages_00020_3FB433",
+        "tbl_battle_messages_00022_3FB484",
+        "scr_1A6197",
+        "scr_1A61E5",
+    ):
+        assert "hat keine Pokémon mehr!" in INJECTOR.translation_for_injection(
+            by_id[entry_id]
+        )
+
+
 def test_verified_official_italian_terms_and_pokedex_layout():
     entries = json.loads(READY_ITALIAN.read_text(encoding="utf-8"))["entries"]
     by_source = {

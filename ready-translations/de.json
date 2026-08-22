@@ -120682,7 +120682,7 @@
         }
       ],
       "translated": "[player] hat keine kampffähigen\nPokémon mehr! [player] geriet in\\lPanik und verlor $[buffer1]\\. \\. \\. \\. \\.\n\n[player] ist ohnmächtig geworden!",
-      "translated_fixed": "[player] keine Pokémon! [player]\nverlor $[buffer1]\\.\\.\\.\\.\\. [player] K.O.!"
+      "translated_fixed": "[player] hat keine Pokémon mehr! [player]\nverlor $[buffer1]\\.\\.\\.\\.\\. [player] K.O.!"
     },
     {
       "id": "scr_1A61E5",
@@ -120707,7 +120707,7 @@
         }
       ],
       "translated": "[player] hat keine einsatzfähigen\nPokémon mehr! [player] ist\\lkampfunfähig!",
-      "translated_fixed": "[player] keine Pokémon! [player]\nK.O.!"
+      "translated_fixed": "[player] hat keine Pokémon mehr! [player]\nK.O.!"
     },
     {
       "id": "scr_1A6211",
@@ -217919,7 +217919,7 @@
       "table_name": "data.battle.text.unboundResult",
       "table_index": 0,
       "translation_source": "The wild",
-      "translated": "Das wilde"
+      "translated": "Das wilde "
     },
     {
       "id": "tbl_battle_messages_00001_A4C640",
@@ -396073,7 +396073,7 @@
       "table_name": "data.battle.text.wildEncounter.fragments",
       "table_index": 0,
       "translation_source": "The wild",
-      "translated": "Das wilde"
+      "translated": "Wildes "
     },
     {
       "id": "tbl_battle_messages_00000_A4C515",
@@ -397132,7 +397132,7 @@
         }
       ],
       "translated": "\\\\23\nhat\\nkeine\\nkampffähigen\\nPokémon\\nmehr!",
-      "translated_fixed": "\\\\23 hat keine Pkmn mehr!"
+      "translated_fixed": "\\\\23 hat keine Pokémon mehr!"
     },
     {
       "id": "tbl_battle_messages_00021_3FB451",
@@ -397216,7 +397216,7 @@
         }
       ],
       "translated": "\\\\23\nhat\\nkeine\\nkampffähigen\\nPokémon\\nmehr!\nDer\\nSpieler\\nhat\\ngegen\\n\\\\1C\\n\\\\1D\\nverloren![pause]",
-      "translated_fixed": "\\\\23 keine\nPkmn!\\nVerlor\\ngegen\\n\\\\1C\n\\\\1D![pause]"
+      "translated_fixed": "\\\\23 hat keine Pokémon mehr!\nVerlor gegen\n\\\\1C\n\\\\1D![pause]"
     },
     {
       "id": "tbl_battle_messages_00023_3FB4BE",
