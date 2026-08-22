@@ -211,6 +211,27 @@ def test_wrap_translation_uses_plain_line_breaks_for_plain_scripts_and_descripti
     assert item_wrapped == "cura ogni\nproblema di\nstato del\npokemon"
 
 
+def test_ready_german_lab_dialogue_is_stored_with_dialogue_line_break():
+    ready_path = Path(__file__).resolve().parents[1] / "ready-translations" / "de.json"
+    entries = json.loads(ready_path.read_text(encoding="utf-8"))["entries"]
+    entry = next(item for item in entries if item["id"] == "scr_1F2CBB6")
+
+    assert entry["translated"] == "Was zum\\.? Wie bist du hier\nreingekommen?"
+
+
+def test_wrap_only_preserves_runtime_tokens_in_mission_objectives():
+    wrapped, _changed, _long_words, skipped = controlfix.wrap_translation(
+        "Verbünde dich ein letztes Mal mit [rival], um Marlon zu besiegen!",
+        {"category": "mission_objectives"},
+        "Team up with [rival] one last time to defeat Marlon!",
+        _args(mission_objective_wrap_width=35, mission_objective_max_lines=2),
+        {"mission_objectives"},
+    )
+
+    assert not skipped
+    assert "[rival]" in wrapped
+
+
 def test_move_descriptions_use_french_observed_pixel_width():
     narrow_text = "iiii iiiii iiiii iiiii iiiii"
     wrapped, changed, _long_words, skipped = controlfix.wrap_translation(

@@ -42,7 +42,7 @@ The project is usable but still early and primarily tested with Italian and the 
 
 | Capability | Status |
 | --- | --- |
-| Release-ready translations | Indonesian (`ready-translations/id.json`), Italian (`ready-translations/it.json`), German (`ready-translations/de.json`) in the [Bladestar2105 fork release](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.0) |
+| Release-ready translations | Indonesian (`ready-translations/id.json`), Italian (`ready-translations/it.json`), German (`ready-translations/de.json`) in the [Bladestar2105 fork release](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.1) |
 | Translation CLI targets | `de`, `en`, `es`, `fr`, `id`, `it`, `pt`, `pt-br` |
 | Non-Latin scripts | Not supported yet; likely requires a font patch |
 | Supported systems | Windows, macOS, and Linux |
@@ -62,10 +62,11 @@ It includes:
 
 - `ready-translations/de.json` with 23,316 extracted entries; 23,310 entries contain German translation data, while six records have no source text.
 - A deterministic allocation adjustment in `005_hybrid_injector.py` that prioritizes already-identified reclaimed script owners, plus a regression test for that planning path.
+- A lossless wrap-only formatting pass that keeps control tokens intact while fitting German dialogue to the game text window.
 - Strict injection validation with `--fail-on-no-space`, reporting zero entries skipped for space, pointer mismatches, implausible pointers, encoding errors, truncation, or bounds failures.
 - A public BPS patch release that contains no original or patched ROM.
 
-Download the [German translation patch v0.1.0](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.0) and apply it to a clean Pokémon Unbound v2.1.1.1 source ROM with MD5 `9cad8e771940e7f7094d13911552cef0` and SHA-256 `7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7`. The patch was round-trip verified against the generated 32 MB output and play-tested in mGBA 0.10.5 for approximately four minutes, reaching the laboratory sequence with German dialogue visible.
+Download the [German translation patch v0.1.1](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.1) and apply it to a clean Pokémon Unbound v2.1.1.1 source ROM with MD5 `9cad8e771940e7f7094d13911552cef0` and SHA-256 `7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7`. The patch was round-trip verified against the generated 32 MB output and launched in mGBA 0.10.5 for a smoke test reaching the laboratory sequence. Release v0.1.1 contains the line-wrap and control-token fix; BPS SHA-256: `80f7ba5d04405409b6d3362f951d3f2ac3aac7655bfa49970262eb528a82819f`.
 
 ## Highlights
 
@@ -89,7 +90,7 @@ Download the [German translation patch v0.1.0](https://github.com/Bladestar2105/
    [Rom Patcher JS](https://www.marcrobledo.com/RomPatcher.js/).
 4. Save the patched result as a new ROM. Keep the original ROM unchanged.
 
-For the current German build, use the [German translation patch release](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.0).
+For the current German build, use the [German translation patch release](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.1).
 
 A BPS patch contains differences only. It is not a playable ROM by itself.
 
