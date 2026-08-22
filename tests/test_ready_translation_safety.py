@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -238,6 +239,27 @@ def test_ready_german_settings_and_battle_text_respect_rendered_width_budgets():
             assert visible_width(" ".join(lines)) <= 65, entry["id"]
 
 
+def test_ready_german_menu_text_fits_conservative_screen_width():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+
+    def rendered_lines(text):
+        for token in ("\\pn", "\\p", "\\n", "\\l"):
+            text = text.replace(token, "\n")
+        return [line for line in text.splitlines() if line.strip()]
+
+    for entry in entries:
+        category = entry.get("category", "")
+        if not (category.startswith("menu_") or category in {"start_menu_labels", "setting_names"}):
+            continue
+        # The save timestamp is assembled from runtime control bytes, not a normal text line.
+        if category == "menu_save":
+            continue
+        effective = INJECTOR.translation_for_injection(entry)
+        assert max(
+            map(text_pixel_width, rendered_lines(effective)), default=0
+        ) <= 224, entry["id"]
+
+
 def test_ready_german_battle_fragments_keep_runtime_spaces_and_loss_text_german():
     entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
     by_id = {entry["id"]: entry for entry in entries}
@@ -270,6 +292,81 @@ def test_ready_german_battle_fragments_keep_runtime_spaces_and_loss_text_german(
         assert "hat keine Pokémon mehr!" in INJECTOR.translation_for_injection(
             by_id[entry_id]
         )
+
+
+def test_ready_german_translations_preserve_all_semantic_controls():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+
+    for entry in entries:
+        effective = INJECTOR.translation_for_injection(entry)
+        if not effective:
+            continue
+        original_tokens = semantic_token_counts(entry["original"])
+        translated_tokens = semantic_token_counts(effective)
+        for apostrophe_byte in ("{B3}", "{B4}"):
+            original_tokens.pop(apostrophe_byte, None)
+            translated_tokens.pop(apostrophe_byte, None)
+        assert translated_tokens == original_tokens, entry["id"]
+
+
+def test_ready_german_translations_have_no_embedded_c0_control_characters():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+
+    for entry in entries:
+        effective = INJECTOR.translation_for_injection(entry)
+        invalid = [
+            char
+            for char in effective
+            if ord(char) < 0x20 and char not in "\r\n\t"
+        ]
+        assert not invalid, entry["id"]
+
+
+def test_ready_german_translations_have_no_unsupported_printable_human_characters():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+    charmap = INJECTOR.Charmap(target_lang="de")
+    control = re.compile(
+        r"\[[^\]]+\]|\{[0-9A-Fa-f]{2}\}|"
+        r"\\(?:CC[0-9A-Fa-f]+|btn[0-9A-Fa-f]+|buffer\d+|"
+        r"[A-Za-z?]+|[0-9A-Fa-f]{2}|.)"
+    )
+
+    for entry in entries:
+        effective = INJECTOR.translation_for_injection(entry)
+        text = INJECTOR.normalize_text_escapes(INJECTOR.strip_hma_quotes(effective))
+        human_text = charmap._sanitize(control.sub("", text))
+        unsupported = [
+            char
+            for char in human_text
+            if char.isprintable() and not charmap.can_encode(char)[0]
+        ]
+        assert not unsupported, entry["id"]
+
+
+def test_ready_german_constrained_descriptions_fit_horizontal_renderer_budgets():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+
+    def rendered_lines(text):
+        for token in ("\\pn", "\\p", "\\n", "\\l"):
+            text = text.replace(token, "\n")
+        return [line for line in text.splitlines() if line.strip()]
+
+    for entry in entries:
+        category = entry.get("category")
+        effective = INJECTOR.translation_for_injection(entry)
+        lines = rendered_lines(effective)
+        if category == "pokedex_descriptions":
+            assert max(map(visible_width, lines), default=0) <= 43, entry["id"]
+        elif category == "move_descriptions":
+            assert max(map(text_pixel_width, lines), default=0) <= 122, entry["id"]
+        elif category == "ability_descriptions":
+            assert len(lines) == 1, entry["id"]
+            assert visible_width(effective) <= 34, entry["id"]
+            assert text_pixel_width(effective) <= 191, entry["id"]
+        elif category == "item_descriptions":
+            assert max(map(visible_width, lines), default=0) <= 34, entry["id"]
+        elif category == "mission_descriptions":
+            assert max(map(text_pixel_width, lines), default=0) <= 172, entry["id"]
 
 
 def test_ready_german_wireless_status_slots_keep_dynamic_controls_and_fit():

@@ -42,7 +42,7 @@ The project is usable but still early and primarily tested with Italian and the 
 
 | Capability | Status |
 | --- | --- |
-| Release-ready translations | Indonesian (`ready-translations/id.json`), Italian (`ready-translations/it.json`), German (`ready-translations/de.json`) in the [Bladestar2105 fork release](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.5) |
+| Release-ready translations | Indonesian (`ready-translations/id.json`), Italian (`ready-translations/it.json`), German (`ready-translations/de.json`) in the [Bladestar2105 fork release](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.6) |
 | Translation CLI targets | `de`, `en`, `es`, `fr`, `id`, `it`, `pt`, `pt-br` |
 | Non-Latin scripts | Not supported yet; likely requires a font patch |
 | Supported systems | Windows, macOS, and Linux |
@@ -67,9 +67,12 @@ It includes:
 - Strict injection validation with `--fail-on-no-space`, reporting zero entries skipped for space, pointer mismatches, implausible pointers, encoding errors, truncation, or bounds failures.
 - An independent original-ROM coverage audit that adds five previously unowned Wireless Communication Status slots, including dynamic player counts and the Cancel control.
 - Battle command menus keep `Cube`, `Pokémon`, `Flucht`, and related choices as separate menu slots with preserved control layout.
+- Automated German QA covers semantic controls, embedded control bytes, printable character support, constrained descriptions, and conservative menu-width budgets; 145 tests pass.
+- The final strict German build audited 23,315 translated entries after ROM decoding with zero content mismatches; the injector reported zero no-space, pointer, encoding, bounds, or truncation failures.
 - A public BPS patch release that contains no original or patched ROM.
+- Upstream review is tracked in [PR #7](https://github.com/Simopich/unbound-translator/pull/7).
 
-Download the [German translation patch v0.1.5](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.5) and apply it to a clean Pokémon Unbound v2.1.1.1 source ROM with MD5 `9cad8e771940e7f7094d13911552cef0` and SHA-256 `7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7`. The patch was round-trip verified against the generated 32 MB output. Release v0.1.5 additionally keeps the Cube/Pokémon battle choices separate while retaining the Wireless Communication Status, battle-message spacing, and German defeat/no-usable-Pokémon fixes. BPS SHA-256: `ba15f620c472a99501f7900ec29791b679ea6fbce6aa2b4a78db51157edbfa05`.
+Download the [German translation patch v0.1.6](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.6) and apply it to a clean Pokémon Unbound v2.1.1.1 source ROM with MD5 `9cad8e771940e7f7094d13911552cef0` and SHA-256 `7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7`. The patch was round-trip verified against the generated 32 MB output. Release v0.1.6 adds automated width/control-token hardening for German descriptions and menus, preserves the Wireless Communication Status and battle-menu fixes, and contains no ROM file. BPS SHA-256: `5e209e4feac8e4c699f5b8c93c5247ca9d4c61f6d15a8739eea4c4f12cd71aeb`.
 
 ## Highlights
 
@@ -93,7 +96,7 @@ Download the [German translation patch v0.1.5](https://github.com/Bladestar2105/
    [Rom Patcher JS](https://www.marcrobledo.com/RomPatcher.js/).
 4. Save the patched result as a new ROM. Keep the original ROM unchanged.
 
-For the current German build, use the [German translation patch release](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.5).
+For the current German build, use the [German translation patch release](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.6).
 
 A BPS patch contains differences only. It is not a playable ROM by itself.
 

@@ -56793,7 +56793,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 3,
       "translation_source": "Gradually boosts Speed.",
-      "translated": "Steigert nach und nach die\nInitiative."
+      "translated": "Steigert nach und nach die\nInitiative.",
+      "translated_fixed": "Steigert Initiative nach und nach."
     },
     {
       "id": "tbl_ability_descriptions_00004_24F422",
@@ -56868,7 +56869,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 8,
       "translation_source": "Ups evasion in a sandstorm.",
-      "translated": "Erhöht den Fluchtwert im\nSandsturm."
+      "translated": "Erhöht den Fluchtwert im\nSandsturm.",
+      "translated_fixed": "Erhöht Fluchtwert im Sandsturm."
     },
     {
       "id": "tbl_ability_descriptions_00009_24F49D",
@@ -57150,7 +57152,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 26,
       "translation_source": "Not hit by Ground attacks.",
-      "translated": "Von Boden-Attacken nicht\ngetroffen."
+      "translated": "Von Boden-Attacken nicht\ngetroffen.",
+      "translated_fixed": "Immun gegen Boden-Attacken."
     },
     {
       "id": "tbl_ability_descriptions_00027_24F63A",
@@ -57180,7 +57183,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 28,
       "translation_source": "Passes on status problems.",
-      "translated": "Gibt Statusprobleme an den Gegner\nweiter."
+      "translated": "Gibt Statusprobleme an den Gegner\nweiter.",
+      "translated_fixed": "Gibt Statusprobleme weiter."
     },
     {
       "id": "tbl_ability_descriptions_00029_24F66F",
@@ -57272,7 +57276,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 34,
       "translation_source": "Raises Speed in sunshine.",
-      "translated": "Erhöht bei Sonnenschein die\nInitiative."
+      "translated": "Erhöht bei Sonnenschein die\nInitiative.",
+      "translated_fixed": "Erhöht Initiative bei Sonne."
     },
     {
       "id": "tbl_ability_descriptions_00035_24F705",
@@ -57332,7 +57337,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 38,
       "translation_source": "Poisons foe on contact.",
-      "translated": "Vergiftet den Gegner bei\nBerührung."
+      "translated": "Vergiftet den Gegner bei\nBerührung.",
+      "translated_fixed": "Vergiftet bei Kontakt."
     },
     {
       "id": "tbl_ability_descriptions_00039_24F75E",
@@ -57392,7 +57398,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 42,
       "translation_source": "Traps Steel-type Pokémon.",
-      "translated": "Hindert Stahl-Pokémon an der\nFlucht."
+      "translated": "Hindert Stahl-Pokémon an der\nFlucht.",
+      "translated_fixed": "Hindert Stahl-Pokémon an Flucht."
     },
     {
       "id": "tbl_ability_descriptions_00043_24F7AF",
@@ -57452,7 +57459,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 46,
       "translation_source": "Raises foe’s PP usage.",
-      "translated": "Erhöht den AP-Verbrauch des\nGegners."
+      "translated": "Erhöht den AP-Verbrauch des\nGegners.",
+      "translated_fixed": "Erhöht gegnerischen AP-Verbrauch."
     },
     {
       "id": "tbl_ability_descriptions_00047_24F811",
@@ -57497,7 +57505,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 49,
       "translation_source": "Burns the foe on contact.",
-      "translated": "Verbrennt den Gegner bei\nBerührung."
+      "translated": "Verbrennt den Gegner bei\nBerührung.",
+      "translated_fixed": "Verbrennt bei Kontakt."
     },
     {
       "id": "tbl_ability_descriptions_00050_24F861",
@@ -57512,7 +57521,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 50,
       "translation_source": "Makes escaping easier.",
-      "translated": "Erleichtert die Flucht aus\nKämpfen."
+      "translated": "Erleichtert die Flucht aus\nKämpfen.",
+      "translated_fixed": "Erleichtert die Flucht."
     },
     {
       "id": "tbl_ability_descriptions_00051_24F878",
@@ -57527,7 +57537,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 51,
       "translation_source": "Prevents loss of accuracy.",
-      "translated": "Verhindert, dass die Genauigkeit\nsinkt."
+      "translated": "Verhindert, dass die Genauigkeit\nsinkt.",
+      "translated_fixed": "Verhindert Genauigkeitsverlust."
     },
     {
       "id": "tbl_ability_descriptions_00052_24F893",
@@ -57542,7 +57553,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 52,
       "translation_source": "Prevents Attack reduction.",
-      "translated": "Verhindert eine Senkung des\nAngriffs."
+      "translated": "Verhindert eine Senkung des\nAngriffs.",
+      "translated_fixed": "Verhindert Angriffssenkung."
     },
     {
       "id": "tbl_ability_descriptions_00053_24F8AE",
@@ -57663,7 +57675,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 60,
       "translation_source": "Prevents item theft.",
-      "translated": "Verhindert den Diebstahl von\nItems."
+      "translated": "Verhindert den Diebstahl von\nItems.",
+      "translated_fixed": "Verhindert Item-Diebstahl."
     },
     {
       "id": "tbl_ability_descriptions_00061_24F969",
@@ -57678,7 +57691,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 61,
       "translation_source": "Heals the body by shedding.",
-      "translated": "Heilt den eigenen Körper durch\nHäuten."
+      "translated": "Heilt den eigenen Körper durch\nHäuten.",
+      "translated_fixed": "Heilt den Körper durch Häuten."
     },
     {
       "id": "tbl_ability_descriptions_00062_24F985",
@@ -57709,7 +57723,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 63,
       "translation_source": "Ups Defense if suffering.",
-      "translated": "Erhöht die Verteidigung bei\nStatusproblemen."
+      "translated": "Erhöht die Verteidigung bei\nStatusproblemen.",
+      "translated_fixed": "Statusleiden: Verteidigung rauf."
     },
     {
       "id": "tbl_ability_descriptions_00064_24F9B8",
@@ -57724,7 +57739,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 64,
       "translation_source": "Draining causes injury.",
-      "translated": "Das Absaugen von KP verursacht\nSchaden."
+      "translated": "Das Absaugen von KP verursacht\nSchaden.",
+      "translated_fixed": "Absaugen verursacht Schaden."
     },
     {
       "id": "tbl_ability_descriptions_00065_24F9D0",
@@ -57739,7 +57755,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 65,
       "translation_source": "Ups Grass moves in a pinch.",
-      "translated": "Verstärkt Pflanzen-Attacken in\nNotlagen."
+      "translated": "Verstärkt Pflanzen-Attacken in\nNotlagen.",
+      "translated_fixed": "Pflanzen-Attacken in Not stärker."
     },
     {
       "id": "tbl_ability_descriptions_00066_24F9EC",
@@ -57754,7 +57771,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 66,
       "translation_source": "Ups Fire moves in a pinch.",
-      "translated": "Verstärkt Feuer-Attacken in\nNotlagen."
+      "translated": "Verstärkt Feuer-Attacken in\nNotlagen.",
+      "translated_fixed": "Feuer-Attacken in Not stärker."
     },
     {
       "id": "tbl_ability_descriptions_00067_24FA07",
@@ -57769,7 +57787,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 67,
       "translation_source": "Ups Water moves in a pinch.",
-      "translated": "Verstärkt Wasser-Attacken in\nNotlagen."
+      "translated": "Verstärkt Wasser-Attacken in\nNotlagen.",
+      "translated_fixed": "Wasser-Attacken in Not stärker."
     },
     {
       "id": "tbl_ability_descriptions_00068_24FA23",
@@ -57845,7 +57864,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 72,
       "translation_source": "Powers up Electric-type moves.",
-      "translated": "Verstärkt Attacken vom Typ\nElektro."
+      "translated": "Verstärkt Attacken vom Typ\nElektro.",
+      "translated_fixed": "Elektro-Attacken stärker."
     },
     {
       "id": "tbl_ability_descriptions_00073_A36258",
@@ -57860,7 +57880,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 73,
       "translation_source": "Powers up Dragon-type moves.",
-      "translated": "Verstärkt Attacken vom Typ\nDrache."
+      "translated": "Verstärkt Attacken vom Typ\nDrache.",
+      "translated_fixed": "Drachen-Attacken stärker."
     },
     {
       "id": "tbl_ability_descriptions_00074_A361EA",
@@ -57875,7 +57896,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 74,
       "translation_source": "All Abilities are nullified.",
-      "translated": "Alle Fähigkeiten werden außer\nKraft gesetzt."
+      "translated": "Alle Fähigkeiten werden außer\nKraft gesetzt.",
+      "translated_fixed": "Alle Fähigkeiten wirkungslos."
     },
     {
       "id": "tbl_ability_descriptions_00075_24FABE",
@@ -57920,7 +57942,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 78,
       "translation_source": "Keeps user and allies awake.",
-      "translated": "Hält den Anwender und seine\nVerbündeten wach."
+      "translated": "Hält den Anwender und seine\nVerbündeten wach.",
+      "translated_fixed": "Hält Anwender und Team wach."
     },
     {
       "id": "tbl_ability_descriptions_00079_A34F7E",
@@ -57935,7 +57958,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 79,
       "translation_source": "Multi-hit moves hit five times.",
-      "translated": "Mehrfachtreffer-Attacken treffen\nfünfmal."
+      "translated": "Mehrfachtreffer-Attacken treffen\nfünfmal.",
+      "translated_fixed": "Mehrfachtreffer treffen fünfmal."
     },
     {
       "id": "tbl_ability_descriptions_00080_A34F9E",
@@ -57950,7 +57974,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 80,
       "translation_source": "Turns electricity into Speed.",
-      "translated": "Wandelt Elektrizität in Initiative\num."
+      "translated": "Wandelt Elektrizität in Initiative\num.",
+      "translated_fixed": "Wandelt Strom in Initiative um."
     },
     {
       "id": "tbl_ability_descriptions_00081_A34FBC",
@@ -57965,7 +57990,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 81,
       "translation_source": "Reduces damage at full HP.",
-      "translated": "Verringert den Schaden bei vollen\nKP."
+      "translated": "Verringert den Schaden bei vollen\nKP.",
+      "translated_fixed": "Weniger Schaden bei vollen KP."
     },
     {
       "id": "tbl_ability_descriptions_00082_A34FD7",
@@ -57995,7 +58021,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 83,
       "translation_source": "Moves hit Ghost-type Pokémon.",
-      "translated": "Attacken treffen Pokémon vom Typ\nGeist."
+      "translated": "Attacken treffen Pokémon vom Typ\nGeist.",
+      "translated_fixed": "Trifft Geist-Pokémon."
     },
     {
       "id": "tbl_ability_descriptions_00084_A3500A",
@@ -58070,7 +58097,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 88,
       "translation_source": "Boosts same type attacks.",
-      "translated": "Verstärkt Attacken des eigenen\nTyps."
+      "translated": "Verstärkt Attacken des eigenen\nTyps.",
+      "translated_fixed": "Verstärkt Attacken gleichen Typs."
     },
     {
       "id": "tbl_ability_descriptions_00089_A3508B",
@@ -58085,7 +58113,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 89,
       "translation_source": "Prevents Defense reduction.",
-      "translated": "Verhindert die Senkung der\nVerteidigung."
+      "translated": "Verhindert die Senkung der\nVerteidigung.",
+      "translated_fixed": "Verhindert Verteidigungssenkung."
     },
     {
       "id": "tbl_ability_descriptions_00090_A350A7",
@@ -58115,7 +58144,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 91,
       "translation_source": "Boosts moves with recoil.",
-      "translated": "Verstärkt Attacken mit\nRückstoßschaden."
+      "translated": "Verstärkt Attacken mit\nRückstoßschaden.",
+      "translated_fixed": "Verstärkt Rückstoß-Attacken."
     },
     {
       "id": "tbl_ability_descriptions_00092_A350D8",
@@ -58193,7 +58223,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 96,
       "translation_source": "Trades HP for power in sunshine.",
-      "translated": "Tauscht bei Sonnenschein KP gegen\nStärke."
+      "translated": "Tauscht bei Sonnenschein KP gegen\nStärke.",
+      "translated_fixed": "Sonne tauscht KP gegen Stärke."
     },
     {
       "id": "tbl_ability_descriptions_00097_A3516C",
@@ -58248,7 +58279,8 @@
           "token": "\\qc"
         }
       ],
-      "translated": "Verstärkt \\qonicht sehr effektive\\qc\nAttacken."
+      "translated": "Verstärkt \\qonicht sehr effektive\\qc\nAttacken.",
+      "translated_fixed": "Stärkt \\qonicht effektive\\qc Attacken."
     },
     {
       "id": "tbl_ability_descriptions_00100_A3623A",
@@ -58263,7 +58295,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 100,
       "translation_source": "Contact moves bypass Protect.",
-      "translated": "Kontakt-Attacken umgehen\nSchutzschild."
+      "translated": "Kontakt-Attacken umgehen\nSchutzschild.",
+      "translated_fixed": "Kontakt umgeht Schutzschild."
     },
     {
       "id": "tbl_ability_descriptions_00101_A351BA",
@@ -58279,7 +58312,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 101,
       "translation_source": "Weakens super effective moves.",
-      "translated": "Schwächt sehr effektive Attacken\nab."
+      "translated": "Schwächt sehr effektive Attacken\nab.",
+      "translated_fixed": "Schwächt sehr effektive Attacken."
     },
     {
       "id": "tbl_ability_descriptions_00102_A351D9",
@@ -58449,7 +58483,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 112,
       "translation_source": "Ups Speed if suffering.",
-      "translated": "Erhöht die Initiative, wenn es\nleidet."
+      "translated": "Erhöht die Initiative, wenn es\nleidet.",
+      "translated_fixed": "Erhöht Initiative bei Leiden."
     },
     {
       "id": "tbl_ability_descriptions_00113_A35314",
@@ -58465,7 +58500,7 @@
       "table_index": 113,
       "translation_source": "Boosts Attack if hit by Grass.",
       "translated": "Erhöht den Angriff, wenn es von einer Pflanzen-Attacke getroffen wird.",
-      "translated_fixed": "Angriff steigt nach Pflanzen-Treffer."
+      "translated_fixed": "Pflanzen-Treffer: Angriff rauf."
     },
     {
       "id": "tbl_ability_descriptions_00114_A35333",
@@ -58480,7 +58515,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 114,
       "translation_source": "Immune to weather and powder.",
-      "translated": "Immun gegen Wetter und\nPuder-Attacken."
+      "translated": "Immun gegen Wetter und\nPuder-Attacken.",
+      "translated_fixed": "Immun gegen Wetter und Puder."
     },
     {
       "id": "tbl_ability_descriptions_00115_A35351",
@@ -58510,7 +58546,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 116,
       "translation_source": "Avoids ball and bomb moves.",
-      "translated": "Schützt vor Kugel- und\nBomben-Attacken."
+      "translated": "Schützt vor Kugel- und\nBomben-Attacken.",
+      "translated_fixed": "Blockt Kugel-/Bomben-Attacken."
     },
     {
       "id": "tbl_ability_descriptions_00117_A35386",
@@ -58525,7 +58562,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 117,
       "translation_source": "Flying-type moves hit first.",
-      "translated": "Attacken vom Typ Flug treffen\nzuerst."
+      "translated": "Attacken vom Typ Flug treffen\nzuerst.",
+      "translated_fixed": "Flug-Attacken treffen zuerst."
     },
     {
       "id": "tbl_ability_descriptions_00118_A353A3",
@@ -58540,7 +58578,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 118,
       "translation_source": "Knockouts boost Attack.",
-      "translated": "Erhöht den Angriff nach einem K.\no."
+      "translated": "Erhöht den Angriff nach einem K.\no.",
+      "translated_fixed": "K.-o. erhöht Angriff."
     },
     {
       "id": "tbl_ability_descriptions_00119_A353BB",
@@ -58571,7 +58610,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 120,
       "translation_source": "May disable a foe’s move.",
-      "translated": "Kann die Attacke eines Gegners\nblockieren."
+      "translated": "Kann die Attacke eines Gegners\nblockieren.",
+      "translated_fixed": "Kann Gegner-Attacke blockieren."
     },
     {
       "id": "tbl_ability_descriptions_00121_A353EF",
@@ -58587,7 +58627,7 @@
       "table_index": 121,
       "translation_source": "Lowers the foe’s Speed if hit.",
       "translated": "Senkt die Initiative des Gegners, wenn es getroffen wird.",
-      "translated_fixed": "Senkt Gegner-Initiative bei Treffer."
+      "translated_fixed": "Treffer senkt Gegner-Initiative."
     },
     {
       "id": "tbl_ability_descriptions_00122_A3540E",
@@ -58633,7 +58673,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 124,
       "translation_source": "Raises Speed in a sandstorm.",
-      "translated": "Erhöht die Initiative im Sandsturm."
+      "translated": "Erhöht die Initiative im Sandsturm.",
+      "translated_fixed": "Erhöht Initiative im Sandsturm."
     },
     {
       "id": "tbl_ability_descriptions_00125_A35451",
@@ -58648,7 +58689,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 125,
       "translation_source": "Moving last boosts power.",
-      "translated": "Zuletzt anzugreifen, erhöht die\nStärke."
+      "translated": "Zuletzt anzugreifen, erhöht die\nStärke.",
+      "translated_fixed": "Später Zug erhöht Stärke."
     },
     {
       "id": "tbl_ability_descriptions_00126_A3546B",
@@ -58663,7 +58705,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 126,
       "translation_source": "Ensures that all moves land.",
-      "translated": "Sorgt dafür, dass alle Attacken\ntreffen."
+      "translated": "Sorgt dafür, dass alle Attacken\ntreffen.",
+      "translated_fixed": "Alle Attacken treffen sicher."
     },
     {
       "id": "tbl_ability_descriptions_00127_A35488",
@@ -58741,7 +58784,7 @@
       "table_index": 131,
       "translation_source": "Draws in water to up Sp. Atk.",
       "translated": "Zieht Wasser-Attacken an und erhöht den Spezial-Angriff.",
-      "translated_fixed": "Zieht Wasser an, Spezial-Angriff rauf."
+      "translated_fixed": "Wasser an; Spezial-Angriff rauf."
     },
     {
       "id": "tbl_ability_descriptions_00132_A35518",
@@ -58786,7 +58829,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 134,
       "translation_source": "Reverses Aura Abilities.",
-      "translated": "Kehrt die Wirkung von\nAura-Fähigkeiten um."
+      "translated": "Kehrt die Wirkung von\nAura-Fähigkeiten um.",
+      "translated_fixed": "Kehrt Aura-Fähigkeiten um."
     },
     {
       "id": "tbl_ability_descriptions_00135_A35568",
@@ -58816,7 +58860,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 136,
       "translation_source": "Normal moves become Fairy.",
-      "translated": "Normal-Attacken werden zu\nFeen-Attacken."
+      "translated": "Normal-Attacken werden zu\nFeen-Attacken.",
+      "translated_fixed": "Normal-Attacken werden Fee."
     },
     {
       "id": "tbl_ability_descriptions_00137_A3559C",
@@ -58831,7 +58876,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 137,
       "translation_source": "Normal moves become Flying.",
-      "translated": "Normal-Attacken werden zu\nFlug-Attacken."
+      "translated": "Normal-Attacken werden zu\nFlug-Attacken.",
+      "translated_fixed": "Normal-Attacken werden Flug."
     },
     {
       "id": "tbl_ability_descriptions_00138_A355B8",
@@ -58846,7 +58892,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 138,
       "translation_source": "All moves become Normal-type.",
-      "translated": "Alle Attacken nehmen den Typ\nNormal an."
+      "translated": "Alle Attacken nehmen den Typ\nNormal an.",
+      "translated_fixed": "Alle Attacken werden Normal."
     },
     {
       "id": "tbl_ability_descriptions_00139_A355D6",
@@ -58877,7 +58924,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 140,
       "translation_source": "Doubles stat changes.",
-      "translated": "Verdoppelt\nStatuswertveränderungen."
+      "translated": "Verdoppelt\nStatuswertveränderungen.",
+      "translated_fixed": "Verdoppelt Statusänderungen."
     },
     {
       "id": "tbl_ability_descriptions_00141_A3560B",
@@ -58892,7 +58940,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 141,
       "translation_source": "Ignores foe’s stat changes.",
-      "translated": "Ignoriert Statusveränderungen des\nGegners."
+      "translated": "Ignoriert Statusveränderungen des\nGegners.",
+      "translated_fixed": "Ignoriert Gegner-Statuswerte."
     },
     {
       "id": "tbl_ability_descriptions_00142_A35627",
@@ -58907,7 +58956,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 142,
       "translation_source": "Attack rises when stats fall.",
-      "translated": "Angriff steigt, wenn Statuswerte\nsinken."
+      "translated": "Angriff steigt, wenn Statuswerte\nsinken.",
+      "translated_fixed": "Statusverlust erhöht Angriff."
     },
     {
       "id": "tbl_ability_descriptions_00143_A35645",
@@ -58923,7 +58973,7 @@
       "table_index": 143,
       "translation_source": "Sp. Atk rises when stats fall.",
       "translated": "Der Spezial-Angriff steigt, wenn Statuswerte sinken.",
-      "translated_fixed": "Spezial-Angriff bei Wertverlust rauf."
+      "translated_fixed": "Wertverlust: Spezial-Angriff rauf."
     },
     {
       "id": "tbl_ability_descriptions_00144_A35664",
@@ -58953,7 +59003,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 145,
       "translation_source": "Takes a while to get going.",
-      "translated": "Braucht etwas Zeit, um in Fahrt zu\nkommen."
+      "translated": "Braucht etwas Zeit, um in Fahrt zu\nkommen.",
+      "translated_fixed": "Braucht Zeit für volle Stärke."
     },
     {
       "id": "tbl_ability_descriptions_00146_A35695",
@@ -58968,7 +59019,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 146,
       "translation_source": "Attack rises when poisoned.",
-      "translated": "Erhöht den Angriffs-Wert bei\nVergiftung."
+      "translated": "Erhöht den Angriffs-Wert bei\nVergiftung.",
+      "translated_fixed": "Angriff bei Vergiftung rauf."
     },
     {
       "id": "tbl_ability_descriptions_00147_A356B1",
@@ -58983,7 +59035,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 147,
       "translation_source": "Sp. Atk rises when burned.",
-      "translated": "Der Spezial-Angriff steigt bei\nVerbrennung."
+      "translated": "Der Spezial-Angriff steigt bei\nVerbrennung.",
+      "translated_fixed": "Spezial-Angriff bei Brand rauf."
     },
     {
       "id": "tbl_ability_descriptions_00148_A356CC",
@@ -59015,7 +59068,7 @@
       "table_index": 149,
       "translation_source": "Ups status move evasion.",
       "translated": "Erhöht die Wahrscheinlichkeit, Status-Attacken auszuweichen.",
-      "translated_fixed": "Flucht gegen Status-Attacken höher."
+      "translated_fixed": "Status-Attacken: Flucht rauf."
     },
     {
       "id": "tbl_ability_descriptions_00150_A356FD",
@@ -59030,7 +59083,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 150,
       "translation_source": "Changes type to match move.",
-      "translated": "Ändert seinen Typ in den Typ der\nAttacke."
+      "translated": "Ändert seinen Typ in den Typ der\nAttacke.",
+      "translated_fixed": "Typ folgt Attacke."
     },
     {
       "id": "tbl_ability_descriptions_00151_A35719",
@@ -59154,7 +59208,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 158,
       "translation_source": "May poison any type.",
-      "translated": "Kann Pokémon aller Typen\nvergiften."
+      "translated": "Kann Pokémon aller Typen\nvergiften.",
+      "translated_fixed": "Vergiftet Pokémon jeden Typs."
     },
     {
       "id": "tbl_ability_descriptions_00159_A357B4",
@@ -59169,7 +59224,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 159,
       "translation_source": "Takes one hit with no damage.",
-      "translated": "Übersteht einen Treffer ohne\nSchaden."
+      "translated": "Übersteht einen Treffer ohne\nSchaden.",
+      "translated_fixed": "Übersteht ersten Treffer."
     },
     {
       "id": "tbl_ability_descriptions_00160_A357D2",
@@ -59201,7 +59257,7 @@
       "table_index": 161,
       "translation_source": "Halves contact hits. Weak to Fire.",
       "translated": "Halbiert Schaden durch Kontaktattacken. Schwach gegen Feuer.",
-      "translated_fixed": "Kontakt halbiert; schwach gegen Feuer."
+      "translated_fixed": "Kontakt halbiert; Feuer-schwach."
     },
     {
       "id": "tbl_ability_descriptions_00162_A3616A",
@@ -59232,7 +59288,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 163,
       "translation_source": "Gives a perish count on contact.",
-      "translated": "Verpasst bei Kontakt einen\nCountdown."
+      "translated": "Verpasst bei Kontakt einen\nCountdown.",
+      "translated_fixed": "Kontakt startet Verfallszähler."
     },
     {
       "id": "tbl_ability_descriptions_00164_A361AC",
@@ -59247,7 +59304,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 164,
       "translation_source": "Trades Abilities on contact.",
-      "translated": "Tauscht bei Kontakt Fähigkeiten\naus."
+      "translated": "Tauscht bei Kontakt Fähigkeiten\naus.",
+      "translated_fixed": "Tauscht Fähigkeiten bei Kontakt."
     },
     {
       "id": "tbl_ability_descriptions_00165_A35825",
@@ -59278,7 +59336,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 167,
       "translation_source": "Changes type to match Memory.",
-      "translated": "Ändert den Typ passend zur\ngetragenen Disc."
+      "translated": "Ändert den Typ passend zur\ngetragenen Disc.",
+      "translated_fixed": "Typ folgt getragener Disc."
     },
     {
       "id": "tbl_ability_descriptions_00168_A3585D",
@@ -59308,7 +59367,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 169,
       "translation_source": "Reduces damage at full HP.",
-      "translated": "Verringert den Schaden bei vollen\nKP."
+      "translated": "Verringert den Schaden bei vollen\nKP.",
+      "translated_fixed": "Weniger Schaden bei vollen KP."
     },
     {
       "id": "tbl_ability_descriptions_00170_A35891",
@@ -59323,7 +59383,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 170,
       "translation_source": "Lowers shields below half HP.",
-      "translated": "Senkt Schilde unter die Hälfte der\nKP."
+      "translated": "Senkt Schilde unter die Hälfte der\nKP.",
+      "translated_fixed": "Senkt Schilde unter halben KP."
     },
     {
       "id": "tbl_ability_descriptions_00171_A358AF",
@@ -59369,7 +59430,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 173,
       "translation_source": "Taking a hit raises Defense.",
-      "translated": "Wird es getroffen, steigt seine\nVerteidigung."
+      "translated": "Wird es getroffen, steigt seine\nVerteidigung.",
+      "translated_fixed": "Treffer erhöht Verteidigung."
     },
     {
       "id": "tbl_ability_descriptions_00174_A358FB",
@@ -59430,7 +59492,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 178,
       "translation_source": "Water-type hits raise Defense.",
-      "translated": "Wasser-Attacken erhöhen die\nVerteidigung."
+      "translated": "Wasser-Attacken erhöhen die\nVerteidigung.",
+      "translated_fixed": "Wasser-Treffer: Verteidigung rauf."
     },
     {
       "id": "tbl_ability_descriptions_00179_A35979",
@@ -59460,7 +59523,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 180,
       "translation_source": "Changes type to match held Plate.",
-      "translated": "Ändert den Typ je nach getragener\nTafel."
+      "translated": "Ändert den Typ je nach getragener\nTafel.",
+      "translated_fixed": "Typ folgt getragener Tafel."
     },
     {
       "id": "tbl_ability_descriptions_00181_A359AF",
@@ -59535,7 +59599,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 185,
       "translation_source": "Boosts Speed on Electric Terrain.",
-      "translated": "Erhöht die Initiative im\nElektrofeld."
+      "translated": "Erhöht die Initiative im\nElektrofeld.",
+      "translated_fixed": "Elektrofeld erhöht Initiative."
     },
     {
       "id": "tbl_ability_descriptions_00186_A35A3C",
@@ -59550,7 +59615,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 186,
       "translation_source": "Ups Defense on Grassy Terrain.",
-      "translated": "Erhöht die Verteidigung auf\nGrasfeld."
+      "translated": "Erhöht die Verteidigung auf\nGrasfeld.",
+      "translated_fixed": "Grasfeld erhöht Verteidigung."
     },
     {
       "id": "tbl_ability_descriptions_00187_A35A5B",
@@ -59565,7 +59631,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 187,
       "translation_source": "Maxes Attack after a critical hit.",
-      "translated": "Maximiert den Angriff nach einem\nVolltreffer."
+      "translated": "Maximiert den Angriff nach einem\nVolltreffer.",
+      "translated_fixed": "Volltreffer maximiert Angriff."
     },
     {
       "id": "tbl_ability_descriptions_00188_A35A7E",
@@ -59595,7 +59662,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 189,
       "translation_source": "Warns of the foe’s strongest move.",
-      "translated": "Warnt vor der stärksten Attacke\ndes Gegners."
+      "translated": "Warnt vor der stärksten Attacke\ndes Gegners.",
+      "translated_fixed": "Warnt vor stärkster Attacke."
     },
     {
       "id": "tbl_ability_descriptions_00190_A35ABF",
@@ -59610,7 +59678,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 190,
       "translation_source": "Reveals the foe’s held item.",
-      "translated": "Zeigt das getragene Item des\nGegners an."
+      "translated": "Zeigt das getragene Item des\nGegners an.",
+      "translated_fixed": "Zeigt gegnerisches Item."
     },
     {
       "id": "tbl_ability_descriptions_00191_A35ADC",
@@ -59640,7 +59709,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 192,
       "translation_source": "Stops the foe from eating Berries.",
-      "translated": "Hindert den Gegner daran, Beeren\nzu essen."
+      "translated": "Hindert den Gegner daran, Beeren\nzu essen.",
+      "translated_fixed": "Verhindert Beerenverzehr."
     },
     {
       "id": "tbl_ability_descriptions_00193_A35B16",
@@ -59656,7 +59726,7 @@
       "table_index": 193,
       "translation_source": "Hits up Speed but drop Defense.",
       "translated": "Erhöht die Initiative, senkt aber die Verteidigung.",
-      "translated_fixed": "Initiative rauf, Verteidigung runter."
+      "translated_fixed": "Initiative rauf, Def. runter."
     },
     {
       "id": "tbl_ability_descriptions_00194_A35B36",
@@ -59702,7 +59772,7 @@
       "table_index": 196,
       "translation_source": "Flinching raises Speed.",
       "translated": "Erhöht die Initiative, wenn das Pokémon zurückschreckt.",
-      "translated_fixed": "Initiative bei Zurückschrecken rauf."
+      "translated_fixed": "Zurückschrecken: Initiative rauf."
     },
     {
       "id": "tbl_ability_descriptions_00197_A35B6D",
@@ -59717,7 +59787,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 197,
       "translation_source": "Transforms upon entering battle.",
-      "translated": "Verwandelt sich beim Eintritt in\nden Kampf."
+      "translated": "Verwandelt sich beim Eintritt in\nden Kampf.",
+      "translated_fixed": "Wandelt sich beim Kampfeintritt."
     },
     {
       "id": "tbl_ability_descriptions_00198_A35B8E",
@@ -59732,7 +59803,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 198,
       "translation_source": "Dark-type hits raise Attack.",
-      "translated": "Treffer vom Typ Unlicht erhöhen\nden Angriff."
+      "translated": "Treffer vom Typ Unlicht erhöhen\nden Angriff.",
+      "translated_fixed": "Unlicht-Treffer erhöhen Angriff."
     },
     {
       "id": "tbl_ability_descriptions_00199_A35BAB",
@@ -59748,7 +59820,7 @@
       "table_index": 199,
       "translation_source": "Scary move types raise Speed.",
       "translated": "Furchterregende Attackentypen erhöhen die Initiative.",
-      "translated_fixed": "Furcht-Attacken erhöhen Initiative."
+      "translated_fixed": "Furcht-Attacken: Initiative rauf."
     },
     {
       "id": "tbl_ability_descriptions_00200_A35BC9",
@@ -59764,7 +59836,7 @@
       "table_index": 200,
       "translation_source": "Critically hits poisoned foes.",
       "translated": "Landet bei vergifteten Gegnern immer einen Volltreffer.",
-      "translated_fixed": "Volltreffer gegen vergiftete Gegner."
+      "translated_fixed": "Giftgegner: Volltreffer."
     },
     {
       "id": "tbl_ability_descriptions_00201_A35BE8",
@@ -59794,7 +59866,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 202,
       "translation_source": "Protects Grass-types from status.",
-      "translated": "Schützt Pflanzen-Pokémon vor\nStatusproblemen."
+      "translated": "Schützt Pflanzen-Pokémon vor\nStatusproblemen.",
+      "translated_fixed": "Schützt Pflanzen vor Status."
     },
     {
       "id": "tbl_ability_descriptions_00203_A35C2C",
@@ -59809,7 +59882,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 203,
       "translation_source": "Protects from status when sunny.",
-      "translated": "Schützt bei Sonnenschein vor\nStatusproblemen."
+      "translated": "Schützt bei Sonnenschein vor\nStatusproblemen.",
+      "translated_fixed": "Sonne schützt vor Status."
     },
     {
       "id": "tbl_ability_descriptions_00204_A35C4D",
@@ -59900,7 +59974,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 209,
       "translation_source": "Can poison foe on contact.",
-      "translated": "Kann den Gegner bei Kontakt\nvergiften."
+      "translated": "Kann den Gegner bei Kontakt\nvergiften.",
+      "translated_fixed": "Vergiftet Gegner bei Kontakt."
     },
     {
       "id": "tbl_ability_descriptions_00210_A35CE0",
@@ -59916,7 +59991,7 @@
       "table_index": 210,
       "translation_source": "Can steal foe’s item after attack.",
       "translated": "Kann dem Gegner nach einer Attacke das Item stehlen.",
-      "translated_fixed": "Stiehlt evtl. Gegner-Item nach Attacke."
+      "translated_fixed": "Stiehlt evtl. Gegner-Item."
     },
     {
       "id": "tbl_ability_descriptions_00211_A35D03",
@@ -59961,7 +60036,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 213,
       "translation_source": "Summons extremely harsh sunlight.",
-      "translated": "Erzeugt extrem starkes\nSonnenlicht."
+      "translated": "Erzeugt extrem starkes\nSonnenlicht.",
+      "translated_fixed": "Erzeugt starkes Sonnenlicht."
     },
     {
       "id": "tbl_ability_descriptions_00214_A35D5E",
@@ -59976,7 +60052,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 214,
       "translation_source": "Summons a mysterious air current.",
-      "translated": "Beschwört einen mysteriösen\nLuftstrom."
+      "translated": "Beschwört einen mysteriösen\nLuftstrom.",
+      "translated_fixed": "Beschwört mysteriösen Luftstrom."
     },
     {
       "id": "tbl_ability_descriptions_00215_A361C9",
@@ -60008,7 +60085,7 @@
       "table_index": 216,
       "translation_source": "Ups Sp. Atk below half HP.",
       "translated": "Erhöht den Spezial-Angriff, wenn die KP unter die Hälfte fallen.",
-      "translated_fixed": "Spezial-Angriff unter halben KP rauf."
+      "translated_fixed": "Halbe KP: Spezial-Angriff rauf."
     },
     {
       "id": "tbl_ability_descriptions_00217_A35D9B",
@@ -60038,7 +60115,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 218,
       "translation_source": "Sound moves become Water-type.",
-      "translated": "Schall-Attacken werden zu\nWasser-Attacken."
+      "translated": "Schall-Attacken werden zu\nWasser-Attacken.",
+      "translated_fixed": "Schall-Attacken werden Wasser."
     },
     {
       "id": "tbl_ability_descriptions_00219_A362EB",
@@ -60084,7 +60162,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 221,
       "translation_source": "Blocks priority moves.",
-      "translated": "Blockiert Attacken mit erhöhter\nPriorität."
+      "translated": "Blockiert Attacken mit erhöhter\nPriorität.",
+      "translated_fixed": "Blockiert Prioritäts-Attacken."
     },
     {
       "id": "tbl_ability_descriptions_00222_A35E17",
@@ -60145,7 +60224,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 225,
       "translation_source": "Can regain consumed Berries.",
-      "translated": "Kann verzehrte Beeren\nwiedererlangen."
+      "translated": "Kann verzehrte Beeren\nwiedererlangen.",
+      "translated_fixed": "Kann Beeren zurückholen."
     },
     {
       "id": "tbl_ability_descriptions_00226_A35E84",
@@ -60160,7 +60240,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 226,
       "translation_source": "Protects from allies’ moves.",
-      "translated": "Schützt vor Attacken von\nMitstreitern."
+      "translated": "Schützt vor Attacken von\nMitstreitern.",
+      "translated_fixed": "Schützt vor Verbündeten-Attacken."
     },
     {
       "id": "tbl_ability_descriptions_00227_A35EA1",
@@ -60190,7 +60271,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 228,
       "translation_source": "Eating Berries restores HP.",
-      "translated": "Der Verzehr von Beeren stellt KP\nwieder her."
+      "translated": "Der Verzehr von Beeren stellt KP\nwieder her.",
+      "translated_fixed": "Beeren stellen KP wieder her."
     },
     {
       "id": "tbl_ability_descriptions_00229_A35ED6",
@@ -60222,7 +60304,7 @@
       "table_index": 230,
       "translation_source": "Doubles damage on replacements.",
       "translated": "Verdoppelt den Schaden gegen eingewechselte Pokémon.",
-      "translated_fixed": "Doppelter Schaden gegen Wechselnde."
+      "translated_fixed": "Wechselnde: doppelter Schaden."
     },
     {
       "id": "tbl_ability_descriptions_00231_A35F14",
@@ -60237,7 +60319,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 231,
       "translation_source": "Acts as if asleep.",
-      "translated": "Verhält sich, als würde es\nschlafen."
+      "translated": "Verhält sich, als würde es\nschlafen.",
+      "translated_fixed": "Tut, als schliefe es."
     },
     {
       "id": "tbl_ability_descriptions_00232_A35F27",
@@ -60283,7 +60366,7 @@
       "table_index": 234,
       "translation_source": "Takes over a KOed ally’s Ability.",
       "translated": "Übernimmt die Fähigkeit eines kampfunfähigen Mitstreiters.",
-      "translated_fixed": "Übernimmt Fähigkeit besiegter Verbündeter."
+      "translated_fixed": "Übernimmt Fähigkeit nach K.-o."
     },
     {
       "id": "tbl_ability_descriptions_00235_A36304",
@@ -60329,7 +60412,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 237,
       "translation_source": "Normal moves become Electric.",
-      "translated": "Normal-Attacken werden zu\nElektro-Attacken."
+      "translated": "Normal-Attacken werden zu\nElektro-Attacken.",
+      "translated_fixed": "Normal wird Elektro."
     },
     {
       "id": "tbl_ability_descriptions_00238_A35FAD",
@@ -60344,7 +60428,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 238,
       "translation_source": "Ups Attack on entry.",
-      "translated": "Erhöht beim Einwechseln den\nAngriff."
+      "translated": "Erhöht beim Einwechseln den\nAngriff.",
+      "translated_fixed": "Einwechseln erhöht Angriff."
     },
     {
       "id": "tbl_ability_descriptions_00239_A35FC2",
@@ -60359,7 +60444,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 239,
       "translation_source": "Ups Defense on entry.",
-      "translated": "Erhöht beim Einwechseln die\nVerteidigung."
+      "translated": "Erhöht beim Einwechseln die\nVerteidigung.",
+      "translated_fixed": "Einwechseln erhöht Verteidigung."
     },
     {
       "id": "tbl_ability_descriptions_00240_A35FD8",
@@ -60422,7 +60508,7 @@
       "table_index": 243,
       "translation_source": "Spits prey if hit after a swim.",
       "translated": "Spuckt Beute aus, wenn es nach dem Schwimmen getroffen wird.",
-      "translated_fixed": "Spuckt Beute nach Schwimm-Treffer aus."
+      "translated_fixed": "Nach Schwimmen: Beute ausspucken."
     },
     {
       "id": "tbl_ability_descriptions_00244_A36057",
@@ -60453,7 +60539,7 @@
       "table_index": 245,
       "translation_source": "Fire and Water hits boost Speed.",
       "translated": "Treffer durch Feuer- und Wasser-Attacken erhöhen die Initiative.",
-      "translated_fixed": "Feuer-/Wasser-Treffer erhöhen Initiative."
+      "translated_fixed": "Feuer/Wasser: Initiative rauf."
     },
     {
       "id": "tbl_ability_descriptions_00246_A36092",
@@ -60469,7 +60555,7 @@
       "table_index": 246,
       "translation_source": "Ups and resists sound moves.",
       "translated": "Verstärkt Schall-Attacken und widersteht ihnen.",
-      "translated_fixed": "Schall-Attacken stärker; resistent."
+      "translated_fixed": "Schall stärker; resistent."
     },
     {
       "id": "tbl_ability_descriptions_00247_A360AF",
@@ -60484,7 +60570,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 247,
       "translation_source": "Creates a sandstorm when hit.",
-      "translated": "Löst bei einem Treffer einen\nSandsturm aus."
+      "translated": "Löst bei einem Treffer einen\nSandsturm aus.",
+      "translated_fixed": "Treffer löst Sandsturm aus."
     },
     {
       "id": "tbl_ability_descriptions_00248_A360CD",
@@ -60530,7 +60617,7 @@
       "table_index": 250,
       "translation_source": "Free physical hit. Hail renews.",
       "translated": "Blockt einen physischen Treffer. Hagel erneuert den Eisschutz.",
-      "translated_fixed": "Blockt 1x physisch; Hagel erneuert."
+      "translated_fixed": "Blockt physisch 1x; Hagel lädt."
     },
     {
       "id": "tbl_ability_descriptions_00251_A3611B",
@@ -60545,7 +60632,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 251,
       "translation_source": "Powers up ally moves.",
-      "translated": "Verstärkt Attacken von\nMitstreitern."
+      "translated": "Verstärkt Attacken von\nMitstreitern.",
+      "translated_fixed": "Verstärkt Team-Attacken."
     },
     {
       "id": "tbl_ability_descriptions_00252_A36131",
@@ -60575,7 +60663,8 @@
       "table_name": "data.abilities.descriptions",
       "table_index": 253,
       "translation_source": "Screens are removed on entry.",
-      "translated": "Beim Einwechseln werden Barrieren\nentfernt."
+      "translated": "Beim Einwechseln werden Barrieren\nentfernt.",
+      "translated_fixed": "Einwechseln entfernt Barrieren."
     },
     {
       "id": "tbl_ability_descriptions_00254_A36207",
@@ -62112,7 +62201,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 93,
       "translation_source": "A strong telekinetic attack. It may also lower the foe’s Sp. Def stat.",
-      "translated": "Ein mächtiger\ntelekinetischer\nAngriff. Senkt\neventuell auch den\nSpezial-Verteidigungswert\ndes Gegners."
+      "translated": "Ein mächtiger\ntelekinetischer\nAngriff. Senkt\neventuell auch den\nSpezial-Verteidigungswert\ndes Gegners.",
+      "translated_fixed": "Starker\nPsycho-Angriff. Senkt\neventuell die\nSpez.-Vert. des\nGegners."
     },
     {
       "id": "tbl_move_descriptions_00094_4840DF",
@@ -62438,7 +62528,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 113,
       "translation_source": "Eliminates all stat changes among all Pokémon engaged in battle.",
-      "translated": "Beseitigt alle\nStatuswertveränderungen\nbei allen am Kampf\nbeteiligten Pokémon."
+      "translated": "Beseitigt alle\nStatuswertveränderungen\nbei allen am Kampf\nbeteiligten Pokémon.",
+      "translated_fixed": "Beseitigt alle\nStatusänderungen aller\nPokémon im Kampf."
     },
     {
       "id": "tbl_move_descriptions_00114_484647",
@@ -65665,7 +65756,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 312,
       "translation_source": "The user feigns crying to sharply lower the foe’s Sp. Def stat.",
-      "translated": "Der Anwender täuscht\nWeinen vor, um den\nSpezial-Verteidigungs-Wert\ndes Gegners stark zu\nsenken."
+      "translated": "Der Anwender täuscht\nWeinen vor, um den\nSpezial-Verteidigungs-Wert\ndes Gegners stark zu\nsenken.",
+      "translated_fixed": "Täuscht Weinen vor\nund senkt die\nSpez.-Vert. des\nGegners stark."
     },
     {
       "id": "tbl_move_descriptions_00313_487BFF",
@@ -67455,7 +67547,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 426,
       "translation_source": "The user throws a clump of special mud that reverts all stat changes.",
-      "translated": "Der Anwender wirft\neinen Klumpen\nspeziellen Schlamms,\nder alle\nStatuswertveränderungen\nzurücksetzt."
+      "translated": "Der Anwender wirft\neinen Klumpen\nspeziellen Schlamms,\nder alle\nStatuswertveränderungen\nzurücksetzt.",
+      "translated_fixed": "Wirft Spezialschlamm,\nder alle\nStatusänderungen\nzurücksetzt."
     },
     {
       "id": "tbl_move_descriptions_00427_A392C2",
@@ -68672,7 +68765,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 506,
       "translation_source": "An attack which is not affected by the target’s stat changes.",
-      "translated": "Eine Attacke, die von\nden\nStatuswertveränderungen\ndes Zieles nicht\nbeeinflusst wird."
+      "translated": "Eine Attacke, die von\nden\nStatuswertveränderungen\ndes Zieles nicht\nbeeinflusst wird.",
+      "translated_fixed": "Von Statusänderungen\ndes Ziels nicht\nbeeinflusst."
     },
     {
       "id": "tbl_move_descriptions_00507_A3A903",
@@ -68718,7 +68812,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 509,
       "translation_source": "A high-speed spin. The slower the user is than the foe, the greater the damage.",
-      "translated": "Eine\nHochgeschwindigkeitsrotation.\nJe langsamer der\nAnwender im Vergleich\nzum Gegner ist, desto\nmehr Schaden richtet\ndie Attacke an."
+      "translated": "Eine\nHochgeschwindigkeitsrotation.\nJe langsamer der\nAnwender im Vergleich\nzum Gegner ist, desto\nmehr Schaden richtet\ndie Attacke an.",
+      "translated_fixed": "Schnelle Drehung. Je\nlangsamer der\nAnwender als der\nGegner ist, desto\ngrößer der Schaden."
     },
     {
       "id": "tbl_move_descriptions_00510_A3A9EE",
@@ -70579,7 +70674,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 633,
       "translation_source": "The user creates a bizarre area where Pokémon’s Defense and Sp. Def swap for five turns.",
-      "translated": "Der Anwender\nerschafft einen\nbizarren Raum, in dem\ndie Verteidigungs- und\nSpezial-Verteidigungswerte\naller Pokémon fünf\nRunden lang\nvertauscht werden."
+      "translated": "Der Anwender\nerschafft einen\nbizarren Raum, in dem\ndie Verteidigungs- und\nSpezial-Verteidigungswerte\naller Pokémon fünf\nRunden lang\nvertauscht werden.",
+      "translated_fixed": "Erschafft einen\nbizarren Raum.\nVerteidigung und\nSpez.-Vert. aller\nPokémon werden fünf\nRunden getauscht."
     },
     {
       "id": "tbl_move_descriptions_00634_A3D47D",
@@ -70759,7 +70855,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 645,
       "translation_source": "The user employs its psychic power to average its Defense and Sp. Def stats with the target.",
-      "translated": "Der Anwender nutzt\nseine Psycho-Kraft,\num seine\nVerteidigungs- und\nSpezial-Verteidigungs-Werte\nmit denen des Zieles\nzu mitteln."
+      "translated": "Der Anwender nutzt\nseine Psycho-Kraft,\num seine\nVerteidigungs- und\nSpezial-Verteidigungs-Werte\nmit denen des Zieles\nzu mitteln.",
+      "translated_fixed": "Gleicht Verteidigung\nund Spez.-Vert. des\nAnwenders und Ziels\nan."
     },
     {
       "id": "tbl_move_descriptions_00646_A3D87A",
@@ -70834,7 +70931,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 650,
       "translation_source": "The user manipulates magnets to up Def and Sp. Def stats of allies with Plus or Minus Ability.",
-      "translated": "Der Anwender\nmanipuliert Magnete,\num die Verteidigungs-\nund\nSpezial-Verteidigungswerte\nvon Verbündeten mit\nder Fähigkeit Plus\noder Minus zu\nerhöhen."
+      "translated": "Der Anwender\nmanipuliert Magnete,\num die Verteidigungs-\nund\nSpezial-Verteidigungswerte\nvon Verbündeten mit\nder Fähigkeit Plus\noder Minus zu\nerhöhen.",
+      "translated_fixed": "Manipuliert Magnete.\nErhöht bei\nVerbündeten mit\nPlus/Minus\nVerteidigung und\nSpez.-Vert."
     },
     {
       "id": "tbl_move_descriptions_00651_A3DA2C",
@@ -72365,7 +72463,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 752,
       "translation_source": "The user smashes into the foe. This cuts the user’s Defense and Sp. Def stats.",
-      "translated": "Der Anwender rammt\ndas Ziel. Dadurch\nsinken seine\nVerteidigungs- und\nSpezial-Verteidigungswerte."
+      "translated": "Der Anwender rammt\ndas Ziel. Dadurch\nsinken seine\nVerteidigungs- und\nSpezial-Verteidigungswerte.",
+      "translated_fixed": "Rammt den Gegner.\nSenkt Verteidigung und\nSpez.-Vert. des\nAnwenders."
     },
     {
       "id": "tbl_move_descriptions_00753_A3F832",
@@ -72674,7 +72773,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 822,
       "translation_source": "Fighting Dynamax move. It raises ally Pokémon’s Attack stats.",
-      "translated": "Kampf-Dynamax-Attacke.\nErhöht den Angriff\nverbündeter Pokémon."
+      "translated": "Kampf-Dynamax-Attacke.\nErhöht den Angriff\nverbündeter Pokémon.",
+      "translated_fixed": "Dyna-Kampfattacke.\nErhöht den Angriff\nverbündeter Pokémon."
     },
     {
       "id": "tbl_move_descriptions_00824_A3FEC0",
@@ -72722,7 +72822,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 828,
       "translation_source": "Ground-Type Dynamax move. It raises ally Pokémon’s Sp. Def stats.",
-      "translated": "Boden-Dynamax-Attacke.\nSie erhöht die\nSpezial-Verteidigungs-Werte\nverbündeter Pokémon."
+      "translated": "Boden-Dynamax-Attacke.\nSie erhöht die\nSpezial-Verteidigungs-Werte\nverbündeter Pokémon.",
+      "translated_fixed": "Dyna-Bodenattacke.\nErhöht die\nSpez.-Vert.\nverbündeter Pokémon."
     },
     {
       "id": "tbl_move_descriptions_00830_A3FFC5",
@@ -72754,7 +72855,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 832,
       "translation_source": "Bug-Type Dynamax move. It lowers the target’s Sp. Atk stat.",
-      "translated": "Käfer-Dynamax-Attacke.\nSenkt den\nSpezial-Angriff des\nZieles."
+      "translated": "Käfer-Dynamax-Attacke.\nSenkt den\nSpezial-Angriff des\nZieles.",
+      "translated_fixed": "Dyna-Käferattacke.\nSenkt die Spez.-Ang.\ndes Ziels."
     },
     {
       "id": "tbl_move_descriptions_00834_A3FDBE",
@@ -72802,7 +72904,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 838,
       "translation_source": "Fire-Type Dynamax move. It causes the sun to intensify for five turns.",
-      "translated": "Feuer-Dynamax-Attacke.\nSie verstärkt das\nSonnenlicht fünf\nRunden lang."
+      "translated": "Feuer-Dynamax-Attacke.\nSie verstärkt das\nSonnenlicht fünf\nRunden lang.",
+      "translated_fixed": "Dyna-Feuerattacke.\nVerstärkt fünf Runden\ndas Sonnenlicht."
     },
     {
       "id": "tbl_move_descriptions_00840_A3FE7C",
@@ -72914,7 +73017,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 852,
       "translation_source": "Dark-Type Dynamax move. It lowers the target’s Sp. Def stat.",
-      "translated": "Eine Dynamax-Attacke\nvom Typ Unlicht. Sie\nsenkt den\nSpezial-Verteidigungs-Wert\ndes Zieles."
+      "translated": "Eine Dynamax-Attacke\nvom Typ Unlicht. Sie\nsenkt den\nSpezial-Verteidigungs-Wert\ndes Zieles.",
+      "translated_fixed": "Dyna-Unlichtattacke.\nSenkt die Spez.-Vert.\ndes Ziels."
     },
     {
       "id": "tbl_move_descriptions_00854_A3FF00",
@@ -73138,7 +73242,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 880,
       "translation_source": "G-Max Garbodor’s signature move. It poisons the target.",
-      "translated": "Die Spezialattacke\nvon\nGigadynamax-Deponitox.\nSie vergiftet das\nZiel."
+      "translated": "Die Spezialattacke\nvon\nGigadynamax-Deponitox.\nSie vergiftet das\nZiel.",
+      "translated_fixed": "G.-Dyna-Attacke:\nDeponitox. Vergiftet\ndas Ziel."
     },
     {
       "id": "tbl_move_descriptions_00882_A40463",
@@ -73234,7 +73339,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 892,
       "translation_source": "G-Max Orbeetle’s signature move. It changes gravity for five turns.",
-      "translated": "Signaturattacke von\nGigadynamax-Maritellit.\nSie verändert fünf\nRunden lang die\nSchwerkraft."
+      "translated": "Signaturattacke von\nGigadynamax-Maritellit.\nSie verändert fünf\nRunden lang die\nSchwerkraft.",
+      "translated_fixed": "G.-Dyna-Attacke:\nMaritellit. Ändert fünf\nRunden die\nSchwerkraft."
     },
     {
       "id": "tbl_move_descriptions_00894_A4062F",
@@ -73266,7 +73372,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 896,
       "translation_source": "G-Max Coalossal’s signature move. It deals damage for four turns.",
-      "translated": "Die Spezialattacke\nvon\nGigadynamax-Montecarbo.\nSie fügt vier Runden\nlang Schaden zu."
+      "translated": "Die Spezialattacke\nvon\nGigadynamax-Montecarbo.\nSie fügt vier Runden\nlang Schaden zu.",
+      "translated_fixed": "G.-Dyna-Attacke:\nMontecarbo. Fügt vier\nRunden Schaden zu."
     },
     {
       "id": "tbl_move_descriptions_00898_A406B5",
@@ -73314,7 +73421,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 902,
       "translation_source": "G-Max Sandaconda’s signature move. It traps the foe for four to five turns.",
-      "translated": "Die Spezialattacke\nvon\nGigadynamax-Sanaconda.\nSie hält den Gegner\nvier bis fünf Runden\nlang fest."
+      "translated": "Die Spezialattacke\nvon\nGigadynamax-Sanaconda.\nSie hält den Gegner\nvier bis fünf Runden\nlang fest.",
+      "translated_fixed": "G.-Dyna-Attacke:\nSanaconda. Hält den\nGegner vier bis fünf\nRunden fest."
     },
     {
       "id": "tbl_move_descriptions_00904_A40787",
@@ -73346,7 +73454,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 906,
       "translation_source": "G-Max Centiskorch’s signature move. It traps the foe for four to five turns.",
-      "translated": "Die Spezialattacke\nvon\nGigadynamax-Infernopod.\nSie hält den Gegner\nvier bis fünf Runden\nlang fest."
+      "translated": "Die Spezialattacke\nvon\nGigadynamax-Infernopod.\nSie hält den Gegner\nvier bis fünf Runden\nlang fest.",
+      "translated_fixed": "G.-Dyna-Attacke:\nInfernopod. Hält den\nGegner vier bis fünf\nRunden fest."
     },
     {
       "id": "tbl_move_descriptions_00908_A4081A",
@@ -73410,7 +73519,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 914,
       "translation_source": "G-Max Copperajah’s signature move. It scatters spikes around the field.",
-      "translated": "Die Spezialattacke\nvon\nGigadynamax-Patinaraja.\nSie verstreut Stacheln\nauf dem Kampffeld."
+      "translated": "Die Spezialattacke\nvon\nGigadynamax-Patinaraja.\nSie verstreut Stacheln\nauf dem Kampffeld.",
+      "translated_fixed": "G.-Dyna-Attacke:\nPatinaraja. Verstreut\nStacheln auf dem\nKampffeld."
     },
     {
       "id": "tbl_move_descriptions_00916_A40923",
@@ -73426,7 +73536,8 @@
       "table_name": "data.pokemon.moves.descriptions",
       "table_index": 916,
       "translation_source": "G-Max Duraludon’s signature move. It reduces the PP of the last move used.",
-      "translated": "Die Spezialattacke\nvon\nGigadynamax-Duraludon.\nSie senkt die AP der\nzuletzt eingesetzten\nAttacke."
+      "translated": "Die Spezialattacke\nvon\nGigadynamax-Duraludon.\nSie senkt die AP der\nzuletzt eingesetzten\nAttacke.",
+      "translated_fixed": "G.-Dyna-Attacke:\nDuraludon. Senkt die\nAP der zuletzt\neingesetzten Attacke."
     },
     {
       "id": "tbl_move_descriptions_00918_A4096E",
@@ -75667,7 +75778,8 @@
       "table_name": "data.pokemon.moves.descriptions.legacy",
       "table_index": 512,
       "translation_source": "The user calls out its underlings to shield its body, raising its Defense and Sp. Def stats.",
-      "translated": "Der Anwender ruft\nseine Untergebenen\nherbei, um seinen\nKörper zu schützen,\nwodurch seine\nVerteidigungs- und\nSpezial-Verteidigungswerte\nsteigen."
+      "translated": "Der Anwender ruft\nseine Untergebenen\nherbei, um seinen\nKörper zu schützen,\nwodurch seine\nVerteidigungs- und\nSpezial-Verteidigungswerte\nsteigen.",
+      "translated_fixed": "Ruft Untergebene zum\nSchutz herbei. Erhöht\nVerteidigung und\nSpez.-Vert."
     },
     {
       "id": "tbl_move_descriptions_00513_922074",
@@ -86047,7 +86159,7 @@
       "table_name": "data.pokedex.entries.descriptions",
       "table_index": 553,
       "translation_source": "When it sleeps, it pulls its limbs into its body and its internal fire goes down to 1,100 degrees F.",
-      "translated": "Wenn es schläft, zieht es seine Gliedmaßen\nin seinen Körper zurück, und sein inneres\nFeuer sinkt auf 1.100 °F."
+      "translated": "Wenn es schläft, zieht es seine Gliedmaßen\nin seinen Körper zurück, und sein inneres\nFeuer sinkt auf 1.100 F."
     },
     {
       "id": "tbl_pokedex_descriptions_00554_165FDBC",
@@ -88232,7 +88344,7 @@
       "table_name": "data.pokedex.entries.descriptions",
       "table_index": 698,
       "translation_source": "This usually quiet and kindly Pokémon has a surface temperature of around -240 degrees Fahrenheit.",
-      "translated": "Die Oberfläche seines Körpers ist -150 °C\nkalt. Für gewöhnlich ist es ein sehr\nbesonnenes und sanftmütiges Pokémon."
+      "translated": "Die Oberfläche seines Körpers ist -150 C\nkalt. Für gewöhnlich ist es ein sehr\nbesonnenes und sanftmütiges Pokémon."
     },
     {
       "id": "tbl_pokedex_descriptions_00699_166329B",
@@ -88592,7 +88704,7 @@
       "table_name": "data.pokedex.entries.descriptions",
       "table_index": 722,
       "translation_source": "It throws sharp feathers called blade quills at enemies or prey. It seldom misses.",
-      "translated": "Es wirft „Flügelklingen“ genannte\nmesserscharfe Federn nach Feind und Beute.\nDabei erreicht es eine nahezu\nhundertprozentige Trefferquote."
+      "translated": "Es wirft Federn namens Flügelklingen\nauf Feinde und Beute. Es verfehlt sein\nZiel nur selten."
     },
     {
       "id": "tbl_pokedex_descriptions_00723_1663BA1",
@@ -89772,7 +89884,7 @@
       "table_name": "data.pokedex.entries.descriptions",
       "table_index": 800,
       "translation_source": "Its mechanized body is merely a vessel. Its true self is its Soul-Heart, an artificial soul.",
-      "translated": "Sein mechanischer Körper ist nur ein Gefäß.\nDas eigentliche Pokémon ist eine künstlich\nerschaffene Seele namens „Seelenherz“."
+      "translated": "Sein mechanischer Körper ist nur ein Gefäß.\nDas eigentliche Pokémon ist eine künstlich\nerschaffene Seele namens Seelenherz."
     },
     {
       "id": "tbl_pokedex_descriptions_00801_16658FC",
@@ -105291,7 +105403,8 @@
       "table_name": "data.menus.text.pokemon",
       "table_index": 4,
       "translation_source": "Teach which Pokémon?",
-      "translated": "Welchem Pokémon soll eine Attacke beigebracht werden?"
+      "translated": "Welchem Pokémon soll eine Attacke beigebracht werden?",
+      "translated_fixed": "Welches Pokémon erhält die Attacke?"
     },
     {
       "id": "tbl_menu_pokemon_00005_417215",
@@ -105508,7 +105621,8 @@
       "table_name": "data.menus.text.pokemon",
       "table_index": 19,
       "translation_source": "No same hold items!",
-      "translated": "Getragene Items dürfen nicht gleich sein!"
+      "translated": "Getragene Items dürfen nicht gleich sein!",
+      "translated_fixed": "Keine gleichen Items!"
     },
     {
       "id": "tbl_menu_pokemon_00021_417242",
@@ -105563,7 +105677,8 @@
       "table_name": "data.menus.text.pokemon",
       "table_index": 23,
       "translation_source": "Boost PP of which?",
-      "translated": "Von welcher Attacke sollen die AP erhöht werden?"
+      "translated": "Von welcher Attacke sollen die AP erhöht werden?",
+      "translated_fixed": "Welche Attacke soll AP erhalten?"
     },
     {
       "id": "tbl_menu_pokemon_00024_4172D5",
@@ -111704,7 +111819,8 @@
           "token": "[buffer3]"
         }
       ],
-      "translated": "GESAMTBILANZ S:[buffer1] N:[buffer2] U:[buffer3]"
+      "translated": "GESAMTBILANZ S:[buffer1] N:[buffer2] U:[buffer3]",
+      "translated_fixed": "S:[buffer1] N:[buffer2] U:[buffer3]"
     },
     {
       "id": "tbl_menu_list_labels_00178_4181A4",
@@ -112499,7 +112615,8 @@
       "table_name": "data.menus.text.pc.range",
       "table_index": 47,
       "translation_source": "Can’t deposit the last Pokémon!",
-      "translated": "Das letzte Pokémon kann nicht abgelegt werden!"
+      "translated": "Das letzte Pokémon kann nicht abgelegt werden!",
+      "translated_fixed": "Letztes Pokémon nicht ablegen!"
     },
     {
       "id": "tbl_menu_pc_00048_4186B0",
@@ -112514,7 +112631,8 @@
       "table_name": "data.menus.text.pc.range",
       "table_index": 48,
       "translation_source": "Can’t take any more Pokémon.",
-      "translated": "Weitere Pokémon können nicht aufgenommen werden."
+      "translated": "Weitere Pokémon können nicht aufgenommen werden.",
+      "translated_fixed": "Keine weiteren Pokémon möglich."
     },
     {
       "id": "tbl_menu_pc_00049_4186CD",
@@ -112577,7 +112695,8 @@
       "table_name": "data.menus.text.pc.range",
       "table_index": 52,
       "translation_source": "Make a message of six phrases.",
-      "translated": "Erstelle eine Nachricht aus sechs Phrasen."
+      "translated": "Erstelle eine Nachricht aus sechs Phrasen.",
+      "translated_fixed": "Nachricht aus 6 Phrasen erstellen."
     },
     {
       "id": "tbl_menu_cube_system_00000_A4E047",
@@ -113940,7 +114059,8 @@
           "token": "[pause]"
         }
       ],
-      "translated": "Der R-Tasten-Modus wurde auf Bergbau-Scanner eingestellt. Während du dich auf\\nder [green]KBT-Schnellstraße[black], im [green]Nebenraum[black] auf dem [green]Kristallgipfel 1F[black] oder [green]unter\\nWasser[black] befindest, drücke \\btn03, um nach versteckten Items zu suchen. Wenn ein\\nGlitzern an der Wand erscheint, drücke \\btn00, um dort zu graben.[pause]"
+      "translated": "Der R-Tasten-Modus wurde auf Bergbau-Scanner eingestellt. Während du dich auf\\nder [green]KBT-Schnellstraße[black], im [green]Nebenraum[black] auf dem [green]Kristallgipfel 1F[black] oder [green]unter\\nWasser[black] befindest, drücke \\btn03, um nach versteckten Items zu suchen. Wenn ein\\nGlitzern an der Wand erscheint, drücke \\btn00, um dort zu graben.[pause]",
+      "translated_fixed": "Der R-Tasten-Modus ist auf\nBergbau-Scanner eingestellt. Während du\ndich auf der [green]KBT-Schnellstraße[black], im\n[green]Nebenraum[black] auf dem [green]Kristallgipfel 1F[black]\noder [green]unter Wasser[black] befindest, drücke \\btn03,\num nach versteckten Items zu suchen.\nWenn ein Glitzern an der Wand erscheint,\ndrücke \\btn00, um dort zu graben.[pause]"
     },
     {
       "id": "tbl_credits_text_00000_41D3BE",
@@ -116841,7 +116961,7 @@
       "byte_length": 50,
       "is_pointer_based": true,
       "translation_source": "The Save option is on the menu. Use it regularly.",
-      "translated": "Die Option „Speichern“ befindet\nsich im Menü. Nutze sie regelmäßig."
+      "translated": "Die Option Speichern befindet\nsich im Menü. Nutze sie regelmäßig."
     },
     {
       "id": "scr_18EAB6",
@@ -127428,7 +127548,7 @@
       "byte_length": 12,
       "is_pointer_based": true,
       "translation_source": "LIQUID OOZE",
-      "translated": "KLOAKENSOẞE"
+      "translated": "KLOAKENSOSSE"
     },
     {
       "id": "scr_3E842E",
@@ -132303,7 +132423,7 @@
       "byte_length": 6,
       "is_pointer_based": true,
       "translation_source": "WEIRD",
-      "translated": "SELT​​SAM"
+      "translated": "SELTSAM"
     },
     {
       "id": "scr_3EAA4E",
@@ -162699,7 +162819,7 @@
       "byte_length": 88,
       "is_pointer_based": true,
       "translation_source": "How’z it hangin’ down there? I say down there, ’cause I’m all the way up in the clouds!",
-      "translated": "Wie geht’s da unten? Ich sage „da\nunten“, weil ich ganz oben in den\\lWolken bin!"
+      "translated": "Wie geht’s da unten? Ich sage das,\nweil ich ganz oben in den\\lWolken bin!"
     },
     {
       "id": "scr_7715A3",
@@ -182470,7 +182590,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "???: [blue]Hier beziehen wir Stellung,\nMänner. Im Interesse der\\lEntfesselung dürfen sie hier nicht\n\nhinaufgelassen werden. Führt den\nBefehl „Licht des Untergangs“,\\lNummer fünfundsechzig, aus!"
+      "translated": "???: [blue]Hier beziehen wir Stellung,\nMänner. Im Interesse der\\lEntfesselung dürfen sie hier nicht\n\nhinaufgelassen werden. Führt den\nBefehl Licht des Untergangs,\\lNummer fünfundsechzig, aus!"
     },
     {
       "id": "scr_7D2229",
@@ -228913,7 +229033,8 @@
       "byte_length": 94,
       "is_pointer_based": true,
       "translation_source": "Be victorious by defeating all eight of Borrius’ Gym Leaders in the Classic Leaders Gauntlet!",
-      "translated": "Werde zum Sieger, indem du\nalle acht Arenaleiter von\nBorrius in der\nClassic-Arenaleiter-Herausforderung\nbesiegst!"
+      "translated": "Werde zum Sieger, indem du\nalle acht Arenaleiter von\nBorrius in der\nClassic-Arenaleiter-Herausforderung\nbesiegst!",
+      "translated_fixed": "Werde Sieger: Besiege alle\nacht Arenaleiter von Borrius im\nClassic-Arenaleiter-Cup!"
     },
     {
       "id": "scr_1EE563C",
@@ -231987,7 +232108,8 @@
       "byte_length": 14,
       "is_pointer_based": true,
       "translation_source": "Sinnoh Leader",
-      "translated": "Sinnoh-Arenaleiter"
+      "translated": "Sinnoh-Arenaleiter",
+      "translated_fixed": "Sinnoh-Leiter"
     },
     {
       "id": "scr_1EEA047",
@@ -235419,7 +235541,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Vor zwanzig Jahren raste ein großer\nMeteor auf Borrius zu. Die\\lAstronomen der Cube Corp. sagten\n\nvoraus, dass er, wenn er nicht\naufgehalten würde, direkt auf\\lValley City, diese Stadt hier,\n\nstürzen und alles Leben darin\nauslöschen würde. In großer Eile\\lbegannen wir mit der Evakuierung\n\nder Stadt. Als wir gerade durch die\nKBT-Schnellstraße fliehen wollten,\\lerreichte uns die Nachricht. Nun\n\nwurde vorausgesagt, dass der Meteor\ndie halbe Region zerstören würde!\\lWenn wir versucht hätten,\n\nunterirdisch zu fliehen, wäre die\nWahrscheinlichkeit groß gewesen,\\llebendig verschüttet zu werden. Das\n\nChaos brach aus. Alles schien\nhoffnungslos, bis ER eintraf. [green]Aros[blue],\\ldie Legende. Er kam zusammen mit\n\neinem kleinen Pokémon, das er\nbenutzte, um alle nach Ost-Borrius\\lzu teleportieren, wo sie sicher\n\nwaren. Er hatte vor, den Meteor\nfrontal anzugreifen und in Stücke\\lzu schlagen. Nachdem er alle in\n\nSicherheit gebracht hatte, soll er\nauf einem Rayquaza geritten und mit\\lvoller Wucht in den Meteor gekracht\n\nsein! Er zerbarst, und die meisten\nkleineren Bruchstücke fielen auf\\lValley City. Die Stadt wurde\n\nzerstört, doch Aros hatte eine\nRegion gerettet. Ich werde die\\lHeldentat, die dieser Mann\n\nvollbracht hat, niemals vergessen."
+      "translated": "Vor zwanzig Jahren raste ein großer\nMeteor auf Borrius zu. Die\\lAstronomen der Cube Corp. sagten\n\nvoraus, dass er, wenn er nicht\naufgehalten würde, direkt auf\\lValley City, diese Stadt hier,\n\nstürzen und alles Leben darin\nauslöschen würde. In großer Eile\\lbegannen wir mit der Evakuierung\n\nder Stadt. Als wir gerade durch die\nKBT-Schnellstraße fliehen wollten,\\lerreichte uns die Nachricht. Nun\n\nwurde vorausgesagt, dass der Meteor\ndie halbe Region zerstören würde!\\lWenn wir versucht hätten,\n\nunterirdisch zu fliehen, wäre die\nWahrscheinlichkeit groß gewesen,\\llebendig verschüttet zu werden. Das\n\nChaos brach aus. Alles schien\nhoffnungslos\\. bis ER eintraf. [green]Aros[blue],\\ldie Legende. Er kam zusammen mit\n\neinem kleinen Pokémon, das er\nbenutzte, um alle nach Ost-Borrius\\lzu teleportieren, wo sie sicher\n\nwaren. Er hatte vor, den Meteor\nfrontal anzugreifen und in Stücke\\lzu schlagen. Nachdem er alle in\n\nSicherheit gebracht hatte, soll er\nauf einem Rayquaza geritten und mit\\lvoller Wucht in den Meteor gekracht\n\nsein! Er zerbarst, und die meisten\nkleineren Bruchstücke fielen auf\\lValley City. Die Stadt wurde\n\nzerstört, doch Aros hatte eine\nRegion gerettet. Ich werde die\\lHeldentat, die dieser Mann\n\nvollbracht hat, niemals vergessen."
     },
     {
       "id": "scr_1EEECCC",
@@ -242058,7 +242180,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "[red]Du wei\u0004t doch, dass du nicht\nherumrennen und Leute bel\u0004stigen\\lsollst, indem du sie glauben l\u0004sst,\n\ndu w\u0004rst ein Wissenschaftler,\nobwohl du keiner bist! Los \u0004 zur\u0004ck\\lins Labor mit dir, Bengel! Die\n\nTests an dir sind noch nicht\nabgeschlossen!"
+      "translated": "[red]Du weißt doch, dass du nicht\nherumrennen und Leute belästigen\\lsollst, indem du sie glauben lässt,\n\ndu wärst ein Wissenschaftler,\nobwohl du keiner bist! Los - zurück\\lins Labor mit dir, Bengel! Die\n\nTests an dir sind noch nicht\nabgeschlossen!"
     },
     {
       "id": "scr_1EF6C78",
@@ -247423,7 +247545,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "Hallo! Willkommen im Haus der\nDoppelk\u0004mpfe! Du kannst hier so oft\\ldu m\u0004chtest gegen jeden der Trainer\n\nk\u0004mpfen. Wenn du eine Erkl\u0004rung der\n[green]Doppelk\u0004mpfe[red] brauchst, sprich bitte\\lmit mir. Viel Spa\u0004 beim K\u0004mpfen!"
+      "translated": "Hallo! Willkommen im Haus der\nDoppelkämpfe! Du kannst hier so oft\\ldu möchtest gegen jeden der Trainer\n\nkämpfen. Wenn du eine Erklärung der\n[green]Doppelkämpfe[red] brauchst, sprich bitte\\lmit mir. Viel Spaß beim Kämpfen!"
     },
     {
       "id": "scr_1EFDA35",
@@ -306821,7 +306943,7 @@
           "token": "[black]"
         }
       ],
-      "translated": "[red]WARNUNG![black] Sobald du den\nKampfschwierigkeitsgrad\\lverringerst, kann er bis zum\n\nAbschluss des Spiels nicht über\n„Schwierig“ hinaus erhöht werden!\\lBist du dir SICHER, dass du den\n\nKampfschwierigkeitsgrad senken\nmöchtest?"
+      "translated": "[red]WARNUNG![black] Sobald du den\nKampfschwierigkeitsgrad\\lverringerst, kann er bis zum\n\nAbschluss des Spiels nicht über\ndie Stufe Schwierig hinaus erhöht werden!\\lBist du dir SICHER, dass du den\n\nKampfschwierigkeitsgrad senken\nmöchtest?"
     },
     {
       "id": "tbl_menu_game_settings_00001_1F4E328",
@@ -335962,8 +336084,8 @@
           "token": "[black]"
         }
       ],
-      "translated": "Trainer-Tipps! Durch Drücken von \\btn05\nkannst du eines von bis zu sechs\\lregistrierten Items verwenden! Um\n\nein Item zu registrieren, wähle es\nim Bereich „Basis-Items“ deines\\lCubes aus und wähle anschließend\n\n[green]Registrieren[black]. Das an zweiter Stelle\nregistrierte Item kannst du schnell\\lverwenden, indem du \\btn02 drückst, wenn\n\ndie Option [green]L-Tasten-Modus[black] auf [green]Item\n2 registrieren[black] eingestellt ist.",
-      "translated_fixed": "Trainer-Tipps! Mit \\btn05 nutzt du eines\nvon bis zu sechs registrierten\\lItems. Zum Registrieren wähle es im\n\nBereich „Basis-Items“ deines Cubes\nund danach [green]Registrieren[black]. Das zweite\\lregistrierte Item nutzt du schnell\n\nmit \\btn02, wenn [green]L-Tasten-Modus[black] auf [green]Item\n2 registrieren[black] steht."
+      "translated": "Trainer-Tipps! Durch Drücken von \\btn05\nkannst du eines von bis zu sechs\\lregistrierten Items verwenden! Um\n\nein Item zu registrieren, wähle es\nim Bereich Basis-Items deines\\lCubes aus und wähle anschließend\n\n[green]Registrieren[black]. Das an zweiter Stelle\nregistrierte Item kannst du schnell\\lverwenden, indem du \\btn02 drückst, wenn\n\ndie Option [green]L-Tasten-Modus[black] auf [green]Item\n2 registrieren[black] eingestellt ist.",
+      "translated_fixed": "Trainer-Tipps! Mit \\btn05 nutzt du eines\nvon bis zu sechs registrierten\\lItems. Zum Registrieren wähle es im\n\nBereich Basis-Items deines Cubes\nund danach [green]Registrieren[black]. Das zweite\\lregistrierte Item nutzt du schnell\n\nmit \\btn02, wenn [green]L-Tasten-Modus[black] auf [green]Item\n2 registrieren[black] steht."
     },
     {
       "id": "scr_1F73BDE",
@@ -367281,7 +367403,7 @@
           "token": "[buffer1]"
         }
       ],
-      "translated": "Junger [buffer1]. Ich möchte dir\nanbieten, deinen Pokémon im\\lAustausch gegen GP die Attacken\n\n„Ultimate“ und „Battle Combo“\nbeizubringen.",
+      "translated": "Junger [buffer1]. Ich möchte dir\nanbieten, deinen Pokémon im\\lAustausch gegen GP die Attacken\n\n\"Ultimate\" und \"Battle Combo\"\nbeizubringen.",
       "translated_fixed": "Junger [buffer1], ich lehre deine\nPokémon für GP Ultimate- und\\lBattle-Combo-Attacken."
     },
     {
@@ -395088,7 +395210,7 @@
       "table_index": 352,
       "translation_source": "Ëwas too spicy!",
       "translated": "Ë war zu scharf!",
-      "translated_fixed": "Ë zu scharf!"
+      "translated_fixed": "Ëwar zu scharf!"
     },
     {
       "id": "tbl_battle_messages_00357_3FD64F",
@@ -397184,7 +397306,7 @@
         }
       ],
       "translated": "\\\\23 geriet in\nPanik\\nund\\nverlor\\n$\\\\00\\. \\. \\.\n\\.\\n\\.\\n\\\\23\\nwurde\\nohnmächtig![pause]",
-      "translated_fixed": "\\\\\\23\\nverlor\\n$\\\\00\\.\\.\\.\\.\\.\\\\\\23\\nK.O.![pause]"
+      "translated_fixed": "\\\\23\\nverlor\\n$\\\\00\\.\\.\\.\\.\\.\\\\23\\nK.O.![pause]"
     },
     {
       "id": "tbl_battle_messages_00022_3FB484",
@@ -397268,7 +397390,7 @@
         }
       ],
       "translated": "\\\\23\nzahlte\\n$\\\\00\\nals\\nPreisgeld\\. \\. \\.\n\\.\\n\\.\\n\\\\23\\nwurde\\nohnmächtig![pause]",
-      "translated_fixed": "\\\\\\23\\nzahlte\\n$\\\\00\\nPreisgeld\\.\\.\\.\\.\\.\\\\\\23\\nK.O.![pause]"
+      "translated_fixed": "\\\\23\\nzahlte\\n$\\\\00\\nPreisgeld\\.\\.\\.\\.\\.\\\\23\\nK.O.![pause]"
     },
     {
       "id": "tbl_battle_messages_00000_9066D0",
