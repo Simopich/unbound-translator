@@ -20,6 +20,7 @@ layout, and creates redistributable BPS patches instead of ROM files.
 ## Contents
 
 - [Status](#status)
+- [German Translation](#german-translation)
 - [Highlights](#highlights)
 - [Use A Released Patch](#use-a-released-patch)
 - [Build From Source](#build-from-source)
@@ -37,11 +38,11 @@ layout, and creates redistributable BPS patches instead of ROM files.
 
 ## Status
 
-The project is usable but still early and primarily tested with Italian.
+The project is usable but still early and primarily tested with Italian and the German localization documented below.
 
 | Capability | Status |
 | --- | --- |
-| Release-ready translations | Indonesian (`ready-translations/id.json`), Italian (`ready-translations/it.json`) |
+| Release-ready translations | Indonesian (`ready-translations/id.json`), Italian (`ready-translations/it.json`), German (`ready-translations/de.json`) in the [Bladestar2105 fork release](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.0) |
 | Translation CLI targets | `de`, `en`, `es`, `fr`, `id`, `it`, `pt`, `pt-br` |
 | Non-Latin scripts | Not supported yet; likely requires a font patch |
 | Supported systems | Windows, macOS, and Linux |
@@ -52,6 +53,19 @@ The project is usable but still early and primarily tested with Italian.
 
 Known limitations include occasional untranslated text, layout glitches, and game-specific rendering behavior that may
 need further testing. Please report reproducible issues with the affected screen, text, language, and build commit.
+
+## German Translation
+
+The current German localization was contributed by [Bladestar2105](https://github.com/Bladestar2105).
+
+It includes:
+
+- `ready-translations/de.json` with 23,316 extracted entries; 23,310 entries contain German translation data, while six records have no source text.
+- A deterministic allocation adjustment in `005_hybrid_injector.py` that prioritizes already-identified reclaimed script owners, plus a regression test for that planning path.
+- Strict injection validation with `--fail-on-no-space`, reporting zero entries skipped for space, pointer mismatches, implausible pointers, encoding errors, truncation, or bounds failures.
+- A public BPS patch release that contains no original or patched ROM.
+
+Download the [German translation patch v0.1.0](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.0) and apply it to a clean Pokémon Unbound v2.1.1.1 source ROM with MD5 `9cad8e771940e7f7094d13911552cef0` and SHA-256 `7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7`. The patch was round-trip verified against the generated 32 MB output and play-tested in mGBA 0.10.5 for approximately four minutes, reaching the laboratory sequence with German dialogue visible.
 
 ## Highlights
 
@@ -74,6 +88,8 @@ need further testing. Please report reproducible issues with the affected screen
 3. Apply the BPS file with a BPS-compatible patcher such as
    [Rom Patcher JS](https://www.marcrobledo.com/RomPatcher.js/).
 4. Save the patched result as a new ROM. Keep the original ROM unchanged.
+
+For the current German build, use the [German translation patch release](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.0).
 
 A BPS patch contains differences only. It is not a playable ROM by itself.
 
@@ -446,6 +462,7 @@ Use [Discord](https://discord.gg/ctFaR77WrR) for community discussion.
 
 ## Acknowledgements
 
+- [Bladestar2105](https://github.com/Bladestar2105) contributed the German localization and published its BPS patch release.
 - [Hendi Saputra](https://github.com/orangesoncom) contributed the initial Indonesian translation through
   [PR #1](https://github.com/Simopich/unbound-translator/pull/1).
 - [PokeAPI](https://pokeapi.co/) provides official localized Pokemon data used before LLM fallback.
