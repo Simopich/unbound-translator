@@ -44,3 +44,35 @@ def test_controlfix_cli_regression_fixture_preserves_tokens_and_layout(tmp_path)
     assert report["stats"]["remaining_control_mismatches"] == 0
     assert report["stats"]["menu_line_break_repairs"] == 1
     assert report["stats"]["battle_prompt_layout_repairs"] == 1
+
+
+def test_controlfix_wrap_only_also_wraps_fixed_overrides(tmp_path):
+    output_path = tmp_path / "wrapped.json"
+    subprocess.run(
+        [
+            sys.executable,
+            str(REPO_ROOT / "004_controlfix_translations.py"),
+            str(REPO_ROOT / "tests/fixtures/controlfix_input.json"),
+            "-o",
+            str(output_path),
+            "--source",
+            str(REPO_ROOT / "tests/fixtures/controlfix_source.json"),
+            "--wrap-only",
+            "--wrap-width",
+            "18",
+        ],
+        check=True,
+        cwd=REPO_ROOT,
+    )
+
+    data = json.loads(output_path.read_text(encoding="utf-8"))
+    fixed = next(entry for entry in data["entries"] if entry["id"] == "scr_token_layout")
+    assert "\n" in fixed["translated_fixed"]
+    assert next(entry for entry in data["entries"] if entry["id"] == "tbl_menu_yes_no")[
+        "translated"
+    ] == "Sì\nNo"
+    assert next(
+        entry
+        for entry in data["entries"]
+        if entry["id"] == "tbl_battle_messages_00412_3FE6D5"
+    )["translated"] == "Cosa farà\n\\\\12?"

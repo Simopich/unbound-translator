@@ -20,6 +20,7 @@ layout, and creates redistributable BPS patches instead of ROM files.
 ## Contents
 
 - [Status](#status)
+- [German Translation](#german-translation)
 - [Highlights](#highlights)
 - [Use A Released Patch](#use-a-released-patch)
 - [Build From Source](#build-from-source)
@@ -37,11 +38,11 @@ layout, and creates redistributable BPS patches instead of ROM files.
 
 ## Status
 
-The project is usable but still early and primarily tested with Italian.
+The project is usable but still early and primarily tested with Italian and the German localization documented below.
 
 | Capability | Status |
 | --- | --- |
-| Release-ready translations | Indonesian (`ready-translations/id.json`), Italian (`ready-translations/it.json`) |
+| Release-ready translations | Indonesian (`ready-translations/id.json`), Italian (`ready-translations/it.json`), German (`ready-translations/de.json`) in the [Bladestar2105 fork release](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.6) |
 | Translation CLI targets | `de`, `en`, `es`, `fr`, `id`, `it`, `pt`, `pt-br` |
 | Non-Latin scripts | Not supported yet; likely requires a font patch |
 | Supported systems | Windows, macOS, and Linux |
@@ -50,8 +51,28 @@ The project is usable but still early and primarily tested with Italian.
 | License | [MIT](LICENSE) |
 | Source ROM | Pokemon Unbound English, MD5 `9cad8e771940e7f7094d13911552cef0` |
 
-Known limitations include occasional untranslated text, layout glitches, and game-specific rendering behavior that may
-need further testing. Please report reproducible issues with the affected screen, text, language, and build commit.
+Known limitations include game-specific rendering behavior that may need further testing. Please report reproducible
+issues with the affected screen, text, language, and build commit.
+
+## German Translation
+
+The current German localization was contributed by [Bladestar2105](https://github.com/Bladestar2105).
+
+It includes:
+
+- `ready-translations/de.json` with 23,321 extracted entries; 23,315 entries contain German translation data, while six records have no source text.
+- A deterministic allocation adjustment in `005_hybrid_injector.py` that prioritizes already-identified reclaimed script owners, plus a regression test for that planning path.
+- Pixel-budget QA for 32 setting names, 519 battle messages, 75 settings-menu fields, and 57 mission objectives.
+- A lossless wrap-only formatting pass that keeps control tokens intact while fitting German dialogue to the game text window.
+- Strict injection validation with `--fail-on-no-space`, reporting zero entries skipped for space, pointer mismatches, implausible pointers, encoding errors, truncation, or bounds failures.
+- An independent original-ROM coverage audit that adds five previously unowned Wireless Communication Status slots, including dynamic player counts and the Cancel control.
+- Battle command menus keep `Cube`, `Pokémon`, `Flucht`, and related choices as separate menu slots with preserved control layout.
+- Automated German QA covers semantic controls, embedded control bytes, printable character support, constrained descriptions, and conservative menu-width budgets; 145 tests pass.
+- The final strict German build audited 23,315 translated entries after ROM decoding with zero content mismatches; the injector reported zero no-space, pointer, encoding, bounds, or truncation failures.
+- A public BPS patch release that contains no original or patched ROM.
+- Upstream review is tracked in [PR #7](https://github.com/Simopich/unbound-translator/pull/7).
+
+Download the [German translation patch v0.1.6](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.6) and apply it to a clean Pokémon Unbound v2.1.1.1 source ROM with MD5 `9cad8e771940e7f7094d13911552cef0` and SHA-256 `7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7`. The patch was round-trip verified against the generated 32 MB output. Release v0.1.6 adds automated width/control-token hardening for German descriptions and menus, preserves the Wireless Communication Status and battle-menu fixes, and contains no ROM file. BPS SHA-256: `5e209e4feac8e4c699f5b8c93c5247ca9d4c61f6d15a8739eea4c4f12cd71aeb`.
 
 ## Highlights
 
@@ -74,6 +95,8 @@ need further testing. Please report reproducible issues with the affected screen
 3. Apply the BPS file with a BPS-compatible patcher such as
    [Rom Patcher JS](https://www.marcrobledo.com/RomPatcher.js/).
 4. Save the patched result as a new ROM. Keep the original ROM unchanged.
+
+For the current German build, use the [German translation patch release](https://github.com/Bladestar2105/unbound-translator/releases/tag/de-v0.1.6).
 
 A BPS patch contains differences only. It is not a playable ROM by itself.
 
@@ -187,9 +210,9 @@ flowchart LR
 python 001_extract_unbound_text.py rom/unbound.gba -o out/unbound-texts.json
 ```
 
-Extraction is intentionally lossless. The current baseline contains `23,268` unique-address entries, including
-`10,828` script strings, `3,516` strict aligned-pointer discoveries, all 84 missions, and dedicated categories for
-menus, battle text, descriptions, summary screens, and other UI.
+Extraction is intentionally lossless. The current baseline contains `23,321` unique-address entries, including
+`10,828` script strings, `3,508` strict aligned-pointer discoveries, and dedicated categories for menus, battle text,
+descriptions, summary screens, missions, and other UI.
 
 ### 2. Prepare
 
@@ -446,6 +469,7 @@ Use [Discord](https://discord.gg/ctFaR77WrR) for community discussion.
 
 ## Acknowledgements
 
+- [Bladestar2105](https://github.com/Bladestar2105) contributed the German localization and published its BPS patch release.
 - [Hendi Saputra](https://github.com/orangesoncom) contributed the initial Indonesian translation through
   [PR #1](https://github.com/Simopich/unbound-translator/pull/1).
 - [PokeAPI](https://pokeapi.co/) provides official localized Pokemon data used before LLM fallback.

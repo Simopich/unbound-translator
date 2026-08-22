@@ -888,11 +888,16 @@ def plan_relocations(
     # intentionally accept only explicit scripts or independently proven IDs.
     # Plan restricted candidates first so reclaim-eligible scripts cannot
     # consume the only storage available to heuristic pointer discoveries.
+    reclaimed_priority_ids = set(reclaimed_entry_ids)
     ordered_candidates = [
         candidate
         for _index, candidate in sorted(
             enumerate(candidates),
-            key=lambda item: (can_use_reclaimed(item[1]), item[0]),
+            key=lambda item: (
+                can_use_reclaimed(item[1]),
+                item[1].entry.get("id") not in reclaimed_priority_ids,
+                item[0],
+            ),
         )
     ]
     plan = {}
@@ -1177,7 +1182,7 @@ def main():
                 candidates,
                 args.alignment,
                 trial_reclaimed_blocks,
-                reclaimed_entry_ids=reclaimed_consumer_ids,
+                reclaimed_entry_ids=(active_owner_ids | reclaimed_consumer_ids),
             )
             next_owner_ids = all_reclaimed_owner_ids.intersection(trial_plan)
             if next_owner_ids == active_owner_ids:

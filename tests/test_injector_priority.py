@@ -453,6 +453,45 @@ class InjectionPriorityTests(unittest.TestCase):
             ["discovery"],
         )
 
+    def test_reclaim_owner_ids_are_planned_before_other_scripts(self):
+        vetted = [INJECTOR.FreeBlock(0x1000, 0x100C, 0x1000)]
+        reclaimed = [
+            INJECTOR.FreeBlock(
+                0x2000,
+                0x200C,
+                0x2000,
+                "reclaimed_script_text",
+            )
+        ]
+        candidates = [
+            INJECTOR.RelocationCandidate(
+                entry={"id": "other", "category": "scripts"},
+                address=0x3000,
+                max_size=8,
+                encoded=b"A" * 12,
+                sources=(0x40,),
+            ),
+            INJECTOR.RelocationCandidate(
+                entry={"id": "owner", "category": "scripts"},
+                address=0x3010,
+                max_size=8,
+                encoded=b"B" * 12,
+                sources=(0x44,),
+            ),
+        ]
+
+        plan, missing = INJECTOR.plan_relocations(
+            vetted,
+            candidates,
+            1,
+            reclaimed,
+            reclaimed_entry_ids={"owner"},
+        )
+
+        self.assertEqual(plan["owner"], (0x1000, "vetted_ff", False))
+        self.assertEqual(plan["other"], (0x2000, "reclaimed_script_text", False))
+        self.assertEqual(missing, [])
+
     def test_vetted_space_is_reserved_for_restricted_pointer_discoveries(self):
         vetted = [INJECTOR.FreeBlock(0x1000, 0x100C, 0x1000)]
         reclaimed = [

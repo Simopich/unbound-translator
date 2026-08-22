@@ -4,7 +4,8 @@
       "id": "scr_token_layout",
       "category": "scripts",
       "original": "[black]Hello [player]!",
-      "translated": "Ciao [player]! Questo testo deve andare a capo."
+      "translated": "Ciao [player]! Questo testo deve andare a capo.",
+      "translated_fixed": "Ciao [player]! Questo testo deve andare a capo."
     },
     {
       "id": "tbl_menu_yes_no",

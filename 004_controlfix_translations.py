@@ -539,6 +539,38 @@ def wrap_words_by_pixels(text, max_pixels):
     return lines
 
 
+BATTLE_LAYOUT_RE = re.compile(r"(\\\\pn|\\\\p|\\\\n|\\\\l|\r\n|\r|\n)")
+
+
+def wrap_battle_message(text, max_pixels):
+    """Wrap battle lines by rendered width, including dynamic-name buffers."""
+    pieces = BATTLE_LAYOUT_RE.split(text)
+    wrapped = []
+    long_words = 0
+    for piece in pieces:
+        if not piece:
+            continue
+        if BATTLE_LAYOUT_RE.fullmatch(piece):
+            wrapped.append(piece)
+            continue
+
+        leading = piece[: len(piece) - len(piece.lstrip())]
+        trailing = piece[len(piece.rstrip()) :]
+        core = piece.strip()
+        if not core:
+            wrapped.append(piece)
+            continue
+
+        lines = wrap_words_by_pixels(core, max_pixels)
+        long_words += sum(
+            text_pixel_width(word) > max_pixels for word in core.split()
+        )
+        wrapped.append(leading + "\n".join(lines) + trailing)
+
+    result = "".join(wrapped)
+    return result, result != text, long_words
+
+
 def non_layout_tokens(text):
     return [
         token
@@ -620,19 +652,22 @@ def compact_words_in_middle(text, max_total):
         return " ".join(words)
 
     marker = "..."
+    required_tokens = non_layout_tokens(text)
     candidates = []
     for prefix_count in range(1, len(words)):
         for suffix_count in range(1, len(words) - prefix_count):
             candidate = " ".join(
                 words[:prefix_count] + [marker] + words[len(words) - suffix_count:]
             )
+            if non_layout_tokens(candidate) != required_tokens:
+                continue
             width = visible_width(candidate)
             if width <= max_total:
                 kept = prefix_count + suffix_count
                 balance = abs(prefix_count - suffix_count)
                 candidates.append((-kept, balance, -width, candidate))
     if not candidates:
-        return marker
+        return " ".join(words)
     return min(candidates)[-1]
 
 
@@ -769,10 +804,7 @@ def restore_battle_prompt_layout(text, _original, entry):
             prompt = prompt[:-2].rstrip()
         else:
             prompt = prompt[:-1].rstrip()
-    pokemon = match.group(0)
-    trailing = text[match.end() :].strip()
-    if trailing and set(trailing) <= set("?!."):
-        pokemon += trailing
+    pokemon = text[match.start() :].strip()
     if not prompt:
         return text, False
 
@@ -780,9 +812,14 @@ def restore_battle_prompt_layout(text, _original, entry):
     return fixed, fixed != text
 
 
-def wrap_translation(text, entry, original, args, wrap_categories):
+def wrap_translation(text, entry, original, args, wrap_categories, preserve_text=False):
     if args.no_wrap or entry.get("category") not in wrap_categories:
         return text, False, 0, False
+    if entry.get("category") == "battle_messages":
+        wrapped, _changed, long_words = wrap_battle_message(
+            text, args.battle_message_max_pixels
+        )
+        return wrapped, wrapped != text, long_words, False
     if (
         entry.get("category") == "ability_descriptions"
         and entry.get("translated_fixed")
@@ -790,16 +827,27 @@ def wrap_translation(text, entry, original, args, wrap_categories):
         return text, False, 0, False
     if should_skip_wrap(text):
         return text, False, 0, True
-    if entry.get("category") == "battle_messages" and (
-        "\n" in text or any(token in text for token in LAYOUT_TOKENS)
-    ):
-        return text, False, 0, False
-
     plain_text, _removed_layout = remove_layout_tokens(text)
     if not plain_text:
         return text, False, 0, False
 
-    lines, long_words = wrap_words_for_entry(plain_text, entry, args)
+    if preserve_text:
+        if entry.get("category") == "move_descriptions":
+            width = args.move_description_max_pixels
+            lines = wrap_words_by_pixels(plain_text, width)
+            long_words = sum(text_pixel_width(word) > width for word in plain_text.split())
+        elif entry.get("category") in {"mission_descriptions", "ability_descriptions"}:
+            width = (
+                args.mission_description_max_pixels
+                if entry.get("category") == "mission_descriptions"
+                else args.ability_description_max_pixels
+            )
+            lines = wrap_words_by_pixels(plain_text, width)
+            long_words = sum(text_pixel_width(word) > width for word in plain_text.split())
+        else:
+            lines, long_words = wrap_words(plain_text, wrap_width_for_entry(entry, args))
+    else:
+        lines, long_words = wrap_words_for_entry(plain_text, entry, args)
     wrapped = join_wrapped_lines(lines, entry, original)
     return wrapped, wrapped != text, long_words, False
 
@@ -898,10 +946,21 @@ def main():
         help="Disable post-translation text wrapping/layout recomputation.",
     )
     parser.add_argument(
+        "--wrap-only",
+        action="store_true",
+        help="Apply only safe layout normalization/wrapping; preserve all other controls.",
+    )
+    parser.add_argument(
         "--wrap-width",
         type=int,
         default=35,
         help="Visible character width for dialogue wrapping. Default: 35.",
+    )
+    parser.add_argument(
+        "--battle-message-max-pixels",
+        type=int,
+        default=208,
+        help="Maximum rendered width for battle-message lines. Default: 208.",
     )
     parser.add_argument(
         "--description-wrap-width",
@@ -1081,6 +1140,73 @@ def main():
         before = translated
 
         text = translated
+
+        if args.wrap_only:
+            text = normalize_actual_layout_breaks(text)
+            text, menu_breaks_restored = restore_compact_menu_line_breaks(
+                text, original, entry
+            )
+            stats["menu_line_break_repairs"] += int(menu_breaks_restored)
+            text, menu_description_breaks_restored = restore_menu_description_line_breaks(
+                text, original, entry
+            )
+            stats["menu_description_line_break_repairs"] += int(
+                menu_description_breaks_restored
+            )
+            if entry.get("category") == "setting_names":
+                text, setting_trimmed = trim_to_pixel_width(
+                    text, args.setting_name_max_width
+                )
+                stats["setting_name_trims"] += int(setting_trimmed)
+            text, wrapped, long_words, skipped_wrap = wrap_translation(
+                text,
+                entry,
+                original,
+                args,
+                wrap_categories,
+                preserve_text=entry.get("category") != "mission_objectives",
+            )
+            stats["wrapped"] += int(wrapped)
+            stats["wrap_long_words"] += long_words
+            stats["wrap_skipped_technical"] += int(skipped_wrap)
+            text, battle_prompt_layout_restored = restore_battle_prompt_layout(
+                text, original, entry
+            )
+            stats["battle_prompt_layout_repairs"] += int(
+                battle_prompt_layout_restored
+            )
+            if text != before:
+                entry["translated"] = text
+                stats["changed"] += 1
+
+            fixed = entry.get("translated_fixed")
+            if isinstance(fixed, str) and fixed:
+                fixed_before = fixed
+                fixed = normalize_actual_layout_breaks(fixed)
+                fixed, _ = restore_compact_menu_line_breaks(fixed, original, entry)
+                fixed, _ = restore_menu_description_line_breaks(
+                    fixed, original, entry
+                )
+                if entry.get("category") == "setting_names":
+                    fixed, setting_trimmed = trim_to_pixel_width(
+                        fixed, args.setting_name_max_width
+                    )
+                    stats["setting_name_trims"] += int(setting_trimmed)
+                fixed, fixed_wrapped, fixed_long_words, fixed_skipped = wrap_translation(
+                    fixed,
+                    entry,
+                    original,
+                    args,
+                    wrap_categories,
+                    preserve_text=entry.get("category") != "mission_objectives",
+                )
+                stats["wrapped"] += int(fixed_wrapped)
+                stats["wrap_long_words"] += fixed_long_words
+                stats["wrap_skipped_technical"] += int(fixed_skipped)
+                fixed, _ = restore_battle_prompt_layout(fixed, original, entry)
+                if fixed != fixed_before:
+                    entry["translated_fixed"] = fixed
+            continue
 
         text = normalize_outer_quotes(text)
 

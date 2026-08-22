@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -10,6 +11,7 @@ from tests.helpers import load_script_module
 
 READY_ITALIAN = Path(__file__).resolve().parents[1] / "ready-translations" / "it.json"
 READY_INDONESIAN = Path(__file__).resolve().parents[1] / "ready-translations" / "id.json"
+READY_GERMAN = Path(__file__).resolve().parents[1] / "ready-translations" / "de.json"
 FIXTURE = (
     Path(__file__).resolve().parent / "fixtures" / "fixed_translation_overrides.json"
 )
@@ -203,7 +205,232 @@ def test_misc_menu_text_respects_observed_screen_budgets():
         text = entry["translated"]
         assert text.startswith("Natura \\?00.")
         assert text.count("\\?00") == 1
-        assert max(map(text_pixel_width, text.splitlines())) <= 154
+    assert max(map(text_pixel_width, text.splitlines())) <= 154
+
+
+def test_ready_german_settings_and_battle_text_respect_rendered_width_budgets():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+
+    def rendered_lines(text):
+        for token in ("\\pn", "\\p", "\\n", "\\l"):
+            text = text.replace(token, "\n")
+        return [line for line in text.splitlines() if line.strip()]
+
+    for entry in entries:
+        category = entry.get("category")
+        effective = INJECTOR.translation_for_injection(entry)
+        if category == "setting_names":
+            assert text_pixel_width(effective) <= 93, entry["id"]
+        elif category == "battle_messages":
+            assert max(
+                map(text_pixel_width, rendered_lines(effective)), default=0
+            ) <= 208, entry["id"]
+        elif category == "menu_game_settings":
+            address = int(entry["address"], 16)
+            if address == 0x1F4DA6C or 0x1F4DBA5 <= address <= 0x1F4DD5F:
+                assert text_pixel_width(effective) <= 118, entry["id"]
+            elif 0x1F4DD6D <= address <= 0x1F4E214:
+                assert text_pixel_width(effective) <= 224, entry["id"]
+        elif category == "mission_objectives":
+            lines = rendered_lines(effective)
+            assert "..." not in effective, entry["id"]
+            assert len(lines) <= 2, entry["id"]
+            assert max(map(visible_width, lines), default=0) <= 35, entry["id"]
+            assert visible_width(" ".join(lines)) <= 65, entry["id"]
+
+
+def test_ready_german_menu_text_fits_conservative_screen_width():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+
+    def rendered_lines(text):
+        for token in ("\\pn", "\\p", "\\n", "\\l"):
+            text = text.replace(token, "\n")
+        return [line for line in text.splitlines() if line.strip()]
+
+    for entry in entries:
+        category = entry.get("category", "")
+        if not (category.startswith("menu_") or category in {"start_menu_labels", "setting_names"}):
+            continue
+        # The save timestamp is assembled from runtime control bytes, not a normal text line.
+        if category == "menu_save":
+            continue
+        effective = INJECTOR.translation_for_injection(entry)
+        assert max(
+            map(text_pixel_width, rendered_lines(effective)), default=0
+        ) <= 224, entry["id"]
+
+
+def test_ready_german_battle_fragments_keep_runtime_spaces_and_loss_text_german():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+    by_id = {entry["id"]: entry for entry in entries}
+
+    for entry_id in (
+        "tbl_battle_messages_00000_A4C636",
+        "tbl_battle_messages_00000_8BD155",
+    ):
+        assert INJECTOR.translation_for_injection(by_id[entry_id]).endswith(" ")
+
+    for entry_id in (
+        "tbl_battle_messages_00007_A4C689",
+        "tbl_battle_messages_00009_A4C6FD",
+        "tbl_battle_messages_00020_3FB433",
+        "tbl_battle_messages_00022_3FB484",
+        "scr_1A6197",
+        "scr_1A61E5",
+    ):
+        text = INJECTOR.translation_for_injection(by_id[entry_id])
+        assert "is out of" not in text
+        assert "usable Pokémon" not in text
+        assert "Player lost against" not in text
+
+    for entry_id in (
+        "tbl_battle_messages_00020_3FB433",
+        "tbl_battle_messages_00022_3FB484",
+        "scr_1A6197",
+        "scr_1A61E5",
+    ):
+        assert "hat keine Pokémon mehr!" in INJECTOR.translation_for_injection(
+            by_id[entry_id]
+        )
+
+
+def test_ready_german_translations_preserve_all_semantic_controls():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+
+    for entry in entries:
+        effective = INJECTOR.translation_for_injection(entry)
+        if not effective:
+            continue
+        original_tokens = semantic_token_counts(entry["original"])
+        translated_tokens = semantic_token_counts(effective)
+        for apostrophe_byte in ("{B3}", "{B4}"):
+            original_tokens.pop(apostrophe_byte, None)
+            translated_tokens.pop(apostrophe_byte, None)
+        assert translated_tokens == original_tokens, entry["id"]
+
+
+def test_ready_german_translations_have_no_embedded_c0_control_characters():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+
+    for entry in entries:
+        effective = INJECTOR.translation_for_injection(entry)
+        invalid = [
+            char
+            for char in effective
+            if ord(char) < 0x20 and char not in "\r\n\t"
+        ]
+        assert not invalid, entry["id"]
+
+
+def test_ready_german_translations_have_no_unsupported_printable_human_characters():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+    charmap = INJECTOR.Charmap(target_lang="de")
+    control = re.compile(
+        r"\[[^\]]+\]|\{[0-9A-Fa-f]{2}\}|"
+        r"\\(?:CC[0-9A-Fa-f]+|btn[0-9A-Fa-f]+|buffer\d+|"
+        r"[A-Za-z?]+|[0-9A-Fa-f]{2}|.)"
+    )
+
+    for entry in entries:
+        effective = INJECTOR.translation_for_injection(entry)
+        text = INJECTOR.normalize_text_escapes(INJECTOR.strip_hma_quotes(effective))
+        human_text = charmap._sanitize(control.sub("", text))
+        unsupported = [
+            char
+            for char in human_text
+            if char.isprintable() and not charmap.can_encode(char)[0]
+        ]
+        assert not unsupported, entry["id"]
+
+
+def test_ready_german_constrained_descriptions_fit_horizontal_renderer_budgets():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+
+    def rendered_lines(text):
+        for token in ("\\pn", "\\p", "\\n", "\\l"):
+            text = text.replace(token, "\n")
+        return [line for line in text.splitlines() if line.strip()]
+
+    for entry in entries:
+        category = entry.get("category")
+        effective = INJECTOR.translation_for_injection(entry)
+        lines = rendered_lines(effective)
+        if category == "pokedex_descriptions":
+            assert max(map(visible_width, lines), default=0) <= 43, entry["id"]
+        elif category == "move_descriptions":
+            assert max(map(text_pixel_width, lines), default=0) <= 122, entry["id"]
+        elif category == "ability_descriptions":
+            assert len(lines) == 1, entry["id"]
+            assert visible_width(effective) <= 34, entry["id"]
+            assert text_pixel_width(effective) <= 191, entry["id"]
+        elif category == "item_descriptions":
+            assert max(map(visible_width, lines), default=0) <= 34, entry["id"]
+        elif category == "mission_descriptions":
+            assert max(map(text_pixel_width, lines), default=0) <= 172, entry["id"]
+
+
+def test_ready_german_wireless_status_slots_keep_dynamic_controls_and_fit():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+    by_address = {entry["address"]: entry for entry in entries}
+    expected = {
+        "0x41E2B4": r"\?00 Spieler",
+        "0x41E2BF": r"\?01 Spieler",
+        "0x41E2C9": r"\?02 Spieler",
+        "0x41E2D4": r"\?03 Spieler",
+        "0x41E2EC": r"\btn01Zurück",
+    }
+    charmap = INJECTOR.Charmap(target_lang="de")
+
+    for address, translation in expected.items():
+        entry = by_address[address]
+        effective = INJECTOR.translation_for_injection(entry)
+        assert effective == translation
+        assert semantic_token_counts(effective) == semantic_token_counts(
+            entry["original"]
+        )
+        if not INJECTOR.pointer_sources(entry):
+            assert len(INJECTOR.encode_text(charmap, effective)) <= int(
+                entry["byte_length"]
+            )
+
+
+def test_german_battle_command_menus_preserve_choice_order_and_layout():
+    entries = json.loads(READY_GERMAN.read_text(encoding="utf-8"))["entries"]
+    by_id = {entry["id"]: entry for entry in entries}
+    expected = {
+        "tbl_menu_battle_00000_3FE725": (
+            r"\CC0505\CC040D0E0FKampf\CC1338Beutel\n"
+            r"Pokémon\CC1338Flucht"
+        ),
+        "tbl_menu_battle_00001_3FE747": (
+            r"\CC0505\CC040D0E0FBall\CC1338Köder\n"
+            r"Stein\CC1338Flucht"
+        ),
+        "tbl_menu_battle_00002_3FE791": r"\CC0505\CC040D0E0FJa\nNein",
+        "tbl_menu_battle_00003_A4C7B7": (
+            r"\CC0505\CC040D0E0FKampf\CC1338Cube\nPokémon\CC1338Flucht"
+        ),
+        "tbl_menu_battle_00004_A4C7DA": (
+            r"\CC0505\CC040D0E0FKampf\CC1338\CC040F0E0BCube\n"
+            r"\CC040D0E0FPokémon\CC1338Flucht"
+        ),
+        "tbl_menu_battle_00005_A4C807": (
+            r"\CC0505\CC040D0E0FKampf\CC1338Cube\nPokémon\CC1338Zurück"
+        ),
+        "tbl_menu_battle_00006_A4C82B": (
+            r"\CC0505\CC040D0E0FKampf\CC1338\CC040F0E0BCube\n"
+            r"\CC040D0E0FPokémon\CC1338Zurück"
+        ),
+    }
+
+    for entry_id, translation in expected.items():
+        entry = by_id[entry_id]
+        effective = INJECTOR.translation_for_injection(entry)
+        assert effective == translation
+        assert "Cube-" not in effective
+        assert semantic_token_counts(effective) == semantic_token_counts(
+            entry["original"]
+        )
 
 
 def test_verified_official_italian_terms_and_pokedex_layout():
