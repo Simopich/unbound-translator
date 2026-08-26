@@ -1493,7 +1493,7 @@ def main():
 
         if len(encoded) > max_size:
             if not args.allow_lossy_fit:
-                if args.fail_on_no_space:
+                if args.fail_on_no_space and entry.get("category") != "pointer_texts":
                     raise RuntimeError(
                         "Lossy fixed-slot truncation refused for "
                         f"{entry.get('id', '?')}: {len(encoded)} -> {max_size} bytes. "
