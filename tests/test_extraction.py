@@ -101,6 +101,17 @@ class AlignedPointerTextTests(unittest.TestCase):
         self.assertTrue(EXTRACTOR.is_aligned_pointer_target_excluded(0x246AE0))
         self.assertFalse(EXTRACTOR.is_aligned_pointer_target_excluded(0x24F1A7))
 
+    def test_rejects_thumb_instructions_that_look_like_text_pointers(self):
+        false_sources = {0x3F2B0, 0x8BBBC8, 0x8BBC70}
+
+        self.assertEqual(
+            EXTRACTOR.ALIGNED_POINTER_TEXT_EXCLUDED_SOURCES,
+            false_sources,
+        )
+        for source in false_sources:
+            self.assertTrue(EXTRACTOR.is_aligned_pointer_source_excluded(source))
+        self.assertFalse(EXTRACTOR.is_aligned_pointer_source_excluded(0x3F2B4))
+
     def test_address_merge_prefers_specific_entry_and_unions_sources(self):
         script = {
             "id": "scr_123456",
