@@ -356269,7 +356269,7 @@
       "byte_length": 9,
       "is_pointer_based": true,
       "translation_source": "Fighting",
-      "translated": "Fighting"
+      "translated": "Petarung"
     },
     {
       "id": "scr_1F97840",
@@ -356283,7 +356283,7 @@
       "byte_length": 7,
       "is_pointer_based": true,
       "translation_source": "Flying",
-      "translated": "Flying"
+      "translated": "Terbang"
     },
     {
       "id": "scr_1F97847",
@@ -356297,7 +356297,7 @@
       "byte_length": 7,
       "is_pointer_based": true,
       "translation_source": "Poison",
-      "translated": "Poison"
+      "translated": "Racun"
     },
     {
       "id": "scr_1F9784E",
@@ -356311,7 +356311,7 @@
       "byte_length": 7,
       "is_pointer_based": true,
       "translation_source": "Ground",
-      "translated": "Ground"
+      "translated": "Tanah"
     },
     {
       "id": "scr_1F97855",
@@ -356325,7 +356325,7 @@
       "byte_length": 5,
       "is_pointer_based": true,
       "translation_source": "Rock",
-      "translated": "Rock"
+      "translated": "Batu"
     },
     {
       "id": "scr_1F9785A",
@@ -356339,7 +356339,7 @@
       "byte_length": 4,
       "is_pointer_based": true,
       "translation_source": "Bug",
-      "translated": "Bug"
+      "translated": "Serangga"
     },
     {
       "id": "scr_1F9785E",
@@ -356353,7 +356353,7 @@
       "byte_length": 6,
       "is_pointer_based": true,
       "translation_source": "Ghost",
-      "translated": "Ghost"
+      "translated": "Hantu"
     },
     {
       "id": "scr_1F97864",
@@ -356367,7 +356367,7 @@
       "byte_length": 6,
       "is_pointer_based": true,
       "translation_source": "Steel",
-      "translated": "Steel"
+      "translated": "Baja"
     },
     {
       "id": "scr_1F9786A",
@@ -356381,7 +356381,7 @@
       "byte_length": 5,
       "is_pointer_based": true,
       "translation_source": "Fire",
-      "translated": "Fire"
+      "translated": "Api"
     },
     {
       "id": "scr_1F9786F",
@@ -356395,7 +356395,7 @@
       "byte_length": 6,
       "is_pointer_based": true,
       "translation_source": "Water",
-      "translated": "Water"
+      "translated": "Air"
     },
     {
       "id": "scr_1F97875",
@@ -356409,7 +356409,7 @@
       "byte_length": 6,
       "is_pointer_based": true,
       "translation_source": "Grass",
-      "translated": "Grass"
+      "translated": "Rumput"
     },
     {
       "id": "scr_1F9787B",
