@@ -155893,21 +155893,6 @@
       "translated": "Grazie per aver usato il Sistema Regalo Segreto. Devi essere [player]. C{B4}è un biglietto per te."
     },
     {
-      "id": "scr_489906",
-      "category": "pointer_texts",
-      "address": "0x489906",
-      "pointer_sources": [
-        "0x3F2B0",
-        "0x8BBBC8",
-        "0x8BBC70"
-      ],
-      "original": "\" ALTERING\nCAVE on OUTCAST ISLAND.\n\nWhy not visit there and check if\nthe rumors are indeed true?\"",
-      "byte_length": 95,
-      "is_pointer_based": true,
-      "translation_source": "ALTERING CAVE on OUTCAST ISLAND. Why not visit there and check if the rumors are indeed true?",
-      "translated": "ALTERING CAVE sull{B4}Isola dei Reietti. Perché non andarci a vedere se le voci sono davvero vere?"
-    },
-    {
       "id": "scr_4AB697",
       "category": "pointer_texts",
       "address": "0x4AB697",
