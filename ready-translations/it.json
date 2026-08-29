@@ -363852,7 +363852,8 @@
       "address": "0x1F97855",
       "pointer_sources": [
         "0x1E868F0",
-        "0x1FB2294"
+        "0x1FB2294",
+        "0x1E90527"
       ],
       "original": "\"Rock\"",
       "byte_length": 5,
@@ -363894,7 +363895,8 @@
       "address": "0x1F97864",
       "pointer_sources": [
         "0x1E86900",
-        "0x1FB22A0"
+        "0x1FB22A0",
+        "0x1E90546"
       ],
       "original": "\"Steel\"",
       "byte_length": 6,
@@ -363970,7 +363972,7 @@
       "byte_length": 8,
       "is_pointer_based": true,
       "translation_source": "Psychic",
-      "translated": "Psichico"
+      "translated": "Psico"
     },
     {
       "id": "scr_1F9788C",

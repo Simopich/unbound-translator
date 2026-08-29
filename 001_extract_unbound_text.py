@@ -630,6 +630,11 @@ MANUAL_TEXT_TABLES = {
 # than 4-byte aligned. The generic source predicate cannot prove these, so
 # their manually identified text owners must preserve them explicitly.
 MANUAL_TEXT_POINTER_SOURCES = {
+    # Starter confirmation buffers use packed ``0x85 0x01 <text pointer>``
+    # commands. Dragon's pointer is aligned and found generically, while the
+    # adjacent Rock and Steel owners are unaligned and must be kept explicit.
+    0x1F97855: [0x1E90527],  # Rock / Larvitar confirmation
+    0x1F97864: [0x1E90546],  # Steel / Beldum confirmation
     0x75CE9A: [0x75CD61],  # Easy
     0x75CEA6: [0x75CDAF],  # Hard
     0x77F57B: [0x751F69],
