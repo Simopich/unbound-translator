@@ -14,26 +14,21 @@ SPEC.loader.exec_module(INJECTOR)
 
 class InjectionPriorityTests(unittest.TestCase):
     def test_free_blocks_exclude_engine_ranges_and_keep_edge_margins(self):
-        rom = bytearray(b"\x00" * 0x1FE2000)
-        rom[0x220000:0x240000] = b"\xFF" * 0x20000
+        rom = bytearray(b"\x00" * 0x2000000)
+        rom[0x220000:0x230000] = b"\xFF" * 0x10000
         rom[0xFFF000:0x1002000] = b"\xFF" * 0x3000
         rom[0x165000:0x167000] = b"\xFF" * 0x2000
         rom[0x19A000:0x19C000] = b"\xFF" * 0x2000
-        rom[0x1FDF000:0x1FE2000] = b"\xFF" * 0x3000
+        rom[0x1C5000:0x1C7000] = b"\xFF" * 0x2000
+        rom[0x1FE6000:0x1FE9000] = b"\xFF" * 0x3000
 
         blocks = INJECTOR.build_free_blocks(rom, [], 0x1000, 0x100)
         ranges = {(block.start, block.end) for block in blocks}
 
         self.assertIn((0x220008, 0x22FFF8), ranges)
-        self.assertIn((0x1FE0008, 0x1FE1FF8), ranges)
-        self.assertTrue(
-            all(end <= 0x16586A or start >= 0x166C9A for start, end in ranges)
-        )
-        self.assertTrue(
-            all(end <= 0x19A837 or start >= 0x19B86A for start, end in ranges)
-        )
+        self.assertTrue(all(not (0x160000 <= start < 0x200000) for start, _ in ranges))
         self.assertTrue(all(not (0x230000 <= start < 0x500000) for start, _ in ranges))
-        self.assertTrue(all(not (0x1000000 <= start < 0x1FE0000) for start, _ in ranges))
+        self.assertTrue(all(not (0x1000000 <= start < 0x2000000) for start, _ in ranges))
 
     def test_pointer_source_requires_alignment_or_known_script_shape(self):
         rom = bytearray(64)

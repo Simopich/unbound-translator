@@ -62,6 +62,14 @@ STRUCTURED_TEXT_POINTER_RANGES = (
 ALIGNED_POINTER_TEXT_EXCLUDED_TARGET_RANGES = (
     (0x23EAC8, 0x246E00),
 )
+# These aligned words occur inside live Thumb instruction streams.  Their
+# little-endian bytes happen to equal a GBA pointer to 0x489906, but rewriting
+# them corrupts executable code (for example, 06 99 48 08 is ``ldr; lsrs``).
+ALIGNED_POINTER_TEXT_EXCLUDED_SOURCES = {
+    0x3F2B0,
+    0x8BBBC8,
+    0x8BBC70,
+}
 MISSION_NAME_POINTER_SOURCES = {
     0x1EC02E8,  # A Hero/Heroine's Journey Mission Log title variants
     0x1EC02F0,
@@ -622,6 +630,11 @@ MANUAL_TEXT_TABLES = {
 # than 4-byte aligned. The generic source predicate cannot prove these, so
 # their manually identified text owners must preserve them explicitly.
 MANUAL_TEXT_POINTER_SOURCES = {
+    # Starter confirmation buffers use packed ``0x85 0x01 <text pointer>``
+    # commands. Dragon's pointer is aligned and found generically, while the
+    # adjacent Rock and Steel owners are unaligned and must be kept explicit.
+    0x1F97855: [0x1E90527],  # Rock / Larvitar confirmation
+    0x1F97864: [0x1E90546],  # Steel / Beldum confirmation
     0x75CE9A: [0x75CD61],  # Easy
     0x75CEA6: [0x75CDAF],  # Hard
     0x77F57B: [0x751F69],
@@ -884,6 +897,10 @@ def is_aligned_pointer_target_excluded(target: int) -> bool:
         start <= target < end
         for start, end in ALIGNED_POINTER_TEXT_EXCLUDED_TARGET_RANGES
     )
+
+
+def is_aligned_pointer_source_excluded(source: int) -> bool:
+    return source in ALIGNED_POINTER_TEXT_EXCLUDED_SOURCES
 
 
 def _mostly_padding_or_symbols(text: str) -> bool:
@@ -1313,6 +1330,9 @@ def scan_pointer_texts(
 
     for source in range(0, len(rom) - 3):
         if source in known_pointer_sources:
+            continue
+        if is_aligned_pointer_source_excluded(source):
+            stats["excluded_aligned_sources"] += 1
             continue
         target = pointer_at(rom, source)
         if target is None:

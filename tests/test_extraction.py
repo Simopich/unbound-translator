@@ -43,6 +43,16 @@ class AlignedPointerTextTests(unittest.TestCase):
         self.assertEqual(EXTRACTOR.MANUAL_TEXT_POINTER_SOURCES[0x75CE9A], [0x75CD61])
         self.assertEqual(EXTRACTOR.MANUAL_TEXT_POINTER_SOURCES[0x75CEA6], [0x75CDAF])
 
+    def test_starter_confirmation_buffers_have_unaligned_type_owners(self):
+        self.assertEqual(
+            EXTRACTOR.MANUAL_TEXT_POINTER_SOURCES[0x1F97855],
+            [0x1E90527],
+        )
+        self.assertEqual(
+            EXTRACTOR.MANUAL_TEXT_POINTER_SOURCES[0x1F97864],
+            [0x1E90546],
+        )
+
     def test_gendered_dialogue_fragments_have_explicit_owners(self):
         table_name, addresses = EXTRACTOR.MANUAL_TEXT_TABLES[
             "gendered_dialogue_fragments"
@@ -100,6 +110,17 @@ class AlignedPointerTextTests(unittest.TestCase):
         self.assertTrue(EXTRACTOR.is_aligned_pointer_target_excluded(0x24019A))
         self.assertTrue(EXTRACTOR.is_aligned_pointer_target_excluded(0x246AE0))
         self.assertFalse(EXTRACTOR.is_aligned_pointer_target_excluded(0x24F1A7))
+
+    def test_rejects_thumb_instructions_that_look_like_text_pointers(self):
+        false_sources = {0x3F2B0, 0x8BBBC8, 0x8BBC70}
+
+        self.assertEqual(
+            EXTRACTOR.ALIGNED_POINTER_TEXT_EXCLUDED_SOURCES,
+            false_sources,
+        )
+        for source in false_sources:
+            self.assertTrue(EXTRACTOR.is_aligned_pointer_source_excluded(source))
+        self.assertFalse(EXTRACTOR.is_aligned_pointer_source_excluded(0x3F2B4))
 
     def test_address_merge_prefers_specific_entry_and_unions_sources(self):
         script = {

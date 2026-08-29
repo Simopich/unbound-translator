@@ -20,6 +20,7 @@ KNOWN_BINARY_FALSE_POSITIVES = {
     "scr_245EE0",
     "scr_246AE0",
 }
+EXECUTABLE_POINTER_FALSE_POSITIVE = "scr_489906"
 
 
 def test_indonesian_is_supported_and_uses_current_ready_schema():
@@ -70,6 +71,14 @@ def test_ready_italian_preserves_known_binary_pointer_false_positives():
         entry = entries_by_id.get(entry_id)
         if entry is not None:
             assert hma_quote(entry["translated"]) == entry["original"]
+
+
+def test_ready_translations_exclude_executable_pointer_false_positive():
+    for ready_path in (READY_ITALIAN, READY_INDONESIAN):
+        entries = json.loads(ready_path.read_text(encoding="utf-8"))["entries"]
+        assert all(
+            entry["id"] != EXECUTABLE_POINTER_FALSE_POSITIVE for entry in entries
+        )
 
 
 def test_pokedex_unknown_fallback_stays_in_place_and_fits():

@@ -1,59 +1,827 @@
 {
   "entries": [
-    {"id":"tbl_gendered_dialogue_fragments_00050_1EF97B3","category":"gendered_dialogue_fragments","address":"0x1EF97B3","pointer_sources":["0x1E62C59"],"original":"\"dudette\"","byte_length":8,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":50,"translation_source":"dudette","translated":"amica"},
-    {"id":"tbl_gendered_dialogue_fragments_00051_1EF97BB","category":"gendered_dialogue_fragments","address":"0x1EF97BB","pointer_sources":["0x1E62C52"],"original":"\"Dude\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":51,"translation_source":"Dude","translated":"Amico"},
-    {"id":"tbl_gendered_dialogue_fragments_00052_1EF97C0","category":"gendered_dialogue_fragments","address":"0x1EF97C0","pointer_sources":["0x1E62C5F"],"original":"\"Dudette\"","byte_length":8,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":52,"translation_source":"Dudette","translated":"Amica"},
-    {"id":"tbl_gendered_dialogue_fragments_00053_1FA14C2","category":"gendered_dialogue_fragments","address":"0x1FA14C2","pointer_sources":["0x1EA7B8F"],"original":"\"guy\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":53,"translation_source":"guy","translated":"tipo"},
-    {"id":"tbl_gendered_dialogue_fragments_00000_3E9241","category":"gendered_dialogue_fragments","address":"0x3E9241","pointer_sources":["0x3E9420"],"original":"\"SON\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":0,"translation_source":"SON","translated":"FIGLIO"},
-    {"id":"tbl_gendered_dialogue_fragments_00001_3E9278","category":"gendered_dialogue_fragments","address":"0x3E9278","pointer_sources":["0x3E9480"],"original":"\"BOY\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":1,"translation_source":"BOY","translated":"RAGAZZO"},
-    {"id":"tbl_gendered_dialogue_fragments_00002_3E92A9","category":"gendered_dialogue_fragments","address":"0x3E92A9","pointer_sources":["0x3E94D4"],"original":"\"MAN\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":2,"translation_source":"MAN","translated":"UOMO"},
-    {"id":"tbl_gendered_dialogue_fragments_00003_3E92C1","category":"gendered_dialogue_fragments","address":"0x3E92C1","pointer_sources":["0x3E9510"],"original":"\"HER\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":3,"translation_source":"HER","translated":"LEI"},
-    {"id":"tbl_gendered_dialogue_fragments_00004_3E92C5","category":"gendered_dialogue_fragments","address":"0x3E92C5","pointer_sources":["0x3E951C"],"original":"\"HIM\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":4,"translation_source":"HIM","translated":"LUI"},
-    {"id":"tbl_gendered_dialogue_fragments_00005_3E92C9","category":"gendered_dialogue_fragments","address":"0x3E92C9","pointer_sources":["0x3E9528"],"original":"\"HE\"","byte_length":3,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":5,"translation_source":"HE","translated":"LUI"},
-    {"id":"tbl_gendered_dialogue_fragments_00006_3E92DB","category":"gendered_dialogue_fragments","address":"0x3E92DB","pointer_sources":["0x3E954C"],"original":"\"HIS\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":6,"translation_source":"HIS","translated":"SUO"},
-    {"id":"tbl_gendered_dialogue_fragments_00007_3E93CC","category":"gendered_dialogue_fragments","address":"0x3E93CC","pointer_sources":["0x3E972C"],"original":"\"SHE\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":7,"translation_source":"SHE","translated":"LEI"},
-    {"id":"tbl_gendered_dialogue_fragments_00008_415D93","category":"gendered_dialogue_fragments","address":"0x415D93","pointer_sources":["0x12FF98"],"original":"\"Boy\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":8,"translation_source":"Boy","translated":"Ragazzo"},
-    {"id":"tbl_gendered_dialogue_fragments_00009_77F57B","category":"gendered_dialogue_fragments","address":"0x77F57B","pointer_sources":["0x751F69"],"original":"\"son\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":9,"translation_source":"son","translated":"figlio"},
-    {"id":"tbl_gendered_dialogue_fragments_00010_77F57F","category":"gendered_dialogue_fragments","address":"0x77F57F","pointer_sources":["0x751F70"],"original":"\"daughter\"","byte_length":9,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":10,"translation_source":"daughter","translated":"figlia"},
-    {"id":"tbl_gendered_dialogue_fragments_00011_781697","category":"gendered_dialogue_fragments","address":"0x781697","pointer_sources":["0x765981"],"original":"\"sir\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":11,"translation_source":"sir","translated":"signore"},
-    {"id":"tbl_gendered_dialogue_fragments_00012_78169B","category":"gendered_dialogue_fragments","address":"0x78169B","pointer_sources":["0x765988"],"original":"\"madam\"","byte_length":6,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":12,"translation_source":"madam","translated":"signora"},
-    {"id":"tbl_gendered_dialogue_fragments_00013_789224","category":"gendered_dialogue_fragments","address":"0x789224","pointer_sources":["0x7522AD","0x7BD1A9"],"original":"\"him\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":13,"translation_source":"him","translated":"lui"},
-    {"id":"tbl_gendered_dialogue_fragments_00014_789228","category":"gendered_dialogue_fragments","address":"0x789228","pointer_sources":["0x7522B3"],"original":"\"he\"","byte_length":3,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":14,"translation_source":"he","translated":"lui"},
-    {"id":"tbl_gendered_dialogue_fragments_00015_78922B","category":"gendered_dialogue_fragments","address":"0x78922B","pointer_sources":["0x7522B9"],"original":"\"He\"","byte_length":3,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":15,"translation_source":"He","translated":"Lui"},
-    {"id":"tbl_gendered_dialogue_fragments_00016_78922E","category":"gendered_dialogue_fragments","address":"0x78922E","pointer_sources":["0x7522C0","0x7BD1B0","0x7BD1B6"],"original":"\"her\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":16,"translation_source":"her","translated":"lei"},
-    {"id":"tbl_gendered_dialogue_fragments_00017_789232","category":"gendered_dialogue_fragments","address":"0x789232","pointer_sources":["0x7522C6"],"original":"\"she\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":17,"translation_source":"she","translated":"lei"},
-    {"id":"tbl_gendered_dialogue_fragments_00018_789236","category":"gendered_dialogue_fragments","address":"0x789236","pointer_sources":["0x7522CC"],"original":"\"She\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":18,"translation_source":"She","translated":"Lei"},
-    {"id":"tbl_gendered_dialogue_fragments_00019_78DA85","category":"gendered_dialogue_fragments","address":"0x78DA85","pointer_sources":["0x77F5F0"],"original":"\"grandson\"","byte_length":9,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":19,"translation_source":"grandson","translated":"nipote"},
-    {"id":"tbl_gendered_dialogue_fragments_00020_78DA8E","category":"gendered_dialogue_fragments","address":"0x78DA8E","pointer_sources":["0x78A3E6"],"original":"\"son\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":20,"translation_source":"son","translated":"figlio"},
-    {"id":"tbl_gendered_dialogue_fragments_00021_793FCB","category":"gendered_dialogue_fragments","address":"0x793FCB","pointer_sources":["0x76D292","0x7D98BF"],"original":"\"boy\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":21,"translation_source":"boy","translated":"ragazzo"},
-    {"id":"tbl_gendered_dialogue_fragments_00022_793FCF","category":"gendered_dialogue_fragments","address":"0x793FCF","pointer_sources":["0x76D299","0x7D98CC"],"original":"\"girl\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":22,"translation_source":"girl","translated":"ragazza"},
-    {"id":"tbl_gendered_dialogue_fragments_00023_7A89DA","category":"gendered_dialogue_fragments","address":"0x7A89DA","pointer_sources":["0x762BEC"],"original":"\"man\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":23,"translation_source":"man","translated":"uomo"},
-    {"id":"tbl_gendered_dialogue_fragments_00024_7A89DE","category":"gendered_dialogue_fragments","address":"0x7A89DE","pointer_sources":["0x762BF9"],"original":"\"lady\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":24,"translation_source":"lady","translated":"signora"},
-    {"id":"tbl_gendered_dialogue_fragments_00025_7A89E3","category":"gendered_dialogue_fragments","address":"0x7A89E3","pointer_sources":["0x762BF2"],"original":"\"mister\"","byte_length":7,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":25,"translation_source":"mister","translated":"signore"},
-    {"id":"tbl_gendered_dialogue_fragments_00026_7A89EA","category":"gendered_dialogue_fragments","address":"0x7A89EA","pointer_sources":["0x762BFF"],"original":"\"miss\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":26,"translation_source":"miss","translated":"signorina"},
-    {"id":"tbl_gendered_dialogue_fragments_00027_7BD7C5","category":"gendered_dialogue_fragments","address":"0x7BD7C5","pointer_sources":["0x7BD1A3"],"original":"\"his\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":27,"translation_source":"his","translated":"suo"},
-    {"id":"tbl_gendered_dialogue_fragments_00028_7C60F4","category":"gendered_dialogue_fragments","address":"0x7C60F4","pointer_sources":["0x7C5F09"],"original":"\"sir\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":28,"translation_source":"sir","translated":"signore"},
-    {"id":"tbl_gendered_dialogue_fragments_00029_7C60F8","category":"gendered_dialogue_fragments","address":"0x7C60F8","pointer_sources":["0x7C5F10"],"original":"\"madam\"","byte_length":6,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":29,"translation_source":"madam","translated":"signora"},
-    {"id":"tbl_gendered_dialogue_fragments_00030_7DE1E1","category":"gendered_dialogue_fragments","address":"0x7DE1E1","pointer_sources":["0x7D98C5"],"original":"\"son\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":30,"translation_source":"son","translated":"figlio"},
-    {"id":"tbl_gendered_dialogue_fragments_00031_7DE1E5","category":"gendered_dialogue_fragments","address":"0x7DE1E5","pointer_sources":["0x7D98D2"],"original":"\"daughter\"","byte_length":9,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":31,"translation_source":"daughter","translated":"figlia"},
-    {"id":"tbl_gendered_dialogue_fragments_00032_8CE1F8","category":"gendered_dialogue_fragments","address":"0x8CE1F8","pointer_sources":["0x8CD595"],"original":"\"man\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":32,"translation_source":"man","translated":"uomo"},
-    {"id":"tbl_gendered_dialogue_fragments_00033_8CE1FC","category":"gendered_dialogue_fragments","address":"0x8CE1FC","pointer_sources":["0x8CD59C"],"original":"\"lady\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":33,"translation_source":"lady","translated":"signora"},
-    {"id":"tbl_gendered_dialogue_fragments_00034_1EE1185","category":"gendered_dialogue_fragments","address":"0x1EE1185","pointer_sources":["0x1E55982"],"original":"\"lady\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":34,"translation_source":"lady","translated":"signora"},
-    {"id":"tbl_gendered_dialogue_fragments_00035_1EEAF9C","category":"gendered_dialogue_fragments","address":"0x1EEAF9C","pointer_sources":["0x1E57421"],"original":"\"grandson\"","byte_length":9,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":35,"translation_source":"grandson","translated":"nipote"},
-    {"id":"tbl_gendered_dialogue_fragments_00036_1EEAFA5","category":"gendered_dialogue_fragments","address":"0x1EEAFA5","pointer_sources":["0x1E57515"],"original":"\"son\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":36,"translation_source":"son","translated":"figlio"},
-    {"id":"tbl_gendered_dialogue_fragments_00037_1F41B0E","category":"gendered_dialogue_fragments","address":"0x1F41B0E","pointer_sources":["0x1E70A01","0x1E92DE2"],"original":"\"son\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":37,"translation_source":"son","translated":"figlio"},
-    {"id":"tbl_gendered_dialogue_fragments_00038_1F5B571","category":"gendered_dialogue_fragments","address":"0x1F5B571","pointer_sources":["0x1E83269","0x1E92DE9"],"original":"\"girl\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":38,"translation_source":"girl","translated":"ragazza"},
-    {"id":"tbl_gendered_dialogue_fragments_00039_1F7C89E","category":"gendered_dialogue_fragments","address":"0x1F7C89E","pointer_sources":["0x1E9572F"],"original":"\"lad\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":39,"translation_source":"lad","translated":"ragazzo"},
-    {"id":"tbl_gendered_dialogue_fragments_00040_1F8BEEB","category":"gendered_dialogue_fragments","address":"0x1F8BEEB","pointer_sources":["0x1EA02EF"],"original":"\"She\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":40,"translation_source":"She","translated":"Lei"},
-    {"id":"tbl_gendered_dialogue_fragments_00041_1F8DD36","category":"gendered_dialogue_fragments","address":"0x1F8DD36","pointer_sources":["0x1E9EE36","0x1EA34EF","0x1EA525E","0x1EA57C7"],"original":"\"He\"","byte_length":3,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":41,"translation_source":"He","translated":"Lui"},
-    {"id":"tbl_gendered_dialogue_fragments_00042_1F99ACF","category":"gendered_dialogue_fragments","address":"0x1F99ACF","pointer_sources":["0x1EA2833","0x1EA5F3B"],"original":"\"sir\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":42,"translation_source":"sir","translated":"signore"},
-    {"id":"tbl_gendered_dialogue_fragments_00043_1F99AD3","category":"gendered_dialogue_fragments","address":"0x1F99AD3","pointer_sources":["0x1EA283A"],"original":"\"miss\"","byte_length":5,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":43,"translation_source":"miss","translated":"signorina"},
-    {"id":"tbl_gendered_dialogue_fragments_00044_1F9CA98","category":"gendered_dialogue_fragments","address":"0x1F9CA98","pointer_sources":["0x1EA5F42"],"original":"\"madam\"","byte_length":6,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":44,"translation_source":"madam","translated":"signora"},
-    {"id":"tbl_gendered_dialogue_fragments_00045_1FA17C0","category":"gendered_dialogue_fragments","address":"0x1FA17C0","pointer_sources":["0x1EA7D66"],"original":"\"man\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":45,"translation_source":"man","translated":"uomo"},
-    {"id":"tbl_gendered_dialogue_fragments_00046_1FA17C8","category":"gendered_dialogue_fragments","address":"0x1FA17C8","pointer_sources":["0x1EA7D73"],"original":"\"woman\"","byte_length":6,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":46,"translation_source":"woman","translated":"donna"},
-    {"id":"tbl_gendered_dialogue_fragments_00047_1FA17CE","category":"gendered_dialogue_fragments","address":"0x1FA17CE","pointer_sources":["0x1EA7D79"],"original":"\"Woman\"","byte_length":6,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":47,"translation_source":"Woman","translated":"Donna"},
-    {"id":"tbl_gendered_dialogue_fragments_00048_1FA764E","category":"gendered_dialogue_fragments","address":"0x1FA764E","pointer_sources":["0x1E709F5","0x1EAB917"],"original":"\"him\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":48,"translation_source":"him","translated":"lui"},
-    {"id":"tbl_gendered_dialogue_fragments_00049_1FA7656","category":"gendered_dialogue_fragments","address":"0x1FA7656","pointer_sources":["0x1EAB923"],"original":"\"his\"","byte_length":4,"is_pointer_based":true,"table_name":"data.dialogue.text.genderedFragments","table_index":49,"translation_source":"his","translated":"suo"},
+    {
+      "id": "tbl_gendered_dialogue_fragments_00050_1EF97B3",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1EF97B3",
+      "pointer_sources": [
+        "0x1E62C59"
+      ],
+      "original": "\"dudette\"",
+      "byte_length": 8,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 50,
+      "translation_source": "dudette",
+      "translated": "amica"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00051_1EF97BB",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1EF97BB",
+      "pointer_sources": [
+        "0x1E62C52"
+      ],
+      "original": "\"Dude\"",
+      "byte_length": 5,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 51,
+      "translation_source": "Dude",
+      "translated": "Amico"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00052_1EF97C0",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1EF97C0",
+      "pointer_sources": [
+        "0x1E62C5F"
+      ],
+      "original": "\"Dudette\"",
+      "byte_length": 8,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 52,
+      "translation_source": "Dudette",
+      "translated": "Amica"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00053_1FA14C2",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1FA14C2",
+      "pointer_sources": [
+        "0x1EA7B8F"
+      ],
+      "original": "\"guy\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 53,
+      "translation_source": "guy",
+      "translated": "tipo"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00000_3E9241",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x3E9241",
+      "pointer_sources": [
+        "0x3E9420"
+      ],
+      "original": "\"SON\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 0,
+      "translation_source": "SON",
+      "translated": "FIGLIO"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00001_3E9278",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x3E9278",
+      "pointer_sources": [
+        "0x3E9480"
+      ],
+      "original": "\"BOY\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 1,
+      "translation_source": "BOY",
+      "translated": "RAGAZZO"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00002_3E92A9",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x3E92A9",
+      "pointer_sources": [
+        "0x3E94D4"
+      ],
+      "original": "\"MAN\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 2,
+      "translation_source": "MAN",
+      "translated": "UOMO"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00003_3E92C1",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x3E92C1",
+      "pointer_sources": [
+        "0x3E9510"
+      ],
+      "original": "\"HER\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 3,
+      "translation_source": "HER",
+      "translated": "LEI"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00004_3E92C5",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x3E92C5",
+      "pointer_sources": [
+        "0x3E951C"
+      ],
+      "original": "\"HIM\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 4,
+      "translation_source": "HIM",
+      "translated": "LUI"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00005_3E92C9",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x3E92C9",
+      "pointer_sources": [
+        "0x3E9528"
+      ],
+      "original": "\"HE\"",
+      "byte_length": 3,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 5,
+      "translation_source": "HE",
+      "translated": "LUI"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00006_3E92DB",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x3E92DB",
+      "pointer_sources": [
+        "0x3E954C"
+      ],
+      "original": "\"HIS\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 6,
+      "translation_source": "HIS",
+      "translated": "SUO"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00007_3E93CC",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x3E93CC",
+      "pointer_sources": [
+        "0x3E972C"
+      ],
+      "original": "\"SHE\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 7,
+      "translation_source": "SHE",
+      "translated": "LEI"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00008_415D93",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x415D93",
+      "pointer_sources": [
+        "0x12FF98"
+      ],
+      "original": "\"Boy\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 8,
+      "translation_source": "Boy",
+      "translated": "Ragazzo"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00009_77F57B",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x77F57B",
+      "pointer_sources": [
+        "0x751F69"
+      ],
+      "original": "\"son\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 9,
+      "translation_source": "son",
+      "translated": "figlio"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00010_77F57F",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x77F57F",
+      "pointer_sources": [
+        "0x751F70"
+      ],
+      "original": "\"daughter\"",
+      "byte_length": 9,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 10,
+      "translation_source": "daughter",
+      "translated": "figlia"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00011_781697",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x781697",
+      "pointer_sources": [
+        "0x765981"
+      ],
+      "original": "\"sir\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 11,
+      "translation_source": "sir",
+      "translated": "signore"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00012_78169B",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x78169B",
+      "pointer_sources": [
+        "0x765988"
+      ],
+      "original": "\"madam\"",
+      "byte_length": 6,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 12,
+      "translation_source": "madam",
+      "translated": "signora"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00013_789224",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x789224",
+      "pointer_sources": [
+        "0x7522AD",
+        "0x7BD1A9"
+      ],
+      "original": "\"him\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 13,
+      "translation_source": "him",
+      "translated": "lui"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00014_789228",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x789228",
+      "pointer_sources": [
+        "0x7522B3"
+      ],
+      "original": "\"he\"",
+      "byte_length": 3,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 14,
+      "translation_source": "he",
+      "translated": "lui"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00015_78922B",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x78922B",
+      "pointer_sources": [
+        "0x7522B9"
+      ],
+      "original": "\"He\"",
+      "byte_length": 3,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 15,
+      "translation_source": "He",
+      "translated": "Lui"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00016_78922E",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x78922E",
+      "pointer_sources": [
+        "0x7522C0",
+        "0x7BD1B0",
+        "0x7BD1B6"
+      ],
+      "original": "\"her\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 16,
+      "translation_source": "her",
+      "translated": "lei"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00017_789232",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x789232",
+      "pointer_sources": [
+        "0x7522C6"
+      ],
+      "original": "\"she\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 17,
+      "translation_source": "she",
+      "translated": "lei"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00018_789236",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x789236",
+      "pointer_sources": [
+        "0x7522CC"
+      ],
+      "original": "\"She\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 18,
+      "translation_source": "She",
+      "translated": "Lei"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00019_78DA85",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x78DA85",
+      "pointer_sources": [
+        "0x77F5F0"
+      ],
+      "original": "\"grandson\"",
+      "byte_length": 9,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 19,
+      "translation_source": "grandson",
+      "translated": "nipote"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00020_78DA8E",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x78DA8E",
+      "pointer_sources": [
+        "0x78A3E6"
+      ],
+      "original": "\"son\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 20,
+      "translation_source": "son",
+      "translated": "figlio"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00021_793FCB",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x793FCB",
+      "pointer_sources": [
+        "0x76D292",
+        "0x7D98BF"
+      ],
+      "original": "\"boy\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 21,
+      "translation_source": "boy",
+      "translated": "ragazzo"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00022_793FCF",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x793FCF",
+      "pointer_sources": [
+        "0x76D299",
+        "0x7D98CC"
+      ],
+      "original": "\"girl\"",
+      "byte_length": 5,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 22,
+      "translation_source": "girl",
+      "translated": "ragazza"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00023_7A89DA",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x7A89DA",
+      "pointer_sources": [
+        "0x762BEC"
+      ],
+      "original": "\"man\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 23,
+      "translation_source": "man",
+      "translated": "uomo"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00024_7A89DE",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x7A89DE",
+      "pointer_sources": [
+        "0x762BF9"
+      ],
+      "original": "\"lady\"",
+      "byte_length": 5,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 24,
+      "translation_source": "lady",
+      "translated": "signora"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00025_7A89E3",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x7A89E3",
+      "pointer_sources": [
+        "0x762BF2"
+      ],
+      "original": "\"mister\"",
+      "byte_length": 7,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 25,
+      "translation_source": "mister",
+      "translated": "signore"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00026_7A89EA",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x7A89EA",
+      "pointer_sources": [
+        "0x762BFF"
+      ],
+      "original": "\"miss\"",
+      "byte_length": 5,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 26,
+      "translation_source": "miss",
+      "translated": "signorina"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00027_7BD7C5",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x7BD7C5",
+      "pointer_sources": [
+        "0x7BD1A3"
+      ],
+      "original": "\"his\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 27,
+      "translation_source": "his",
+      "translated": "suo"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00028_7C60F4",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x7C60F4",
+      "pointer_sources": [
+        "0x7C5F09"
+      ],
+      "original": "\"sir\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 28,
+      "translation_source": "sir",
+      "translated": "signore"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00029_7C60F8",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x7C60F8",
+      "pointer_sources": [
+        "0x7C5F10"
+      ],
+      "original": "\"madam\"",
+      "byte_length": 6,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 29,
+      "translation_source": "madam",
+      "translated": "signora"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00030_7DE1E1",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x7DE1E1",
+      "pointer_sources": [
+        "0x7D98C5"
+      ],
+      "original": "\"son\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 30,
+      "translation_source": "son",
+      "translated": "figlio"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00031_7DE1E5",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x7DE1E5",
+      "pointer_sources": [
+        "0x7D98D2"
+      ],
+      "original": "\"daughter\"",
+      "byte_length": 9,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 31,
+      "translation_source": "daughter",
+      "translated": "figlia"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00032_8CE1F8",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x8CE1F8",
+      "pointer_sources": [
+        "0x8CD595"
+      ],
+      "original": "\"man\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 32,
+      "translation_source": "man",
+      "translated": "uomo"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00033_8CE1FC",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x8CE1FC",
+      "pointer_sources": [
+        "0x8CD59C"
+      ],
+      "original": "\"lady\"",
+      "byte_length": 5,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 33,
+      "translation_source": "lady",
+      "translated": "signora"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00034_1EE1185",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1EE1185",
+      "pointer_sources": [
+        "0x1E55982"
+      ],
+      "original": "\"lady\"",
+      "byte_length": 5,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 34,
+      "translation_source": "lady",
+      "translated": "signora"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00035_1EEAF9C",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1EEAF9C",
+      "pointer_sources": [
+        "0x1E57421"
+      ],
+      "original": "\"grandson\"",
+      "byte_length": 9,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 35,
+      "translation_source": "grandson",
+      "translated": "nipote"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00036_1EEAFA5",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1EEAFA5",
+      "pointer_sources": [
+        "0x1E57515"
+      ],
+      "original": "\"son\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 36,
+      "translation_source": "son",
+      "translated": "figlio"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00037_1F41B0E",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1F41B0E",
+      "pointer_sources": [
+        "0x1E70A01",
+        "0x1E92DE2"
+      ],
+      "original": "\"son\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 37,
+      "translation_source": "son",
+      "translated": "figlio"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00038_1F5B571",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1F5B571",
+      "pointer_sources": [
+        "0x1E83269",
+        "0x1E92DE9"
+      ],
+      "original": "\"girl\"",
+      "byte_length": 5,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 38,
+      "translation_source": "girl",
+      "translated": "ragazza"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00039_1F7C89E",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1F7C89E",
+      "pointer_sources": [
+        "0x1E9572F"
+      ],
+      "original": "\"lad\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 39,
+      "translation_source": "lad",
+      "translated": "ragazzo"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00040_1F8BEEB",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1F8BEEB",
+      "pointer_sources": [
+        "0x1EA02EF"
+      ],
+      "original": "\"She\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 40,
+      "translation_source": "She",
+      "translated": "Lei"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00041_1F8DD36",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1F8DD36",
+      "pointer_sources": [
+        "0x1E9EE36",
+        "0x1EA34EF",
+        "0x1EA525E",
+        "0x1EA57C7"
+      ],
+      "original": "\"He\"",
+      "byte_length": 3,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 41,
+      "translation_source": "He",
+      "translated": "Lui"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00042_1F99ACF",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1F99ACF",
+      "pointer_sources": [
+        "0x1EA2833",
+        "0x1EA5F3B"
+      ],
+      "original": "\"sir\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 42,
+      "translation_source": "sir",
+      "translated": "signore"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00043_1F99AD3",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1F99AD3",
+      "pointer_sources": [
+        "0x1EA283A"
+      ],
+      "original": "\"miss\"",
+      "byte_length": 5,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 43,
+      "translation_source": "miss",
+      "translated": "signorina"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00044_1F9CA98",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1F9CA98",
+      "pointer_sources": [
+        "0x1EA5F42"
+      ],
+      "original": "\"madam\"",
+      "byte_length": 6,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 44,
+      "translation_source": "madam",
+      "translated": "signora"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00045_1FA17C0",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1FA17C0",
+      "pointer_sources": [
+        "0x1EA7D66"
+      ],
+      "original": "\"man\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 45,
+      "translation_source": "man",
+      "translated": "uomo"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00046_1FA17C8",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1FA17C8",
+      "pointer_sources": [
+        "0x1EA7D73"
+      ],
+      "original": "\"woman\"",
+      "byte_length": 6,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 46,
+      "translation_source": "woman",
+      "translated": "donna"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00047_1FA17CE",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1FA17CE",
+      "pointer_sources": [
+        "0x1EA7D79"
+      ],
+      "original": "\"Woman\"",
+      "byte_length": 6,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 47,
+      "translation_source": "Woman",
+      "translated": "Donna"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00048_1FA764E",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1FA764E",
+      "pointer_sources": [
+        "0x1E709F5",
+        "0x1EAB917"
+      ],
+      "original": "\"him\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 48,
+      "translation_source": "him",
+      "translated": "lui"
+    },
+    {
+      "id": "tbl_gendered_dialogue_fragments_00049_1FA7656",
+      "category": "gendered_dialogue_fragments",
+      "address": "0x1FA7656",
+      "pointer_sources": [
+        "0x1EAB923"
+      ],
+      "original": "\"his\"",
+      "byte_length": 4,
+      "is_pointer_based": true,
+      "table_name": "data.dialogue.text.genderedFragments",
+      "table_index": 49,
+      "translation_source": "his",
+      "translated": "suo"
+    },
     {
       "id": "tbl_pokemon_names_00000_166A98C",
       "category": "pokemon_names",
@@ -121185,7 +121953,7 @@
       "byte_length": 743,
       "is_pointer_based": true,
       "translation_source": "Let me explain how the Pokémon Wireless Club works. On this, the top floor, there are two rooms. First, the room on the left. It’s the Union Room. You may link up with Trainers around you who have also entered the Union Room. With them, you may do things like chat, battle, and trade. Second, the room on the right is the Direct Corner. You may trade or battle Pokémon with your friends in this room. Sometimes, you may not be able to find your friends in the Union Room or the Direct Corner. In that case, please move closer to your friends. If the Wireless Adapter isn’t connected, you may still link up using a GBA Game Link cable. If that is the case, you must go to the Direct Corner. I hope you enjoy the Wireless Communication System.",
-      "translated": "Lascia che ti spieghi come funziona\nil Club Wireless Pokémon. Su\\lquesto, il piano superiore, ci sono\n\ndue stanze. Prima, la stanza a\nsinistra. È la Sala Unione. Puoi\\lconnetterti con gli Allenatori\n\nintorno a te che sono entrati anche\nloro nella Sala Unione. Con loro,\\lpuoi fare cose come chiacchierare,\n\nlottare e scambiare. Secondo, la\nstanza a destra è l{B4}Angolo Diretto.\\lIn questa stanza puoi scambiare o\n\nfar lottare i Pokémon con i tuoi\namici. A volte, potresti non\\lriuscire a trovare i tuoi amici\n\nella Sala Unione o nell{B4}Angolo\nDiretto. In tal caso, per favore\\lavvicinati ai tuoi amici. Se\n\nl{B4}Adattatore Wireless non è\ncollegato, puoi comunque\\lconnetterti usando un cavo Game\n\nLink GBA. In tal caso, devi andare\nall{B4}Angolo Diretto. Spero che ti\\ldivertirai con il Sistema di\n\nComunicazione Wireless."
+      "translated": "Ti spiego come funziona il Club\nWireless Pokémon.\n\nQui al piano superiore ci sono\ndue stanze.\n\nLa prima a sinistra è la Sala\nUnione.\n\nQui puoi collegarti con gli altri\nAllenatori presenti nella stanza.\n\nCon loro potrai chiacchierare,\nlottare e scambiare Pokémon.\n\nLa stanza a destra è invece\nl{B4}Angolo Diretto.\n\nIn questa stanza puoi scambiare\no lottare insieme ai tuoi amici.\n\nA volte potresti non vederli in una\ndelle stanze: prova ad avvicinarti\\lfisicamente a loro.\n\nSe l{B4}Adattatore Wireless non è\ncollegato, puoi comunque usare un\\lcavo Game Link per GBA.\n\nIn questo caso, devi andare\nall{B4}Angolo Diretto.\n\nBuon divertimento con il Sistema\ndi Comunicazione Wireless!"
     },
     {
       "id": "scr_1BDEDF",
@@ -155893,21 +156661,6 @@
       "translated": "Grazie per aver usato il Sistema Regalo Segreto. Devi essere [player]. C{B4}è un biglietto per te."
     },
     {
-      "id": "scr_489906",
-      "category": "pointer_texts",
-      "address": "0x489906",
-      "pointer_sources": [
-        "0x3F2B0",
-        "0x8BBBC8",
-        "0x8BBC70"
-      ],
-      "original": "\" ALTERING\nCAVE on OUTCAST ISLAND.\n\nWhy not visit there and check if\nthe rumors are indeed true?\"",
-      "byte_length": 95,
-      "is_pointer_based": true,
-      "translation_source": "ALTERING CAVE on OUTCAST ISLAND. Why not visit there and check if the rumors are indeed true?",
-      "translated": "ALTERING CAVE sull{B4}Isola dei Reietti. Perché non andarci a vedere se le voci sono davvero vere?"
-    },
-    {
       "id": "scr_4AB697",
       "category": "pointer_texts",
       "address": "0x4AB697",
@@ -170751,7 +171504,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Trent{B4}anni fa, un grande meteorite\nstava precipitando verso Borrius.\\lGli astronomi di Città Portuale\n\navevano previsto che se non fosse\nstato fermato, sarebbe caduto\\ldirettamente su Città della Valle,\n\nquesta città, e avrebbe posto fine\na tutta la vita che viveva qui. Con\\lgrande fretta, iniziammo\n\nl{B4}evacuazione della città. Mentre\nstavamo per fuggire attraverso la\\lSES Expressway, sentimmo la\n\nnotizia. Il meteorite ora era\nprevisto che avrebbe schiacciato\\lmetà della regione! Se avessimo\n\ntentato di fuggire sottoterra, ci\nsarebbe stata una grande\\lprobabilità di essere sepolti vivi.\n\nNe seguì il caos. Tutto era\nconsiderato senza speranza\\.finché\\lLUI arrivò. [green]Aros[blue], la leggenda.\n\nArrivò insieme ad Arceus e usò un\npiccolo Pokémon per teletrasportare\\ltutti a Borrius Orientale, al\n\nsicuro dal pericolo. Aveva in\nprogramma di attaccare il meteorite\\lfrontalmente e di farlo a pezzi.\n\nUna volta trasportati tutti al\nsicuro, si dice che cavalcò un\\lRayquaza e si schiantò contro il\n\nmeteorite! Si frantumò, e la\nmaggior parte dei frammenti più\\lpiccoli cadde su Città della Valle.\n\nLa città fu distrutta, ma Aros\naveva salvato una regione. Non\\ldimenticherò mai l{B4}atto eroico\n\ncompiuto da quell{B4}uomo."
+      "translated": "Trent{B4}anni fa, un grande meteorite\nprecipitava verso Borrius.\n\nGli astronomi di Città Portuale\npredissero che, se non fermato,\\lsarebbe caduto dritto su questa\\lcittà, spazzando via ogni vita.\n\nIn tutta fretta, iniziammo\nl{B4}evacuazione di Città della Valle.\n\nMentre fuggivamo verso la\nSuperstrada SES, giunse la notizia.\n\nIl meteorite avrebbe distrutto\nmetà della regione!\n\nFuggire sottoterra significava\nrischiare di finire sepolti vivi.\n\nScoppiò il caos.\n\nTutto sembrava perduto\\. finché\nnon arrivò LUI.\n\n[green]Aros[blue], la leggenda.\n\nArrivò insieme ad Arceus e usò un\npiccolo Pokémon per portare tutti a\\lBorrius Est, al riparo dal pericolo.\n\nVoleva affrontare il meteorite di\npetto e ridurlo in frantumi.\n\nMessi tutti al sicuro, si narra che\nin groppa a Rayquaza si sia\\lscagliato contro il meteorite!\n\nAndò in pezzi e i frammenti minori\npiovvero su Città della Valle.\n\nLa città andò distrutta, ma Aros\naveva salvato la regione.\n\nNon dimenticherò mai l{B4}atto eroico\ncompiuto da quell{B4}uomo."
     },
     {
       "id": "scr_7A9EA3",
@@ -171199,7 +171952,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "[blue]Splendido! A [green]Borgo Bellin[blue] al\n[green]Pokémercato[blue], c{B4}è un pacco in attesa\\lper me. Ho bisogno che tu lo\n\nritiri. Lo prenderei io stesso, ma,\ncome ti ho detto, sono troppo\\lvecchio per viaggiare. Ho già\n\ninformato l{B4}impiegato che non\nl{B4}avrei ritirato io personalmente,\\lma ha insistito che doveva essere\n\nritirato da [green]Borgo Bellin[blue]. Non\ndovrebbe essere troppo difficile\\lper te dato che hai i tuoi Pokémon.\n\nHo ho ho! Se hai bisogno di\nqualcosa da me, sarò nel mio\\llaboratorio. Non è così lontano,\n\ngiù per la strada. Ma prima di\nandare da qualche parte, dovresti\\lpassare a trovare tua madre.\n\nProbabilmente è molto preoccupata\nper te. Buona fortuna, [player]. I\\lmiei studi dipendono da te."
+      "translated": "[blue]Splendido!\n\nA [green]Borgo Bellin[blue], al [green]Poké Market[blue],\nc{B4}è un pacco che mi aspetta.\n\nVorrei che andassi a ritirarlo.\n\nCi andrei io stesso, ma, come sai,\nsono troppo vecchio per viaggiare.\n\nHo spiegato al commesso che non\npotevo andare, ma ha insistito:\\lva ritirato a [green]Borgo Bellin[blue].\n\nNon sarà difficile per te, ora che\nhai con te dei Pokémon.\n\nHo ho ho!\n\nSe hai bisogno di me, sarò nel\nmio laboratorio, poco più avanti.\n\nPrima di andare, però, passa da\ntua madre: sarà in pensiero per te.\n\nBuona fortuna, [player].\nI miei studi dipendono da te!"
     },
     {
       "id": "scr_7AB17D",
@@ -179516,7 +180269,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Cosa? Non sai cos{B4}è una MN? Hooo\nwee! Beh, una [green]MN[blue], o Macchina\\lNascosta, è un tipo speciale di\n\nmossa che un Pokémon può imparare\nper superare gli ostacoli. Quando\\lun Pokémon impara una MN, finché fa\n\nun [green]singolo passo[blue] conoscendo quella\nmossa, può continuare a usare\\lquella mossa sul campo, anche se on\n\npuò in battaglia! In altre parole,\n[green]i tuoi Pokémon non hanno bisogno di\\lconoscere la MN per usarla[blue]. Comodo,\n\no? Comunque, usa quella MN per\n[green]Taglio[blue] per sbarazzarti di quel\\lfastidioso albero che blocca la\n\n[green]Grotta della Valle[blue]. Poi dirigiti\nverso [green]Città Bufera[blue] per ottenere\\l[green]Spaccaroccia[blue] dal mio amico. Buona\n\nfortuna per la tua missione!"
+      "translated": "Come? Non sai cos{B4}è una MN? Uuuuh\nperbacco! Beh, una [green]MN[blue], o Macchina\\lNascosta, è una mossa speciale per\n\nsuperare gli ostacoli. Quando un\nPokémon impara una MN, basta un\\l[green]singolo passo[blue] conoscendola per\n\nusarla fuori dalla lotta, anche se\nnon può usarla in battaglia! In\\laltre parole, [green]non serve che il\n\nPokémon ricordi la MN per usarla[blue].\nComodo, no? Usa la MN per [green]Taglio[blue]\\lper togliere l{B4}albero che blocca la\n\n[green]Grotta della Valle[blue]. Poi va{B4} a [green]Città\nBufera[blue] a prendere [green]Spaccaroccia[blue] da\\lun mio amico. Buona fortuna per\n\nl{B4}avventura!"
     },
     {
       "id": "scr_7C86C5",
@@ -201555,7 +202308,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Una Missione è un obiettivo extra\nche ricevi accettando una richiesta\\ldi aiuto. Molte persone là fuori on\n\nsono in grado di risolvere i propri\nproblemi e hanno bisogno\\ldell{B4}assistenza di altri. Una volta\n\naccettata la Missione, i dettagli\nvengono automaticamente registrati\\lnel Registro delle Missioni. Le\n\nMissioni possono spesso fornire\ngrandi ricompense, che siano\\loggetti, denaro o persino nuove\n\naree da esplorare. Se qualcuno ti\nrichiede una Missione, accettala\\limmediatamente. Anche se non hai\n\nintenzione di completarla subito,\nnon c{B4}è nulla di male ad averla\\lregistrata nel tuo Registro delle\n\nMissioni. Detto questo, ci sono\ndiverse persone qui che hanno\\lbisogno di assistenza. Guardati\n\nintorno e vedi se c{B4}è qualcuno che\nvorresti aiutare! E vieni a\\ltrovarmi quando avrai completato\n\nalmeno [green]5[blue] Missioni."
+      "translated": "Una Missione è un obiettivo extra\nche ricevi accettando richieste\\ld{B4}aiuto.\n\nMolta gente là fuori non riesce a\nrisolvere i propri problemi e ha\\lbisogno del soccorso altrui.\n\nUna volta accettata la Missione,\ni dettagli vengono registrati\\lnel Registro Missioni.\n\nLe Missioni fruttano ottimi premi:\nstrumenti, soldi o perfino nuove\\laree da esplorare.\n\nSe qualcuno ti chiede una Missione,\naccettala subito.\n\nAnche se non intendi finirla subito,\nnon c{B4}è nulla di male ad averla\\lnel Registro Missioni.\n\nDetto ciò, varie persone qui hanno\nproprio bisogno d{B4}aiuto.\n\nGuardati intorno e vedi se c{B4}è\nqualcuno che vuoi aiutare!\n\nE torna a trovarmi quando avrai\ncompletato almeno [green]5[blue] Missioni."
     },
     {
       "id": "scr_8CF3BD",
@@ -201774,7 +202527,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Bellocchio: [blue]\\. [player], ti starai\nchiedendo perché non ti ho seguito\\lnel portale insieme a Jax. Vedi, el\n\nmomento in cui quel portale è\napparso, ero preoccupato. Quindi, a\\ldifferenza di Jax, ho fatto un\n\npasso indietro cauto, un{B4}azione che\nmi ha fatto perdere le tue tracce.\\lPer questo, mi dispiace. Ho\n\nsupposto che foste stati\nteletrasportati alle Rovine del\\lVuoto. Così, ho cercato di\n\nraggiungere quel posto anch{B4}io.\nTuttavia, non avendo Pokémon miei,\\lnon sono riuscito ad arrivarci.\n\nDimmi, [player], cosa è successo a\nvoi due dall{B4}altra parte di quel\\lportale? \\. \\. Capisco\\. Allora, credo\n\nche la nostra migliore linea\nd{B4}azione sia dirigersi a [green]Borgo\\lVivill[blue] e assistere le Ombre. Quando\n\nloro e la Luce della Rovina si\nscontreranno, sarà l{B4}occasione\\lperfetta per piombare e arrestarli\n\ntutti. Vai ad assistere le Ombre\nnella loro missione finale. Quando\\lsarai vittorioso, ti incontrerò\n\nfuori con una squadra di polizia\nper porre fine a questa follia."
+      "translated": "Bellocchio: [blue]\\. [player], ti chiederai\nperché non vi ho seguiti nel\\lportale assieme a Jax. All{B4}apparire\n\ndel portale, sono stato colto da\ntimore. Così, a differenza di Jax,\\lho fatto un cauto passo indietro e\n\nvi ho persi di vista. Me ne scuso\nsinceramente. Pensavo foste finiti\\lalle Rovine del Vuoto e ho tentato\n\ndi raggiungervi. Ma non avendo\nPokémon con me, non ci sono\\lriuscito. Dimmi, [player]: cos{B4}è\n\naccaduto oltre quel portale? \\. \\.\nCapisco\\. La miglior mossa ora è\\landare a [green]Borgo Vivill[blue] e supportare\n\nle Ombre. Quando si scontreranno\ncon la Luce della Rovina,\\lpiomberemo su di loro arrestandoli\n\ntutti. Va{B4} ad aiutare le Ombre\nnella loro missione finale.\\lOttenuta la vittoria, ti attenderò\n\nfuori con la polizia per porre fine\na questa follia."
     },
     {
       "id": "scr_8D0CA6",
@@ -225143,7 +225896,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Nella [green]Sfida dei Capipalestra\nClassici[blue], ti troverai a combattere\\lcontro ogni Capopalestra, uno dopo\n\nl{B4}altro. Ma nonostante le lotte\nsiano consecutive, avrai la\\lpossibilità di salvare e modificare\n\nla tua squadra tra una lotta e\nl{B4}altra. Per quanto riguarda le\\lsquadre dei Capipalestra, useranno\n\nPokémon molto più forti di quando\nli hai affrontati nelle loro\\lPalestre. Inoltre, combatteranno\n\ncon gli stessi effetti di lotta di\nallora, quindi tienilo presente. Se\\lriesci a sconfiggere un\n\nCapopalestra e hai già ricevuto un\nCristallo Z da lui, ti darà la sua\\lGemma giornaliera dopo la lotta, a\n\npatto che non te l{B4}abbia già data.\nSe riesci a sconfiggerli tutti,\\lvincerai dei premi fantastici! E\n\novviamente, più alta è la tua\n[green]Difficoltà di lotta[blue], migliori sono\\li premi che puoi vincere."
+      "translated": "Nella [green]Sfida dei Capipalestra\nClassici[blue], affronterai ogni\\lCapopalestra, uno dopo l{B4}altro.\n\nNonostante le lotte siano di fila,\navrai modo di salvare e modificare la\n\nsquadra tra un incontro e l{B4}altro.\nI Capipalestra schiereranno Pokémon\n\nmolto più forti di quando li hai\nsfidati nelle loro Palestre. In\n\npiù, useranno gli stessi effetti di\nlotta di allora: tienilo a mente. Se\n\nbatti un Capopalestra da cui hai già\navuto un Cristallo Z, riceverai la\n\nsua Gemma del giorno a fine lotta, a\nmeno che non te l{B4}abbia già data.\n\nSconfiggili tutti per vincere premi\nfantastici! Naturalmente, più alta\n\nè la [green]Difficoltà di lotta[blue], migliori\nsaranno i premi."
     },
     {
       "id": "scr_1EE02B5",
@@ -226008,7 +226761,7 @@
           "token": "\\CC0818"
         }
       ],
-      "translated": "Ah, [player]. Spero che tu stia\nbene. No, non sono qui per un\\lincarico. Ho le mie\\.\\CC0818 ragioni\n\npersonali. Di recente sei diventato\nil nuovo Campione della regione di\\lBorrius, vero? Vedi, le mie\n\nresponsabilità come Capopalestra e\ncome agente mi impongono spesso\\.\\CC0818 di\\lcelare la mia vera forza. Ma ora\n\nvedo ben pochi motivi per non\nassecondare i miei desideri, ora\\lche la pace è tornata. Se sei\n\ndisposto, forse ti andrebbe di\nmetterti alla prova contro di me?\\lSono consapevole, naturalmente, che\n\npotresti serbare ancora del rancore\nper le mie azioni al Vulcano delle\\lCeneri. Se non altro, consideralo\n\nun{B4}opportunità per\\.\\CC0818 sfogare un po{B4}\ndelle tue frustrazioni represse."
+      "translated": "Ah, [player].\nSpero che la vita ti sorrida.\n\nNo, non sono qui per una missione.\n\nHo le mie\\\\.\\CC0818 ragioni personali.\n\nDi recente sei diventato il nuovo\nCampione di Borrius, non è vero?\n\nI miei doveri da Capopalestra e da\nagente mi impongono spesso\\\\.\\CC0818 di\\lcelare la mia vera forza.\n\nOra che è tornata la pace, però,\nnon ho motivo di trattenermi.\n\nSe ti va, vorresti metterti alla\nprova contro di me?\n\nSo bene che potresti serbare rancore\nper i fatti al Vulcano delle Ceneri.\n\nPrendila, se non altro, come\nun{B4}opportunità per\\\\.\\CC0818 sfogare un po{B4}\\ldi frustrazione repressa."
     },
     {
       "id": "scr_1EE13FE",
@@ -227215,7 +227968,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "Salve, tesoro! Che sorpresa\nincontrarti qui! Mi sono\\lpreoccupato moltissimo per te dopo\n\nla nostra lotta in Palestra, ma a\nquanto pare non ce n{B4}era bisogno!\\lIo? Ah, ecco\\. anche io ho bisogno di\n\nallontanarmi dalla palude per un\npo{B4} - schiarirmi un po{B4} le idee,\\lcapisci? Inoltre, si dice che\n\nquesto posto sia dove i migliori di\nBorrius si riuniscono. Deve essere\\lvero, se sei qui. Allora, mentre\n\nentrambi passiamo il tempo\\. ti va un\naltro round? Io e te? L{B4}ultima\\lvolta sembravi\\. un po{B4} disperato,\n\ncome se ottenere la mia Medaglia\nsignificasse vita o morte. Questa\\lvolta, voglio lottare con il vero\n\n[player]. Che ne dici? Non vedo\nl{B4}ora di mostrarti come siamo\\lmigliorati anche noi!"
+      "translated": "Ehilà, tesoro! Che sorpresa\nincontrarti qui!\n\nEro in pensiero dopo la lotta in\nPalestra, ma non ce n{B4}era motivo!\n\nIo? Beh\\. anche a me serve staccare\ndalla palude e schiarirmi le idee.\n\nE poi dicono che qui si radunino\ni migliori di tutta Borrius.\n\nE deve esser vero, se ci sei tu.\n\nMentre inganniamo il tempo\\.\nti va un altro round? Io e te?\n\nL{B4}altra volta sembravi\\. un po{B4}\nalle strette, come se la Medaglia\\lfosse questione di vita o di morte.\n\nStavolta voglio battere il vero\n[player].\n\nChe dici? Fremo dalla voglia di farti\nvedere come siamo migliorati!"
     },
     {
       "id": "scr_1EE3E82",
@@ -228272,7 +229025,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "Vedi questo Pokémon che ho qui\naccanto a me? È il Pokémon Mitico\\ldella Vittoria, [green]Victini[red]. È noto per\n\nportare la vittoria agli Allenatori\nche lo usano. Ma in realtà, le\\lvittorie arrivano solo se Victini\n\nsceglie di condividere il suo\npotere con il suo Allenatore. E\\lsfortunatamente per me, non sembra\n\nmolto interessato ad aiutare\nqualcuno che fa troppo affidamento\\lsu di lui. Forse\\. se potesse vedere\n\nun Allenatore che può vincere più e\npiù volte senza bisogno di miracoli\\.\\lIn realtà, ora che ci penso, sei il\n\nCampione, giusto? I Capopalestra\nsembrano visitare questo circolo\\labbastanza spesso\\. Quindi ho\n\npensato, forse se potessi\nsconfiggerli tutti e otto di nuovo\\.\\lPensi che potresti mostrare a\n\n[green]Victini[red] che sei degno di essere il\nsuo Allenatore ideale?"
+      "translated": "Vedi il Pokémon che ho qui accanto?\nÈ il Pokémon misterioso della\\lvittoria, [green]Victini[red].\n\nÈ noto per portare la vittoria agli\nAllenatori che lottano con lui.\n\nMa in verità, dona la vittoria solo\nse sceglie di condividere il suo\\lpotere con l{B4}Allenatore.\n\nPurtroppo non sembra interessato ad\naiutare chi dipende troppo da lui.\n\nForse\\. se vedesse un Allenatore\ncapace di vincere ancora e ancora\\lsenza bisogno di miracoli\\.\n\nA pensarci bene, tu sei il\nCampione, dico bene?\n\nI Capopalestra frequentano questo\nclub abbastanza spesso\\.\n\nE se tu sconfiggessi di nuovo\ntutti e otto i Capopalestra\\.\n\nPensi di poter mostrare a [green]Victini[red]\nche sei degno di essere il suo\\lAllenatore ideale?"
     },
     {
       "id": "scr_1EE590F",
@@ -229566,7 +230319,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "Ah, eccellente! Allora, lascia che\nti spieghi il problema. Ho bisogno\\ldelle piume necessarie per finire\n\nle ali a cui sto lavorando. Ma non\nvanno bene piume qualsiasi: mi\\lservono [green]Belle Piume[red]. [green][buffer2][red] per\n\nl{B4}esattezza. Voglio dire, potrei\nusare altre piume, ma una signora\\ldeve avere cose belle, giusto?\n\nQuindi, se potessi procurarmi\n[green][buffer2][red] di quelle [green]Belle Piume[red] e\\lportarmele qui, ci sarà qualcosa di\n\ncarino anche per te! Puoi trovare\nle Belle Piume addosso ai [green]Wingull[red] e\\l[green]Pelipper[red] selvatici. Se hai un\n\nPokémon con Furto, Supplica o\nPrivazione, ottenere quelle Belle\\lPiume sarà molto più facile. Ti\n\nconsiglio soprattutto [green]Privazione[red],\nperché ti evita di dover togliere\\llo strumento dal tuo Pokémon.\n\nInoltre, un Pokémon con [green]Insettocchi[red]\no [green]Supersorte[red] in prima posizione\\lnella squadra aumenta le\n\nprobabilità che i Pokémon selvatici\ntengano strumenti, quindi tienilo a\\lmente!"
+      "translated": "Ah, eccellente!\n\nLascia che ti spieghi il problema.\n\nMi servono le piume necessarie\na finire le ali a cui lavoro.\n\nMa non piume qualsiasi:\nmi servono [green]Belle Piume[red].\n\n[green][buffer2][red] per l{B4}esattezza.\n\nPotrei usarne altre, ma una signora\nmerita cose belle, no?\n\nSe riesci a portarmi [green][buffer2][red] di\nquelle [green]Belle Piume[red], ci sarà\\lqualcosa di bello anche per te!\n\nPuoi trovare le Belle Piume sui\n[green]Wingull[red] e [green]Pelipper[red] selvatici.\n\nSe hai un Pokémon con Furto,\nSupplica o Privazione, ottenerle\\lsarà molto più facile.\n\nTi consiglio [green]Privazione[red], perché ti\nevita di dover togliere lo strumento\\ldal tuo Pokémon.\n\nInoltre, un Pokémon con [green]Insettocchi[red]\no [green]Supersorte[red] in cima alla squadra\\laumenta le probabilità che i Pokémon\\lselvatici abbiano strumenti.\\lTienilo a mente!"
     },
     {
       "id": "scr_1EE76D5",
@@ -231045,7 +231798,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "La DexNav è composta da due parti:\nun{B4}[green]interfaccia[blue] e una [green]barra di\\lricerca[blue]. L{B4}interfaccia è\n\naccessibile dal [green]Menu Start[blue] e ti\npermette di scegliere un Pokémon da\\lcercare. Se un Pokémon si può\n\ntrovare nella tua posizione\nattuale, e il Pokémon è registrato\\lalmeno come \\qo[green]visto[blue]\\qc nel Pokédex,\n\nallora apparirà tra quelli\ncercabili. Una volta scelto un\\lPokémon con \\btn00, questo apparirà ella\n\nbarra di ricerca mentre la ricerca\nè attiva. Per trovare il Pokémon\\lche hai scelto di cercare, fai\n\nattenzione a fenomeni come [green]erba\nfrusciante[blue] o [green]nuvole di polvere[blue]\\lnelle caverne. Devi avvicinarti\n\nlentamente, altrimenti il Pokémon\nfuggirà. Nota che, se il Pokémon\\lnon è registrato come \\qo[green]catturato[blue]\\qc\n\nel Pokédex, potrebbe essere\ndifficile individuarlo prima che\\lvenga catturato. Ogni volta che\n\nincontri un Pokémon con la DexNav,\nil suo [green]livello di ricerca[blue] aumenta,\\le le ricerche future possono dare\n\nPokémon migliori."
+      "translated": "La Battle Sands è un{B4}area per\nLotte in Singolo e in Doppio. Nelle\\lLotte in Singolo, si iscrivono due\n\nPokémon; in quelle in Doppio, se ne\\liscrivono tre. Ecco la novità di\n\nquest{B4}area: non combatti tu di\\lpersona. I Pokémon che iscrivi\n\nsaranno affidati a un volontario\\lche lotterà al posto tuo. Potrai\n\nscegliere se attaccare o cambiare,\\lma la decisione finale spetta\n\nall{B4}Allenatore che li controlla. Più\\llotte vince questo Allenatore, più\n\n[green]Punti Lotta[blue] ([green]PL[blue]) accumulerai. Puoi\\lfermare le lotte quando vuoi, ma la\n\nserie terminerà. Sia che l{B4}Allenatore\nperda o che tu decida di ritirarti,\n\nriceverai i PL accumulati come\\lvincita. Inoltre, se esci senza\n\nsalvare, tutti i PL accumulati\\landranno persi. Ricordalo. Ah, quasi\n\ndimenticavo: un Pokémon per lato\\lotterrà un aumento casuale delle\n\nstatistiche all{B4}inizio della lotta.\nTienilo a mente quando scegli i tuoi\n\nPokémon."
     },
     {
       "id": "scr_1EE965F",
@@ -231162,7 +231915,7 @@
       "byte_length": 672,
       "is_pointer_based": true,
       "translation_source": "Chaining is when the DexNav is used to encounter Pokémon many times in a row. A chain builds every time you capture or defeat a Pokémon encountered with the DexNav. If you do not capture or defeat the Pokémon, the chain breaks. A chain will also break if, outside of battle, a Pokémon runs away from you or you encounter a Pokémon not using the DexNav. Saving and restarting the game also breaks the chain. The chain resets every 100 battles, and the higher the chain, the higher the Pokémon level. Additionally, whenever the chain reaches 50 or 100, Pokémon have a higher chance of being found shiny. This is indicated by a gold star next to the chain length on the HUD.",
-      "translated": "Il chaining è quando la DexNav\nviene usata per incontrare Pokémon\\lmolte volte di fila. Si crea una\n\ncatena ogni volta che catturi o\nsconfiggi un Pokémon incontrato con\\lla DexNav. Se non catturi o\n\nsconfiggi il Pokémon, la catena si\nrompe. La catena si rompe anche se,\\lfuori dalla lotta, un Pokémon fugge\n\nda te oppure incontri un Pokémon\nsenza usare la DexNav. Anche\\lsalvare e riavviare il gioco rompe\n\nla catena. La catena si azzera ogni\n100 lotte, e più alta è la catena,\\lpiù alto è il livello del Pokémon.\n\nInoltre, ogni volta che la catena\nraggiunge 50 o 100, i Pokémon hanno\\lpiù probabilità di essere trovati\n\nvariocolori. Questo è indicato da\nuna stella dorata accanto alla\\llunghezza della catena nell{B4}HUD."
+      "translated": "Creare catene significa usare il\nDexNav per incontrare Pokémon\\lmolte volte di fila.\n\nLa catena cresce ogni volta che\ncatturi o sconfiggi un Pokémon\\ltrovato con il DexNav.\n\nSe non catturi né sconfiggi il\nPokémon, la catena si spezza.\n\nSi spezza anche se un Pokémon\nfugge fuori dalla lotta o se ne\\lincontri uno senza il DexNav.\n\nAnche salvare e riavviare il gioco\nspezza la catena.\n\nLa catena si azzera ogni 100 lotte:\npiù è alta, maggiore sarà il livello\\ldel Pokémon.\n\nInoltre, a quota 50 o 100, crescono\nle probabilità di incontrare\\lPokémon cromatici.\n\nQuesto è indicato da una stella\ndorata accanto alla catena sull{B4}HUD."
     },
     {
       "id": "scr_1EE9FD2",
@@ -234730,7 +235483,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Venti anni fa, un grande meteorite\nstava precipitando verso Borrius.\\lGli astronomi della Cube Corp.\n\npredissero che se non fosse stato\nfermato, sarebbe caduto\\ldirettamente su Città della Valle,\n\nquesta città, e avrebbe posto fine\na tutta la vita qui presente. Con\\lgrande fretta, iniziammo\n\nl{B4}evacuazione della città. Mentre\nstavamo per fuggire attraverso la\\lSuperstrada KBT, sentimmo la\n\nnotizia. Si prevedeva ora che il\nmeteorite avrebbe schiacciato metà\\ldella regione! Se avessimo tentato\n\ndi fuggire sottoterra, ci sarebbe\nstata un{B4}alta probabilità di essere\\lsepolti vivi. Seguì il caos. Tutto\n\nera considerato senza speranza\\. fino\na quando LUI arrivò. [green]Aros[blue], la\\lleggenda. Arrivò insieme a un\n\npiccolo Pokémon che usava per\nteletrasportare tutti a Borrius\\lOrientale, al sicuro. Pianificò di\n\nattaccare il meteorite frontalmente\ne di distruggerlo in pezzi. Una\\lvolta che ebbe trasportato tutti in\n\nsalvo, si dice che cavalcò un\nRayquaza e si schiantò contro il\\lmeteorite! Si frantumò, e la\n\nmaggior parte dei frammenti più\npiccoli cadde su Città della Valle.\\lLa città fu distrutta, ma Aros\n\naveva salvato una regione. Non\ndimenticherò mai l{B4}atto eroico\\lcompiuto da quell{B4}uomo."
+      "translated": "Vent{B4}anni fa, un grosso meteorite\nprecipitava verso Borrius.\n\nGli astronomi della Cube Corp.\npredissero che, se non fermato,\\lsarebbe caduto dritto su questa\\lcittà, spazzando via ogni vita.\n\nIn tutta fretta, iniziammo\nl{B4}evacuazione di Città della Valle.\n\nMentre fuggivamo verso la\nSuperstrada KBT, giunse la notizia.\n\nIl meteorite avrebbe distrutto\nmetà della regione!\n\nFuggire sottoterra significava\nrischiare di finire sepolti vivi.\n\nScoppiò il caos.\n\nTutto sembrava perduto\\. finché\nnon arrivò LUI.\n\n[green]Aros[blue], la leggenda.\n\nArrivò con un piccolo Pokémon e\nteletrasportò tutti a Borrius Est,\\lal riparo da ogni pericolo.\n\nVoleva affrontare il meteorite di\npetto e ridurlo in frantumi.\n\nMessi tutti al sicuro, si narra che\nin groppa a Rayquaza si sia\\lscagliato contro il meteorite!\n\nAndò in pezzi e i frammenti minori\npiovvero su Città della Valle.\n\nLa città andò distrutta, ma Aros\naveva salvato la regione.\n\nNon dimenticherò mai l{B4}atto eroico\ncompiuto da quell{B4}uomo."
     },
     {
       "id": "scr_1EEECCC",
@@ -241042,7 +241795,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Hmm, sì\\. Sono uno scienziato molto\nimportante\\. hoh, hoh. Hmm\\. sì, ne\\lsono molto sicuro. La gente di\n\nBorrius\\. Tutti loro, loro\\. hmm, sì\\. si\nalzano e fanno la stessa routine\\logni singolo giorno. Creature\n\nabitudinarie, sono\\. hoh, hoh. Sono\nloro. Hmm\\. sì, sembri uno che\\lpotrebbe aiutarmi - con la mia\n\nricerca, hmm, sì. Hoh, hoh. Ho\nspiato\\. ehm, monitorato\\ldiscretamente\\. certe persone in giro\n\nper Borrius, hmm, sì. Vorrei che tu\\.\nhmm, cos{B4}era\\.? Hmm, sì\\. trovassi\\lqueste persone, quelle con troppo\n\ntempo libero\\. hoh, hoh. Trovale\ntutte e fai tutto ciò che ti\\lchiedono\\. o prendi semplicemente\n\ntutto ciò che offrono\\. hoh, hoh.\nQuindi, uh\\. saresti disposto ad\\laiutare uno scienziato molto\n\nimportante?"
+      "translated": "Hmm, sì\\. Sono uno scienziato molto\nimportante\\. hoh, hoh. Hmm\\. sì, ne\\lsono molto sicuro. La gente di\n\nBorrius\\. Tutti loro, loro\\. hmm, sì\\. si\nalzano e seguono la stessa routine\\logni giorno. Creature\n\nabitudinarie, ecco chi sono\\. hoh,\nhoh. Proprio loro. Hmm\\. sì, sembri\\luno che potrebbe aiutarmi - con la\n\nmia ricerca, hmm, sì. Hoh, hoh. Ho\nspiato\\. ehm, monitorato\\ldiscretamente\\. certe persone in giro\n\nper Borrius, hmm, sì. Vorrei che tu\\.\nhmm, cos{B4}era\\.? Hmm, sì\\. trovassi\\lqueste persone, quelle con troppo\n\ntempo libero\\. hoh, hoh. Trovale\ntutte e fa{B4} tutto ciò che ti\\lchiedono\\. o prendi semplicemente\n\nciò che offrono\\. hoh, hoh. Quindi,\nuh\\. vorresti aiutare uno\\lscienziato tanto importante?"
     },
     {
       "id": "scr_1EF6489",
@@ -249004,7 +249757,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Una Gemma è uno speciale tipo di\nstrumento tenuto che potenzia un\\lsingolo attacco in battaglia. Ogni\n\nGemma corrisponde a un Tipo\nspecifico e può potenziare solo\\lmosse di quel Tipo. Le Gemme di\n\nsolito scompaiono dopo l{B4}uso, ma\ncome la maggior parte degli oggetti\\lconsumabili, ti vengono restituite\n\ndopo le battaglie importanti, come\nle battaglie contro i Capipalestra.\\lLa maggior parte dei Capipalestra\n\ndi Borrius ha almeno uno dei propri\nPokémon che tiene una Gemma, quindi\\lfai attenzione. Se sei preoccupato\n\nper questo, puoi usare la mossa\n[green]Incenerimento[blue] per sciogliere la\\lloro Gemma prima che abbiano la\n\npossibilità di usarla."
+      "translated": "Una Gemma è uno strumento tenuto\nche potenzia un singolo attacco\\ldurante la lotta.\n\nOgni Gemma è legata a un Tipo e\npotenzia solo mosse di quel Tipo.\n\nDi norma scompare dopo l{B4}uso, ma\ncome gli strumenti consumabili ti\\lviene restituita dopo le lotte con\\li Capipalestra.\n\nA Borrius quasi ogni Capopalestra\nne affida una ai suoi Pokémon,\\lquindi occhi ben aperti!\n\nSe la cosa ti preoccupa, usa la\nmossa [green]Incenerimento[blue] per bruciare\\lla Gemma prima che possano usarla."
     },
     {
       "id": "scr_1F00F39",
@@ -254336,7 +255089,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Una Missione è un obiettivo extra\nche ricevi accettando una richiesta\\ldi aiuto. Molte persone sono\n\nincapaci di risolvere i propri\nproblemi e hanno bisogno\\ldell{B4}assistenza di altri. Una volta\n\naccettata la Missione, i dettagli\nvengono automaticamente registrati\\lnel Registro Missioni. Le Missioni\n\npossono spesso fruttare grandi\nricompense, come oggetti, denaro o\\laddirittura nuove aree da\n\nesplorare. Se qualcuno ti richiede\nuna Missione, accettala\\limmediatamente. Anche se non hai\n\nintenzione di completarla subito,\nnon c{B4}è alcun danno nell{B4}averla\\lregistrata nel tuo Registro\n\nMissioni. Detto questo, ci sono\ndiverse persone qui che hanno\\lbisogno di assistenza. Guardati\n\nintorno e vedi se c{B4}è qualcuno che\nvorresti aiutare! E vieni a\\ltrovarmi quando avrai completato\n\nalmeno [green]5[blue] Missioni."
+      "translated": "Una Missione è un obiettivo extra\nche ricevi accettando una richiesta\\ld{B4}aiuto. Molte persone là fuori non\n\nriescono a risolvere i propri\nproblemi e cercano l{B4}aiuto altrui.\\lAccettata la Missione, i dettagli\n\nvengono registrati nel Registro\nMissioni. Le Missioni offrono\\lspesso ottime ricompense, tra\n\nstrumenti, denaro o nuove aree da\nesplorare. Se qualcuno ti propone\\luna Missione, accettala subito.\n\nAnche se non intendi svolgerla\nsubito, averla salvata nel Registro\\lMissioni non guasta affatto. Detto\n\nciò, qui intorno ci sono varie\npersone che hanno bisogno d{B4}aiuto.\\lGuardati attorno e vedi se c{B4}è chi\n\nvorresti aiutare! E vieni da me\nquando avrai completato almeno [green]5[blue]\\lMissioni."
     },
     {
       "id": "scr_1F06F5C",
@@ -258210,7 +258963,7 @@
           "token": "\\btn03"
         }
       ],
-      "translated": "Nel caso tu abbia dimenticato, il\nSuper Cube si comporta proprio come\\luna borsa. Ma a differenza di\n\nquelle borse economiche del Poké\nMart che possono contenere solo 42\\lstrumenti, il Super Cube, o come è\n\npiù comunemente conosciuto, [green]Cube[red],\nha uno spazio infinito! Funziona\\ldigitalizzando i dati dello\n\nstrumento inserito, quindi\nessenzialmente, è come se non\\lstessi portando niente di extra! E\n\non solo, puoi anche ordinare\nautomaticamente il Cube premendo \\btn04!\\lNon è comodo? Certo, se pensi\n\nancora che il Cube sia un po{B4}\ndisordinato anche dopo\\ll{B4}ordinamento, usa semplicemente \\btn02\n\ne \\btn03 per spostarti velocemente. Oh,\ne puoi persino usarlo per\\lconservare questo regalo d{B4}addio\n\nche ho preparato!"
+      "translated": "Nel caso lo avessi dimenticato, il\nSuper Cube funziona proprio come\\luna borsa.\n\nMa a differenza delle borse del\nPoké Market da soli 42 strumenti,\\lil Super Cube, o più semplicemente\\l[green]Cube[red], offre uno spazio infinito!\n\nDigitalizza i dati degli oggetti\ninseriti, quindi è come se non\\lportassi alcun peso aggiuntivo!\n\nE non solo: puoi anche ordinarlo\nin automatico premendo \\\\btn04!\n\nNon è fantastico?\n\nSe lo trovi disordinato anche dopo\naverlo ordinato, premi \\\\btn02 e \\\\btn03\\lper scorrere rapidamente le pagine.\n\nOh, puoi anche usarlo per riporre\nquesto regalo d{B4}addio per te!"
     },
     {
       "id": "scr_1F0C11C",
@@ -258977,7 +259730,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "Immagino tu lo sappia già, ma con\nquel [green]Registro Registro Registro\\lMissioni[red] che ti ha dato tua madre,\n\npuoi registrare varie richieste da\nparte delle persone. Alcune di\\lqueste persone potrebbero chiederti\n\ndi completare un certo compito un\nnumero finito di volte. All{B4}inizio\\lpotrebbe sembrare scoraggiante, ma\n\nqueste persone vogliono solo sapere\nse hai soddisfatto la loro\\lrichiesta in qualche punto del tuo\n\nviaggio. Quindi vai avanti,\ncontinua ad esplorare! Rimarrai\\lstupito di vedere che tipo di cose\n\npuoi realizzare mentre viaggi.\nInfatti, a volte faranno persino\\lrichieste per cose che hai già\n\nfatto! In tal caso, puoi chiedere\nloro una ricompensa immediatamente.\\lBuona fortuna per il tuo viaggio!"
+      "translated": "Saprai già che con il [green]Registro\nMissioni[red] donatoti da tua madre puoi\\lregistrare varie richieste della\n\ngente. Alcuni ti chiederanno di\ncompiere una certa azione un dato\\lnumero di volte. Può sembrare\n\narduo, ma vogliono solo sapere se\nhai soddisfatto la richiesta lungo\\lil viaggio. Perciò continua a\n\nesplorare! Ti stupirai di ciò che\npotrai compiere durante il cammino.\\lA volte ti chiederanno persino\n\ncompiti che hai già svolto! In tal\ncaso, potrai riscuotere subito la\\lricompensa. Buona fortuna per il\n\nviaggio!"
     },
     {
       "id": "scr_1F0D65B",
@@ -261053,7 +261806,7 @@
           "token": "\\+"
         }
       ],
-      "translated": "New Game \\+ è una caratteristica\nspeciale che ti permette di\\liniziare una nuova partita con\n\nbonus speciali: 1) Una squadra di\nmassimo 6 Pokémon può essere\\ltrasferita nella nuova partita.\n\nQuesti 6 Pokémon sono creati dal\ngruppo nel salvataggio precedente.\\lI Pokémon saranno ridotti alla loro\n\nspecie base e dimenticheranno\nqualsiasi mossa tranne le Mosse\\lUovo. Gli strumenti tenuti saranno\n\nmantenuti tranne i Z-Cristalli.\nInoltre, statistiche come EV e IV\\lsaranno mantenute. 2) Se uno\n\nqualsiasi dei seguenti strumenti è\nstato ottenuto nel salvataggio\\lprecedente, sarà trasferito nella\n\nuova partita: Scanner Statistiche,\nMotocicletta, DexNav, Rilevatore,\\lBaby monitor, ADM, Catalogo\n\nAllenatori, Cromaluccichio,\nCromouovo, Cromo Cattura,\\lMagmapietra, Carta della Frontiera,\n\nPorta-PC, Giratempo, qualsiasi\npotenziamento di strumento\\lsbloccato e qualsiasi BP\n\nguadagnato. 3) La difficoltà del\ngioco può essere aumentata o\\ldiminuita in qualsiasi momento\n\nsenza penalità. 4) Alcuni enigmi\ndella storia principale risolti nel\\lsalvataggio precedente rimarranno\n\nrisolti nella nuova partita. 5) Se\nla Carta della Frontiera viene\\ltrasferita, allora il Parco Lotta\n\npuò essere accessibile\nimmediatamente all{B4}arrivo a Città\\lPortuale. 6) NPC aggiuntivi per\n\nmodificare IV, EV e nature saranno\ndisponibili a Città Cratere fino al\\ltermine del gioco (quando non si\n\ngioca in Modalità Sandbox). Nota\nche alcuni potrebbero far pagare BP\\lper i loro servizi, quindi\n\nassicurati di guadagnare abbastanza\nprima di iniziare la nuova partita.\\l7) Alcuni Pokémon Leggendari\n\nprecedentemente bloccati al\npost-game saranno ora ottenibili\\lprima del termine del gioco."
+      "translated": "Nuova Partita \\+ ti permette di\niniziare una nuova avventura con\\lbonus speciali:\n\n1) Una squadra di max 6 Pokémon\npuò passare alla nuova partita.\n\nI 6 Pokémon sono tratti dalla squadra\ndel vecchio salvataggio.\n\nRegrediranno allo stadio base e\nscorderanno ogni mossa tranne\\lle Mosse Uovo.\n\nManterranno gli strumenti tenuti\n(eccetto i Cristalli Z).\n\nAnche statistiche come EV e IV\nsaranno preservate.\n\n2) Se ottenuti nel salvataggio\nprecedente, manterrai questi beni:\n\nScanner Statistiche, Motocicletta,\nDexNav, Cercastrumenti, Baby Monitor,\\lADM, Catalogo Allenatori, Cromamuleto,\\lOvalamuleto, Amuleto Cattura,\\lMagmapietra, Carta della Frontiera,\\lPorta-PC, Giratempo, potenziamenti\\lsbloccati e ogni BP guadagnato.\n\n3) La difficoltà del gioco può essere\nalzata o abbassata in ogni momento\\lsenza alcuna penalità.\n\n4) Certi enigmi di trama già risolti\nresteranno risolti nel nuovo gioco.\n\n5) Se trasferisci la Carta Frontiera,\naccedi subito al Parco Lotta appena\\lgiunto a Città Portuale.\n\n6) Vari PNG per modificare IV, EV e\nnature saranno a Città Cratere fino\\lalla fine del gioco (tranne in\\lModalità Sandbox).\n\nAlcuni richiedono BP per i servizi:\naccumulane a sufficienza prima di\\lcominciare la nuova avventura.\n\n7) Alcuni Pokémon Leggendari finora\nriservati al post-game saranno\\lottenibili prima del finale."
     },
     {
       "id": "scr_1F0F5A6",
@@ -262114,7 +262867,7 @@
           "token": "\\+"
         }
       ],
-      "translated": "Nella Modalità Sandbox, sono\npresenti i seguenti cambiamenti: 1)\\lLo Scanner Statistiche può\n\nmodificare EV, IV, Nature, Livelli,\nAbilità, sessi, mosse ed\\levoluzioni. 2) L{B4}DexNav, il\n\nCercastrumenti, lo Scanner\nStatistiche, il Porta-PC, la\\lBicicletta e l{B4}Giratempo possono\n\nessere usati istantaneamente. 3)\nL{B4}anteprima della squadra durante\\lla lotta rivelerà sempre la squadra\n\navversaria. 4) Il Pokédex è già\ncompilato, consentendo scansioni\\lfacili con l{B4}DexNav. 5) Tutti i\n\nPokémon hanno una probabilità di\ncattura del 100%. 6) Gli strumenti\\lconsumabili ritornano sempre dopo\n\nle lotte contro gli Allenatori. 7)\nLe MN possono essere usate sempre,\\lpurché la MN si trovi nel tuo Cubo.\n\n8) La difficoltà NON PUÒ essere\nridotta al di sotto di Esperto in\\lnessun momento del gioco. Se stai\n\ngiocando solo a Nuova Partita \\+,\npuoi passare liberamente da Esperto\\la Folle e viceversa. 9) Il\n\ncontenuto post-partita è LIMITATO.\nDopo essere entrati nella Sala\\ld{B4}Onore, tutte le lotte importanti\n\nsaranno disponibili alla Frontiera\nLotta. Inoltre, nella Torre Lotta\\lsarà possibile acquistare Pokémon\n\ncompletamente evoluti. Tuttavia,\nnon ci sarà altra esplorazione."
+      "translated": "In Modalità Sandbox sono attive\nle seguenti modifiche:\n\n1) Lo Scanner Statistiche modifica\nEV, IV, Nature, Livelli, Abilità,\\lsesso, mosse ed evoluzioni.\n\n2) DexNav, Cercastrumenti, Porta-PC,\nScanner Statistiche, Bicicletta e\\lGiratempo si usano all{B4}istante.\n\n3) L{B4}anteprima della squadra in lotta\nmostra sempre i Pokémon nemici.\n\n4) Il Pokédex è già completo per\nfacilitare le ricerche col DexNav.\n\n5) Tutti i Pokémon hanno un tasso\ndi cattura del 100%.\n\n6) Gli strumenti consumabili tornano\nsempre dopo le lotte con Allenatori.\n\n7) Le MN si usano sempre, purché\nla MN si trovi nel Cubo.\n\n8) La difficoltà NON si può ridurre\nsotto Esperto in nessun momento.\n\nSolo in Nuova Partita \\+ puoi passare\nliberamente tra Esperto e Folle.\n\n9) Il post-game è LIMITATO.\n\nDopo la Sala d{B4}Onore, le sfide più\nimportanti saranno al Parco Lotta.\n\nNella Torre Lotta potrai comprare\nPokémon completamente evoluti.\n\nTuttavia, non ci sarà alcuna\nulteriore esplorazione."
     },
     {
       "id": "scr_1F10DC2",
@@ -267271,7 +268024,7 @@
       "byte_length": 633,
       "is_pointer_based": true,
       "translation_source": "Yo, wazzap, fella? Howzit goin’? The name’s Galavan. I’m the Gym Leader, in case ya couldn’t tell. How’d ya find navigatin’ my Gym? The magnetism and electricity by your feet givin’ ya a rough time? Ha ha ha! That’s the point! Invention is born out of necessity! Machines and technology grow only because what came before wasn’t quite good enough! That’s what me and my Gym want to test! So how are ya gonna advance when the most obvious weakness isn’t useable anymore? I want you to show me how ya adapt! And I want you to show me with two of your Pokémon at a time! If ya don’t, I, Galavan, will zap ya until ya can’t even twitch!",
-      "translated": "Ehi, come butta, amico? Mi chiamo\nGalvani. Sono il Capopalestra, nel\\lcaso non l{B4}avessi capito. Come hai\n\ntrovato navigare nella mia\nPalestra? Il magnetismo e\\ll{B4}elettricità ai tuoi piedi ti\n\nstanno dando filo da torcere? Ah ah\nah! È questo il punto! L{B4}invenzione\\lnasce dalla necessità! Le macchine\n\ne la tecnologia progrediscono solo\nperché ciò che è venuto prima non\\lera abbastanza buono! È questo che\n\nio e la mia Palestra vogliamo\ntestare! Allora come progredirai\\lquando la debolezza più ovvia non\n\nsarà più utilizzabile? Voglio che\ntu mi mostri come ti adatti! E\\lvoglio che tu me lo mostri con due\n\ndei tuoi Pokémon alla volta! Se non\nlo fai, io, Galvani, ti fulminerò\\lfinché non potrai più muoverti!"
+      "translated": "Ehi, come butta, compare? Come va?\nMi chiamo Galvani: Capopalestra,\\lsemmai non l{B4}avessi capito! Com{B4}è\n\nstato muoversi nella mia Palestra?\nMagnetismo ed elettricità ai tuoi\\lpiedi ti danno filo da torcere? Ah\n\nah ah! È questo il punto!\nL{B4}invenzione nasce dalla necessità!\\lLe tecnologie progrediscono solo\n\nperché quel che c{B4}era prima non\nbastava! Ed è ciò che io e la mia\\lPalestra vogliamo testare! Come\n\npensi di avanzare se la debolezza\npiù ovvia è inservibile? Mostrami\\lcome ti adatti! E mostramelo con\n\ndue Pokémon alla volta! Altrimenti\nio, Galvani, ti fulminerò finché\\lnon riuscirai più a muoverti!"
     },
     {
       "id": "scr_1F17D5B",
@@ -269072,7 +269825,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Le regole sono semplici. Scegli un\nPokémon per affrontare tre\\lAllenatori di seguito. Ogni\n\nAllenatore userà anche lui un solo\nPokémon. Puoi usare qualsiasi\\lPokémon tu voglia sul ring, ma non\n\npuoi usare mosse di tipo [green]Volante[blue],\n[green]Psico[blue] o [green]Folletto[blue] durante le lotte.\\lPer le mosse che cambiano tipo\n\ndurante la lotta, consideriamo solo\nil tipo che diventano. A noi non\\lpiacciono quei tipi qui sul ring, e\n\nGran Mo non ti lascerà usare la\n[green]mossa più comune tra quelle della\\ltua squadra[blue] se arrivi da lui. Se\n\nalcuni tipi appaiono in egual\nmisura nella tua squadra, bandiremo\\li tipi nell{B4}ordine Volante, Psico e\n\npoi Folletto. Quindi, metti che tu\nabbia un Toucannon e un Alakazam\\lnella tua squadra, non potrai usare\n\nmosse di tipo Volante contro Gran\nMo, perché Volante viene prima di\\lPsico. Capito? Non confonderti!"
+      "translated": "Le regole sono semplici. Scegli un\nPokémon per affrontare tre\\lAllenatori di fila. Ciascuno userà\n\nun solo Pokémon. Puoi usare chi\nvuoi sul ring, ma sono vietate le\n\nmosse di tipo [green]Volante[blue], [green]Psico[blue] o\n[green]Folletto[blue] nelle lotte. Per le mosse\n\nche cambiano tipo, conta solo il\ntipo che assumono. Non gradiamo quei\n\ntipi sul ring: se raggiungi Gran Mo,\nnon ti lascerà usare la [green]mossa più\n\nfrequente tra quelle del tuo team[blue].\nSe più tipi compaiono in egual\n\nmisura, l{B4}ordine di divieto sarà\nVolante, poi Psico e infine Folletto.\n\nDunque, se hai un Toucannon e un\nAlakazam, non potrai usare mosse\n\nVolante contro Gran Mo, poiché il\ntipo Volante precede Psico. Chiaro?\n\nNon fare confusione!"
     },
     {
       "id": "scr_1F1AE89",
@@ -269706,7 +270459,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Il Capopalestra, Mirskle,\npreferisce Pokémon fioriti. Se ti\\lpresenti con un Pokémon di tipo\n\n[green]Fuoco[blue] o [green]Volante[blue], dovresti\nsconfiggerlo senza problemi!\\l-TOSSE- -TOSSE- Inoltre, tieni\n\npresente che a Mirskle piace\nriempire la sua Palestra di nebbia\\ldi tanto in tanto, e questo\n\npotrebbe influenzare le tue lotte.\nTi permetterà di schivare i colpi\\lfacilmente, ma avrai anche più\n\ndifficoltà a mettere a segno i\ntuoi! La tua strategia principale\\ldovrebbe essere quella di rimuovere\n\nprima la Nebbia dal campo di\nbattaglia, e poi infliggerla al tuo\\lavversario. Sai, con una mossa come\n\n[green]Terrempesta[blue] o [green]Antinebbia[blue]. Buona\nfortuna là fuori! -TOSSE- -RANTOLO-"
+      "translated": "Il Capopalestra Mirskle preferisce\ni Pokémon floreali. Preparati con\\lun tipo [green]Fuoco[blue] o [green]Volante[blue], e lo\n\nbatterai senza problemi! -COUGH-\n-COUGH- Sappi che a Mirskle piace\\lriempire la Palestra di nebbia, e\n\nciò influirà sulle lotte. Schiverai\ni colpi facilmente, ma farai più\\lfatica a mandare a segno i tuoi! La\n\nstrategia migliore è rimuovere la\nNebbia dal campo prima di attaccare\\ll{B4}avversario. Magari con mosse come\n\n[green]Terrempesta[blue] o [green]Scacciabruma[blue]. Buona\nfortuna là fuori! -COUGH- -WHEEZE-"
     },
     {
       "id": "scr_1F1C272",
@@ -269972,7 +270725,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Contrariamente a quanto si crede,\nquesta Palestra non è di tipo\\lGhiaccio. È una [green]Volante[blue] di tipo\n\nVolante! E il modo migliore per\ncontrastare i tipi Volante è\\ltarpare loro le ali con [green]ghiaccio[blue],\n\n[green]roccia[blue], o [green]elettricità[blue]! Ma\nattenzione, perché in questa\\lPalestra c{B4}è un vento in poppa!\n\nQuesto [green]Ventoincoda[blue] aumenterà la\nVelocità di tutti i Pokémon di tipo\\lVolante, quindi non montarti la\n\ntesta solo perché il tuo Pokémon ha\nstatistiche di Velocità elevate. A\\lmeno che non sia di tipo Volante,\n\novviamente. Raggiungere Alice\nrichiede l{B4}uso di ventole e buche\\lnel terreno per spostarsi tra i\n\nlivelli della Palestra. Non è\ntroppo complicato, assicurati solo\\ldi ricordare dove sei già stato e\n\ndove no. Buona fortuna là fuori!"
+      "translated": "Contrariamente a quanto si creda,\nqui non c{B4}è una Palestra Ghiaccio.\n\nÈ una Palestra di tipo [green]Volante[blue]!\n\nIl modo migliore per contrastarli è\ntarpare loro le ali con [green]ghiaccio[blue],\\l[green]roccia[blue] o [green]elettricità[blue]!\n\nMa fai attenzione: in questa\nPalestra soffia un vento a favore!\n\nQuesto [green]Ventoincoda[blue] aumenterà la\nVelocità dei Pokémon Volante, quindi\\lnon montarti la testa solo per\\ll{B4}alta Velocità dei tuoi Pokémon.\n\nA meno che non siano anche Volante,\novviamente.\n\nPer raggiungere Alice dovrai usare\nventole e voragini per spostarti\\ltra i piani della Palestra.\n\nNulla di difficile: ricorda solo\ndove sei già stato e dove no.\n\nBuona fortuna là fuori!"
     },
     {
       "id": "scr_1F1CC0F",
@@ -270072,7 +270825,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Mel? Beh, è solo un ragazzo\n[green]normale[blue]! Se fosse una normale\\lpalestra di tipo Normale, direi che\n\nusare Pokémon di tipo Lotta sarebbe\nun ottimo modo per sconfiggerlo. Ma\\lnon lo è. In questa palestra, tutte\n\nle lotte sono [green]Lotte Inverse[blue]! Il che\nsignifica che tutti i rapporti di\\lefficacia tra i tipi saranno\n\ninvertiti. Quindi, puoi indovinare\nquale tipo sarebbe più adatto a\\lsconfiggere Mel? \\\\. Esatto! Non ce\n\n{B4}è uno! Le mosse di tipo [green]Spettro[blue]\nsaranno superefficaci contro i suoi\\lPokémon di tipo Normale, ma anche\n\nle mosse di tipo Normale saranno\nsuperefficaci sui Pokémon di tipo\\lSpettro. La tua migliore\n\npossibilità per sconfiggere Mel è\nusare un Pokémon che conosca mosse\\ldi tipo Spettro, ma che non sia di\n\nquel tipo. Se hai bisogno di più\npratica per abituarti a questo tipo\\ldi lotta, dovresti dare un{B4}occhiata\n\nalla [green]Casa delle Lotte Inverse[blue] in\ncittà. Se sei pronto per iniziare,\\lscendi lungo lo scivolo accanto a\n\nme. Il tuo obiettivo è usare i\nLapras per ritornare quassù. Ma\\lassicurati di aver fatto scorta di\n\nprovviste prima. Non potrai tornare\nindietro finché non raggiungerai\\lMel."
+      "translated": "Mel?\nBeh, è proprio un tipo [green]normale[blue]!\n\nFosse una tipica Palestra Normale,\nti direi di usare il tipo Lotta per\\lmetterlo subito al tappeto.\n\nE invece no.\n\nQui ogni scontro è una [green]Lotta Inversa[blue]!\n\nCiò significa che tutte le affinità\ndi tipo sono capovolte.\n\nSapresti indovinare quale tipo sia\nil più adatto contro Mel?\n\n\\.\n\nEsatto: nessuno!\n\nLe mosse di tipo [green]Spettro[blue] saranno\nsuperefficaci sui tipi Normale, ma\\lanche le sue mosse Normale lo\\lsaranno sui Pokémon Spettro.\n\nLa cosa migliore è usare un Pokémon\ncon mosse Spettro, ma che non sia\\legli stesso di quel tipo.\n\nSe ti serve pratica con queste lotte,\nfai un salto alla [green]Casa delle Lotte\\lInverse[blue] in città.\n\nSe sei pronto, buttati giù dallo\nscivolo qui accanto.\n\nIl tuo scopo è risalire fin quassù\nsfruttando i Lapras.\n\nMa fai prima scorta di provviste.\n\nNon potrai tornare indietro finché\nnon avrai raggiunto Mel."
     },
     {
       "id": "scr_1F1D147",
@@ -270299,7 +271052,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "A Galvani piace usare sia Pokémon\ndi tipo [green]Elettro[blue] che di tipo\\l[green]Acciaio[blue]. Direi che i Pokémon di\n\ntipo Terra sono un buon modo per\ndistruggerlo, ma in questa Palestra\\lnon funzionerà. Sfortunatamente, il\n\npavimento qui è sia magnetizzato\nche elettrificato. Ciò significa\\lche tutti i Pokémon di tipo [green]Elettro[blue]\n\ne [green]Acciaio[blue] vengono sollevati dal\npavimento! Non potrai colpirli con\\lmosse di tipo Terra, quindi dovrai\n\ntrovare un modo alternativo per\ninfliggere grossi danni. Inoltre,\\lle mosse di tipo [green]Elettro[blue] saranno\n\ngeneralmente potenziate. Oh, e nel\ncaso te lo stessi chiedendo, i\\lPokémon fluttuanti possono ancora\n\nbeneficiare del Campo Elettrico\nanche se sono in aria. Quindi un\\lcolpo da uno di loro potrebbe\n\nessere devastante! Quanto al\npuzzle, l{B4}obiettivo è abbassare le\\lbarriere elettriche e raggiungere\n\nGalvani. Buona fortuna là fuori!"
+      "translated": "A Galvani piace usare Pokémon di\ntipo [green]Elettro[blue] e [green]Acciaio[blue]. I Pokémon\\ldi tipo Terra sarebbero ottimi per\n\nspiazzarlo, ma qui non\nfunzioneranno. Il pavimento della\\lPalestra è magnetizzato ed\n\nelettrificato. I Pokémon di tipo\n[green]Elettro[blue] e [green]Acciaio[blue] finiscono quindi\\lper fluttuare! Non potrai colpirli\n\ncon mosse Terra: dovrai escogitare\nun altro modo per infliggere gravi\\ldanni. Inoltre, le mosse di tipo\n\n[green]Elettro[blue] saranno spesso potenziate.\nE se te lo chiedi, anche fluttuando\\lbeneficiano del Campo Elettrico. Un\n\nloro attacco può essere devastante!\nL{B4}obiettivo dell{B4}enigma è abbassare\\lle barriere elettriche per\n\nraggiungere Galvani. Buona fortuna!"
     },
     {
       "id": "scr_1F1DB39",
@@ -270443,7 +271196,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Per la maggior parte, Gran Mo ama i\nPokémon grandi, lenti e resistenti,\\lspesso di tipo [green]Lotta[blue]. Se sei un\n\nAllenatore medio e hai un Pokémon\ndi tipo [green]Volante[blue], [green]Psico[blue] o [green]Folletto[blue],\\lpotresti vincere senza problemi! Ma\n\nprima di poter affrontare Gran Mo,\ndovrai superare la [green]Sfida\\ldell{B4}Anello[blue] della Palestra. E in\n\nquella, non sono permesse mosse di\ntipo [green]Volante[blue], [green]Psico[blue] o [green]Folletto[blue].\\lPotrebbe sembrare difficile, ma\n\nonestamente, se non usi un Pokémon\ndebole alle mosse di tipo Lotta,\\ldovrebbe essere un gioco da ragazzi\n\nper te. E tieni presente che, a\nseconda di quanto vuoi combattere,\\lpotrebbero esserci delle\n\nrestrizioni anche nella lotta\ncontro Gran Mo. I [green]ragazzi là fuori[blue]\\lti faranno sapere come funziona la\n\nlotta, quindi non preoccuparti di\nricordare. Buona fortuna nel ring!"
+      "translated": "Di norma, Gran Mo adora i Pokémon\ngrandi, lenti e tosti, spesso\\ldi tipo [green]Lotta[blue].\n\nSe sei un comune Allenatore e hai\nun tipo [green]Volante[blue], [green]Psico[blue] o [green]Folletto[blue],\\lpotresti vincere senza problemi!\n\nMa prima di affrontare Gran Mo,\ndovrai superare la [green]Sfida del\\lRing[blue] della Palestra.\n\nE in quella sfida non sono ammesse\nmosse di tipo [green]Volante[blue], [green]Psico[blue]\\lo [green]Folletto[blue].\n\nPotrà sembrare difficile, ma se non\nusi Pokémon deboli al tipo Lotta,\\lsarà un gioco da ragazzi.\n\nInoltre, in base a quanto tosta\nvuoi la lotta, ci saranno dei\\llimiti anche contro Gran Mo.\n\nI [green]ragazzi sul retro[blue] ti diranno\ncome funziona, non preoccuparti\\ldi ricordare tutto.\n\nBuona fortuna sul ring!"
     },
     {
       "id": "scr_1F1DFF7",
@@ -270555,7 +271308,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Proprio come nella Palestra di Mel,\nquesta Palestra è incentrata\\lsull{B4}[green]acqua[blue]. Ma a differenza della\n\nsua, qui gli Allenatori usano\nveramente i Pokémon di tipo [green]Acqua[blue]!\\lPortare Pokémon elettrizzanti di\n\ntipo [green]Elettro[blue] o erbosi di tipo [green]Erba[blue]\nti sarà di grande aiuto. Ma stai\\lattento: gli Allenatori di questa\n\nPalestra sono maestri\ndell{B4}adattamento. Quando li\\laffronti, tutti i Pokémon in lotta\n\ndiventeranno dello [green]stesso tipo[blue]\ndelle loro [green]prime due mosse[blue]. Per\\lraggiungere Tessy, ti servirà un\n\nPokémon che conosca Surf per\ncavalcare le onde. Ma fai\\lattenzione: passare troppo tempo in\n\nacqua può trascinarti via fino\nall{B4}ingresso! Dovrai esplorare in\\lanticipo e trovare il percorso più\n\nbreve per la piattaforma\nsuccessiva. E tieni presente che,\\lanche se muoversi sulla terraferma\n\nfarà avanzare il timer, non verrai\nspazzato via se non sei in acqua.\\lBuona fortuna!"
+      "translated": "Proprio come nella Palestra di Mel,\nqui tutto ruota intorno all{B4}[green]acqua[blue].\n\nA differenza della sua, però, qui\nusano davvero il tipo [green]Acqua[blue]!\n\nPortare frizzanti tipi [green]Elettro[blue] o\nfrondosi tipi [green]Erba[blue] farà meraviglie.\n\nFai attenzione, però.\n\nGli Allenatori di questa Palestra\nsono maestri dell{B4}adattamento.\n\nQuando li sfidi, ogni Pokémon prende\nlo [green]stesso tipo[blue] delle sue [green]prime due mosse[blue].\n\nPer arrivare da Tessy ti servirà un\nPokémon con Surf per solcare le onde.\n\nMa occhio: troppo tempo in acqua\nti farà risucchiare all{B4}ingresso!\n\nPianifica la strada e cerca la via\npiù breve per l{B4}altra piattaforma.\n\nRicorda: muoversi sulla terraferma\nfa avanzare il tempo, ma non verrai\\ltrascinato via se resti all{B4}asciutto.\n\nBuona fortuna là fuori!"
     },
     {
       "id": "scr_1F1E4C1",
@@ -270655,7 +271408,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Hai mai sentito parlare del curioso\ncaso di Benjamin Butterfree? Nato\\lButterfree, svenuto Caterpie, il\n\npovero Benjamin è ringiovanito per\ntutta la vita. E nello spirito di\\lButterfree, il nostro Capopalestra,\n\nBenjamin ha progettato questa\nPalestra. E hai indovinato, in\\lquesta Palestra agli Allenatori\n\npiace usare Pokémon di tipo\n[green]Coleottero[blue]! Portare dei Pokémon di\\ltipo [green]Roccia[blue], [green]Volante[blue] o [green]Fuoco[blue] può\n\ndavvero metterli al loro posto. Ma\nfai attenzione, perché in questa\\lPalestra, quando un Pokémon viene\n\nsconfitto, regredisce a uno stadio\nprecedente. I Pokémon svengono solo\\lquando non possono più regredire. A\n\ncausa di questa condizione di lotta\nunica, i Pokémon non guadagneranno\\lPunti Esp. in questa Palestra. E\n\nper quanto riguarda come trovare\nBenjamin, ti dirò questo. In ognuna\\ldelle stanze lungo la parete, dei\n\npulsanti sono nascosti nelle rocce.\nPremi questi pulsanti nell{B4}ordine\\lgiusto e aprirai un percorso verso\n\nil vecchio Benjamin. E qual è\nl{B4}ordine corretto? Tutto ciò che\\lposso dirti è di ripensare al\n\ncurioso caso di Benjamin Butterfree\\."
+      "translated": "Conosci il curioso caso di\nBenjamin Butterfree?\n\nNato Butterfree ed esausto come\nCaterpie, il povero Benjamin è\\lringiovanito per tutta la vita.\n\nIspirandosi a lui, il Capopalestra\nBenjamin ha ideato questa Palestra.\n\nE come immaginerai, qui adorano\ni Pokémon di tipo [green]Coleottero[blue]!\n\nSchierare tipi [green]Roccia[blue], [green]Volante[blue] o\n[green]Fuoco[blue] li rimetterà al loro posto.\n\nMa attenzione: in questa Palestra,\nse sconfitto, un Pokémon regredisce\\lallo stadio precedente.\n\nAndrà KO solo quando non potrà\npiù regredire.\n\nPer questa condizione unica, qui non\nsi guadagnano Punti Esp.\n\nE su come scovare Benjamin,\nti dico questo.\n\nNelle stanze lungo il muro ci sono\npulsanti nascosti tra le rocce.\n\nPremendoli nell{B4}ordine giusto aprirai\nil varco verso il vecchio Benjamin.\n\nE qual è l{B4}ordine corretto?\n\nTi basta ripensare al curioso\ncaso di Benjamin Butterfree\\."
     },
     {
       "id": "scr_1F1EA32",
@@ -271370,7 +272123,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Chi avrebbe mai potuto prevedere\nche ci fosse una sezione nascosta\\ldella Grotta Ghiacciata? Se non\n\nfosse stato per gli scavi sciatti\ndi quel Sandslash, questo posto\\lsarebbe potuto rimanere nascosto\n\nmolto più a lungo. Ma ora che è\naccessibile, sono stato in grado di\\lscoprire un altro dei manufatti\n\nantichi! La tavoletta che [buffer1]\nqui\\. Ce ne sono diverse simili in\\lgiro per Borrius. Su ciascuna c{B4}è\n\nun testo in un dialetto antico, da\ntempo dimenticato. Tuttavia! Dopo\\lmolti anni di studio della lingua,\n\nho creato un dispositivo in grado\ndi tradurre il testo. In effetti,\\lse sei disposto ad aiutarmi a\n\nsvelare i segreti di queste pareti\ndi pietra, sarò lieto di\\lcondividerlo con te."
+      "translated": "Chi avrebbe mai detto che ci fosse\nuna sezione segreta nella Grotta\\lGhiacciata?\n\nSe non fosse per gli scavi goffi\ndi quel Sandslash, questo luogo\\lsarebbe rimasto ignoto per molto.\n\nMa ora ho potuto scoprire un altro\ndei nostri antichi reperti!\n\nLa tavoletta che [buffer1] qui\\.\nCe ne sono diverse simili a Borrius.\n\nOgnuna reca un testo in un antico\ndialetto, da tempo dimenticato.\n\nTuttavia!\n\nDopo molti anni di studio, ho\ncreato un apparecchio in grado\\ldi tradurne il testo.\n\nSe mi aiuterai a svelare i segreti\ndi queste pareti di pietra, sarò\\lben felice di condividerlo con te."
     },
     {
       "id": "scr_1F1FC58",
@@ -276556,7 +277309,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Vedi\\. Ho passato molti anni della\nmia vita a setacciare il mondo in\\lcerca delle numerose forme di\n\nVivillon. Vivillon è un Pokémon\nspeciale - ha molte forme diverse.\\lPrato, Arcipelago, Continentale,\n\nElegante, Giardino, Altopiano, Neve\nGhiacciata, Giungla, Marino,\\lModerno, Monsone, Oceano, Polare,\n\nFiume, Tempesta Di Sabbia, Savana,\nSole, Tundra, Fantasia e un{B4}ultima\\lforma speciale. E dopo molti anni,\n\nsono riuscito a trovarle tutte. Di\nqueste 20 forme, ne ho nascoste 19\\lin tutto Borrius. Credi di essere\n\nall{B4}altezza della sfida di cercare\ni miei Vivillon? Non hai bisogno di\\lcatturarli, anche se, se sei un\n\ncollezionista come me, potresti\nvolerlo fare."
+      "translated": "Vedi\\. Ho passato molti anni della\nmia vita a esplorare il mondo alla\\lricerca delle tante forme di\n\nVivillon. Vivillon è un Pokémon\\lspeciale - ha molti aspetti diversi.\n\nPrato, Arcipelago, Continentale,\nElegante, Giardino, Altopiano, Neve\\lGhiacciata, Giungla, Marino,\n\nModerno, Monsone, Oceano, Polare,\nFiume, Sabbia, Savana, Sole,\\lTundra, Fantasia e un{B4}ultima forma\n\nspeciale. E dopo molti anni, sono\\lriuscito a trovarli tutti. Di\n\nqueste 20 forme, ne ho nascoste 19\\lin tutta Borrius. Credi di essere\n\nall{B4}altezza di stanare i miei\nVivillon? Non serve catturarli,\n\nanche se, se sei un collezionista\ncome me, potresti desiderarlo."
     },
     {
       "id": "scr_1F26EAF",
@@ -293942,7 +294695,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Quella strega! È lei il motivo per\ncui sono qui dentro! Sapevo, dal\\lmomento in cui ha visto Hoopa, che\n\naveva una crescente ossessione per\nlui. Ecco perché ho gettato la Poké\\lBall di Hoopa in mare\\.\\CC0818 cercando di\n\ntenerlo fuori dalla sua portata.\nQuando l{B4}ho incontrata sul ponte\\lquel giorno, ha chiesto di Hoopa.\n\nHo cercato di fare il vago, dicendo\nche non lo avevo più\\. Ma quando l{B4}ha\\lsentito, ha preso un Cubo dalla\n\ntasca e\\.\\CC0818 beh\\. \\. Aspetta\\.\\CC0818 è stato perché\nmi sono opposto al Progetto\\lGuerriero Ombra? Dopo aver scoperto\n\nla sua esistenza, ho iniziato\nsegretamente a sabotare il tuo\\llavoro notte dopo notte\\. Ma no, non\n\npuò essere\\.\\CC0818 non dovrei nemmeno\nessere vivo se fosse così\\."
+      "translated": "Quella strega!\n\nÈ per colpa sua se mi ritrovo\nrinchiuso qui dentro!\n\nSapevo che da quando vide Hoopa\nne era rimasta ossessionata.\n\nPer questo gettai la Poké Ball\nin mare\\.\\CC0818 per allontanarla da lei.\n\nQuel giorno sul ponte mi chiese\nsubito dove fosse Hoopa.\n\nFinsi indifferenza, dicendole\nche non l{B4}avevo più\\.\n\nA quelle parole, estrasse un Cubo\ndalla tasca e\\.\\CC0818 beh\\.\n\n\\.\n\nAspetta\\.\\CC0818 fu per via del mio\nrifiuto al Progetto Guerriero Ombra?\n\nDopo averlo scoperto, sabotai il\ntuo lavoro notte dopo notte\\.\n\nMa no, impossibile\\.\\CC0818 non sarei\nneanche vivo se fosse così\\."
     },
     {
       "id": "scr_1F3C2CC",
@@ -294688,7 +295441,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Per favore. Credi davvero di\npotermi ancora dare ordini? Sono\\ll{B4}Agente Véga della Società\n\nScientifica. Le mie lealtà sono con\nFey\\.\\CC0818 e hai perso la tua autorità su\\ldi me quando hai rotto il tuo\n\ncontratto con lei. Portare\napertamente i Guerrieri Ombra in\\lpubblico? Tentare di rilasciare una\n\nforza oscura conosciuta per la sua\nnatura distruttiva, senza prima\\lcercare di capirla? I Ranger sono\n\ngià determinati a trovare qualcosa\nper incastrarci, quindi dovremmo\\lconsiderarci fortunati che nessun\n\naltro abbia scoperto che stavamo\ncreando armi viventi. Dovevi avere\\lqualche idea delle potenziali\n\nconseguenze, se Fey mai lo\nscoprisse, sì? Soprattutto ora, che\\lè vicina a raggiungere la\n\nperfezione\\."
+      "translated": "Per favore. Credi davvero di\npotermi ancora dare ordini? Sono\\ll{B4}Agente Véga della Società\n\nScientifica. La mia lealtà è verso\nFey\\.\\CC0818 e hai perso ogni autorità su\\ldi me quando hai infranto il tuo\n\ncontratto con lei. Portare\napertamente i Guerrieri Ombra in\\lpubblico? Tentare di liberare una\n\nforza oscura nota per la sua natura\ndistruttiva, senza prima cercare\\ldi comprenderla? I Ranger sono già\n\ndeterminati a incastrarci, quindi\ndovremmo ritenerci fortunati che\\lnessun altro abbia scoperto che\n\nstavamo creando armi viventi.\nImmaginavi le possibili conseguenze\\lse Fey lo scoprisse, vero?\\lSoprattutto ora, che è vicina a\n\nraggiungere la perfezione\\."
     },
     {
       "id": "scr_1F3D5AE",
@@ -296086,7 +296839,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Giusto\\. Sto facendo in modo che i\nnostri scienziati rimasti\\llocalizzino la loro base. Una volta\n\nche saranno riusciti a trovarla,\ncoglieremo di sorpresa la Luce\\lRovina e la distruggeremo. Con le\n\nloro forze principali in\ndifficoltà, riprenderemo la\\lBottiglia Prigione e gli ultimi\n\nGuerrieri Ombra che sono rimasti.\nTuttavia, non sono ancora sicuro di\\lquanto tempo ci vorrà per\n\nlocalizzarli\\. E purtroppo siamo a\ncorto di tempo. In questo momento,\\lAklove è con Fey mentre lei studia\n\nHoopa. Quando avrà finito, Aklove\nintende rivolgere il suo potere su\\lBorrius\\. Se riusciamo a distruggere\n\nla sua base mentre lui è via,\npossiamo coglierlo di sorpresa\\lquando tornerà, e sigillare di uovo\n\nil potere di Hoopa. Senza di esso,\nil potere di Aklove sarà\\lnotevolmente ridotto."
+      "translated": "Esatto\\. I nostri scienziati\nsuperstiti stanno localizzando la\\lloro base. Una volta trovata,\n\ncolpiremo la Luce della Rovina di\nsorpresa per distruggerla. Con le\\lloro forze allo sbando,\n\nrecupereremo il Vaso del vincolo e\ni Guerrieri Ombra rimasti.\\lTuttavia, ignoro quanto ci vorrà\n\nper trovarli\\. E purtroppo il tempo\nstringe. Ora Aklove è con Fey\\lmentre lei studia Hoopa. Appena\n\nfinito, Aklove intende scatenare il\nsuo potere su Borrius\\. Distruggendo\\lla base in sua assenza, lo\n\nsorprenderemo al ritorno sigillando\ndi nuovo Hoopa. Senza quel potere,\\lAklove sarà assai più debole."
     },
     {
       "id": "scr_1F3F216",
@@ -305100,7 +305853,7 @@
           "token": "[player]"
         }
       ],
-      "translated": "Sì, congratulazioni, [player]!\nSperavo di avere la possibilità di\\lvederti di persona quando sei\n\ntornato a casa. Sei sorpreso di\nvedermi di nuovo con il vecchio\\labito nero e rosso? Quell{B4}abito che\n\nti ho lasciato non era il mio\nunico, sai! Ma anche dopo tutto\\lquello che è successo, ho sentito\n\nil bisogno di indossarlo di nuovo.\nAvorio è ancora scomparsa, quindi\\lspero che sarà più facile trovarla\n\nse assomiglio proprio a lei. Se\ndovessi sentire qualcosa, [player],\\lnon esitare a farmelo sapere. E\n\naturalmente, non pensare che mi sia\ndimenticato di tuo padre. Ho\\lcercato di liberarlo dal Cubo, ma\n\nfinora non ho avuto molta fortuna.\nQuando troverò qualcosa di utile,\\lmi assicurerò di avere una Missione\n\nper te."
+      "translated": "Sì, congratulazioni, [player]!\nSperavo di vederti di persona al\n\ntuo ritorno a casa. Ti sorprende\nrivedermi nel vecchio completo nero\n\ne rosso? Quell{B4}abito che ti ho\nlasciato non era l{B4}unico che avevo,\n\nsai! Ma dopo tutto ciò che è\nsuccesso, sentivo il dovere di\n\nindossarlo ancora. Avorio è ancora\nscomparsa: spero sia più facile\n\ntrovarla se le assomiglio. Se sai\nqualcosa, [player], avvisami subito.\n\nE non credere che abbia scordato\ntuo padre. Ho tentato di liberarlo\n\ndal Cubo, ma finora senza successo.\nQuando scoprirò qualcosa di utile,\n\navrò una Missione per te."
     },
     {
       "id": "scr_1F4C192",
@@ -305182,7 +305935,7 @@
           "token": "\\."
         }
       ],
-      "translated": "[player], [buffer1] di Borrius,\nvivissime congratulazioni! Ho\\lsentito la notizia! Pensare che,\n\ndopo tutto questo tempo, alla fine\nho battuto il vecchio Arthur! Ho ho\\lho! Ehm\\. scusate. Ora, [buffer1], il motivo della mia\nvisita. Ho ancora un{B4}altra\\lcommissione per te! Pensavi di aver\n\nfinito con quelle, vero? Ho ho ho!\nEhm\\. comunque, dopo la tua sconfitta\\ldi Hoopa in cima al Picco\n\nCristallo, misteriosi portali hanno\ncominciato ad apparire in tutta\\lBorrius. Si dice che, quando ci si\n\navvicina, potenti Pokémon balzino\nfuori. In quanto Guardiano di\\lBorrius, di nome e di fatto, è tua\n\nresponsabilità occuparti di questi\nPokémon. Presumo che, nella maggior\\lparte dei casi, se catturi il\n\nPokémon, i portali scompariranno\ndefinitivamente. Anche se è dubbio\\lche tutti spariranno per sempre\\. In\n\nogni caso! Cattura i Pokémon\ntrovati in questi misteriosi\\lportali. Alcuni portali potrebbero\n\napparire solo se porti con te\nPokémon specifici, ma i Pokémon in\\lquei portali devono comunque essere\n\ncatturati. E se un portale si\nrifiutasse di scomparire\\ldefinitivamente dopo aver catturato\n\nil Pokémon, sarà sufficiente\nregistrarlo nel Pokédex."
+      "translated": "[player], mio caro [buffer1],\nle mie più vive congratulazioni!\n\nHo saputo la notizia!\n\nDopo tutto questo tempo, ho\nsuperato il vecchio Arthur!\n\nHo ho ho!\n\nEhm\\.\nscusami.\n\nOra, [buffer1] mio, veniamo al punto:\nho un{B4}altra commissione per te!\n\nCredevi di aver finito con quelle,\nnon è vero? Ho ho ho!\n\nEhm\\. ad ogni modo, dopo aver battuto\nHoopa sulla cima del Picco\\lCristallo, sono comparsi dei\\lportali misteriosi a Borrius.\n\nSi dice che avvicinandosi ne balzino\nfuori potenti Pokémon.\n\nCome Guardiano di Borrius, di nome\ne di fatto, spetta a te occuparti\\ldi questi Pokémon.\n\nPresumo che, una volta catturato\nil Pokémon, i portali spariranno\\ldefinitivamente.\n\nAnche se dubito che spariranno\ntutti per sempre\\.\n\nIn ogni caso!\n\nCattura i Pokémon che trovi in\nquesti portali misteriosi.\n\nAlcuni appaiono solo con specifici\nPokémon con te, ma vanno catturati\\ltutti quanti senza eccezioni.\n\nE se un portale non scomparisse\ndopo la cattura, ti basterà aver\\lregistrato il Pokémon nel Pokédex."
     },
     {
       "id": "scr_1F4C712",
@@ -306676,7 +307429,7 @@
       "byte_length": 851,
       "is_pointer_based": true,
       "translation_source": "Let me explain how the Pokémon Wireless Club works. On this, the top floor, there are two rooms. First, the room on the left. It’s the Union Room. You may link up with Trainers around you who have also entered the Union Room using the Wireless Adapter. With them, you may do things like chat, battle, and trade. Second, the room on the right is the Direct Corner. You may battle Pokémon with your friends in this room, but trading is no longer available. Please use Unbound Cloud if you wish to trade Pokémon. Sometimes, you may not be able to find your friends in the Union Room or the Direct Corner. In that case, please move closer to your friends. If the Wireless Adapter isn’t connected, you may still link up using a GBA Game Link cable. If that is the case, you must go to the Direct Corner. I hope you enjoy the Wireless Communication System.",
-      "translated": "Lasciami spiegare come funziona il\nClub Wireless Pokémon. In questo\\lpiano, il piano superiore, ci sono\n\ndue stanze. Per prima, la stanza a\nsinistra. È la Sala Unione. Puoi\\lconnetterti con gli Allenatori\n\nintorno a te che sono entrati anche\nloro nella Sala Unione usando\\ll{B4}Adattatore Wireless. Con loro\n\npuoi fare cose come chattare,\nlottare e scambiare. Secondo, la\\lstanza a destra è l{B4}Angolo Diretto.\n\nIn questa stanza puoi far lottare i\nPokémon con i tuoi amici, ma lo\\lscambio non è più disponibile. Per\n\nfavore, usa Unbound Cloud se\ndesideri scambiare Pokémon. A\\lvolte, potresti non riuscire a\n\ntrovare i tuoi amici nella Sala\nUnione o nell{B4}Angolo Diretto. In\\ltal caso, per favore avvicinati ai\n\ntuoi amici. Se l{B4}Adattatore\nWireless non è collegato, puoi\\lcomunque connetterti usando un cavo\n\nGame Link GBA. Se è così, devi\nandare all{B4}Angolo Diretto. Spero\\lche ti diverta con il Sistema di\n\nComunicazione Wireless."
+      "translated": "Ti spiego come funziona il Club\nWireless Pokémon. Al piano\\lsuperiore ci sono due stanze. A\n\nsinistra trovi la Sala Unione. Qui\npuoi connetterti con gli Allenatori\\lvicini entrati nella Sala Unione\n\ntramite Adattatore Wireless.\nInsieme potrete chattare, lottare e\\lfare scambi. A destra c{B4}è l{B4}Angolo\n\nDiretto. In questa stanza puoi\nlottare con i tuoi amici, ma gli\\lscambi non sono più disponibili.\n\nUsa Unbound Cloud se desideri\nscambiare Pokémon. Se a volte non\\lvedi i tuoi amici nella Sala Unione\n\no nell{B4}Angolo Diretto, prova ad\navvicinarti a loro. Senza\\lAdattatore Wireless, puoi comunque\n\ncollegarti tramite cavo Game Link\nGBA. In tal caso, dovrai recarti\\lall{B4}Angolo Diretto. Buon\n\ndivertimento con il Sistema di\nComunicazione Wireless!"
     },
     {
       "id": "scr_1F4F105",
@@ -306850,7 +307603,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Ogni membro dell{B4}Elite 4 ama\nimpostare certe condizioni sul\\lcampo prima della battaglia. Prima,\n\nc{B4}è [green]Talpino[blue]. A lui piace creare una\nviolenta Tempesta di Sabbia, una\\lspecie di Tempesta di Sabbia che\n\ninfligge più danni di una normale\nTempesta di Sabbia. Questo tipo di\\lTempesta di Sabbia aumenta anche la\n\nDif. Sp. dei Pokémon di tipo Terra\ne non scompare se provi a\\lrimuoverla. Poi, c{B4}è [green]Elias[blue]. Quando\n\nlo combatti, tutti i Pokémon di\ntipo Spettro subiranno la metà dei\\ldanni e saranno immuni alle insidie\n\nd{B4}ingresso quando sono alla massima\nsalute. Salvaguardia e Sostituto\\lfalliranno a meno che non vengano\n\nusati da un tipo Spettro. Terza,\nviene [green]Arabella[blue]. La sua stanza è\\lpiena di un Campo Nebbioso. E non\n\nsolo, ma qualsiasi tipo Folletto\nmandato in campo avrà la sua\\lstatistica difensiva più bassa\n\npotenziata. Infine, viene [green]Penny[blue].\nC{B4}è un arcobaleno nella sua stanza\\lche aumenta la probabilità degli\n\neffetti secondari delle mosse usate\ndai tipi Drago. Assicurati di\\lessere preparato per queste\n\ncondizioni prima di combatterli!"
+      "translated": "Ciascun membro dei Superquattro\nattiva condizioni speciali sul\\lcampo prima della lotta.\n\nIl primo è [green]Talpino[blue].\n\nScatena una feroce Terrempesta,\nmolto più dannosa di quella comune.\n\nInoltre aumenta la Dif. Sp. dei\ntipi Terra e non svanirà neanche\\lse cerchi di rimuoverla.\n\nPoi c{B4}è [green]Elias[blue].\n\nCon PS al massimo, i tipi Spettro\nsubiscono metà danno e ignorano\\lle trappole all{B4}ingresso.\n\nIn più, Salvaguardia e Sostituto\nfalliranno se non usate da Spettri.\n\nLa terza è [green]Arabella[blue].\n\nLa sua stanza è pervasa da un\nCampo Nebbioso.\n\nNon solo: a ogni Folletto in campo\nsale la statistica difensiva peggiore.\n\nInfine c{B4}è [green]Penny[blue].\n\nUn arcobaleno nella sua sala alza\nla frequenza degli effetti secondari\\ldelle mosse dei Pokémon Drago.\n\nPreparati bene a queste condizioni\nprima di sfidarli!"
     },
     {
       "id": "scr_1F4F57B",
@@ -307276,7 +308029,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Ehilà. Sono Elias. O meglio, sono\nil cadavere un tempo noto come\\lElias. Immagino che essere morto on\n\nmi esoneri dai miei doveri di\nmembro dei Superquattro, eh?\\lEconomia schifosa\\. Eh già. Ho\n\nservito come membro per anni quando\nero vivo. Poi quei cretini hanno\\ldissotterrato il mio corpo dopo che\n\nho crepato, e hanno infilato un\nPokémon Spettro insieme al mio\\lspirito di nuovo dentro. Oh, non\n\nfraintendermi. Ho ancora le mie\nfacoltà mentali, e i miei Pokémon\\lnon sono diventati meno forti.\n\nAnzi, penso che siano diventati\nsolo più forti, semmai\\. Sospiro,\\lsuppongo che dovremmo combattere\n\nprima che questa stupida prigione\ndi carne vada in pezzi."
+      "translated": "Salve. Sono Elias. O meglio, il\ncadavere un tempo noto come Elias.\\lA quanto pare essere morto non mi\n\nesonera dai doveri dei\nSuperquattro, eh? Maledetta\\leconomia\\. Già. Ne sono stato membro\n\nper anni da vivo. Poi quei tipi\nhanno riesumato il mio corpo dopo\\lche ho tirato le cuoia, infilandoci\n\ndentro un Pokémon Spettro assieme\nal mio spirito. Oh, non\\lfraintendermi. Sono ancora lucido e\n\ni miei Pokémon non hanno perso\nforza. Anzi, semmai sono diventati\\lancora più forti\\. Uff, lottiamo\n\nprima che questa stupida prigione\ndi carne cada a pezzi."
     },
     {
       "id": "scr_1F505EC",
@@ -307789,7 +308542,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Aspetta un momento, [player]! Sei\nsorpreso di vedermi qui? Beh, mi è\\lsembrato di sentire un verso\n\nfamiliare che mi chiamava\\. È stato\nallora che ho incontrato Zapdos.\\lNo, non quello di Monte Thundercap\\.\\CC0818\n\nquello che Aklove ha usato per lo\nscioglimento del vincolo alle\\lRovine del Vuoto. Non so ancora\n\nperché sia venuto da me, perché\nabbia scelto me come suo Allenatore\\.\\lMa ho capito che era un segno:\n\ndovevo trovarti e lottare di nuovo\ncontro di te! A dire il vero,\\lsconfiggerti è l{B4}obiettivo di\n\n[rival], prima di tutto\\. Ma sono\nsuo padre: non posso stare con le\\lmani in mano e lasciare che le mie\n\nabilità ristagnino, no? Quindi, per\nquanto possa sembrare un{B4}impresa\\ldisperata, vorrei provare a\n\nsconfiggerti!"
+      "translated": "Aspetta un momento, [player]!\nSorpreso di vedermi qui? Mi è parso\\ldi udire un richiamo familiare\\. È\n\nstato allora che ho incontrato\nZapdos. No, non quello del Monte\\lThundercap\\.\\CC0818 bensì quello usato da\n\nAklove per spezzare il sigillo alle\nRovine del Vuoto. Non so perché sia\\lvenuto da me o perché mi abbia\n\nscelto come Allenatore\\. Ma sapevo\nfosse un segno: dovevo cercarti e\\lsfidarti di nuovo! A dire il vero,\n\nbatterti è anzitutto l{B4}obiettivo di\n[rival]\\. Ma sono suo padre: non\\lposso certo restare a guardare e\n\narrugginire! Così, per quanto arduo\nsia, voglio provare a sconfiggerti!"
     },
     {
       "id": "scr_1F51D12",
@@ -312403,7 +313156,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "Il Dynamax è un fenomeno unico che\npuò essere usato solo in aree\\lspeciali, come questa. Se hai\n\nimparato a padroneggiare il potere\ndella Megaevoluzione, potrai anche\\ldynamaxizzare i tuoi Pokémon. Quasi\n\ntutti i Pokémon possono\ndynamaxizzare, ma se un Pokémon\\ltiene un Megalite o un Cristallo Z,\n\non potrà farlo. Per dynamaxizzare\nun Pokémon, premi \\btn04 quando vedi\\lcomparire il simbolo rosso di\n\nDynamax. Se scegli di dynamaxizzare\nil tuo Pokémon, l{B4}effetto durerà\\lper tre turni. Durante questo\n\nperiodo, ogni mossa del tuo Pokémon\nsi potenzierà in varianti speciali\\lnote come [green]Mosse Max[red]. Queste Mosse\n\nMax sono molto più potenti degli\nattacchi normali, quindi assicurati\\ldi usarle al massimo mentre sei in\n\nmodalità Dynamax!"
+      "translated": "Il Dynamax è un fenomeno unico che\npuò essere usato solo in zone\\lspeciali come questa.\n\nSe padroneggi la Megaevoluzione,\npotrai usare il Dynamax anche sui\\ltuoi Pokémon.\n\nQuasi ogni Pokémon può farlo, ma\nnon chi tiene una Megapietra o un\\lCristallo Z.\n\nPer attivare il Dynamax, premi \\\\btn04\nquando compare l{B4}icona rossa.\n\nSe scegli di attivare il Dynamax,\nl{B4}effetto durerà per tre turni.\n\nIn questo lasso di tempo, le mosse\nsi trasformano in speciali varianti\\lnote come [green]Mosse Max[red].\n\nLe Mosse Max sono molto più forti\ndei normali attacchi: sfruttale al\\lmassimo finché sei in Dynamax!"
     },
     {
       "id": "scr_1F57277",
@@ -335716,7 +336469,7 @@
           "token": "[black]"
         }
       ],
-      "translated": "Consigli per Allenatori! Evita di\nusare Ball comuni come le Ultra\\lBall quando cerchi di catturare\n\nPokémon potenti! Se affronti un\nPokémon molto [green]pesante[black], la [green]Peso Ball[black]\\lsarà la Ball ideale. Altrimenti, se\n\nla lotta si è protratta per oltre\n[green]10 turni[black], considera di usare una\\l[green]Timer Ball[black]. Se la lotta è stata\n\nbreve, ma il Pokémon avversario ha\nuna [green]Velocità base[black] superiore a [green]100[black],\\lallora considera di usare una [green]Rapid\n\nBall[black]. Ma se la lotta è stata breve\ne il Pokémon avversario è lento,\\lallora prova a catturare il Pokémon\n\ndi [green]notte[black] usando una [green]Scuro Ball[black].\nQueste quattro Ball saranno\\lfondamentali per catturare\n\nvelocemente i Pokémon potenti!"
+      "translated": "Consigli per Allenatori!\n\nEvita Ball standard come le Ultra\nBall contro Pokémon molto potenti!\n\nSe affronti un Pokémon assai\n[green]pesante[black], la [green]Peso Ball[black] è l{B4}ideale.\n\nSe la lotta si protrae da oltre\n[green]10 turni[black], usa una [green]Timer Ball[black].\n\nSe la lotta è breve, ma il nemico\nha [green]Velocità base[black] oltre [green]100[black], allora\\lopta per una [green]Rapid Ball[black].\n\nSe la lotta è breve e lui è lento,\ncatturalo di [green]notte[black] con una [green]Scuro Ball[black].\n\nQueste quattro Ball saranno\nfondamentali per catturare Pokémon\\lpotenti in tutta fretta!"
     },
     {
       "id": "scr_1F74DC8",
@@ -336706,7 +337459,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Ah! Aspetta un attimo! Credo di\nsapere chi sei! Eh? Tu non sai chi\\lsono io? Beh, non c{B4}è da stupirsi!\n\nSono un ex membro degli Ombre,\nquindi probabilmente non hai mai\\lvisto la mia faccia. E quei tipi\n\ncome se la cavano, comunque? Zefiro\nsi è avvicinato molto a costruire\\ll{B4}arma vivente perfetta? Eh? Non\n\nstava cercando di fare quello -\nvoleva fin dall{B4}inizio resuscitare\\lsuo figlio morto? Ma questa è una\n\ngran sciocchezza! A che serve\ncostruire un mostro invincibile se\\lpoi non lo usi per schiacciare i\n\ntuoi nemici? Quell{B4}idea idiota è\nproprio ciò che mi ha spinto a\\lmollare, sai! Vabbè\\. chissà se la\n\nSocietà Scientifica assume ancora\\. \\.\nAh, ma sto divagando! Non\\lpreoccuparti, un giorno finirò ciò\n\nche Zefiro ha iniziato!"
+      "translated": "Ah! Alt! Credo di sapere chi sei!\nEh? Non sai chi sono io? Beh, poco\\lda stupirsi! Sono un ex membro\n\ndelle Ombre, non avrai mai visto la\nmia faccia. Come se la passano quei\\ltizi, comunque? Zefiro c{B4}è andato\n\nvicino a creare l{B4}arma vivente\nperfetta? Eh? Non voleva fare\\lquello? Voleva solo resuscitare il\n\nfiglio morto? Ma che emerita\nfesseria! A che serve creare un\\lmostro invincibile se non lo usi\n\nper schiacciare i nemici?\nQuell{B4}idea assurda mi ha spinto a\\lmollare, sai! Vabbè\\. Chissà se la\n\nSocietà Scientifica assume ancora\\. \\.\nAh, ma sto vaneggiando! Non temere,\\lun giorno completerò ciò che Zefiro\n\nha iniziato!"
     },
     {
       "id": "scr_1F76A2C",
@@ -339083,7 +339836,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Ce l{B4}ho fatta! Sono riuscito a\ncreare un dispositivo in grado di\\lmandare le persone indietro nel\n\nloro peggior incubo! E posso dirti\\.\nSei stato mandato in un mondo da\\lincubo di nulla, dove hai\n\nincontrato illusioni dei tuoi amici\ne famiglia, vero? E poi hai\\lcombattuto un Pokémon gigante che\n\namava immergere i tuoi Pokémon in\nun sonno profondo, ancora e ancora,\\lvero? \\.È tutto nei tuoi occhi. La\n\nmia macchina può usare quel trauma\nper mandarti di nuovo lì! \\.Perché\\lvorresti tornarci? Beh, si dice che\n\naffrontare il tuo peggior incubo\nuna seconda volta possa mostrarti\\luna via verso i cieli stessi!\n\nTuttavia, avrai bisogno di reliquie\nconnesse ai cieli perché questo\\lfunzioni. Credo che le persone\n\npossano scavare tali reliquie con\nl{B4}ADM\\."
+      "translated": "Ce l{B4}ho fatta!\nHo creato un marchingegno capace di\n\nrimandare chiunque nel suo incubo\npeggiore! E ti leggo dentro\\.\n\nSei finito in un mondo da incubo\nsvuotato di tutto, tra le illusioni\n\ndi amici e parenti, vero? E hai\nlottato contro un Pokémon gigante che\n\nadorava far sprofondare i tuoi Pokémon\nin un sonno perenne, no? \\.Lo vedo\n\ndal tuo sguardo. Il mio macchinario\nuserà quel trauma per rispedirti lì!\n\n\\.Perché tornarci? Si dice che sfidare\nil proprio incubo una seconda volta\n\napra la via verso i cieli stessi!\nTuttavia, ti serviranno reliquie\n\nlegate ai cieli. Credo si possano\nestrarre scavando con l{B4}ADM\\."
     },
     {
       "id": "scr_1F79893",
@@ -339960,7 +340713,7 @@
           "token": "\\CC0818"
         }
       ],
-      "translated": "Salve, Allenatore. Sono la\nSuccessore della Magione, Maxima.\\lSe sei qui, allora dovrei\n\ncongratularmi con te per essere\nriuscito a trovarmi. Presumo, come\\lmolti altri, tu sia venuto qui\n\ncercando il potere della\n[green]Megaevoluzione[red]? \\. Come pensavo.\\lTuttavia, una cosa è \\qovolere\\qc.\n\nUn{B4}altra cosa è \\qomeritare\\qc. Vedi,\nla Megaevoluzione è possibile solo\\lquando sia Allenatore che Pokémon\n\ncondividono un profondo legame.\nTuttavia, ci sono coloro che mi\\lvisitano, concentrati solo su quale\n\npotere percepito possa essere\nottenuto con la Megaevoluzione. E i\\llegami che rendono possibile la\n\nMegaevoluzione\\.\\CC0818 non sono sempre\nlegami di amicizia e amore. Quindi,\\lse devo trasmettere una tale\n\ntecnica a qualcuno, deve essere\nqualcuno con abilità e un amore\\lnaturale per i Pokémon. Questo sarà\n\nil mio test finale."
+      "translated": "Salve, Allenatore.\n\nSono il Successore della Villa,\nMaxima.\n\nSe sei qui, mi congratulo per\nessere giunto fino a me.\n\nPresumo che, come tanti, cerchi il\npotere della [green]Megaevoluzione[red].\n\n\\.\n\nCome pensavo.\n\nTuttavia, una cosa è \\qovolere\\qc.\nTutt{B4}altra cosa è \\qomeritare\\qc.\n\nVedi, la Megaevoluzione richiede un\nprofondo legame reciproco tra\\ll{B4}Allenatore e il suo Pokémon.\n\nEppure c{B4}è chi viene da me\npensando solo alla pura forza che\\lla Megaevoluzione può conferire.\n\nE i legami che la rendono\npossibile\\.\\CC0818 non sono sempre\\llegami di amicizia e di amore.\n\nSe devo tramandare questa tecnica,\ndeve essere a chi possiede talento\\le un amore sincero per i Pokémon.\n\nQuesta sarà la mia prova finale."
     },
     {
       "id": "scr_1F7AD7D",
@@ -343924,7 +344677,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Per qualcuno pazzo come te, il tuo\nallenamento ha chiaramente dato i\\lsuoi frutti! E la follia nata da\n\nuna brama di forza deve essere\nricompensata! Allenatore! Hai\\lqualcuno di quei [green]Strumenti Potenti[blue]?\n\nPotrebbero non sembrarlo, ma le mie\nmani sono sia per creare che per\\lcolpire! Quindi, permettimi di\n\nmigliorare tutti i tuoi Strumenti\nPotenti così che possano potenziare\\li tuoi Pokémon ancora più\n\nvelocemente! Tutto ciò di cui ho\nbisogno sono stelle - [green][buffer1]s[blue] per\\ll{B4}esattezza! Puoi raccoglierne uno\n\n[buffer1] al giorno spaccando la\n[green]Roccia della Sfida[blue]. Questa roccia\\limponente, proprio qui. Porta un\n\nPokémon di tipo [green]Lotta[blue] e spacca\ntutto!"
+      "translated": "Per un folle come te, il duro\nallenamento ha dato ottimi frutti!\n\nE la follia guidata dalla brama\ndi forza merita un premio!\n\nAllenatore!\n\nHai per caso dei [green]Vigorstrumenti[blue]?\n\nNon sembra, ma le mie mani sanno\nsia forgiare che tirare pugni!\n\nMigliorerò tutti i tuoi Vigorstrumenti:\ncosì alleneranno i tuoi Pokémon\\lancor più rapidamente!\n\nMi servono solo stelle: dei\n[green][buffer1][blue], per l{B4}esattezza!\n\nOttieni un [buffer1] al giorno\nspaccando la [green]Roccia della Sfida[blue].\n\nQuesto masso imponente, qui accanto.\n\nPorta un tipo [green]Lotta[blue] e fallo a pezzi!"
     },
     {
       "id": "scr_1F8091F",
@@ -352739,7 +353492,7 @@
           "token": "\\CC0820"
         }
       ],
-      "translated": "Signore e signori, ragazzi e\nragazze\\. Le mie scuse per aver\\linterrotto lo spettacolo, ma io, la\n\nDirettrice del circo Paula\\. \\.ho\ndeciso di entrare nell{B4}arena, per\\ltestare la nostra ultima stella!\n\nOra, giovane sfidante. Vedo che hai\nl{B4}idea giusta, in termini di\\ltattiche e adattamento\\. Ma voglio\n\nsapere\\.\\CC0818 capisci cosa è venuto\ndavvero a vedere il nostro\\lpubblico? Ora, per la nostra\n\nbattaglia, vediamo\\.\\CC0820 che ne dici di\nquesto? Nessuno dei nostri Pokémon\\lpotrà essere sostituito. Entrambe\n\nle parti combattono fino allo\nsfinimento! Bene! In qualità di\\lDirettrice del circo e artista,\n\nmettiamo in scena un altro grande\nspettacolo per il nostro pubblico!"
+      "translated": "Signore e signori, ragazzi e\nragazze\\.\n\nPerdonate l{B4}interruzione, ma io,\nla Direttrice Paula\\.\n\n\\.ho deciso di scendere in pista a\ntestare la nostra nuova stella!\n\nE ora, giovane sfidante.\n\nVedo che hai buone idee quanto\na tattica e adattamento\\.\n\nMa vorrei sapere\\.\\CC0818 sai cosa è\nvenuto a vedere per davvero\\lil nostro pubblico?\n\nPer la nostra lotta, vediamo\\.\\CC0820\nche ne dici di questo?\n\nNessun Pokémon potrà essere\nsostituito.\n\nEntrambe le parti lottano fino\nallo sfinimento!\n\nBene!\n\nDa Direttrice e artista, mettiamo\nin scena un altro grande spettacolo\\lper il nostro pubblico!"
     },
     {
       "id": "scr_1F8B752",
@@ -352974,7 +353727,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "La Miniera Lotta è una struttura\ndedicata alle sfide speciali. Una\\lvolta iniziata, la tua sfida durerà\n\nfino a quando non sconfiggerai\nl{B4}Escavatore della Miniera o\\lsceglierai di riposarti. A ogni\n\nlivello di profondità a cui\nscenderai nella miniera, ti\\lattenderà un Allenatore. Il formato\n\nche scegli determina in quale\ncategoria potrai affrontarlo,\\lmentre la profondità determina\n\naltre impostazioni della lotta,\ncome le Lotte in singolo o in\\ldoppio, il livello, le dimensioni\n\ndella squadra, le Lotte inverse e\nil Dynamax. Per un elenco delle\\lcategorie, consulta la sezione\n\n\\qo[green]Categorie di lotta[blue]\\qc. Per ogni\nAllenatore sconfitto, otterrai\\l[green]Punti Lotta[blue] ([green]PL[blue]). Inoltre, dopo\n\nessere stati sconfitti, alcuni\nAllenatori potrebbero lasciare\\lcadere gli strumenti che stavano\n\nestraendo, così potrai\nraccoglierli. Se vuoi interrompere\\lla sfida, i tuoi progressi verranno\n\nregistrati per permetterti di\ncontinuare quando vorrai. Se in\\lqualsiasi momento te ne vai senza\n\nsalvare, verrai squalificato dalla\nsfida. Tienilo bene a mente!"
+      "translated": "La Miniera Lotta è una struttura\nper sfide speciali.\n\nUna volta iniziata, la sfida dura\nfinché non batti l{B4}Escavatore o\\lscegli di riposarti.\n\nA ogni piano sotterraneo della\nminiera ti attende un Allenatore.\n\nIl formato scelto determina la\ncategoria di lotta, e la profondità\\lfissa le regole: Singolo, Doppio,\\llivello, squadra, Inverse e Dynamax.\n\nPer l{B4}elenco completo consulta la\nsezione \\qo[green]Categorie Lotta[blue]\\qc.\n\nPer ogni Allenatore sconfitto\nriceverai [green]Punti Lotta[blue] ([green]PL[blue]).\n\nInoltre, una volta battuti, certi\navversari lasceranno a terra gli\\lstrumenti estratti.\n\nSe vuoi interrompere la scalata,\ni progressi verranno salvati per\\lquando vorrai proseguire.\n\nSe esci in qualunque momento senza\nsalvare, verrai squalificato.\n\nTienilo bene a mente!"
     },
     {
       "id": "scr_1F8C485",
@@ -354525,7 +355278,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Battle Sands è un{B4}area per Lotte in\nsingolo e Lotte in doppio. Nelle\\lLotte in singolo, devono essere\n\niscritti due Pokémon. Nelle Lotte\nin doppio, devono essere iscritti\\ltre Pokémon. Ecco la particolarità\n\ndi quest{B4}area: non combatti\nrealmente. I Pokémon che iscrivi in\\lquest{B4}area saranno presi da un\n\nvolontario e usati per combattere\nper te. Ti verrà data la scelta se\\lvuoi che i tuoi Pokémon attacchino\n\no cambino, ma la decisione finale\nspetterà all{B4}Allenatore che\\lcontrolla i tuoi Pokémon. Mentre\n\nquesto Allenatore vince lotte,\nverranno accumulati [green]Punti Lotta[blue]\\l([green]PL[blue]). Puoi scegliere di fermare le\n\nlotte in qualsiasi momento, ma\nsappi che una volta fatto, la serie\\ltermina. Che l{B4}Allenatore perda una\n\nlotta o tu decida di ritirarti,\nriceverai i PL accumulati come\\lvincita. Inoltre, se esci in\n\nqualsiasi punto senza salvare,\ntutti i PL accumulati andranno\\lpersi. Tienilo presente. Oh, ho\n\ndimenticato di menzionare che un\nPokémon per ogni lato del campo\\lotterrà un aumento casuale di\n\nstatistiche all{B4}inizio della lotta.\nTienilo a mente quando scegli i\\ltuoi Pokémon."
+      "translated": "La Torre Lotta è una struttura per\nsfide in Singolo, Doppio, Multi e a\\lMetronomo. Una volta iniziata, la\n\nsfida prosegue finché non sconfiggi\nil Mastro Lotta o decidi di\\lriposare. Le Sale Lotta a\n\nMetronomo sono per lotte speciali\nin cui i Pokémon possono usare solo\n\nla mossa Metronomo. Per accedere,\nscegli tre dei tuoi Pokémon.\n\nAffronterai sette Allenatori per\nserie. Prima di ogni lotta, i tuoi\n\nPokémon verranno curati. Se riesci\na sconfiggere tutti e sette gli\n\nAllenatori, guadagnerai [green]Punti Lotta[red]\n([green]PL[red]). Puoi interrompere la sfida in\n\nqualsiasi momento; i progressi\nsaranno salvati per quando vorrai\n\nriprendere. Ricorda: se esci senza\nsalvare, verrai squalificato dalla\n\nsfida. Tieni presente queste regole!"
     },
     {
       "id": "scr_1F8E686",
@@ -355614,7 +356367,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "La Torre Lotta è una struttura per\nsfide in Singolo, Doppio, Multi e a\\lMetronomo. Una volta iniziata, la\n\nsfida prosegue finché non sconfiggi\nil Mastro Lotta o decidi di\\lriposare. Le Sale Lotta Multipla\n\ndella Torre Lotta sono per le Lotte\nin Multipla con un partner. Per\\lpartecipare, unisciti a un altro\n\nAllenatore e lotta con due o tre\nPokémon ciascuno. All{B4}interno della\\ltorre si trova una stanza chiamata\n\nSalone Lotta, dove puoi incontrare\naltri Allenatori. Lì puoi trovare\\lun Allenatore con cui fare squadra\n\nelle Lotte in Multipla. Puoi anche\nunirti a un amico usando un Cavo\\lLink. Una volta formata la squadra,\n\nverrai condotto a una sala lotta.\nNella Sala Lotta Multipla, squadre\\ltag attendono la tua sfida. Se\n\nriesci a sconfiggere ogni squadra,\nguadagnerai [green]Punti Lotta[red] ([green]PL[red]). Se\\ldesideri interrompere la sfida, i\n\ntuoi progressi saranno registrati\nper quando vorrai continuare. Se in\\lqualsiasi momento esci senza\n\nsalvare, verrai squalificato dalla\nsfida. Inoltre, se sei in squadra\\lcon un amico, non puoi interrompere\n\nla sfida. Tienilo presente!"
+      "translated": "La Torre Lotta è una struttura per\nsfide in Singolo, Doppio, Multi e a\\lMetronomo. Una volta iniziata, la\n\nsfida prosegue finché non sconfiggi\nil Mastro Lotta o decidi di\\lriposare. Le Sale Lotta Multipla\n\ndella Torre Lotta sono per le Lotte\nin Multipla con un partner. Per\\lpartecipare, unisciti a un altro\n\nAllenatore e lotta con due o tre\nPokémon ciascuno. Nella torre c{B4}è una\\lstanza chiamata Salone Lotta, dove\n\npuoi incontrare altri Allenatori.\\lLì puoi trovare un partner con cui\n\nfare squadra nelle Lotte in Multipla.\\lPuoi anche unirti a un amico usando\n\nun Cavo Link. Formata la squadra,\\lverrai condotto a una sala lotta.\n\nNella Sala Lotta Multipla, squadre\\ltag attendono la tua sfida. Se\n\nsconfiggi ogni squadra, guadagnerai\n[green]Punti Lotta[red] ([green]PL[red]). Se desideri\n\ninterrompere la sfida, i tuoi\\lprogressi saranno registrati per\n\nquando vorrai continuare. Se esci in\\lun punto qualsiasi senza salvare,\n\nsarai squalificato dalla sfida.\\lInoltre, se sei in squadra con un\n\namico, non puoi interrompere la\\lsfida. Tienilo presente!"
     },
     {
       "id": "scr_1F9000D",
@@ -355645,7 +356398,7 @@
           "token": "[red]"
         }
       ],
-      "translated": "La Torre Lotta è una struttura per\nsfide di Lotta Singola, Lotta\\lDoppia, Lotta Multipla e Lotta\n\nMetronomo. Nelle Stanze della Lotta\nMetronomo, ti verrà assegnata una\\lsquadra di 6 Pokémon casuali la cui\n\nunica mossa conosciuta è Metronomo.\nTutte le lotte nelle Stanze della\\lLotta Metronomo sono combattute\n\ncome Lotte Doppie, e non verrà\ntenuta traccia della tua serie.\\lPerciò, la tua sfida dura finché on\n\nscegli di ritirarti. Per ogni\nAllenatore che sconfiggi,\\lguadagnerai [green]10 Punti Lotta[red] ([green]PL[red]).\n\nAllenatori Speciali e l{B4}Asso della\nZona Lotta non appariranno mai per\\llottare. Se a un certo punto esci\n\nsenza salvare, verrai squalificato\ndalla tua sfida. Ti preghiamo di\\ltenerne conto!"
+      "translated": "La Torre Lotta offre sfide in\nSingolo, in Doppio, Multiple e con\\lla mossa Metronomo.\n\nNelle sale Metronomo riceverai una\nsquadra di 6 Pokémon casuali con\\lMetronomo come unica mossa.\n\nTutte le lotte in queste sale sono\nLotte Doppie, e non viene tenuto\\lconto della tua serie di vittorie.\n\nLa sfida dura perciò finché non\ndecidi di ritirarti.\n\nPer ogni Allenatore sconfitto\notterrai [green]10 Punti Lotta[red] ([green]PL[red]).\n\nGli Allenatori speciali e l{B4}Asso\ndella Zona Lotta non vi appariranno.\n\nSe esci dal gioco senza salvare,\nverrai squalificato dalla sfida.\\lTi invitiamo a tenerlo a mente!"
     },
     {
       "id": "scr_1F90295",
@@ -355672,7 +356425,7 @@
       "byte_length": 693,
       "is_pointer_based": true,
       "translation_source": "In Single Battles, you may battle with 3 or 6 Pokémon on your team. In Double Battles, you may battle with 4 or 6 Pokémon on your team. In Multi Battles, you may battle with 2 or 3 Pokémon on your team. If you choose to battle with 6 Pokémon and are not participating in a Random Battle, you will be shown the opposing team before battles and will be allowed to choose a lead. If you choose to battle with 4 or less Pokémon on your team and are participating in a Random Battle, you will be allowed to choose which random Pokémon you would like to battle with. Each battle for 10 battles this random Pokémon selection will be comprised of your previous team and your opponent’s previous team.",
-      "translated": "Nelle Lotte Singole, puoi\ncombattere con 3 o 6 Pokémon nella\\ltua squadra. Nelle Lotte Doppie,\n\npuoi combattere con 4 o 6 Pokémon\nnella tua squadra. Nelle Lotte\\lMultiple, puoi combattere con 2 o 3\n\nPokémon nella tua squadra. Se\nscegli di combattere con 6 Pokémon\\le non stai partecipando a una Lotta\n\nCasuale, ti verrà mostrata la\nsquadra avversaria prima delle\\llotte e ti sarà permesso di\n\nscegliere il primo Pokémon. Se\nscegli di combattere con 4 o meno\\lPokémon nella tua squadra e stai\n\npartecipando a una Lotta Casuale,\nti sarà permesso di scegliere con\\lquale Pokémon casuale desideri\n\ncombattere. Per ogni lotta, per 10\nlotte, questa selezione di Pokémon\\lcasuali sarà composta dalla tua\n\nsquadra precedente e dalla squadra\nprecedente del tuo avversario."
+      "translated": "Nelle Lotte Singole, puoi lottare\ncon 3 o 6 Pokémon in squadra. Nelle\\lLotte Doppie, puoi lottare con 4 o\n\n6 Pokémon in squadra. Nelle Lotte\nMultiple, puoi lottare con 2 o 3\\lPokémon in squadra. Se scegli di\n\nlottare con 6 Pokémon e non\npartecipi a una Lotta Casuale, ti\\lverrà mostrata la squadra\n\navversaria prima della lotta e\npotrai scegliere chi mandare in\\lcampo per primo. Se scegli di\n\nlottare con 4 o meno Pokémon e\npartecipi a una Lotta Casuale,\\lpotrai scegliere con quali Pokémon\n\ncasuali lottare. Per 10 sfide\nconsecutive, la selezione casuale\\lcomprenderà i Pokémon della tua\n\nsquadra precedente e di quella\ndell{B4}avversario."
     },
     {
       "id": "scr_1F905EF",
@@ -356057,7 +356810,7 @@
           "token": "[green]"
         }
       ],
-      "translated": "Smogon Scalemons è un formato dove\nle statistiche di ogni Pokémon,\\leccetto i PS, vengono modificate\n\nper dare loro una somma di\nstatistiche di base il più vicino\\lpossibile a 600. Scalemons utilizza\n\nle clausole standard degli Smogon\nUbers, con l{B4}eccezione di\\lpermettere Pokémon banditi. I\n\nPokémon che detengono i seguenti\noggetti non possono partecipare:\\lSquama Abisso, Dente Abisso, Eevium\n\nZ, Evolcondensa, Pallaluce,\nClavagrossa, Gengarite, Mawilite e\\lMedichamite. I Pokémon con le\n\nseguenti abilità non possono\npartecipare: Trappola Arena,\\lMacroforza e Pedinombra. Per\n\nmaggiori informazioni, vedere:\n[green]smogon.com/forums/threads/\\lscalemons.3607934/"
+      "translated": "Nello Smogon Scalemons, le\nstatistiche di ogni Pokémon, tranne\\li PS, sono scalate per avere un\n\ntotale base vicino a 600. Il\nformato usa le clausole Smogon\\lUbers, ma ammette i Pokémon\n\nbanditi. I Pokémon con questi\nstrumenti non possono partecipare:\\lSquamabissi, Dente Abissi, Eevium\n\nZ, Evolcondensa, Elettropalla,\nOssospesso, Gengarite, Mawilite e\\lMedichamite. Pokémon con le\n\nseguenti abilità non possono\npartecipare: Trappola Arena,\\lMacroforza e Pedinombra. Per\n\nmaggiori informazioni, vedere:\n[green]smogon.com/forums/threads/\\lscalemons.3607934/"
     },
     {
       "id": "scr_1F916D8",
@@ -356077,7 +356830,7 @@
           "token": "[green]"
         }
       ],
-      "translated": "Smogon Averagemons è un formato che\nmira a livellare il campo di gioco.\\lOgni Pokémon riceve esattamente la\n\nstessa distribuzione di statistiche\nbase: 100 in ogni singola\\lstatistica. Averagemons utilizza le\n\nclausole standard di Smogon OU OU,\nma non le sue liste di ban. I\\lPokémon che tengono i seguenti\n\noggetti non possono partecipare:\nOsso Spesso, Dente d{B4}Abisso, Ball\\lLuce, Eviolite, Mawilite,\n\nGengarite, Medichamite ed Eevium Z.\nI Pokémon con le seguenti abilità\\lnon possono partecipare:\n\nMacroforza, Forza Pura, Pedinombra\ne Trappola Arena. I Pokémon con le\\lseguenti mosse non possono\n\npartecipare: Chiacchierio e\nPassamano. Per maggiori\\linformazioni, consultare:\n\n[green]https://www.smogon.com/forums/threads/\naveragemons.3590605/"
+      "translated": "Smogon Averagemons è un formato che\nmira a livellare il campo di lotta.\\lOgni Pokémon riceve la medesima\n\ndistribuzione base: 100 in ogni\nstatistica. Averagemons usa le\\lclausole Smogon OU, ma non le sue\n\nliste dei ban. I Pokémon con questi\nstrumenti sono esclusi: Ossospesso,\\lDente Abissi, Elettropalla,\n\nEvolcondensa, Mawilite, Gengarite,\nMedichamite ed Eevium Z. I Pokémon\\lcon queste abilità sono esclusi:\n\nMacroforza, Forzapura, Pedinombra e\nTrappola Arena. I Pokémon con\\lqueste mosse sono esclusi:\n\nSchiamazzo e Staffetta. Per\nmaggiori informazioni, vedere:\\l[green]https://www.smogon.com/forums/threads/\n\naveragemons.3590605/"
     },
     {
       "id": "scr_1F91970",
@@ -363099,7 +363852,8 @@
       "address": "0x1F97855",
       "pointer_sources": [
         "0x1E868F0",
-        "0x1FB2294"
+        "0x1FB2294",
+        "0x1E90527"
       ],
       "original": "\"Rock\"",
       "byte_length": 5,
@@ -363141,7 +363895,8 @@
       "address": "0x1F97864",
       "pointer_sources": [
         "0x1E86900",
-        "0x1FB22A0"
+        "0x1FB22A0",
+        "0x1E90546"
       ],
       "original": "\"Steel\"",
       "byte_length": 6,
@@ -363217,7 +363972,7 @@
       "byte_length": 8,
       "is_pointer_based": true,
       "translation_source": "Psychic",
-      "translated": "Psichico"
+      "translated": "Psico"
     },
     {
       "id": "scr_1F9788C",
@@ -372647,7 +373402,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Prima di ogni lotta, la squadra del\ntuo avversario ti verrà rivelata.\\lInoltre, in ogni lotta, un certo\n\ntipo di mossa potrebbe non essere\nutilizzabile. Anche questo verrà\\lrivelato. Per quanto riguarda le\n\nmosse che cambiano tipo, viene\nconsiderato il tipo in cui si\\ltrasformano. È a quel punto che\n\ndevi scegliere un singolo Pokémon\nper combattere contro uno dei loro.\\lPer ogni Allenatore che sconfiggi,\n\notterrai [green]Punti Lotta[blue] ([green]PL[blue]).\nTuttavia, tieni presente che poiché\\lquesta struttura lotta non fa parte\n\ndella Frontiera Lotta, non otterrai\nalcun timbro per la tua Carta della\\lFrontiera. Se vuoi interrompere la\n\ntua sfida, i tuoi progressi\nverranno registrati in modo che tu\\lpossa continuare quando desideri.\n\nSe in qualsiasi momento esci senza\nsalvare, verrai squalificato dalla\\ltua sfida. Ti prego di tenerlo a\n\nmente!"
+      "translated": "Prima di ogni lotta, ti verrà\nmostrata la squadra avversaria.\\lInoltre, per ogni scontro sarà\n\nvietato un certo tipo di mossa,\nanch{B4}esso rivelato. Per le mosse\\lche cambiano tipo, viene\n\nconsiderato il tipo finale. Dovrai\nquindi scegliere un singolo Pokémon\\lda schierare contro uno dei loro.\n\nPer ogni vittoria otterrai [green]Punti\nLotta[blue] ([green]PL[blue]). Tuttavia, poiché la\\lstruttura non fa parte del Parco\n\nLotta, non riceverai timbri per la\nCarta della Frontiera. Se vuoi\\linterrompere la sfida, i progressi\n\nsaranno salvati per quando vorrai\ncontinuare. Uscire senza salvare\\lcomporterà la squalifica. Tienilo\n\nbene a mente!"
     },
     {
       "id": "scr_1F9B984",
@@ -387209,7 +387964,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Che cosa hai detto? Un bambino a\nBorgo Polder è caduto in coma per\\laver guardato troppa televisione?\n\nAllora deve essere peggio di quanto\ntemessi\\. Ho ricevuto segnalazioni da\\ltutta la regione di bambini\n\nincapaci di distogliere\nl{B4}attenzione da quel terribile\\lapparecchio. Per aiutare questo\n\nbambino, devo avere dati su tutti i\nbambini di Borrius coinvolti in\\lquesta frenesia \\qotelevisione\\qc.\n\nAllenatore! Sta a te procurarmi\nquesti dati. Secondo i miei\\lcalcoli, ci sono [buffer1] bambini\n\nin totale. Le mie scansioni\nindicano che ce ne sono due in zone\\linnevate, uno in una città sulla\n\ncosta, e un altro in una città cupa\ne triste. Ne hai trovato uno,\\lquindi ne rimangono solo [green][buffer2][blue].\n\nQuando ne incontri un altro,\nscannerizzalo con il tuo Super Cube\\le inviami i dati."
+      "translated": "Cosa dici? Un bambino a Borgo\nPolder è caduto in coma per aver\\lguardato troppa televisione?\n\nAllora è peggio di quanto\ntemessi\\.\n\nRicevo segnalazioni da tutta la\nregione: molti bambini non possono\\lstaccarsi da quell{B4}orrendo congegno.\n\nPer aiutarlo, mi occorrono dati su\ntutti i bambini di Borrius presi\\lda questa mania per la \\qotelevisione\\qc.\n\nAllenatore!\nTocca a te raccogliere questi dati.\n\nIn base ai miei calcoli, sono\n[buffer1] bambini in totale.\n\nLe scansioni ne indicano due fra\nle nevi, uno sulla costa e uno\\lin una città triste e cupa.\n\nNe hai trovato uno, perciò ne\nrestano ancora [green][buffer2][blue].\n\nQuando ne trovi un altro, usa il\nSuper Cube per trasmettermi i dati."
     },
     {
       "id": "scr_1FB07FE",
