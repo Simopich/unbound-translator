@@ -40,7 +40,7 @@ EXPECTED_ITALIAN = {
     "Water": "Acqua",
     "Grass": "Erba",
     "Electric": "Elettro",
-    "Psychic": "Psichico",
+    "Psychic": "Psico",
     "Ice": "Ghiaccio",
     "Dragon": "Drago",
     "Dark": "Buio",
@@ -80,6 +80,13 @@ def test_starter_selection_type_labels_are_translated_italian():
         entry = entries[entry_id]
         assert entry["translation_source"] == source
         assert entry["translated"] == EXPECTED_ITALIAN[source]
+
+
+def test_italian_psychic_move_keeps_distinct_name():
+    entries = _entries_by_id(READY_ITALIAN)
+    psychic_move = entries["tbl_move_names_00094_A40ED6"]
+    assert psychic_move["translation_source"] == "Psychic"
+    assert psychic_move["translated"] == "Psichico"
 
 
 def test_starter_selection_type_labels_are_translated_indonesian():
