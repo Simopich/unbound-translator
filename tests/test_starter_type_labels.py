@@ -26,6 +26,11 @@ STARTER_TYPE_SCRIPT_IDS = {
     "scr_1F9789C": "Fairy",
 }
 
+STARTER_CONFIRMATION_POINTER_SOURCES = {
+    "scr_1F97855": ["0x1E868F0", "0x1FB2294", "0x1E90527"],
+    "scr_1F97864": ["0x1E86900", "0x1FB22A0", "0x1E90546"],
+}
+
 EXPECTED_ITALIAN = {
     "Normal": "Normale",
     "Fighting": "Lotta",
@@ -87,6 +92,13 @@ def test_italian_psychic_move_keeps_distinct_name():
     psychic_move = entries["tbl_move_names_00094_A40ED6"]
     assert psychic_move["translation_source"] == "Psychic"
     assert psychic_move["translated"] == "Psichico"
+
+
+def test_starter_confirmation_buffers_use_translated_type_pointers():
+    for ready_path in (READY_ITALIAN, READY_INDONESIAN):
+        entries = _entries_by_id(ready_path)
+        for entry_id, pointer_sources in STARTER_CONFIRMATION_POINTER_SOURCES.items():
+            assert entries[entry_id]["pointer_sources"] == pointer_sources
 
 
 def test_starter_selection_type_labels_are_translated_indonesian():

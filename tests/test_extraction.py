@@ -43,6 +43,16 @@ class AlignedPointerTextTests(unittest.TestCase):
         self.assertEqual(EXTRACTOR.MANUAL_TEXT_POINTER_SOURCES[0x75CE9A], [0x75CD61])
         self.assertEqual(EXTRACTOR.MANUAL_TEXT_POINTER_SOURCES[0x75CEA6], [0x75CDAF])
 
+    def test_starter_confirmation_buffers_have_unaligned_type_owners(self):
+        self.assertEqual(
+            EXTRACTOR.MANUAL_TEXT_POINTER_SOURCES[0x1F97855],
+            [0x1E90527],
+        )
+        self.assertEqual(
+            EXTRACTOR.MANUAL_TEXT_POINTER_SOURCES[0x1F97864],
+            [0x1E90546],
+        )
+
     def test_gendered_dialogue_fragments_have_explicit_owners(self):
         table_name, addresses = EXTRACTOR.MANUAL_TEXT_TABLES[
             "gendered_dialogue_fragments"
