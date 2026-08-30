@@ -18,12 +18,12 @@ TOKEN_RE = re.compile(
     r"|\\\?[0-9A-Fa-f]{2}"
     r"|\\9[0-9A-Fa-f]{2}"
     r"|\\F[0-9A-Fa-f]"
-    r"|\\(?:pk|mn|Po|Ke|Bl|Lo|Ck|Lv|qo|qc|sm|sf|au|ad|al|ar|pn|n|l|p|e|d|\.|<|>|\+|r)"
+    r"|\\(?:pk(?![a-zA-Z])|Po(?![a-zA-Z])|mn|Ke|Bl|Lo|Ck|Lv|qo|qc|sm|sf|au|ad|al|ar|n|l|p|e|d|\.|<|>|\+|r)"
     r"|\[[A-Za-z0-9_]+\]"
     r"|\{[0-9A-Fa-f]{2}\}"
 )
 
-LAYOUT_TOKENS = {"\\n", "\\l", "\\p", "\\pn"}
+LAYOUT_TOKENS = {"\\n", "\\l", "\\p"}
 
 
 def strip_hma_quotes(text: str | None) -> str:

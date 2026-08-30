@@ -58,7 +58,7 @@ def test_normalize_and_repair_common_control_damage():
 def test_paragraph_before_indonesian_k_is_not_pokemon_glyph():
     fixed = controlfix.normalize_actual_layout_breaks("Pertama.\n\nkamu lanjut.")
 
-    assert fixed == "Pertama.\\pnkamu lanjut."
+    assert fixed == "Pertama.\\pkamu lanjut."
     assert controlfix.Charmap(target_lang="id").encode(fixed) == controlfix.Charmap(
         target_lang="id"
     ).encode("Pertama.\n\nkamu lanjut.")
@@ -69,10 +69,32 @@ def test_paragraph_before_italian_n_preserves_first_letter():
         "ottenere il pacco\n\nnecessario per la missione"
     )
 
-    assert fixed == "ottenere il pacco\\pnnecessario per la missione"
+    assert fixed == "ottenere il pacco\\pnecessario per la missione"
     assert controlfix.Charmap(target_lang="it").encode(fixed) == controlfix.Charmap(
         target_lang="it"
     ).encode("ottenere il pacco\n\nnecessario per la missione")
+
+
+@pytest.mark.parametrize(
+    "text,expected_clean",
+    [
+        ("\\pnon possiamo farlo", "non possiamo farlo"),
+        ("\\pnord della citta", "nord della citta"),
+        ("\\pnecessario per vincere", "necessario per vincere"),
+        ("\\pNon possiamo farlo", "Non possiamo farlo"),
+        ("\\pnebbia fitta", "nebbia fitta"),
+        ("\\pnuovo gioco", "nuovo gioco"),
+        ("\\pnome del giocatore", "nome del giocatore"),
+        ("\\pnotte fonda", "notte fonda"),
+        ("\\pniente da fare", "niente da fare"),
+        ("\\pnessuno puo passare", "nessuno puo passare"),
+        ("\\pkamu lanjut", "kamu lanjut"),
+    ],
+)
+def test_remove_layout_tokens_preserves_words_starting_with_n_and_k(text, expected_clean):
+    clean, layout = controlfix.remove_layout_tokens(text)
+    assert clean == expected_clean
+    assert layout == ["\\p"]
 
 
 def test_remove_excess_dynamic_name_keeps_possessive_position():

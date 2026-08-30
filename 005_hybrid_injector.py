@@ -121,11 +121,10 @@ def normalize_plain_script_layout(text):
             pieces.append("\\n")
             index += 1
             continue
-        if text.startswith("\\pn", index):
-            pieces.append("\\n\\n")
-            index += 3
-            continue
-        if text.startswith("\\p", index) and not text.startswith("\\pk", index):
+        if text.startswith("\\p", index) and not (
+            text.startswith("\\pk", index)
+            and (index + 3 >= len(text) or not text[index + 3].isalpha() or text[index + 3] == "\\")
+        ):
             pieces.append("\\n\\n")
             index += 2
             continue

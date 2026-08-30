@@ -215,7 +215,6 @@ COLOR_VALUES = {name: value for value, name in COLOR_NAMES.items()}
 COLOR_VALUES["gray"] = 0x03
 
 BACKSLASH_CODES: list[tuple[str, bytes]] = [
-    ("\\pn", bytes([PARAGRAPH])),
     ("\\pk", bytes([0x53])),
     ("\\mn", bytes([0x54])),
     ("\\Po", bytes([0x55])),
@@ -467,6 +466,23 @@ class Charmap:
                 matched = False
                 for token, encoded in BACKSLASH_CODES:
                     if text.startswith(token, index):
+                        if (
+                            token == "\\pk"
+                            and index + len(token) < len(text)
+                            and text[index + len(token)].isalpha()
+                            and text[index + len(token)] != "\\"
+                        ):
+                            result.append(PARAGRAPH)
+                            index += 2
+                            matched = True
+                            break
+                        if (
+                            token == "\\Po"
+                            and index + len(token) < len(text)
+                            and text[index + len(token)].isalpha()
+                            and text[index + len(token)] != "\\"
+                        ):
+                            continue
                         result.extend(encoded)
                         index += len(token)
                         matched = True
@@ -547,7 +563,7 @@ CONTROL_TOKEN_RE = re.compile(
     r"|\\\?[0-9A-Fa-f]{2}"
     r"|\\9[0-9A-Fa-f]{2}"
     r"|\\F[0-9A-Fa-f]"
-    r"|\\(?:pk|mn|Po|Ke|Bl|Lo|Ck|Lv|qo|qc|sm|sf|au|ad|al|ar|pn|n|l|p|e|d|\.|<|>|\+|r)"
+    r"|\\(?:pk(?![a-zA-Z])|Po(?![a-zA-Z])|mn|Ke|Bl|Lo|Ck|Lv|qo|qc|sm|sf|au|ad|al|ar|n|l|p|e|d|\.|<|>|\+|r)"
     r"|\[[A-Za-z0-9_]+\]"
 )
 

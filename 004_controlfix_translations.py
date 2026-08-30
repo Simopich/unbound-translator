@@ -19,11 +19,11 @@ TOKEN_RE = re.compile(
     r"|\\\?[0-9A-Fa-f]{2}"
     r"|\\9[0-9A-Fa-f]{2}"
     r"|\\F[0-9A-Fa-f]"
-    r"|\\(?:pk|mn|Po|Ke|Bl|Lo|Ck|Lv|qo|qc|sm|sf|au|ad|al|ar|pn|n|l|p|e|d|\.|<|>|\+|r)"
+    r"|\\(?:pk(?![a-zA-Z])|Po(?![a-zA-Z])|mn|Ke|Bl|Lo|Ck|Lv|qo|qc|sm|sf|au|ad|al|ar|n|l|p|e|d|\.|<|>|\+|r)"
     r"|\[[A-Za-z0-9_]+\]"
 )
 
-LAYOUT_TOKENS = {"\\n", "\\p", "\\l", "\\pn"}
+LAYOUT_TOKENS = {"\\n", "\\p", "\\l"}
 QUOTE_TOKENS = {"\\qo", "\\qc"}
 BATTLE_PROMPT_NAME_SECOND_LINE_IDS = {
     "tbl_battle_messages_00412_3FE6D5",
@@ -403,9 +403,7 @@ def normalize_actual_layout_breaks(text):
 
     def paragraph_repl(match):
         count = len(match.group(0))
-        # The explicit alias prevents paragraph + "k..." from becoming the
-        # longer Pokemon glyph token ``\\pk`` during PCS encoding.
-        return "\\pn" * (count // 2) + ("\\n" if count % 2 else "")
+        return "\\p" * (count // 2) + ("\\n" if count % 2 else "")
 
     text = re.sub(r"\n{2,}", paragraph_repl, text)
     return text.replace("\n", "\\n")
