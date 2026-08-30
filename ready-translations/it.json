@@ -217209,7 +217209,7 @@
       "byte_length": 49,
       "is_pointer_based": true,
       "translation_source": "A tailwind blew from behind Flying-type Pokémon!",
-      "translated": "Un vento favorevole ha soffiato alle spalle dei Pokémon di tipo Volante!"
+      "translated": "Ventoincoda spira alle spalle\ndei tipi Volante!"
     },
     {
       "id": "scr_A4BC03",
@@ -217230,7 +217230,7 @@
           "token": "\\\\13"
         }
       ],
-      "translated": "\\\\13 sta levitando grazie all{B4}elettromagnetismo!"
+      "translated": "\\\\13 levita grazie\nall{B4}elettromagnetismo!"
     },
     {
       "id": "scr_A4BC7A",
@@ -217243,7 +217243,7 @@
       "byte_length": 86,
       "is_pointer_based": true,
       "translation_source": "Heavy Pokémon have an advantage here! The heavier the Pokémon, the faster it will be!",
-      "translated": "I Pokémon pesanti sono avvantaggiati qui! Più un Pokémon è pesante, più sarà veloce!"
+      "translated": "I Pokémon pesanti hanno un vantaggio\nqui!\n\nPiù un Pokémon è pesante, più sarà\nveloce!"
     },
     {
       "id": "scr_A4BCD0",
@@ -217301,7 +217301,7 @@
       "byte_length": 100,
       "is_pointer_based": true,
       "translation_source": "A shadowy veil is covering the field! Ghost-type Pokémon will take half damage when at full health!",
-      "translated": "Un velo oscuro avvolge il campo! I Pokémon di tipo Spettro subiranno metà dei danni quando sono al massimo dei PS!"
+      "translated": "Un velo oscuro avvolge il campo!\n\nI tipi Spettro subiscono metà danno\nquando hanno i PS al massimo!"
     },
     {
       "id": "scr_A4BD98",
@@ -217314,7 +217314,7 @@
       "byte_length": 68,
       "is_pointer_based": true,
       "translation_source": "But only Ghost-types can create a Safeguard under the shadowy veil!",
-      "translated": "Ma solo i Pokémon di tipo Spettro possono creare una Salvaguardia sotto il velo ombroso!"
+      "translated": "Ma solo i tipi Spettro usano\nSalvaguardia sotto il velo oscuro!"
     },
     {
       "id": "scr_A4BDDC",
@@ -217327,7 +217327,7 @@
       "byte_length": 69,
       "is_pointer_based": true,
       "translation_source": "But only Ghost-types can create a Substitute under the shadowy veil!",
-      "translated": "Ma solo i Pokémon di tipo Spettro possono creare un Sostituto sotto il velo ombroso!"
+      "translated": "Ma solo i tipi Spettro creano un\nSostituto sotto il velo oscuro!"
     },
     {
       "id": "scr_A4BE21",
@@ -217340,7 +217340,7 @@
       "byte_length": 36,
       "is_pointer_based": true,
       "translation_source": "Pixies are flying around the field!",
-      "translated": "I folletti stanno svolazzando sul campo!"
+      "translated": "I folletti svolazzano sul campo!"
     },
     {
       "id": "scr_A4BE6E",
@@ -217353,7 +217353,7 @@
       "byte_length": 131,
       "is_pointer_based": true,
       "translation_source": "A rainbow appeared in the sky above the entire battlefield! The chance of secondary effects used by Dragon-types has been doubled!",
-      "translated": "È apparso un arcobaleno nel cielo sopra l{B4}intero campo di battaglia! La probabilità degli effetti secondari usati dai Pokémon di tipo Drago è raddoppiata!"
+      "translated": "È apparso un arcobaleno nel cielo\nsull{B4}intero campo di battaglia!\n\nRaddoppia la probabilità degli\neffetti secondari dei tipi Drago!"
     },
     {
       "id": "scr_A4BF8F",
@@ -217366,7 +217366,7 @@
       "byte_length": 36,
       "is_pointer_based": true,
       "translation_source": "Dynamax Energy gathered around you!",
-      "translated": "L{B4}energia Dynamax si è concentrata attorno a te!"
+      "translated": "L{B4}energia Dynamax ti circonda!"
     },
     {
       "id": "scr_A4C037",
@@ -217379,7 +217379,7 @@
       "byte_length": 50,
       "is_pointer_based": true,
       "translation_source": "But the move was blocked by the power of Dynamax!",
-      "translated": "Ma la mossa è stata bloccata dal potere del Dynamax!"
+      "translated": "Mossa bloccata dal potere del\nDynamax!"
     },
     {
       "id": "scr_A4C0B1",

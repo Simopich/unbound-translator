@@ -178,3 +178,69 @@ def test_gendered_buffers_do_not_force_masculine_italian_grammar():
         assert "Mio [buffer1]" not in translated
         assert "mio [buffer1]" not in translated
         assert "il mio [buffer1]" not in translated
+
+
+def test_elite_four_battlefield_condition_texts_are_valid_and_fit():
+    from lib.pcs_text import Charmap
+
+    cmap = Charmap()
+    entries = ready_entries()
+
+    expected_texts = {
+        "scr_A4BE6E": (
+            "È apparso un arcobaleno nel cielo\n"
+            "sull{B4}intero campo di battaglia!\n\n"
+            "Raddoppia la probabilità degli\n"
+            "effetti secondari dei tipi Drago!"
+        ),
+        "scr_A4BC7A": (
+            "I Pokémon pesanti hanno un vantaggio\n"
+            "qui!\n\n"
+            "Più un Pokémon è pesante, più sarà\n"
+            "veloce!"
+        ),
+        "scr_A4BD34": (
+            "Un velo oscuro avvolge il campo!\n\n"
+            "I tipi Spettro subiscono metà danno\n"
+            "quando hanno i PS al massimo!"
+        ),
+        "scr_A4BE21": "I folletti svolazzano sul campo!",
+        "scr_A4BD98": (
+            "Ma solo i tipi Spettro usano\n"
+            "Salvaguardia sotto il velo oscuro!"
+        ),
+        "scr_A4BDDC": (
+            "Ma solo i tipi Spettro creano un\n"
+            "Sostituto sotto il velo oscuro!"
+        ),
+        "scr_A4BF8F": "L{B4}energia Dynamax ti circonda!",
+        "scr_A4BBD2": (
+            "Ventoincoda spira alle spalle\n"
+            "dei tipi Volante!"
+        ),
+        "scr_A4BC03": (
+            "\\\\13 levita grazie\n"
+            "all{B4}elettromagnetismo!"
+        ),
+        "scr_A4C037": (
+            "Mossa bloccata dal potere del\n"
+            "Dynamax!"
+        ),
+    }
+
+    for entry_id, expected in expected_texts.items():
+        entry = entries[entry_id]
+        translated = entry.get("translated_fixed", entry["translated"])
+        assert translated == expected, (entry_id, translated)
+        encoded = cmap.encode(translated)
+        max_slot = entry["byte_length"]
+        assert len(encoded) <= max_slot, (
+            entry_id,
+            f"{len(encoded)} bytes exceeds slot limit {max_slot}",
+        )
+        for line in translated.splitlines():
+            if line:
+                assert text_pixel_width(line) <= 208, (
+                    entry_id,
+                    f"Line {repr(line)} exceeds battle box width (width: {text_pixel_width(line)}px)",
+                )
