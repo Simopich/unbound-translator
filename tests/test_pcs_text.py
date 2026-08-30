@@ -30,6 +30,29 @@ def test_pcs_encode_decode_roundtrip_for_text_and_controls(text):
     assert decoded.text == text
 
 
+@pytest.mark.parametrize(
+    "input_text,expected_decoded",
+    [
+        ("\\pnon possiamo farlo", "\n\nnon possiamo farlo"),
+        ("\\pnord della citta", "\n\nnord della citta"),
+        ("\\pnecessario per la missione", "\n\nnecessario per la missione"),
+        ("\\pNon possiamo farlo", "\n\nNon possiamo farlo"),
+        ("\\pkamu lanjut", "\n\nkamu lanjut"),
+        ("ottenere il pacco\n\nnecessario", "ottenere il pacco\n\nnecessario"),
+        ("\\Possiamo andare", "Possiamo andare"),
+        ("\\Po\\Ke", "\\Po\\Ke"),
+    ],
+)
+def test_pcs_paragraph_preserves_words_starting_with_n_and_k(input_text, expected_decoded):
+    cmap = Charmap(target_lang="it")
+
+    encoded = cmap.encode(input_text)
+    decoded = decode_pcs(encoded)
+
+    assert decoded.terminated
+    assert decoded.text == expected_decoded
+
+
 def test_pcs_byte_length_excludes_terminator():
     cmap = Charmap(target_lang="it")
 

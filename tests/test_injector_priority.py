@@ -652,6 +652,22 @@ class InjectionPriorityTests(unittest.TestCase):
             len(candidates[0].encoded), INJECTOR.ABILITY_DESCRIPTION_MAX_BYTES
         )
 
+    def test_normalize_plain_script_layout_preserves_words(self):
+        samples = [
+            ("\\pnon possiamo farlo", "\\n\\nnon possiamo farlo"),
+            ("\\pnord della citta", "\\n\\nnord della citta"),
+            ("\\pnecessario per la missione", "\\n\\nnecessario per la missione"),
+            ("\\pNon possiamo farlo", "\\n\\nNon possiamo farlo"),
+            ("\\pkamu lanjut", "\\n\\nkamu lanjut"),
+            ("\\pk\\mn Allenatore", "\\pk\\mn Allenatore"),
+            ("\\pk", "\\pk"),
+        ]
+        for text, expected in samples:
+            self.assertEqual(
+                INJECTOR.normalize_plain_script_layout(text),
+                expected,
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
