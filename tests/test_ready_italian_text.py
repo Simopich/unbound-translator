@@ -244,3 +244,70 @@ def test_elite_four_battlefield_condition_texts_are_valid_and_fit():
                     entry_id,
                     f"Line {repr(line)} exceeds battle box width (width: {text_pixel_width(line)}px)",
                 )
+
+
+def test_trainer_classes_pointer_entries_are_valid():
+    entries = ready_entries()
+    tc_entries = [
+        entry
+        for entry in entries.values()
+        if entry.get("category") == "trainer_classes"
+    ]
+    assert len(tc_entries) == 107
+    expected_pointer_slots = {
+        2: ("tbl_trainer_classes_00002_1F2CB7C", "Capo Luce della Rovina", ["0x23E572"]),
+        14: ("tbl_trainer_classes_00014_1FAE6F4", "Scagnozzo", ["0x23E60E"]),
+        22: ("tbl_trainer_classes_00022_1FA1EE4", "Scagnozzo", ["0x23E676"]),
+        26: ("tbl_trainer_classes_00026_1FA1EF5", "Capo Ferrothorn Neri", ["0x23E6AA"]),
+        30: ("tbl_trainer_classes_00030_1F949EC", "Asso del Parco", ["0x23E6DE"]),
+        31: ("tbl_trainer_classes_00031_1FACB8D", "Membro", ["0x23E6EB"]),
+        40: ("tbl_trainer_classes_00040_1EEA039", "Capopalestra di Sinnoh", ["0x23E760"]),
+        46: ("tbl_trainer_classes_00046_1F2CB68", "Admin Luce della Rovina", ["0x23E7AE"]),
+        47: ("tbl_trainer_classes_00047_1F2CB5A", "Recluta", ["0x23E7BB"]),
+    }
+    for slot_idx, (entry_id, expected_trans, expected_sources) in expected_pointer_slots.items():
+        assert entry_id in entries, f"Missing {entry_id}"
+        entry = entries[entry_id]
+        assert entry["table_index"] == slot_idx
+        assert entry["is_pointer_based"] is True
+        assert entry["translated"] == expected_trans
+        assert entry["pointer_sources"] == expected_sources
+
+
+def test_science_society_trainer_names_are_set():
+    entries = ready_entries()
+    for tid in [341, 342, 466, 469, 470]:
+        slot_addr = 0x23EACC + tid * 40
+        entry_id = f"tbl_trainer_names_{tid:05d}_{slot_addr:06X}"
+        assert entry_id in entries, f"Missing {entry_id}"
+        assert entries[entry_id]["translated"] == "Soc.Scient."
+
+
+def test_gem_boost_message_has_newline():
+    entries = ready_entries()
+    assert "scr_96CAE2" in entries
+    trans = entries["scr_96CAE2"]["translated"]
+    assert "\n" in trans
+    assert trans == "\\\\16 ha potenziato\nla potenza di \\\\14!"
+
+
+def test_totem_aura_message_is_translated():
+    entries = ready_entries()
+    assert "tbl_battle_messages_00000_9665B0" in entries
+    entry = entries["tbl_battle_messages_00000_9665B0"]
+    assert entry["is_pointer_based"] is True
+    assert entry["pointer_sources"] == ["0x9662E1", "0x966319", "0x966377"]
+    assert entry["translated"] == "L{B4}aura di \\\\13\nsi è risvegliata!"
+
+
+def test_stat_quality_modifiers_are_translated():
+    entries = ready_entries()
+    for entry_id in [
+        "tbl_battle_messages_00000_883590",
+        "tbl_battle_messages_00001_8835A0",
+        "tbl_battle_messages_00000_A4C603",
+        "tbl_battle_messages_00001_A4C610",
+    ]:
+        assert entry_id in entries, f"Missing {entry_id}"
+        assert entries[entry_id]["translated"] == " moltissimo"
+        assert entries[entry_id]["translated"].startswith(" ")
