@@ -1736,6 +1736,36 @@
       "kind": "faction"
     },
     {
+      "source": "Light of Ruin",
+      "target": "Luce della Rovina",
+      "kind": "faction"
+    },
+    {
+      "source": "Light of Ruin Admin",
+      "target": "Admin Luce della Rovina",
+      "kind": "faction"
+    },
+    {
+      "source": "Light of Ruin Leader",
+      "target": "Capo Luce della Rovina",
+      "kind": "faction"
+    },
+    {
+      "source": "Black Ferrothorn Boss",
+      "target": "Capo Ferrothorn Neri",
+      "kind": "faction"
+    },
+    {
+      "source": "Frontier Brain",
+      "target": "Asso del Parco",
+      "kind": "feature"
+    },
+    {
+      "source": "Sinnoh Leader",
+      "target": "Capopalestra di Sinnoh",
+      "kind": "character"
+    },
+    {
       "source": "ADM",
       "target": "ADM",
       "kind": "feature",

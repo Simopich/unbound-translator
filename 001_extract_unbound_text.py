@@ -103,7 +103,6 @@ class FixedTable:
     slot_size: int
     stride: int | None = None
     pointer_name: bool = False
-    substring_name: bool = False
 
 
 @dataclass(frozen=True)
@@ -146,8 +145,9 @@ FIXED_TABLES = [
         0x23E558,
         107,
         13,
-        substring_name=True,
+        pointer_name=True,
     ),
+    FixedTable("trainer_names", "data.trainers.names", 0x23EACC, 743, 12, stride=40),
 ]
 
 SEQUENTIAL_TABLES = [
@@ -653,6 +653,7 @@ MANUAL_TEXT_POINTER_SOURCES = {
     0x7DE1E1: [0x7D98C5],
     0x7DE1E5: [0x7D98D2],
     0x8CE1F8: [0x8CD595],
+    0x9665B0: [0x9662E1, 0x966319, 0x966377],  # \13's aura flared to life!
     0x1EE1185: [0x1E55982],
     0x1EEAF9C: [0x1E57421],
     0x1EEAFA5: [0x1E57515],
@@ -750,11 +751,14 @@ POST_POINTER_MANUAL_TEXT_RANGES = [
     ManualTextRange("mission_log", "data.menus.text.missionLog.menu", 0x1F56040, 0x1F56117),
     ManualTextRange("battle_messages", "data.battle.text.messages.expAndFaint", 0x3FB248, 0x3FB4F7),
     ManualTextRange("battle_messages", "data.battle.text.messages.effectiveness.legacy", 0x800880, 0x800896),
+    ManualTextRange("battle_messages", "data.battle.text.messages.statQualityLegacy", 0x883590, 0x8835AA),
     ManualTextRange("battle_messages", "data.battle.text.messages.escape.legacy", 0x9066D0, 0x9066EA),
     ManualTextRange("battle_messages", "data.battle.text.messages.pressure", 0x906D20, 0x906D3D),
     ManualTextRange("battle_messages", "data.battle.text.messages.abilityEffects", 0x965BE8, 0x965CB9),
+    ManualTextRange("battle_messages", "data.battle.text.messages.totemAura", 0x9665B0, 0x9665CA),
     ManualTextRange("battle_messages", "data.battle.text.messages.fainted.unbound", 0x9678E8, 0x9678FD),
     ManualTextRange("battle_messages", "data.battle.text.messages.abilityStart", 0xA37710, 0xA37765),
+    ManualTextRange("battle_messages", "data.battle.text.messages.statQualityCFRU", 0xA4C603, 0xA4C61A),
     ManualTextRange("battle_messages", "data.battle.text.messages.effectiveness.unbound", 0xA4A922, 0xA4A9C4),
     ManualTextRange("battle_messages", "data.battle.text.messages.escape.unbound", 0xA4AEE1, 0xA4AF18),
     ManualTextRange("battle_messages", "data.battle.text.messages.effectiveness.legacyExact", 0x800880, 0x800898),
@@ -908,35 +912,8 @@ def _mostly_padding_or_symbols(text: str) -> bool:
     return meaningful / max(1, len(text)) < 0.35
 
 
-def score_name_candidate(result: DecodeResult) -> int:
-    if not result.terminated or result.raw_count:
-        return -10_000
-    clean = visible_text(result.text)
-    if not clean:
-        return -100
-    letters = sum(1 for char in clean if char.isalpha())
-    spaces = clean.count(" ")
-    controls = result.control_count
-    leading_penalty = 12 if clean[0].islower() else 0
-    return letters * 4 + spaces + controls - leading_penalty
-
-
 def decode_slot(rom: bytes, offset: int, size: int) -> DecodeResult:
     return decode_pcs(rom[offset : offset + size], 0, size)
-
-
-def best_substring_slot(rom: bytes, offset: int, size: int) -> tuple[int, DecodeResult]:
-    best_delta = 0
-    best_result = decode_slot(rom, offset, size)
-    best_score = score_name_candidate(best_result)
-    for delta in range(1, size):
-        result = decode_slot(rom, offset + delta, size - delta)
-        score = score_name_candidate(result)
-        if score > best_score:
-            best_delta = delta
-            best_result = result
-            best_score = score
-    return offset + best_delta, best_result
 
 
 def stable_entry_id(
@@ -1121,13 +1098,9 @@ def extract_fixed_table(
                     target = None
 
         if target is None:
-            if table.substring_name:
-                target, result = best_substring_slot(rom, slot, table.slot_size)
-                byte_length = table.slot_size - (target - slot)
-            else:
-                target = slot
-                result = decode_slot(rom, slot, table.slot_size)
-                byte_length = table.slot_size
+            target = slot
+            result = decode_slot(rom, slot, table.slot_size)
+            byte_length = table.slot_size
 
         known_targets.add(target)
         entries.append(

@@ -512,12 +512,14 @@ def plausible_pointer_source(rom, source):
     """Reject raw pointer-scan matches that would overwrite code or live data."""
     return (
             source % 4 == 0
+            or (0x23E558 <= source < 0x23EAC8 and (source - 0x23E558) % 13 == 0)
             or (source >= 1 and rom[source - 1] == 0x9B)
             or (source >= 2 and rom[source - 2] == 0x0F and rom[source - 1] == 0x00)
             or (source >= 2 and rom[source - 2] == 0x85 and rom[source - 1] <= 0x0F)
             or (source >= 1 and rom[source - 1] == 0x67)
             or (source >= 6 and rom[source - 6] == 0x5C)
             or (source >= 10 and rom[source - 10] == 0x5C)
+            or (source >= 1 and rom[source - 1] == 0x02 and 0x960000 <= source < 0x970000)
             or is_ewram_word(rom, source - 4)
     )
 
@@ -1360,12 +1362,13 @@ def main():
             stats["skipped_runtime_patch"] += 1
             continue
 
-        translated = translation_for_injection(entry)
-        full_translation = strip_hma_quotes(entry.get("translated", ""))
-        if not translated:
+        raw_trans = entry.get("translated")
+        if raw_trans is None:
             stats["skipped_empty"] += 1
             continue
 
+        translated = translation_for_injection(entry)
+        full_translation = strip_hma_quotes(raw_trans)
         original = strip_hma_quotes(entry.get("original", ""))
         if full_translation == original:
             stats["unchanged"] += 1
