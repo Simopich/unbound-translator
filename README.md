@@ -451,6 +451,12 @@ Use [Discord](https://discord.gg/ctFaR77WrR) for community discussion.
 - [PokeAPI](https://pokeapi.co/) provides official localized Pokemon data used before LLM fallback.
 - [Olcmyk/Meowth-GBA-Translator](https://github.com/Olcmyk/Meowth-GBA-Translator) inspired the project's earliest
   experiments. Unbound's already-full 32 MB ROM required an independent extractor and hybrid injector.
+- [pret/pokefirered](https://github.com/pret/pokefirered) and [pret/pokeemerald](https://github.com/pret/pokeemerald)
+  provide invaluable open-source Gen 3 decompilations essential for reverse engineering text engines, window/menu
+  structures, script opcodes, and memory layouts.
+- [Skeli789/Complete-Fire-Red-Upgrade](https://github.com/Skeli789/Complete-Fire-Red-Upgrade) (CFRU) provides the engine
+  base for Pokemon Unbound, reference for expanded Gen 7 species/stats, altered struct sizes, dynamic level calculations,
+  and high-memory code hooks.
 - [AntonyKervazoCanut/gba_translator](https://github.com/AntonyKervazoCanut/gba_translator) and the local
   `out/working_fr.gba` build may be consulted as optional behavioral second opinions for difficult bugs. This project
   keeps its own architecture and does not copy that translator wholesale.

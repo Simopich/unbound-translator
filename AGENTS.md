@@ -86,6 +86,12 @@ release input is `ready-translations/it.json`.
 ## External Evidence
 
 - Investigate and solve within this repository first; preserve its independent architecture.
+- `https://github.com/pret/pokefirered` is the authoritative FireRed (BPRE) decompilation reference for core engine
+  architecture (text engine, window/list menus, script opcodes, specials tables, and SaveBlock1 memory layout).
+- `https://github.com/pret/pokeemerald` is the secondary Gen 3 decompilation reference for window templates, ListMenu
+  callbacks, and event scripts.
+- `https://github.com/Skeli789/Complete-Fire-Red-Upgrade` (CFRU) is the engine base for Pokemon Unbound (expanded Gen 7
+  species/base stats, modified 140-byte `0x8C` DaycareMon struct strides, dynamic level calculations, and high-memory hooks).
 - `https://github.com/AntonyKervazoCanut/gba_translator` and `out/working_fr.gba` are optional behavioral second opinions
   for difficult Unbound bugs. Use them as evidence or inspiration, never as architecture/code to copy wholesale.
 - `out/red_ita.gba` is the official Italian FireRed wording and layout reference.
