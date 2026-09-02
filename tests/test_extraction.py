@@ -209,5 +209,22 @@ class AlignedPointerTextTests(unittest.TestCase):
         )
 
 
+    def test_trainer_classes_fixed_table_uses_pointer_name(self):
+        table = next(
+            t for t in EXTRACTOR.FIXED_TABLES if t.category == "trainer_classes"
+        )
+        self.assertTrue(table.pointer_name)
+        self.assertEqual(table.count, 107)
+
+    def test_trainer_names_fixed_table_configuration(self):
+        table = next(
+            t for t in EXTRACTOR.FIXED_TABLES if t.category == "trainer_names"
+        )
+        self.assertEqual(table.start, 0x23EACC)
+        self.assertEqual(table.count, 743)
+        self.assertEqual(table.slot_size, 12)
+        self.assertEqual(table.stride, 40)
+
+
 if __name__ == "__main__":
     unittest.main()
