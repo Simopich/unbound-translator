@@ -225,6 +225,26 @@ class AlignedPointerTextTests(unittest.TestCase):
         self.assertEqual(table.slot_size, 12)
         self.assertEqual(table.stride, 40)
 
+    def test_trainerbattle_text_pointer_sources(self):
+        rom = bytearray(32)
+        # Type 0 (Single battle): 5C 00 <id: 2B> <check: 2B> <intro: 4B> <defeat: 4B>
+        rom[0] = 0x5C
+        rom[1] = 0x00
+        # intro ptr at offset 6
+        self.assertTrue(EXTRACTOR.is_trainerbattle_text_pointer_source(rom, 6))
+        # defeat ptr at offset 10
+        self.assertTrue(EXTRACTOR.is_trainerbattle_text_pointer_source(rom, 10))
+        # offset 7 or 14 is not
+        self.assertFalse(EXTRACTOR.is_trainerbattle_text_pointer_source(rom, 7))
+        self.assertFalse(EXTRACTOR.is_trainerbattle_text_pointer_source(rom, 14))
+
+        # Type 14 (CFRU double battle): 5C 0E <id: 2B> <check: 2B> <intro: 4B> <defeat: 4B> <refusal: 4B>
+        rom[0] = 0x5C
+        rom[1] = 0x0E
+        self.assertTrue(EXTRACTOR.is_trainerbattle_text_pointer_source(rom, 6))
+        self.assertTrue(EXTRACTOR.is_trainerbattle_text_pointer_source(rom, 10))
+        self.assertTrue(EXTRACTOR.is_trainerbattle_text_pointer_source(rom, 14))
+
 
 if __name__ == "__main__":
     unittest.main()

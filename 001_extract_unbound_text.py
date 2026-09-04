@@ -1447,6 +1447,16 @@ def is_text_pointer_source(rom: bytes, source: int, target: int) -> bool:
     )
 
 
+def is_trainerbattle_text_pointer_source(rom: bytes, source: int) -> bool:
+    if source >= 6 and rom[source - 6] == 0x5C and rom[source - 5] in (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 13, 14, 15):
+        return True
+    if source >= 10 and rom[source - 10] == 0x5C and rom[source - 9] in (0, 4, 5, 6, 7, 8, 9, 13, 14):
+        return True
+    if source >= 14 and rom[source - 14] == 0x5C and rom[source - 13] in (6, 8, 14):
+        return True
+    return False
+
+
 def is_script_text_pointer_source(rom: bytes, source: int) -> bool:
     if source >= 2 and rom[source - 2] == 0x0F and rom[source - 1] <= 0x03:
         return True
@@ -1454,7 +1464,9 @@ def is_script_text_pointer_source(rom: bytes, source: int) -> bool:
     # pointer for some late-game systems, including intro character setup.
     # Restrict this broader pattern to the high script bank to avoid random
     # code/data pointers that happen to be preceded by 0x67.
-    return source >= 1 and rom[source - 1] == 0x67 and (source >> 20) == 0x1E
+    if source >= 1 and rom[source - 1] == 0x67 and (source >> 20) == 0x1E:
+        return True
+    return is_trainerbattle_text_pointer_source(rom, source)
 
 
 def is_pointer_reference_source(rom: bytes, source: int, _target: int) -> bool:

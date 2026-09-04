@@ -631,6 +631,16 @@ def collect_relocation_candidates(
     return candidates, skipped
 
 
+def is_trainerbattle_text_pointer_source(rom, source):
+    if source >= 6 and rom[source - 6] == 0x5C and rom[source - 5] in (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 13, 14, 15):
+        return True
+    if source >= 10 and rom[source - 10] == 0x5C and rom[source - 9] in (0, 4, 5, 6, 7, 8, 9, 13, 14):
+        return True
+    if source >= 14 and rom[source - 14] == 0x5C and rom[source - 13] in (6, 8, 14):
+        return True
+    return False
+
+
 def is_explicit_script_message_source(rom, source):
     """Require an opcode shape that unambiguously consumes a text pointer."""
     if (
@@ -641,11 +651,13 @@ def is_explicit_script_message_source(rom, source):
         and 0x02 <= rom[source + 5] <= 0x06
     ):
         return True
-    return (
+    if (
         source >= 1
         and rom[source - 1] == 0x67
         and (source >> 20) == 0x1E
-    )
+    ):
+        return True
+    return is_trainerbattle_text_pointer_source(rom, source)
 
 
 def discover_raw_rom_pointers(rom, minimum_target, maximum_target):
