@@ -936,9 +936,9 @@ def plan_relocations(
         if not cat_reclaim:
             return (0, index)
         elif is_owner:
-            return (1, length, index)
+            return (1, -length, index)
         else:
-            return (2, length, index)
+            return (2, -length, index)
 
     ordered_candidates = [
         candidate
@@ -973,7 +973,7 @@ def plan_relocations(
                 alignment,
             )
         if offset is None:
-            offset, block = allocate_with_block(blocks, len(candidate.encoded), alignment)
+            offset, block = allocate_best_fit(blocks, len(candidate.encoded), alignment)
         if offset is None:
             missing_payloads.add(missing_key)
             missing.append(candidate)
