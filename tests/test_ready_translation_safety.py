@@ -320,3 +320,12 @@ def test_natures_and_pokedex_controls_keep_safe_complete_ownership():
     cry = by_id["tbl_menu_pokedex_00000_415FAD"]
     assert cry["translated"] == "\\btn04Verso"
     assert cry["pointer_sources"] == ["0x105FE4", "0x1067B8"]
+
+
+def test_daycare_transition_menu_signature_preserved():
+    for ready_path in (READY_ITALIAN, READY_INDONESIAN):
+        entries = json.loads(ready_path.read_text(encoding="utf-8"))["entries"]
+        by_id = {entry["id"]: entry for entry in entries}
+        entry = by_id["tbl_menu_common_00020_416244"]
+        assert entry["translated"] == "Go back to the\nprevious menu."
+        assert entry["address"] == "0x416244"
