@@ -411,9 +411,11 @@ the required local inputs are available.
 | `002_prepare_translation_text.py` | Translation-source cleanup and protected placeholders |
 | `003_llm_translate.py` | PokeAPI localization and LLM fallback |
 | `004_controlfix_translations.py` | Control repair and renderer-specific layout |
-| `005_hybrid_injector.py` | Transactional in-place writes, relocation, and runtime patches |
+| `005_hybrid_injector.py` | Transactional in-place writes, relocation, runtime patches, and graphics |
 | `006_decontrolfix_translations.py` | Editable cleanup of controlfixed JSON |
-| `lib/` | PCS codec, font metrics, token helpers, PokeAPI client, and vetted free space |
+| `007_extract_graphics.py` | Lossless extraction of localized text graphics into indexed PNGs |
+| `graphics/` | Graphics manifest, original source PNGs, and localized translation PNGs |
+| `lib/` | PCS codec, GBA graphics codec, token helpers, PokeAPI client, and free space |
 | `patches/<language>/` | One target-language runtime behavior per patch file |
 | `ready-translations/` | Canonical controlfixed release inputs |
 | `scripts/create_bps.py` | BPS patch creation |

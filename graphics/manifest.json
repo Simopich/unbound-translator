@@ -1,0 +1,315 @@
+{
+  "version": 1,
+  "description": "Pokemon Unbound localized graphics manifest",
+  "assets": [
+    {
+      "id": "press_start_left_base",
+      "filename": "press_start_left_base.png",
+      "description": "Custom Title Screen PRESS START left half (base frame)",
+      "offset": "0x1FCBAE0",
+      "pointer_sources": [
+        "0x1FB515C"
+      ],
+      "format": "4bpp",
+      "width_tiles": 8,
+      "height_tiles": 4,
+      "width_px": 64,
+      "height_px": 32,
+      "compressed": "lz77",
+      "decompressed_size": 1024,
+      "palette_offset": "0x1FCB520",
+      "compressed_size": 332
+    },
+    {
+      "id": "press_start_right_base",
+      "filename": "press_start_right_base.png",
+      "description": "Custom Title Screen PRESS START right half (base frame)",
+      "offset": "0x1FCC098",
+      "pointer_sources": [
+        "0x1FB5164"
+      ],
+      "format": "4bpp",
+      "width_tiles": 8,
+      "height_tiles": 4,
+      "width_px": 64,
+      "height_px": 32,
+      "compressed": "lz77",
+      "decompressed_size": 1024,
+      "palette_offset": "0x1FCB520",
+      "compressed_size": 392
+    },
+    {
+      "id": "press_start_left_glow",
+      "filename": "press_start_left_glow.png",
+      "description": "Custom Title Screen PRESS START left half (glow frame)",
+      "offset": "0x1FCC5C0",
+      "pointer_sources": [
+        "0x1FB5174"
+      ],
+      "format": "4bpp",
+      "width_tiles": 8,
+      "height_tiles": 4,
+      "width_px": 64,
+      "height_px": 32,
+      "compressed": "lz77",
+      "decompressed_size": 1024,
+      "palette_offset": "0x1FCB520",
+      "compressed_size": 404
+    },
+    {
+      "id": "press_start_right_glow",
+      "filename": "press_start_right_glow.png",
+      "description": "Custom Title Screen PRESS START right half (glow frame)",
+      "offset": "0x1FCC754",
+      "pointer_sources": [
+        "0x1FB517C"
+      ],
+      "format": "4bpp",
+      "width_tiles": 8,
+      "height_tiles": 4,
+      "width_px": 64,
+      "height_px": 32,
+      "compressed": "lz77",
+      "decompressed_size": 1024,
+      "palette_offset": "0x1FCB520",
+      "compressed_size": 484
+    },
+    {
+      "id": "press_start_tile",
+      "filename": "press_start_tile.png",
+      "description": "Custom Title Screen single tile element",
+      "offset": "0x1FCBC2C",
+      "pointer_sources": [
+        "0x1FB516C"
+      ],
+      "format": "4bpp",
+      "width_tiles": 1,
+      "height_tiles": 1,
+      "width_px": 8,
+      "height_px": 8,
+      "compressed": "lz77",
+      "decompressed_size": 32,
+      "palette_offset": "0x1FCB520",
+      "compressed_size": 28
+    },
+    {
+      "id": "pokedex_screen_tiles",
+      "filename": "pokedex_screen_tiles.png",
+      "description": "Pokedex UI background with AREA, CRY, SIZE, PAGE, CANCEL buttons",
+      "offset": "0x1FC08A0",
+      "pointer_sources": [
+        "0x00EC610"
+      ],
+      "format": "4bpp",
+      "width_tiles": 16,
+      "height_tiles": 15,
+      "width_px": 128,
+      "height_px": 120,
+      "compressed": "lz77",
+      "decompressed_size": 7584,
+      "palette_offset": "0x1FC16E0",
+      "compressed_size": 3004
+    },
+    {
+      "id": "naming_screen_keyboard",
+      "filename": "naming_screen_keyboard.png",
+      "description": "Naming screen keyboard with UPPER, LOWER, OTHERS, DEL, OK buttons",
+      "offset": "0x046D3A8",
+      "pointer_sources": [
+        "0x0149F10"
+      ],
+      "format": "4bpp",
+      "width_tiles": 16,
+      "height_tiles": 16,
+      "width_px": 128,
+      "height_px": 128,
+      "compressed": "lz77",
+      "decompressed_size": 8192,
+      "palette_offset": "0x046C8D8",
+      "compressed_size": 1324
+    },
+    {
+      "id": "help_system_title",
+      "filename": "help_system_title.png",
+      "description": "Help system HELP header graphic",
+      "offset": "0x0E9B598",
+      "pointer_sources": [
+        "0x0135B34",
+        "0x0135DBC",
+        "0x013B5EC"
+      ],
+      "format": "4bpp",
+      "width_tiles": 8,
+      "height_tiles": 5,
+      "width_px": 64,
+      "height_px": 40,
+      "compressed": "lz77",
+      "decompressed_size": 1280,
+      "palette_offset": "0x0E9B498",
+      "compressed_size": 332
+    },
+    {
+      "id": "help_system_controls",
+      "filename": "help_system_controls.png",
+      "description": "Help system button guide and controller labels",
+      "offset": "0x0E9BA30",
+      "pointer_sources": [
+        "0x0135B54",
+        "0x0135D8C"
+      ],
+      "format": "4bpp",
+      "width_tiles": 16,
+      "height_tiles": 4,
+      "width_px": 128,
+      "height_px": 32,
+      "compressed": "lz77",
+      "decompressed_size": 2048,
+      "palette_offset": "0x0E9B498",
+      "compressed_size": 348
+    },
+    {
+      "id": "fame_checker_banner",
+      "filename": "fame_checker_banner.png",
+      "description": "Fame Checker header banner graphic",
+      "offset": "0x040C650",
+      "pointer_sources": [
+        "0x00F44B4"
+      ],
+      "format": "4bpp",
+      "width_tiles": 16,
+      "height_tiles": 16,
+      "width_px": 128,
+      "height_px": 128,
+      "compressed": "lz77",
+      "decompressed_size": 8192,
+      "palette_offset": "0x0EAAB18",
+      "compressed_size": 1028
+    },
+    {
+      "id": "teachy_tv_ep1",
+      "filename": "teachy_tv_ep1.png",
+      "description": "Teachy TV Episode 1 title graphic",
+      "offset": "0x03BFBE4",
+      "pointer_sources": [
+        "0x03C2BA4"
+      ],
+      "format": "4bpp",
+      "width_tiles": 16,
+      "height_tiles": 16,
+      "width_px": 128,
+      "height_px": 128,
+      "compressed": "lz77",
+      "decompressed_size": 8192,
+      "palette_offset": "0x03BFA80",
+      "compressed_size": 2084
+    },
+    {
+      "id": "teachy_tv_ep2",
+      "filename": "teachy_tv_ep2.png",
+      "description": "Teachy TV Episode 2 title graphic",
+      "offset": "0x03C0408",
+      "pointer_sources": [
+        "0x03C2BA8"
+      ],
+      "format": "4bpp",
+      "width_tiles": 16,
+      "height_tiles": 16,
+      "width_px": 128,
+      "height_px": 128,
+      "compressed": "lz77",
+      "decompressed_size": 8192,
+      "palette_offset": "0x03BFA80",
+      "compressed_size": 2040
+    },
+    {
+      "id": "teachy_tv_ep3",
+      "filename": "teachy_tv_ep3.png",
+      "description": "Teachy TV Episode 3 title graphic",
+      "offset": "0x03C0C00",
+      "pointer_sources": [
+        "0x03C2BAC"
+      ],
+      "format": "4bpp",
+      "width_tiles": 16,
+      "height_tiles": 16,
+      "width_px": 128,
+      "height_px": 128,
+      "compressed": "lz77",
+      "decompressed_size": 8192,
+      "palette_offset": "0x03BFA80",
+      "compressed_size": 1948
+    },
+    {
+      "id": "teachy_tv_ep4",
+      "filename": "teachy_tv_ep4.png",
+      "description": "Teachy TV Episode 4 title graphic",
+      "offset": "0x03C139C",
+      "pointer_sources": [
+        "0x03C2BB0"
+      ],
+      "format": "4bpp",
+      "width_tiles": 16,
+      "height_tiles": 16,
+      "width_px": 128,
+      "height_px": 128,
+      "compressed": "lz77",
+      "decompressed_size": 8192,
+      "palette_offset": "0x03BFA80",
+      "compressed_size": 2076
+    },
+    {
+      "id": "teachy_tv_ep5",
+      "filename": "teachy_tv_ep5.png",
+      "description": "Teachy TV Episode 5 title graphic",
+      "offset": "0x03C1BB8",
+      "pointer_sources": [
+        "0x03C2BB4"
+      ],
+      "format": "4bpp",
+      "width_tiles": 16,
+      "height_tiles": 16,
+      "width_px": 128,
+      "height_px": 128,
+      "compressed": "lz77",
+      "decompressed_size": 8192,
+      "palette_offset": "0x03BFA80",
+      "compressed_size": 1992
+    },
+    {
+      "id": "teachy_tv_ep6",
+      "filename": "teachy_tv_ep6.png",
+      "description": "Teachy TV Episode 6 title graphic",
+      "offset": "0x03C2380",
+      "pointer_sources": [
+        "0x03C2BB8"
+      ],
+      "format": "4bpp",
+      "width_tiles": 16,
+      "height_tiles": 16,
+      "width_px": 128,
+      "height_px": 128,
+      "compressed": "lz77",
+      "decompressed_size": 8192,
+      "palette_offset": "0x03BFA80",
+      "compressed_size": 2084
+    },
+    {
+      "id": "title_screen_fallback",
+      "filename": "title_screen_fallback.png",
+      "description": "Vanilla FireRed title screen background tiles",
+      "offset": "0x0831EE0",
+      "pointer_sources": [
+        "0x0078A9C"
+      ],
+      "format": "4bpp",
+      "width_tiles": 8,
+      "height_tiles": 5,
+      "width_px": 64,
+      "height_px": 40,
+      "compressed": "lz77",
+      "decompressed_size": 1280,
+      "palette_offset": "0x0EAD5E8",
+      "compressed_size": 1348
+    }
+  ]
+}

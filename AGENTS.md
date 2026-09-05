@@ -43,10 +43,16 @@ release input is `ready-translations/it.json`.
 - `002_prepare_translation_text.py`: layout cleanup and readable protected-token placeholders.
 - `003_llm_translate.py`: target glossary enforcement, PokeAPI localization, LLM fallback, resume, and filters.
 - `004_controlfix_translations.py`: token repair and category-specific layout.
-- `005_hybrid_injector.py`: transactional in-place writes, relocation, runtime patches, and map output.
+- `005_hybrid_injector.py`: transactional in-place writes, relocation, runtime patches, graphics patching, and map output.
 - `006_decontrolfix_translations.py`: editable cleanup of controlfixed JSON.
+- `007_extract_graphics.py`: lossless extraction of localized text graphics into indexed PNGs.
 - `lib/pcs_text.py`: authoritative PCS codec.
+- `lib/gba_graphics.py`: authoritative 4bpp, LZ77, palette, and indexed PNG codec.
+- `lib/graphics_patcher.py`: localized graphics patcher and free-space relocation engine.
 - `lib/translation_tokens.py`: protected-token and layout helpers.
+- `graphics/manifest.json`: canonical specification of text graphics (offsets, pointers, sizes, dimensions).
+- `graphics/source/`: original extracted source PNGs.
+- `graphics/<language>/`: localized PNG replacements (falls back to source if absent or identical).
 - `glossaries/<language>.json`: approved Unbound-specific names and terminology enforced during translation.
 - `patches/<language>/*.py`: one language-specific runtime behavior per file.
 - `ready-translations/`: complete controlfixed release inputs.
