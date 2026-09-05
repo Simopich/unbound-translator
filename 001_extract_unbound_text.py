@@ -262,6 +262,23 @@ DEFAULT_MENU_AUDIT_STRINGS = [
 ]
 
 MANUAL_TEXT_TABLES = {
+    "battle_messages": (
+        "data.battle.text.cfruMessages",
+        [
+            0x905690,
+            0x9056B4,
+            0x905770,
+            0x905A30,
+            0x905A50,
+            0x905C25,
+            0x905C40,
+            0x905E9A,
+            0x906470,
+            0x9064A0,
+            0x906520,
+            0x906540,
+        ],
+    ),
     "menu_pokedex": (
         "data.menus.text.pokedex.controls",
         [0x415FAD],  # \btn04Cry; two summary-page pointer owners
@@ -644,6 +661,7 @@ MANUAL_TEXT_POINTER_SOURCES = {
     0x78922B: [0x7522B9],
     0x78922E: [0x7522C0, 0x7BD1B0, 0x7BD1B6],
     0x789232: [0x7522C6],
+    0x78DA8E: [0x78A3E6],
     0x793FCB: [0x76D292, 0x7D98BF],
     0x7A89DE: [0x762BF9],
     0x7A89E3: [0x762BF2],
@@ -762,6 +780,8 @@ POST_POINTER_MANUAL_TEXT_RANGES = [
     ManualTextRange("battle_messages", "data.battle.text.messages.effectiveness.unbound", 0xA4A922, 0xA4A9C4),
     ManualTextRange("battle_messages", "data.battle.text.messages.escape.unbound", 0xA4AEE1, 0xA4AF18),
     ManualTextRange("battle_messages", "data.battle.text.messages.effectiveness.legacyExact", 0x800880, 0x800898),
+    ManualTextRange("menu_game_settings", "data.menus.text.gameSettings.introSetup", 0x1F10DC2, 0x1F11016),
+    ManualTextRange("menu_common", "data.menus.text.dexnav", 0xA43BA5, 0xA43D82),
 ]
 
 
@@ -1444,6 +1464,7 @@ def is_text_pointer_source(rom: bytes, source: int, target: int) -> bool:
         or is_structured_text_pointer_source(source, target)
         or is_mission_name_pointer_source(rom, source)
         or is_legacy_mission_record_pointer_source(rom, source)
+        or is_cfru_trainerbattle_source(rom, source, target)
     )
 
 
@@ -1455,6 +1476,18 @@ def is_script_text_pointer_source(rom: bytes, source: int) -> bool:
     # Restrict this broader pattern to the high script bank to avoid random
     # code/data pointers that happen to be preceded by 0x67.
     return source >= 1 and rom[source - 1] == 0x67 and (source >> 20) == 0x1E
+
+
+def is_cfru_trainerbattle_source(rom: bytes, source: int, target: int) -> bool:
+    """Detect CFRU custom trainerbattle dialogues with unaligned operands."""
+    if not ((target >> 20) in (0x1E, 0x1F) or (0x170000 <= target <= 0x1D0000)):
+        return False
+    if (source >> 20) in (0x1E, 0x1F) and source < len(rom):
+        if source >= 6 and rom[source - 6] == 0x5C and rom[source - 4] == 0xF5 and rom[source - 3] == 0x00:
+            return True
+        if source >= 10 and rom[source - 10] == 0x5C and rom[source - 8] == 0xF5 and rom[source - 7] == 0x00:
+            return True
+    return False
 
 
 def is_pointer_reference_source(rom: bytes, source: int, _target: int) -> bool:
