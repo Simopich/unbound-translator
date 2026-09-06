@@ -47,7 +47,7 @@ release input is `ready-translations/it.json`.
 - `006_decontrolfix_translations.py`: editable cleanup of controlfixed JSON.
 - `007_extract_graphics.py`: lossless extraction of localized text graphics into indexed PNGs.
 - `lib/pcs_text.py`: authoritative PCS codec.
-- `lib/gba_graphics.py`: authoritative 4bpp, LZ77, palette, and indexed PNG codec.
+- `lib/gba_graphics.py`: authoritative 4bpp/8bpp, LZ77, palette, and indexed PNG codec.
 - `lib/graphics_assets.py`: validated tilemap/sprite views and lossless inverse mapping.
 - `lib/graphics_patcher.py`: localized graphics patcher and free-space relocation engine.
 - `lib/translation_tokens.py`: protected-token and layout helpers.

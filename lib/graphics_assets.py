@@ -2,7 +2,16 @@
 from __future__ import annotations
 
 import hashlib
-from lib.gba_graphics import decode_4bpp_tiles, encode_4bpp_tiles, lz77_decompress, parse_gba_palette
+from lib.gba_graphics import decode_4bpp_tiles, encode_4bpp_tiles, decode_8bpp_tiles, encode_8bpp_tiles, lz77_decompress, parse_gba_palette
+
+
+def graphics_format(asset):
+    fmt = asset.get('format', '4bpp')
+    if fmt == '4bpp':
+        return 32, 16, decode_4bpp_tiles, encode_4bpp_tiles
+    if fmt == '8bpp':
+        return 64, 256, decode_8bpp_tiles, encode_8bpp_tiles
+    raise ValueError('Only verified 4bpp/8bpp layouts are supported')
 
 
 def address(value):
@@ -70,7 +79,7 @@ def tile_cells(rom, part):
                     raise ValueError('Unknown tilemap order')
                 value = int.from_bytes(raw[i*2:i*2+2], 'little')
                 # One palette per view. Preserve palette-bank bits in the original map.
-                if value >> 12 not in tilemap.get('palette_banks', [tilemap.get('palette_bank', 0)]) and value != 0:
+                if part.get('format', '4bpp') != '8bpp' and value >> 12 not in tilemap.get('palette_banks', [tilemap.get('palette_bank', 0)]) and value != 0:
                     raise ValueError('Unexpected tilemap palette bank')
                 yield x, y, (value & 1023) - tilemap.get('tile_base', 0), bool(value & 1024), bool(value & 2048)
     else:
@@ -80,21 +89,20 @@ def tile_cells(rom, part):
 
 
 def render_asset(rom, asset):
-    if asset.get('format', '4bpp') != '4bpp':
-        raise ValueError('Only verified 4bpp layouts are supported')
+    tile_bytes, color_limit, decode, _ = graphics_format(asset)
     width, height = asset['width_px'], asset['height_px']
     grid = [[0] * width for _ in range(height)]
     occupied = set()
     for part in parts(asset):
         raw = read_blob(rom, part)
-        if len(raw) % 32:
-            raise ValueError('Partial 4bpp tile')
-        if not part.get('tilemap') and not part.get('tilemaps') and len(raw) != part['width_tiles'] * part['height_tiles'] * 32:
+        if len(raw) % tile_bytes:
+            raise ValueError('Partial graphics tile')
+        if not part.get('tilemap') and not part.get('tilemaps') and len(raw) != part['width_tiles'] * part['height_tiles'] * tile_bytes:
             raise ValueError('Tile grid would truncate or pad source data')
-        tiles = decode_4bpp_tiles(raw, 1, len(raw) // 32)
+        tiles = decode(raw, 1, len(raw) // tile_bytes)
         ox, oy = part.get('x', 0), part.get('y', 0)
-        for x, y, index, hf, vf in tile_cells(rom, part):
-            if index < 0 or index >= len(raw) // 32:
+        for x, y, index, hf, vf in tile_cells(rom, dict(part, format=asset.get('format', '4bpp'))):
+            if index < 0 or index >= len(raw) // tile_bytes:
                 raise ValueError('Tilemap references missing tile')
             for py in range(8):
                 for px in range(8):
@@ -108,33 +116,37 @@ def render_asset(rom, asset):
     if 'palette' in asset:
         palette = [tuple(c) for c in asset['palette']]
     elif 'palette_source' in asset:
-        palette = parse_gba_palette(read_blob(rom, asset['palette_source']))
+        palette = parse_gba_palette(read_blob(rom, asset['palette_source']), asset.get('palette_count', color_limit))
     else:
         raise ValueError('Asset requires an explicit palette')
-    if len(palette) != 16:
-        raise ValueError('4bpp views require exactly 16 palette colors')
+    if (color_limit == 16 and len(palette) != 16) or not 16 <= len(palette) <= color_limit:
+        raise ValueError('Palette size does not match graphics format')
+    if any(p >= len(palette) for row in grid for p in row):
+        raise ValueError('Pixel references missing palette color')
     return grid, palette
 
 
 def encode_asset(rom, asset, grid):
     """Invert the view, preserving unused tiles and rejecting conflicting shared tiles."""
+    tile_bytes, color_limit, _, encode = graphics_format(asset)
     if len(grid) != asset['height_px'] or any(len(row) != asset['width_px'] for row in grid):
         raise ValueError('Localized PNG dimensions mismatch')
-    if any(not 0 <= p <= 15 for row in grid for p in row):
-        raise ValueError('Localized PNG must use original 4bpp palette indices')
+    palette_count = len(asset['palette']) if 'palette' in asset else asset.get('palette_count', color_limit)
+    if any(not 0 <= p < min(color_limit, palette_count) for row in grid for p in row):
+        raise ValueError('Localized PNG must use original palette indices')
     payloads = []
     for part in parts(asset):
         raw = bytearray(read_blob(rom, part))
         seen = {}
         ox, oy = part.get('x', 0), part.get('y', 0)
-        for x, y, index, hf, vf in tile_cells(rom, part):
-            if index < 0 or (index+1)*32 > len(raw):
+        for x, y, index, hf, vf in tile_cells(rom, dict(part, format=asset.get('format', '4bpp'))):
+            if index < 0 or (index+1)*tile_bytes > len(raw):
                 raise ValueError('Tilemap references missing tile')
             tile = [[grid[oy+y*8+(7-py if vf else py)][ox+x*8+(7-px if hf else px)] for px in range(8)] for py in range(8)]
-            encoded = encode_4bpp_tiles(tile, 1, 1)
+            encoded = encode(tile, 1, 1)
             if index in seen and seen[index] != encoded:
                 raise ValueError(f'Conflicting edits to shared tile {index}; all occurrences must agree')
             seen[index] = encoded
-            raw[index*32:(index+1)*32] = encoded
+            raw[index*tile_bytes:(index+1)*tile_bytes] = encoded
         payloads.append((part, bytes(raw)))
     return payloads

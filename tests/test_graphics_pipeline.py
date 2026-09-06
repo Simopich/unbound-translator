@@ -7,6 +7,8 @@ from pathlib import Path
 from lib.gba_graphics import (
     decode_4bpp_tiles,
     encode_4bpp_tiles,
+    decode_8bpp_tiles,
+    encode_8bpp_tiles,
     lz77_compress,
     lz77_decompress,
     read_png_indexed,
@@ -21,6 +23,18 @@ ROM_PATH = REPO_ROOT / "rom" / "unbound.gba"
 
 
 class TestGbaGraphicsCodec(unittest.TestCase):
+    def test_8bpp_tile_order_and_bounds(self):
+        raw=bytes(range(256))
+        grid=decode_8bpp_tiles(raw,2,2)
+        self.assertEqual(grid[0],list(range(8))+list(range(64,72)))
+        self.assertEqual(grid[8],list(range(128,136))+list(range(192,200)))
+        self.assertEqual(encode_8bpp_tiles(grid,2,2),raw)
+        with self.assertRaises(ValueError):
+            decode_8bpp_tiles(raw[:-1],2,2)
+        grid[0][0]=256
+        with self.assertRaises(ValueError):
+            encode_8bpp_tiles(grid,2,2)
+
     def test_lz77_roundtrip_simple(self):
         data = b"HELLO WORLD! HELLO POKEMON! HELLO UNBOUND! " * 10
         compressed = lz77_compress(data)
@@ -71,6 +85,43 @@ import importlib.util
 
 
 class TestVerifiedGraphics(unittest.TestCase):
+    def test_8bpp_shared_flips_preserve_unused_tile_and_palette(self):
+        raw=bytes(range(128,192))+bytes([247])*64
+        rom=bytearray(512)
+        rom[64:192]=raw
+        # High palette-bank bits are ignored by 8bpp hardware.
+        rom[200:206]=b'\x00\xf0\x00\x04\x00\x08'
+        asset=dict(format='8bpp',offset=64,compressed='none',decompressed_size=128,
+                   width_tiles=3,height_tiles=1,width_px=24,height_px=8,
+                   palette=[(i,i,i) for i in range(256)],
+                   tilemap=dict(offset=200,compressed='none',decompressed_size=6))
+        grid,pal=render_asset(rom,asset)
+        self.assertEqual(grid[0][:8],list(range(128,136)))
+        self.assertEqual(grid[0][8:16],list(range(135,127,-1)))
+        self.assertEqual(grid[0][16:24],list(range(184,192)))
+        self.assertEqual(len(pal),256)
+        self.assertEqual(encode_asset(rom,asset,grid)[0][1],raw)
+        grid[0][0]=200
+        with self.assertRaisesRegex(ValueError,'shared tile'):
+            encode_asset(rom,asset,grid)
+        grid[0][15]=200
+        grid[7][16]=200
+        encoded=encode_asset(rom,asset,grid)[0][1]
+        self.assertEqual(encoded,bytes([200])+raw[1:])
+
+    def test_italian_press_start_preserves_art_and_blink_indices(self):
+        _,_,source,pal=read_png_indexed(str(GRAPHICS_DIR/'source/title_press_start.png'))
+        _,_,localized,it_pal=read_png_indexed(str(GRAPHICS_DIR/'it/title_press_start.png'))
+        self.assertEqual(pal,it_pal)
+        for y,row in enumerate(source):
+            for x,pixel in enumerate(row):
+                if 100<=x<115 and 149<=y<154:
+                    self.assertIn(localized[y][x],(31,163,164))
+                else:
+                    self.assertEqual(localized[y][x],pixel)
+        expected=json.loads((REPO_ROOT/'tests/fixtures/graphics_press_start_it.json').read_text())
+        self.assertEqual(hashlib.sha256(bytes(p for row in localized for p in row)).hexdigest(),expected['pixel_sha256'])
+
     def fixture(self):
         # Asymmetric tile referenced normally, flipped horizontally and vertically.
         raw = encode_4bpp_tiles([[x+y for x in range(8)] for y in range(8)], 1, 1)
@@ -279,7 +330,7 @@ class TestVerifiedGraphics(unittest.TestCase):
         reviewed={'pokemon_types','summary_information','summary_stats_moves',
                   'trainer_card','league_badges','title_legal_notice',
                   'minigame_finish','minigame_time_up','minigame_ready_start',
-                  'minigame_ratings','slot_machine_labels'}
+                  'minigame_ratings','slot_machine_labels','title_press_start'}
         self.assertTrue(reviewed <= {a['id'] for a in assets})
         for asset in assets:
             if asset['id'] not in reviewed:

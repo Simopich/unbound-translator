@@ -761,6 +761,50 @@
       },
       "evidence": "Uncompressed 128x144 sheet at 0x0B1EE64 referenced by loader literal 0x0107DB0; adjacent 16-color palette at 0x0B21264. Exact tile/palette byte match to CFRU Type_Icons.bmp; inspected ROM rendering. Loader also references icon rectangle table at 0x09A22A0.",
       "reference": "https://github.com/Skeli789/Complete-Fire-Red-Upgrade/blob/master/graphics/Other/Type_Icons/Type_Icons.bmp"
+    },
+    {
+      "id": "title_press_start",
+      "filename": "title_press_start.png",
+      "description": "PRESS START in the final title background; preserve SKELI credit and artwork",
+      "format": "8bpp",
+      "width_tiles": 32,
+      "height_tiles": 20,
+      "width_px": 256,
+      "height_px": 160,
+      "offset": "0x1fd4854",
+      "compressed": "lz77",
+      "compressed_size": 7360,
+      "decompressed_size": 29376,
+      "sha256": "69709b2533f8c4d15d022fda06649fce57f6b73b503083af7b196a6b7c77bb68",
+      "pointer_sources": [
+        "0x1ed7ec0"
+      ],
+      "tilemap": {
+        "offset": "0x1fd6514",
+        "compressed": "lz77",
+        "compressed_size": 1160,
+        "decompressed_size": 1280,
+        "sha256": "fa7b98d9a9c0f09dc849d8291a0a2d5d4c9a4f072d1a1a618659ff91d056fd06",
+        "pointer_sources": [
+          "0x1ed7ec8"
+        ],
+        "palette_bank": 0,
+        "order": "linear"
+      },
+      "palette_source": {
+        "offset": "0x1fd699c",
+        "compressed": "none",
+        "compressed_size": 416,
+        "decompressed_size": 416,
+        "sha256": "207b5ad2008a2e62ef3c32d9aa12125a47888506f3a17652a3d0eb5527425ade",
+        "pointer_sources": [
+          "0x1ed7b8c",
+          "0x1ed7d38",
+          "0x1ed8010"
+        ]
+      },
+      "palette_count": 208,
+      "evidence": "Title fade routine 0x1ED7E3A loads BG1 via pointers 0x1ED7EC0/0x1ED7EC8. Indexed 8bpp source round-trips exactly; text uses palette indices 163/164 controlled by the title blink routine."
     }
   ]
 }

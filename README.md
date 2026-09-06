@@ -396,13 +396,13 @@ and controlfixed in this repository.
 python 007_extract_graphics.py rom/unbound.gba -o graphics/source
 ```
 
-The version-2 manifest currently reconstructs **11 verified graphics**, including the Pokémon type-label spritesheet, summary labels, Trainer Card,
-League Badges, minigame messages/ratings, slot-machine labels, and the title legal notice. It is **not an exhaustive
+The version-2 manifest currently reconstructs **12 verified graphics**, including the Pokémon type-label spritesheet, summary labels, Trainer Card,
+League Badges, minigame messages/ratings, slot-machine labels, the title legal notice, and the 8bpp PRESS START background. It is **not an exhaustive
 inventory**: uncompressed graphics, overworld metatiles, and additional PC/link UI layouts still need investigation.
 See `graphics/manifest.json` → `coverage` for remaining work and rejected entries from the original graphics commit.
 Pointer presence proves a source reference, not whether an inherited screen remains reachable in Unbound.
 
-Exports assemble tilemaps (including flips) and sprite halves instead of interpreting map bytes as pixels. Extraction
+Both 4bpp and 8bpp indexed tiles are supported. Exports assemble tilemaps (including flips) and sprite halves instead of interpreting map bytes as pixels. Extraction
 checks source ROM MD5, source digests, pointers, dimensions, and exact tile-byte round trips before writing PNGs.
 Animation frames and related map views appear vertically. Some views explicitly use grayscale palette-index previews
 where the runtime palette is not established; these are not screenshots. Other views use verified ROM palettes.

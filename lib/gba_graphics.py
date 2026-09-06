@@ -1,4 +1,4 @@
-"""GBA graphics utilities: 4bpp tiles, BGR555 palettes, LZ77, and indexed PNGs."""
+"""GBA graphics utilities: 4bpp/8bpp tiles, BGR555 palettes, LZ77, indexed PNGs."""
 
 from __future__ import annotations
 
@@ -58,6 +58,24 @@ def serialize_gba_palette(palette: Sequence[Tuple[int, int, int]], count: int = 
 
 
 # --- 4bpp Tile Encoding and Decoding ---
+
+def decode_8bpp_tiles(tile_data, width_tiles, height_tiles):
+    """Decode complete 64-byte tiles without changing palette indices."""
+    if width_tiles <= 0 or height_tiles <= 0 or len(tile_data) != width_tiles * height_tiles * 64:
+        raise ValueError('8bpp tile dimensions do not match data')
+    return [[tile_data[((y // 8) * width_tiles + x // 8) * 64 + (y % 8) * 8 + x % 8]
+             for x in range(width_tiles * 8)] for y in range(height_tiles * 8)]
+
+
+def encode_8bpp_tiles(grid, width_tiles, height_tiles):
+    """Encode complete tiles, rejecting invalid dimensions or palette indices."""
+    if width_tiles <= 0 or height_tiles <= 0 or len(grid) != height_tiles * 8 or any(len(row) != width_tiles * 8 for row in grid):
+        raise ValueError('8bpp grid dimensions mismatch')
+    if any(not isinstance(p, int) or not 0 <= p <= 255 for row in grid for p in row):
+        raise ValueError('Invalid 8bpp palette index')
+    return bytes(grid[ty * 8 + y][tx * 8 + x] for ty in range(height_tiles)
+                 for tx in range(width_tiles) for y in range(8) for x in range(8))
+
 
 def decode_4bpp_tiles(
     tile_data: bytes, width_tiles: int, height_tiles: int
