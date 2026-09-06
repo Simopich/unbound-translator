@@ -48,9 +48,10 @@ release input is `ready-translations/it.json`.
 - `007_extract_graphics.py`: lossless extraction of localized text graphics into indexed PNGs.
 - `lib/pcs_text.py`: authoritative PCS codec.
 - `lib/gba_graphics.py`: authoritative 4bpp, LZ77, palette, and indexed PNG codec.
+- `lib/graphics_assets.py`: validated tilemap/sprite views and lossless inverse mapping.
 - `lib/graphics_patcher.py`: localized graphics patcher and free-space relocation engine.
 - `lib/translation_tokens.py`: protected-token and layout helpers.
-- `graphics/manifest.json`: canonical specification of text graphics (offsets, pointers, sizes, dimensions).
+- `graphics/manifest.json`: version-2 verified graphics subset, source digests, layouts, and explicit coverage gaps.
 - `graphics/source/`: original extracted source PNGs.
 - `graphics/<language>/`: localized PNG replacements (falls back to source if absent or identical).
 - `glossaries/<language>.json`: approved Unbound-specific names and terminology enforced during translation.
@@ -66,6 +67,7 @@ release input is `ready-translations/it.json`.
 - Preserve stable IDs, categories, exact pointer sources, byte lengths, and `no_relocation` ownership.
 - Prove the owning table, record, script operand, or bounded text bank before accepting broad pointer/orphan findings.
 - Decode and encode with `lib/pcs_text.py`, never ad hoc ASCII byte handling.
+- Graphics require proven tile/map layouts and exact byte round trips; never label raw tilemaps as images or claim exhaustive coverage without an audit.
 
 ### Translation And Layout
 

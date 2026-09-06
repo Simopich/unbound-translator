@@ -1,315 +1,766 @@
 {
-  "version": 1,
-  "description": "Pokemon Unbound localized graphics manifest",
+  "version": 2,
+  "rom_md5": "9cad8e771940e7f7094d13911552cef0",
+  "description": "Verified text-bearing graphics reconstructed through tilemaps or sprite parts",
+  "coverage": {
+    "complete": false,
+    "scope": "Visually verified subset from LZ77 bank audit. This is not an exhaustive all-assets claim.",
+    "remaining": [
+      "Additional uncompressed text graphics and fonts (Pokemon type-label sheet now verified)",
+      "Overworld signs assembled through metatiles",
+      "Additional UI, PC and link-screen graphics requiring owner/layout verification",
+      "Runtime reachability of inherited FireRed assets"
+    ],
+    "rejected_previous_assets": [
+      {
+        "id": "press_start_left_base",
+        "offset": "0x1FCBAE0",
+        "reason": "Unverified name/layout/palette from original commit; superseded only where independently reconstructed."
+      },
+      {
+        "id": "press_start_right_base",
+        "offset": "0x1FCC098",
+        "reason": "Unverified name/layout/palette from original commit; superseded only where independently reconstructed."
+      },
+      {
+        "id": "press_start_left_glow",
+        "offset": "0x1FCC5C0",
+        "reason": "Unverified name/layout/palette from original commit; superseded only where independently reconstructed."
+      },
+      {
+        "id": "press_start_right_glow",
+        "offset": "0x1FCC754",
+        "reason": "Unverified name/layout/palette from original commit; superseded only where independently reconstructed."
+      },
+      {
+        "id": "press_start_tile",
+        "offset": "0x1FCBC2C",
+        "reason": "Unverified name/layout/palette from original commit; superseded only where independently reconstructed."
+      },
+      {
+        "id": "pokedex_screen_tiles",
+        "offset": "0x1FC08A0",
+        "reason": "Unverified name/layout/palette from original commit; superseded only where independently reconstructed."
+      },
+      {
+        "id": "naming_screen_keyboard",
+        "offset": "0x046D3A8",
+        "reason": "Unverified name/layout/palette from original commit; superseded only where independently reconstructed."
+      },
+      {
+        "id": "help_system_title",
+        "offset": "0x0E9B598",
+        "reason": "Unverified name/layout/palette from original commit; superseded only where independently reconstructed."
+      },
+      {
+        "id": "help_system_controls",
+        "offset": "0x0E9BA30",
+        "reason": "Unverified name/layout/palette from original commit; superseded only where independently reconstructed."
+      },
+      {
+        "id": "fame_checker_banner",
+        "offset": "0x040C650",
+        "reason": "Unverified name/layout/palette from original commit; superseded only where independently reconstructed."
+      },
+      {
+        "id": "teachy_tv_ep1",
+        "offset": "0x03BFBE4",
+        "reason": "Unverified name/layout/palette from original commit; superseded only where independently reconstructed."
+      },
+      {
+        "id": "teachy_tv_ep2",
+        "offset": "0x03C0408",
+        "reason": "Unverified name/layout/palette from original commit; superseded only where independently reconstructed."
+      },
+      {
+        "id": "teachy_tv_ep3",
+        "offset": "0x03C0C00",
+        "reason": "Unverified name/layout/palette from original commit; superseded only where independently reconstructed."
+      },
+      {
+        "id": "teachy_tv_ep4",
+        "offset": "0x03C139C",
+        "reason": "Unverified name/layout/palette from original commit; superseded only where independently reconstructed."
+      },
+      {
+        "id": "teachy_tv_ep5",
+        "offset": "0x03C1BB8",
+        "reason": "Unverified name/layout/palette from original commit; superseded only where independently reconstructed."
+      },
+      {
+        "id": "teachy_tv_ep6",
+        "offset": "0x03C2380",
+        "reason": "Unverified name/layout/palette from original commit; superseded only where independently reconstructed."
+      },
+      {
+        "id": "title_screen_fallback",
+        "offset": "0x0831EE0",
+        "reason": "Unverified name/layout/palette from original commit; superseded only where independently reconstructed."
+      }
+    ]
+  },
   "assets": [
     {
-      "id": "press_start_left_base",
-      "filename": "press_start_left_base.png",
-      "description": "Custom Title Screen PRESS START left half (base frame)",
-      "offset": "0x1FCBAE0",
-      "pointer_sources": [
-        "0x1FB515C"
-      ],
+      "id": "title_legal_notice",
+      "filename": "title_legal_notice.png",
+      "description": "NOT FOR SALE title overlay, copyright and version",
       "format": "4bpp",
-      "width_tiles": 8,
-      "height_tiles": 4,
-      "width_px": 64,
-      "height_px": 32,
-      "compressed": "lz77",
-      "decompressed_size": 1024,
-      "palette_offset": "0x1FCB520",
-      "compressed_size": 332
-    },
-    {
-      "id": "press_start_right_base",
-      "filename": "press_start_right_base.png",
-      "description": "Custom Title Screen PRESS START right half (base frame)",
-      "offset": "0x1FCC098",
-      "pointer_sources": [
-        "0x1FB5164"
-      ],
-      "format": "4bpp",
-      "width_tiles": 8,
-      "height_tiles": 4,
-      "width_px": 64,
-      "height_px": 32,
-      "compressed": "lz77",
-      "decompressed_size": 1024,
-      "palette_offset": "0x1FCB520",
-      "compressed_size": 392
-    },
-    {
-      "id": "press_start_left_glow",
-      "filename": "press_start_left_glow.png",
-      "description": "Custom Title Screen PRESS START left half (glow frame)",
-      "offset": "0x1FCC5C0",
-      "pointer_sources": [
-        "0x1FB5174"
-      ],
-      "format": "4bpp",
-      "width_tiles": 8,
-      "height_tiles": 4,
-      "width_px": 64,
-      "height_px": 32,
-      "compressed": "lz77",
-      "decompressed_size": 1024,
-      "palette_offset": "0x1FCB520",
-      "compressed_size": 404
-    },
-    {
-      "id": "press_start_right_glow",
-      "filename": "press_start_right_glow.png",
-      "description": "Custom Title Screen PRESS START right half (glow frame)",
-      "offset": "0x1FCC754",
-      "pointer_sources": [
-        "0x1FB517C"
-      ],
-      "format": "4bpp",
-      "width_tiles": 8,
-      "height_tiles": 4,
-      "width_px": 64,
-      "height_px": 32,
-      "compressed": "lz77",
-      "decompressed_size": 1024,
-      "palette_offset": "0x1FCB520",
-      "compressed_size": 484
-    },
-    {
-      "id": "press_start_tile",
-      "filename": "press_start_tile.png",
-      "description": "Custom Title Screen single tile element",
-      "offset": "0x1FCBC2C",
-      "pointer_sources": [
-        "0x1FB516C"
-      ],
-      "format": "4bpp",
-      "width_tiles": 1,
-      "height_tiles": 1,
-      "width_px": 8,
-      "height_px": 8,
-      "compressed": "lz77",
-      "decompressed_size": 32,
-      "palette_offset": "0x1FCB520",
-      "compressed_size": 28
-    },
-    {
-      "id": "pokedex_screen_tiles",
-      "filename": "pokedex_screen_tiles.png",
-      "description": "Pokedex UI background with AREA, CRY, SIZE, PAGE, CANCEL buttons",
+      "width_tiles": 32,
+      "width_px": 256,
       "offset": "0x1FC08A0",
+      "compressed": "lz77",
+      "decompressed_size": 7584,
+      "compressed_size": 3001,
+      "sha256": "25168f66c2ad6b3fd510c8b33907e27dcd6b1173dedcd34cab36b611e9302ff8",
       "pointer_sources": [
         "0x00EC610"
       ],
-      "format": "4bpp",
-      "width_tiles": 16,
-      "height_tiles": 15,
-      "width_px": 128,
-      "height_px": 120,
-      "compressed": "lz77",
-      "decompressed_size": 7584,
-      "palette_offset": "0x1FC16E0",
-      "compressed_size": 3004
+      "tilemaps": [
+        {
+          "offset": "0x1FC145C",
+          "compressed": "lz77",
+          "decompressed_size": 1280,
+          "compressed_size": 644,
+          "sha256": "1c67ad13cdd5d052e900a988a88fbc96de50baf29ab7a2d261a0da1ff201eea5",
+          "pointer_sources": [
+            "0x00EC614"
+          ],
+          "height_tiles": 20,
+          "palette_bank": 0,
+          "order": "linear"
+        }
+      ],
+      "height_tiles": 20,
+      "height_px": 160,
+      "palette_source": {
+        "offset": "0x1FC16E0",
+        "compressed": "none",
+        "decompressed_size": 32,
+        "compressed_size": 32,
+        "sha256": "976c589fe0803c2dd556bafa6d56a7bf38babb85b2586fb06daac66bc4a8513f",
+        "pointer_sources": []
+      },
+      "evidence": "Tile and map pointers checked against source ROM; reconstructed text visually inspected. Runtime reachability is not established by pointer presence alone."
     },
     {
-      "id": "naming_screen_keyboard",
-      "filename": "naming_screen_keyboard.png",
-      "description": "Naming screen keyboard with UPPER, LOWER, OTHERS, DEL, OK buttons",
-      "offset": "0x046D3A8",
-      "pointer_sources": [
-        "0x0149F10"
-      ],
+      "id": "summary_stats_moves",
+      "filename": "summary_stats_moves.png",
+      "description": "HP, Attack, Defense, Sp. Atk, Sp. Def, Speed, Total; TYPE, POWER, ACCURACY, PP",
       "format": "4bpp",
-      "width_tiles": 16,
-      "height_tiles": 16,
-      "width_px": 128,
-      "height_px": 128,
+      "width_tiles": 32,
+      "width_px": 256,
+      "offset": "0x1FD18D4",
       "compressed": "lz77",
-      "decompressed_size": 8192,
-      "palette_offset": "0x046C8D8",
-      "compressed_size": 1324
+      "decompressed_size": 5760,
+      "compressed_size": 1471,
+      "sha256": "74ebd7e0b63e418b3346fb495b40b1fd52413e3df4803a5d96471c76be74e507",
+      "pointer_sources": [
+        "0x1ED4E54"
+      ],
+      "tilemaps": [
+        {
+          "offset": "0x1FD1E94",
+          "compressed": "lz77",
+          "decompressed_size": 4096,
+          "compressed_size": 942,
+          "sha256": "b4bcd1a74ea5351dbb0c0e6298e4aac703811e6d6a69547ecf1c0d428cc439dc",
+          "pointer_sources": [
+            "0x1ED4E5C"
+          ],
+          "height_tiles": 64,
+          "palette_bank": 0,
+          "order": "linear"
+        }
+      ],
+      "height_tiles": 64,
+      "height_px": 512,
+      "palette_source": {
+        "offset": "0x1FD2244",
+        "compressed": "lz77",
+        "decompressed_size": 32,
+        "compressed_size": 40,
+        "sha256": "51c6faf689224a16f367d2b3fde2b5392034e1c53a85164965007e68842cd5f2",
+        "pointer_sources": []
+      },
+      "evidence": "Tile and map pointers checked against source ROM; reconstructed text visually inspected. Runtime reachability is not established by pointer presence alone."
     },
     {
-      "id": "help_system_title",
-      "filename": "help_system_title.png",
-      "description": "Help system HELP header graphic",
-      "offset": "0x0E9B598",
-      "pointer_sources": [
-        "0x0135B34",
-        "0x0135DBC",
-        "0x013B5EC"
-      ],
+      "id": "trainer_card",
+      "filename": "trainer_card.png",
+      "description": "TRAINER CARD",
       "format": "4bpp",
-      "width_tiles": 8,
-      "height_tiles": 5,
-      "width_px": 64,
-      "height_px": 40,
+      "width_tiles": 32,
+      "width_px": 256,
+      "offset": "0x1FDA2BC",
       "compressed": "lz77",
-      "decompressed_size": 1280,
-      "palette_offset": "0x0E9B498",
-      "compressed_size": 332
+      "decompressed_size": 4416,
+      "compressed_size": 1378,
+      "sha256": "cd794788babc119233ed662ce08a593b84f76816627c0ff34c615e06a30dd8f5",
+      "pointer_sources": [
+        "0x1ED8AA4"
+      ],
+      "tilemaps": [
+        {
+          "offset": "0x1FDA820",
+          "compressed": "lz77",
+          "decompressed_size": 1280,
+          "compressed_size": 522,
+          "sha256": "3df2fbe756648068cee57941238786d5ef81129b78728e40c9bdc6dbac0eaa4f",
+          "pointer_sources": [
+            "0x1ED8AA8"
+          ],
+          "height_tiles": 20,
+          "palette_bank": 0,
+          "order": "linear"
+        }
+      ],
+      "height_tiles": 20,
+      "height_px": 160,
+      "palette_source": {
+        "offset": "0x1FDAA2C",
+        "compressed": "none",
+        "decompressed_size": 32,
+        "compressed_size": 32,
+        "sha256": "d7009bbb9027e6196674f40cfdf6150346a28701978c0c0c2d87d516ad83ed0a",
+        "pointer_sources": []
+      },
+      "evidence": "Tile and map pointers checked against source ROM; reconstructed text visually inspected. Runtime reachability is not established by pointer presence alone."
     },
     {
-      "id": "help_system_controls",
-      "filename": "help_system_controls.png",
-      "description": "Help system button guide and controller labels",
-      "offset": "0x0E9BA30",
-      "pointer_sources": [
-        "0x0135B54",
-        "0x0135D8C"
-      ],
+      "id": "league_badges",
+      "filename": "league_badges.png",
+      "description": "LEAGUE BADGES",
       "format": "4bpp",
-      "width_tiles": 16,
-      "height_tiles": 4,
+      "width_tiles": 32,
+      "width_px": 256,
+      "offset": "0x1FDAA4C",
+      "compressed": "lz77",
+      "decompressed_size": 6688,
+      "compressed_size": 2143,
+      "sha256": "6bec48214a0aa97990bd2e449aec2bb44904178f8b12756ca2d3c9a3ca27b8c8",
+      "pointer_sources": [
+        "0x1ED8AB4"
+      ],
+      "tilemaps": [
+        {
+          "offset": "0x1FDB2AC",
+          "compressed": "lz77",
+          "decompressed_size": 1280,
+          "compressed_size": 658,
+          "sha256": "9b9a9b8546a3be7b82480f7dc20fc33e29a83e10f192eaac9e87d3a53118cf23",
+          "pointer_sources": [
+            "0x1ED8AB8"
+          ],
+          "height_tiles": 20,
+          "palette_bank": 0,
+          "order": "linear"
+        }
+      ],
+      "height_tiles": 20,
+      "height_px": 160,
+      "palette_source": {
+        "offset": "0x1FDAA2C",
+        "compressed": "none",
+        "decompressed_size": 32,
+        "compressed_size": 32,
+        "sha256": "d7009bbb9027e6196674f40cfdf6150346a28701978c0c0c2d87d516ad83ed0a",
+        "pointer_sources": []
+      },
+      "evidence": "Tile and map pointers checked against source ROM; reconstructed text visually inspected. Runtime reachability is not established by pointer presence alone."
+    },
+    {
+      "id": "minigame_ratings",
+      "filename": "minigame_ratings.png",
+      "description": "NICE +50, GREAT +200, GOOD +100, EXCELLENT +500",
+      "format": "4bpp",
+      "width_tiles": 32,
+      "width_px": 256,
+      "offset": "0x046C8F8",
+      "compressed": "lz77",
+      "decompressed_size": 5440,
+      "compressed_size": 2735,
+      "sha256": "7ee060f370e0aa98cf634db2e4365d148e2b62b1c52c14963de171317b551262",
+      "pointer_sources": [
+        "0x0149F0C"
+      ],
+      "tilemaps": [
+        {
+          "offset": "0x046D3A8",
+          "compressed": "lz77",
+          "decompressed_size": 8192,
+          "compressed_size": 1322,
+          "sha256": "1d854d08fa2d261c1ab7d202b66406412037d47aa087874651bb15104d3d8335",
+          "pointer_sources": [
+            "0x0149F10"
+          ],
+          "height_tiles": 128,
+          "palette_bank": 1,
+          "order": "linear"
+        }
+      ],
+      "height_tiles": 128,
+      "height_px": 1024,
+      "palette_source": {
+        "offset": "0x046C8D8",
+        "compressed": "none",
+        "decompressed_size": 32,
+        "compressed_size": 32,
+        "sha256": "913715c7239a4a2d0610f25d2ac6ad20083b3c01cb089904cc7fd322e00492b3",
+        "pointer_sources": []
+      },
+      "evidence": "Tile and map pointers checked against source ROM; reconstructed text visually inspected. Runtime reachability is not established by pointer presence alone."
+    },
+    {
+      "id": "slot_machine_labels",
+      "filename": "slot_machine_labels.png",
+      "description": "CREDIT, PAYOUT",
+      "format": "4bpp",
+      "width_tiles": 32,
+      "width_px": 256,
+      "offset": "0x04659D0",
+      "compressed": "lz77",
+      "decompressed_size": 4416,
+      "compressed_size": 2052,
+      "sha256": "a5b0aa25d0de6174fec2f683a7eddba633a840648630642678064dd44597a873",
+      "pointer_sources": [
+        "0x01413AC"
+      ],
+      "tilemaps": [
+        {
+          "offset": "0x04661D4",
+          "compressed": "lz77",
+          "decompressed_size": 1280,
+          "compressed_size": 744,
+          "sha256": "e225d14080558f6018d2e98c2cada8925f593d1e205ee6e7fcd5eaa474792c0a",
+          "pointer_sources": [
+            "0x01413B8"
+          ],
+          "height_tiles": 20,
+          "palette_bank": 0,
+          "order": "linear",
+          "palette_banks": [
+            0,
+            1,
+            3,
+            4
+          ]
+        }
+      ],
+      "height_tiles": 20,
+      "height_px": 160,
+      "palette": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          17,
+          17,
+          17
+        ],
+        [
+          34,
+          34,
+          34
+        ],
+        [
+          51,
+          51,
+          51
+        ],
+        [
+          68,
+          68,
+          68
+        ],
+        [
+          85,
+          85,
+          85
+        ],
+        [
+          102,
+          102,
+          102
+        ],
+        [
+          119,
+          119,
+          119
+        ],
+        [
+          136,
+          136,
+          136
+        ],
+        [
+          153,
+          153,
+          153
+        ],
+        [
+          170,
+          170,
+          170
+        ],
+        [
+          187,
+          187,
+          187
+        ],
+        [
+          204,
+          204,
+          204
+        ],
+        [
+          221,
+          221,
+          221
+        ],
+        [
+          238,
+          238,
+          238
+        ],
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      "palette_note": "Explicit grayscale index preview; runtime palette not yet proven. Preserve indices when editing. Palette banks shown in the same index ramp; original bank selection remains in ROM tilemap.",
+      "evidence": "Tile and map pointers checked against source ROM; reconstructed text visually inspected. Runtime reachability is not established by pointer presence alone."
+    },
+    {
+      "id": "summary_information",
+      "filename": "summary_information.png",
+      "description": "Summary information, skills and move page labels",
+      "format": "4bpp",
+      "width_tiles": 32,
+      "width_px": 256,
+      "offset": "0x0E9A460",
+      "compressed": "lz77",
+      "decompressed_size": 16384,
+      "compressed_size": 3084,
+      "sha256": "d1fa01e498051809fa56bfc30f6d3b843b5ecf525230f0adfb1fd7edb26f3e73",
+      "pointer_sources": [
+        "0x0135FFC"
+      ],
+      "tilemaps": [
+        {
+          "offset": "0x0E9B598",
+          "compressed": "lz77",
+          "decompressed_size": 1280,
+          "compressed_size": 331,
+          "sha256": "cbba81d44b3643d6ddaaee211d0ec469f6425108d5a598807ebc114da8eb0ce0",
+          "pointer_sources": [
+            "0x0135B34",
+            "0x0135DBC",
+            "0x013B5EC"
+          ],
+          "height_tiles": 20,
+          "palette_bank": 2,
+          "order": "linear"
+        },
+        {
+          "offset": "0x0E9B750",
+          "compressed": "lz77",
+          "decompressed_size": 1280,
+          "compressed_size": 408,
+          "sha256": "ebecc1bdefad3d83936fb92ccd196f2b3bc36083aae36ef0ceb0c00220b1874f",
+          "pointer_sources": [
+            "0x0135DC0"
+          ],
+          "height_tiles": 20,
+          "palette_bank": 2,
+          "order": "linear"
+        },
+        {
+          "offset": "0x0E9B950",
+          "compressed": "lz77",
+          "decompressed_size": 1280,
+          "compressed_size": 224,
+          "sha256": "cac7c99f9e8200026ee30e21f06a4bcf5fe358f468422d529fd981931b149286",
+          "pointer_sources": [],
+          "height_tiles": 20,
+          "palette_bank": 2,
+          "order": "linear"
+        },
+        {
+          "offset": "0x0E9BBCC",
+          "compressed": "lz77",
+          "decompressed_size": 1280,
+          "compressed_size": 209,
+          "sha256": "de3fc4aa2949aea0e2f40b60841f2c30477e7c76fdb627c96df0ae1b5d84b2d2",
+          "pointer_sources": [],
+          "height_tiles": 20,
+          "palette_bank": 2,
+          "order": "linear"
+        }
+      ],
+      "height_tiles": 80,
+      "height_px": 640,
+      "palette": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          17,
+          17,
+          17
+        ],
+        [
+          34,
+          34,
+          34
+        ],
+        [
+          51,
+          51,
+          51
+        ],
+        [
+          68,
+          68,
+          68
+        ],
+        [
+          85,
+          85,
+          85
+        ],
+        [
+          102,
+          102,
+          102
+        ],
+        [
+          119,
+          119,
+          119
+        ],
+        [
+          136,
+          136,
+          136
+        ],
+        [
+          153,
+          153,
+          153
+        ],
+        [
+          170,
+          170,
+          170
+        ],
+        [
+          187,
+          187,
+          187
+        ],
+        [
+          204,
+          204,
+          204
+        ],
+        [
+          221,
+          221,
+          221
+        ],
+        [
+          238,
+          238,
+          238
+        ],
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      "palette_note": "Explicit grayscale index preview; runtime palette not yet proven. Preserve indices when editing.",
+      "evidence": "Tile and map pointers checked against source ROM; reconstructed text visually inspected. Runtime reachability is not established by pointer presence alone."
+    },
+    {
+      "id": "minigame_finish",
+      "filename": "minigame_finish.png",
+      "format": "4bpp",
+      "description": "Finish!",
       "width_px": 128,
       "height_px": 32,
-      "compressed": "lz77",
-      "decompressed_size": 2048,
-      "palette_offset": "0x0E9B498",
-      "compressed_size": 348
+      "parts": [
+        {
+          "offset": "0x1FCBAE0",
+          "compressed": "lz77",
+          "decompressed_size": 1024,
+          "compressed_size": 330,
+          "sha256": "459c6d192011d8753ec99816d791eb0efdfad92b095f43bde6417de0944bb842",
+          "pointer_sources": [
+            "0x1FB515C"
+          ],
+          "x": 0,
+          "y": 0,
+          "width_tiles": 8,
+          "height_tiles": 4
+        },
+        {
+          "offset": "0x1FCC098",
+          "compressed": "lz77",
+          "decompressed_size": 1024,
+          "compressed_size": 391,
+          "sha256": "73e7f32c57f53d1964989611a8f8417f07cef99bf004350bf8f9de204879f668",
+          "pointer_sources": [
+            "0x1FB5164"
+          ],
+          "x": 64,
+          "y": 0,
+          "width_tiles": 8,
+          "height_tiles": 4
+        }
+      ],
+      "evidence": "Adjacent tagged sprite-sheet records; 64x32 halves reconstructed and visually inspected, animation frames stacked. Shared palette record at 0x1FB516C (tag 10008); the former press_start_tile was this compressed palette.",
+      "palette_source": {
+        "offset": "0x1FCBC2C",
+        "compressed": "lz77",
+        "decompressed_size": 32,
+        "compressed_size": 28,
+        "sha256": "0130531e1faf4aac273a1a7f4f4dd0287380d169270e952f897eafe4e9210d12",
+        "pointer_sources": [
+          "0x1FB516C"
+        ]
+      }
     },
     {
-      "id": "fame_checker_banner",
-      "filename": "fame_checker_banner.png",
-      "description": "Fame Checker header banner graphic",
-      "offset": "0x040C650",
-      "pointer_sources": [
-        "0x00F44B4"
-      ],
+      "id": "minigame_time_up",
+      "filename": "minigame_time_up.png",
       "format": "4bpp",
-      "width_tiles": 16,
-      "height_tiles": 16,
+      "description": "Time Up!",
+      "width_px": 128,
+      "height_px": 32,
+      "parts": [
+        {
+          "offset": "0x1FCC5C0",
+          "compressed": "lz77",
+          "decompressed_size": 1024,
+          "compressed_size": 404,
+          "sha256": "b38455e9dc1fe11c091124c8ebc6f8bd71507939079febc5377eec91faf4e222",
+          "pointer_sources": [
+            "0x1FB5174"
+          ],
+          "x": 0,
+          "y": 0,
+          "width_tiles": 8,
+          "height_tiles": 4
+        },
+        {
+          "offset": "0x1FCC754",
+          "compressed": "lz77",
+          "decompressed_size": 1024,
+          "compressed_size": 482,
+          "sha256": "946b55a677813bc2efdc51eed9cdd649a41d2b19e4fa0a7aa4b3bce4a200aa36",
+          "pointer_sources": [
+            "0x1FB517C"
+          ],
+          "x": 64,
+          "y": 0,
+          "width_tiles": 8,
+          "height_tiles": 4
+        }
+      ],
+      "evidence": "Adjacent tagged sprite-sheet records; 64x32 halves reconstructed and visually inspected, animation frames stacked. Shared palette record at 0x1FB516C (tag 10008); the former press_start_tile was this compressed palette.",
+      "palette_source": {
+        "offset": "0x1FCBC2C",
+        "compressed": "lz77",
+        "decompressed_size": 32,
+        "compressed_size": 28,
+        "sha256": "0130531e1faf4aac273a1a7f4f4dd0287380d169270e952f897eafe4e9210d12",
+        "pointer_sources": [
+          "0x1FB516C"
+        ]
+      }
+    },
+    {
+      "id": "minigame_ready_start",
+      "filename": "minigame_ready_start.png",
+      "format": "4bpp",
+      "description": "Ready (three animation frames), Start!",
       "width_px": 128,
       "height_px": 128,
-      "compressed": "lz77",
-      "decompressed_size": 8192,
-      "palette_offset": "0x0EAAB18",
-      "compressed_size": 1028
+      "parts": [
+        {
+          "offset": "0x1FCBC48",
+          "compressed": "lz77",
+          "decompressed_size": 4096,
+          "compressed_size": 1073,
+          "sha256": "e53a2e1161dbeff87fe7ea42d0c005e26244df5deabebcf00d2ea8fb41206bbc",
+          "pointer_sources": [
+            "0x1FB506C"
+          ],
+          "x": 0,
+          "y": 0,
+          "width_tiles": 8,
+          "height_tiles": 16
+        },
+        {
+          "offset": "0x1FCC220",
+          "compressed": "lz77",
+          "decompressed_size": 4096,
+          "compressed_size": 926,
+          "sha256": "da426c3dafc3039cbf46076dc53618bdec1f4be24824e3dc50fdef5ae35b84d2",
+          "pointer_sources": [
+            "0x1FB5074"
+          ],
+          "x": 64,
+          "y": 0,
+          "width_tiles": 8,
+          "height_tiles": 16
+        }
+      ],
+      "evidence": "Adjacent tagged sprite-sheet records; 64x32 halves reconstructed and visually inspected, animation frames stacked.",
+      "palette_source": {
+        "offset": "0x1FCC07C",
+        "compressed": "lz77",
+        "decompressed_size": 32,
+        "compressed_size": 25,
+        "sha256": "0130531e1faf4aac273a1a7f4f4dd0287380d169270e952f897eafe4e9210d12",
+        "pointer_sources": []
+      }
     },
     {
-      "id": "teachy_tv_ep1",
-      "filename": "teachy_tv_ep1.png",
-      "description": "Teachy TV Episode 1 title graphic",
-      "offset": "0x03BFBE4",
-      "pointer_sources": [
-        "0x03C2BA4"
-      ],
+      "id": "pokemon_types",
+      "filename": "pokemon_types.png",
+      "description": "18 Pokemon type labels plus ???, status abbreviations, move labels and small icons",
       "format": "4bpp",
       "width_tiles": 16,
-      "height_tiles": 16,
+      "height_tiles": 18,
       "width_px": 128,
-      "height_px": 128,
-      "compressed": "lz77",
-      "decompressed_size": 8192,
-      "palette_offset": "0x03BFA80",
-      "compressed_size": 2084
-    },
-    {
-      "id": "teachy_tv_ep2",
-      "filename": "teachy_tv_ep2.png",
-      "description": "Teachy TV Episode 2 title graphic",
-      "offset": "0x03C0408",
+      "height_px": 144,
+      "offset": "0x0B1EE64",
+      "compressed": "none",
+      "decompressed_size": 9216,
+      "compressed_size": 9216,
+      "sha256": "f7c71c65cd1779e49c99f68ba27b48971973a2da6bc41cb8ad1f8efb737961f5",
       "pointer_sources": [
-        "0x03C2BA8"
+        "0x0107DB0"
       ],
-      "format": "4bpp",
-      "width_tiles": 16,
-      "height_tiles": 16,
-      "width_px": 128,
-      "height_px": 128,
-      "compressed": "lz77",
-      "decompressed_size": 8192,
-      "palette_offset": "0x03BFA80",
-      "compressed_size": 2040
-    },
-    {
-      "id": "teachy_tv_ep3",
-      "filename": "teachy_tv_ep3.png",
-      "description": "Teachy TV Episode 3 title graphic",
-      "offset": "0x03C0C00",
-      "pointer_sources": [
-        "0x03C2BAC"
-      ],
-      "format": "4bpp",
-      "width_tiles": 16,
-      "height_tiles": 16,
-      "width_px": 128,
-      "height_px": 128,
-      "compressed": "lz77",
-      "decompressed_size": 8192,
-      "palette_offset": "0x03BFA80",
-      "compressed_size": 1948
-    },
-    {
-      "id": "teachy_tv_ep4",
-      "filename": "teachy_tv_ep4.png",
-      "description": "Teachy TV Episode 4 title graphic",
-      "offset": "0x03C139C",
-      "pointer_sources": [
-        "0x03C2BB0"
-      ],
-      "format": "4bpp",
-      "width_tiles": 16,
-      "height_tiles": 16,
-      "width_px": 128,
-      "height_px": 128,
-      "compressed": "lz77",
-      "decompressed_size": 8192,
-      "palette_offset": "0x03BFA80",
-      "compressed_size": 2076
-    },
-    {
-      "id": "teachy_tv_ep5",
-      "filename": "teachy_tv_ep5.png",
-      "description": "Teachy TV Episode 5 title graphic",
-      "offset": "0x03C1BB8",
-      "pointer_sources": [
-        "0x03C2BB4"
-      ],
-      "format": "4bpp",
-      "width_tiles": 16,
-      "height_tiles": 16,
-      "width_px": 128,
-      "height_px": 128,
-      "compressed": "lz77",
-      "decompressed_size": 8192,
-      "palette_offset": "0x03BFA80",
-      "compressed_size": 1992
-    },
-    {
-      "id": "teachy_tv_ep6",
-      "filename": "teachy_tv_ep6.png",
-      "description": "Teachy TV Episode 6 title graphic",
-      "offset": "0x03C2380",
-      "pointer_sources": [
-        "0x03C2BB8"
-      ],
-      "format": "4bpp",
-      "width_tiles": 16,
-      "height_tiles": 16,
-      "width_px": 128,
-      "height_px": 128,
-      "compressed": "lz77",
-      "decompressed_size": 8192,
-      "palette_offset": "0x03BFA80",
-      "compressed_size": 2084
-    },
-    {
-      "id": "title_screen_fallback",
-      "filename": "title_screen_fallback.png",
-      "description": "Vanilla FireRed title screen background tiles",
-      "offset": "0x0831EE0",
-      "pointer_sources": [
-        "0x0078A9C"
-      ],
-      "format": "4bpp",
-      "width_tiles": 8,
-      "height_tiles": 5,
-      "width_px": 64,
-      "height_px": 40,
-      "compressed": "lz77",
-      "decompressed_size": 1280,
-      "palette_offset": "0x0EAD5E8",
-      "compressed_size": 1348
+      "palette_source": {
+        "offset": "0x0B21264",
+        "compressed": "none",
+        "decompressed_size": 32,
+        "compressed_size": 32,
+        "sha256": "5edac2c02135e0b89612b6fb3419310cdc5502af04cc4b467fd9cc4675daf3bc",
+        "pointer_sources": [
+          "0x0107D64"
+        ]
+      },
+      "evidence": "Uncompressed 128x144 sheet at 0x0B1EE64 referenced by loader literal 0x0107DB0; adjacent 16-color palette at 0x0B21264. Exact tile/palette byte match to CFRU Type_Icons.bmp; inspected ROM rendering. Loader also references icon rectangle table at 0x09A22A0.",
+      "reference": "https://github.com/Skeli789/Complete-Fire-Red-Upgrade/blob/master/graphics/Other/Type_Icons/Type_Icons.bmp"
     }
   ]
 }
