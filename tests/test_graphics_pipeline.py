@@ -235,7 +235,13 @@ class TestVerifiedGraphics(unittest.TestCase):
     @unittest.skipUnless(ROM_PATH.is_file(), 'private source ROM unavailable')
     def test_italian_type_sheet_injects_only_its_original_slot(self):
         rom=bytearray(ROM_PATH.read_bytes());before=bytes(rom)
-        reports=patch_graphics(rom,GRAPHICS_DIR,'it',[])
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);(root/'it').mkdir()
+            manifest=json.loads(MANIFEST_PATH.read_text())
+            manifest['assets']=[a for a in manifest['assets'] if a['id']=='pokemon_types']
+            (root/'manifest.json').write_text(json.dumps(manifest))
+            (root/'it/pokemon_types.png').write_bytes((GRAPHICS_DIR/'it/pokemon_types.png').read_bytes())
+            reports=patch_graphics(rom,root,'it',[])
         self.assertEqual(len(reports),1)
         self.assertEqual(reports[0]['id'],'pokemon_types')
         self.assertEqual(reports[0]['status'],'patched_in_place')
@@ -244,6 +250,48 @@ class TestVerifiedGraphics(unittest.TestCase):
         self.assertEqual(rom[0xB21264:],before[0xB21264:])
         _,_,grid,_=read_png_indexed(str(GRAPHICS_DIR/'it/pokemon_types.png'))
         self.assertEqual(bytes(rom[0xB1EE64:0xB21264]),encode_4bpp_tiles(grid,16,18))
+
+    def test_italian_summary_pixels_match_reviewed_fixture(self):
+        fixture=json.loads((REPO_ROOT/'tests/fixtures/graphics_summary_it.json').read_text())
+        for name,expected in fixture.items():
+            path=GRAPHICS_DIR/'it'/f'{name}.png'
+            self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),expected['sha256'])
+            w,h,original,pal=read_png_indexed(str(GRAPHICS_DIR/'source'/f'{name}.png'))
+            iw,ih,localized,ipal=read_png_indexed(str(path))
+            self.assertEqual((iw,ih,ipal),(w,h,pal))
+            if 'text_ink_sha256' in expected:
+                ink=bytes(int(v==3) for row in localized for v in row)
+                self.assertEqual(hashlib.sha256(ink).hexdigest(),expected['text_ink_sha256'])
+            meta=json.loads((GRAPHICS_DIR/'it'/f'{name}.localization.json').read_text())
+            self.assertEqual(len(meta['labels']),expected['labels'])
+            allowed=set()
+            for label in meta['labels']:
+                x,y,rw,rh=label['rect']
+                allowed.update((xx,yy) for yy in range(y,y+rh) for xx in range(x,x+rw))
+                self.assertTrue(any(original[yy][xx]!=localized[yy][xx]
+                                    for yy in range(y,y+rh) for xx in range(x,x+rw)))
+            for y in range(h):
+                for x in range(w):
+                    if (x,y) not in allowed:self.assertEqual(localized[y][x],original[y][x])
+
+    @unittest.skipUnless(ROM_PATH.is_file(), 'private source ROM unavailable')
+    def test_all_italian_graphics_inject_without_touching_maps(self):
+        rom=bytearray(ROM_PATH.read_bytes());before=bytes(rom)
+        reports=patch_graphics(rom,GRAPHICS_DIR,'it',[])
+        self.assertEqual({r['id'] for r in reports},{'pokemon_types','summary_information','summary_stats_moves'})
+        assets=json.loads(MANIFEST_PATH.read_text())['assets']
+        outside=bytearray(rom)
+        for report in reports:
+            self.assertEqual(report['status'],'patched_in_place')
+            self.assertEqual(report['pointers_updated'],0)
+            asset=next(a for a in assets if a['id']==report['id'])
+            offset=int(asset['offset'],16);size=asset['compressed_size']
+            _,_,grid,_=read_png_indexed(str(GRAPHICS_DIR/'it'/asset['filename']))
+            expected=encode_asset(before,asset,grid)[0][1]
+            actual=lz77_decompress(rom,offset) if asset['compressed']=='lz77' else bytes(rom[offset:offset+size])
+            self.assertEqual(actual,expected)
+            outside[offset:offset+size]=before[offset:offset+size]
+        self.assertEqual(bytes(outside),before)
 
     @unittest.skipUnless(ROM_PATH.is_file(), 'private source ROM unavailable')
     def test_real_rom_all_views_roundtrip(self):
