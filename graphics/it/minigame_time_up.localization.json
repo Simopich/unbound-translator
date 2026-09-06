@@ -1,0 +1,36 @@
+{
+  "source_sha256": "b71f04edbcf4d3d469883308ea843053d4804ca0580d76309d9b85626fc49c3d",
+  "reference": "Direct indexed-pixel editing of source lettering; standard Italian minigame prompts, no Pokémon-specific terminology.",
+  "labels": [
+    {
+      "source": "Time Up!",
+      "text": "Tempo scaduto!",
+      "rect": [
+        0,
+        0,
+        128,
+        32
+      ]
+    }
+  ],
+  "method": "Source glyphs rearranged; P, o, c, u, V edited from source pixel shapes. Full original label background cleared to palette index 0, then dark and green outlines rebuilt around Italian glyphs.",
+  "unchanged": "Source 16-color palette, canvas dimensions, sprite part mapping, and number/order of animation frames.",
+  "validation": {
+    "encode_asset": "passed",
+    "parts": [
+      {
+        "offset": "0x1FCC5C0",
+        "compressed_bytes": 364,
+        "original_capacity": 404
+      },
+      {
+        "offset": "0x1FCC754",
+        "compressed_bytes": 376,
+        "original_capacity": 482
+      }
+    ]
+  },
+  "limitations": [
+    "Tempo scaduto! uses two lines at a smaller pixel size to retain complete wording."
+  ]
+}

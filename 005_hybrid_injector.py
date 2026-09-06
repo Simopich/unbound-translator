@@ -9,6 +9,7 @@ from bisect import bisect_left
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from lib.graphics_patcher import patch_graphics
 from lib.pcs_text import Charmap, decode_pcs, fc_arg_count, strip_control_tokens
 from lib.translation_tokens import semantic_token_counts
 from lib.unbound_free_space import VETTED_FREE_SPACE_RANGES
@@ -1036,6 +1037,11 @@ def main():
     parser.add_argument("-o", "--output", default="hybrid-patched.gba", help="Output GBA ROM")
     parser.add_argument("--target-lang", default="it", help="Target language hint for text cleanup")
     parser.add_argument(
+        "--graphics-dir",
+        default="graphics",
+        help="Path to graphics directory with manifest.json and localized folders. Default: graphics",
+    )
+    parser.add_argument(
         "--min-free-run",
         default=hex(DEFAULT_MIN_FREE_RUN),
         help="Minimum FF run used for relocated text. Default: 0x400",
@@ -1162,6 +1168,14 @@ def main():
         args.target_lang.lower(),
         patch_context,
     )
+    graphics_patches = patch_graphics(
+        rom,
+        Path(args.graphics_dir),
+        args.target_lang.lower(),
+        free_blocks,
+        dry_run=args.dry_run,
+        fail_on_no_space=args.fail_on_no_space,
+    )
 
     candidates, relocation_skips = collect_relocation_candidates(
         rom,
@@ -1187,7 +1201,8 @@ def main():
             for block in reclamation_base_blocks
         ]
         all_reclaimed_blocks, all_reclaimed_owner_ids = (
-            build_reclaimed_script_text_blocks(rom, candidates, entries)
+            # Ownership evidence must not depend on localized graphics/runtime bytes.
+            build_reclaimed_script_text_blocks(source_rom, candidates, entries)
         )
         preliminary_plan, _preliminary_missing = plan_relocations(
             vetted_blocks,
@@ -1358,6 +1373,7 @@ def main():
         "ability_descriptions_compacted": 0,
         "ability_description_bytes_removed": 0,
         "runtime_patches": len(runtime_patches),
+        "graphics_patches": len(graphics_patches),
     }
 
     relocation_map = []
@@ -1603,6 +1619,7 @@ def main():
             ],
             "missing_fixed_slots": missing_fixed_slots,
             "runtime_patches": runtime_patches,
+            "graphics_patches": graphics_patches,
         }
         report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
 
@@ -1662,6 +1679,10 @@ def main():
     print(f"Ability desc compacted : {stats['ability_descriptions_compacted']}")
     print(f"Ability bytes removed  : {stats['ability_description_bytes_removed']}")
     print(f"Runtime patches        : {stats['runtime_patches']}")
+    print(f"Graphics patches       : {stats['graphics_patches']}")
+    if graphics_patches:
+        for gp in graphics_patches:
+            print(f"  [{gp['status']}] {gp['id']} -> {gp['injected_offset']} ({gp['bytes']}B)")
     if truncation_samples:
         print("Fixed truncation sample:")
         for sample in truncation_samples:

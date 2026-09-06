@@ -1,0 +1,283 @@
+{
+  "source_sha256": "26d36a56bfef9b938d86508b23fbe2194973e23f85af7df9a14397040e95cdbb",
+  "reference": "Official Italian Pokemon FireRed, local private ROM",
+  "reference_md5": "fce3c39e7ba452eddb2279b454b66416",
+  "reference_graphics_offset": "0x0E95D4C",
+  "terminology": "PokeAPI Italian type names; original FireRed abbreviations where slots require them",
+  "entries": [
+    {
+      "type": "normal",
+      "rect": [
+        0,
+        16,
+        32,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels, including its compact labels",
+      "italian_name": "Normale",
+      "display_label": "NORM"
+    },
+    {
+      "type": "fire",
+      "rect": [
+        32,
+        16,
+        32,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels, including its compact labels",
+      "italian_name": "Fuoco",
+      "display_label": "FUOCO"
+    },
+    {
+      "type": "water",
+      "rect": [
+        64,
+        16,
+        32,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels, including its compact labels",
+      "italian_name": "Acqua",
+      "display_label": "ACQUA"
+    },
+    {
+      "type": "grass",
+      "rect": [
+        96,
+        16,
+        32,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels, including its compact labels",
+      "italian_name": "Erba",
+      "display_label": "ERBA"
+    },
+    {
+      "type": "electric",
+      "rect": [
+        0,
+        32,
+        32,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels, including its compact labels",
+      "italian_name": "Elettro",
+      "display_label": "ELETT"
+    },
+    {
+      "type": "rock",
+      "rect": [
+        32,
+        32,
+        32,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels, including its compact labels",
+      "italian_name": "Roccia",
+      "display_label": "ROCCIA"
+    },
+    {
+      "type": "ground",
+      "rect": [
+        64,
+        32,
+        32,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels, including its compact labels",
+      "italian_name": "Terra",
+      "display_label": "TERRA"
+    },
+    {
+      "type": "ice",
+      "rect": [
+        96,
+        32,
+        32,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels, including its compact labels",
+      "italian_name": "Ghiaccio",
+      "display_label": "GHIACC"
+    },
+    {
+      "type": "flying",
+      "rect": [
+        0,
+        48,
+        32,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels, including its compact labels",
+      "italian_name": "Volante",
+      "display_label": "VOLAN"
+    },
+    {
+      "type": "fighting",
+      "rect": [
+        32,
+        48,
+        32,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels, including its compact labels",
+      "italian_name": "Lotta",
+      "display_label": "LOTTA"
+    },
+    {
+      "type": "ghost",
+      "rect": [
+        64,
+        48,
+        32,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels, including its compact labels",
+      "italian_name": "Spettro",
+      "display_label": "SP.TRO"
+    },
+    {
+      "type": "bug",
+      "rect": [
+        96,
+        48,
+        32,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels, including its compact labels",
+      "italian_name": "Coleottero",
+      "display_label": "COLEOT"
+    },
+    {
+      "type": "poison",
+      "rect": [
+        0,
+        64,
+        32,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels, including its compact labels",
+      "italian_name": "Veleno",
+      "display_label": "VELENO"
+    },
+    {
+      "type": "psychic",
+      "rect": [
+        32,
+        64,
+        32,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels, including its compact labels",
+      "italian_name": "Psico",
+      "display_label": "PSICO"
+    },
+    {
+      "type": "steel",
+      "rect": [
+        64,
+        64,
+        32,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels, including its compact labels",
+      "italian_name": "Acciaio",
+      "display_label": "ACCIAIO"
+    },
+    {
+      "type": "dark",
+      "rect": [
+        96,
+        64,
+        32,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels, including its compact labels",
+      "italian_name": "Buio",
+      "display_label": "BUIO"
+    },
+    {
+      "type": "dragon",
+      "rect": [
+        0,
+        80,
+        32,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels, including its compact labels",
+      "italian_name": "Drago",
+      "display_label": "DRAGO"
+    },
+    {
+      "type": "fairy",
+      "rect": [
+        0,
+        128,
+        32,
+        12
+      ],
+      "lettering": "FOLLETTO; hand-drawn 3x7 pixel glyphs with original one-pixel shadow",
+      "italian_name": "Folletto",
+      "display_label": "FOLLETTO"
+    }
+  ],
+  "unchanged": "Status abbreviations, ???, small icons, pixels outside type/UI-label rectangles, dimensions, and palette",
+  "ui_labels": [
+    {
+      "id": "type",
+      "display_label": "TIPO",
+      "rect": [
+        64,
+        80,
+        64,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels including label backing"
+    },
+    {
+      "id": "power",
+      "display_label": "POTENZA",
+      "rect": [
+        0,
+        96,
+        64,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels including label backing"
+    },
+    {
+      "id": "accuracy",
+      "display_label": "PRECIS.",
+      "rect": [
+        64,
+        96,
+        64,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels including label backing"
+    },
+    {
+      "id": "pp",
+      "display_label": "PP",
+      "rect": [
+        0,
+        112,
+        64,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels including label backing"
+    },
+    {
+      "id": "effect",
+      "display_label": "EFFETTO",
+      "rect": [
+        64,
+        112,
+        64,
+        12
+      ],
+      "lettering": "Official Italian FireRed pixels including label backing"
+    }
+  ]
+}

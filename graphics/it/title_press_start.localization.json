@@ -1,0 +1,22 @@
+{
+  "source_sha256": "92435d91bfc678c852cd947e21e2a1f0013320493f2b81a8cac6a32d110283e8",
+  "reference": "PREMI START: Italian imperative with physical START button name retained. Direct pixel edits using original font weight and blinking palette indices.",
+  "labels": [
+    {
+      "source": "PRESS START",
+      "text": "PREMI START",
+      "rect": [
+        100,
+        149,
+        15,
+        5
+      ]
+    }
+  ],
+  "unchanged": "All other pixels including START, SKELI credit, background artwork, indexed palette, tilemap and unused tiles.",
+  "validation": {
+    "compressed_bytes": 7340,
+    "capacity": 7360,
+    "encode_asset": "Passed shared tile validation and original source byte roundtrip"
+  }
+}

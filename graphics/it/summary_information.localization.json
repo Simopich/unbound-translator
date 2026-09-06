@@ -1,0 +1,133 @@
+{
+  "source_sha256": "d45aca7b4aa216282e7627bc756e2c5dfdae732da0e3ad6e7709d9ae32f7bb7b",
+  "reference": "Official Italian FireRed summary graphics at 0x0E9A3FC for terminology; manually drawn compact 3x7 pixel lettering",
+  "labels": [
+    {
+      "text": "N°",
+      "rect": [
+        8,
+        27,
+        32,
+        7
+      ]
+    },
+    {
+      "text": "NOME",
+      "rect": [
+        8,
+        39,
+        32,
+        7
+      ]
+    },
+    {
+      "text": "TIPO",
+      "rect": [
+        8,
+        51,
+        32,
+        7
+      ]
+    },
+    {
+      "text": "AO",
+      "rect": [
+        8,
+        63,
+        32,
+        7
+      ]
+    },
+    {
+      "text": "N°ID",
+      "rect": [
+        8,
+        75,
+        32,
+        7
+      ]
+    },
+    {
+      "text": "STRUM.",
+      "rect": [
+        8,
+        87,
+        32,
+        7
+      ]
+    },
+    {
+      "text": "PS",
+      "rect": [
+        40,
+        179,
+        16,
+        7
+      ]
+    },
+    {
+      "text": "ATTACCO",
+      "rect": [
+        8,
+        199,
+        48,
+        7
+      ]
+    },
+    {
+      "text": "DIFESA",
+      "rect": [
+        8,
+        211,
+        48,
+        7
+      ]
+    },
+    {
+      "text": "ATT.SP.",
+      "rect": [
+        8,
+        223,
+        48,
+        7
+      ]
+    },
+    {
+      "text": "DIF.SP.",
+      "rect": [
+        8,
+        235,
+        48,
+        7
+      ]
+    },
+    {
+      "text": "VELOC.",
+      "rect": [
+        8,
+        247,
+        48,
+        7
+      ]
+    },
+    {
+      "text": "ESP.",
+      "rect": [
+        8,
+        259,
+        48,
+        7
+      ]
+    }
+  ],
+  "abbreviations": {
+    "AO": "Allenatore Originale",
+    "STRUM.": "Strumento",
+    "ATT.SP.": "Attacco Speciale",
+    "DIF.SP.": "Difesa Speciale",
+    "VELOC.": "Velocità",
+    "ESP.": "Esperienza",
+    "PRECIS.": "Precisione"
+  },
+  "unchanged": "All pixels outside label rectangles, palette indices, dimensions, original tilemaps, and unused tiles"
+}

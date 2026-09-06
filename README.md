@@ -390,6 +390,30 @@ Failed or cancelled builds do not notify Discord, and notification delivery fail
 successful release. The current Italian ready translation was produced with DeepSeek V4 Flash and subsequently curated
 and controlfixed in this repository.
 
+## Text in graphics
+
+```bash
+python 007_extract_graphics.py rom/unbound.gba -o graphics/source
+```
+
+The version-2 manifest currently reconstructs **12 verified graphics**, including the Pokémon type-label spritesheet, summary labels, Trainer Card,
+League Badges, minigame messages/ratings, slot-machine labels, the title legal notice, and the 8bpp PRESS START background. It is **not an exhaustive
+inventory**: uncompressed graphics, overworld metatiles, and additional PC/link UI layouts still need investigation.
+See `graphics/manifest.json` → `coverage` for remaining work and rejected entries from the original graphics commit.
+Pointer presence proves a source reference, not whether an inherited screen remains reachable in Unbound.
+
+Both 4bpp and 8bpp indexed tiles are supported. Exports assemble tilemaps (including flips) and sprite halves instead of interpreting map bytes as pixels. Extraction
+checks source ROM MD5, source digests, pointers, dimensions, and exact tile-byte round trips before writing PNGs.
+Animation frames and related map views appear vertically. Some views explicitly use grayscale palette-index previews
+where the runtime palette is not established; these are not screenshots. Other views use verified ROM palettes.
+
+Copy a source PNG to `graphics/<language>/` with the same filename to localize it. Preserve indexed PNG palette,
+dimensions, and palette indices. Repeated map tiles share storage: edits to every occurrence must agree; inconsistent
+edits fail rather than corrupting another label. Unused tiles and original maps remain intact. Graphics edits are
+validated together before ROM writes; missing or pixel-identical replacements leave the source unchanged.
+Assets marked `vram_safe` use compression compatible with direct BIOS VRAM decompression (no distance-one matches).
+The incorrect French PNGs and the old unverified source exports have been removed. Version-1 manifests are rejected.
+
 ## Testing
 
 Install the development dependency and run the complete fixture-based suite:
@@ -411,9 +435,11 @@ the required local inputs are available.
 | `002_prepare_translation_text.py` | Translation-source cleanup and protected placeholders |
 | `003_llm_translate.py` | PokeAPI localization and LLM fallback |
 | `004_controlfix_translations.py` | Control repair and renderer-specific layout |
-| `005_hybrid_injector.py` | Transactional in-place writes, relocation, and runtime patches |
+| `005_hybrid_injector.py` | Transactional in-place writes, relocation, runtime patches, and graphics |
 | `006_decontrolfix_translations.py` | Editable cleanup of controlfixed JSON |
-| `lib/` | PCS codec, font metrics, token helpers, PokeAPI client, and vetted free space |
+| `007_extract_graphics.py` | Lossless extraction of localized text graphics into indexed PNGs |
+| `graphics/` | Graphics manifest, original source PNGs, and localized translation PNGs |
+| `lib/` | PCS codec, GBA graphics codec, token helpers, PokeAPI client, and free space |
 | `patches/<language>/` | One target-language runtime behavior per patch file |
 | `ready-translations/` | Canonical controlfixed release inputs |
 | `scripts/create_bps.py` | BPS patch creation |

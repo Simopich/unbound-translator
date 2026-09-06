@@ -1,0 +1,43 @@
+{
+  "source_sha256": "596c0161fdbf83449fc38a4747881f23069ea3ceae0347e9d15e3b0f7479ccea",
+  "reference": "Direct Italian translation of the commercial-sale notice; manually edited indexed pixels, no generated imagery.",
+  "labels": [
+    {
+      "source": "NOT FOR SALE",
+      "text": "NON IN VENDITA",
+      "rect": [
+        10,
+        78,
+        150,
+        26
+      ],
+      "backing": "Only original white/gray notice pixels removed; formerly occluded artwork approximated from nearest exposed original palette pixel before drawing Italian lettering."
+    },
+    {
+      "text": "Tradotto da Simopich",
+      "rect": [
+        46,
+        98,
+        80,
+        5
+      ],
+      "purpose": "User-requested translation credit, small white pixel lettering below the sale notice."
+    }
+  ],
+  "unchanged": "Pixels outside label rectangles, original copyright/version, indexed palette, dimensions and tilemap.",
+  "validation": {
+    "encode_asset": "Passed; all shared tile occurrences consistent",
+    "dimensions": [
+      256,
+      160
+    ],
+    "palette": "Original indexed palette unchanged",
+    "payload_bytes": [
+      7584
+    ],
+    "compressed_bytes": [
+      2836
+    ],
+    "vram_safe": "Distance-one matches forbidden for BIOS SWI 0x12"
+  }
+}
