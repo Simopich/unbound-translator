@@ -411,6 +411,7 @@ Copy a source PNG to `graphics/<language>/` with the same filename to localize i
 dimensions, and palette indices. Repeated map tiles share storage: edits to every occurrence must agree; inconsistent
 edits fail rather than corrupting another label. Unused tiles and original maps remain intact. Graphics edits are
 validated together before ROM writes; missing or pixel-identical replacements leave the source unchanged.
+Assets marked `vram_safe` use compression compatible with direct BIOS VRAM decompression (no distance-one matches).
 The incorrect French PNGs and the old unverified source exports have been removed. Version-1 manifests are rejected.
 
 ## Testing

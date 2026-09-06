@@ -140,7 +140,8 @@
         "sha256": "976c589fe0803c2dd556bafa6d56a7bf38babb85b2586fb06daac66bc4a8513f",
         "pointer_sources": []
       },
-      "evidence": "Tile and map pointers checked against source ROM; reconstructed text visually inspected. Runtime reachability is not established by pointer presence alone."
+      "evidence": "Tile and map pointers checked against source ROM; reconstructed text visually inspected. Runtime reachability is not established by pointer presence alone. Loader 0x0EC5D4 calls SWI 0x12 at 0x1E3B6C directly into VRAM; recompression must forbid distance-one matches.",
+      "vram_safe": true
     },
     {
       "id": "summary_stats_moves",

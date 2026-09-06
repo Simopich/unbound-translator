@@ -99,7 +99,7 @@ def patch_verified_graphics(rom, graphics_dir, target_lang, free_blocks, manifes
         for index, (part, raw) in enumerate(encode_asset(rom, asset, grid)):
             if raw == read_blob(rom, part):
                 continue
-            payload = lz77_compress(raw) if part.get('compressed', 'lz77') == 'lz77' else raw
+            payload = lz77_compress(raw, vram_safe=part.get('vram_safe', asset.get('vram_safe', False))) if part.get('compressed', 'lz77') == 'lz77' else raw
             offset = address(part['offset'])
             capacity = part.get('compressed_size', len(raw))
             destination = offset

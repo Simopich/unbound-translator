@@ -22,7 +22,53 @@ MANIFEST_PATH = GRAPHICS_DIR / "manifest.json"
 ROM_PATH = REPO_ROOT / "rom" / "unbound.gba"
 
 
+def decompress_with_vram_halfword_writes(data):
+    """Model SWI 0x12's pending low byte and reads from committed VRAM."""
+    size=int.from_bytes(data[1:4],'little')
+    memory=bytearray(size+1)
+    src=4
+    dst=0
+    low=0
+    while dst<size:
+        flags=data[src]
+        src+=1
+        for bit in range(8):
+            if dst>=size:
+                break
+            if flags & (128>>bit):
+                first,second=data[src:src+2]
+                src+=2
+                count=(first>>4)+3
+                distance=((first&15)<<8 | second)+1
+            else:
+                count=1
+                distance=0
+            for _ in range(count):
+                if dst>=size:
+                    break
+                value=memory[dst-distance] if distance else data[src]
+                if not distance:
+                    src+=1
+                if dst&1:
+                    memory[dst-1:dst+1]=bytes((low,value))
+                else:
+                    low=value
+                dst+=1
+    if dst&1:
+        memory[dst-1]=low
+    return bytes(memory[:size])
+
+
 class TestGbaGraphicsCodec(unittest.TestCase):
+    def test_vram_compression_handles_uncommitted_low_byte(self):
+        raw=b'\x44'*64 + bytes(range(32))*3
+        unsafe=lz77_compress(raw)
+        self.assertEqual(lz77_decompress(unsafe),raw)
+        self.assertNotEqual(decompress_with_vram_halfword_writes(unsafe),raw)
+        safe=lz77_compress(raw,vram_safe=True)
+        self.assertEqual(decompress_with_vram_halfword_writes(safe),raw)
+        self.assertEqual(lz77_decompress(safe),raw)
+
     def test_8bpp_tile_order_and_bounds(self):
         raw=bytes(range(256))
         grid=decode_8bpp_tiles(raw,2,2)
@@ -367,6 +413,8 @@ class TestVerifiedGraphics(unittest.TestCase):
             size=report['bytes']
             actual=lz77_decompress(rom,dest) if part.get('compressed','lz77')=='lz77' else bytes(rom[dest:dest+size])
             self.assertEqual(actual,expected)
+            if part.get('vram_safe'):
+                self.assertEqual(decompress_with_vram_halfword_writes(rom[dest:dest+size]),expected)
             if report['status']=='relocated':
                 self.assertTrue(any(start<=dest and dest+size<=end for start,end in VETTED_FREE_SPACE_RANGES))
                 self.assertEqual(rom[offset:offset+part['compressed_size']],before[offset:offset+part['compressed_size']])

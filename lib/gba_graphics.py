@@ -166,8 +166,12 @@ def lz77_decompress(data: bytes, offset: int = 0) -> bytes:
     return bytes(out)
 
 
-def lz77_compress(data: bytes) -> bytes:
-    """Compress data using GBA BIOS LZ77 (type 0x10)."""
+def lz77_compress(data: bytes, *, vram_safe: bool = False) -> bytes:
+    """Compress BIOS type 0x10; direct VRAM loads require distance >= 2.
+
+    SWI 0x12 buffers halfword writes. A distance-one match can read a byte
+    that has not reached VRAM yet, unlike the byte-writing WRAM decoder.
+    """
     decomp_size = len(data)
     if decomp_size > 0x00FFFFFF:
         raise ValueError(f'Data too large for GBA LZ77 (max 16MB): {decomp_size} bytes')
@@ -191,7 +195,7 @@ def lz77_compress(data: bytes) -> bytes:
             max_search_len = min(18, decomp_size - pos)
 
             if max_search_len >= 3:
-                for candidate in range(pos - 1, win_start - 1, -1):
+                for candidate in range(pos - (2 if vram_safe else 1), win_start - 1, -1):
                     if data[candidate] != data[pos]:
                         continue
                     match_len = 0

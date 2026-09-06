@@ -36,7 +36,8 @@
       7584
     ],
     "compressed_bytes": [
-      2828
-    ]
+      2836
+    ],
+    "vram_safe": "Distance-one matches forbidden for BIOS SWI 0x12"
   }
 }
