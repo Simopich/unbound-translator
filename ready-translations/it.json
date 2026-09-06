@@ -111285,53 +111285,63 @@
       "id": "tbl_battle_messages_00000_905690",
       "category": "battle_messages",
       "address": "0x905690",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x905572"
+      ],
       "original": "\"\\\\0F went back\nto \\\\23!\"",
       "byte_length": 20,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 0,
       "translation_source": "[raw-escape-1] went back to [raw-escape-2]!",
-      "translated": "\"\\\\0F went back\nto \\\\23!\""
+      "translated": "\\0F è tornato\nda \\23!"
     },
     {
       "id": "tbl_battle_messages_00001_9056B4",
       "category": "battle_messages",
       "address": "0x9056B4",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x905736"
+      ],
       "original": "\"\\\\0F’s Defense\ndrastically rose!\"",
       "byte_length": 31,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 1,
       "translation_source": "[raw-escape-1]’s Defense drastically rose!",
-      "translated": "\"\\\\0F’s Defense\ndrastically rose!\""
+      "translated": "La Difesa di \\0F\nsale moltissimo!"
     },
     {
       "id": "tbl_battle_messages_00002_905770",
       "category": "battle_messages",
       "address": "0x905770",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x905605"
+      ],
       "original": "\"\\\\0F went back\nto \\\\1D!\"",
       "byte_length": 20,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 2,
       "translation_source": "[raw-escape-1] went back to [raw-escape-2]!",
-      "translated": "\"\\\\0F went back\nto \\\\1D!\""
+      "translated": "\\0F è tornato\nda \\1D!"
     },
     {
       "id": "tbl_battle_messages_00003_905A30",
       "category": "battle_messages",
       "address": "0x905A30",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x8BD531",
+        "0x8BD5C5",
+        "0x905AB5"
+      ],
       "original": "\"\\\\10’s ability\nwas suppressed!\"",
       "byte_length": 29,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 3,
       "translation_source": "[raw-escape-1]’s ability was suppressed!",
-      "translated": "\"\\\\10’s ability\nwas suppressed!\""
+      "translated": "L{B4}abilità di \\10\nè stata neutralizzata!"
     },
     {
       "id": "tbl_battle_messages_00004_905A50",
@@ -111339,7 +111349,10 @@
       "address": "0x905A50",
       "pointer_sources": [
         "0x8BD560",
-        "0x905B04"
+        "0x8BD58F",
+        "0x8BD5EE",
+        "0x905B04",
+        "0x905B45"
       ],
       "original": "\"\\\\10 acquired\n\\\\19!\"",
       "byte_length": 16,
@@ -111347,46 +111360,52 @@
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 4,
       "translation_source": "[raw-escape-1] acquired [raw-escape-2]!",
-      "translated": "\"\\\\10 acquired\n\\\\19!\""
+      "translated": "\\10 ottiene\n\\19!"
     },
     {
       "id": "tbl_battle_messages_00005_905C25",
       "category": "battle_messages",
       "address": "0x905C25",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x905C12"
+      ],
       "original": "\"\\\\10 woke up!\"",
       "byte_length": 12,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 5,
       "translation_source": "[raw-escape-1] woke up!",
-      "translated": "\"\\\\10 woke up!\""
+      "translated": "\\10 si è svegliato!"
     },
     {
       "id": "tbl_battle_messages_00006_905C40",
       "category": "battle_messages",
       "address": "0x905C40",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x905CC3"
+      ],
       "original": "\"\\\\0F’s Sp. Atk\ndrastically rose!\"",
       "byte_length": 31,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 6,
       "translation_source": "[raw-escape-1]’s Sp. Atk drastically rose!",
-      "translated": "\"\\\\0F’s Sp. Atk\ndrastically rose!\""
+      "translated": "L{B4}Att. Sp. di \\0F\nsale moltissimo!"
     },
     {
       "id": "tbl_battle_messages_00007_905E9A",
       "category": "battle_messages",
       "address": "0x905E9A",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x90E62A"
+      ],
       "original": "\"\\\\0F is absorbing power!\"",
       "byte_length": 23,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 7,
       "translation_source": "[raw-escape-1] is absorbing power!",
-      "translated": "\"\\\\0F is absorbing power!\""
+      "translated": "\\0F sta assorbendo\nenergia!"
     },
     {
       "id": "tbl_battle_messages_00008_906470",
@@ -111407,27 +111426,36 @@
       "id": "tbl_battle_messages_00009_9064A0",
       "category": "battle_messages",
       "address": "0x9064A0",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x90643D"
+      ],
       "original": "\"\\\\13 became cloaked\nin mystical moonlight!\"",
       "byte_length": 41,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 9,
       "translation_source": "[raw-escape-1] became cloaked in mystical moonlight!",
-      "translated": "\"\\\\13 became cloaked\nin mystical moonlight!\""
+      "translated": "\\13 si avvolge\ndi mistica luce lunare!"
     },
     {
       "id": "tbl_battle_messages_00010_906520",
       "category": "battle_messages",
       "address": "0x906520",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x8C3211",
+        "0x8C323B",
+        "0x8C3265",
+        "0x8C3299",
+        "0x8C32BF",
+        "0x90650E"
+      ],
       "original": "\"\\\\0F’s \\\\18\nactivated!\"",
       "byte_length": 19,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 10,
       "translation_source": "[raw-escape-1]’s [raw-escape-2] activated!",
-      "translated": "\"\\\\0F’s \\\\18\nactivated!\""
+      "translated": "Si attiva \\18\ndi \\0F!"
     },
     {
       "id": "tbl_battle_messages_00011_906540",
@@ -111442,7 +111470,7 @@
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 11,
       "translation_source": "[raw-escape-1]’s [raw-escape-2] was burnt up!",
-      "translated": "\"\\\\10’s \\\\16\nwas burnt up!\""
+      "translated": "\\16 di \\10\nè bruciata!"
     },
     {
       "id": "tbl_menu_pokedex_00000_415FAD",
@@ -275282,7 +275310,7 @@
       "byte_length": 80,
       "is_pointer_based": true,
       "translation_source": "If I’m wearing swim trunks[game-token-1] where do I put my Poké Balls? Uhh[game-token-2] that’s a secret!",
-      "translated": "\"If I’m wearing swim trunks\\.\nwhere do I put my Poké Balls?\n\nUhh\\. that’s a secret!\""
+      "translated": "Se indosso il costume da bagno\\.\ndove metto le mie Poké Ball?\n\nUhm\\. è un segreto!"
     },
     {
       "id": "scr_1F600F3",
@@ -275296,7 +275324,7 @@
       "byte_length": 31,
       "is_pointer_based": true,
       "translation_source": "Fine, I’ll tell you my secret.",
-      "translated": "\"Fine, I’ll tell you my secret.\""
+      "translated": "Va bene, ti dirò il mio segreto."
     },
     {
       "id": "scr_1F60112",
@@ -328471,7 +328499,7 @@
       "table_name": "data.menus.text.gameSettings.introSetup",
       "table_index": 1,
       "translation_source": "Would you like to play the darker version of the story? This version is much grittier than than the normal version.",
-      "translated": "\"Would you like to play the darker\nversion of the story?\n\nThis version is much grittier than\nthan the normal version.\""
+      "translated": "Vuoi giocare alla versione più\noscura della storia?\n\nQuesta versione è molto più cruda\nrispetto a quella normale."
     },
     {
       "id": "tbl_menu_game_settings_00002_1F10E5B",
@@ -328484,7 +328512,7 @@
       "table_name": "data.menus.text.gameSettings.introSetup",
       "table_index": 2,
       "translation_source": "[color-lightgreen-1]WARNING![color-black-2] If violence and edge are not what you’re looking for, it is highly recommended to play with the lighter version of the story. Are you SURE you want to play with the darker version story?",
-      "translated": "\"[lightgreen]WARNING![black]\n\nIf violence and edge are not what\nyou’re looking for, it is highly\\lrecommended to play with the\\llighter version of the story.\n\nAre you SURE you want to play with\nthe darker version story?\""
+      "translated": "[lightgreen]ATTENZIONE![black]\n\nSe non cerchi violenza e temi forti,\nti consigliamo vivamente di giocare\\lcon la versione più leggera della\\lstoria.\n\nSei SICURO di voler giocare con\nla versione più oscura della storia?"
     },
     {
       "id": "tbl_menu_game_settings_00003_1F10F25",
@@ -328497,7 +328525,7 @@
       "table_name": "data.menus.text.gameSettings.introSetup",
       "table_index": 3,
       "translation_source": "This option may not be changed during gameplay.",
-      "translated": "\"This option may not be changed\nduring gameplay.\""
+      "translated": "Non può essere modificata\ndurante il gioco."
     },
     {
       "id": "tbl_menu_common_00001_A43BC5",
@@ -328510,7 +328538,7 @@
       "table_name": "data.menus.text.dexnav",
       "table_index": 1,
       "translation_source": "Search for wild Pokémon in the area with potential special qualities!",
-      "translated": "\"Search for wild Pokémon in the area\nwith potential special qualities!\""
+      "translated": "Cerca Pokémon selvatici nell{B4}area\ncon possibili qualità speciali!"
     },
     {
       "id": "tbl_menu_common_00002_A43C0B",
@@ -328525,7 +328553,7 @@
       "table_name": "data.menus.text.dexnav",
       "table_index": 2,
       "translation_source": "[buffer1-1] got away!",
-      "translated": "\"[buffer1] got away!\""
+      "translated": "[buffer1] è scappato!"
     },
     {
       "id": "tbl_menu_common_00003_A43C18",
@@ -328540,7 +328568,7 @@
       "table_name": "data.menus.text.dexnav",
       "table_index": 3,
       "translation_source": "[buffer1-1] got away! Try moving more slowly.",
-      "translated": "\"[buffer1] got away!\nTry moving more slowly.\""
+      "translated": "[buffer1] è scappato!\nProva a muoverti più lentamente."
     },
     {
       "id": "tbl_menu_common_00007_A43CAC",
@@ -328555,7 +328583,7 @@
       "table_name": "data.menus.text.dexnav",
       "table_index": 7,
       "translation_source": "[buffer1-1] cannot be found here.",
-      "translated": "\"[buffer1] cannot be found here.\""
+      "translated": "[buffer1] non può essere trovato qui."
     },
     {
       "id": "tbl_menu_common_00009_A43CEB",
@@ -328570,7 +328598,7 @@
       "table_name": "data.menus.text.dexnav",
       "table_index": 9,
       "translation_source": "[buffer1-1] couldn’t be found nearby. Try looking in a different area!",
-      "translated": "\"[buffer1] couldn’t be found nearby.\nTry looking in a different area!\""
+      "translated": "Impossibile trovare [buffer1] nei paraggi.\nProva a cercare in un{B4}area diversa!"
     }
   ]
 }

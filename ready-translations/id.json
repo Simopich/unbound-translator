@@ -109547,10 +109547,12 @@
       "id": "tbl_battle_messages_00000_905690",
       "category": "battle_messages",
       "address": "0x905690",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x905572"
+      ],
       "original": "\"\\\\0F went back\nto \\\\23!\"",
       "byte_length": 20,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 0,
       "translation_source": "[raw-escape-1] went back to [raw-escape-2]!",
@@ -109560,10 +109562,12 @@
       "id": "tbl_battle_messages_00001_9056B4",
       "category": "battle_messages",
       "address": "0x9056B4",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x905736"
+      ],
       "original": "\"\\\\0F’s Defense\ndrastically rose!\"",
       "byte_length": 31,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 1,
       "translation_source": "[raw-escape-1]’s Defense drastically rose!",
@@ -109573,10 +109577,12 @@
       "id": "tbl_battle_messages_00002_905770",
       "category": "battle_messages",
       "address": "0x905770",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x905605"
+      ],
       "original": "\"\\\\0F went back\nto \\\\1D!\"",
       "byte_length": 20,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 2,
       "translation_source": "[raw-escape-1] went back to [raw-escape-2]!",
@@ -109586,10 +109592,14 @@
       "id": "tbl_battle_messages_00003_905A30",
       "category": "battle_messages",
       "address": "0x905A30",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x8BD531",
+        "0x8BD5C5",
+        "0x905AB5"
+      ],
       "original": "\"\\\\10’s ability\nwas suppressed!\"",
       "byte_length": 29,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 3,
       "translation_source": "[raw-escape-1]’s ability was suppressed!",
@@ -109601,7 +109611,10 @@
       "address": "0x905A50",
       "pointer_sources": [
         "0x8BD560",
-        "0x905B04"
+        "0x8BD58F",
+        "0x8BD5EE",
+        "0x905B04",
+        "0x905B45"
       ],
       "original": "\"\\\\10 acquired\n\\\\19!\"",
       "byte_length": 16,
@@ -109615,10 +109628,12 @@
       "id": "tbl_battle_messages_00005_905C25",
       "category": "battle_messages",
       "address": "0x905C25",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x905C12"
+      ],
       "original": "\"\\\\10 woke up!\"",
       "byte_length": 12,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 5,
       "translation_source": "[raw-escape-1] woke up!",
@@ -109628,10 +109643,12 @@
       "id": "tbl_battle_messages_00006_905C40",
       "category": "battle_messages",
       "address": "0x905C40",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x905CC3"
+      ],
       "original": "\"\\\\0F’s Sp. Atk\ndrastically rose!\"",
       "byte_length": 31,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 6,
       "translation_source": "[raw-escape-1]’s Sp. Atk drastically rose!",
@@ -109641,10 +109658,12 @@
       "id": "tbl_battle_messages_00007_905E9A",
       "category": "battle_messages",
       "address": "0x905E9A",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x90E62A"
+      ],
       "original": "\"\\\\0F is absorbing power!\"",
       "byte_length": 23,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 7,
       "translation_source": "[raw-escape-1] is absorbing power!",
@@ -109668,10 +109687,12 @@
       "id": "tbl_battle_messages_00009_9064A0",
       "category": "battle_messages",
       "address": "0x9064A0",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x90643D"
+      ],
       "original": "\"\\\\13 became cloaked\nin mystical moonlight!\"",
       "byte_length": 41,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 9,
       "translation_source": "[raw-escape-1] became cloaked in mystical moonlight!",
@@ -109681,10 +109702,17 @@
       "id": "tbl_battle_messages_00010_906520",
       "category": "battle_messages",
       "address": "0x906520",
-      "pointer_sources": [],
+      "pointer_sources": [
+        "0x8C3211",
+        "0x8C323B",
+        "0x8C3265",
+        "0x8C3299",
+        "0x8C32BF",
+        "0x90650E"
+      ],
       "original": "\"\\\\0F’s \\\\18\nactivated!\"",
       "byte_length": 19,
-      "is_pointer_based": false,
+      "is_pointer_based": true,
       "table_name": "data.battle.text.cfruMessages",
       "table_index": 10,
       "translation_source": "[raw-escape-1]’s [raw-escape-2] activated!",

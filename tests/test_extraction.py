@@ -232,6 +232,15 @@ class AlignedPointerTextTests(unittest.TestCase):
         self.assertIn(0x905690, addresses)
         self.assertIn(0x905A30, addresses)
 
+    def test_cfru_battle_message_source_detection(self):
+        rom = bytearray(0x920000)
+        source = 0x905572
+        target = 0x905690
+        rom[source - 1] = 0x02
+        rom[source : source + 4] = (0x08000000 + target).to_bytes(4, "little")
+        self.assertTrue(EXTRACTOR.is_cfru_battle_message_source(rom, source, target))
+        self.assertTrue(EXTRACTOR.is_pointer_reference_source(rom, source, target))
+
     def test_intro_setup_and_dexnav_ranges(self):
         ranges = {
             r.table_name: (r.start, r.end, r.category)

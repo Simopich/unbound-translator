@@ -1490,8 +1490,21 @@ def is_cfru_trainerbattle_source(rom: bytes, source: int, target: int) -> bool:
     return False
 
 
-def is_pointer_reference_source(rom: bytes, source: int, _target: int) -> bool:
-    return source % 4 == 0 or is_script_text_pointer_source(rom, source)
+def is_cfru_battle_message_source(rom: bytes, source: int, target: int) -> bool:
+    return (
+        0x905690 <= target <= 0x906550
+        and 0x8B0000 <= source < 0x970000
+        and source >= 1
+        and rom[source - 1] == 0x02
+    )
+
+
+def is_pointer_reference_source(rom: bytes, source: int, target: int) -> bool:
+    return (
+        source % 4 == 0
+        or is_script_text_pointer_source(rom, source)
+        or is_cfru_battle_message_source(rom, source, target)
+    )
 
 
 def is_additional_text_pointer_source(source: int, target: int) -> bool:
