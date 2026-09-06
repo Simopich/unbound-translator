@@ -1,0 +1,23 @@
+{
+  "source_sha256": "4c5f58a23ee98e92a63611171e23115bc3fe5f16d42b60c79052d24d705be978",
+  "reference": "UI headings have no PokeAPI entity. Official Italian FireRed PCS wording SCHEDA ALLENATORE at 0x1AF2FB; MEDAGLIE at 0x18513B and LEGA POKéMON at 0x174754. MEDAGLIE DELLA LEGA is the full natural translation of LEAGUE BADGES. Direct hand-drawn indexed 4x7 proportional pixel font.",
+  "labels": [
+    {
+      "text": "SCHEDA ALLENATORE",
+      "rect": [
+        21,
+        8,
+        91,
+        11
+      ],
+      "backing": "Clean original purple index 4 header backing; removed full English glyph and shadow shapes. Decorative icons preserved."
+    }
+  ],
+  "unchanged": "All pixels outside label rectangle, original palette, dimensions, tilemaps and unused tiles.",
+  "validation": {
+    "encode_asset": "passed; shared tiles consistent",
+    "compressed_bytes": 1252,
+    "original_capacity": 1378,
+    "changed_pixels": 749
+  }
+}

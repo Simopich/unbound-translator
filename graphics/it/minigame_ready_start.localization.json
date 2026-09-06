@@ -1,0 +1,64 @@
+{
+  "source_sha256": "154a13284153071fffec11c4f47ada92ce7eeffccd196c501cb140ddb1383f45",
+  "reference": "Direct indexed-pixel editing of source lettering; standard Italian minigame prompts, no Pokémon-specific terminology.",
+  "labels": [
+    {
+      "source": "Ready.",
+      "text": "Pronti.",
+      "rect": [
+        0,
+        0,
+        128,
+        32
+      ]
+    },
+    {
+      "source": "Ready..",
+      "text": "Pronti..",
+      "rect": [
+        0,
+        32,
+        128,
+        32
+      ]
+    },
+    {
+      "source": "Ready...",
+      "text": "Pronti...",
+      "rect": [
+        0,
+        64,
+        128,
+        32
+      ]
+    },
+    {
+      "source": "Start!",
+      "text": "Via!",
+      "rect": [
+        0,
+        96,
+        128,
+        32
+      ]
+    }
+  ],
+  "method": "Source glyphs rearranged; P, o, c, u, V edited from source pixel shapes. Full original label background cleared to palette index 0, then dark and green outlines rebuilt around Italian glyphs.",
+  "unchanged": "Source 16-color palette, canvas dimensions, sprite part mapping, and number/order of animation frames.",
+  "validation": {
+    "encode_asset": "passed",
+    "parts": [
+      {
+        "offset": "0x1FCBC48",
+        "compressed_bytes": 892,
+        "original_capacity": 1073
+      },
+      {
+        "offset": "0x1FCC220",
+        "compressed_bytes": 852,
+        "original_capacity": 926
+      }
+    ]
+  },
+  "limitations": []
+}

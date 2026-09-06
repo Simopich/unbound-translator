@@ -1,0 +1,55 @@
+{
+  "source_sha256": "bb85758084847bac798a116e4c2efe1cf8f0c37446a18c6a132657eaa3ad6b6b",
+  "reference": "Editorial Italian ranking: BENE +50, BUONO +100, OTTIMO +200, ECCELLENTE +500; PokeAPI has no minigame rating localization. Direct hand-pixel 5x7 glyph edits using original indices.",
+  "labels": [
+    {
+      "text": "BENE",
+      "rect": [
+        75,
+        8,
+        49,
+        16
+      ],
+      "backing": "Restored original horizontal two-tone fill; new Italian glyph outline only"
+    },
+    {
+      "text": "OTTIMO",
+      "rect": [
+        59,
+        264,
+        68,
+        16
+      ],
+      "backing": "Restored original horizontal two-tone fill; new Italian glyph outline only"
+    },
+    {
+      "text": "BUONO",
+      "rect": [
+        66,
+        520,
+        60,
+        16
+      ],
+      "backing": "Restored original horizontal two-tone fill; new Italian glyph outline only"
+    },
+    {
+      "text": "ECCELLENTE",
+      "rect": [
+        33,
+        776,
+        120,
+        16
+      ],
+      "backing": "Restored original horizontal two-tone fill; new Italian glyph outline only"
+    }
+  ],
+  "encoding": [
+    {
+      "bytes": 2688,
+      "capacity": 2735
+    }
+  ],
+  "unchanged": "Pixels outside listed rectangles, all scores, art, palette indices, dimensions, maps and unused tiles. encode_asset shared-tile validation passes.",
+  "changed_pixels": 2282,
+  "shared_tile_note": "ECCELLENTE uses original source font glyphs throughout. Original E and shared tile99 retained exactly; final N/T/E resized horizontally to 11/9/8 pixels to fit old NT area. Original one-pixel letter gaps restored, no isolated heavy E."
+}

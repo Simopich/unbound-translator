@@ -274,23 +274,59 @@ class TestVerifiedGraphics(unittest.TestCase):
                 for x in range(w):
                     if (x,y) not in allowed:self.assertEqual(localized[y][x],original[y][x])
 
+    def test_reviewed_graphics_have_italian_edits(self):
+        assets=json.loads(MANIFEST_PATH.read_text())['assets']
+        reviewed={'pokemon_types','summary_information','summary_stats_moves',
+                  'trainer_card','league_badges','title_legal_notice',
+                  'minigame_finish','minigame_time_up','minigame_ready_start',
+                  'minigame_ratings','slot_machine_labels'}
+        self.assertTrue(reviewed <= {a['id'] for a in assets})
+        for asset in assets:
+            if asset['id'] not in reviewed:
+                continue
+            source=read_png_indexed(str(GRAPHICS_DIR/'source'/asset['filename']))
+            localized=read_png_indexed(str(GRAPHICS_DIR/'it'/asset['filename']))
+            self.assertEqual(localized[:2],source[:2])
+            self.assertEqual(localized[3],source[3])
+            self.assertNotEqual(localized[2],source[2])
+
     @unittest.skipUnless(ROM_PATH.is_file(), 'private source ROM unavailable')
     def test_all_italian_graphics_inject_without_touching_maps(self):
+        from lib.unbound_free_space import VETTED_FREE_SPACE_RANGES
         rom=bytearray(ROM_PATH.read_bytes());before=bytes(rom)
-        reports=patch_graphics(rom,GRAPHICS_DIR,'it',[])
-        self.assertEqual({r['id'] for r in reports},{'pokemon_types','summary_information','summary_stats_moves'})
+        blocks=[FreeBlock(start,end,start) for start,end in VETTED_FREE_SPACE_RANGES
+                if all(b==255 for b in rom[start:end])]
+        reports=patch_graphics(rom,GRAPHICS_DIR,'it',blocks,fail_on_no_space=True)
         assets=json.loads(MANIFEST_PATH.read_text())['assets']
+        encoded={}
+        for asset in assets:
+            localized=GRAPHICS_DIR/'it'/asset['filename']
+            if not localized.exists():
+                continue
+            _,_,grid,_=read_png_indexed(str(localized))
+            if grid==read_png_indexed(str(GRAPHICS_DIR/'source'/asset['filename']))[2]:
+                continue
+            encoded[asset['id']]=encode_asset(before,asset,grid)
+        self.assertEqual({r['id'] for r in reports},set(encoded))
         outside=bytearray(rom)
         for report in reports:
-            self.assertEqual(report['status'],'patched_in_place')
-            self.assertEqual(report['pointers_updated'],0)
-            asset=next(a for a in assets if a['id']==report['id'])
-            offset=int(asset['offset'],16);size=asset['compressed_size']
-            _,_,grid,_=read_png_indexed(str(GRAPHICS_DIR/'it'/asset['filename']))
-            expected=encode_asset(before,asset,grid)[0][1]
-            actual=lz77_decompress(rom,offset) if asset['compressed']=='lz77' else bytes(rom[offset:offset+size])
+            part,expected=encoded[report['id']][report['part']]
+            offset=int(report['original_offset'],16)
+            dest=int(report['injected_offset'],16)
+            size=report['bytes']
+            actual=lz77_decompress(rom,dest) if part.get('compressed','lz77')=='lz77' else bytes(rom[dest:dest+size])
             self.assertEqual(actual,expected)
-            outside[offset:offset+size]=before[offset:offset+size]
+            if report['status']=='relocated':
+                self.assertTrue(any(start<=dest and dest+size<=end for start,end in VETTED_FREE_SPACE_RANGES))
+                self.assertEqual(rom[offset:offset+part['compressed_size']],before[offset:offset+part['compressed_size']])
+                for pointer in part['pointer_sources']:
+                    pointer=int(pointer,16) if isinstance(pointer,str) else pointer
+                    self.assertEqual(int.from_bytes(rom[pointer:pointer+4],'little'),dest+0x08000000)
+                    outside[pointer:pointer+4]=before[pointer:pointer+4]
+            else:
+                self.assertEqual(report['status'],'patched_in_place')
+                self.assertEqual(report['pointers_updated'],0)
+            outside[dest:dest+size]=before[dest:dest+size]
         self.assertEqual(bytes(outside),before)
 
     @unittest.skipUnless(ROM_PATH.is_file(), 'private source ROM unavailable')

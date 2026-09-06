@@ -1189,7 +1189,8 @@ def main():
             for block in reclamation_base_blocks
         ]
         all_reclaimed_blocks, all_reclaimed_owner_ids = (
-            build_reclaimed_script_text_blocks(rom, candidates, entries)
+            # Ownership evidence must not depend on localized graphics/runtime bytes.
+            build_reclaimed_script_text_blocks(source_rom, candidates, entries)
         )
         preliminary_plan, _preliminary_missing = plan_relocations(
             vetted_blocks,
