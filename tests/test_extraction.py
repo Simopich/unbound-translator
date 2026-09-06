@@ -245,6 +245,65 @@ class AlignedPointerTextTests(unittest.TestCase):
         self.assertTrue(EXTRACTOR.is_trainerbattle_text_pointer_source(rom, 10))
         self.assertTrue(EXTRACTOR.is_trainerbattle_text_pointer_source(rom, 14))
 
+    def test_cfru_battle_messages_manual_table(self):
+        table_name, addresses = EXTRACTOR.MANUAL_TEXT_TABLES["battle_messages"]
+        self.assertEqual(table_name, "data.battle.text.cfruMessages")
+        self.assertEqual(len(addresses), 12)
+        self.assertIn(0x905690, addresses)
+        self.assertIn(0x905A30, addresses)
+
+    def test_cfru_battle_message_source_detection(self):
+        rom = bytearray(0x920000)
+        source = 0x905572
+        target = 0x905690
+        rom[source - 1] = 0x02
+        rom[source : source + 4] = (0x08000000 + target).to_bytes(4, "little")
+        self.assertTrue(EXTRACTOR.is_cfru_battle_message_source(rom, source, target))
+        self.assertTrue(EXTRACTOR.is_pointer_reference_source(rom, source, target))
+
+    def test_intro_setup_and_dexnav_ranges(self):
+        ranges = {
+            r.table_name: (r.start, r.end, r.category)
+            for r in EXTRACTOR.POST_POINTER_MANUAL_TEXT_RANGES
+        }
+        self.assertIn("data.menus.text.gameSettings.introSetup", ranges)
+        self.assertEqual(
+            ranges["data.menus.text.gameSettings.introSetup"],
+            (0x1F10DC2, 0x1F11016, "menu_game_settings"),
+        )
+        self.assertIn("data.menus.text.dexnav", ranges)
+        self.assertEqual(
+            ranges["data.menus.text.dexnav"],
+            (0xA43BA5, 0xA43D82, "menu_common"),
+        )
+
+    def test_cfru_trainerbattle_source_detection(self):
+        source = 0x1E8637A
+        rom = bytearray(source + 16)
+        target = 0x1F600A3
+        # 5C <type> F5 00 00 00 <ptr1>
+        rom[source - 6] = 0x5C
+        rom[source - 5] = 0x0D
+        rom[source - 4] = 0xF5
+        rom[source - 3] = 0x00
+        rom[source - 2] = 0x00
+        rom[source - 1] = 0x00
+        rom[source : source + 4] = (0x08000000 + target).to_bytes(4, "little")
+        self.assertTrue(
+            EXTRACTOR.is_cfru_trainerbattle_source(rom, source, target)
+        )
+        # Rejects low target
+        self.assertFalse(
+            EXTRACTOR.is_cfru_trainerbattle_source(rom, source, 0x123)
+        )
+
+    def test_gendered_dialogue_fragment_78da8e_pointer_source(self):
+        self.assertEqual(
+            EXTRACTOR.MANUAL_TEXT_POINTER_SOURCES[0x78DA8E],
+            [0x78A3E6],
+        )
+
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -519,7 +519,7 @@ def plausible_pointer_source(rom, source):
             or (source >= 1 and rom[source - 1] == 0x67)
             or (source >= 6 and rom[source - 6] == 0x5C)
             or (source >= 10 and rom[source - 10] == 0x5C)
-            or (source >= 1 and rom[source - 1] == 0x02 and 0x960000 <= source < 0x970000)
+            or (source >= 1 and rom[source - 1] == 0x02 and 0x8B0000 <= source < 0x970000)
             or is_ewram_word(rom, source - 4)
     )
 
