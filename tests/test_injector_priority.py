@@ -49,6 +49,19 @@ class InjectionPriorityTests(unittest.TestCase):
         rom[27:31] = (0x02000010).to_bytes(4, "little")
         self.assertTrue(INJECTOR.plausible_pointer_source(rom, 31))
 
+    def test_pointer_source_accepts_cfru_partner_text_and_rejects_script(self):
+        rom = bytearray(64)
+        command = 1
+        rom[command : command + 2] = b"\x5C\x0A"
+
+        self.assertTrue(INJECTOR.plausible_pointer_source(rom, command + 12))
+        self.assertTrue(INJECTOR.plausible_pointer_source(rom, command + 16))
+        self.assertFalse(INJECTOR.plausible_pointer_source(rom, command + 10))
+
+        rom[command + 1] = 0x06
+        self.assertTrue(INJECTOR.plausible_pointer_source(rom, command + 14))
+        self.assertFalse(INJECTOR.plausible_pointer_source(rom, command + 18))
+
     def test_allocator_uses_first_suitable_block_in_address_order(self):
         blocks = [
             INJECTOR.FreeBlock(0x1000, 0x1100, 0x1000),

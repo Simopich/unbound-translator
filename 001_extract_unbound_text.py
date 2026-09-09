@@ -18,6 +18,7 @@ from lib.pcs_text import (
     hma_quote,
     strip_control_tokens,
 )
+from lib.trainerbattle import is_trainerbattle_text_pointer_source
 
 GBA_POINTER_BASE = 0x08000000
 DEFAULT_MIN_POINTER_TARGET = 0x100
@@ -1468,16 +1469,6 @@ def is_text_pointer_source(rom: bytes, source: int, target: int) -> bool:
     )
 
 
-def is_trainerbattle_text_pointer_source(rom: bytes, source: int) -> bool:
-    if source >= 6 and rom[source - 6] == 0x5C and rom[source - 5] in (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 13, 14, 15):
-        return True
-    if source >= 10 and rom[source - 10] == 0x5C and rom[source - 9] in (0, 4, 5, 6, 7, 8, 9, 13, 14):
-        return True
-    if source >= 14 and rom[source - 14] == 0x5C and rom[source - 13] in (6, 8, 14):
-        return True
-    return False
-
-
 def is_script_text_pointer_source(rom: bytes, source: int) -> bool:
     if source >= 2 and rom[source - 2] == 0x0F and rom[source - 1] <= 0x03:
         return True
@@ -1494,12 +1485,7 @@ def is_cfru_trainerbattle_source(rom: bytes, source: int, target: int) -> bool:
     """Detect CFRU custom trainerbattle dialogues with unaligned operands."""
     if not ((target >> 20) in (0x1E, 0x1F) or (0x170000 <= target <= 0x1D0000)):
         return False
-    if (source >> 20) in (0x1E, 0x1F) and source < len(rom):
-        if source >= 6 and rom[source - 6] == 0x5C and rom[source - 4] == 0xF5 and rom[source - 3] == 0x00:
-            return True
-        if source >= 10 and rom[source - 10] == 0x5C and rom[source - 8] == 0xF5 and rom[source - 7] == 0x00:
-            return True
-    return False
+    return is_trainerbattle_text_pointer_source(rom, source)
 
 
 def is_cfru_battle_message_source(rom: bytes, source: int, target: int) -> bool:
