@@ -7,7 +7,7 @@ from pathlib import Path
 
 from lib.gen3_font import text_pixel_width
 from lib.pcs_text import Charmap
-from lib.translation_tokens import remove_layout_tokens, visible_width
+from lib.translation_tokens import remove_layout_tokens, semantic_token_counts, visible_width
 
 CC_TOKEN_PATTERN = r"\\CC(?:04[0-9A-Fa-f]{6}|(?:10|0B)[0-9A-Fa-f]{4}|[0-9A-Fa-f]{4})"
 
@@ -197,6 +197,18 @@ def ensure_original_prefix(text, original):
     prefix_text = "".join(prefix)
     stripped = text.lstrip()
     if stripped.startswith(prefix_text) or starts_with_tokens(stripped, prefix):
+        return text, False
+
+    # Italian syntax may move a leading buffer/color token into the sentence.
+    # Do not prepend it again when the target already contains every source
+    # occurrence; doing so duplicates names and corrupts rendered messages.
+    source_counts = semantic_token_counts(original)
+    target_counts = semantic_token_counts(text)
+    if all(
+        target_counts.get(token, 0) >= source_counts.get(token, 0)
+        for token in prefix
+        if token not in LAYOUT_TOKENS
+    ):
         return text, False
 
     # Fullscreen/system text often depends on a leading color token. Replace a

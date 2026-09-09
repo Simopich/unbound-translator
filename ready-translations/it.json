@@ -114207,7 +114207,7 @@
       "byte_length": 16,
       "is_pointer_based": true,
       "translation_source": "Oh, no! I lost!",
-      "translated": "Oh no, perso!"
+      "translated": "No! Ho perso!"
     },
     {
       "id": "scr_1774E3",
@@ -144449,7 +144449,7 @@
       "byte_length": 21,
       "is_pointer_based": true,
       "translation_source": "Cut a tree or grass.",
-      "translated": "Taglia alberi/erba."
+      "translated": "Taglia piante o erba"
     },
     {
       "id": "scr_417548",
@@ -144776,7 +144776,7 @@
       "byte_length": 26,
       "is_pointer_based": true,
       "translation_source": "Put this item in Cube V3?",
-      "translated": "Oggetto nel Cubo V3?"
+      "translated": "Metti nel Cubo V3?"
     },
     {
       "id": "scr_418725",
@@ -148155,7 +148155,7 @@
       "byte_length": 14,
       "is_pointer_based": true,
       "translation_source": "Quit playing?",
-      "translated": "Fine gioco?"
+      "translated": "Vuoi uscire?"
     },
     {
       "id": "scr_41B779",
@@ -158357,7 +158357,7 @@
           "token": "\\."
         }
       ],
-      "translated": "Forse sono fatto\\."
+      "translated": "Forse per la quota\\."
     },
     {
       "id": "scr_74C623",
@@ -199254,7 +199254,7 @@
           "token": "\\\\14"
         }
       ],
-      "translated": "\\\\14 bloccato dal\\ntappeto alzato!"
+      "translated": "Il tappeto alzato\\nblocca \\\\14!"
     },
     {
       "id": "scr_8A9963",
@@ -364359,7 +364359,7 @@
       "byte_length": 6,
       "is_pointer_based": true,
       "translation_source": "Hardy",
-      "translated": "Hardy"
+      "translated": "Ardita"
     },
     {
       "id": "scr_1F97D31",
@@ -364665,7 +364665,7 @@
       "byte_length": 8,
       "is_pointer_based": true,
       "translation_source": "Serious",
-      "translated": "Serio"
+      "translated": "Seria"
     },
     {
       "id": "scr_1F97E72",
@@ -364853,7 +364853,7 @@
       "byte_length": 8,
       "is_pointer_based": true,
       "translation_source": "Bashful",
-      "translated": "Schivo"
+      "translated": "Ritrosa"
     },
     {
       "id": "scr_1F97F22",
@@ -364888,7 +364888,7 @@
           "token": "[blue]"
         }
       ],
-      "translated": "Ardente\\CC1330[lightgreen]\\+Att.Sp\\CC1368[blue]-Dif.Sp"
+      "translated": "Ardente:\\CC1330[lightgreen]\\+Att.Sp\\CC1368[blue]-Dif.Sp"
     },
     {
       "id": "scr_1F97F44",

@@ -49,6 +49,17 @@ def test_repair_control_sequences_restores_required_prefix_tokens():
     assert controlfix.controls_match(fixed, original)
 
 
+def test_repair_control_sequences_does_not_duplicate_moved_buffer_tokens():
+    original = r"\\13 is hurt\nby the Spikes!"
+    translated = r"Le Punte feriscono \\13!"
+
+    fixed, changed = controlfix.repair_control_sequences(translated, original)
+
+    assert not changed
+    assert fixed == translated
+    assert controlfix.controls_match(fixed, original)
+
+
 def test_normalize_and_repair_common_control_damage():
     assert controlfix.normalize_braced_controls("{[black]}Ciao {\\btn01}") == "[black]Ciao \\btn01"
     assert controlfix.repair_split_controls("\\nqoCiao\\pqc") == "\\qoCiao\\qc"

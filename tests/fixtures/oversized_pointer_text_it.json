@@ -1,0 +1,23 @@
+{
+  "entries": [
+    {
+      "id": "oversized_pointer_text_it",
+      "category": "pointer_texts",
+      "address": "0x100",
+      "pointer_sources": [
+        "0x40"
+      ],
+      "original": "\"\\\\13 is ready!\"",
+      "byte_length": 13,
+      "is_pointer_based": true,
+      "translation_source": "[raw-escape-1] is ready!",
+      "semantic_token_placeholders": [
+        {
+          "placeholder": "[raw-escape-1]",
+          "token": "\\\\13"
+        }
+      ],
+      "translated": "\\\\13 è finalmente pronto!"
+    }
+  ]
+}

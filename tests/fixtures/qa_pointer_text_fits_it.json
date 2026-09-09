@@ -1,6 +1,6 @@
 {
   "source_commit": "a70fb9f",
-  "note": "Reviewed complete Italian pointer_texts that must fit their original slots. Runtime relocation policy stays unchanged.",
+  "note": "Reviewed complete Italian pointer_texts; oversized entries are relocated to proven safe storage instead of being silently left in English.",
   "fitted_ids": [
     "scr_1724BF",
     "scr_17251B",
@@ -1252,7 +1252,6 @@
     "scr_1F97E93",
     "scr_1F97EB4",
     "scr_1F97EF9",
-    "scr_1F97F22",
     "scr_1F97F44",
     "scr_1F97F65",
     "scr_1F97F89",
@@ -1369,7 +1368,7 @@
           "token": "\\\\14"
         }
       ],
-      "translated": "\\\\14 bloccato dal\\ntappeto alzato!"
+      "translated": "Il tappeto alzato\\nblocca \\\\14!"
     },
     {
       "id": "scr_8BEF20",

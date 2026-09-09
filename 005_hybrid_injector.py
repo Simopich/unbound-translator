@@ -536,7 +536,7 @@ def is_duplicate_slot(entry, seen_slots):
 
 
 def should_relocate_pointer_entry(entry, encoded, policy):
-    if entry.get("no_relocation") or entry.get("category") == "pointer_texts":
+    if entry.get("no_relocation"):
         return False
     if not pointer_sources(entry):
         return False
@@ -1523,7 +1523,7 @@ def main():
 
         if len(encoded) > max_size:
             if not args.allow_lossy_fit:
-                if args.fail_on_no_space and entry.get("category") != "pointer_texts":
+                if args.fail_on_no_space:
                     raise RuntimeError(
                         "Lossy fixed-slot truncation refused for "
                         f"{entry.get('id', '?')}: {len(encoded)} -> {max_size} bytes. "
