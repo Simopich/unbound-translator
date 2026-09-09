@@ -245,6 +245,15 @@ class AlignedPointerTextTests(unittest.TestCase):
         self.assertTrue(EXTRACTOR.is_trainerbattle_text_pointer_source(rom, 10))
         self.assertTrue(EXTRACTOR.is_trainerbattle_text_pointer_source(rom, 14))
 
+        # Type 11 (CFRU two opponents): six dialogue pointers, through +30.
+        rom = bytearray(40)
+        rom[0:2] = b"\x5C\x0B"
+        for source in (10, 14, 18, 22, 26, 30):
+            self.assertTrue(
+                EXTRACTOR.is_trainerbattle_text_pointer_source(rom, source)
+            )
+        self.assertFalse(EXTRACTOR.is_trainerbattle_text_pointer_source(rom, 6))
+
     def test_cfru_battle_messages_manual_table(self):
         table_name, addresses = EXTRACTOR.MANUAL_TEXT_TABLES["battle_messages"]
         self.assertEqual(table_name, "data.battle.text.cfruMessages")

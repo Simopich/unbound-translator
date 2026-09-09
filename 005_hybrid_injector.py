@@ -11,6 +11,7 @@ from pathlib import Path
 
 from lib.graphics_patcher import patch_graphics
 from lib.pcs_text import Charmap, decode_pcs, fc_arg_count, strip_control_tokens
+from lib.trainerbattle import is_trainerbattle_text_pointer_source
 from lib.translation_tokens import semantic_token_counts
 from lib.unbound_free_space import VETTED_FREE_SPACE_RANGES
 
@@ -517,8 +518,7 @@ def plausible_pointer_source(rom, source):
             or (source >= 2 and rom[source - 2] == 0x0F and rom[source - 1] == 0x00)
             or (source >= 2 and rom[source - 2] == 0x85 and rom[source - 1] <= 0x0F)
             or (source >= 1 and rom[source - 1] == 0x67)
-            or (source >= 6 and rom[source - 6] == 0x5C)
-            or (source >= 10 and rom[source - 10] == 0x5C)
+            or is_trainerbattle_text_pointer_source(rom, source)
             or (source >= 1 and rom[source - 1] == 0x02 and 0x8B0000 <= source < 0x970000)
             or is_ewram_word(rom, source - 4)
     )
@@ -630,16 +630,6 @@ def collect_relocation_candidates(
         )
 
     return candidates, skipped
-
-
-def is_trainerbattle_text_pointer_source(rom, source):
-    if source >= 6 and rom[source - 6] == 0x5C and rom[source - 5] in (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 13, 14, 15):
-        return True
-    if source >= 10 and rom[source - 10] == 0x5C and rom[source - 9] in (0, 4, 5, 6, 7, 8, 9, 13, 14):
-        return True
-    if source >= 14 and rom[source - 14] == 0x5C and rom[source - 13] in (6, 8, 14):
-        return True
-    return False
 
 
 def is_explicit_script_message_source(rom, source):
