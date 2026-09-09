@@ -1,0 +1,34 @@
+{
+  "source_sha256": "861d1f3a13948dd98ce406b78eaa8ada5047ae94f1c463db3f555b306d133083",
+  "reference": "Direct indexed-pixel editing of source lettering; standard Italian minigame prompts, no Pokémon-specific terminology.",
+  "labels": [
+    {
+      "source": "Finish!",
+      "text": "Fine!",
+      "rect": [
+        0,
+        0,
+        128,
+        32
+      ]
+    }
+  ],
+  "method": "Source glyphs rearranged; P, o, c, u, V edited from source pixel shapes. Full original label background cleared to palette index 0, then dark and green outlines rebuilt around Italian glyphs.",
+  "unchanged": "Source 16-color palette, canvas dimensions, sprite part mapping, and number/order of animation frames.",
+  "validation": {
+    "encode_asset": "passed",
+    "parts": [
+      {
+        "offset": "0x1FCBAE0",
+        "compressed_bytes": 272,
+        "original_capacity": 330
+      },
+      {
+        "offset": "0x1FCC098",
+        "compressed_bytes": 368,
+        "original_capacity": 391
+      }
+    ]
+  },
+  "limitations": []
+}

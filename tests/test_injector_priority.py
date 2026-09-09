@@ -1,5 +1,9 @@
 import importlib.util
+import contextlib
+import io
+import json
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 from unittest import mock
@@ -222,6 +226,51 @@ class InjectionPriorityTests(unittest.TestCase):
         self.assertFalse(candidate.reclaimable)
         self.assertEqual(owners, set())
         self.assertEqual(blocks, [])
+
+    def test_graphics_edits_do_not_change_original_script_ownership(self):
+        rom = bytearray(0x400)
+        address, source, graphic_pointer = 0x100, 0x20, 0x81
+        rom[source - 2:source] = b"\x0F\x00"
+        rom[source:source + 4] = (INJECTOR.GBA_POINTER_BASE + address).to_bytes(4, "little")
+        rom[source + 4:source + 6] = b"\x09\x04"
+        # Pointer-shaped compressed graphics bytes conservatively prevent ownership.
+        rom[graphic_pointer:graphic_pointer + 4] = (
+            INJECTOR.GBA_POINTER_BASE + address + 8
+        ).to_bytes(4, "little")
+        rom[0x300:0x380] = b"\xFF" * 0x80
+        entry = {
+            "id": "script", "category": "scripts", "address": hex(address),
+            "byte_length": 0x20, "pointer_sources": [hex(source)],
+            "original": "Short", "translated": "A" * 64,
+        }
+
+        def edit_graphics(live_rom, *args, **kwargs):
+            live_rom[graphic_pointer:graphic_pointer + 4] = b"\x00" * 4
+            return []
+
+        with tempfile.TemporaryDirectory() as directory:
+            directory = Path(directory)
+            source_path, text_path = directory / "source.gba", directory / "texts.json"
+            output_path, map_path = directory / "patched.gba", directory / "map.json"
+            source_path.write_bytes(rom)
+            text_path.write_text(json.dumps({"entries": [entry]}))
+            with (
+                mock.patch.object(sys, "argv", [str(SCRIPT_PATH), str(source_path),
+                    str(text_path), "-o", str(output_path), "--map-output", str(map_path),
+                    "--reclaim-script-slots", "--fail-on-no-space"]),
+                mock.patch.object(INJECTOR, "RECLAIMABLE_SCRIPT_TEXT_RANGES", ((0x100, 0x200),)),
+                mock.patch.object(INJECTOR, "build_free_blocks", return_value=[
+                    INJECTOR.FreeBlock(0x300, 0x380, 0x300)]),
+                mock.patch.object(INJECTOR, "apply_language_patches", return_value=[]),
+                mock.patch.object(INJECTOR, "patch_graphics", side_effect=edit_graphics),
+                contextlib.redirect_stdout(io.StringIO()),
+            ):
+                INJECTOR.main()
+            report = json.loads(map_path.read_text())
+            self.assertEqual(report["reclaimable_slot_owners"], [])
+            self.assertEqual(report["stats"]["relocated"], 1)
+            self.assertEqual(report["stats"]["skipped_no_space"], 0)
+            self.assertEqual(output_path.read_bytes()[graphic_pointer:graphic_pointer + 4], b"\x00" * 4)
 
     def test_reclaimed_blocks_expand_only_for_relocated_owner_generations(self):
         first = INJECTOR.RelocationCandidate(

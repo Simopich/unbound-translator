@@ -1,0 +1,126 @@
+{
+  "source_sha256": "b02085d3049a57984dca83fbffb39cb5b37ff4fd02a84e82dab1e29964190845",
+  "reference": "Official Italian FireRed summary graphics at 0x0E9A3FC for terminology; manually drawn compact 3x7 pixel lettering",
+  "labels": [
+    {
+      "text": "PS",
+      "rect": [
+        80,
+        60,
+        41,
+        9
+      ],
+      "backing": "Clean fixed-width gray backing; removed English glyph silhouette while preserving shared-tile consistency"
+    },
+    {
+      "text": "ATTACCO",
+      "rect": [
+        80,
+        73,
+        41,
+        9
+      ],
+      "backing": "Clean fixed-width gray backing; removed English glyph silhouette while preserving shared-tile consistency"
+    },
+    {
+      "text": "DIFESA",
+      "rect": [
+        80,
+        86,
+        41,
+        9
+      ],
+      "backing": "Clean fixed-width gray backing; removed English glyph silhouette while preserving shared-tile consistency"
+    },
+    {
+      "text": "ATT.SP.",
+      "rect": [
+        80,
+        99,
+        41,
+        10
+      ],
+      "backing": "Clean fixed-width gray backing; removed English glyph silhouette while preserving shared-tile consistency"
+    },
+    {
+      "text": "DIF.SP.",
+      "rect": [
+        80,
+        112,
+        41,
+        10
+      ],
+      "backing": "Clean fixed-width gray backing; removed English glyph silhouette while preserving shared-tile consistency"
+    },
+    {
+      "text": "VELOC.",
+      "rect": [
+        80,
+        125,
+        41,
+        10
+      ],
+      "backing": "Clean fixed-width gray backing; removed English glyph silhouette while preserving shared-tile consistency"
+    },
+    {
+      "text": "TOTALE",
+      "rect": [
+        80,
+        138,
+        41,
+        9
+      ],
+      "backing": "Clean fixed-width gray backing; removed English glyph silhouette while preserving shared-tile consistency"
+    },
+    {
+      "text": "TIPO",
+      "rect": [
+        136,
+        295,
+        39,
+        9
+      ],
+      "backing": "Clean fixed-width gray backing; removed English glyph silhouette while preserving shared-tile consistency"
+    },
+    {
+      "text": "POTENZA",
+      "rect": [
+        136,
+        308,
+        39,
+        9
+      ],
+      "backing": "Clean fixed-width gray backing; removed English glyph silhouette while preserving shared-tile consistency"
+    },
+    {
+      "text": "PRECIS.",
+      "rect": [
+        136,
+        321,
+        39,
+        9
+      ],
+      "backing": "Clean fixed-width gray backing; removed English glyph silhouette while preserving shared-tile consistency"
+    },
+    {
+      "text": "PP",
+      "rect": [
+        136,
+        334,
+        39,
+        9
+      ],
+      "backing": "Clean fixed-width gray backing; removed English glyph silhouette while preserving shared-tile consistency"
+    }
+  ],
+  "abbreviations": {
+    "AO": "Allenatore Originale",
+    "STRUM.": "Strumento",
+    "ATT.SP.": "Attacco Speciale",
+    "DIF.SP.": "Difesa Speciale",
+    "VELOC.": "Velocità",
+    "ESP.": "Esperienza",
+    "PRECIS.": "Precisione"
+  },
+  "unchanged": "All pixels outside label rectangles, palette indices, dimensions, original tilemaps, and unused tiles"
+}

@@ -9,6 +9,7 @@ from bisect import bisect_left
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from lib.graphics_patcher import patch_graphics
 from lib.pcs_text import Charmap, decode_pcs, fc_arg_count, strip_control_tokens
 from lib.translation_tokens import semantic_token_counts
 from lib.unbound_free_space import VETTED_FREE_SPACE_RANGES
@@ -518,7 +519,7 @@ def plausible_pointer_source(rom, source):
             or (source >= 1 and rom[source - 1] == 0x67)
             or (source >= 6 and rom[source - 6] == 0x5C)
             or (source >= 10 and rom[source - 10] == 0x5C)
-            or (source >= 1 and rom[source - 1] == 0x02 and 0x960000 <= source < 0x970000)
+            or (source >= 1 and rom[source - 1] == 0x02 and 0x8B0000 <= source < 0x970000)
             or is_ewram_word(rom, source - 4)
     )
 
@@ -631,6 +632,16 @@ def collect_relocation_candidates(
     return candidates, skipped
 
 
+def is_trainerbattle_text_pointer_source(rom, source):
+    if source >= 6 and rom[source - 6] == 0x5C and rom[source - 5] in (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 13, 14, 15):
+        return True
+    if source >= 10 and rom[source - 10] == 0x5C and rom[source - 9] in (0, 4, 5, 6, 7, 8, 9, 13, 14):
+        return True
+    if source >= 14 and rom[source - 14] == 0x5C and rom[source - 13] in (6, 8, 14):
+        return True
+    return False
+
+
 def is_explicit_script_message_source(rom, source):
     """Require an opcode shape that unambiguously consumes a text pointer."""
     if (
@@ -641,11 +652,13 @@ def is_explicit_script_message_source(rom, source):
         and 0x02 <= rom[source + 5] <= 0x06
     ):
         return True
-    return (
+    if (
         source >= 1
         and rom[source - 1] == 0x67
         and (source >> 20) == 0x1E
-    )
+    ):
+        return True
+    return is_trainerbattle_text_pointer_source(rom, source)
 
 
 def discover_raw_rom_pointers(rom, minimum_target, maximum_target):
@@ -924,9 +937,9 @@ def plan_relocations(
         if not cat_reclaim:
             return (0, index)
         elif is_owner:
-            return (1, length, index)
+            return (1, -length, index)
         else:
-            return (2, length, index)
+            return (2, -length, index)
 
     ordered_candidates = [
         candidate
@@ -961,7 +974,7 @@ def plan_relocations(
                 alignment,
             )
         if offset is None:
-            offset, block = allocate_with_block(blocks, len(candidate.encoded), alignment)
+            offset, block = allocate_best_fit(blocks, len(candidate.encoded), alignment)
         if offset is None:
             missing_payloads.add(missing_key)
             missing.append(candidate)
@@ -1023,6 +1036,11 @@ def main():
     parser.add_argument("json", help="Translations JSON")
     parser.add_argument("-o", "--output", default="hybrid-patched.gba", help="Output GBA ROM")
     parser.add_argument("--target-lang", default="it", help="Target language hint for text cleanup")
+    parser.add_argument(
+        "--graphics-dir",
+        default="graphics",
+        help="Path to graphics directory with manifest.json and localized folders. Default: graphics",
+    )
     parser.add_argument(
         "--min-free-run",
         default=hex(DEFAULT_MIN_FREE_RUN),
@@ -1150,6 +1168,14 @@ def main():
         args.target_lang.lower(),
         patch_context,
     )
+    graphics_patches = patch_graphics(
+        rom,
+        Path(args.graphics_dir),
+        args.target_lang.lower(),
+        free_blocks,
+        dry_run=args.dry_run,
+        fail_on_no_space=args.fail_on_no_space,
+    )
 
     candidates, relocation_skips = collect_relocation_candidates(
         rom,
@@ -1175,7 +1201,8 @@ def main():
             for block in reclamation_base_blocks
         ]
         all_reclaimed_blocks, all_reclaimed_owner_ids = (
-            build_reclaimed_script_text_blocks(rom, candidates, entries)
+            # Ownership evidence must not depend on localized graphics/runtime bytes.
+            build_reclaimed_script_text_blocks(source_rom, candidates, entries)
         )
         preliminary_plan, _preliminary_missing = plan_relocations(
             vetted_blocks,
@@ -1346,6 +1373,7 @@ def main():
         "ability_descriptions_compacted": 0,
         "ability_description_bytes_removed": 0,
         "runtime_patches": len(runtime_patches),
+        "graphics_patches": len(graphics_patches),
     }
 
     relocation_map = []
@@ -1591,6 +1619,7 @@ def main():
             ],
             "missing_fixed_slots": missing_fixed_slots,
             "runtime_patches": runtime_patches,
+            "graphics_patches": graphics_patches,
         }
         report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
 
@@ -1650,6 +1679,10 @@ def main():
     print(f"Ability desc compacted : {stats['ability_descriptions_compacted']}")
     print(f"Ability bytes removed  : {stats['ability_description_bytes_removed']}")
     print(f"Runtime patches        : {stats['runtime_patches']}")
+    print(f"Graphics patches       : {stats['graphics_patches']}")
+    if graphics_patches:
+        for gp in graphics_patches:
+            print(f"  [{gp['status']}] {gp['id']} -> {gp['injected_offset']} ({gp['bytes']}B)")
     if truncation_samples:
         print("Fixed truncation sample:")
         for sample in truncation_samples:

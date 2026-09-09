@@ -1,0 +1,11 @@
+{
+  "summary_information": {
+    "sha256": "1640661023e93996fbcf32d4047672baeddfefbbdd1dd10810f8d8b8f685e575",
+    "labels": 13
+  },
+  "summary_stats_moves": {
+    "sha256": "25611943799bc2387757d8a6674cd118f39e82bc3b41e8e9a1f85bd65af07e3b",
+    "labels": 11,
+    "text_ink_sha256": "514fe37ba6a718bbf0300b60594c3e48a9856d2f2a2a2b71caaee3ba6c5a9109"
+  }
+}

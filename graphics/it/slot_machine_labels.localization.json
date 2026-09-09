@@ -1,0 +1,32 @@
+{
+  "source_sha256": "5cd3402deb7b8e6e75360011438a1f4712f81f9f75f03bcbe85dc8a89492c8c6",
+  "reference": "GETTONI (coin balance), VINCITA (payout), standard Italian slot terminology; https://bulbapedia.bulbagarden.net/wiki/Slot establishes coin/payout semantics; exact official Italian asset match not established. Original 3x5 pixel letter style, direct indexed edit.",
+  "labels": [
+    {
+      "text": "GETTONI",
+      "rect": [
+        82,
+        17,
+        28,
+        5
+      ]
+    },
+    {
+      "text": "VINCITA",
+      "rect": [
+        130,
+        17,
+        28,
+        5
+      ]
+    }
+  ],
+  "encoding": [
+    {
+      "bytes": 2036,
+      "capacity": 2052
+    }
+  ],
+  "unchanged": "Pixels outside listed rectangles, all scores, art, palette indices, dimensions, maps and unused tiles. encode_asset shared-tile validation passes.",
+  "changed_pixels": 120
+}

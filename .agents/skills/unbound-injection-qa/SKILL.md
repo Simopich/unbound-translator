@@ -46,9 +46,11 @@ runtime patches, fixed overrides, `missing_relocations`, `missing_fixed_slots`, 
 no-space/truncation data. Trace suspicious entry IDs through their original address, pointer sources, destination,
 storage kind, and encoded size.
 
-For difficult Unbound-specific behavior, investigate locally first. Optionally compare against
-`out/working_fr.gba` or `https://github.com/AntonyKervazoCanut/gba_translator` as behavioral evidence only; do not copy
-its architecture or ROM.
+For difficult Unbound-specific behavior, investigate locally first. Reference `pret/pokefirered` (FireRed BPRE
+architecture, text engine, window/list menus, script opcodes, and SaveBlock1 layout), `pret/pokeemerald` (ListMenu
+callbacks and window templates), and `Skeli789/Complete-Fire-Red-Upgrade` (expanded species, modified struct strides,
+dynamic level calculation, and high-memory hooks). Optionally compare against `out/working_fr.gba` or
+`https://github.com/AntonyKervazoCanut/gba_translator` as behavioral evidence only; do not copy its architecture or ROM.
 
 ## Success Criteria
 
