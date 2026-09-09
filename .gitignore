@@ -7,3 +7,6 @@ rom/*.gba
 out/*.json
 out/*.gba
 out/*.bps
+
+# Local ROM graphics inspection artifacts
+/out/graphics-audit/
